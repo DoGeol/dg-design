@@ -23,7 +23,7 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "default": "./dist/index.js"
     },
     "./package.json": "./package.json"
   },
@@ -40,6 +40,11 @@
   "peerDependencies": {
     "react": "^18 || ^19",
     "react-dom": "^18 || ^19"
+  },
+  "peerDependenciesMeta": {
+    "react-dom": {
+      "optional": true
+    }
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
