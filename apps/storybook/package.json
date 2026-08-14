@@ -1,5 +1,6 @@
 {
-  "name": "storybook",
+  "name": "@dg-design/storybook",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
