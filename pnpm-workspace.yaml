@@ -1,3 +1,21 @@
 packages:
   - "packages/*"
   - "apps/*"
+
+# 공유 의존성 단일 소스. 각 package.json은 "catalog:"로 참조한다.
+catalog:
+  "@types/react": ^19.2.18
+  "@types/react-dom": ^19.2.4
+  react: ^19.2.8
+  react-dom: ^19.2.8
+  typescript: ^6.0.3
+  vite: ^8.2.1
+
+# 공급망 방어: 배포 3일(4320분) 미만 버전은 설치하지 않는다 (탈취 패키지 대응).
+# 주의: 의존성 range 하한이 3일 미만이면 백트래킹할 성숙 버전이 없어 설치가 실패한다
+# — 새 의존성을 추가할 때는 하한을 최신 성숙 버전으로 잡는다.
+minimumReleaseAge: 4320
+
+# esbuild postinstall은 의도적으로 돌리지 않는다 (빌드는 wasm 폴백으로 동작 확인됨)
+ignoredBuiltDependencies:
+  - esbuild

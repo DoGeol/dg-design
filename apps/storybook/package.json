@@ -11,15 +11,15 @@
   "dependencies": {
     "@dg-design/react": "workspace:*",
     "@dg-design/tokens": "workspace:*",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react": "catalog:",
+    "react-dom": "catalog:"
   },
   "devDependencies": {
-    "@storybook/react-vite": "^10.5.8",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
-    "storybook": "^10.5.8",
-    "typescript": "^5.9.3",
-    "vite": "^8.2.1"
+    "@storybook/react-vite": "^10.5.7",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "storybook": "^10.5.7",
+    "typescript": "catalog:",
+    "vite": "catalog:"
   }
 }
