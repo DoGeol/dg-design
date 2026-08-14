@@ -1,0 +1,41 @@
+# AGENTS.md
+
+이 저장소에서 작업하는 코딩 에이전트(Claude Code, Codex 등) 공용 지침. 프로젝트 스킬은 `.claude/skills/`가 원본이고 `.agents/skills`는 심링크다.
+
+# dg-design
+
+Dogeol Design System (DDS). daangn/seed-design 구조를 참고한 개인 디자인시스템.
+**상태: 0.1.0 npm 배포 완료 (2026-08-14).** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
+
+## 구조와 명령
+
+- pnpm workspace: `packages/tokens`, `packages/react`, `apps/storybook`(`@dg-design/storybook`, private)
+- `pnpm generate` — tokens.css / tailwind.css / 타입 생성 + WCAG 대비 검사 16쌍×2모드 (미달·sRGB 밖 값이면 **생성 실패**). 의존성 0, Node 네이티브 타입 스트리핑으로 실행
+- `pnpm build` — 전체 빌드 (react는 Vite lib mode + preserveModules). publint는 `pnpm --filter @dg-design/react exec publint`
+- CI(GitHub Actions): install → generate → build → publint. tokens dist는 gitignore — generate가 build에 선행해야 함
+- 배포: changesets. publish는 npm 웹 재인증 때문에 사용자가 터미널에서 직접 실행
+
+## 핵심 관습 (변경 시 스펙·결정 기록 먼저 확인)
+
+- 토큰: `--dds-color-{role}-{intent}-{emphasis}[-{state}]`, role마다 축이 다름(격자 아님). palette는 내부 구현(타입 미노출), semantic만 공개 API
+- hover/pressed 2단계 상태 축 — seed와 의도적으로 갈라진 유일한 지점
+- 다크모드: `[data-dds-theme="dark"]` 재정의. palette는 모드 무관, semantic만 분기
+- **tokens.css는 소비 앱이 수동 로드.** react 컴포넌트는 토큰 CSS를 import하지 않는다
+- 컴포넌트 CSS: 수기 + CVA, 전체 `@layer dds`, `.dds-button--variant_solid` 클래스 관습(비공개 API), `:focus-visible`, `:is(:disabled,[disabled],[data-disabled])` 3중 매칭
+- react 빌드에서 CSS는 external + raw copy 플러그인 (Vite가 side-effect import를 지우는 문제 회피 — vite.config.ts 참조)
+- Tailwind 브릿지: `@theme` 재바인딩, 유틸명은 `bg-bg-brand-solid` 형태(토큰 이름 1:1)
+
+## 문서
+
+- `docs/decisions/` — 결정 기록 (토큰 체계, [0.1.0 구현 중 결정](docs/decisions/2026-08-15-dds-010-implementation.md))
+- `docs/specs/archive/` — 완료된 스펙 (아키텍처, 토큰 체계·Button 0.1.0). 새 작업 스펙은 `docs/specs/`에
+- 하지 않을 것 + 재고 트리거: 레시피 코드젠(컴포넌트 15개+), headless 분리(같은 로직에 다른 스타일 2회), 테스트 프레임워크(로직 컴포넌트 등장), 시각 회귀(컴포넌트 5개+), CJS·YAML 정의(영구 불채택)
+
+## 참고 저장소
+
+로컬 클론: `/Users/pdg/WebstormProjects/seed-design` — 패턴 참고용 read-only. 코드 복사보다 구조·네이밍 참고 우선.
+
+- 토큰/스키마: `packages/rootage`, `packages/design-token`
+- 레시피: `packages/qvism-preset`, `packages/css`, `packages/stylesheet`
+- 컴포넌트: `packages/react`, `packages/react-headless`
+- Tailwind 브릿지: `packages/tailwind4-theme`, `packages/tailwind3-plugin`
