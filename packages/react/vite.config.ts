@@ -17,6 +17,7 @@ export default defineConfig({
     dts({
       entryRoot: "src",
       staticImport: true,
+      exclude: ["src/**/*.test.tsx", "src/test-setup.ts"],
     }),
     react(),
     copyComponentCss(),

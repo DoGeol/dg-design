@@ -46,6 +46,9 @@ jobs:
       - name: Build packages
         run: pnpm build
 
+      - name: Test
+        run: pnpm --filter @dg-design/react run test
+
       # storybook typecheck가 react의 dist/index.d.ts를 참조하므로 build 뒤에 돈다
       - name: Typecheck
         run: pnpm typecheck

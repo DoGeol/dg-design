@@ -1,0 +1,123 @@
+@layer dds {
+  .dds-checkbox {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--dds-dimension-x2);
+    box-sizing: border-box;
+    font-family: inherit;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .dds-checkbox:has(.dds-checkbox__input:is(:disabled, [disabled], [data-disabled])) {
+    cursor: not-allowed;
+  }
+
+  /* input은 클릭·포커스·a11y는 네이티브에 위임하고 시각만 숨긴다 (display:none은 포커스를 죽인다) */
+  .dds-checkbox__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .dds-checkbox__box {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-neutral);
+    background-color: transparent;
+    color: var(--dds-color-fg-brand-contrast);
+  }
+
+  .dds-checkbox__check-icon,
+  .dds-checkbox__dash-icon {
+    display: none;
+    width: 70%;
+    height: 70%;
+  }
+
+  .dds-checkbox__input:checked ~ .dds-checkbox__box .dds-checkbox__check-icon {
+    display: block;
+  }
+  .dds-checkbox__input:indeterminate ~ .dds-checkbox__box .dds-checkbox__dash-icon {
+    display: block;
+  }
+  .dds-checkbox__input:indeterminate ~ .dds-checkbox__box .dds-checkbox__check-icon {
+    display: none;
+  }
+
+  .dds-checkbox__input:is(:checked, :indeterminate) ~ .dds-checkbox__box {
+    border-color: transparent;
+    background-color: var(--dds-color-bg-brand-solid);
+  }
+
+  .dds-checkbox__input:not(:is(:checked, :indeterminate)):not(
+      :is(:disabled, [disabled], [data-disabled])
+    ):hover
+    ~ .dds-checkbox__box {
+    background-color: var(--dds-color-bg-transparent-hover);
+  }
+  .dds-checkbox__input:is(:checked, :indeterminate):not(
+      :is(:disabled, [disabled], [data-disabled])
+    ):hover
+    ~ .dds-checkbox__box {
+    background-color: var(--dds-color-bg-brand-solid-hover);
+  }
+  .dds-checkbox__input:is(:checked, :indeterminate):not(
+      :is(:disabled, [disabled], [data-disabled])
+    ):active
+    ~ .dds-checkbox__box {
+    background-color: var(--dds-color-bg-brand-solid-pressed);
+  }
+
+  .dds-checkbox__input:focus-visible ~ .dds-checkbox__box {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-checkbox__input:is(:disabled, [disabled], [data-disabled]) ~ .dds-checkbox__box {
+    border-color: var(--dds-color-stroke-neutral);
+    background-color: var(--dds-color-bg-disabled);
+    color: var(--dds-color-fg-disabled);
+  }
+  .dds-checkbox__input:is(:disabled, [disabled], [data-disabled]):is(:checked, :indeterminate)
+    ~ .dds-checkbox__box {
+    border-color: transparent;
+  }
+
+  .dds-checkbox__label {
+    color: var(--dds-color-fg-neutral);
+  }
+  .dds-checkbox__input:is(:disabled, [disabled], [data-disabled]) ~ .dds-checkbox__label {
+    color: var(--dds-color-fg-disabled);
+  }
+
+  /* size: 치수는 스펙 위임 — 기존 dimension/radius 토큰에서 선택 */
+  .dds-checkbox--size_medium .dds-checkbox__box {
+    width: var(--dds-dimension-x4);
+    height: var(--dds-dimension-x4);
+    border-radius: var(--dds-radius-r1);
+  }
+  .dds-checkbox--size_medium .dds-checkbox__label {
+    font-size: var(--dds-font-size-t4);
+    line-height: var(--dds-line-height-t4);
+  }
+
+  .dds-checkbox--size_large .dds-checkbox__box {
+    width: var(--dds-dimension-x5);
+    height: var(--dds-dimension-x5);
+    border-radius: var(--dds-radius-r1_5);
+  }
+  .dds-checkbox--size_large .dds-checkbox__label {
+    font-size: var(--dds-font-size-t6);
+    line-height: var(--dds-line-height-t6);
+  }
+}
