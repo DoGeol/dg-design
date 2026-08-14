@@ -1,6 +1,6 @@
 {
   "name": "@dg-design/tokens",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Dogeol Design System(DDS)의 디자인 토큰 패키지. OKLCH 파생 팔레트를 CSS 변수·Tailwind v4 브릿지·타입으로 생성한다.",
   "license": "MIT",
   "repository": {
