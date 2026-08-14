@@ -6,8 +6,7 @@
     "*.css"
   ],
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "exports": {
     ".": {
