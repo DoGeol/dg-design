@@ -23,12 +23,12 @@ const preview: Preview = {
       name: "Theme",
       description: "DDS 다크 모드 토글 (html[data-dds-theme])",
       toolbar: {
+        title: "Theme",
         icon: "circlehollow",
         items: [
           { value: "light", icon: "sun", title: "Light" },
           { value: "dark", icon: "moon", title: "Dark" },
         ],
-        showName: true,
         dynamicTitle: true,
       },
     },
