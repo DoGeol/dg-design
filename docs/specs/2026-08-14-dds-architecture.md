@@ -47,12 +47,12 @@ seed-design의 산출물 구조(토큰 CSS 변수 + variant 클래스 + data-att
 
 ## 합격 조건
 
-- [ ] `pnpm generate` → `tokens.css` / `tailwind.css` / 타입 3종 생성, semantic 토큰이 light/dark 각각 값 보유
-- [ ] Button이 variant×size 전 조합으로 Storybook 렌더, 다크모드 토글 시 색 전환
-- [ ] `pnpm build` → 컴포넌트별 JS+CSS 산출, `publint` 통과
-- [ ] 별도 빈 Vite 프로젝트에서 `pnpm add @dg-design/react @dg-design/tokens` 후 `tokens.css` import + Button import로 스타일 적용 (토큰 CSS는 소비 앱 수동 로드 — 토큰 스펙에서 확정)
-- [ ] Tailwind v4 프로젝트에서 `tokens.css` 선로드 + 브릿지 import 후 `bg-*` 토큰 유틸 동작
-- [ ] npm 0.1.0 publish 완료
+- [x] `pnpm generate` → `tokens.css` / `tailwind.css` / 타입 3종 생성, semantic 토큰이 light/dark 각각 값 보유
+- [x] Button이 variant×size 전 조합으로 Storybook 렌더, 다크모드 토글 시 색 전환
+- [x] `pnpm build` → 컴포넌트별 JS+CSS 산출, `publint` 통과
+- [x] 별도 빈 Vite 프로젝트에서 `pnpm add @dg-design/react @dg-design/tokens` 후 `tokens.css` import + Button import로 스타일 적용 (토큰 CSS는 소비 앱 수동 로드 — 토큰 스펙에서 확정)
+- [x] Tailwind v4 프로젝트에서 `tokens.css` 선로드 + 브릿지 import 후 `bg-*` 토큰 유틸 동작
+- [x] npm 0.1.0 publish 완료
 
 **0.1.0 릴리스 범위 = Button 단 하나.** 목적은 컴포넌트 수가 아니라 토큰→빌드→배포→소비 파이프라인 전체 검증. 추가 컴포넌트는 이후 마이너 버전.
 

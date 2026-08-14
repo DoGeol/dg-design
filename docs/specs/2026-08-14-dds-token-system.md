@@ -176,21 +176,21 @@ disabled: boolean → native disabled 속성
 
 ## 합격 조건
 
-- [ ] `pnpm generate`가 `tokens.css` / `tailwind.css` / 타입 3종을 만들고, palette 21개(brand 10 + gray 11)와 semantic 22개(brand 8 + neutral 8 + 공통 6)가 방출된다
-- [ ] `tokens.css`에 `:root`와 `[data-dds-theme="dark"]` 두 블록이 있고, semantic 토큰이 양쪽에 값을 갖는다
-- [ ] `--dds-color-palette-*`는 CSS에 방출되지만 문서에 "내부 구현"으로 명시되고 타입 export에서 빠진다
-- [ ] 대비 검사가 16쌍을 라이트/다크 각각 검사하고, 통과하면 생성 성공한다
-- [ ] `bg-brand-solid`의 값을 일부러 밝게 바꾸면 `pnpm generate`가 **실패하고**, 실패 메시지에 쌍 이름과 실제 대비값이 나온다
-- [ ] Button이 intent(2) × variant(3) × size(3) = 18조합으로 Storybook에 렌더되고, 다크 토글 시 색이 전환된다
-- [ ] Button의 hover와 pressed가 서로 다른 색이다 (데스크톱에서 육안 확인)
-- [ ] `disabled` Button에 마우스를 올려도 hover 색이 적용되지 않는다
-- [ ] 키보드 Tab으로 Button에 도달하면 포커스 링이 보이고, 마우스 클릭으로는 보이지 않는다
-- [ ] 컴포넌트 CSS 전체가 `@layer dds` 안에 있고, 레이어 밖 소비자 클래스가 같은 specificity로 이긴다
-- [ ] `pnpm build`가 컴포넌트별 JS+CSS를 만들고 `publint`를 통과한다
-- [ ] GitHub Actions가 push마다 generate + build + publint를 통과시킨다
-- [ ] 빈 Vite 프로젝트에서 `pnpm add @dg-design/react @dg-design/tokens` 후 진입점에서 `tokens.css` import + Button import로 스타일이 적용된다 (컴포넌트 CSS는 side-effect 자동, 토큰 CSS는 소비 앱 수동 로드)
-- [ ] Tailwind v4 프로젝트에서 `tokens.css` 선로드 + 브릿지 import로 `bg-*` 토큰 유틸이 동작한다
-- [ ] npm 0.1.0 publish 완료
+- [x] `pnpm generate`가 `tokens.css` / `tailwind.css` / 타입 3종을 만들고, palette 21개(brand 10 + gray 11)와 semantic 22개(brand 8 + neutral 8 + 공통 6)가 방출된다
+- [x] `tokens.css`에 `:root`와 `[data-dds-theme="dark"]` 두 블록이 있고, semantic 토큰이 양쪽에 값을 갖는다
+- [x] `--dds-color-palette-*`는 CSS에 방출되지만 문서에 "내부 구현"으로 명시되고 타입 export에서 빠진다
+- [x] 대비 검사가 16쌍을 라이트/다크 각각 검사하고, 통과하면 생성 성공한다
+- [x] `bg-brand-solid`의 값을 일부러 밝게 바꾸면 `pnpm generate`가 **실패하고**, 실패 메시지에 쌍 이름과 실제 대비값이 나온다
+- [x] Button이 intent(2) × variant(3) × size(3) = 18조합으로 Storybook에 렌더되고, 다크 토글 시 색이 전환된다
+- [x] Button의 hover와 pressed가 서로 다른 색이다 (데스크톱에서 육안 확인)
+- [x] `disabled` Button에 마우스를 올려도 hover 색이 적용되지 않는다
+- [x] 키보드 Tab으로 Button에 도달하면 포커스 링이 보이고, 마우스 클릭으로는 보이지 않는다
+- [x] 컴포넌트 CSS 전체가 `@layer dds` 안에 있고, 레이어 밖 소비자 클래스가 같은 specificity로 이긴다
+- [x] `pnpm build`가 컴포넌트별 JS+CSS를 만들고 `publint`를 통과한다
+- [x] GitHub Actions가 push마다 generate + build + publint를 통과시킨다
+- [x] 빈 Vite 프로젝트에서 `pnpm add @dg-design/react @dg-design/tokens` 후 진입점에서 `tokens.css` import + Button import로 스타일이 적용된다 (컴포넌트 CSS는 side-effect 자동, 토큰 CSS는 소비 앱 수동 로드)
+- [x] Tailwind v4 프로젝트에서 `tokens.css` 선로드 + 브릿지 import로 `bg-*` 토큰 유틸이 동작한다
+- [x] npm 0.1.0 publish 완료
 
 ## 드러난 가정과 결론
 
