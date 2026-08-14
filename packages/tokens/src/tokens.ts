@@ -31,7 +31,29 @@ const LIGHTNESS = [0.97, 0.929, 0.869, 0.76, 0.64, 0.54, 0.45, 0.36, 0.27, 0.18]
  */
 const BRAND_CHROMA = [0.03, 0.06, 0.095, 0.1, 0.092, 0.082, 0.068, 0.055, 0.041, 0.027];
 
-/** brand·gray 공용 파생 함수. chroma는 스칼라(gray) 또는 스텝별 배열(brand). */
+/** intent 램프 hue. 관례 위치에서 출발해 gamut·대비 검사를 통과한 값 그대로 확정. */
+export const INTENT_HUES = {
+  critical: 25,
+  positive: 145,
+  warning: 85,
+  informative: 250,
+} as const;
+
+/**
+ * intent 스텝별 chroma. hue마다 sRGB 상한 곡선이 달라 램프별로 다시 잡았다.
+ * 전부 해당 (L, hue) 상한의 87% — 넘기면 generate가 gamut 검사에서 실패한다.
+ */
+const INTENT_CHROMA: Record<keyof typeof INTENT_HUES, number[]> = {
+  // 각 스텝의 sRGB 상한 × brand의 실측 비율 프로파일(0.69 0.54 0.64 0.77 0.84
+  // 0.89 0.88 0.89 0.89 0.86). 균일 87%를 쓰면 green처럼 밝은 영역 상한이 큰
+  // hue에서 네온색(#50fa64)이 튀어 램프 패밀리가 깨진다.
+  critical: [0.01, 0.019, 0.045, 0.11, 0.207, 0.195, 0.162, 0.131, 0.097, 0.064],
+  positive: [0.035, 0.071, 0.175, 0.184, 0.17, 0.151, 0.125, 0.101, 0.076, 0.05],
+  warning: [0.022, 0.041, 0.092, 0.12, 0.111, 0.099, 0.082, 0.066, 0.049, 0.033],
+  informative: [0.01, 0.019, 0.043, 0.099, 0.153, 0.136, 0.113, 0.091, 0.068, 0.045],
+};
+
+/** brand·gray·intent 공용 파생 함수. chroma는 스칼라(gray) 또는 스텝별 배열. */
 function ramp(name: string, hue: number, chroma: number | number[]): Record<string, Oklch> {
   return Object.fromEntries(
     STEPS.map((step, i) => [
@@ -41,22 +63,27 @@ function ramp(name: string, hue: number, chroma: number | number[]): Record<stri
   );
 }
 
-/** primitive 팔레트 21개 (brand 10 + gray 11). 비공개 API — 타입으로 export하지 않는다. */
+/** primitive 팔레트 61개 (brand 10 + gray 11 + intent 40). 비공개 API — 타입으로 export하지 않는다. */
 export const palette: Record<string, Oklch> = {
   ...ramp("brand", BRAND_HUE, BRAND_CHROMA),
   "gray-00": { l: 1, c: 0, h: GRAY_HUE },
   ...ramp("gray", GRAY_HUE, GRAY_CHROMA),
+  ...ramp("critical", INTENT_HUES.critical, INTENT_CHROMA.critical),
+  ...ramp("positive", INTENT_HUES.positive, INTENT_CHROMA.positive),
+  ...ramp("warning", INTENT_HUES.warning, INTENT_CHROMA.warning),
+  ...ramp("informative", INTENT_HUES.informative, INTENT_CHROMA.informative),
 };
 
 /** `"brand-700"` 또는 알파 합성용 `"gray-1000/0.06"`. */
 export type ColorRef = string;
 
 /**
- * semantic 색 토큰 22개 (brand 8 + neutral 8 + 공통 6).
- * 값 없는 예약 이름(critical/positive/warning/informative)은 여기에 넣지 않는다.
+ * semantic 색 토큰 38개 (brand 8 + neutral 8 + intent 16 + 공통 6).
  *
  * 모드별 방향: light는 hover/pressed가 어두워지고, dark는 밝아진다.
  * 양쪽 모두 페이지 배경과의 대비가 커지는 방향이다.
+ *
+ * intent 4종은 base 4개씩만 — Badge가 비인터랙티브라 hover/pressed가 없다.
  */
 export const semanticColors: Record<string, { light: ColorRef; dark: ColorRef }> = {
   // ── brand (8)
@@ -78,6 +105,32 @@ export const semanticColors: Record<string, { light: ColorRef; dark: ColorRef }>
   "bg-neutral-weak-pressed": { light: "gray-300", dark: "gray-700" },
   "fg-neutral": { light: "gray-900", dark: "gray-100" },
   "fg-neutral-contrast": { light: "gray-00", dark: "gray-1000" },
+
+  // ── critical (4)
+  "bg-critical-solid": { light: "critical-700", dark: "critical-400" },
+  "bg-critical-weak": { light: "critical-100", dark: "critical-900" },
+  "fg-critical": { light: "critical-800", dark: "critical-300" },
+  "fg-critical-contrast": { light: "gray-00", dark: "gray-1000" },
+
+  // ── positive (4)
+  "bg-positive-solid": { light: "positive-700", dark: "positive-400" },
+  "bg-positive-weak": { light: "positive-100", dark: "positive-900" },
+  "fg-positive": { light: "positive-800", dark: "positive-300" },
+  "fg-positive-contrast": { light: "gray-00", dark: "gray-1000" },
+
+  // ── warning (4)
+  // 유일하게 solid가 밝은 쪽 스텝이고 contrast가 양 모드 모두 어둡다.
+  // 황색은 어두운 스텝에서 갈색으로 읽혀 경고로 안 보이고, 밝은 황색 위 흰 글자는 4.5:1이 불가능하다.
+  "bg-warning-solid": { light: "warning-400", dark: "warning-300" },
+  "bg-warning-weak": { light: "warning-100", dark: "warning-900" },
+  "fg-warning": { light: "warning-800", dark: "warning-300" },
+  "fg-warning-contrast": { light: "gray-1000", dark: "gray-1000" },
+
+  // ── informative (4)
+  "bg-informative-solid": { light: "informative-700", dark: "informative-400" },
+  "bg-informative-weak": { light: "informative-100", dark: "informative-900" },
+  "fg-informative": { light: "informative-800", dark: "informative-300" },
+  "fg-informative-contrast": { light: "gray-00", dark: "gray-1000" },
 
   // ── 공통 (6)
   "bg-layer-default": { light: "gray-00", dark: "gray-1000" },
@@ -108,6 +161,22 @@ export const contrastChecks: ContrastCheck[] = [
   { fg: "fg-neutral", bg: "bg-neutral-weak", min: 4.5 },
   { fg: "fg-neutral", bg: "bg-neutral-weak-hover", min: 4.5 },
   { fg: "fg-neutral", bg: "bg-neutral-weak-pressed", min: 4.5 },
+  // critical
+  { fg: "fg-critical-contrast", bg: "bg-critical-solid", min: 4.5 },
+  { fg: "fg-critical", bg: "bg-critical-weak", min: 4.5 },
+  { fg: "fg-critical", bg: "bg-layer-default", min: 4.5 },
+  // positive
+  { fg: "fg-positive-contrast", bg: "bg-positive-solid", min: 4.5 },
+  { fg: "fg-positive", bg: "bg-positive-weak", min: 4.5 },
+  { fg: "fg-positive", bg: "bg-layer-default", min: 4.5 },
+  // warning
+  { fg: "fg-warning-contrast", bg: "bg-warning-solid", min: 4.5 },
+  { fg: "fg-warning", bg: "bg-warning-weak", min: 4.5 },
+  { fg: "fg-warning", bg: "bg-layer-default", min: 4.5 },
+  // informative
+  { fg: "fg-informative-contrast", bg: "bg-informative-solid", min: 4.5 },
+  { fg: "fg-informative", bg: "bg-informative-weak", min: 4.5 },
+  { fg: "fg-informative", bg: "bg-layer-default", min: 4.5 },
   // ghost — 페이지 배경 위
   { fg: "fg-brand", bg: "bg-layer-default", min: 4.5 },
   { fg: "fg-neutral", bg: "bg-layer-default", min: 4.5 },
