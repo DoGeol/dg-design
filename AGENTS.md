@@ -7,6 +7,10 @@
 Dogeol Design System (DDS). daangn/seed-design 구조를 참고한 개인 디자인시스템.
 **상태: 0.1.0 npm 배포 완료 (2026-08-14).** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
 
+## 절대 규칙
+
+**커밋·푸시(태그 푸시 포함)는 실행 전에 반드시 사용자에게 묻고 승인을 받는다.** 작업이 끝났다고 임의로 `git commit`이나 `git push`를 실행하지 않는다. 변경 요약을 보여주고 승인받은 뒤에 실행한다. 서브에이전트는 커밋 자체를 하지 않으며, 감독 세션이 승인을 받아 대신 커밋한다. 사용자가 커밋을 명시적으로 요청했을 때(`/git-commit` 포함)는 그 요청이 승인이다.
+
 ## 구조와 명령
 
 - pnpm workspace: `packages/tokens`, `packages/react`, `apps/storybook`(`@dg-design/storybook`, private)
@@ -24,6 +28,12 @@ Dogeol Design System (DDS). daangn/seed-design 구조를 참고한 개인 디자
 - 컴포넌트 CSS: 수기 + CVA, 전체 `@layer dds`, `.dds-button--variant_solid` 클래스 관습(비공개 API), `:focus-visible`, `:is(:disabled,[disabled],[data-disabled])` 3중 매칭
 - react 빌드에서 CSS는 external + raw copy 플러그인 (Vite가 side-effect import를 지우는 문제 회피 — vite.config.ts 참조)
 - Tailwind 브릿지: `@theme` 재바인딩, 유틸명은 `bg-bg-brand-solid` 형태(토큰 이름 1:1)
+
+## 코드 컨벤션
+
+- **폴더 이름은 항상 kebab-case**
+- **파일은 300~500줄을 넘기지 않는다.** 넘으면 분리를 검토한다. 다만 쪼개는 쪽이 오히려 추적을 어렵게 만든다고 판단되면 그대로 두고 나중에 분리한다 — 분리 자체가 목적이 아니다
+- **주석은 꼭 필요한 곳에만 단다.** 이름과 구조로 의도가 드러나면 주석을 쓰지 않는다. 코드만 봐서는 알 수 없는 "왜"(우회한 버그, 외부 제약, 의도적으로 이상해 보이는 선택)일 때만 남긴다. 사용자가 명시적으로 요청하면 남긴다
 
 ## 문서
 
