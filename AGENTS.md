@@ -27,9 +27,9 @@ Dogeol Design System (DDS). daangn/seed-design 구조를 참고한 개인 디자
 
 ## 문서
 
-- `docs/decisions/` — 결정 기록 (토큰 체계, [0.1.0 구현 중 결정](docs/decisions/2026-08-15-dds-010-implementation.md))
-- `docs/specs/archive/` — 완료된 스펙 (아키텍처, 토큰 체계·Button 0.1.0). 새 작업 스펙은 `docs/specs/`에
-- 하지 않을 것 + 재고 트리거: 레시피 코드젠(컴포넌트 15개+), headless 분리(같은 로직에 다른 스타일 2회), 테스트 프레임워크(로직 컴포넌트 등장), 시각 회귀(컴포넌트 5개+), CJS·YAML 정의(영구 불채택)
+**[docs/INDEX.md](docs/INDEX.md)에서 필요한 것만 골라 읽는다.** `docs/` 전체를 훑지 않는다.
+
+하지 않을 것 + 재고 트리거: 레시피 코드젠(컴포넌트 15개+), headless 분리(같은 로직에 다른 스타일 2회), 테스트 프레임워크(로직 컴포넌트 등장), 시각 회귀(컴포넌트 5개+), CJS·YAML 정의(영구 불채택)
 
 ## 참고 저장소
 
