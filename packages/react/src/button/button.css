@@ -1,0 +1,124 @@
+@layer dds {
+  .dds-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: var(--dds-font-weight-bold);
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  .dds-button:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-button:is(:disabled, [disabled], [data-disabled]) {
+    cursor: not-allowed;
+  }
+
+  /* intent: sets local variables, variant blocks below consume them */
+  .dds-button--intent_brand {
+    --dds-button-solid-bg: var(--dds-color-bg-brand-solid);
+    --dds-button-solid-bg-hover: var(--dds-color-bg-brand-solid-hover);
+    --dds-button-solid-bg-pressed: var(--dds-color-bg-brand-solid-pressed);
+    --dds-button-solid-fg: var(--dds-color-fg-brand-contrast);
+
+    --dds-button-weak-bg: var(--dds-color-bg-brand-weak);
+    --dds-button-weak-bg-hover: var(--dds-color-bg-brand-weak-hover);
+    --dds-button-weak-bg-pressed: var(--dds-color-bg-brand-weak-pressed);
+    --dds-button-weak-fg: var(--dds-color-fg-brand);
+
+    --dds-button-ghost-fg: var(--dds-color-fg-brand);
+  }
+
+  .dds-button--intent_neutral {
+    --dds-button-solid-bg: var(--dds-color-bg-neutral-solid);
+    --dds-button-solid-bg-hover: var(--dds-color-bg-neutral-solid-hover);
+    --dds-button-solid-bg-pressed: var(--dds-color-bg-neutral-solid-pressed);
+    --dds-button-solid-fg: var(--dds-color-fg-neutral-contrast);
+
+    --dds-button-weak-bg: var(--dds-color-bg-neutral-weak);
+    --dds-button-weak-bg-hover: var(--dds-color-bg-neutral-weak-hover);
+    --dds-button-weak-bg-pressed: var(--dds-color-bg-neutral-weak-pressed);
+    --dds-button-weak-fg: var(--dds-color-fg-neutral);
+
+    --dds-button-ghost-fg: var(--dds-color-fg-neutral);
+  }
+
+  /* variant: solid */
+  .dds-button--variant_solid {
+    background-color: var(--dds-button-solid-bg);
+    color: var(--dds-button-solid-fg);
+  }
+  .dds-button--variant_solid:not(:is(:disabled, [disabled], [data-disabled])):is(:hover, [data-hover]) {
+    background-color: var(--dds-button-solid-bg-hover);
+  }
+  .dds-button--variant_solid:not(:is(:disabled, [disabled], [data-disabled])):is(:active, [data-pressed]) {
+    background-color: var(--dds-button-solid-bg-pressed);
+  }
+  .dds-button--variant_solid:is(:disabled, [disabled], [data-disabled]) {
+    background-color: var(--dds-color-bg-disabled);
+    color: var(--dds-color-fg-disabled);
+  }
+
+  /* variant: weak */
+  .dds-button--variant_weak {
+    background-color: var(--dds-button-weak-bg);
+    color: var(--dds-button-weak-fg);
+  }
+  .dds-button--variant_weak:not(:is(:disabled, [disabled], [data-disabled])):is(:hover, [data-hover]) {
+    background-color: var(--dds-button-weak-bg-hover);
+  }
+  .dds-button--variant_weak:not(:is(:disabled, [disabled], [data-disabled])):is(:active, [data-pressed]) {
+    background-color: var(--dds-button-weak-bg-pressed);
+  }
+  .dds-button--variant_weak:is(:disabled, [disabled], [data-disabled]) {
+    background-color: var(--dds-color-bg-disabled);
+    color: var(--dds-color-fg-disabled);
+  }
+
+  /* variant: ghost — transparent bg uses the shared (non-intent) transparent-hover/pressed
+     tokens, fg comes from the intent block */
+  .dds-button--variant_ghost {
+    background-color: transparent;
+    color: var(--dds-button-ghost-fg);
+  }
+  .dds-button--variant_ghost:not(:is(:disabled, [disabled], [data-disabled])):is(:hover, [data-hover]) {
+    background-color: var(--dds-color-bg-transparent-hover);
+  }
+  .dds-button--variant_ghost:not(:is(:disabled, [disabled], [data-disabled])):is(:active, [data-pressed]) {
+    background-color: var(--dds-color-bg-transparent-pressed);
+  }
+  .dds-button--variant_ghost:is(:disabled, [disabled], [data-disabled]) {
+    color: var(--dds-color-fg-disabled);
+  }
+
+  /* size: height, radius, typography (spec-defined) + horizontal padding (NOT in spec —
+     chosen proportional to size, see build report) */
+  .dds-button--size_small {
+    height: var(--dds-dimension-x9);
+    border-radius: var(--dds-radius-r2);
+    font-size: var(--dds-font-size-t3);
+    line-height: var(--dds-line-height-t3);
+    padding-inline: var(--dds-dimension-x3);
+  }
+  .dds-button--size_medium {
+    height: var(--dds-dimension-x10);
+    border-radius: var(--dds-radius-r2);
+    font-size: var(--dds-font-size-t4);
+    line-height: var(--dds-line-height-t4);
+    padding-inline: var(--dds-dimension-x4);
+  }
+  .dds-button--size_large {
+    height: var(--dds-dimension-x13);
+    border-radius: var(--dds-radius-r3);
+    font-size: var(--dds-font-size-t6);
+    line-height: var(--dds-line-height-t6);
+    padding-inline: var(--dds-dimension-x5);
+  }
+}
