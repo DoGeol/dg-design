@@ -1,6 +1,22 @@
 {
   "name": "@dg-design/tokens",
   "version": "0.1.0",
+  "description": "Dogeol Design System(DDS)의 디자인 토큰 패키지. OKLCH 파생 팔레트를 CSS 변수·Tailwind v4 브릿지·타입으로 생성한다.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DoGeol/dg-design.git",
+    "directory": "packages/tokens"
+  },
+  "homepage": "https://github.com/DoGeol/dg-design#readme",
+  "bugs": "https://github.com/DoGeol/dg-design/issues",
+  "keywords": [
+    "design-system",
+    "design-tokens",
+    "css-variables",
+    "oklch",
+    "tailwindcss"
+  ],
   "type": "module",
   "sideEffects": [
     "*.css"
@@ -22,6 +38,11 @@
   },
   "scripts": {
     "generate": "node --disable-warning=ExperimentalWarning src/generate.ts",
-    "build": "pnpm run generate"
+    "build": "pnpm run generate",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "typescript": "^5.9.3"
   }
 }

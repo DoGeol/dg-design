@@ -17,8 +17,9 @@ Dogeol Design System (DDS). daangn/seed-design 구조를 참고한 개인 디자
 
 - pnpm workspace: `packages/tokens`, `packages/react`, `apps/storybook`(`@dg-design/storybook`, private)
 - `pnpm generate` — tokens.css / tailwind.css / 타입 생성 + WCAG 대비 검사 16쌍×2모드 (미달·sRGB 밖 값이면 **생성 실패**). 의존성 0, Node 네이티브 타입 스트리핑으로 실행
+- `pnpm typecheck` — 3개 프로젝트 `tsc --noEmit`. 빌드가 잡지 못하는 타입 에러는 여기서만 걸린다 (tokens는 Node 타입 스트리핑, storybook은 번들러 통과)
 - `pnpm build` — 전체 빌드 (react는 Vite lib mode + preserveModules). publint는 `pnpm --filter @dg-design/react exec publint`
-- CI(GitHub Actions): install → generate → build → publint. tokens dist는 gitignore — generate가 build에 선행해야 함
+- CI(GitHub Actions): install → generate → typecheck → build → publint. tokens dist는 gitignore — generate가 typecheck·build에 선행해야 함
 - 배포: changesets. publish는 npm 웹 재인증 때문에 사용자가 터미널에서 직접 실행
 
 ## 핵심 관습 (변경 시 스펙·결정 기록 먼저 확인)
@@ -42,7 +43,7 @@ Dogeol Design System (DDS). daangn/seed-design 구조를 참고한 개인 디자
 
 **[docs/INDEX.md](docs/INDEX.md)에서 필요한 것만 골라 읽는다.** `docs/` 전체를 훑지 않는다.
 
-하지 않을 것 + 재고 트리거: 레시피 코드젠(컴포넌트 15개+), headless 분리(같은 로직에 다른 스타일 2회), 테스트 프레임워크(로직 컴포넌트 등장), 시각 회귀(컴포넌트 5개+), CJS·YAML 정의(영구 불채택)
+하지 않을 것 + 재고 트리거: 레시피 코드젠(컴포넌트 15개+), headless 분리(같은 로직에 다른 스타일 2회), 테스트 프레임워크(로직 컴포넌트 등장), 시각 회귀(컴포넌트 5개+), TypeScript 7(vite-plugin-dts가 TS7의 JS Compiler API 미지원 — 지원되면 재시도), CJS·YAML 정의(영구 불채택)
 
 ## 참고 저장소
 

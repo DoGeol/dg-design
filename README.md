@@ -31,6 +31,7 @@ Tailwind v4: tokens.css 선로드 후 `@import "@dg-design/tokens/tailwind.css";
 ```
 pnpm install
 pnpm generate   # tokens.css / tailwind.css / 타입 생성 + 대비 검사 (미달 시 실패)
+pnpm typecheck  # 3개 프로젝트 tsc --noEmit
 pnpm build      # 전체 빌드
 pnpm --filter @dg-design/storybook dev   # Storybook (다크 토글 툴바 내장)
 ```

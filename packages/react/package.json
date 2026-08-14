@@ -1,6 +1,21 @@
 {
   "name": "@dg-design/react",
   "version": "0.1.0",
+  "description": "Dogeol Design System(DDS)의 React 컴포넌트 패키지.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DoGeol/dg-design.git",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/DoGeol/dg-design#readme",
+  "bugs": "https://github.com/DoGeol/dg-design/issues",
+  "keywords": [
+    "design-system",
+    "react",
+    "components",
+    "ui"
+  ],
   "type": "module",
   "sideEffects": [
     "*.css"
@@ -19,6 +34,7 @@
   ],
   "scripts": {
     "build": "vite build",
+    "typecheck": "tsc --noEmit",
     "lint:publish": "publint"
   },
   "peerDependencies": {
@@ -36,7 +52,7 @@
     "publint": "^0.3.23",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "typescript": "^5.9.0",
+    "typescript": "^5.9.3",
     "vite": "^8.2.1",
     "vite-plugin-dts": "^5.0.3"
   },

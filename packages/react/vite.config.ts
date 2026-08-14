@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import react from "@vitejs/plugin-react";
 import { defineConfig, type Plugin } from "vite";
@@ -7,7 +8,7 @@ import dts from "vite-plugin-dts";
 
 import pkg from "./package.json" with { type: "json" };
 
-const root = path.dirname(new URL(import.meta.url).pathname);
+const root = path.dirname(fileURLToPath(import.meta.url));
 
 // ESM only, per-module CSS output (seed packages/react/vite.config.mts pattern,
 // minus the CJS output — DDS ships ESM only).

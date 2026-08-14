@@ -43,6 +43,9 @@ jobs:
       - name: Generate tokens
         run: pnpm generate
 
+      - name: Typecheck
+        run: pnpm typecheck
+
       - name: Build packages
         run: pnpm build
 
