@@ -26,7 +26,7 @@ Dogeol Design System (DDS). daangn/seed-design 구조를 참고한 개인 디자
 
 ## 핵심 관습 (변경 시 스펙·결정 기록 먼저 확인)
 
-- 토큰: `--dds-color-{role}-{intent}-{emphasis}[-{state}]`, role마다 축이 다름(격자 아님). palette는 내부 구현(타입 미노출), semantic만 공개 API
+- 토큰: `--dds-color-{role}-{intent}-{emphasis}[-{state}]`, role마다 축이 다름(격자 아님). palette는 내부 구현(타입 미노출), semantic만 공개 API. intent 6종(brand·neutral·critical·positive·warning·informative) — 새 4종은 base만, hover/pressed 없음. warning solid는 밝은 황 + 어두운 fg(반전 근거는 구현 결정 기록)
 - hover/pressed 2단계 상태 축 — seed와 의도적으로 갈라진 유일한 지점
 - 다크모드: `[data-dds-theme="dark"]` 재정의. palette는 모드 무관, semantic만 분기
 - **tokens.css는 소비 앱이 수동 로드.** react 컴포넌트는 토큰 CSS를 import하지 않는다
