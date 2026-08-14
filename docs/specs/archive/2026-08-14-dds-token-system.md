@@ -6,9 +6,10 @@
 - 최종 모호도: 18% (임계값 20%)
 - 유형: 그린필드
 - 상태: 통과
-- 근거: [docs/decisions/2026-08-14-dds-token-system.md](../decisions/2026-08-14-dds-token-system.md)
-- 상위 스펙: [docs/specs/2026-08-14-dds-architecture.md](2026-08-14-dds-architecture.md)
+- 근거: [docs/decisions/2026-08-14-dds-token-system.md](../../decisions/2026-08-14-dds-token-system.md)
+- 상위 스펙: [docs/specs/archive/2026-08-14-dds-architecture.md](2026-08-14-dds-architecture.md)
 - 승인: **승인됨** (2026-08-14)
+- 구현: **완료** — 0.1.0 릴리스 (2026-08-14). 합격 조건 16/16. 구현 중 결정: [dds-010-implementation](../../decisions/2026-08-15-dds-010-implementation.md)
 
 ## 명확도
 | 차원 | 점수 | 가중치 | 가중 점수 |

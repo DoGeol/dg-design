@@ -3,8 +3,8 @@
 - 날짜: 2026-08-14
 - 경로: architectural
 - 상태: 결정됨
-- 스펙: [docs/specs/2026-08-14-dds-token-system.md](../specs/2026-08-14-dds-token-system.md)
-- 선행 결정: [DDS 아키텍처](../specs/2026-08-14-dds-architecture.md)
+- 스펙: [docs/specs/archive/2026-08-14-dds-token-system.md](../specs/archive/2026-08-14-dds-token-system.md)
+- 선행 결정: [DDS 아키텍처](../specs/archive/2026-08-14-dds-architecture.md)
 
 ## 배경
 

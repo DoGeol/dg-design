@@ -7,6 +7,7 @@
 - 유형: 그린필드 (참고 저장소: `/Users/pdg/WebstormProjects/seed-design`)
 - 상태: 통과
 - 승인: **승인됨** (2026-08-14)
+- 구현: **완료** — 0.1.0 릴리스 (2026-08-14). 합격 조건 6/6. 구현 중 결정: [dds-010-implementation](../../decisions/2026-08-15-dds-010-implementation.md)
 
 ## 명확도
 | 차원 | 점수 | 가중치 | 가중 점수 |
