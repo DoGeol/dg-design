@@ -18,6 +18,7 @@
 | [2026-08-15 0.1.0 구현 중 결정](decisions/2026-08-15-dds-010-implementation.md) | 활성 | Vite CSS raw copy, lightness/chroma 배열, 컴포넌트 위임값, 브릿지 범위, publish 운영 |
 | [2026-08-15 Badge + intent 축](decisions/2026-08-15-badge-intent-axis.md) | 활성 | 컴포넌트 로드맵 A→B→C→D, intent 6종 확정, outline·hover/pressed 제외 근거 |
 | [2026-08-15 Badge 구현 중 결정](decisions/2026-08-15-badge-intent-axis-implementation.md) | 활성 | warning solid 반전, chroma 비율 프로파일, Badge 치수·웨이트, hue 실값 |
+| [2026-08-15 Checkbox·Switch 구현 중 결정](decisions/2026-08-15-checkbox-switch-implementation.md) | 활성 | stroke 스텝, 컨트롤 치수, vitest 구성·jsdom 함정, dts exclude |
 
 ## 스펙
 
@@ -30,5 +31,6 @@
 | [DDS 아키텍처](specs/archive/2026-08-14-dds-architecture.md) | 0.1.0 | 토큰 파이프라인·스타일링·빌드/배포·Tailwind 브릿지 |
 | [토큰 체계와 Button 0.1.0](specs/archive/2026-08-14-dds-token-system.md) | 0.1.0 | 팔레트 값, 대비 검사 쌍, 비색상 토큰, Button API, 공개 API 범위 |
 | [Badge + intent 축](specs/archive/2026-08-15-badge-intent-axis.md) | 0.2.0 | intent 4종 실값화, 대비 24건, Badge(asChild·truncate), 합격 조건 12/12 |
+| [Checkbox·Switch + stroke 축](specs/archive/2026-08-15-checkbox-switch-stroke-axis.md) | 0.3.0 | stroke 2종, 폼 컨트롤 2개, vitest 도입, 합격 조건 13/13 |
 
 각 스펙의 인터뷰 기록은 같은 이름 `-interview.md`로 분리돼 있다.
