@@ -1,0 +1,10 @@
+{
+  "name": "dg-design",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.32.1",
+  "scripts": {
+    "generate": "pnpm --filter @dg-design/tokens run generate",
+    "build": "pnpm -r run build"
+  }
+}
