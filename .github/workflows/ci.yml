@@ -43,11 +43,12 @@ jobs:
       - name: Generate tokens
         run: pnpm generate
 
-      - name: Typecheck
-        run: pnpm typecheck
-
       - name: Build packages
         run: pnpm build
+
+      # storybook typecheck가 react의 dist/index.d.ts를 참조하므로 build 뒤에 돈다
+      - name: Typecheck
+        run: pnpm typecheck
 
       - name: Check React package quality
         run: pnpm --filter @dg-design/react exec publint

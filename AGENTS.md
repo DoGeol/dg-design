@@ -21,7 +21,7 @@ Dogeol Design System (DDS). daangn/seed-design 구조를 참고한 개인 디자
 - `pnpm generate` — tokens.css / tailwind.css / 타입 생성 + WCAG 대비 검사 16쌍×2모드 (미달·sRGB 밖 값이면 **생성 실패**). 의존성 0, Node 네이티브 타입 스트리핑으로 실행
 - `pnpm typecheck` — 3개 프로젝트 `tsc --noEmit`. 빌드가 잡지 못하는 타입 에러는 여기서만 걸린다 (tokens는 Node 타입 스트리핑, storybook은 번들러 통과)
 - `pnpm build` — 전체 빌드 (react는 Vite lib mode + preserveModules). publint는 `pnpm --filter @dg-design/react exec publint`
-- CI(GitHub Actions): install → generate → typecheck → build → publint. tokens dist는 gitignore — generate가 typecheck·build에 선행해야 함
+- CI(GitHub Actions): install → generate → build → typecheck → publint. tokens dist는 gitignore라 generate가 선행, storybook typecheck는 react dist를 참조하므로 build 뒤
 - 배포: changesets. publish는 npm 웹 재인증 때문에 사용자가 터미널에서 직접 실행
 
 ## 핵심 관습 (변경 시 스펙·결정 기록 먼저 확인)
