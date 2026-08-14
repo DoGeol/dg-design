@@ -139,6 +139,8 @@ export const semanticColors: Record<string, { light: ColorRef; dark: ColorRef }>
   "bg-transparent-pressed": { light: "gray-1000/0.12", dark: "gray-00/0.14" },
   "fg-disabled": { light: "gray-500", dark: "gray-600" },
   "stroke-focus-ring": { light: "brand-700", dark: "brand-400" },
+  "stroke-neutral": { light: "gray-600", dark: "gray-500" },
+  "stroke-neutral-weak": { light: "gray-200", dark: "gray-800" },
 };
 
 export type ContrastCheck = { fg: string; bg: string; min?: number; exempt?: string };
@@ -182,6 +184,8 @@ export const contrastChecks: ContrastCheck[] = [
   { fg: "fg-neutral", bg: "bg-layer-default", min: 4.5 },
   // 포커스 링 (비텍스트)
   { fg: "stroke-focus-ring", bg: "bg-layer-default", min: 3.0 }, // WCAG 1.4.11
+  // 인터랙티브 컨트롤 테두리 (비텍스트)
+  { fg: "stroke-neutral", bg: "bg-layer-default", min: 3.0 }, // WCAG 1.4.11
   // 면제
   { fg: "fg-disabled", bg: "bg-disabled", exempt: "WCAG 1.4.3 비활성 컨트롤" },
 ];
