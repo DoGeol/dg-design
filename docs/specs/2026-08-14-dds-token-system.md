@@ -8,7 +8,7 @@
 - 상태: 통과
 - 근거: [docs/decisions/2026-08-14-dds-token-system.md](../decisions/2026-08-14-dds-token-system.md)
 - 상위 스펙: [docs/specs/2026-08-14-dds-architecture.md](2026-08-14-dds-architecture.md)
-- 승인: **대기 중**
+- 승인: **승인됨** (2026-08-14)
 
 ## 명확도
 | 차원 | 점수 | 가중치 | 가중 점수 |
@@ -139,6 +139,7 @@ disabled: boolean → native disabled 속성
 - 비활성은 `:is(:disabled, [disabled], [data-disabled])` 3중 매칭 — React 구현을 나중에 바꿔도 CSS를 안 고친다
 - hover/pressed 규칙은 비활성 가드로 감싼다: `:not(:is(:disabled, [disabled], [data-disabled])):is(:hover, [data-hover])`
 - **컴포넌트 CSS 전체를 `@layer dds`에 넣는다.** 레이어 밖 소비자 CSS가 항상 이기므로 오버라이드가 소스 순서에 의존하지 않는다
+- **`tokens.css`는 소비 앱이 진입점에서 수동 로드한다** (seed base.css 관습). react 컴포넌트는 토큰 CSS를 import하지 않는다 — 자동 import하면 브릿지 사용 시 이중 방출되고 로드 순서 제어권이 앱에서 사라진다
 
 ### 공개 API 범위 (semver 대상)
 
@@ -187,8 +188,8 @@ disabled: boolean → native disabled 속성
 - [ ] 컴포넌트 CSS 전체가 `@layer dds` 안에 있고, 레이어 밖 소비자 클래스가 같은 specificity로 이긴다
 - [ ] `pnpm build`가 컴포넌트별 JS+CSS를 만들고 `publint`를 통과한다
 - [ ] GitHub Actions가 push마다 generate + build + publint를 통과시킨다
-- [ ] 빈 Vite 프로젝트에서 `pnpm add @dg-design/react` 후 Button import만으로 스타일이 적용된다
-- [ ] Tailwind v4 프로젝트에서 브릿지를 import하면 `bg-*` 토큰 유틸이 동작한다
+- [ ] 빈 Vite 프로젝트에서 `pnpm add @dg-design/react @dg-design/tokens` 후 진입점에서 `tokens.css` import + Button import로 스타일이 적용된다 (컴포넌트 CSS는 side-effect 자동, 토큰 CSS는 소비 앱 수동 로드)
+- [ ] Tailwind v4 프로젝트에서 `tokens.css` 선로드 + 브릿지 import로 `bg-*` 토큰 유틸이 동작한다
 - [ ] npm 0.1.0 publish 완료
 
 ## 드러난 가정과 결론
@@ -207,6 +208,7 @@ disabled: boolean → native disabled 속성
 | "CSS 클래스를 비공개로 하면 끝" | `className`과 variant 클래스가 같은 specificity(0,1,0)라 소스 순서로 승부가 갈림 | `@layer dds`로 감싸 specificity 싸움 자체를 제거. 아키텍처 스펙이 뺀 것은 레이어드/논레이어드 **두 벌 배포**이지 레이어 사용이 아니다 |
 | "CI는 YAGNI" (결정 기록) | 공개 저장소라 GitHub Actions 표준 러너가 무료 — 도입 비용이 사실상 0 | 진행으로 승격. 다만 publish 자동화는 안 하고 사람이 클린 빌드 절차를 수행 |
 | "hue는 순수 취향" | 대비 검사를 강제하므로 hue가 solid 스텝 선택 폭을 좌우 | 청록(195) 선택 — solid를 700 근처로 잡아야 흰 글씨가 통과. 검사가 이를 강제한다 |
+| "Button import만으로 스타일 완결" (합격 조건 초안) | 착수 전 검증: Button CSS는 side-effect 자동 로드지만 `--dds-*` 값은 tokens.css에 있다 — 로드 주체 미정이면 합격 조건이 성립 불가 | 소비자 수동 로드(seed 방식) 확정. 합격 조건 문구 수정 |
 
 ## 기술 맥락
 
