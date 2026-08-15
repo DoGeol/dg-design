@@ -17,6 +17,7 @@ const stack: DialogStackEntry[] = [];
 /** 우리가 부여한 inert만 기억한다 — 원래 inert였던 요소는 건드리지도, 복원하지도 않는다. */
 const inerted = new Set<HTMLElement>();
 let restoreOverflow: string | null = null;
+let restorePaddingRight: string | null = null;
 
 /** 테스트·디버깅용 읽기 전용 뷰. */
 export function getDialogStack(): readonly DialogStackEntry[] {
@@ -27,6 +28,13 @@ export function pushDialog(entry: DialogStackEntry): () => void {
   stack.push(entry);
   if (stack.length === 1) {
     restoreOverflow = document.body.style.overflow;
+    restorePaddingRight = document.body.style.paddingRight;
+    // 잠금으로 스크롤바가 사라지면 그 폭만큼 페이지가 좌우로 덜컹인다 — 폭을 보정한다.
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    if (scrollbarWidth > 0) {
+      const current = parseFloat(getComputedStyle(document.body).paddingRight) || 0;
+      document.body.style.paddingRight = `${current + scrollbarWidth}px`;
+    }
     document.body.style.overflow = "hidden";
     document.addEventListener("keydown", onKeyDown);
   }
@@ -43,7 +51,9 @@ export function pushDialog(entry: DialogStackEntry): () => void {
     if (stack.length === 0) {
       document.removeEventListener("keydown", onKeyDown);
       document.body.style.overflow = restoreOverflow ?? "";
+      document.body.style.paddingRight = restorePaddingRight ?? "";
       restoreOverflow = null;
+      restorePaddingRight = null;
     }
     syncInert();
   };

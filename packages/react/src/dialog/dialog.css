@@ -33,11 +33,15 @@
     outline-offset: var(--dds-dimension-x0_5);
   }
 
+  /* forwards가 없으면 animationend와 React unmount 사이 1~2프레임 동안
+     base 스타일로 스냅백해 사라지기 직전에 번쩍인다. */
   .dds-dialog__overlay[data-state="closed"] {
     animation-name: dds-dialog-overlay-out;
+    animation-fill-mode: forwards;
   }
   .dds-dialog__content[data-state="closed"] {
     animation-name: dds-dialog-content-out;
+    animation-fill-mode: forwards;
   }
 
   .dds-dialog__title {
