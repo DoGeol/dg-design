@@ -22,6 +22,7 @@
 | [2026-08-15 TextField 구현 중 결정](decisions/2026-08-15-textfield-implementation.md) | 활성 | Field context 설계, focus/readonly 스타일, 시각 회귀 인프라 전체 설계 |
 | [2026-08-15 Dialog 구현 중 결정](decisions/2026-08-15-dialog-implementation.md) | 활성 | presence computed-길이 방식, portal 컨테이너·inert 규칙, 모션 토큰 값 |
 | [2026-08-16 DropdownMenu 구현 중 결정](decisions/2026-08-16-dropdown-menu-implementation.md) | 활성 | 첫 항목 포커스, DOM 조회 roving, mousedown 외부판정, 스택 모달/비모달 분리 |
+| [2026-08-16 Select 구현 중 결정](decisions/2026-08-16-select-implementation.md) | 활성 | use-overlay 추출, 라벨 등록 하이브리드(D1), 키 분기, Trigger CSS 복제 근거 |
 
 ## 스펙
 
@@ -38,5 +39,6 @@
 | [TextField·Field + 시각 회귀](specs/archive/2026-08-15-textfield.md) | 0.4.0 | Field compound, TextField 5상태, Playwright 시각 회귀 도입 |
 | [Dialog](specs/archive/2026-08-15-dialog.md) | 0.5.0 | 자체 구현 오버레이(presence·스택·inert), compound 7종, 모션 토큰 |
 | [DropdownMenu](specs/archive/2026-08-16-dropdown-menu.md) | 0.6.0 | 비모달 오버레이, floating-ui, roving tabindex, 스택 modal 플래그 |
+| [Select](specs/archive/2026-08-16-select.md) | 0.7.0 | 폼 단일 선택, typeahead, Field 연동, use-overlay 공통 추출 |
 
 각 스펙의 인터뷰 기록은 같은 이름 `-interview.md`로 분리돼 있다.
