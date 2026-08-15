@@ -81,7 +81,7 @@ function DialogRoot({
 
   React.useEffect(() => {
     if (!isOpen || !container) return;
-    return pushDialog({ container, onEscape: () => escapeRef.current() });
+    return pushDialog({ container, onEscape: () => escapeRef.current(), modal: true });
   }, [isOpen, container]);
 
   // 열기 직전 포커스를 기억했다가 닫힐 때 되돌린다. 그 사이 대상이 사라졌으면(리스트에서

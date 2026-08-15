@@ -1,16 +1,21 @@
 /**
- * 열린 다이얼로그의 모듈 레벨 싱글턴 스택.
+ * 열린 오버레이의 모듈 레벨 싱글턴 스택.
  *
  * 여기서만 하는 일: ESC를 최상단 하나로 라우팅, 스크롤 잠금 refcount,
- * 배경(= body 자식 중 최상단 다이얼로그의 컨테이너가 아닌 것 전부) inert 부여·복원.
+ * 배경(= body 자식 중 최상단 모달의 컨테이너가 아닌 것 전부) inert 부여·복원.
  * 중첩 시 "스택상 이전 다이얼로그"도 body 자식이라 같은 규칙에 자동으로 걸린다.
+ *
+ * ESC 라우팅은 모달·비모달이 함께 쓰지만, inert와 스크롤 잠금은 모달 엔트리만 만든다 —
+ * DropdownMenu 같은 비모달은 배경을 죽이지 않고 ESC 순서에만 끼어든다.
  */
 
 export interface DialogStackEntry {
-  /** 이 다이얼로그의 portal 컨테이너. body 직속 자식이어야 한다. */
+  /** 이 오버레이의 portal 컨테이너. body 직속 자식이어야 한다. */
   container: HTMLElement;
-  /** 이 다이얼로그가 최상단일 때 ESC가 호출한다. 무시하고 싶으면 아무것도 하지 않으면 된다. */
+  /** 이 오버레이가 최상단일 때 ESC가 호출한다. 무시하고 싶으면 아무것도 하지 않으면 된다. */
   onEscape: () => void;
+  /** 배경 inert·스크롤 잠금을 만드는지. 비모달은 ESC 라우팅에만 참여한다. */
+  modal: boolean;
 }
 
 const stack: DialogStackEntry[] = [];
@@ -24,9 +29,14 @@ export function getDialogStack(): readonly DialogStackEntry[] {
   return stack;
 }
 
+function modalCount(): number {
+  return stack.reduce((count, entry) => count + (entry.modal ? 1 : 0), 0);
+}
+
 export function pushDialog(entry: DialogStackEntry): () => void {
   stack.push(entry);
-  if (stack.length === 1) {
+  if (stack.length === 1) document.addEventListener("keydown", onKeyDown);
+  if (entry.modal && modalCount() === 1) {
     restoreOverflow = document.body.style.overflow;
     restorePaddingRight = document.body.style.paddingRight;
     // 잠금으로 스크롤바가 사라지면 그 폭만큼 페이지가 좌우로 덜컹인다 — 폭을 보정한다.
@@ -36,7 +46,6 @@ export function pushDialog(entry: DialogStackEntry): () => void {
       document.body.style.paddingRight = `${current + scrollbarWidth}px`;
     }
     document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", onKeyDown);
   }
   syncInert();
 
@@ -48,8 +57,8 @@ export function pushDialog(entry: DialogStackEntry): () => void {
     const index = stack.indexOf(entry);
     if (index !== -1) stack.splice(index, 1);
 
-    if (stack.length === 0) {
-      document.removeEventListener("keydown", onKeyDown);
+    if (stack.length === 0) document.removeEventListener("keydown", onKeyDown);
+    if (entry.modal && modalCount() === 0) {
       document.body.style.overflow = restoreOverflow ?? "";
       document.body.style.paddingRight = restorePaddingRight ?? "";
       restoreOverflow = null;
@@ -68,12 +77,21 @@ function syncInert() {
   for (const element of inerted) element.removeAttribute("inert");
   inerted.clear();
 
-  const top = stack[stack.length - 1];
-  if (!top) return;
+  let topModal = -1;
+  for (let i = stack.length - 1; i >= 0; i -= 1) {
+    if (stack[i]?.modal) {
+      topModal = i;
+      break;
+    }
+  }
+  if (topModal === -1) return;
 
+  // 최상단 모달 위에 쌓인 비모달(모달 안에서 연 메뉴)도 면제한다 — 그것까지 inert면
+  // 다이얼로그 안 메뉴가 열리자마자 조작 불가가 된다.
+  const exempt = new Set(stack.slice(topModal).map((entry) => entry.container));
   for (const child of Array.from(document.body.children)) {
     if (!(child instanceof HTMLElement)) continue;
-    if (child === top.container || child.hasAttribute("inert")) continue;
+    if (exempt.has(child) || child.hasAttribute("inert")) continue;
     child.setAttribute("inert", "");
     inerted.add(child);
   }
