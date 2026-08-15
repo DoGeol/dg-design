@@ -78,7 +78,7 @@ export const palette: Record<string, Oklch> = {
 export type ColorRef = string;
 
 /**
- * semantic 색 토큰 38개 (brand 8 + neutral 8 + intent 16 + 공통 6).
+ * semantic 색 토큰 41개 (brand 8 + neutral 8 + intent 16 + 공통 9).
  *
  * 모드별 방향: light는 hover/pressed가 어두워지고, dark는 밝아진다.
  * 양쪽 모두 페이지 배경과의 대비가 커지는 방향이다.
@@ -141,6 +141,7 @@ export const semanticColors: Record<string, { light: ColorRef; dark: ColorRef }>
   "stroke-focus-ring": { light: "brand-700", dark: "brand-400" },
   "stroke-neutral": { light: "gray-600", dark: "gray-500" },
   "stroke-neutral-weak": { light: "gray-200", dark: "gray-800" },
+  "stroke-critical": { light: "critical-600", dark: "critical-500" },
 };
 
 export type ContrastCheck = { fg: string; bg: string; min?: number; exempt?: string };
@@ -186,6 +187,7 @@ export const contrastChecks: ContrastCheck[] = [
   { fg: "stroke-focus-ring", bg: "bg-layer-default", min: 3.0 }, // WCAG 1.4.11
   // 인터랙티브 컨트롤 테두리 (비텍스트)
   { fg: "stroke-neutral", bg: "bg-layer-default", min: 3.0 }, // WCAG 1.4.11
+  { fg: "stroke-critical", bg: "bg-layer-default", min: 3.0 }, // WCAG 1.4.11
   // 면제
   { fg: "fg-disabled", bg: "bg-disabled", exempt: "WCAG 1.4.3 비활성 컨트롤" },
 ];
