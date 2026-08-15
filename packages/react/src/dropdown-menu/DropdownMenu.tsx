@@ -6,23 +6,17 @@ import clsx from "clsx";
 import * as React from "react";
 import { createPortal } from "react-dom";
 
-import { pushDialog } from "../dialog/dialog-stack";
-import { usePresence } from "../dialog/use-presence";
 import { mergeRefs } from "../internal/merge-refs";
-import { useControllableState } from "../internal/use-controllable-state";
+import { focusItem, getItems, moveFocus } from "../internal/roving-focus";
+import { useOverlay } from "../internal/use-overlay";
 import {
   DropdownMenuContext,
   useDropdownMenuContext,
   type DropdownMenuContextValue,
 } from "./dropdown-menu-context";
-import { focusMenuItem, getMenuItems, moveMenuFocus } from "./roving-focus";
-import { useMenuPosition } from "./use-menu-position";
 
-/**
- * 열려 있는 메뉴는 하나뿐이다 — 다이얼로그와 달리 메뉴는 쌓이지 않는다.
- * 다른 메뉴가 열리면 여기 등록된 닫기를 먼저 호출한다.
- */
-let openMenu: (() => void) | null = null;
+/** 항목의 role — roving 조회와 aria가 같은 값을 쓴다. */
+const ITEM_ROLE = "menuitem";
 
 export interface DropdownMenuRootProps {
   /** controlled 모드. 넘기면 `onOpenChange`로만 상태가 바뀐다. */
@@ -42,101 +36,23 @@ function DropdownMenuRoot({
   placement = "bottom-start",
   children,
 }: DropdownMenuRootProps) {
-  const [isOpen, setOpen] = useControllableState({
-    value: open,
-    defaultValue: defaultOpen,
-    onChange: onOpenChange,
+  // 초기 포커스는 Content가 아니라 첫 활성 항목 — APG menu button 표준.
+  const focusFirstItem = React.useCallback((content: HTMLElement) => {
+    focusItem(getItems(content, ITEM_ROLE), 0);
+  }, []);
+
+  const overlay = useOverlay({
+    open,
+    defaultOpen,
+    onOpenChange,
+    placement,
+    onOpenFocus: focusFirstItem,
   });
-  const { present, ref: contentRef } = usePresence(isOpen);
-
   const triggerId = React.useId();
-  const [triggerNode, setTriggerNode] = React.useState<HTMLElement | null>(null);
-  const [contentNode, setContentNode] = React.useState<HTMLElement | null>(null);
-
-  const [container, setContainer] = React.useState<HTMLElement | null>(null);
-  React.useEffect(() => {
-    if (!present) return;
-    const element = document.createElement("div");
-    document.body.appendChild(element);
-    setContainer(element);
-    return () => {
-      element.remove();
-      setContainer(null);
-    };
-  }, [present]);
-
-  useMenuPosition(triggerNode, contentNode, isOpen, placement);
-
-  const closeRef = React.useRef<() => void>(() => {});
-  closeRef.current = () => setOpen(false);
-  const close = React.useMemo(() => () => closeRef.current(), []);
-
-  React.useEffect(() => {
-    if (!isOpen) return;
-    // 아직 우리를 등록하기 전이라 여기 남아 있는 것은 반드시 다른 메뉴다.
-    openMenu?.();
-    openMenu = close;
-    return () => {
-      if (openMenu === close) openMenu = null;
-    };
-  }, [isOpen, close]);
-
-  // 비모달로 스택에 올라 ESC 순서에만 참여한다 — 배경 inert도, 스크롤 잠금도 만들지 않는다.
-  React.useEffect(() => {
-    if (!isOpen || !container) return;
-    return pushDialog({ container, onEscape: close, modal: false });
-  }, [isOpen, container, close]);
-
-  // 바깥 클릭 닫힘. mousedown 단계에서 판정하되 트리거는 제외한다 — 트리거에서 닫으면
-  // 이어지는 click이 다시 열어 토글이 먹통이 된다. 트리거 재클릭은 Trigger의 토글이 처리한다.
-  React.useEffect(() => {
-    if (!isOpen) return;
-    const onMouseDown = (event: MouseEvent) => {
-      const target = event.target as Node | null;
-      if (!target) return;
-      if (contentRef.current?.contains(target)) return;
-      if (triggerNode?.contains(target)) return;
-      close();
-    };
-    document.addEventListener("mousedown", onMouseDown);
-    return () => document.removeEventListener("mousedown", onMouseDown);
-  }, [isOpen, triggerNode, contentRef, close]);
-
-  // 열리면 첫 항목으로 들어가고, 닫힐 때 포커스가 아직 메뉴 안에 있으면 트리거로 돌려준다.
-  // 바깥 클릭처럼 포커스가 이미 다른 곳으로 옮겨간 경우는 뺏지 않는다.
-  React.useEffect(() => {
-    if (!isOpen || !contentNode) return;
-    focusMenuItem(getMenuItems(contentNode), 0);
-    return () => {
-      if (contentNode.contains(document.activeElement)) triggerNode?.focus();
-    };
-  }, [isOpen, contentNode, triggerNode]);
 
   const value = React.useMemo<DropdownMenuContextValue>(
-    () => ({
-      open: isOpen,
-      present,
-      container,
-      contentRef,
-      triggerNode,
-      setTriggerNode,
-      setContentNode,
-      triggerId,
-      placement,
-      setOpen,
-    }),
-    [
-      isOpen,
-      present,
-      container,
-      contentRef,
-      triggerNode,
-      setTriggerNode,
-      setContentNode,
-      triggerId,
-      placement,
-      setOpen,
-    ],
+    () => ({ ...overlay, triggerId, placement }),
+    [overlay, triggerId, placement],
   );
 
   return <DropdownMenuContext.Provider value={value}>{children}</DropdownMenuContext.Provider>;
@@ -209,7 +125,7 @@ const DropdownMenuContent = React.forwardRef<HTMLDivElement, DropdownMenuContent
         onKeyDown={(event) => {
           onKeyDown?.(event);
           if (event.defaultPrevented) return;
-          if (moveMenuFocus(context.contentRef.current, event.key)) event.preventDefault();
+          if (moveFocus(context.contentRef.current, ITEM_ROLE, event.key)) event.preventDefault();
         }}
         {...props}
       />,
@@ -231,7 +147,7 @@ const DropdownMenuItem = React.forwardRef<HTMLButtonElement, DropdownMenuItemPro
       <button
         ref={ref}
         type="button"
-        role="menuitem"
+        role={ITEM_ROLE}
         tabIndex={-1}
         className={clsx("dds-dropdown-menu__item", className)}
         onClick={(event) => {
@@ -272,8 +188,8 @@ DropdownMenuLabel.displayName = "DropdownMenu.Label";
 
 /**
  * compound: DropdownMenu.Root/Trigger/Content/Item/Separator/Label.
- * 로직(상태·presence·비모달 스택·roving·floating 배치)은 같은 폴더의 훅 파일에 있고
- * 여기는 조립과 스타일만 맡는다.
+ * 로직(상태·presence·비모달 스택·roving·floating 배치)은 Select와 공유하는
+ * `internal/use-overlay`·`internal/roving-focus`에 있고 여기는 조립과 스타일만 맡는다.
  */
 export const DropdownMenu = {
   Root: DropdownMenuRoot,

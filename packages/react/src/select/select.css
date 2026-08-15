@@ -1,0 +1,194 @@
+@layer dds {
+  /* 트리거는 TextField와 같은 외관이지만 클래스를 공유하지 않는다 —
+     `:read-only`가 편집 불가 요소인 button에도 걸려 readonly 스타일이 잘못 붙는다. */
+  .dds-select__trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--dds-dimension-x2);
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    color: var(--dds-color-fg-neutral);
+    background-color: var(--dds-color-bg-layer-default);
+    border: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-neutral);
+    transition: border-color var(--dds-duration-fast) ease;
+  }
+
+  .dds-select__trigger:not(:is(:disabled, [disabled], [data-disabled])):hover {
+    border-color: var(--dds-color-fg-neutral);
+  }
+
+  .dds-select__trigger:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-select__trigger[aria-invalid="true"] {
+    border-color: var(--dds-color-stroke-critical);
+  }
+
+  .dds-select__trigger:is(:disabled, [disabled], [data-disabled]) {
+    cursor: not-allowed;
+    border-color: var(--dds-color-stroke-neutral);
+    background-color: var(--dds-color-bg-disabled);
+    color: var(--dds-color-fg-disabled);
+  }
+
+  /* size: TextField와 같은 높이·라운드·타이포 (폼 컨트롤 축) */
+  .dds-select__trigger--size_medium {
+    height: var(--dds-dimension-x10);
+    padding-inline: var(--dds-dimension-x3);
+    border-radius: var(--dds-radius-r2);
+    font-size: var(--dds-font-size-t4);
+    line-height: var(--dds-line-height-t4);
+  }
+  .dds-select__trigger--size_large {
+    height: var(--dds-dimension-x13);
+    padding-inline: var(--dds-dimension-x4);
+    border-radius: var(--dds-radius-r3);
+    font-size: var(--dds-font-size-t6);
+    line-height: var(--dds-line-height-t6);
+  }
+
+  .dds-select__value {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .dds-select__value[data-placeholder] {
+    color: var(--dds-color-fg-disabled);
+  }
+
+  .dds-select__caret {
+    flex: none;
+    transition: transform var(--dds-duration-fast) var(--dds-easing-out);
+  }
+  .dds-select__trigger[data-state="open"] .dds-select__caret {
+    transform: rotate(180deg);
+  }
+
+  /* top/left는 floating-ui가 매 프레임 덮어쓴다 — 여기 값은 첫 계산 전 1프레임용 초기값이다.
+     min-width도 size 미들웨어가 트리거 너비로 끌어올린다. */
+  .dds-select__content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    min-width: 12rem;
+    max-height: calc(100vh - var(--dds-dimension-x4));
+    overflow-y: auto;
+    padding: var(--dds-dimension-x1);
+    border-radius: var(--dds-radius-r2);
+    background-color: var(--dds-color-bg-layer-default);
+    box-shadow: var(--dds-shadow-overlay);
+    color: var(--dds-color-fg-neutral);
+    font-family: inherit;
+    animation: dds-select-in var(--dds-duration-fast) var(--dds-easing-out);
+  }
+
+  /* forwards가 없으면 animationend와 unmount 사이에 base 스타일로 스냅백해 번쩍인다. */
+  .dds-select__content[data-state="closed"] {
+    animation-name: dds-select-out;
+    animation-fill-mode: forwards;
+  }
+
+  .dds-select__option {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: var(--dds-dimension-x2);
+    width: 100%;
+    min-height: var(--dds-dimension-x8);
+    padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2);
+    border: 0;
+    border-radius: var(--dds-radius-r1_5);
+    background-color: transparent;
+    color: inherit;
+    font-family: inherit;
+    font-size: var(--dds-font-size-t4);
+    line-height: var(--dds-line-height-t4);
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .dds-select__option:hover:not(:is(:disabled, [disabled], [data-disabled])) {
+    background-color: var(--dds-color-bg-transparent-hover);
+  }
+
+  .dds-select__option:active:not(:is(:disabled, [disabled], [data-disabled])) {
+    background-color: var(--dds-color-bg-transparent-pressed);
+  }
+
+  /* 키보드 이동은 실제 포커스를 옮기므로 하이라이트도 포커스에 붙인다. */
+  .dds-select__option:focus-visible {
+    background-color: var(--dds-color-bg-transparent-hover);
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: calc(-1 * var(--dds-dimension-x0_5));
+  }
+
+  .dds-select__option:is(:disabled, [disabled], [data-disabled]) {
+    color: var(--dds-color-fg-disabled);
+    cursor: not-allowed;
+  }
+
+  /* 체크마크는 항상 자리를 차지한다 — 선택이 바뀌어도 라벨이 움직이지 않는다. */
+  .dds-select__check {
+    flex: none;
+    opacity: 0;
+  }
+  .dds-select__option[aria-selected="true"] .dds-select__check {
+    opacity: 1;
+  }
+
+  .dds-select__option-label {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .dds-select__label {
+    padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2);
+    color: var(--dds-color-fg-disabled);
+    font-size: var(--dds-font-size-t2);
+    line-height: var(--dds-line-height-t2);
+    font-weight: var(--dds-font-weight-bold);
+  }
+
+  @keyframes dds-select-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes dds-select-out {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+
+  /* presence는 계산된 애니메이션 길이를 읽는다 — 여기서 0이 되면 즉시 언마운트된다. */
+  @media (prefers-reduced-motion: reduce) {
+    .dds-select__content {
+      animation: none;
+    }
+    .dds-select__trigger,
+    .dds-select__caret {
+      transition: none;
+    }
+  }
+}
