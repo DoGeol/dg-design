@@ -8,7 +8,7 @@
     color: var(--dds-color-fg-neutral);
     background-color: var(--dds-color-bg-layer-default);
     border: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-neutral);
-    transition: border-color 150ms ease;
+    transition: border-color var(--dds-duration-fast) ease;
   }
   @media (prefers-reduced-motion: reduce) {
     .dds-text-field {
