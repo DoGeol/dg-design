@@ -1,0 +1,30 @@
+@layer dds {
+  .dds-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--dds-dimension-x1_5);
+    font-family: inherit;
+  }
+
+  .dds-field__label {
+    color: var(--dds-color-fg-neutral);
+    font-size: var(--dds-font-size-t4);
+    line-height: var(--dds-line-height-t4);
+    font-weight: var(--dds-font-weight-bold);
+    cursor: pointer;
+  }
+
+  .dds-field__description {
+    margin: 0;
+    color: var(--dds-color-fg-disabled);
+    font-size: var(--dds-font-size-t3);
+    line-height: var(--dds-line-height-t3);
+  }
+
+  .dds-field__error-message {
+    margin: 0;
+    color: var(--dds-color-fg-critical);
+    font-size: var(--dds-font-size-t3);
+    line-height: var(--dds-line-height-t3);
+  }
+}

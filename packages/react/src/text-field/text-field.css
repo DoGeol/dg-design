@@ -1,0 +1,67 @@
+@layer dds {
+  .dds-text-field {
+    display: inline-flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    color: var(--dds-color-fg-neutral);
+    background-color: var(--dds-color-bg-layer-default);
+    border: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-neutral);
+    transition: border-color 150ms ease;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dds-text-field {
+      transition: none;
+    }
+  }
+
+  .dds-text-field::placeholder {
+    color: var(--dds-color-fg-disabled);
+  }
+
+  /* hover: 강조 — 별도 hover 토큰이 없어 stroke-neutral보다 진한 fg-neutral로 대체 */
+  .dds-text-field:not(:is(:disabled, [disabled], [data-disabled])):not(:read-only):hover {
+    border-color: var(--dds-color-fg-neutral);
+  }
+
+  /* focus: Button·Checkbox·Switch와 동일한 outline 관습 (테두리 전환 대신 선택) */
+  .dds-text-field:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-text-field[aria-invalid="true"] {
+    border-color: var(--dds-color-stroke-critical);
+  }
+
+  .dds-text-field:is(:disabled, [disabled], [data-disabled]) {
+    cursor: not-allowed;
+    border-color: var(--dds-color-stroke-neutral);
+    background-color: var(--dds-color-bg-disabled);
+    color: var(--dds-color-fg-disabled);
+  }
+
+  /* readonly: disabled와 구분되는 자체 스타일 — bg-neutral-weak 계열 */
+  .dds-text-field:read-only:not(:is(:disabled, [disabled], [data-disabled])) {
+    cursor: default;
+    background-color: var(--dds-color-bg-neutral-weak);
+    border-color: var(--dds-color-stroke-neutral-weak);
+  }
+
+  /* size: 치수는 Button의 medium/large 높이·라운드·타이포와 통일 (폼 컨트롤 축) */
+  .dds-text-field--size_medium {
+    height: var(--dds-dimension-x10);
+    padding-inline: var(--dds-dimension-x3);
+    border-radius: var(--dds-radius-r2);
+    font-size: var(--dds-font-size-t4);
+    line-height: var(--dds-line-height-t4);
+  }
+  .dds-text-field--size_large {
+    height: var(--dds-dimension-x13);
+    padding-inline: var(--dds-dimension-x4);
+    border-radius: var(--dds-radius-r3);
+    font-size: var(--dds-font-size-t6);
+    line-height: var(--dds-line-height-t6);
+  }
+}
