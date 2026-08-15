@@ -78,7 +78,7 @@ export const palette: Record<string, Oklch> = {
 export type ColorRef = string;
 
 /**
- * semantic 색 토큰 41개 (brand 8 + neutral 8 + intent 16 + 공통 9).
+ * semantic 색 토큰 42개 (brand 8 + neutral 8 + intent 16 + 공통 9 + 오버레이 1).
  *
  * 모드별 방향: light는 hover/pressed가 어두워지고, dark는 밝아진다.
  * 양쪽 모두 페이지 배경과의 대비가 커지는 방향이다.
@@ -142,6 +142,12 @@ export const semanticColors: Record<string, { light: ColorRef; dark: ColorRef }>
   "stroke-neutral": { light: "gray-600", dark: "gray-500" },
   "stroke-neutral-weak": { light: "gray-200", dark: "gray-800" },
   "stroke-critical": { light: "critical-600", dark: "critical-500" },
+
+  // ── 오버레이 (1)
+  // Dialog 등의 백드롭. 전체 페이지를 덮는 막이라 표면색이 아니라 고정 알파의
+  // gray-1000으로 두 모드 동일 처리 — 다크에서도 gray-1000이 밝은 카드류를
+  // 균일 비율로 어둡게 하므로 모드별로 다른 베이스가 필요 없다. 대비 검사 없음.
+  "bg-overlay": { light: "gray-1000/0.5", dark: "gray-1000/0.5" },
 };
 
 export type ContrastCheck = { fg: string; bg: string; min?: number; exempt?: string };
@@ -259,3 +265,24 @@ export const lineHeight = {
 } as const;
 
 export const fontWeight = { regular: "400", bold: "700" } as const;
+
+/**
+ * 그림자. 첫 항목은 overlay(Dialog Content 등 백드롭 위 표면) 하나뿐이라
+ * sm/md/lg 스케일을 만들지 않는다 — 소비자 늘면 그때. 모드 분기 없음: 이 그림자는
+ * 항상 bg-overlay 백드롭 위에서만 쓰이므로 페이지 배경이 밝든 어둡든 배경 대비가
+ * 아니라 백드롭과의 구분만 필요하고, 그 구분은 고정 알파로 충분하다.
+ */
+export const shadow = {
+  overlay: "0 12px 32px rgba(15, 15, 15, 0.18), 0 4px 8px rgba(15, 15, 15, 0.08)",
+} as const;
+
+/** duration-fast는 Switch·Checkbox의 150ms 하드코딩과 소급 통일 — 값을 바꾸면 그쪽 VR이 깨진다. */
+export const duration = {
+  fast: "150ms",
+  base: "200ms",
+} as const;
+
+/** ease-out 계열 1종. Material 표준 감속 곡선 — 열림·닫힘 모두 이 하나로 충분(YAGNI). */
+export const easing = {
+  out: "cubic-bezier(0, 0, 0.2, 1)",
+} as const;
