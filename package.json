@@ -6,7 +6,8 @@
   "scripts": {
     "generate": "pnpm --filter @dg-design/tokens run generate",
     "build": "pnpm -r run build",
-    "typecheck": "pnpm -r run typecheck"
+    "typecheck": "pnpm -r run typecheck",
+    "vr": "pnpm --filter @dg-design/visual-regression run test"
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.0"

@@ -1,15 +1,18 @@
-name: CI
+name: Visual Baseline
 
+# 기준 이미지 생성·갱신의 유일한 경로. 로컬(macOS)에서 --update-snapshots를 돌리면
+# 폰트 렌더링 차이로 CI가 영구히 붉어진다 — 테스트 쪽에도 하드 가드가 있다.
 on:
-  push:
-    branches: [main]
-  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 env:
   COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
 
 jobs:
-  build:
+  update:
     runs-on: ubuntu-latest
 
     steps:
@@ -46,17 +49,6 @@ jobs:
       - name: Build packages
         run: pnpm build
 
-      - name: Test
-        run: pnpm --filter @dg-design/react run test
-
-      # storybook typecheck가 react의 dist/index.d.ts를 참조하므로 build 뒤에 돈다
-      - name: Typecheck
-        run: pnpm typecheck
-
-      - name: Check React package quality
-        run: pnpm --filter @dg-design/react exec publint
-
-      # storybook-static은 앞선 build 단계(pnpm -r run build)의 산출물을 그대로 쓴다
       - name: Read Playwright version
         id: playwright
         run: |
@@ -71,16 +63,17 @@ jobs:
       - name: Install Playwright chromium
         run: pnpm --filter @dg-design/visual-regression exec playwright install --with-deps chromium
 
-      - name: Visual regression
-        run: pnpm vr
+      - name: Update baselines
+        run: pnpm --filter @dg-design/visual-regression exec playwright test --update-snapshots
 
-      - name: Upload visual diff
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: visual-regression-diff
-          path: |
-            apps/visual-regression/test-results/
-            apps/visual-regression/playwright-report/
-          if-no-files-found: ignore
-          retention-days: 7
+      - name: Commit baselines
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/visual-regression/tests/__screenshots__
+          if git diff --staged --quiet; then
+            echo "기준 이미지 변경 없음"
+            exit 0
+          fi
+          git commit -m "chore(visual-regression): 기준 이미지 갱신"
+          git push
