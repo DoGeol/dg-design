@@ -20,14 +20,11 @@
 | [2026-08-15 Badge 구현 중 결정](decisions/2026-08-15-badge-intent-axis-implementation.md) | 활성 | warning solid 반전, chroma 비율 프로파일, Badge 치수·웨이트, hue 실값 |
 | [2026-08-15 Checkbox·Switch 구현 중 결정](decisions/2026-08-15-checkbox-switch-implementation.md) | 활성 | stroke 스텝, 컨트롤 치수, vitest 구성·jsdom 함정, dts exclude |
 | [2026-08-15 TextField 구현 중 결정](decisions/2026-08-15-textfield-implementation.md) | 활성 | Field context 설계, focus/readonly 스타일, 시각 회귀 인프라 전체 설계 |
+| [2026-08-15 Dialog 구현 중 결정](decisions/2026-08-15-dialog-implementation.md) | 활성 | presence computed-길이 방식, portal 컨테이너·inert 규칙, 모션 토큰 값 |
 
 ## 스펙
 
-| 문서 | 상태 | 다루는 것 |
-|------|------|-----------|
-| [Dialog](specs/2026-08-15-dialog.md) | 승인됨·구현 대기 | 자체 구현 오버레이, presence·스택·inert, 모션 토큰, 0.5.0 |
-
-**다음 착수는 [HANDOFF.md](HANDOFF.md)부터** — publish 2건과 Dialog 분해표가 있다.
+진행 중인 스펙 없음. 새 작업은 `deep-interview`가 여기에 만든다. 미배포 publish 목록은 [HANDOFF.md](HANDOFF.md).
 
 ## 아카이브 (완료)
 
@@ -38,5 +35,6 @@
 | [Badge + intent 축](specs/archive/2026-08-15-badge-intent-axis.md) | 0.2.0 | intent 4종 실값화, 대비 24건, Badge(asChild·truncate), 합격 조건 12/12 |
 | [Checkbox·Switch + stroke 축](specs/archive/2026-08-15-checkbox-switch-stroke-axis.md) | 0.3.0 | stroke 2종, 폼 컨트롤 2개, vitest 도입, 합격 조건 13/13 |
 | [TextField·Field + 시각 회귀](specs/archive/2026-08-15-textfield.md) | 0.4.0 | Field compound, TextField 5상태, Playwright 시각 회귀 도입 |
+| [Dialog](specs/archive/2026-08-15-dialog.md) | 0.5.0 | 자체 구현 오버레이(presence·스택·inert), compound 7종, 모션 토큰 |
 
 각 스펙의 인터뷰 기록은 같은 이름 `-interview.md`로 분리돼 있다.
