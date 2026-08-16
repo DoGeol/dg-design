@@ -36,6 +36,20 @@
     --dds-button-ghost-fg: var(--dds-color-fg-brand);
   }
 
+  .dds-button--intent_critical {
+    --dds-button-solid-bg: var(--dds-color-bg-critical-solid);
+    --dds-button-solid-bg-hover: var(--dds-color-bg-critical-solid-hover);
+    --dds-button-solid-bg-pressed: var(--dds-color-bg-critical-solid-pressed);
+    --dds-button-solid-fg: var(--dds-color-fg-critical-contrast);
+
+    --dds-button-weak-bg: var(--dds-color-bg-critical-weak);
+    --dds-button-weak-bg-hover: var(--dds-color-bg-critical-weak-hover);
+    --dds-button-weak-bg-pressed: var(--dds-color-bg-critical-weak-pressed);
+    --dds-button-weak-fg: var(--dds-color-fg-critical);
+
+    --dds-button-ghost-fg: var(--dds-color-fg-critical);
+  }
+
   .dds-button--intent_neutral {
     --dds-button-solid-bg: var(--dds-color-bg-neutral-solid);
     --dds-button-solid-bg-hover: var(--dds-color-bg-neutral-solid-hover);

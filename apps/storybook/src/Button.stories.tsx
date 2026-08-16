@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "@dg-design/react";
 
-const INTENTS = ["brand", "neutral"] as const;
+const INTENTS = ["brand", "neutral", "critical"] as const;
 const VARIANTS = ["solid", "weak", "ghost"] as const;
 const SIZES = ["small", "medium", "large"] as const;
 
@@ -31,8 +31,8 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {};
 
 /**
- * intent(2) x variant(3) 그리드. 각 셀은 size(3) 행을 담은 3x3 서브 그리드라
- * 18조합 전체를 한 화면에서 육안 확인할 수 있다.
+ * intent(3) x variant(3) 그리드. 각 셀은 size(3) 행을 담은 서브 그리드라
+ * 27조합 전체를 한 화면에서 육안 확인할 수 있다.
  */
 function CombinationGrid({ disabled = false }: { disabled?: boolean }) {
   return (

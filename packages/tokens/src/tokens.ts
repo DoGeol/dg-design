@@ -78,7 +78,7 @@ export const palette: Record<string, Oklch> = {
 export type ColorRef = string;
 
 /**
- * semantic 색 토큰 43개 (brand 8 + neutral 9 + intent 16 + 공통 9 + 오버레이 1).
+ * semantic 색 토큰 47개 (brand 8 + neutral 9 + intent 20 + 공통 9 + 오버레이 1).
  *
  * 모드별 방향: light는 hover/pressed가 어두워지고, dark는 밝아진다.
  * 양쪽 모두 페이지 배경과의 대비가 커지는 방향이다.
@@ -109,9 +109,14 @@ export const semanticColors: Record<string, { light: ColorRef; dark: ColorRef }>
   "fg-neutral-weak": { light: "gray-600", dark: "gray-500" },
   "fg-neutral-contrast": { light: "gray-00", dark: "gray-1000" },
 
-  // ── critical (4)
+  // ── critical (8) — intent 중 유일하게 hover/pressed가 있다. Badge 때는 base만 뒀는데
+  // (비인터랙티브) 파괴적 액션 Button이 생기면서 상태 축이 필요해졌다. 스텝은 brand와 동형.
   "bg-critical-solid": { light: "critical-700", dark: "critical-400" },
+  "bg-critical-solid-hover": { light: "critical-800", dark: "critical-300" },
+  "bg-critical-solid-pressed": { light: "critical-900", dark: "critical-200" },
   "bg-critical-weak": { light: "critical-100", dark: "critical-900" },
+  "bg-critical-weak-hover": { light: "critical-200", dark: "critical-800" },
+  "bg-critical-weak-pressed": { light: "critical-300", dark: "critical-700" },
   "fg-critical": { light: "critical-800", dark: "critical-300" },
   "fg-critical-contrast": { light: "gray-00", dark: "gray-1000" },
 
@@ -175,7 +180,11 @@ export const contrastChecks: ContrastCheck[] = [
   { fg: "fg-neutral", bg: "bg-neutral-weak-pressed", min: 4.5 },
   // critical
   { fg: "fg-critical-contrast", bg: "bg-critical-solid", min: 4.5 },
+  { fg: "fg-critical-contrast", bg: "bg-critical-solid-hover", min: 4.5 },
+  { fg: "fg-critical-contrast", bg: "bg-critical-solid-pressed", min: 4.5 },
   { fg: "fg-critical", bg: "bg-critical-weak", min: 4.5 },
+  { fg: "fg-critical", bg: "bg-critical-weak-hover", min: 4.5 },
+  { fg: "fg-critical", bg: "bg-critical-weak-pressed", min: 4.5 },
   { fg: "fg-critical", bg: "bg-layer-default", min: 4.5 },
   // positive
   { fg: "fg-positive-contrast", bg: "bg-positive-solid", min: 4.5 },
