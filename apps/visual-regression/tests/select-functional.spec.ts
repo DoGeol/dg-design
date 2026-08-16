@@ -120,14 +120,14 @@ test.describe("Select 기능 — Field 연동", () => {
     await page.goto(`/iframe.html?id=${WITH_FIELD_DEMO}&viewMode=story`);
   });
 
-  test("Field.Label 클릭 → 트리거 포커스", async ({ page }) => {
+  test("Field.Label 클릭 → 트리거 활성화(열림 + 옵션 포커스)", async ({ page }) => {
     const label = page.locator("#storybook-root label").first();
     await label.click();
 
-    const trigger = page
-      .locator("#storybook-root")
-      .getByRole("combobox")
-      .first();
-    await expect(trigger).toBeFocused();
+    // htmlFor가 버튼 활성화까지 전달돼 Select가 열린다(네이티브 select 동형).
+    // 트리거 포커스는 열리면서 옵션으로 넘어가는 과도기 상태라 단언하면 레이스다.
+    const listbox = page.getByRole("listbox");
+    await expect(listbox).toBeVisible();
+    await expect(page.locator(":focus")).toHaveRole("option");
   });
 });
