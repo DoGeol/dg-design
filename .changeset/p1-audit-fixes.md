@@ -24,3 +24,9 @@
 
 - 목록에서 뺀 옵션이 `Select`의 닫힌 상태 typeahead로 선택되던 문제 — 옵션 등록 캐시가 소비자가 제거한 값을 계속 후보로 들고 있었다
 - `Field` 안 `RadioGroup`에 접근 이름이 없던 문제 — `FieldContext.labelId`를 추가하고 그룹이 `aria-labelledby`로 참조한다
+
+**Button (C2·A1·D1)**
+
+- `Button`에 `intent="critical"` 추가 — 삭제·탈퇴 같은 파괴적 액션 버튼을 만들 수 없었다. `critical`에 solid·weak의 hover/pressed 토큰 4종이 함께 신설됐다
+- `Button`에 `asChild` 추가 — 링크를 버튼 외관으로 렌더할 수 있다
+- `Button` 테스트 신설 — 컴포넌트 중 유일하게 테스트가 없었다
