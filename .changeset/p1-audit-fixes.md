@@ -19,3 +19,8 @@
 **패키징**
 
 - 컴포넌트별 서브패스 export 추가 — `@dg-design/react/button`처럼 딥임포트가 가능해져 CSS 트리셰이킹이 동작한다(Button만 쓸 때 41.4KB → 4.3KB). 기존 `@dg-design/react` 진입점은 그대로다
+
+**후속 (B1·B2)**
+
+- 목록에서 뺀 옵션이 `Select`의 닫힌 상태 typeahead로 선택되던 문제 — 옵션 등록 캐시가 소비자가 제거한 값을 계속 후보로 들고 있었다
+- `Field` 안 `RadioGroup`에 접근 이름이 없던 문제 — `FieldContext.labelId`를 추가하고 그룹이 `aria-labelledby`로 참조한다
