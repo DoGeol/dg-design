@@ -49,6 +49,7 @@ const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootProps>((pr
     id,
     "aria-describedby": ariaDescribedBy,
     "aria-invalid": ariaInvalid,
+    "aria-labelledby": ariaLabelledBy,
     ...rest
   } = props;
 
@@ -79,7 +80,7 @@ const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootProps>((pr
   );
 
   // Field.Root 안이면 context에서 id·invalid·describedby를 받는다. 개별 radio가 아니라
-  // 그룹이 받는다 — Field.Label의 htmlFor가 가리킬 대상도, 오류 설명이 걸릴 대상도 그룹이다.
+  // 그룹이 받는다 — 오류 설명이 걸릴 대상도, 라벨이 가리킬 대상도 그룹이다.
   // 단독 사용 시 context가 없으니 자체 useId로 id를 만든다.
   const fieldCtx = React.useContext(FieldContext);
   const generatedId = React.useId();
@@ -87,6 +88,9 @@ const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootProps>((pr
   const resolvedDescribedBy =
     [fieldCtx?.describedBy, ariaDescribedBy].filter(Boolean).join(" ") || undefined;
   const resolvedInvalid = ariaInvalid ?? fieldCtx?.invalid ?? false;
+  // `<label for>`는 labelable 요소만 연결하므로 div인 그룹에는 안 걸린다 — Field.Label의
+  // id를 직접 참조해야 접근 이름이 생긴다.
+  const resolvedLabelledBy = ariaLabelledBy ?? fieldCtx?.labelId;
 
   const contextValue = React.useMemo(
     () => ({
@@ -107,6 +111,7 @@ const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootProps>((pr
         role="radiogroup"
         id={resolvedId}
         aria-orientation={orientation}
+        aria-labelledby={resolvedLabelledBy}
         aria-describedby={resolvedDescribedBy}
         aria-invalid={resolvedInvalid}
         className={clsx(radioGroup({ orientation }), className)}

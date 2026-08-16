@@ -11,6 +11,7 @@ const FieldRoot = React.forwardRef<HTMLDivElement, FieldRootProps>(
   ({ className, children, ...props }, ref) => {
     const baseId = React.useId();
     const inputId = `${baseId}-input`;
+    const labelId = `${baseId}-label`;
     const descriptionId = `${baseId}-description`;
     const errorId = `${baseId}-error`;
 
@@ -36,8 +37,8 @@ const FieldRoot = React.forwardRef<HTMLDivElement, FieldRootProps>(
     const invalid = registeredIds.has(errorId);
 
     const value = React.useMemo<FieldContextValue>(
-      () => ({ inputId, descriptionId, errorId, describedBy, invalid, register }),
-      [inputId, descriptionId, errorId, describedBy, invalid, register],
+      () => ({ inputId, labelId, descriptionId, errorId, describedBy, invalid, register }),
+      [inputId, labelId, descriptionId, errorId, describedBy, invalid, register],
     );
 
     return (
@@ -54,11 +55,12 @@ FieldRoot.displayName = "Field.Root";
 export interface FieldLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {}
 
 const FieldLabel = React.forwardRef<HTMLLabelElement, FieldLabelProps>(
-  ({ className, htmlFor, ...props }, ref) => {
+  ({ className, htmlFor, id, ...props }, ref) => {
     const ctx = React.useContext(FieldContext);
     return (
       <label
         ref={ref}
+        id={id ?? ctx?.labelId}
         htmlFor={htmlFor ?? ctx?.inputId}
         className={clsx("dds-field__label", className)}
         {...props}

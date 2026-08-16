@@ -209,6 +209,26 @@ describe("RadioGroup Field 연동", () => {
     );
   });
 
+  it("Field.Label이 그룹의 접근 이름이 된다", () => {
+    // `<label for>`는 labelable 요소만 연결하므로 div인 그룹에는 안 걸린다 —
+    // aria-labelledby로 참조해야 스크린리더가 이름을 읽는다.
+    render(<WithField />);
+    expect(screen.getByRole("radiogroup", { name: "배송 방법" })).toBeTruthy();
+  });
+
+  it("직접 준 aria-labelledby가 Field.Label보다 우선한다", () => {
+    render(
+      <Field.Root>
+        <Field.Label>배송 방법</Field.Label>
+        <span id="custom-label">직접 지정</span>
+        <RadioGroup.Root aria-labelledby="custom-label">
+          <RadioGroup.Item value="standard">일반배송</RadioGroup.Item>
+        </RadioGroup.Root>
+      </Field.Root>,
+    );
+    expect(screen.getByRole("radiogroup", { name: "직접 지정" })).toBeTruthy();
+  });
+
   it("Field 밖에서는 자체 id를 쓰고 invalid가 false다", () => {
     render(<Basic />);
     const group = screen.getByRole("radiogroup");

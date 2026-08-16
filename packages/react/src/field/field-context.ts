@@ -3,6 +3,12 @@ import * as React from "react";
 export interface FieldContextValue {
   /** Field.Label의 htmlFor, TextField의 id 기본값 */
   inputId: string;
+  /**
+   * Field.Label이 자기 <label>에 붙이는 고정 id.
+   * `<label for>`는 labelable 요소에만 걸리므로, RadioGroup처럼 컨트롤이 div인 경우
+   * 이 id를 `aria-labelledby`로 참조해야 접근 이름이 생긴다.
+   */
+  labelId: string;
   /** Field.Description이 자기 <p>에 붙이는 고정 id */
   descriptionId: string;
   /** Field.ErrorMessage가 자기 <p>에 붙이는 고정 id */
