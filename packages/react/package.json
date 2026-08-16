@@ -25,6 +25,78 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
+    "./badge": {
+      "types": "./dist/badge/Badge.d.ts",
+      "default": "./dist/badge/Badge.js"
+    },
+    "./button": {
+      "types": "./dist/button/Button.d.ts",
+      "default": "./dist/button/Button.js"
+    },
+    "./checkbox": {
+      "types": "./dist/checkbox/Checkbox.d.ts",
+      "default": "./dist/checkbox/Checkbox.js"
+    },
+    "./context-menu": {
+      "types": "./dist/context-menu/ContextMenu.d.ts",
+      "default": "./dist/context-menu/ContextMenu.js"
+    },
+    "./dialog": {
+      "types": "./dist/dialog/Dialog.d.ts",
+      "default": "./dist/dialog/Dialog.js"
+    },
+    "./dropdown-menu": {
+      "types": "./dist/dropdown-menu/DropdownMenu.d.ts",
+      "default": "./dist/dropdown-menu/DropdownMenu.js"
+    },
+    "./field": {
+      "types": "./dist/field/Field.d.ts",
+      "default": "./dist/field/Field.js"
+    },
+    "./hover-card": {
+      "types": "./dist/hover-card/HoverCard.d.ts",
+      "default": "./dist/hover-card/HoverCard.js"
+    },
+    "./multi-select": {
+      "types": "./dist/multi-select/MultiSelect.d.ts",
+      "default": "./dist/multi-select/MultiSelect.js"
+    },
+    "./notification-badge": {
+      "types": "./dist/notification-badge/NotificationBadge.d.ts",
+      "default": "./dist/notification-badge/NotificationBadge.js"
+    },
+    "./popover": {
+      "types": "./dist/popover/Popover.d.ts",
+      "default": "./dist/popover/Popover.js"
+    },
+    "./radio-group": {
+      "types": "./dist/radio-group/RadioGroup.d.ts",
+      "default": "./dist/radio-group/RadioGroup.js"
+    },
+    "./select": {
+      "types": "./dist/select/Select.d.ts",
+      "default": "./dist/select/Select.js"
+    },
+    "./sheet": {
+      "types": "./dist/sheet/Sheet.d.ts",
+      "default": "./dist/sheet/Sheet.js"
+    },
+    "./switch": {
+      "types": "./dist/switch/Switch.d.ts",
+      "default": "./dist/switch/Switch.js"
+    },
+    "./text-area": {
+      "types": "./dist/text-area/TextArea.d.ts",
+      "default": "./dist/text-area/TextArea.js"
+    },
+    "./text-field": {
+      "types": "./dist/text-field/TextField.d.ts",
+      "default": "./dist/text-field/TextField.js"
+    },
+    "./tooltip": {
+      "types": "./dist/tooltip/Tooltip.d.ts",
+      "default": "./dist/tooltip/Tooltip.js"
+    },
     "./package.json": "./package.json"
   },
   "main": "./dist/index.js",
