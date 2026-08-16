@@ -5,7 +5,7 @@
 # dg-design
 
 Dogeol Design System (DDS). daangn/seed-design 구조를 참고한 개인 디자인시스템.
-**상태: react 0.8.0 · tokens 0.5.0 npm 배포 (2026-08-16), 컴포넌트 12종.** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
+**상태: react 0.8.0 · tokens 0.5.0 npm 배포, 컴포넌트 14종, 0.9.0 changeset 대기.** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
 
 ## 절대 규칙
 
@@ -44,7 +44,7 @@ Dogeol Design System (DDS). daangn/seed-design 구조를 참고한 개인 디자
 
 ## 문서
 
-**[docs/INDEX.md](docs/INDEX.md)에서 필요한 것만 골라 읽는다.** 하지 않을 것 + 재고 트리거: 레시피 코드젠(컴포넌트 15개+ — 현재 12), headless 분리(같은 로직에 다른 스타일 2회), TypeScript 7(vite-plugin-dts 지원 시), renovate(수동 업데이트 부담 시), CJS·YAML 정의(영구 불채택)
+**[docs/INDEX.md](docs/INDEX.md)에서 필요한 것만 골라 읽는다.** 하지 않을 것 + 재고 트리거: 레시피 코드젠(컴포넌트 15개+ — 현재 14), headless 분리(같은 로직에 다른 스타일 2회), TypeScript 7(vite-plugin-dts 지원 시), renovate(수동 업데이트 부담 시), CJS·YAML 정의(영구 불채택)
 
 ## 참고 저장소
 
