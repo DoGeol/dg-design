@@ -7,6 +7,7 @@ import {
   shift,
   size,
   type Placement,
+  type ReferenceElement,
 } from "@floating-ui/dom";
 import * as React from "react";
 
@@ -27,9 +28,12 @@ const STATIC_SIDE: Record<string, string> = { top: "bottom", right: "left", bott
  *
  * `arrowElement`가 있으면(Popover) 같은 계산 한 번으로 arrow 미들웨어까지 얹는다 — 별도
  * computePosition을 또 돌리면 리스너가 두 배가 된다.
+ *
+ * reference는 floating-ui의 `ReferenceElement`(= `Element | VirtualElement`)다 —
+ * ContextMenu가 트리거가 아니라 커서 좌표를 기준으로 열기 때문에 가상 요소를 받는다.
  */
 export function useOverlayPosition(
-  reference: HTMLElement | null,
+  reference: ReferenceElement | null,
   floating: HTMLElement | null,
   enabled: boolean,
   placement: Placement,

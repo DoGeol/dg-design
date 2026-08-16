@@ -6,9 +6,9 @@ import clsx from "clsx";
 import * as React from "react";
 import { createPortal } from "react-dom";
 
-import { usePresence } from "../dialog/use-presence";
 import { mergeRefs } from "../internal/merge-refs";
 import { useControllableState } from "../internal/use-controllable-state";
+import { usePresence } from "../internal/use-presence";
 import { TooltipContext, useTooltipContext, type TooltipContextValue } from "./tooltip-context";
 import {
   TooltipGroupContext,

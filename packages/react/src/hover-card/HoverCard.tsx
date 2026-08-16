@@ -6,11 +6,11 @@ import clsx from "clsx";
 import * as React from "react";
 import { createPortal } from "react-dom";
 
-import { pushDialog } from "../dialog/dialog-stack";
-import { usePresence } from "../dialog/use-presence";
+import { pushDialog } from "../internal/dialog-stack";
 import { mergeRefs } from "../internal/merge-refs";
 import { useControllableState } from "../internal/use-controllable-state";
 import { useOverlayPosition } from "../internal/use-overlay-position";
+import { usePresence } from "../internal/use-presence";
 import {
   HoverCardContext,
   useHoverCardContext,

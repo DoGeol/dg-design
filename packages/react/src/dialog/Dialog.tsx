@@ -5,11 +5,11 @@ import clsx from "clsx";
 import * as React from "react";
 import { createPortal } from "react-dom";
 
+import { pushDialog } from "../internal/dialog-stack";
 import { useControllableState } from "../internal/use-controllable-state";
 import { mergeRefs } from "../internal/merge-refs";
+import { usePresence } from "../internal/use-presence";
 import { DialogContext, useDialogContext, type DialogContextValue } from "./dialog-context";
-import { pushDialog } from "./dialog-stack";
-import { usePresence } from "./use-presence";
 
 export interface DialogRootProps {
   /** controlled 모드. 넘기면 `onOpenChange`로만 상태가 바뀐다. */

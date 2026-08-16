@@ -3,8 +3,8 @@ import userEvent from "@testing-library/user-event";
 import * as React from "react";
 import { describe, expect, it, vi } from "vitest";
 
+import { getDialogStack } from "../internal/dialog-stack";
 import { Dialog } from "./Dialog";
-import { getDialogStack } from "./dialog-stack";
 
 function Basic(props: React.ComponentProps<typeof Dialog.Root>) {
   return (

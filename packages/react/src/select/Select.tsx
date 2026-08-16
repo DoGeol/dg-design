@@ -8,7 +8,18 @@ import { createPortal } from "react-dom";
 
 import { FieldContext } from "../field/field-context";
 import { mergeRefs } from "../internal/merge-refs";
-import { focusItem, getItems, moveFocus } from "../internal/roving-focus";
+import { focusItem, getItems } from "../internal/roving-focus";
+import {
+  handleOpenKeyDown,
+  isTypeaheadKey,
+  matchOption,
+  nodeToText,
+  OPTION_ROLE,
+  useOptionRegistry,
+  useTypeahead,
+  VALUE_ATTR,
+  type OptionEntry,
+} from "../internal/select-core";
 import { useControllableState } from "../internal/use-controllable-state";
 import { useOverlay } from "../internal/use-overlay";
 import {
@@ -17,17 +28,6 @@ import {
   useSelectContext,
   type SelectContextValue,
 } from "./select-context";
-import { collectOptions, matchOption, nodeToText, type OptionEntry } from "./select-options";
-import { useTypeahead } from "./use-typeahead";
-
-const OPTION_ROLE = "option";
-/** 옵션 DOM에서 값을 되읽는 통로 — roving은 DOM 조회라 등록 배열이 없다. */
-const VALUE_ATTR = "data-dds-value";
-
-/** 문자 키인지. 조합 키가 눌린 상태는 단축키이므로 typeahead가 아니다. */
-function isTypeaheadKey(event: React.KeyboardEvent): boolean {
-  return event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey;
-}
 
 export interface SelectRootProps {
   /** controlled 값. */
@@ -60,29 +60,7 @@ function SelectRoot({
     onChange: onValueChange as ((next: string | undefined) => void) | undefined,
   });
 
-  const scanned = React.useMemo(() => collectOptions(children, SelectOption), [children]);
-
-  // 스캔은 사용자 컴포넌트로 감싼 옵션을 못 본다 — 마운트 등록분이 그 구멍을 메운다.
-  // 등록은 해제하지 않는 스티키 캐시다: 옵션은 닫히면 unmount되는데 그때 지우면
-  // 선택 직후 트리거 라벨이 다시 사라진다. value→라벨 표라 stale이어도 무해하다.
-  const [registered, setRegistered] = React.useState<ReadonlyMap<string, OptionEntry>>(new Map());
-  const registerOption = React.useCallback((entry: OptionEntry) => {
-    setRegistered((prev) => {
-      const existing = prev.get(entry.value);
-      if (existing && existing.label === entry.label && existing.disabled === entry.disabled) {
-        return prev;
-      }
-      return new Map(prev).set(entry.value, entry);
-    });
-    return () => {};
-  }, []);
-
-  const options = React.useMemo(() => {
-    const merged = scanned.map((entry) => registered.get(entry.value) ?? entry);
-    const known = new Set(scanned.map((entry) => entry.value));
-    for (const entry of registered.values()) if (!known.has(entry.value)) merged.push(entry);
-    return merged;
-  }, [scanned, registered]);
+  const { options, registerOption } = useOptionRegistry(children, SelectOption);
 
   // 열릴 때는 선택된 옵션으로 들어간다(없으면 첫 옵션) — 네이티브 select와 같은 자리.
   const focusSelectedOption = (content: HTMLElement) => {
@@ -255,28 +233,13 @@ const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps>(
         onKeyDown={(event) => {
           onKeyDown?.(event);
           if (event.defaultPrevented) return;
-          const content = context.contentRef.current;
-          if (moveFocus(content, OPTION_ROLE, event.key)) {
-            event.preventDefault();
-            return;
-          }
-          // 열린 상태의 typeahead는 포커스만 옮긴다 — 값은 Enter·클릭으로 확정한다.
-          // Space는 이어 치는 중일 때만 문자다(그 외에는 포커스된 옵션을 고른다).
-          if (!isTypeaheadKey(event)) return;
-          if (event.key === " " && !context.typeahead.hasBuffer()) return;
-          const items = getItems(content, OPTION_ROLE);
-          const focused = items.find((item) => item === document.activeElement);
-          const match = matchOption(
+          const handled = handleOpenKeyDown(
+            event,
+            context.contentRef.current,
             context.options,
-            context.typeahead.push(event.key),
-            focused?.getAttribute(VALUE_ATTR) ?? undefined,
+            context.typeahead,
           );
-          if (!match) return;
-          event.preventDefault();
-          focusItem(
-            items,
-            items.findIndex((item) => item.getAttribute(VALUE_ATTR) === match.value),
-          );
+          if (handled) event.preventDefault();
         }}
         {...props}
       />,
@@ -383,8 +346,8 @@ SelectLabel.displayName = "Select.Label";
 
 /**
  * compound: Select.Root/Trigger/Content/Option/Group/Label.
- * 오버레이 배선과 roving은 DropdownMenu와 공유하는 `internal/`에 있고,
- * 여기 남는 것은 값 상태·typeahead·트리거 외관이다.
+ * 오버레이 배선·roving·옵션 수집·열린 상태 키보드는 `internal/`(use-overlay·select-core)에 있고,
+ * 여기 남는 것은 단일 값 상태·닫힌 상태 typeahead·트리거 외관이다.
  */
 export const Select = {
   Root: SelectRoot,

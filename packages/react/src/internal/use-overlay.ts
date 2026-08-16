@@ -1,10 +1,10 @@
 import type { Placement } from "@floating-ui/dom";
 import * as React from "react";
 
-import { pushDialog } from "../dialog/dialog-stack";
-import { usePresence } from "../dialog/use-presence";
+import { pushDialog } from "./dialog-stack";
 import { useControllableState } from "./use-controllable-state";
 import { useOverlayPosition } from "./use-overlay-position";
+import { usePresence } from "./use-presence";
 
 /**
  * 열려 있는 팝오버는 하나뿐이다 — 다이얼로그와 달리 팝오버는 쌓이지 않는다.

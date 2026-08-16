@@ -1,8 +1,7 @@
 import * as React from "react";
 
+import type { OptionEntry, Typeahead } from "../internal/select-core";
 import type { Overlay } from "../internal/use-overlay";
-import type { OptionEntry } from "./select-options";
-import type { Typeahead } from "./use-typeahead";
 
 export interface SelectContextValue extends Overlay {
   /** Field 안이면 Field의 inputId — Field.Label의 htmlFor가 트리거 버튼을 가리킨다. */
