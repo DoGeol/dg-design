@@ -24,6 +24,7 @@
 | [2026-08-16 DropdownMenu 구현 중 결정](decisions/2026-08-16-dropdown-menu-implementation.md) | 활성 | 첫 항목 포커스, DOM 조회 roving, mousedown 외부판정, 스택 모달/비모달 분리 |
 | [2026-08-16 Select 구현 중 결정](decisions/2026-08-16-select-implementation.md) | 활성 | use-overlay 추출, 라벨 등록 하이브리드(D1), 키 분기, Trigger CSS 복제 근거 |
 | [2026-08-16 소형 묶음 구현 중 결정](decisions/2026-08-16-small-batch-implementation.md) | 활성 | autoResize 배타 설계, 라디오 네이티브 위임, outline 변수 재사용 |
+| [2026-08-16 Tooltip·Popover 구현 중 결정](decisions/2026-08-16-tooltip-popover-implementation.md) | 활성 | Provider ref 신호, use-overlay 옵션화 수용(D1), Popover.Arrow 합성 |
 
 ## 스펙
 
@@ -42,5 +43,6 @@
 | [DropdownMenu](specs/archive/2026-08-16-dropdown-menu.md) | 0.6.0 | 비모달 오버레이, floating-ui, roving tabindex, 스택 modal 플래그 |
 | [Select](specs/archive/2026-08-16-select.md) | 0.7.0 | 폼 단일 선택, typeahead, Field 연동, use-overlay 공통 추출 |
 | [소형 묶음](specs/archive/2026-08-16-small-batch.md) | 0.8.0 | TextArea(autoResize)·RadioGroup(네이티브 위임)·Badge outline |
+| [Tooltip·Popover](specs/archive/2026-08-16-tooltip-popover.md) | 0.9.0 | Provider 그룹 지연, autoFocus 겸용, arrow, 탭 포커스 열림(표준 이탈) |
 
 각 스펙의 인터뷰 기록은 같은 이름 `-interview.md`로 분리돼 있다.
