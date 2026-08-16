@@ -58,6 +58,31 @@ describe("Select 값 상태", () => {
     expect(trigger().textContent).toContain("Melon");
   });
 
+  it("controlled: 값을 undefined로 되돌리면 placeholder로 돌아간다", async () => {
+    const user = userEvent.setup();
+
+    function Controlled() {
+      const [value, setValue] = React.useState<string | undefined>(undefined);
+      return (
+        <>
+          <Basic value={value} onValueChange={setValue} />
+          <button type="button" onClick={() => setValue(undefined)}>
+            지우기
+          </button>
+        </>
+      );
+    }
+
+    render(<Controlled />);
+
+    await user.click(trigger());
+    await user.click(screen.getByRole("option", { name: "Apple" }));
+    expect(trigger().textContent).toContain("Apple");
+
+    await user.click(screen.getByRole("button", { name: "지우기" }));
+    expect(trigger().textContent).toContain("과일 선택");
+  });
+
   it("값이 없으면 placeholder를 회색 표시로 보여준다", () => {
     render(<Basic />);
     const value = trigger().querySelector(".dds-select__value") as HTMLElement;

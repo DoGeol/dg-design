@@ -43,19 +43,23 @@ export interface SelectRootProps {
   children?: React.ReactNode;
 }
 
-function SelectRoot({
-  value,
-  defaultValue,
-  onValueChange,
-  open,
-  defaultOpen = false,
-  onOpenChange,
-  placement = "bottom-start",
-  name,
-  children,
-}: SelectRootProps) {
+function SelectRoot(props: SelectRootProps) {
+  const {
+    value,
+    defaultValue,
+    onValueChange,
+    open,
+    defaultOpen = false,
+    onOpenChange,
+    placement = "bottom-start",
+    name,
+    children,
+  } = props;
+
+  // `undefined`가 "선택 없음"이라 값이 아니라 prop 존재 여부로 controlled를 가른다.
   const [selectedValue, setValue] = useControllableState<string | undefined>({
     value,
+    controlled: "value" in props,
     defaultValue,
     onChange: onValueChange as ((next: string | undefined) => void) | undefined,
   });

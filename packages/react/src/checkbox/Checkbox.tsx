@@ -4,6 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import clsx from "clsx";
 import * as React from "react";
 
+import { FieldContext } from "../field/field-context";
 import { mergeRefs } from "../internal/merge-refs";
 
 const checkbox = cva("dds-checkbox", {
@@ -26,7 +27,19 @@ export interface CheckboxProps
 }
 
 export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, size, indeterminate = false, children, ...props }, ref) => {
+  (
+    {
+      className,
+      size,
+      indeterminate = false,
+      children,
+      id,
+      "aria-describedby": ariaDescribedBy,
+      "aria-invalid": ariaInvalid,
+      ...props
+    },
+    ref,
+  ) => {
     const inputRef = React.useRef<HTMLInputElement>(null);
 
     React.useEffect(() => {
@@ -35,11 +48,24 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       }
     }, [indeterminate]);
 
+    // Field.Root 안이면 context에서 id·invalid·describedby를 받는다. 단독 사용 시
+    // context가 없으니 자체 useId로 id를 만든다 (스펙: 단독 사용도 동작해야 함).
+    const fieldCtx = React.useContext(FieldContext);
+    const generatedId = React.useId();
+
+    const resolvedId = id ?? fieldCtx?.inputId ?? generatedId;
+    const resolvedDescribedBy =
+      [fieldCtx?.describedBy, ariaDescribedBy].filter(Boolean).join(" ") || undefined;
+    const resolvedInvalid = ariaInvalid ?? fieldCtx?.invalid ?? false;
+
     return (
       <label className={clsx(checkbox({ size }), className)}>
         <input
           type="checkbox"
           ref={mergeRefs(ref, inputRef)}
+          id={resolvedId}
+          aria-describedby={resolvedDescribedBy}
+          aria-invalid={resolvedInvalid}
           className="dds-checkbox__input"
           {...props}
         />

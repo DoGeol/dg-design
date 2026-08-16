@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import * as React from "react";
 import { describe, expect, it, vi } from "vitest";
 
+import { Field } from "../field/Field";
 import { RadioGroup } from "./RadioGroup";
 
 function Basic(props: React.ComponentProps<typeof RadioGroup.Root>) {
@@ -148,5 +149,71 @@ describe("RadioGroup", () => {
     await user.click(express);
     expect(onValueChange).toHaveBeenCalledWith("express");
     expect(express.checked).toBe(true);
+  });
+
+  it("controlled: 값을 undefined로 되돌리면 선택이 해제된다", async () => {
+    const user = userEvent.setup();
+
+    function Controlled() {
+      const [value, setValue] = React.useState<string | undefined>(undefined);
+      return (
+        <>
+          <Basic value={value} onValueChange={setValue} />
+          <button type="button" onClick={() => setValue(undefined)}>
+            지우기
+          </button>
+        </>
+      );
+    }
+
+    render(<Controlled />);
+    const standard = screen.getByRole("radio", { name: "일반배송" }) as HTMLInputElement;
+
+    await user.click(standard);
+    expect(standard.checked).toBe(true);
+
+    await user.click(screen.getByRole("button", { name: "지우기" }));
+    expect(standard.checked).toBe(false);
+  });
+});
+
+describe("RadioGroup Field 연동", () => {
+  // Field.Label의 htmlFor·aria는 개별 radio가 아니라 그룹이 받는다 (RadioGroup.tsx 주석 참고).
+  function WithField() {
+    return (
+      <Field.Root>
+        <Field.Label>배송 방법</Field.Label>
+        <RadioGroup.Root>
+          <RadioGroup.Item value="standard">일반배송</RadioGroup.Item>
+          <RadioGroup.Item value="express">빠른배송</RadioGroup.Item>
+        </RadioGroup.Root>
+        <Field.ErrorMessage>하나를 골라주세요.</Field.ErrorMessage>
+      </Field.Root>
+    );
+  }
+
+  it("그룹 id가 Field.Label의 htmlFor와 맞는다", () => {
+    render(<WithField />);
+    expect(screen.getByText("배송 방법").getAttribute("for")).toBe(
+      screen.getByRole("radiogroup").id,
+    );
+  });
+
+  it("ErrorMessage가 그룹의 aria-invalid·aria-describedby에 걸린다", () => {
+    render(<WithField />);
+    const group = screen.getByRole("radiogroup");
+
+    expect(group.getAttribute("aria-invalid")).toBe("true");
+    expect(group.getAttribute("aria-describedby")).toBe(
+      screen.getByText("하나를 골라주세요.").id,
+    );
+  });
+
+  it("Field 밖에서는 자체 id를 쓰고 invalid가 false다", () => {
+    render(<Basic />);
+    const group = screen.getByRole("radiogroup");
+
+    expect(group.id).toBeTruthy();
+    expect(group.getAttribute("aria-invalid")).toBe("false");
   });
 });

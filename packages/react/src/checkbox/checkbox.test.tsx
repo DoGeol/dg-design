@@ -3,6 +3,7 @@ import userEvent from "@testing-library/user-event";
 import * as React from "react";
 import { describe, expect, it } from "vitest";
 
+import { Field } from "../field/Field";
 import { Checkbox } from "./Checkbox";
 
 describe("Checkbox", () => {
@@ -44,5 +45,44 @@ describe("Checkbox", () => {
 
     await user.click(input);
     expect(input.checked).toBe(false);
+  });
+});
+
+describe("Checkbox Field 연동", () => {
+  function WithField() {
+    return (
+      <Field.Root>
+        <Field.Label>약관 동의</Field.Label>
+        <Checkbox />
+        <Field.ErrorMessage>동의가 필요합니다.</Field.ErrorMessage>
+      </Field.Root>
+    );
+  }
+
+  it("Field.Label 클릭으로 토글된다 (htmlFor 자동 연결)", async () => {
+    const user = userEvent.setup();
+    render(<WithField />);
+    const input = screen.getByRole("checkbox") as HTMLInputElement;
+
+    await user.click(screen.getByText("약관 동의"));
+    expect(input.checked).toBe(true);
+  });
+
+  it("ErrorMessage가 aria-invalid·aria-describedby에 걸린다", () => {
+    render(<WithField />);
+    const input = screen.getByRole("checkbox");
+
+    expect(input.getAttribute("aria-invalid")).toBe("true");
+    expect(input.getAttribute("aria-describedby")).toBe(
+      screen.getByText("동의가 필요합니다.").id,
+    );
+  });
+
+  it("Field 밖에서는 자체 id를 쓰고 invalid가 false다", () => {
+    render(<Checkbox aria-label="단독" />);
+    const input = screen.getByRole("checkbox");
+
+    expect(input.id).toBeTruthy();
+    expect(input.getAttribute("aria-invalid")).toBe("false");
   });
 });
