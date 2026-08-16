@@ -22,6 +22,7 @@ import {
   radius,
   semanticColors,
   shadow,
+  zIndex,
 } from "./tokens.ts";
 
 const OUT = join(dirname(dirname(fileURLToPath(import.meta.url))), "dist");
@@ -166,9 +167,10 @@ function tokensCss(): string {
       "/* semantic (light) */",
       ...semanticVars("light"),
       "",
-      "/* dimension / radius / typography / shadow / motion — 모드 분기 없음 */",
+      "/* dimension / radius / z / typography / shadow / motion — 모드 분기 없음 */",
       ...scale("dimension", dimension),
       ...scale("radius", radius),
+      ...scale("z", zIndex),
       ...scale("font-size", fontSize),
       ...scale("line-height", lineHeight),
       ...scale("font-weight", fontWeight),
@@ -205,6 +207,8 @@ const typesDts = () =>
     `export type DdsDimensionToken =${union(Object.keys(dimension))};`,
     "",
     `export type DdsRadiusToken =${union(Object.keys(radius))};`,
+    "",
+    `export type DdsZIndexToken =${union(Object.keys(zIndex))};`,
     "",
     `export type DdsTypographyScale =${union(Object.keys(fontSize))};`,
     "",

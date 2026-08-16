@@ -2,12 +2,14 @@
   .dds-sheet__overlay {
     position: fixed;
     inset: 0;
+    z-index: var(--dds-z-overlay);
     background-color: var(--dds-color-bg-overlay);
     animation: dds-sheet-overlay-in var(--dds-duration-base) var(--dds-easing-out);
   }
 
   .dds-sheet__content {
     position: fixed;
+    z-index: var(--dds-z-overlay);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

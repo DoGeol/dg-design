@@ -4,6 +4,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: var(--dds-z-overlay);
     box-sizing: border-box;
     max-width: 16rem;
     padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2);
@@ -26,8 +27,8 @@
   /* 회전 사각형 arrow. JS(use-tooltip-position)가 left/top과 트리거 쪽 변을 잡아준다. */
   .dds-tooltip__arrow {
     position: absolute;
-    width: 8px;
-    height: 8px;
+    width: var(--dds-dimension-x2);
+    height: var(--dds-dimension-x2);
     background-color: inherit;
     transform: rotate(45deg);
   }

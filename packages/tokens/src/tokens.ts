@@ -78,7 +78,7 @@ export const palette: Record<string, Oklch> = {
 export type ColorRef = string;
 
 /**
- * semantic 색 토큰 42개 (brand 8 + neutral 8 + intent 16 + 공통 9 + 오버레이 1).
+ * semantic 색 토큰 43개 (brand 8 + neutral 9 + intent 16 + 공통 9 + 오버레이 1).
  *
  * 모드별 방향: light는 hover/pressed가 어두워지고, dark는 밝아진다.
  * 양쪽 모두 페이지 배경과의 대비가 커지는 방향이다.
@@ -96,7 +96,7 @@ export const semanticColors: Record<string, { light: ColorRef; dark: ColorRef }>
   "fg-brand": { light: "brand-800", dark: "brand-300" },
   "fg-brand-contrast": { light: "gray-00", dark: "gray-1000" },
 
-  // ── neutral (8)
+  // ── neutral (9)
   "bg-neutral-solid": { light: "gray-800", dark: "gray-300" },
   "bg-neutral-solid-hover": { light: "gray-900", dark: "gray-200" },
   "bg-neutral-solid-pressed": { light: "gray-1000", dark: "gray-100" },
@@ -104,6 +104,9 @@ export const semanticColors: Record<string, { light: ColorRef; dark: ColorRef }>
   "bg-neutral-weak-hover": { light: "gray-200", dark: "gray-800" },
   "bg-neutral-weak-pressed": { light: "gray-300", dark: "gray-700" },
   "fg-neutral": { light: "gray-900", dark: "gray-100" },
+  // 도움말·그룹 라벨 등 상시 노출 보조 텍스트. fg-disabled와 회색조가 비슷해 보이지만
+  // 그쪽은 WCAG 면제 대상이라 4.5:1을 못 넘긴다 — 겸용하면 본문 텍스트가 AA를 놓친다.
+  "fg-neutral-weak": { light: "gray-600", dark: "gray-500" },
   "fg-neutral-contrast": { light: "gray-00", dark: "gray-1000" },
 
   // ── critical (4)
@@ -189,6 +192,8 @@ export const contrastChecks: ContrastCheck[] = [
   // ghost — 페이지 배경 위
   { fg: "fg-brand", bg: "bg-layer-default", min: 4.5 },
   { fg: "fg-neutral", bg: "bg-layer-default", min: 4.5 },
+  // 보조 텍스트 — 상시 노출이라 아래 fg-disabled 면제가 적용되지 않는다
+  { fg: "fg-neutral-weak", bg: "bg-layer-default", min: 4.5 },
   // 포커스 링 (비텍스트)
   { fg: "stroke-focus-ring", bg: "bg-layer-default", min: 3.0 }, // WCAG 1.4.11
   // 인터랙티브 컨트롤 테두리 (비텍스트)
@@ -222,6 +227,17 @@ export const dimension = {
   x14: "56px",
   x16: "64px",
 } as const;
+
+/**
+ * 오버레이 단일 층. 모든 DDS 오버레이가 같은 값을 쓰고, 오버레이끼리의 순서는
+ * portal이 body에 append되는 DOM 순서가 정한다 — 층을 나누면 그 순서를 두 곳에서
+ * 관리하게 된다.
+ *
+ * 2000은 흔한 앱 크롬 스택 위: Bootstrap 최대 1080(tooltip), MUI 1500(tooltip),
+ * Chakra 1800(tooltip). 정수 상한 근처(999999)로 도망가지 않아 소비 앱이 의도적으로
+ * DDS 위에 무언가를 올릴 여지를 남긴다.
+ */
+export const zIndex = { overlay: "2000" } as const;
 
 export const radius = {
   r0_5: "2px",

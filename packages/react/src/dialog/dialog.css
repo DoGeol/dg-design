@@ -2,6 +2,7 @@
   .dds-dialog__overlay {
     position: fixed;
     inset: 0;
+    z-index: var(--dds-z-overlay);
     background-color: var(--dds-color-bg-overlay);
     animation: dds-dialog-overlay-in var(--dds-duration-base) var(--dds-easing-out);
   }
@@ -10,6 +11,7 @@
     position: fixed;
     top: 50%;
     left: 50%;
+    z-index: var(--dds-z-overlay);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;

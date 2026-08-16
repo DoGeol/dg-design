@@ -4,6 +4,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: var(--dds-z-overlay);
     box-sizing: border-box;
     max-width: min(24rem, calc(100vw - var(--dds-dimension-x4)));
     padding: var(--dds-dimension-x4);

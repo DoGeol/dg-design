@@ -20,11 +20,10 @@
     color: var(--dds-color-fg-brand-contrast);
   }
 
-  /* shape: count 유무로만 갈린다(size 축 없음, 스펙 "하지 않을 것").
-     dot은 무라벨 6px 고정 — 토큰 스케일 밖 값이라 Badge의 1px 테두리처럼 하드코딩. */
+  /* shape: count 유무로만 갈린다(size 축 없음, 스펙 "하지 않을 것"). */
   .dds-notification-badge--dot {
-    width: 6px;
-    height: 6px;
+    width: var(--dds-dimension-x1_5);
+    height: var(--dds-dimension-x1_5);
     border-radius: var(--dds-radius-r-full);
   }
 

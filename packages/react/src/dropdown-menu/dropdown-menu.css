@@ -4,6 +4,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: var(--dds-z-overlay);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -72,7 +73,7 @@
 
   .dds-dropdown-menu__label {
     padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2);
-    color: var(--dds-color-fg-disabled);
+    color: var(--dds-color-fg-neutral-weak);
     font-size: var(--dds-font-size-t2);
     line-height: var(--dds-line-height-t2);
     font-weight: var(--dds-font-weight-bold);

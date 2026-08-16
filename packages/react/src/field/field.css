@@ -16,7 +16,7 @@
 
   .dds-field__description {
     margin: 0;
-    color: var(--dds-color-fg-disabled);
+    color: var(--dds-color-fg-neutral-weak);
     font-size: var(--dds-font-size-t3);
     line-height: var(--dds-line-height-t3);
   }
