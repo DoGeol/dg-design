@@ -1,14 +1,17 @@
 export { Badge, type BadgeProps } from "./badge/Badge";
 export { Button, type ButtonProps } from "./button/Button";
 export { Checkbox, type CheckboxProps } from "./checkbox/Checkbox";
+export { ContextMenu } from "./context-menu/ContextMenu";
 export { Dialog } from "./dialog/Dialog";
 export { DropdownMenu } from "./dropdown-menu/DropdownMenu";
 export { Field } from "./field/Field";
 export { HoverCard } from "./hover-card/HoverCard";
+export { MultiSelect } from "./multi-select/MultiSelect";
 export { NotificationBadge, type NotificationBadgeProps } from "./notification-badge/NotificationBadge";
 export { Popover } from "./popover/Popover";
 export { RadioGroup } from "./radio-group/RadioGroup";
 export { Select } from "./select/Select";
+export { Sheet } from "./sheet/Sheet";
 export { Switch, type SwitchProps } from "./switch/Switch";
 export { TextArea, type TextAreaProps } from "./text-area/TextArea";
 export { TextField, type TextFieldProps } from "./text-field/TextField";
