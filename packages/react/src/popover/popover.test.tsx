@@ -4,6 +4,7 @@ import * as React from "react";
 import { describe, expect, it, vi } from "vitest";
 
 import { DropdownMenu } from "../dropdown-menu/DropdownMenu";
+import { Select } from "../select/Select";
 import { Popover } from "./Popover";
 
 function Basic(props: React.ComponentProps<typeof Popover.Root> = {}) {
@@ -172,6 +173,85 @@ describe("Popover 단일 열림", () => {
     await user.click(screen.getByRole("button", { name: "열기" }));
     expect(screen.getByRole("group", { name: "패널" })).toBeTruthy();
     expect(screen.queryByRole("menu")).toBeNull();
+  });
+});
+
+function NestedSelect({ placeholder }: { placeholder: string }) {
+  return (
+    <Select.Root>
+      {/* combobox는 ARIA상 내용에서 이름을 못 얻는다 — 조회하려면 aria-label이 필요하다. */}
+      <Select.Trigger placeholder={placeholder} aria-label={placeholder} />
+      <Select.Content>
+        <Select.Option value="a">가</Select.Option>
+        <Select.Option value="b">나</Select.Option>
+      </Select.Content>
+    </Select.Root>
+  );
+}
+
+describe("Popover 중첩", () => {
+  it("Content 안의 Select를 열어도 Popover는 닫히지 않는다", async () => {
+    const user = userEvent.setup();
+    render(
+      <Popover.Root>
+        <Popover.Trigger>열기</Popover.Trigger>
+        <Popover.Content aria-label="패널">
+          <NestedSelect placeholder="고르기" />
+        </Popover.Content>
+      </Popover.Root>,
+    );
+
+    await user.click(screen.getByRole("button", { name: "열기" }));
+    await user.click(screen.getByRole("combobox", { name: "고르기" }));
+
+    expect(screen.getByRole("listbox")).toBeTruthy();
+    expect(screen.getByRole("group", { name: "패널" })).toBeTruthy();
+  });
+
+  it("3단 중첩에서도 조상이 모두 살아 있다", async () => {
+    const user = userEvent.setup();
+    render(
+      <Popover.Root>
+        <Popover.Trigger>바깥 열기</Popover.Trigger>
+        <Popover.Content aria-label="바깥 패널">
+          <Popover.Root>
+            <Popover.Trigger>안쪽 열기</Popover.Trigger>
+            <Popover.Content aria-label="안쪽 패널">
+              <NestedSelect placeholder="고르기" />
+            </Popover.Content>
+          </Popover.Root>
+        </Popover.Content>
+      </Popover.Root>,
+    );
+
+    await user.click(screen.getByRole("button", { name: "바깥 열기" }));
+    await user.click(screen.getByRole("button", { name: "안쪽 열기" }));
+    await user.click(screen.getByRole("combobox", { name: "고르기" }));
+
+    expect(screen.getByRole("listbox")).toBeTruthy();
+    expect(screen.getByRole("group", { name: "안쪽 패널" })).toBeTruthy();
+    expect(screen.getByRole("group", { name: "바깥 패널" })).toBeTruthy();
+  });
+
+  it("Content 안에서도 형제끼리는 하나만 열린다", async () => {
+    const user = userEvent.setup();
+    render(
+      <Popover.Root>
+        <Popover.Trigger>열기</Popover.Trigger>
+        <Popover.Content aria-label="패널">
+          <NestedSelect placeholder="첫째" />
+          <NestedSelect placeholder="둘째" />
+        </Popover.Content>
+      </Popover.Root>,
+    );
+
+    await user.click(screen.getByRole("button", { name: "열기" }));
+    await user.click(screen.getByRole("combobox", { name: "첫째" }));
+    expect(screen.getAllByRole("listbox")).toHaveLength(1);
+
+    await user.click(screen.getByRole("combobox", { name: "둘째" }));
+    expect(screen.getAllByRole("listbox")).toHaveLength(1);
+    expect(screen.getByRole("group", { name: "패널" })).toBeTruthy();
   });
 });
 

@@ -6,11 +6,41 @@ import { useControllableState } from "./use-controllable-state";
 import { useOverlayPosition } from "./use-overlay-position";
 import { usePresence } from "./use-presence";
 
+interface OpenOverlay {
+  close: () => void;
+  /** 조상 판정 대상. 포털 이후에도 살아 있는 ref로 읽는다 — 값 복사는 리렌더에서 상한다. */
+  content: React.RefObject<HTMLElement | null>;
+}
+
 /**
- * 열려 있는 팝오버는 하나뿐이다 — 다이얼로그와 달리 팝오버는 쌓이지 않는다.
- * 다른 팝오버가 열리면 여기 등록된 닫기를 먼저 호출한다. 메뉴와 셀렉트가 같은 자리를 쓴다.
+ * 열려 있는 오버레이 스택 — 형제끼리는 하나만 열리지만(메뉴·셀렉트가 같은 자리를 쓴다)
+ * 중첩은 쌓인다. 새로 열리는 오버레이의 트리거를 품은 항목이 나올 때까지만 위에서부터 닫는다:
+ * 그보다 위는 형제이고, 그 항목부터 아래는 조상이라 살려 둔다.
+ * (다이얼로그 스택과 별개다 — 저쪽은 ESC 라우팅·inert 담당이고 여기는 단일 열림 담당이다.)
  */
-let openOverlay: (() => void) | null = null;
+const openOverlays: OpenOverlay[] = [];
+
+function closeSiblingsOf(trigger: HTMLElement | null) {
+  for (let i = openOverlays.length - 1; i >= 0; i -= 1) {
+    const entry = openOverlays[i];
+    if (!entry) continue;
+    if (trigger && entry.content.current?.contains(trigger)) return;
+    // close()가 부르는 상대 effect의 cleanup은 다음 커밋에나 돈다 — 여기서 먼저 빼야 순회가 정확하다.
+    openOverlays.splice(i, 1);
+    entry.close();
+  }
+}
+
+/**
+ * 우리 위에 쌓인 항목은 전부 자손이다 — 형제는 열릴 때 우리를 닫고 들어오니 위에 남을 수 없다.
+ * 자손 패널은 각자 body 직속 portal이라 DOM상 우리 content 바깥이다: 이 확인이 없으면
+ * 자손 안을 클릭할 때마다 조상이 "바깥 클릭"으로 판정해 스스로 닫는다.
+ */
+function isInsideDescendant(entry: OpenOverlay, target: Node): boolean {
+  const index = openOverlays.indexOf(entry);
+  if (index === -1) return false;
+  return openOverlays.slice(index + 1).some((above) => above.content.current?.contains(target));
+}
 
 export interface UseOverlayOptions {
   open?: boolean;
@@ -67,7 +97,14 @@ export function useOverlay({
   });
   const { present, ref: contentRef } = usePresence(isOpen);
 
-  const [triggerNode, setTriggerNode] = React.useState<HTMLElement | null>(null);
+  const [triggerNode, setTriggerNodeState] = React.useState<HTMLElement | null>(null);
+  // 조상 판정은 트리거를 열림 effect와 같은 커밋에 읽어야 한다 — state 반영은 한 렌더 늦어,
+  // 이미 열린 오버레이 안에서 defaultOpen으로 마운트되는 중첩이 조상을 놓친다.
+  const triggerRef = React.useRef<HTMLElement | null>(null);
+  const setTriggerNode = React.useCallback((node: HTMLElement | null) => {
+    triggerRef.current = node;
+    setTriggerNodeState(node);
+  }, []);
   const [contentNode, setContentNode] = React.useState<HTMLElement | null>(null);
   const [arrowNode, setArrowNode] = React.useState<HTMLElement | null>(null);
 
@@ -89,15 +126,20 @@ export function useOverlay({
   closeRef.current = () => setOpen(false);
   const close = React.useMemo(() => () => closeRef.current(), []);
 
+  const entry = React.useMemo<OpenOverlay>(
+    () => ({ close, content: contentRef }),
+    [close, contentRef],
+  );
+
   React.useEffect(() => {
     if (!isOpen) return;
-    // 아직 우리를 등록하기 전이라 여기 남아 있는 것은 반드시 다른 팝오버다.
-    openOverlay?.();
-    openOverlay = close;
+    closeSiblingsOf(triggerRef.current);
+    openOverlays.push(entry);
     return () => {
-      if (openOverlay === close) openOverlay = null;
+      const index = openOverlays.indexOf(entry);
+      if (index !== -1) openOverlays.splice(index, 1);
     };
-  }, [isOpen, close]);
+  }, [isOpen, entry]);
 
   // 비모달로 스택에 올라 ESC 순서에만 참여한다 — 배경 inert도, 스크롤 잠금도 만들지 않는다.
   // closeOnEscape가 false면 최상단 자리는 그대로 차지하되 아무 것도 하지 않는다(Dialog와 같은 관례) —
@@ -122,11 +164,12 @@ export function useOverlay({
       if (!target) return;
       if (contentRef.current?.contains(target)) return;
       if (triggerNode?.contains(target)) return;
+      if (isInsideDescendant(entry, target)) return;
       close();
     };
     document.addEventListener("mousedown", onMouseDown);
     return () => document.removeEventListener("mousedown", onMouseDown);
-  }, [isOpen, closeOnOutsideClick, triggerNode, contentRef, close]);
+  }, [isOpen, closeOnOutsideClick, triggerNode, contentRef, close, entry]);
 
   const focusRef = React.useRef(onOpenFocus);
   focusRef.current = onOpenFocus;
