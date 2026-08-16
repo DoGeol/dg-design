@@ -4,6 +4,8 @@ export { Checkbox, type CheckboxProps } from "./checkbox/Checkbox";
 export { Dialog } from "./dialog/Dialog";
 export { DropdownMenu } from "./dropdown-menu/DropdownMenu";
 export { Field } from "./field/Field";
+export { HoverCard } from "./hover-card/HoverCard";
+export { NotificationBadge, type NotificationBadgeProps } from "./notification-badge/NotificationBadge";
 export { Popover } from "./popover/Popover";
 export { RadioGroup } from "./radio-group/RadioGroup";
 export { Select } from "./select/Select";

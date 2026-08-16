@@ -1,0 +1,43 @@
+@layer dds {
+  .dds-notification-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+
+  /* intent: solid bg + contrast fg 재사용. Badge와 달리 variant 축이 없어(항상 solid)
+     로컬 변수 인다이렉션 없이 바로 배경/텍스트 색을 지정한다. 신규 토큰 없음. */
+  .dds-notification-badge--intent_critical {
+    background-color: var(--dds-color-bg-critical-solid);
+    color: var(--dds-color-fg-critical-contrast);
+  }
+
+  .dds-notification-badge--intent_brand {
+    background-color: var(--dds-color-bg-brand-solid);
+    color: var(--dds-color-fg-brand-contrast);
+  }
+
+  /* shape: count 유무로만 갈린다(size 축 없음, 스펙 "하지 않을 것").
+     dot은 무라벨 6px 고정 — 토큰 스케일 밖 값이라 Badge의 1px 테두리처럼 하드코딩. */
+  .dds-notification-badge--dot {
+    width: 6px;
+    height: 6px;
+    border-radius: var(--dds-radius-r-full);
+  }
+
+  /* pill: 높이·최소너비는 dimension-x4_5(18px, seed pill min 참고값과 일치)로 토큰
+     스케일 안에 있어 하드코딩하지 않는다. 정사각형 기본형에서 두 자리 이상일 때
+     padding으로 좌우가 벌어지는 캡슐 형태. */
+  .dds-notification-badge--pill {
+    min-width: var(--dds-dimension-x4_5);
+    height: var(--dds-dimension-x4_5);
+    padding-inline: var(--dds-dimension-x1);
+    border-radius: var(--dds-radius-r-full);
+    font-size: var(--dds-font-size-t1);
+    line-height: var(--dds-line-height-t1);
+    font-weight: var(--dds-font-weight-bold);
+  }
+}
