@@ -21,6 +21,10 @@ export interface UseOverlayOptions {
   matchTriggerWidth?: boolean;
   /** 패널이 마운트된 뒤 포커스를 어디로 넣을지 — 오버레이마다 다르다. */
   onOpenFocus: (content: HTMLElement) => void;
+  /** ESC로 닫히는지. 기본 true — DropdownMenu·Select는 넘기지 않아 기존 동작 그대로다. */
+  closeOnEscape?: boolean;
+  /** 바깥 클릭으로 닫히는지. 기본 true. */
+  closeOnOutsideClick?: boolean;
 }
 
 export interface Overlay {
@@ -37,6 +41,8 @@ export interface Overlay {
   triggerNode: HTMLElement | null;
   setTriggerNode: (node: HTMLElement | null) => void;
   setContentNode: (node: HTMLElement | null) => void;
+  /** arrow 미들웨어가 위치를 계산할 대상(Popover). 등록 안 하면 arrow 계산은 그냥 스킵된다. */
+  setArrowNode: (node: HTMLElement | null) => void;
 }
 
 /**
@@ -51,6 +57,8 @@ export function useOverlay({
   placement,
   matchTriggerWidth,
   onOpenFocus,
+  closeOnEscape = true,
+  closeOnOutsideClick = true,
 }: UseOverlayOptions): Overlay {
   const [isOpen, setOpen] = useControllableState({
     value: open,
@@ -61,6 +69,7 @@ export function useOverlay({
 
   const [triggerNode, setTriggerNode] = React.useState<HTMLElement | null>(null);
   const [contentNode, setContentNode] = React.useState<HTMLElement | null>(null);
+  const [arrowNode, setArrowNode] = React.useState<HTMLElement | null>(null);
 
   const [container, setContainer] = React.useState<HTMLElement | null>(null);
   React.useEffect(() => {
@@ -74,7 +83,7 @@ export function useOverlay({
     };
   }, [present]);
 
-  useOverlayPosition(triggerNode, contentNode, isOpen, placement, matchTriggerWidth);
+  useOverlayPosition(triggerNode, contentNode, isOpen, placement, matchTriggerWidth, arrowNode);
 
   const closeRef = React.useRef<() => void>(() => {});
   closeRef.current = () => setOpen(false);
@@ -91,15 +100,23 @@ export function useOverlay({
   }, [isOpen, close]);
 
   // 비모달로 스택에 올라 ESC 순서에만 참여한다 — 배경 inert도, 스크롤 잠금도 만들지 않는다.
+  // closeOnEscape가 false면 최상단 자리는 그대로 차지하되 아무 것도 하지 않는다(Dialog와 같은 관례) —
+  // 그 아래 오버레이로 ESC가 흘러 내려가지는 않는다.
   React.useEffect(() => {
     if (!isOpen || !container) return;
-    return pushDialog({ container, onEscape: close, modal: false });
-  }, [isOpen, container, close]);
+    return pushDialog({
+      container,
+      onEscape: () => {
+        if (closeOnEscape) close();
+      },
+      modal: false,
+    });
+  }, [isOpen, container, close, closeOnEscape]);
 
   // 바깥 클릭 닫힘. mousedown 단계에서 판정하되 트리거는 제외한다 — 트리거에서 닫으면
   // 이어지는 click이 다시 열어 토글이 먹통이 된다. 트리거 재클릭은 Trigger의 토글이 처리한다.
   React.useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen || !closeOnOutsideClick) return;
     const onMouseDown = (event: MouseEvent) => {
       const target = event.target as Node | null;
       if (!target) return;
@@ -109,7 +126,7 @@ export function useOverlay({
     };
     document.addEventListener("mousedown", onMouseDown);
     return () => document.removeEventListener("mousedown", onMouseDown);
-  }, [isOpen, triggerNode, contentRef, close]);
+  }, [isOpen, closeOnOutsideClick, triggerNode, contentRef, close]);
 
   const focusRef = React.useRef(onOpenFocus);
   focusRef.current = onOpenFocus;
@@ -134,6 +151,7 @@ export function useOverlay({
       triggerNode,
       setTriggerNode,
       setContentNode,
+      setArrowNode,
     }),
     [isOpen, setOpen, present, container, contentRef, triggerNode],
   );

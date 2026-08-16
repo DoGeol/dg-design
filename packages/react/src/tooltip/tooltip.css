@@ -1,0 +1,62 @@
+@layer dds {
+  /* top/left는 floating-ui가 매 프레임 덮어쓴다 — 여기 값은 첫 계산 전 1프레임용 초기값이다. */
+  .dds-tooltip__content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    max-width: 16rem;
+    padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2);
+    border-radius: var(--dds-radius-r1_5);
+    background-color: var(--dds-color-bg-neutral-solid);
+    box-shadow: var(--dds-shadow-overlay);
+    color: var(--dds-color-fg-neutral-contrast);
+    font-family: inherit;
+    font-size: var(--dds-font-size-t2);
+    line-height: var(--dds-line-height-t2);
+    animation: dds-tooltip-in var(--dds-duration-fast) var(--dds-easing-out);
+  }
+
+  /* forwards가 없으면 animationend와 unmount 사이에 base 스타일로 스냅백해 번쩍인다. */
+  .dds-tooltip__content[data-state="closed"] {
+    animation-name: dds-tooltip-out;
+    animation-fill-mode: forwards;
+  }
+
+  /* 회전 사각형 arrow. JS(use-tooltip-position)가 left/top과 트리거 쪽 변을 잡아준다. */
+  .dds-tooltip__arrow {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: inherit;
+    transform: rotate(45deg);
+  }
+
+  @keyframes dds-tooltip-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes dds-tooltip-out {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+
+  /* presence는 계산된 애니메이션 길이를 읽는다 — 여기서 0이 되면 즉시 언마운트된다. */
+  @media (prefers-reduced-motion: reduce) {
+    .dds-tooltip__content {
+      animation: none;
+    }
+  }
+}
