@@ -18,6 +18,7 @@ const badge = cva("dds-badge", {
     variant: {
       solid: "dds-badge--variant_solid",
       weak: "dds-badge--variant_weak",
+      outline: "dds-badge--variant_outline",
     },
     size: {
       medium: "dds-badge--size_medium",

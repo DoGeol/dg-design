@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Badge } from "@dg-design/react";
 
 const INTENTS = ["brand", "neutral", "critical", "positive", "warning", "informative"] as const;
-const VARIANTS = ["solid", "weak"] as const;
+const VARIANTS = ["solid", "weak", "outline"] as const;
 const SIZES = ["medium", "large"] as const;
 
 const meta = {
@@ -31,8 +31,8 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {};
 
 /**
- * intent(6) x variant(2) 그리드. 각 셀은 size(2) 행을 담은 2x2 서브 그리드라
- * 24조합 전체를 한 화면에서 육안 확인할 수 있다.
+ * intent(6) x variant(3) 그리드. 각 셀은 size(2) 행을 담은 2x3 서브 그리드라
+ * 36조합 전체를 한 화면에서 육안 확인할 수 있다.
  */
 function CombinationGrid() {
   return (
@@ -89,7 +89,7 @@ function CombinationGrid() {
   );
 }
 
-/** intent(6) x variant(2) x size(2) = 24조합 전체 그리드 */
+/** intent(6) x variant(3) x size(2) = 36조합 전체 그리드 */
 export const AllCombinations: Story = {
   render: () => <CombinationGrid />,
 };

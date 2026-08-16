@@ -66,6 +66,15 @@
     font-weight: var(--dds-font-weight-regular);
   }
 
+  /* variant: outline — border/text reuse --dds-badge-weak-fg, which already
+     equals fg-{intent} per intent block above. no new token. */
+  .dds-badge--variant_outline {
+    background-color: transparent;
+    color: var(--dds-badge-weak-fg);
+    border: 1px solid var(--dds-badge-weak-fg);
+    font-weight: var(--dds-font-weight-regular);
+  }
+
   /* size: height, radius, typography, padding — none in spec, chosen smaller
      than Button (small x9/r2/t3) since Badge is a compact text label */
   .dds-badge--size_medium {

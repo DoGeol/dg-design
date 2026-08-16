@@ -1,0 +1,111 @@
+@layer dds {
+  .dds-radio-group {
+    display: flex;
+    box-sizing: border-box;
+  }
+
+  .dds-radio-group--orientation_vertical {
+    flex-direction: column;
+    gap: var(--dds-dimension-x3);
+  }
+
+  .dds-radio-group--orientation_horizontal {
+    flex-direction: row;
+    gap: var(--dds-dimension-x4);
+  }
+
+  .dds-radio {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--dds-dimension-x2);
+    box-sizing: border-box;
+    font-family: inherit;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .dds-radio:has(.dds-radio__input:is(:disabled, [disabled], [data-disabled])) {
+    cursor: not-allowed;
+  }
+
+  /* input은 클릭·포커스·a11y·roving을 네이티브에 위임하고 시각만 숨긴다 */
+  .dds-radio__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .dds-radio__box {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: var(--dds-dimension-x4);
+    height: var(--dds-dimension-x4);
+    border-radius: 9999px;
+    border: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-neutral);
+    background-color: transparent;
+  }
+
+  .dds-radio__dot {
+    display: none;
+    width: 45%;
+    height: 45%;
+    border-radius: 9999px;
+    background-color: var(--dds-color-fg-brand-contrast);
+  }
+
+  .dds-radio__input:checked ~ .dds-radio__box .dds-radio__dot {
+    display: block;
+  }
+
+  .dds-radio__input:checked ~ .dds-radio__box {
+    border-color: transparent;
+    background-color: var(--dds-color-bg-brand-solid);
+  }
+
+  .dds-radio__input:not(:checked):not(:is(:disabled, [disabled], [data-disabled])):hover
+    ~ .dds-radio__box {
+    background-color: var(--dds-color-bg-transparent-hover);
+  }
+  .dds-radio__input:checked:not(:is(:disabled, [disabled], [data-disabled])):hover
+    ~ .dds-radio__box {
+    background-color: var(--dds-color-bg-brand-solid-hover);
+  }
+  .dds-radio__input:checked:not(:is(:disabled, [disabled], [data-disabled])):active
+    ~ .dds-radio__box {
+    background-color: var(--dds-color-bg-brand-solid-pressed);
+  }
+
+  .dds-radio__input:focus-visible ~ .dds-radio__box {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-radio__input:is(:disabled, [disabled], [data-disabled]) ~ .dds-radio__box {
+    border-color: var(--dds-color-stroke-neutral);
+    background-color: var(--dds-color-bg-disabled);
+  }
+  .dds-radio__input:is(:disabled, [disabled], [data-disabled]) ~ .dds-radio__box .dds-radio__dot {
+    background-color: var(--dds-color-fg-disabled);
+  }
+  .dds-radio__input:is(:disabled, [disabled], [data-disabled]):checked ~ .dds-radio__box {
+    border-color: transparent;
+  }
+
+  .dds-radio__label {
+    color: var(--dds-color-fg-neutral);
+    font-size: var(--dds-font-size-t4);
+    line-height: var(--dds-line-height-t4);
+  }
+  .dds-radio__input:is(:disabled, [disabled], [data-disabled]) ~ .dds-radio__label {
+    color: var(--dds-color-fg-disabled);
+  }
+}

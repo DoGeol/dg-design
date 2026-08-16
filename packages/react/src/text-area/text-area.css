@@ -1,0 +1,80 @@
+@layer dds {
+  .dds-text-area {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    color: var(--dds-color-fg-neutral);
+    background-color: var(--dds-color-bg-layer-default);
+    border: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-neutral);
+    resize: vertical;
+    transition: border-color var(--dds-duration-fast) ease;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dds-text-area {
+      transition: none;
+    }
+  }
+
+  .dds-text-area::placeholder {
+    color: var(--dds-color-fg-disabled);
+  }
+
+  /* hover: TextField와 동일 — 별도 hover 토큰이 없어 stroke-neutral보다 진한 fg-neutral로 대체 */
+  .dds-text-area:not(:is(:disabled, [disabled], [data-disabled])):not(:read-only):hover {
+    border-color: var(--dds-color-fg-neutral);
+  }
+
+  /* focus: Button·Checkbox·TextField와 동일한 outline 관습 */
+  .dds-text-area:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-text-area[aria-invalid="true"] {
+    border-color: var(--dds-color-stroke-critical);
+  }
+
+  .dds-text-area:is(:disabled, [disabled], [data-disabled]) {
+    cursor: not-allowed;
+    resize: none;
+    border-color: var(--dds-color-stroke-neutral);
+    background-color: var(--dds-color-bg-disabled);
+    color: var(--dds-color-fg-disabled);
+  }
+
+  /* readonly: disabled와 구분되는 자체 스타일 — bg-neutral-weak 계열 (TextField 동일) */
+  .dds-text-area:read-only:not(:is(:disabled, [disabled], [data-disabled])) {
+    cursor: default;
+    resize: none;
+    background-color: var(--dds-color-bg-neutral-weak);
+    border-color: var(--dds-color-stroke-neutral-weak);
+  }
+
+  /*
+   * autoResize=true: field-sizing 지원 브라우저는 이 한 줄이 자동 확장을 전부 처리한다.
+   * 미지원 브라우저는 use-auto-resize.ts의 scrollHeight 폴백이 height를 직접 쓰는데,
+   * resize:none·overflow:hidden은 두 경로에 공통으로 필요해 여기서 같이 정의한다.
+   */
+  .dds-text-area--auto-resize {
+    resize: none;
+    overflow: hidden;
+    field-sizing: content;
+  }
+
+  /* size: 세로 패딩은 TextField에 없는 축이라 dimension 스케일에서 새로 골랐다 (폭은 그대로 재사용) */
+  .dds-text-area--size_medium {
+    padding-block: var(--dds-dimension-x2);
+    padding-inline: var(--dds-dimension-x3);
+    border-radius: var(--dds-radius-r2);
+    font-size: var(--dds-font-size-t4);
+    line-height: var(--dds-line-height-t4);
+  }
+  .dds-text-area--size_large {
+    padding-block: var(--dds-dimension-x3);
+    padding-inline: var(--dds-dimension-x4);
+    border-radius: var(--dds-radius-r3);
+    font-size: var(--dds-font-size-t6);
+    line-height: var(--dds-line-height-t6);
+  }
+}
