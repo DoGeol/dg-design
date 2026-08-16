@@ -32,7 +32,8 @@
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    border: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-neutral);
+    /* 1px 하드코딩 — TextField·Select 테두리와 동일 관례. x0_5(2px)는 소형 박스에 무겁다. */
+    border: 1px solid var(--dds-color-stroke-neutral);
     background-color: transparent;
     color: var(--dds-color-fg-brand-contrast);
   }
@@ -84,7 +85,8 @@
   }
 
   .dds-checkbox__input:is(:disabled, [disabled], [data-disabled]) ~ .dds-checkbox__box {
-    border-color: var(--dds-color-stroke-neutral);
+    /* disabled는 테두리도 연하게 — enabled와 같은 진한 테두리면 위계가 없다 */
+    border-color: var(--dds-color-stroke-neutral-weak);
     background-color: var(--dds-color-bg-disabled);
     color: var(--dds-color-fg-disabled);
   }

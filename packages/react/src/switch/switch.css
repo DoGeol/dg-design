@@ -26,13 +26,14 @@
     border: 0;
   }
 
+  /* 무테두리 채움 트랙(iOS·Material 관례). 테두리가 있던 시절엔 content를 2px씩 먹어
+     썸 상하 여백이 0이 되고 checked 썸이 오른쪽 테두리를 뚫었다. */
   .dds-switch__track {
     flex-shrink: 0;
     position: relative;
     box-sizing: border-box;
     display: inline-block;
-    border: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-neutral);
-    background-color: var(--dds-color-bg-neutral-weak);
+    background-color: var(--dds-color-bg-neutral-weak-pressed);
     border-radius: var(--dds-radius-r-full);
   }
 
@@ -52,17 +53,14 @@
   }
 
   .dds-switch__input:checked ~ .dds-switch__track {
-    border-color: transparent;
     background-color: var(--dds-color-bg-brand-solid);
   }
   .dds-switch__input:checked ~ .dds-switch__track .dds-switch__thumb {
     transform: translate(var(--dds-switch-thumb-travel), -50%);
   }
 
-  .dds-switch__input:not(:checked):not(:is(:disabled, [disabled], [data-disabled])):hover
-    ~ .dds-switch__track {
-    background-color: var(--dds-color-bg-neutral-weak-hover);
-  }
+  /* unchecked hover 반응 없음 — 기본이 weak-pressed(gray-300)라 위 단계 회색 semantic이 없고,
+     스위치는 hover 반응이 관례도 아니다(iOS 무반응). */
   .dds-switch__input:checked:not(:is(:disabled, [disabled], [data-disabled])):hover
     ~ .dds-switch__track {
     background-color: var(--dds-color-bg-brand-solid-hover);
@@ -78,11 +76,7 @@
   }
 
   .dds-switch__input:is(:disabled, [disabled], [data-disabled]) ~ .dds-switch__track {
-    border-color: var(--dds-color-stroke-neutral);
     background-color: var(--dds-color-bg-disabled);
-  }
-  .dds-switch__input:is(:disabled, [disabled], [data-disabled]):checked ~ .dds-switch__track {
-    border-color: transparent;
   }
   .dds-switch__input:is(:disabled, [disabled], [data-disabled]) ~ .dds-switch__track .dds-switch__thumb {
     background-color: var(--dds-color-fg-disabled);
