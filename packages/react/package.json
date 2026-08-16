@@ -1,6 +1,6 @@
 {
   "name": "@dg-design/react",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Dogeol Design System(DDS)의 React 컴포넌트 패키지.",
   "license": "MIT",
   "repository": {

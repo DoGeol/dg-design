@@ -1,5 +1,20 @@
 # @dg-design/react
 
+## 0.9.0
+
+### Minor Changes
+
+- 23db6e5: MultiSelect·Sheet·ContextMenu 추가 (파생 3종)
+  
+  - MultiSelect: 다중 선택 — 트리거는 요약 텍스트("n개 선택됨"), 선택해도 패널 유지(토글), `name` 지정 시 값마다 hidden input. Field 연동·aria-multiselectable
+  - Sheet: 4방향(left·right·top·bottom) 슬라이드 모달 오버레이 — Dialog의 presence·모달 스택·inert 재사용
+  - ContextMenu: 우클릭 메뉴 — 커서 좌표 배치, 브라우저 기본 메뉴 차단. **마우스 전용**(Shift+F10·터치 long-press 미지원, 같은 동작이 다른 UI로도 도달 가능해야 함)
+  - 내부: 옵션 수집·typeahead·열린 상태 키보드를 `internal/select-core`로 추출, `use-presence`·`dialog-stack`을 `internal/`로 이동, `use-overlay-position`이 floating-ui `VirtualElement` 허용
+- f38a906: NotificationBadge·HoverCard 추가 (소형 묶음 2)
+  
+  - NotificationBadge: count·dot 알림 배지 — `count`/`max`(기본 99, 초과 시 "99+")/`isShowEmpty`(0 표시)/`intent`(critical 기본·brand), 신규 토큰 0
+  - HoverCard: hover 전용 리치 프리뷰 오버레이 — Root·Trigger(asChild)·Content(+arrow), openDelay 700/closeDelay 300, 콘텐츠 hover 유지, 포커스로 열리지 않음(시각 사용자 보조 UI)
+
 ## 0.8.0
 
 ### Minor Changes
