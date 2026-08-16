@@ -175,6 +175,70 @@ describe("Select typeahead", () => {
     expect(trigger().textContent).toContain("Melon");
   });
 
+  it("목록에서 빠진 옵션은 닫힌 상태 typeahead로 선택되지 않는다", async () => {
+    // 등록 캐시는 해제하지 않으므로(트리거 라벨 유지용) 한 번 연 뒤 목록이 교체되면
+    // 옛 항목이 캐시에 남는다 — 그게 선택 후보로 새면 소비자가 지운 값이 방출된다.
+    const user = userEvent.setup();
+    const onValueChange = vi.fn();
+    function Swappable() {
+      const [swapped, setSwapped] = React.useState(false);
+      return (
+        <>
+          <button onClick={() => setSwapped(true)}>교체</button>
+          <Select.Root onValueChange={onValueChange}>
+            <Select.Trigger placeholder="고르기" />
+            <Select.Content>
+              {swapped ? (
+                <Select.Option value="paris">Paris</Select.Option>
+              ) : (
+                <Select.Option value="seoul">Seoul</Select.Option>
+              )}
+            </Select.Content>
+          </Select.Root>
+        </>
+      );
+    }
+    render(<Swappable />);
+
+    // 한 번 열어 Seoul을 등록 캐시에 남긴 뒤 닫는다.
+    await user.click(trigger());
+    await user.keyboard("{Escape}");
+    await user.click(screen.getByText("교체"));
+
+    trigger().focus();
+    await user.keyboard("s");
+
+    expect(onValueChange).not.toHaveBeenCalled();
+    expect(trigger().textContent).toContain("고르기");
+  });
+
+  it("사용자 컴포넌트로 감싼 옵션도 닫힌 상태 typeahead로 잡힌다", async () => {
+    // 스캔은 <Wrapped /> 안을 못 보므로 등록 캐시가 유일한 후보 출처다 —
+    // 사라진 옵션을 정리하면서 이쪽까지 지우면 안 된다.
+    const user = userEvent.setup();
+    const onValueChange = vi.fn();
+    function Wrapped() {
+      return <Select.Option value="melon">Melon</Select.Option>;
+    }
+    render(
+      <Select.Root onValueChange={onValueChange}>
+        <Select.Trigger placeholder="고르기" />
+        <Select.Content>
+          <Wrapped />
+        </Select.Content>
+      </Select.Root>,
+    );
+
+    // 한 번 열어 등록시킨 뒤 닫는다.
+    await user.click(trigger());
+    await user.keyboard("{Escape}");
+
+    trigger().focus();
+    await user.keyboard("m");
+
+    expect(onValueChange).toHaveBeenCalledWith("melon");
+  });
+
   it("닫힌 상태에서 disabled 옵션은 건너뛴다", async () => {
     const user = userEvent.setup();
     const onValueChange = vi.fn();

@@ -174,16 +174,25 @@ export function handleOpenKeyDown(
  * children 트리 스캔 + 마운트 등록을 합친 옵션 목록.
  *
  * 스캔만으로는 사용자 컴포넌트로 감싼 옵션을 못 본다(`<MyOptions />`의 children은
- * 렌더 전이라 비어 있다) — 마운트 등록분이 그 구멍을 메운다. 등록은 해제하지 않는
- * 스티키 캐시다: 옵션은 패널이 닫히면 unmount되는데 그때 지우면 선택 직후 트리거
- * 라벨이 다시 사라진다. value→라벨 표라 stale이어도 무해하다.
+ * 렌더 전이라 비어 있다) — 마운트 등록분이 그 구멍을 메운다. 등록은 언마운트 때
+ * 지우지 않는다: 옵션은 패널이 닫히면 unmount되는데 그때 지우면 선택 직후 트리거
+ * 라벨과 닫힌 상태 typeahead 후보가 함께 사라진다.
+ *
+ * 다만 무한정 남겨두면 소비자가 목록에서 뺀 값이 계속 선택 후보로 남는다(종속 셀렉트에서
+ * 국가를 바꿔도 옛 도시가 typeahead로 잡히는 문제). 그래서 **스캔에 한 번이라도 잡혔던
+ * 값이 스캔에서 사라지면 그때 제거한다** — 소비자가 실제로 뺐다는 유일한 확증이다.
+ * 래퍼 안 옵션은 애초에 스캔에 안 잡히므로 이 정리 대상이 아니고, 그래서 영향이 없다.
  */
 export function useOptionRegistry(
   children: React.ReactNode,
   optionType: React.ElementType,
-): { options: OptionEntry[]; registerOption: (entry: OptionEntry) => () => void } {
+): {
+  options: OptionEntry[];
+  registerOption: (entry: OptionEntry) => () => void;
+} {
   const scanned = React.useMemo(() => collectOptions(children, optionType), [children, optionType]);
   const [registered, setRegistered] = React.useState<ReadonlyMap<string, OptionEntry>>(new Map());
+  const everScannedRef = React.useRef<Set<string>>(new Set());
 
   const registerOption = React.useCallback((entry: OptionEntry) => {
     setRegistered((prev) => {
@@ -197,9 +206,17 @@ export function useOptionRegistry(
   }, []);
 
   const options = React.useMemo(() => {
-    const merged = scanned.map((entry) => registered.get(entry.value) ?? entry);
     const known = new Set(scanned.map((entry) => entry.value));
-    for (const entry of registered.values()) if (!known.has(entry.value)) merged.push(entry);
+    const everScanned = everScannedRef.current;
+    for (const value of known) everScanned.add(value);
+
+    const merged = scanned.map((entry) => registered.get(entry.value) ?? entry);
+    for (const entry of registered.values()) {
+      if (known.has(entry.value)) continue;
+      // 스캔 이력이 있는데 지금 없다 = 소비자가 뺐다. 래퍼 안 옵션은 이력이 없어 살아남는다.
+      if (everScanned.has(entry.value)) continue;
+      merged.push(entry);
+    }
     return merged;
   }, [scanned, registered]);
 
