@@ -26,6 +26,7 @@
 | [2026-08-16 소형 묶음 구현 중 결정](decisions/2026-08-16-small-batch-implementation.md) | 활성 | autoResize 배타 설계, 라디오 네이티브 위임, outline 변수 재사용 |
 | [2026-08-16 Tooltip·Popover 구현 중 결정](decisions/2026-08-16-tooltip-popover-implementation.md) | 활성 | Provider ref 신호, use-overlay 옵션화 수용(D1), Popover.Arrow 합성 |
 | [2026-08-16 소형 묶음 2 구현 중 결정](decisions/2026-08-16-small-batch-2-implementation.md) | 활성 | NB 단층 CSS·children Omit, HC 스케줄 복제·비모달 스택·트리거 a, defaultOpen 데모 |
+| [2026-08-16 파생 3종 구현 중 결정](decisions/2026-08-16-batch-3-implementation.md) | 활성 | select-core 추출·useOptionRegistry, Sheet side는 Root·radius 0, ContextMenu primitive 직결, **레시피 코드젠 불채택과 새 트리거** |
 
 ## 스펙
 
@@ -46,5 +47,6 @@
 | [소형 묶음](specs/archive/2026-08-16-small-batch.md) | 0.8.0 | TextArea(autoResize)·RadioGroup(네이티브 위임)·Badge outline |
 | [Tooltip·Popover](specs/archive/2026-08-16-tooltip-popover.md) | 0.8.0 | Provider 그룹 지연, autoFocus 겸용, arrow, 탭 포커스 열림(표준 이탈) |
 | [소형 묶음 2](specs/archive/2026-08-16-small-batch-2.md) | 0.9.0 | NotificationBadge(count·max·isShowEmpty)·HoverCard(hover 전용, 콘텐츠 유지) |
+| [파생 3종](specs/archive/2026-08-16-multi-select-sheet-context-menu.md) | 0.9.0 | MultiSelect(요약 트리거·토글)·Sheet(4방향)·ContextMenu(마우스 전용) + internal 추출 |
 
 각 스펙의 인터뷰 기록은 같은 이름 `-interview.md`로 분리돼 있다.

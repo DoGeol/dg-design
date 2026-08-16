@@ -5,7 +5,7 @@
 # dg-design
 
 Dogeol Design System (DDS). daangn/seed-design 구조를 참고한 개인 디자인시스템.
-**상태: react 0.8.0 · tokens 0.5.0 npm 배포, 컴포넌트 14종, 0.9.0 changeset 대기.** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
+**상태: react 0.8.0 · tokens 0.5.0 npm 배포, 컴포넌트 17종, 0.9.0 changeset 대기(5종).** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
 
 ## 절대 규칙
 
@@ -34,7 +34,7 @@ Dogeol Design System (DDS). daangn/seed-design 구조를 참고한 개인 디자
 - **tokens.css는 소비 앱이 수동 로드.** react 컴포넌트는 토큰 CSS를 import하지 않는다
 - 컴포넌트 CSS: 수기 + CVA, `@layer dds`, `.dds-x--variant_y` 클래스(비공개 API), `:focus-visible`, `:is(:disabled,[disabled],[data-disabled])` 3중 매칭, 테두리는 1px 하드코딩(2px 토큰은 소형 컨트롤에 무겁다)
 - react 빌드에서 CSS는 external + raw copy 플러그인 (vite.config.ts 참조). barrel(src/index.ts)은 병렬 작업 시 에이전트 수정 금지 — 감독이 직결
-- 오버레이 공통은 `internal/use-overlay`(상태·presence·portal·floating·비모달 스택·dismissal) — 차이는 onOpenFocus 콜백. 모달/비모달은 dialog-stack의 modal 플래그
+- 오버레이 공통은 `internal/use-overlay`(상태·presence·portal·floating·비모달 스택·dismissal) — 차이는 onOpenFocus 콜백. 모달/비모달은 dialog-stack의 modal 플래그. **클릭 토글·트리거 기준 배치가 아니면**(hover·우클릭) primitive를 직접 조립한다. 옵션 목록 공통은 `internal/select-core`
 - Tailwind 브릿지: `@theme` 재바인딩, 유틸명은 `bg-bg-brand-solid` 형태
 
 ## 코드 컨벤션
@@ -44,7 +44,7 @@ Dogeol Design System (DDS). daangn/seed-design 구조를 참고한 개인 디자
 
 ## 문서
 
-**[docs/INDEX.md](docs/INDEX.md)에서 필요한 것만 골라 읽는다.** 하지 않을 것 + 재고 트리거: 레시피 코드젠(컴포넌트 15개+ — 현재 14), headless 분리(같은 로직에 다른 스타일 2회), TypeScript 7(vite-plugin-dts 지원 시), renovate(수동 업데이트 부담 시), CJS·YAML 정의(영구 불채택)
+**[docs/INDEX.md](docs/INDEX.md)에서 필요한 것만 골라 읽는다.** 하지 않을 것 + 재고 트리거: 레시피 코드젠(2026-08-16 불채택 — 퇴장 패턴 복붙 8개+ 또는 같은 외관 3번째 복제 시 재고), headless 분리(같은 로직에 다른 스타일 2회), TypeScript 7(vite-plugin-dts 지원 시), renovate(수동 업데이트 부담 시), CJS·YAML 정의(영구 불채택)
 
 ## 참고 저장소
 
