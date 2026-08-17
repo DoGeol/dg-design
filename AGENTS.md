@@ -5,7 +5,7 @@
 # dg-design
 
 Dogeol Design System (DDS). daangn/seed-design 참고한 개인 디자인시스템.
-**react 0.8.0 · tokens 0.5.0 배포, 컴포넌트 21종, 미배포 changeset 대기.** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
+**react 0.10.0 · tokens 0.6.0 버전 확정(publish 대기), 컴포넌트 21종.** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
 
 ## 절대 규칙
 
@@ -17,7 +17,7 @@ Dogeol Design System (DDS). daangn/seed-design 참고한 개인 디자인시스�
 
 - pnpm workspace: `packages/tokens`, `packages/react`, `apps/storybook`, `apps/visual-regression`(뒤 둘은 private)
 - 공유 의존성 버전은 `pnpm-workspace.yaml`의 `catalog:`가 단일 소스. TypeScript는 6.x (7은 vite-plugin-dts 미지원)
-- `minimumReleaseAge` 3일 게이트 — 의존성 range 하한이 3일 미만이면 설치 실패. 하한을 최신 성숙 버전으로
+- `minimumReleaseAge` 3일 게이트 — 의존성 range 하한이 3일 미만이면 설치 실패
 - `pnpm generate` — tokens.css / tailwind.css / 타입 생성 + WCAG 대비·gamut 검사 내장(미달 시 **생성 실패**). 의존성 0, Node 타입 스트리핑 실행
 - `pnpm typecheck` — 3개 프로젝트 `tsc --noEmit`. 빌드가 못 잡는 타입 에러는 여기서만 걸린다
 - `pnpm --filter @dg-design/react test` — vitest. 인터랙션은 fireEvent 금지, user-event 사용 (jsdom이 disabled 차단 미구현)
@@ -29,23 +29,22 @@ Dogeol Design System (DDS). daangn/seed-design 참고한 개인 디자인시스�
 ## 핵심 관습 (변경 시 결정 기록 먼저 확인)
 
 - 토큰: `--dds-color-{role}-{intent}-{emphasis}[-{state}]`, role마다 축이 다름. palette는 내부 구현, semantic만 공개 API. intent 6종 — hover/pressed는 brand·neutral·critical만(나머지는 base). warning solid는 밝은 황 + 어두운 fg
-- hover/pressed 2단계 상태 축 — seed와 의도적으로 갈라진 지점
 - 다크모드: `[data-dds-theme="dark"]` 재정의. palette는 모드 무관, semantic만 분기
 - **tokens.css는 소비 앱이 수동 로드.** react 컴포넌트는 토큰 CSS를 import하지 않는다
 - 컴포넌트 CSS: 수기 + CVA, `@layer dds`, `.dds-x--variant_y` 클래스(비공개 API), `:focus-visible`, `:is(:disabled,[disabled],[data-disabled])` 3중 매칭, 테두리는 1px 하드코딩(2px 토큰은 소형 컨트롤에 무겁다)
 - react 빌드에서 CSS는 external + raw copy 플러그인 (vite.config.ts 참조). barrel(src/index.ts)은 병렬 작업 시 에이전트 수정 금지 — 감독이 직결
-- 공통 로직은 `internal/`: use-overlay(오버레이 배선, 모달 여부는 dialog-stack의 modal 플래그), select-core(옵션 목록). **클릭 토글·트리거 기준 배치가 아니면**(hover·우클릭) use-overlay 대신 primitive를 직접 조립한다
+- 공통은 `internal/`: use-overlay(오버레이 배선, 모달 여부는 dialog-stack), select-core(옵션 목록), overlay-motion.css(공용 keyframes). **클릭 토글·트리거 기준 배치가 아니면**(hover·우클릭) use-overlay 대신 primitive를 직접 조립한다
 - live region: critical intent만 `role="alert"`, 나머지는 `role="status"`. `aria-live`는 얹지 않는다(role이 암묵적 politeness를 갖는다)
 - Tailwind 브릿지: `@theme` 재바인딩, 유틸명은 `bg-bg-brand-solid` 형태
 
 ## 코드 컨벤션
 
 - 폴더 이름은 kebab-case. 파일은 **300~500줄** 상한(`wc -l` 기준) — 넘으면 분리 검토하되 분리가 목적은 아니다
-- 주석은 코드로 알 수 없는 "왜"(우회한 버그, 외부 제약, 의도적 이상)에만
+- 주석은 코드로 알 수 없는 "왜"에만
 
 ## 문서
 
-**[docs/INDEX.md](docs/INDEX.md)에서 필요한 것만 골라 읽는다.** 하지 않을 것 + 재고 트리거: 레시피 코드젠(불채택 — 퇴장 패턴 복붙 8개+ 시 재고), headless 분리(같은 로직에 다른 스타일 2회), TypeScript 7(vite-plugin-dts 지원 시), renovate(수동 업데이트 부담 시), CJS·YAML 정의(영구 불채택)
+**[docs/INDEX.md](docs/INDEX.md)에서 필요한 것만 골라 읽는다.** 남은 일과 착수 조건은 [docs/follow-ups.md](docs/follow-ups.md). 재고 트리거: headless 분리(같은 로직에 다른 스타일 2회), TypeScript 7(vite-plugin-dts 지원 시), renovate(수동 업데이트 부담 시). 영구 불채택: 레시피 코드젠·CJS·YAML 정의
 
 ## 참고 저장소
 
