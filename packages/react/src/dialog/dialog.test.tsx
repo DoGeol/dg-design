@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import * as React from "react";
 import { describe, expect, it, vi } from "vitest";
 
-import { getDialogStack } from "../internal/dialog-stack";
+import { getDialogStack, registerNotificationLayer } from "../internal/dialog-stack";
 import { Dialog } from "./Dialog";
 
 function Basic(props: React.ComponentProps<typeof Dialog.Root>) {
@@ -137,6 +137,50 @@ describe("Dialog 스택", () => {
 
     await user.click(screen.getByRole("button", { name: "닫기" }));
     expect(rtlContainer.hasAttribute("inert")).toBe(false);
+  });
+
+  it("알림 레이어는 모달이 열려도 inert되지 않고, 해제하면 다시 inert된다", async () => {
+    const user = userEvent.setup();
+    const layer = document.body.appendChild(document.createElement("div"));
+    const plain = document.body.appendChild(document.createElement("div"));
+    const unregister = registerNotificationLayer(layer);
+
+    try {
+      render(<Basic />);
+      await user.click(screen.getByRole("button", { name: "열기" }));
+      expect(layer.hasAttribute("inert")).toBe(false);
+      expect(plain.hasAttribute("inert")).toBe(true);
+
+      // 열린 채로 해제해도 누수 없이 배경으로 돌아간다.
+      unregister();
+      expect(layer.hasAttribute("inert")).toBe(true);
+
+      await user.click(screen.getByRole("button", { name: "닫기" }));
+      expect(layer.hasAttribute("inert")).toBe(false);
+      expect(plain.hasAttribute("inert")).toBe(false);
+    } finally {
+      unregister();
+      layer.remove();
+      plain.remove();
+    }
+  });
+
+  it("모달이 열린 뒤에 등록해도 걸려 있던 inert가 즉시 걷힌다", async () => {
+    const user = userEvent.setup();
+    const layer = document.body.appendChild(document.createElement("div"));
+    let unregister = () => {};
+
+    try {
+      render(<Basic />);
+      await user.click(screen.getByRole("button", { name: "열기" }));
+      expect(layer.hasAttribute("inert")).toBe(true);
+
+      unregister = registerNotificationLayer(layer);
+      expect(layer.hasAttribute("inert")).toBe(false);
+    } finally {
+      unregister();
+      layer.remove();
+    }
   });
 
   it("중첩되면 이전 다이얼로그의 컨테이너도 inert가 된다", () => {

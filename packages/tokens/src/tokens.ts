@@ -140,7 +140,7 @@ export const semanticColors: Record<string, { light: ColorRef; dark: ColorRef }>
   "fg-informative": { light: "informative-800", dark: "informative-300" },
   "fg-informative-contrast": { light: "gray-00", dark: "gray-1000" },
 
-  // ── 공통 (6)
+  // ── 공통 (9)
   "bg-layer-default": { light: "gray-00", dark: "gray-1000" },
   "bg-disabled": { light: "gray-200", dark: "gray-800" },
   "bg-transparent-hover": { light: "gray-1000/0.06", dark: "gray-00/0.08" },
@@ -238,15 +238,20 @@ export const dimension = {
 } as const;
 
 /**
- * 오버레이 단일 층. 모든 DDS 오버레이가 같은 값을 쓰고, 오버레이끼리의 순서는
+ * 오버레이 층은 하나. 모든 DDS 오버레이가 같은 값을 쓰고, 오버레이끼리의 순서는
  * portal이 body에 append되는 DOM 순서가 정한다 — 층을 나누면 그 순서를 두 곳에서
  * 관리하게 된다.
  *
  * 2000은 흔한 앱 크롬 스택 위: Bootstrap 최대 1080(tooltip), MUI 1500(tooltip),
  * Chakra 1800(tooltip). 정수 상한 근처(999999)로 도망가지 않아 소비 앱이 의도적으로
  * DDS 위에 무언가를 올릴 여지를 남긴다.
+ *
+ * toast만 별도 층이다. Toast viewport는 마운트 시 1회 생성돼 body 앞쪽에 남으므로
+ * 나중에 append되는 모달 아래로 깔린다 — DOM 순서 규칙이 유일하게 통하지 않는 곳이라
+ * 값으로 올린다(dialog-stack의 inert 면제와 짝). 2100은 overlay 위 한 칸이고,
+ * 사이의 2001~2099는 소비 앱이 자기 것을 끼워 넣을 여지로 비워둔다.
  */
-export const zIndex = { overlay: "2000" } as const;
+export const zIndex = { overlay: "2000", toast: "2100" } as const;
 
 export const radius = {
   r0_5: "2px",
@@ -301,13 +306,27 @@ export const shadow = {
   overlay: "0 12px 32px rgba(15, 15, 15, 0.18), 0 4px 8px rgba(15, 15, 15, 0.08)",
 } as const;
 
-/** duration-fast는 Switch·Checkbox의 150ms 하드코딩과 소급 통일 — 값을 바꾸면 그쪽 VR이 깨진다. */
+/**
+ * duration-fast는 Switch·Checkbox의 150ms 하드코딩과 소급 통일 — 값을 바꾸면 그쪽 VR이 깨진다.
+ *
+ * spin은 한 번 도는 데 걸리는 시간이라 fast/base 스케일과 성격이 다르다(전이가 아니라
+ * 주기). 1000ms는 Tailwind `animate-spin`의 기본값 — 가장 널리 쓰이는 값이라 사용자가
+ * "정상 속도"로 읽는다.
+ */
 export const duration = {
   fast: "150ms",
   base: "200ms",
+  spin: "1000ms",
 } as const;
 
-/** ease-out 계열 1종. Material 표준 감속 곡선 — 열림·닫힘 모두 이 하나로 충분(YAGNI). */
+/**
+ * out은 Material 표준 감속 곡선. 유한한 전이(열림·닫힘)는 전부 이 하나로 충분하다.
+ *
+ * linear는 "easing 1종으로 충분(YAGNI)"을 뒤집은 것이다. 근거: Spinner의 무한 회전은
+ * 전이가 아니라 반복이라, 감속 곡선을 쓰면 매 바퀴 이음매에서 눈에 띄게 걸린다.
+ * 유한 전이용 곡선을 늘린 게 아니라 무한 애니메이션이라는 새 범주가 생긴 것이다.
+ */
 export const easing = {
   out: "cubic-bezier(0, 0, 0.2, 1)",
+  linear: "linear",
 } as const;

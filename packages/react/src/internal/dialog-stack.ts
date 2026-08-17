@@ -7,6 +7,8 @@
  *
  * ESC 라우팅은 모달·비모달이 함께 쓰지만, inert와 스크롤 잠금은 모달 엔트리만 만든다 —
  * DropdownMenu 같은 비모달은 배경을 죽이지 않고 ESC 순서에만 끼어든다.
+ *
+ * 예외로 `registerNotificationLayer`로 등록한 컨테이너는 스택과 무관하게 inert에서 빠진다.
  */
 
 export interface DialogStackEntry {
@@ -21,6 +23,14 @@ export interface DialogStackEntry {
 const stack: DialogStackEntry[] = [];
 /** 우리가 부여한 inert만 기억한다 — 원래 inert였던 요소는 건드리지도, 복원하지도 않는다. */
 const inerted = new Set<HTMLElement>();
+/**
+ * inert에서 항상 빠지는 알림 레이어(Toast viewport). 모달 안 작업의 결과를 알리는
+ * 흐름 때문에 모달이 열려도 조작·낭독이 가능해야 한다.
+ *
+ * 명시 등록분만 면제한다 — 조건을 조금이라도 넓히면(예: 특정 클래스·속성 기준)
+ * 소비 앱의 아무 요소나 모달 격리를 빠져나갈 수 있다.
+ */
+const notificationLayers = new Set<HTMLElement>();
 let restoreOverflow: string | null = null;
 let restorePaddingRight: string | null = null;
 
@@ -68,6 +78,24 @@ export function pushDialog(entry: DialogStackEntry): () => void {
   };
 }
 
+/**
+ * `container`를 알림 레이어로 등록한다(body 직속 자식). 반환값으로 해제한다.
+ * 스택 엔트리가 아니므로 ESC 라우팅·스크롤 잠금에는 관여하지 않는다.
+ */
+export function registerNotificationLayer(container: HTMLElement): () => void {
+  notificationLayers.add(container);
+  // 이미 열려 있던 모달이 걸어둔 inert를 즉시 걷어낸다.
+  syncInert();
+
+  let unregistered = false;
+  return () => {
+    if (unregistered) return;
+    unregistered = true;
+    notificationLayers.delete(container);
+    syncInert();
+  };
+}
+
 function onKeyDown(event: KeyboardEvent) {
   if (event.key !== "Escape") return;
   stack[stack.length - 1]?.onEscape();
@@ -91,7 +119,8 @@ function syncInert() {
   const exempt = new Set(stack.slice(topModal).map((entry) => entry.container));
   for (const child of Array.from(document.body.children)) {
     if (!(child instanceof HTMLElement)) continue;
-    if (exempt.has(child) || child.hasAttribute("inert")) continue;
+    if (exempt.has(child) || notificationLayers.has(child)) continue;
+    if (child.hasAttribute("inert")) continue;
     child.setAttribute("inert", "");
     inerted.add(child);
   }
