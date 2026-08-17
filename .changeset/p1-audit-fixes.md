@@ -30,3 +30,11 @@
 - `Button`에 `intent="critical"` 추가 — 삭제·탈퇴 같은 파괴적 액션 버튼을 만들 수 없었다. `critical`에 solid·weak의 hover/pressed 토큰 4종이 함께 신설됐다
 - `Button`에 `asChild` 추가 — 링크를 버튼 외관으로 렌더할 수 있다
 - `Button` 테스트 신설 — 컴포넌트 중 유일하게 테스트가 없었다
+
+**알림 묶음 (A2·A3·A4)**
+
+- `Toast` 추가 — `useToast()` 훅으로 띄우는 일시 알림. 모달 위에서도 보이고 조작된다
+- `Alert` 추가 — intent 6종 인라인 메시지. 신규 색 토큰 0
+- `Spinner`·`Progress` 추가, `Button`에 `loading` 추가
+- **live region 정책 신설** — critical intent는 `role="alert"`, 나머지는 `role="status"`. DDS에 live region이 하나도 없어 비동기 결과가 스크린리더에 전달되지 않던 문제
+- 토큰 `--dds-z-toast`·`--dds-duration-spin`·`--dds-easing-linear` 신설
