@@ -31,6 +31,12 @@ const inerted = new Set<HTMLElement>();
  * 소비 앱의 아무 요소나 모달 격리를 빠져나갈 수 있다.
  */
 const notificationLayers = new Set<HTMLElement>();
+/**
+ * 스택에서 빠졌지만 퇴장 애니메이션 때문에 아직 body에 남아 있는 컨테이너.
+ * 면제하지 않으면 닫히는 오버레이가 자기 퇴장 동안 inert 상태로 페이드아웃한다
+ * (다이얼로그 안 메뉴를 ESC로 닫는 흔한 경우). 연결이 끊기면 자동으로 정리된다.
+ */
+const leaving = new Set<HTMLElement>();
 let restoreOverflow: string | null = null;
 let restorePaddingRight: string | null = null;
 
@@ -44,6 +50,8 @@ function modalCount(): number {
 }
 
 export function pushDialog(entry: DialogStackEntry): () => void {
+  // 퇴장 중 재열림 — 다시 스택에 들어왔으니 떠나는 중이 아니다.
+  leaving.delete(entry.container);
   stack.push(entry);
   if (stack.length === 1) document.addEventListener("keydown", onKeyDown);
   if (entry.modal && modalCount() === 1) {
@@ -66,6 +74,8 @@ export function pushDialog(entry: DialogStackEntry): () => void {
 
     const index = stack.indexOf(entry);
     if (index !== -1) stack.splice(index, 1);
+    // 퇴장 애니메이션이 도는 동안은 아직 body에 있다 — 그 사이 inert가 걸리면 안 된다.
+    if (entry.container.isConnected) leaving.add(entry.container);
 
     if (stack.length === 0) document.removeEventListener("keydown", onKeyDown);
     if (entry.modal && modalCount() === 0) {
@@ -104,6 +114,8 @@ function onKeyDown(event: KeyboardEvent) {
 function syncInert() {
   for (const element of inerted) element.removeAttribute("inert");
   inerted.clear();
+  // 퇴장이 끝나 DOM에서 빠진 것은 더 들고 있을 이유가 없다(분리된 노드 잔류 방지).
+  for (const element of leaving) if (!element.isConnected) leaving.delete(element);
 
   let topModal = -1;
   for (let i = stack.length - 1; i >= 0; i -= 1) {
@@ -119,7 +131,7 @@ function syncInert() {
   const exempt = new Set(stack.slice(topModal).map((entry) => entry.container));
   for (const child of Array.from(document.body.children)) {
     if (!(child instanceof HTMLElement)) continue;
-    if (exempt.has(child) || notificationLayers.has(child)) continue;
+    if (exempt.has(child) || notificationLayers.has(child) || leaving.has(child)) continue;
     if (child.hasAttribute("inert")) continue;
     child.setAttribute("inert", "");
     inerted.add(child);
