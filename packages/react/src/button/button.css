@@ -3,6 +3,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: var(--dds-dimension-x2);
     box-sizing: border-box;
     border: none;
     cursor: pointer;
@@ -17,7 +18,7 @@
     outline-offset: var(--dds-dimension-x0_5);
   }
 
-  .dds-button:is(:disabled, [disabled], [data-disabled]) {
+  .dds-button:is(:disabled, [disabled], [data-disabled], [data-loading]) {
     cursor: not-allowed;
   }
 
@@ -69,13 +70,13 @@
     background-color: var(--dds-button-solid-bg);
     color: var(--dds-button-solid-fg);
   }
-  .dds-button--variant_solid:not(:is(:disabled, [disabled], [data-disabled])):is(:hover, [data-hover]) {
+  .dds-button--variant_solid:not(:is(:disabled, [disabled], [data-disabled], [data-loading])):is(:hover, [data-hover]) {
     background-color: var(--dds-button-solid-bg-hover);
   }
-  .dds-button--variant_solid:not(:is(:disabled, [disabled], [data-disabled])):is(:active, [data-pressed]) {
+  .dds-button--variant_solid:not(:is(:disabled, [disabled], [data-disabled], [data-loading])):is(:active, [data-pressed]) {
     background-color: var(--dds-button-solid-bg-pressed);
   }
-  .dds-button--variant_solid:is(:disabled, [disabled], [data-disabled]) {
+  .dds-button--variant_solid:is(:disabled, [disabled], [data-disabled], [data-loading]) {
     background-color: var(--dds-color-bg-disabled);
     color: var(--dds-color-fg-disabled);
   }
@@ -85,13 +86,13 @@
     background-color: var(--dds-button-weak-bg);
     color: var(--dds-button-weak-fg);
   }
-  .dds-button--variant_weak:not(:is(:disabled, [disabled], [data-disabled])):is(:hover, [data-hover]) {
+  .dds-button--variant_weak:not(:is(:disabled, [disabled], [data-disabled], [data-loading])):is(:hover, [data-hover]) {
     background-color: var(--dds-button-weak-bg-hover);
   }
-  .dds-button--variant_weak:not(:is(:disabled, [disabled], [data-disabled])):is(:active, [data-pressed]) {
+  .dds-button--variant_weak:not(:is(:disabled, [disabled], [data-disabled], [data-loading])):is(:active, [data-pressed]) {
     background-color: var(--dds-button-weak-bg-pressed);
   }
-  .dds-button--variant_weak:is(:disabled, [disabled], [data-disabled]) {
+  .dds-button--variant_weak:is(:disabled, [disabled], [data-disabled], [data-loading]) {
     background-color: var(--dds-color-bg-disabled);
     color: var(--dds-color-fg-disabled);
   }
@@ -102,13 +103,13 @@
     background-color: transparent;
     color: var(--dds-button-ghost-fg);
   }
-  .dds-button--variant_ghost:not(:is(:disabled, [disabled], [data-disabled])):is(:hover, [data-hover]) {
+  .dds-button--variant_ghost:not(:is(:disabled, [disabled], [data-disabled], [data-loading])):is(:hover, [data-hover]) {
     background-color: var(--dds-color-bg-transparent-hover);
   }
-  .dds-button--variant_ghost:not(:is(:disabled, [disabled], [data-disabled])):is(:active, [data-pressed]) {
+  .dds-button--variant_ghost:not(:is(:disabled, [disabled], [data-disabled], [data-loading])):is(:active, [data-pressed]) {
     background-color: var(--dds-color-bg-transparent-pressed);
   }
-  .dds-button--variant_ghost:is(:disabled, [disabled], [data-disabled]) {
+  .dds-button--variant_ghost:is(:disabled, [disabled], [data-disabled], [data-loading]) {
     color: var(--dds-color-fg-disabled);
   }
 

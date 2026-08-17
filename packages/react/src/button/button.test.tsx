@@ -88,6 +88,52 @@ describe("Button 동작", () => {
   });
 });
 
+describe("Button loading", () => {
+  it("loading이면 disabled·aria-busy·스피너를 함께 켠다", () => {
+    render(<Button loading>저장</Button>);
+
+    expect((button() as HTMLButtonElement).disabled).toBe(true);
+    expect(button().getAttribute("aria-busy")).toBe("true");
+    expect(button().querySelector(".dds-button__spinner")).not.toBeNull();
+  });
+
+  it("loading이 아니면 aria-busy·스피너가 없다", () => {
+    render(<Button>저장</Button>);
+
+    expect(button().hasAttribute("aria-busy")).toBe(false);
+    expect(button().querySelector(".dds-button__spinner")).toBeNull();
+  });
+
+  it("loading 중 클릭이 막힌다", async () => {
+    const user = userEvent.setup();
+    const onClick = vi.fn();
+    render(
+      <Button loading onClick={onClick}>
+        저장
+      </Button>,
+    );
+
+    await user.click(button());
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it("asChild와 loading을 함께 쓰면 경고하고 loading을 무시한다", () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    render(
+      <Button asChild loading>
+        <a href="/docs">문서</a>
+      </Button>,
+    );
+
+    const link = screen.getByRole("link", { name: "문서" });
+    expect(link.hasAttribute("aria-busy")).toBe(false);
+    expect(link.querySelector(".dds-button__spinner")).toBeNull();
+    expect(warn).toHaveBeenCalledTimes(1);
+
+    warn.mockRestore();
+  });
+});
+
 describe("Button asChild", () => {
   it("asChild면 자식 엘리먼트로 렌더하고 클래스를 넘긴다", () => {
     render(
