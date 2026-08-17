@@ -111,6 +111,22 @@ describe("DropdownMenu roving tabindex", () => {
     expect(first.tabIndex).toBe(0);
   });
 
+  it("트리거에서 ArrowDown은 첫 항목, ArrowUp은 마지막 항목으로 연다", async () => {
+    // APG menu button 표준. onOpenFocus가 방향을 인자로 못 받아 ref 신호로 전달한다.
+    const user = userEvent.setup();
+    const { unmount } = render(<Basic />);
+
+    screen.getByRole("button", { name: "메뉴" }).focus();
+    await user.keyboard("{ArrowDown}");
+    expect(document.activeElement).toBe(screen.getByRole("menuitem", { name: "복사" }));
+
+    unmount();
+    render(<Basic />);
+    screen.getByRole("button", { name: "메뉴" }).focus();
+    await user.keyboard("{ArrowUp}");
+    expect(document.activeElement).toBe(screen.getByRole("menuitem", { name: "삭제" }));
+  });
+
   it("화살표가 순환하고 disabled 항목을 건너뛴다", async () => {
     const user = userEvent.setup();
     render(<Basic defaultOpen />);

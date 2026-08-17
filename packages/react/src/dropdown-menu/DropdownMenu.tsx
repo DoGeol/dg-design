@@ -37,8 +37,12 @@ function DropdownMenuRoot({
   children,
 }: DropdownMenuRootProps) {
   // 초기 포커스는 Content가 아니라 첫 활성 항목 — APG menu button 표준.
-  const focusFirstItem = React.useCallback((content: HTMLElement) => {
-    focusItem(getItems(content, ITEM_ROLE), 0);
+  // 단 ArrowUp으로 열었을 때는 마지막 항목이다(같은 표준).
+  const openToLastRef = React.useRef(false);
+  const focusInitialItem = React.useCallback((content: HTMLElement) => {
+    const items = getItems(content, ITEM_ROLE);
+    focusItem(items, openToLastRef.current ? items.length - 1 : 0);
+    openToLastRef.current = false;
   }, []);
 
   const overlay = useOverlay({
@@ -46,12 +50,12 @@ function DropdownMenuRoot({
     defaultOpen,
     onOpenChange,
     placement,
-    onOpenFocus: focusFirstItem,
+    onOpenFocus: focusInitialItem,
   });
   const triggerId = React.useId();
 
   const value = React.useMemo<DropdownMenuContextValue>(
-    () => ({ ...overlay, triggerId, placement }),
+    () => ({ ...overlay, triggerId, placement, openToLastRef }),
     [overlay, triggerId, placement],
   );
 
@@ -89,6 +93,8 @@ const DropdownMenuTrigger = React.forwardRef<HTMLButtonElement, DropdownMenuTrig
           if (event.defaultPrevented) return;
           if (event.key === "ArrowDown" || event.key === "ArrowUp") {
             event.preventDefault();
+            // APG menu button: ArrowDown은 첫 항목, ArrowUp은 마지막 항목으로 연다.
+            context.openToLastRef.current = event.key === "ArrowUp";
             context.setOpen(true);
           }
         }}

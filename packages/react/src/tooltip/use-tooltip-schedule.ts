@@ -20,6 +20,9 @@ export function useTooltipSchedule(
 ): TooltipSchedule {
   const openTimer = React.useRef<ReturnType<typeof setTimeout>>(undefined);
   const closeTimer = React.useRef<ReturnType<typeof setTimeout>>(undefined);
+  // 그룹의 열림 수를 세려면 onOpen/onClose 짝이 맞아야 한다. 열리기 전에 이탈하면
+  // (openDelay 중 blur) 닫힘 경로가 그대로 도는데, 그때 onClose를 부르면 남의 카운트를 깎는다.
+  const openedRef = React.useRef(false);
 
   React.useEffect(
     () => () => {
@@ -33,7 +36,15 @@ export function useTooltipSchedule(
     const openNow = () => {
       openTimer.current = undefined;
       setOpen(true);
+      openedRef.current = true;
       group?.onOpen();
+    };
+
+    /** 실제로 열렸던 경우에만 그룹에 닫힘을 알린다. */
+    const notifyClosed = () => {
+      if (!openedRef.current) return;
+      openedRef.current = false;
+      group?.onClose();
     };
 
     const scheduleOpen = () => {
@@ -55,7 +66,7 @@ export function useTooltipSchedule(
       closeTimer.current = setTimeout(() => {
         closeTimer.current = undefined;
         setOpen(false);
-        group?.onClose();
+        notifyClosed();
       }, closeDelay);
     };
 
@@ -65,7 +76,7 @@ export function useTooltipSchedule(
       openTimer.current = undefined;
       closeTimer.current = undefined;
       setOpen(false);
-      group?.onClose();
+      notifyClosed();
     };
 
     return { scheduleOpen, scheduleClose, closeImmediate };

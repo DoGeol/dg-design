@@ -156,6 +156,18 @@ describe("ContextMenu 선택·닫힘", () => {
     expect(screen.queryByRole("menu")).toBeNull();
   });
 
+  it("닫히면 포커스가 body가 아니라 트리거로 돌아온다", async () => {
+    // 트리거가 div라 tabIndex 없이는 focus()가 no-op이 되어 포커스가 사라진다.
+    // "마우스 전용"은 여는 동작의 예외지 닫힘 복귀는 별개다.
+    const user = userEvent.setup();
+    render(<Basic defaultOpen />);
+
+    await user.keyboard("{Escape}");
+
+    expect(document.activeElement).not.toBe(document.body);
+    expect(document.activeElement).toBe(screen.getByTestId("trigger"));
+  });
+
   it("바깥 클릭으로 닫힌다", async () => {
     const user = userEvent.setup();
     render(<Basic defaultOpen />);

@@ -141,6 +141,10 @@ const ContextMenuTrigger = React.forwardRef<HTMLDivElement, ContextMenuTriggerPr
     return (
       <Comp
         ref={setRef}
+        // 닫힐 때 여기로 포커스를 돌려주는데 div는 기본이 포커스 불가라 focus()가
+        // no-op이 된다(ESC·Enter로 닫으면 포커스가 body로 떨어진다). -1이라
+        // Tab 순서에는 안 들어간다. 소비자가 tabIndex를 주면 그쪽이 이긴다.
+        tabIndex={-1}
         onContextMenu={(event: React.MouseEvent<HTMLDivElement>) => {
           onContextMenu?.(event);
           if (event.defaultPrevented) return;
@@ -217,7 +221,7 @@ const ContextMenuItem = React.forwardRef<HTMLButtonElement, ContextMenuItemProps
         ref={ref}
         type="button"
         role={ITEM_ROLE}
-        tabIndex={-1}
+
         className={clsx("dds-dropdown-menu__item", className)}
         onClick={(event) => {
           onClick?.(event);

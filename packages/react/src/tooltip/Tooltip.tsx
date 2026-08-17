@@ -35,6 +35,9 @@ export interface TooltipProviderProps {
 function TooltipProvider({ children, skipDelayDuration = DEFAULT_SKIP_DELAY }: TooltipProviderProps) {
   const skippedRef = React.useRef(false);
   const graceTimer = React.useRef<ReturnType<typeof setTimeout>>(undefined);
+  // 열려 있는 툴팁 수. 떠나는 툴팁의 closeDelay가 뒤늦게 끝나도 다른 툴팁이 아직
+  // 열려 있으면 유예를 시작하면 안 된다 — 그러면 열린 채로 스킵이 풀린다.
+  const openCount = React.useRef(0);
 
   React.useEffect(() => () => clearTimeout(graceTimer.current), []);
 
@@ -43,9 +46,12 @@ function TooltipProvider({ children, skipDelayDuration = DEFAULT_SKIP_DELAY }: T
       isSkipped: () => skippedRef.current,
       onOpen: () => {
         clearTimeout(graceTimer.current);
+        openCount.current += 1;
         skippedRef.current = true;
       },
       onClose: () => {
+        openCount.current = Math.max(0, openCount.current - 1);
+        if (openCount.current > 0) return;
         clearTimeout(graceTimer.current);
         graceTimer.current = setTimeout(() => {
           skippedRef.current = false;

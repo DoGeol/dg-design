@@ -18,6 +18,11 @@ export interface DropdownMenuContextValue {
   triggerId: string;
   placement: Placement;
   setOpen: (next: boolean) => void;
+  /**
+   * 열릴 때 첫 항목 대신 마지막 항목에 포커스할지. Trigger가 ArrowUp에서 켜고
+   * onOpenFocus가 읽은 뒤 되돌린다 — onOpenFocus는 방향을 인자로 못 받는다.
+   */
+  openToLastRef: React.RefObject<boolean>;
 }
 
 export const DropdownMenuContext = React.createContext<DropdownMenuContextValue | undefined>(

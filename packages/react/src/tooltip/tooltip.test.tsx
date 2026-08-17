@@ -81,6 +81,63 @@ describe("Tooltip 지연", () => {
     expect(screen.getByText("둘째 도움말")).toBeTruthy();
   });
 
+  it("떠난 툴팁의 closeDelay가 끝나도, 다른 툴팁이 열려 있으면 스킵이 유지된다", () => {
+    // 떠나는 쪽의 onClose가 그룹 상태를 안 보고 유예를 시작하면 열린 채로 스킵이 풀려
+    // 다음 트리거가 openDelay를 전부 다시 기다리게 된다.
+    vi.useFakeTimers();
+    render(
+      <Tooltip.Provider skipDelayDuration={300}>
+        {["하나", "둘", "셋"].map((name) => (
+          <Tooltip.Root key={name} openDelay={700} closeDelay={150}>
+            <Tooltip.Trigger>{name}</Tooltip.Trigger>
+            <Tooltip.Content>{`${name} 도움말`}</Tooltip.Content>
+          </Tooltip.Root>
+        ))}
+      </Tooltip.Provider>,
+    );
+
+    fireEvent.mouseEnter(trigger("하나"));
+    advance(700);
+    fireEvent.mouseLeave(trigger("하나"));
+    fireEvent.mouseEnter(trigger("둘"));
+    expect(screen.getByText("둘 도움말")).toBeTruthy();
+
+    // "하나"의 closeDelay(150)와 유예(300)가 전부 지나도 "둘"은 아직 열려 있다.
+    advance(500);
+    expect(screen.getByText("둘 도움말")).toBeTruthy();
+
+    fireEvent.mouseLeave(trigger("둘"));
+    fireEvent.mouseEnter(trigger("셋"));
+    expect(screen.getByText("셋 도움말")).toBeTruthy();
+  });
+
+  it("열리기 전에 이탈하면 그룹 스킵이 깨지지 않는다", () => {
+    // openDelay 중 이탈은 열린 적이 없으므로 그룹의 열림 수를 깎으면 안 된다.
+    vi.useFakeTimers();
+    render(
+      <Tooltip.Provider skipDelayDuration={300}>
+        {["하나", "둘", "셋"].map((name) => (
+          <Tooltip.Root key={name} openDelay={700} closeDelay={150}>
+            <Tooltip.Trigger>{name}</Tooltip.Trigger>
+            <Tooltip.Content>{`${name} 도움말`}</Tooltip.Content>
+          </Tooltip.Root>
+        ))}
+      </Tooltip.Provider>,
+    );
+
+    fireEvent.mouseEnter(trigger("하나"));
+    advance(700);
+    expect(screen.getByText("하나 도움말")).toBeTruthy();
+
+    // "둘"에 잠깐 들렀다 openDelay 전에 나온다 — 열린 적 없다.
+    fireEvent.mouseEnter(trigger("둘"));
+    fireEvent.mouseLeave(trigger("둘"));
+    advance(500);
+
+    fireEvent.mouseEnter(trigger("셋"));
+    expect(screen.getByText("셋 도움말")).toBeTruthy();
+  });
+
   it("Provider 없이는 그룹 스킵이 없다 — 인접 트리거도 openDelay를 전부 기다린다", () => {
     vi.useFakeTimers();
     render(
