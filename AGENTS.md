@@ -5,7 +5,7 @@
 # dg-design
 
 Dogeol Design System (DDS). daangn/seed-design 참고한 개인 디자인시스템.
-**react 0.8.0 · tokens 0.5.0 배포, 컴포넌트 17종, 0.9.0 changeset 대기(5종).** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
+**react 0.8.0 · tokens 0.5.0 배포, 컴포넌트 21종, 미배포 changeset 대기.** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
 
 ## 절대 규칙
 
@@ -28,13 +28,14 @@ Dogeol Design System (DDS). daangn/seed-design 참고한 개인 디자인시스�
 
 ## 핵심 관습 (변경 시 결정 기록 먼저 확인)
 
-- 토큰: `--dds-color-{role}-{intent}-{emphasis}[-{state}]`, role마다 축이 다름. palette는 내부 구현, semantic만 공개 API. intent 6종 — critical·positive·warning·informative는 base만(hover/pressed 없음). warning solid는 밝은 황 + 어두운 fg
+- 토큰: `--dds-color-{role}-{intent}-{emphasis}[-{state}]`, role마다 축이 다름. palette는 내부 구현, semantic만 공개 API. intent 6종 — hover/pressed는 brand·neutral·critical만(나머지는 base). warning solid는 밝은 황 + 어두운 fg
 - hover/pressed 2단계 상태 축 — seed와 의도적으로 갈라진 지점
 - 다크모드: `[data-dds-theme="dark"]` 재정의. palette는 모드 무관, semantic만 분기
 - **tokens.css는 소비 앱이 수동 로드.** react 컴포넌트는 토큰 CSS를 import하지 않는다
 - 컴포넌트 CSS: 수기 + CVA, `@layer dds`, `.dds-x--variant_y` 클래스(비공개 API), `:focus-visible`, `:is(:disabled,[disabled],[data-disabled])` 3중 매칭, 테두리는 1px 하드코딩(2px 토큰은 소형 컨트롤에 무겁다)
 - react 빌드에서 CSS는 external + raw copy 플러그인 (vite.config.ts 참조). barrel(src/index.ts)은 병렬 작업 시 에이전트 수정 금지 — 감독이 직결
 - 공통 로직은 `internal/`: use-overlay(오버레이 배선, 모달 여부는 dialog-stack의 modal 플래그), select-core(옵션 목록). **클릭 토글·트리거 기준 배치가 아니면**(hover·우클릭) use-overlay 대신 primitive를 직접 조립한다
+- live region: critical intent만 `role="alert"`, 나머지는 `role="status"`. `aria-live`는 얹지 않는다(role이 암묵적 politeness를 갖는다)
 - Tailwind 브릿지: `@theme` 재바인딩, 유틸명은 `bg-bg-brand-solid` 형태
 
 ## 코드 컨벤션
