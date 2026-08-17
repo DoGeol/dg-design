@@ -8,7 +8,7 @@
     background-color: var(--dds-color-bg-layer-default);
     border: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-neutral);
     resize: vertical;
-    transition: border-color var(--dds-duration-fast) ease;
+    transition: border-color var(--dds-duration-fast) var(--dds-easing-out);
   }
   @media (prefers-reduced-motion: reduce) {
     .dds-text-area {

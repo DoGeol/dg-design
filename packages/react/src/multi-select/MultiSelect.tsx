@@ -42,6 +42,10 @@ export interface MultiSelectRootProps {
   placement?: Placement;
   /** 주면 선택 개수만큼 hidden input을 렌더해 네이티브 폼 제출에 실린다. */
   name?: string;
+  /** ESC로 닫히는지. */
+  closeOnEscape?: boolean;
+  /** 바깥 클릭으로 닫히는지. */
+  closeOnOutsideClick?: boolean;
   children?: React.ReactNode;
 }
 
@@ -53,6 +57,8 @@ function MultiSelectRoot({
   defaultOpen = false,
   onOpenChange,
   placement = "bottom-start",
+  closeOnEscape = true,
+  closeOnOutsideClick = true,
   name,
   children,
 }: MultiSelectRootProps) {
@@ -91,18 +97,22 @@ function MultiSelectRoot({
     onOpenChange,
     placement,
     matchTriggerWidth: true,
+    closeOnEscape,
+    closeOnOutsideClick,
     onOpenFocus: focusSelectedOption,
   });
 
   const fieldCtx = React.useContext(FieldContext);
   const generatedId = React.useId();
   const triggerId = fieldCtx?.inputId ?? generatedId;
+  const contentId = `${generatedId}-content`;
   const typeahead = useTypeahead();
 
   const context = React.useMemo<MultiSelectContextValue>(
     () => ({
       ...overlay,
       triggerId,
+      contentId,
       describedBy: fieldCtx?.describedBy,
       invalid: fieldCtx?.invalid ?? false,
       value: selectedValues,
@@ -114,6 +124,7 @@ function MultiSelectRoot({
     [
       overlay,
       triggerId,
+      contentId,
       fieldCtx?.describedBy,
       fieldCtx?.invalid,
       selectedValues,
@@ -152,6 +163,8 @@ export interface MultiSelectTriggerProps
     VariantProps<typeof trigger> {
   /** 선택이 없을 때 보여줄 내용. 회색으로 표시된다. */
   placeholder?: React.ReactNode;
+  /** 2개 이상 선택됐을 때의 요약 문구. 앱 언어에 맞춰 바꾼다. */
+  formatCount?: (count: number) => React.ReactNode;
 }
 
 /**
@@ -162,16 +175,30 @@ function summarize(
   value: readonly string[],
   options: { value: string; label: React.ReactNode }[],
   placeholder: React.ReactNode,
+  formatCount: (count: number) => React.ReactNode,
 ): React.ReactNode {
   if (value.length === 0) return placeholder;
   if (value.length === 1) {
     return options.find((option) => option.value === value[0])?.label ?? value[0];
   }
-  return `${value.length}개 선택됨`;
+  return formatCount(value.length);
 }
 
 const MultiSelectTrigger = React.forwardRef<HTMLButtonElement, MultiSelectTriggerProps>(
-  ({ className, size, placeholder, children, id, onClick, onKeyDown, ...props }, ref) => {
+  (
+    {
+      className,
+      size,
+      placeholder,
+      formatCount = (count) => `${count}개 선택됨`,
+      children,
+      id,
+      onClick,
+      onKeyDown,
+      ...props
+    },
+    ref,
+  ) => {
     const context = useMultiSelectContext("MultiSelect.Trigger");
     const setRef = React.useMemo(
       () => mergeRefs(ref, context.setTriggerNode as React.Ref<HTMLButtonElement>),
@@ -186,6 +213,7 @@ const MultiSelectTrigger = React.forwardRef<HTMLButtonElement, MultiSelectTrigge
         id={id ?? context.triggerId}
         role="combobox"
         aria-haspopup="listbox"
+        aria-controls={context.open ? context.contentId : undefined}
         aria-expanded={context.open}
         aria-invalid={context.invalid}
         aria-describedby={context.describedBy}
@@ -213,7 +241,7 @@ const MultiSelectTrigger = React.forwardRef<HTMLButtonElement, MultiSelectTrigge
         {...props}
       >
         <span className="dds-select__value" data-placeholder={empty ? "" : undefined}>
-          {children ?? summarize(context.value, context.options, placeholder)}
+          {children ?? summarize(context.value, context.options, placeholder, formatCount)}
         </span>
         <svg
           className="dds-select__caret"
@@ -256,6 +284,7 @@ const MultiSelectContent = React.forwardRef<HTMLDivElement, MultiSelectContentPr
     return createPortal(
       <div
         ref={setRef}
+        id={context.contentId}
         role="listbox"
         aria-multiselectable="true"
         aria-labelledby={context.triggerId}

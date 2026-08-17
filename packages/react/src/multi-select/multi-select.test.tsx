@@ -282,3 +282,18 @@ describe("MultiSelect Field 연동", () => {
     expect(trigger().getAttribute("aria-describedby")).toBeNull();
   });
 });
+
+describe("MultiSelect i18n", () => {
+  it("formatCount로 요약 문구를 바꾼다", () => {
+    render(
+      <MultiSelect.Root value={["apple", "banana"]}>
+        <MultiSelect.Trigger placeholder="고르기" formatCount={(n) => `${n} selected`} />
+        <MultiSelect.Content>
+          <MultiSelect.Option value="apple">Apple</MultiSelect.Option>
+          <MultiSelect.Option value="banana">Banana</MultiSelect.Option>
+        </MultiSelect.Content>
+      </MultiSelect.Root>,
+    );
+    expect(summary()).toBe("2 selected");
+  });
+});

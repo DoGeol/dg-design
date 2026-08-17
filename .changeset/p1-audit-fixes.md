@@ -45,3 +45,12 @@
 - `Tooltip` Provider 그룹에서 다른 툴팁이 열려 있는데도 지연 생략이 풀리던 문제
 - `DropdownMenu` 트리거의 ArrowUp이 마지막 항목이 아니라 첫 항목으로 열리던 문제
 - 닫히는 오버레이가 퇴장 애니메이션 동안 `inert` 상태가 되던 문제
+
+**일관성·접근성 다듬기 (D2~D8)**
+
+- 값까지 같던 오버레이 keyframes를 공용으로 (`keyframes` 26 → 16개, 시각 변화 없음)
+- `closeOnEscape`·`closeOnOutsideClick`을 `DropdownMenu`·`Select`·`MultiSelect`에도 노출(기본값 동일 — 동작 무변경)
+- `Popover`에 `initialFocusRef` 추가 (`Dialog`·`Sheet`와 같은 이름·타입)
+- `Select`·`MultiSelect`·`DropdownMenu` 트리거에 `aria-controls`, `Tooltip`·`HoverCard` arrow에 `aria-hidden`
+- i18n: `Toast.Provider`의 `closeLabel`, `MultiSelect.Trigger`의 `formatCount`
+- `RadioGroup` 비활성 테두리를 `Checkbox`와 같은 정책으로, transition easing 토큰 4곳 적용

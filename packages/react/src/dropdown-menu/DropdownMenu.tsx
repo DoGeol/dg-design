@@ -27,6 +27,10 @@ export interface DropdownMenuRootProps {
   onOpenChange?: (open: boolean) => void;
   /** floating 배치. 공간이 부족하면 flip이 알아서 뒤집는다. */
   placement?: Placement;
+  /** ESC로 닫히는지. */
+  closeOnEscape?: boolean;
+  /** 바깥 클릭으로 닫히는지. */
+  closeOnOutsideClick?: boolean;
   children?: React.ReactNode;
 }
 
@@ -35,6 +39,8 @@ function DropdownMenuRoot({
   defaultOpen = false,
   onOpenChange,
   placement = "bottom-start",
+  closeOnEscape = true,
+  closeOnOutsideClick = true,
   children,
 }: DropdownMenuRootProps) {
   // 초기 포커스는 Content가 아니라 첫 활성 항목 — APG menu button 표준.
@@ -51,13 +57,16 @@ function DropdownMenuRoot({
     defaultOpen,
     onOpenChange,
     placement,
+    closeOnEscape,
+    closeOnOutsideClick,
     onOpenFocus: focusInitialItem,
   });
   const triggerId = React.useId();
+  const contentId = `${triggerId}-content`;
 
   const value = React.useMemo<DropdownMenuContextValue>(
-    () => ({ ...overlay, triggerId, placement, openToLastRef }),
-    [overlay, triggerId, placement],
+    () => ({ ...overlay, triggerId, contentId, placement, openToLastRef }),
+    [overlay, triggerId, contentId, placement],
   );
 
   return <DropdownMenuContext.Provider value={value}>{children}</DropdownMenuContext.Provider>;
@@ -84,6 +93,7 @@ const DropdownMenuTrigger = React.forwardRef<HTMLButtonElement, DropdownMenuTrig
         id={context.triggerId}
         type={asChild ? undefined : "button"}
         aria-haspopup="menu"
+        aria-controls={context.open ? context.contentId : undefined}
         aria-expanded={context.open}
         onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
           onClick?.(event);
@@ -125,6 +135,7 @@ const DropdownMenuContent = React.forwardRef<HTMLDivElement, DropdownMenuContent
     return createPortal(
       <div
         ref={setRef}
+        id={context.contentId}
         role="menu"
         aria-labelledby={context.triggerId}
         data-state={context.open ? "open" : "closed"}

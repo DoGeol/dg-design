@@ -55,10 +55,12 @@ export function useToast(): (options: ToastOptions) => void {
 }
 
 export interface ToastProviderProps {
+  /** 닫기 버튼의 접근 이름. 앱 언어에 맞춰 한 번만 지정한다. */
+  closeLabel?: string;
   children?: React.ReactNode;
 }
 
-function ToastProvider({ children }: ToastProviderProps) {
+function ToastProvider({ closeLabel = "닫기", children }: ToastProviderProps) {
   const [entries, setEntries] = React.useState<ToastEntry[]>([]);
   const [viewport, setViewport] = React.useState<HTMLElement | null>(null);
 
@@ -105,7 +107,13 @@ function ToastProvider({ children }: ToastProviderProps) {
       {viewport &&
         createPortal(
           entries.map((entry) => (
-            <ToastItem key={entry.id} entry={entry} onClose={close} onExited={remove} />
+            <ToastItem
+              key={entry.id}
+              entry={entry}
+              closeLabel={closeLabel}
+              onClose={close}
+              onExited={remove}
+            />
           )),
           viewport,
         )}
@@ -116,11 +124,12 @@ ToastProvider.displayName = "Toast.Provider";
 
 interface ToastItemProps {
   entry: ToastEntry;
+  closeLabel: string;
   onClose: (id: number) => void;
   onExited: (id: number) => void;
 }
 
-function ToastItem({ entry, onClose, onExited }: ToastItemProps) {
+function ToastItem({ entry, closeLabel, onClose, onExited }: ToastItemProps) {
   const { present, ref } = usePresence(entry.open);
   const [hovered, setHovered] = React.useState(false);
   const [focused, setFocused] = React.useState(false);
@@ -160,7 +169,7 @@ function ToastItem({ entry, onClose, onExited }: ToastItemProps) {
       <button
         type="button"
         className="dds-toast__close"
-        aria-label="닫기"
+        aria-label={closeLabel}
         onClick={() => onClose(entry.id)}
       >
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">

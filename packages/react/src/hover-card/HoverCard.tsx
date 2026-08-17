@@ -203,7 +203,7 @@ const HoverCardContent = React.forwardRef<HTMLDivElement, HoverCardContentProps>
         {...props}
       >
         {children}
-        <div ref={context.setArrowNode} className="dds-hover-card__arrow" />
+        <div ref={context.setArrowNode} className="dds-hover-card__arrow" aria-hidden="true" />
       </div>,
       context.container,
     );

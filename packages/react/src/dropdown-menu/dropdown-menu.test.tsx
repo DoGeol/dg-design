@@ -251,3 +251,16 @@ describe("DropdownMenu aria", () => {
     expect(items()).toHaveLength(3);
   });
 });
+
+describe("DropdownMenu aria-controls", () => {
+  it("열렸을 때만 트리거가 Content id를 가리킨다", async () => {
+    const user = userEvent.setup();
+    render(<Basic />);
+    const trigger = screen.getByRole("button", { name: "메뉴" });
+
+    expect(trigger.hasAttribute("aria-controls")).toBe(false);
+
+    await user.click(trigger);
+    expect(trigger.getAttribute("aria-controls")).toBe(screen.getByRole("menu").id);
+  });
+});

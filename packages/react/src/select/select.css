@@ -14,7 +14,7 @@
     color: var(--dds-color-fg-neutral);
     background-color: var(--dds-color-bg-layer-default);
     border: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-neutral);
-    transition: border-color var(--dds-duration-fast) ease;
+    transition: border-color var(--dds-duration-fast) var(--dds-easing-out);
   }
 
   .dds-select__trigger:not(:is(:disabled, [disabled], [data-disabled])):hover {

@@ -244,7 +244,7 @@ const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
         {...props}
       >
         {children}
-        <div ref={context.setArrowNode} className="dds-tooltip__arrow" />
+        <div ref={context.setArrowNode} className="dds-tooltip__arrow" aria-hidden="true" />
       </div>,
       context.container,
     );

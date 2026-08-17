@@ -41,6 +41,10 @@ export interface SelectRootProps {
   placement?: Placement;
   /** 주면 같은 값의 hidden input을 렌더해 네이티브 폼 제출에 실린다. */
   name?: string;
+  /** ESC로 닫히는지. */
+  closeOnEscape?: boolean;
+  /** 바깥 클릭으로 닫히는지. */
+  closeOnOutsideClick?: boolean;
   children?: React.ReactNode;
 }
 
@@ -53,6 +57,8 @@ function SelectRoot(props: SelectRootProps) {
     defaultOpen = false,
     onOpenChange,
     placement = "bottom-start",
+    closeOnEscape = true,
+    closeOnOutsideClick = true,
     name,
     children,
   } = props;
@@ -80,18 +86,22 @@ function SelectRoot(props: SelectRootProps) {
     onOpenChange,
     placement,
     matchTriggerWidth: true,
+    closeOnEscape,
+    closeOnOutsideClick,
     onOpenFocus: focusSelectedOption,
   });
 
   const fieldCtx = React.useContext(FieldContext);
   const generatedId = React.useId();
   const triggerId = fieldCtx?.inputId ?? generatedId;
+  const contentId = `${generatedId}-content`;
   const typeahead = useTypeahead();
 
   const context = React.useMemo<SelectContextValue>(
     () => ({
       ...overlay,
       triggerId,
+      contentId,
       describedBy: fieldCtx?.describedBy,
       invalid: fieldCtx?.invalid ?? false,
       value: selectedValue,
@@ -103,6 +113,7 @@ function SelectRoot(props: SelectRootProps) {
     [
       overlay,
       triggerId,
+      contentId,
       fieldCtx?.describedBy,
       fieldCtx?.invalid,
       selectedValue,
@@ -155,6 +166,7 @@ const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerProps>(
         id={id ?? context.triggerId}
         role="combobox"
         aria-haspopup="listbox"
+        aria-controls={context.open ? context.contentId : undefined}
         aria-expanded={context.open}
         aria-invalid={context.invalid}
         aria-describedby={context.describedBy}
@@ -231,6 +243,7 @@ const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps>(
     return createPortal(
       <div
         ref={setRef}
+        id={context.contentId}
         role="listbox"
         aria-labelledby={context.triggerId}
         data-state={context.open ? "open" : "closed"}

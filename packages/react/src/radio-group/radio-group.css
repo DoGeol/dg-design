@@ -89,8 +89,9 @@
     outline-offset: var(--dds-dimension-x0_5);
   }
 
+  /* disabled는 테두리도 연하게 — enabled와 같은 진한 테두리면 위계가 없다(Checkbox와 동일 정책). */
   .dds-radio__input:is(:disabled, [disabled], [data-disabled]) ~ .dds-radio__box {
-    border-color: var(--dds-color-stroke-neutral);
+    border-color: var(--dds-color-stroke-neutral-weak);
     background-color: var(--dds-color-bg-disabled);
   }
   .dds-radio__input:is(:disabled, [disabled], [data-disabled]) ~ .dds-radio__box .dds-radio__dot {

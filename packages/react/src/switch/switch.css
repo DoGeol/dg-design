@@ -44,7 +44,7 @@
     background-color: var(--dds-color-fg-brand-contrast);
     border-radius: var(--dds-radius-r-full);
     transform: translate(0, -50%);
-    transition: transform var(--dds-duration-fast) ease;
+    transition: transform var(--dds-duration-fast) var(--dds-easing-out);
   }
   @media (prefers-reduced-motion: reduce) {
     .dds-switch__thumb {

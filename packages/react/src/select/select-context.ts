@@ -6,6 +6,8 @@ import type { Overlay } from "../internal/use-overlay";
 export interface SelectContextValue extends Overlay {
   /** Field 안이면 Field의 inputId — Field.Label의 htmlFor가 트리거 버튼을 가리킨다. */
   triggerId: string;
+  /** Content의 안정적 id — 트리거의 aria-controls가 가리킨다. */
+  contentId: string;
   describedBy: string | undefined;
   invalid: boolean;
   value: string | undefined;

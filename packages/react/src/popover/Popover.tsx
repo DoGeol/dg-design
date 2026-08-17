@@ -24,6 +24,8 @@ export interface PopoverRootProps {
    * false면 포커스를 아예 건드리지 않는다(예: 입력 중이던 필드 옆에 뜨는 참조용 팝오버).
    */
   autoFocus?: boolean;
+  /** `autoFocus`일 때 Content 대신 포커스할 요소 — Dialog·Sheet와 같은 이름·타입. */
+  initialFocusRef?: React.RefObject<HTMLElement | null>;
   /** ESC로 닫히는지. */
   closeOnEscape?: boolean;
   /** 바깥 클릭으로 닫히는지. */
@@ -37,15 +39,16 @@ function PopoverRoot({
   onOpenChange,
   placement = "bottom",
   autoFocus = true,
+  initialFocusRef,
   closeOnEscape = true,
   closeOnOutsideClick = true,
   children,
 }: PopoverRootProps) {
   const focusContent = React.useCallback(
     (content: HTMLElement) => {
-      if (autoFocus) content.focus();
+      if (autoFocus) (initialFocusRef?.current ?? content).focus();
     },
-    [autoFocus],
+    [autoFocus, initialFocusRef],
   );
 
   const overlay = useOverlay({

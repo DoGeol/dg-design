@@ -16,6 +16,8 @@ export interface DropdownMenuContextValue {
   /** Content를 floating 요소로 등록한다. */
   setContentNode: (node: HTMLElement | null) => void;
   triggerId: string;
+  /** Content의 안정적 id — 트리거의 aria-controls가 가리킨다. */
+  contentId: string;
   placement: Placement;
   setOpen: (next: boolean) => void;
   /**
