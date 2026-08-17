@@ -1,0 +1,102 @@
+@layer dds {
+  .dds-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--dds-dimension-x2);
+    box-sizing: border-box;
+    padding: var(--dds-dimension-x4);
+    border-radius: var(--dds-radius-r2);
+    font-family: inherit;
+    background-color: var(--dds-alert-bg);
+    color: var(--dds-alert-fg);
+  }
+
+  .dds-alert__icon {
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+
+  .dds-alert__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--dds-dimension-x1);
+    min-width: 0;
+    flex: 1;
+  }
+
+  .dds-alert__title {
+    margin: 0;
+    font-size: var(--dds-font-size-t4);
+    line-height: var(--dds-line-height-t4);
+    font-weight: var(--dds-font-weight-bold);
+  }
+
+  .dds-alert__description {
+    margin: 0;
+    font-size: var(--dds-font-size-t3);
+    line-height: var(--dds-line-height-t3);
+    font-weight: var(--dds-font-weight-regular);
+  }
+
+  .dds-alert__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: var(--dds-dimension-x6);
+    height: var(--dds-dimension-x6);
+    padding: 0;
+    border: none;
+    border-radius: var(--dds-radius-r1);
+    background-color: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .dds-alert__close:hover {
+    background-color: var(--dds-color-bg-transparent-hover);
+  }
+
+  .dds-alert__close:active {
+    background-color: var(--dds-color-bg-transparent-pressed);
+  }
+
+  .dds-alert__close:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  /* intent: local variables only, no variant layer — Alert has a single visual
+     treatment (bg-{intent}-weak + fg-{intent}), unlike Badge's solid/weak/outline.
+     Badge의 2층 구조에서 variant 층이 1개로 줄어든 형태. */
+  .dds-alert--intent_brand {
+    --dds-alert-bg: var(--dds-color-bg-brand-weak);
+    --dds-alert-fg: var(--dds-color-fg-brand);
+  }
+
+  .dds-alert--intent_neutral {
+    --dds-alert-bg: var(--dds-color-bg-neutral-weak);
+    --dds-alert-fg: var(--dds-color-fg-neutral);
+  }
+
+  .dds-alert--intent_critical {
+    --dds-alert-bg: var(--dds-color-bg-critical-weak);
+    --dds-alert-fg: var(--dds-color-fg-critical);
+  }
+
+  .dds-alert--intent_positive {
+    --dds-alert-bg: var(--dds-color-bg-positive-weak);
+    --dds-alert-fg: var(--dds-color-fg-positive);
+  }
+
+  .dds-alert--intent_warning {
+    --dds-alert-bg: var(--dds-color-bg-warning-weak);
+    --dds-alert-fg: var(--dds-color-fg-warning);
+  }
+
+  .dds-alert--intent_informative {
+    --dds-alert-bg: var(--dds-color-bg-informative-weak);
+    --dds-alert-fg: var(--dds-color-fg-informative);
+  }
+}

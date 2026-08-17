@@ -1,0 +1,42 @@
+@layer dds {
+  /* border 트릭 원 스피너: border-color를 currentColor로 두고 한 변만 투명하게 비워
+     회전 시 "빠진 조각"이 도는 것처럼 보인다. currentColor라 부모(Button 등)의 글자색을
+     그대로 따라간다 — 별도 색 지정이 없어 신규 색 토큰도 0. */
+  .dds-spinner {
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: var(--dds-radius-r-full);
+    border-style: solid;
+    border-color: currentColor;
+    border-top-color: transparent;
+    animation: dds-spinner-spin var(--dds-duration-spin) var(--dds-easing-linear) infinite;
+  }
+
+  /* size: Button(small 36px·medium 40px·large 52px) 안에 얹혀도 여백이 남는 두 단계.
+     16px/20px는 흔한 인라인 아이콘 크기 — Select 화살표(20px대)와 같은 눈금. */
+  .dds-spinner--size_small {
+    width: var(--dds-dimension-x4);
+    height: var(--dds-dimension-x4);
+    border-width: var(--dds-dimension-x0_5);
+  }
+
+  .dds-spinner--size_medium {
+    width: var(--dds-dimension-x5);
+    height: var(--dds-dimension-x5);
+    border-width: var(--dds-dimension-x0_5);
+  }
+
+  @keyframes dds-spinner-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* 다른 컴포넌트와 동일하게 reduce에서는 애니메이션을 끈다(정지 프레임). Spinner는
+     유한 전이가 아니라 무한 반복이라 "느리게"가 아니라 "고정"이 곧 무력화다. */
+  @media (prefers-reduced-motion: reduce) {
+    .dds-spinner {
+      animation: none;
+    }
+  }
+}

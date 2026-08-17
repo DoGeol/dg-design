@@ -1,0 +1,45 @@
+@layer dds {
+  /* 트랙: neutral-weak 배경 재사용, 신규 색 토큰 0. 두께 6px(x1_5)는 흔한 진행바 눈금. */
+  .dds-progress {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--dds-dimension-x1_5);
+    border-radius: var(--dds-radius-r-full);
+    background-color: var(--dds-color-bg-neutral-weak);
+  }
+
+  .dds-progress__indicator {
+    height: 100%;
+    border-radius: inherit;
+    background-color: var(--dds-color-bg-brand-solid);
+    transition: width var(--dds-duration-base) var(--dds-easing-out);
+  }
+
+  /* indeterminate: 값을 모를 때 고정폭(40%) 바가 트랙을 왕복 — Spinner와 같은
+     무한 반복용 토큰(duration-spin·easing-linear) 재사용, 신규 모션 토큰 없음. */
+  .dds-progress[data-indeterminate] .dds-progress__indicator {
+    width: 40%;
+    animation: dds-progress-indeterminate var(--dds-duration-spin) var(--dds-easing-linear)
+      infinite;
+  }
+
+  @keyframes dds-progress-indeterminate {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(350%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dds-progress__indicator {
+      transition: none;
+    }
+    .dds-progress[data-indeterminate] .dds-progress__indicator {
+      animation: none;
+    }
+  }
+}
