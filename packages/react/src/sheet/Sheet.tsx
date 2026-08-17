@@ -1,3 +1,4 @@
+import "../internal/overlay-motion.css";
 import "./sheet.css";
 
 import { Slot } from "@radix-ui/react-slot";

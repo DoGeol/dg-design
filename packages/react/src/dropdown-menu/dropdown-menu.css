@@ -17,12 +17,12 @@
     box-shadow: var(--dds-shadow-overlay);
     color: var(--dds-color-fg-neutral);
     font-family: inherit;
-    animation: dds-dropdown-menu-in var(--dds-duration-fast) var(--dds-easing-out);
+    animation: dds-overlay-pop-in var(--dds-duration-fast) var(--dds-easing-out);
   }
 
   /* forwards가 없으면 animationend와 unmount 사이에 base 스타일로 스냅백해 번쩍인다. */
   .dds-dropdown-menu__content[data-state="closed"] {
-    animation-name: dds-dropdown-menu-out;
+    animation-name: dds-overlay-pop-out;
     animation-fill-mode: forwards;
   }
 
@@ -79,26 +79,6 @@
     font-weight: var(--dds-font-weight-bold);
   }
 
-  @keyframes dds-dropdown-menu-in {
-    from {
-      opacity: 0;
-      transform: scale(0.96);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  @keyframes dds-dropdown-menu-out {
-    from {
-      opacity: 1;
-      transform: scale(1);
-    }
-    to {
-      opacity: 0;
-      transform: scale(0.96);
-    }
-  }
 
   /* presence는 계산된 애니메이션 길이를 읽는다 — 여기서 0이 되면 즉시 언마운트된다. */
   @media (prefers-reduced-motion: reduce) {

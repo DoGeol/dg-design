@@ -1,3 +1,4 @@
+import "../internal/overlay-motion.css";
 import "./select.css";
 
 import type { Placement } from "@floating-ui/dom";

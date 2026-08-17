@@ -1,3 +1,4 @@
+import "../internal/overlay-motion.css";
 import "./tooltip.css";
 
 import type { Placement } from "@floating-ui/dom";

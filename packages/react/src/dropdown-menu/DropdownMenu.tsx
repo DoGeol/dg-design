@@ -1,3 +1,4 @@
+import "../internal/overlay-motion.css";
 import "./dropdown-menu.css";
 
 import type { Placement } from "@floating-ui/dom";

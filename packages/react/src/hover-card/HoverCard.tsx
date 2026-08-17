@@ -1,3 +1,4 @@
+import "../internal/overlay-motion.css";
 import "./hover-card.css";
 
 import type { Placement } from "@floating-ui/dom";

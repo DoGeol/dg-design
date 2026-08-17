@@ -1,0 +1,50 @@
+@layer dds {
+  /*
+   * 여러 오버레이가 값까지 똑같이 쓰던 keyframes만 모았다. 클래스·셀렉터는 각 컴포넌트가
+   * 그대로 갖는다 — 애니메이션 배선(어느 요소에 어떤 duration으로 거는지)은 한 파일만 읽고
+   * 파악할 수 있어야 해서, 여기로 옮기는 것은 "무엇이 움직이는가"뿐이다.
+   *
+   * 진짜로 다른 모션은 각자 자기 파일에 남는다: toast(가로 슬라이드),
+   * dialog content(중앙 정렬 transform 포함), sheet content(4방향).
+   */
+
+  /* 트리거 근처에 뜨는 패널 공용 — popover·tooltip·hover-card·dropdown-menu·select. */
+  @keyframes dds-overlay-pop-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes dds-overlay-pop-out {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+  }
+
+  /* 전체 화면 백드롭 공용 — dialog·sheet의 Overlay. */
+  @keyframes dds-overlay-fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes dds-overlay-fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+}
