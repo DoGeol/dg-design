@@ -38,3 +38,10 @@
 - `Spinner`·`Progress` 추가, `Button`에 `loading` 추가
 - **live region 정책 신설** — critical intent는 `role="alert"`, 나머지는 `role="status"`. DDS에 live region이 하나도 없어 비동기 결과가 스크린리더에 전달되지 않던 문제
 - 토큰 `--dds-z-toast`·`--dds-duration-spin`·`--dds-easing-linear` 신설
+
+**버그 수정 (B3~B6)**
+
+- `ContextMenu`가 닫힐 때 포커스가 트리거로 돌아오지 않고 사라지던 문제
+- `Tooltip` Provider 그룹에서 다른 툴팁이 열려 있는데도 지연 생략이 풀리던 문제
+- `DropdownMenu` 트리거의 ArrowUp이 마지막 항목이 아니라 첫 항목으로 열리던 문제
+- 닫히는 오버레이가 퇴장 애니메이션 동안 `inert` 상태가 되던 문제
