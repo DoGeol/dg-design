@@ -8,7 +8,7 @@ Dogeol Design System (DDS). [daangn/seed-design](https://github.com/daangn/seed-
 
 | 패키지 | 버전 | 설명 |
 |--------|------|------|
-| [`@dg-design/tokens`](https://www.npmjs.com/package/@dg-design/tokens) | 0.6.0 | OKLCH 파생 팔레트 → CSS 변수 + Tailwind v4 브릿지 + 타입. 코드젠에 WCAG 대비 검사 내장 |
+| [`@dg-design/tokens`](https://www.npmjs.com/package/@dg-design/tokens) | 0.7.0 | OKLCH 파생 팔레트 → CSS 변수 + Tailwind v4 브릿지 + 타입. 코드젠에 WCAG 대비 검사 내장 |
 | [`@dg-design/react`](https://www.npmjs.com/package/@dg-design/react) | 0.10.0 | React 컴포넌트 21종 (Button, Badge, NotificationBadge, Alert, Toast, Spinner, Progress, Checkbox, Switch, TextField·Field, TextArea, RadioGroup, Select, MultiSelect, Dialog, Sheet, DropdownMenu, ContextMenu, Tooltip, Popover, HoverCard). plain CSS + CVA, Tailwind 비종속 |
 
 ## 사용
