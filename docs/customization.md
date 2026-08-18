@@ -77,7 +77,7 @@ npx @dg-design/tokens --brand "#6D28D9" -o dds-tokens.css
 
 실패 시 exit 1 + 진단 stderr. 함수·CLI 모두 의존성 0.
 
-> 이 절은 스펙([docs/specs/2026-08-19-theme-generator.md](specs/2026-08-19-theme-generator.md))이 고정한 시그니처를 기준으로 썼다. 구현이 같은 웨이브에서 병행 진행 중이라, 실제 export 경로가 이와 다르면 위 import 한 줄만 바뀐다.
+> 유채색이면 어떤 hue든 통과한다(360개 전수 스윕이 빌드마다 이를 고정한다). 무채색 hex는 hue를 추출할 수 없어 거부된다. 배경 결정은 [스펙](specs/archive/2026-08-19-theme-generator.md)과 [구현 결정 기록](decisions/2026-08-19-theme-generator-implementation.md) 참조.
 
 ## 비공개 표면
 

@@ -35,6 +35,7 @@
 | [2026-08-16 Tooltip·Popover 구현 중 결정](decisions/2026-08-16-tooltip-popover-implementation.md) | 활성 | Provider ref 신호, use-overlay 옵션화 수용(D1), Popover.Arrow 합성 |
 | [2026-08-16 소형 묶음 2 구현 중 결정](decisions/2026-08-16-small-batch-2-implementation.md) | 활성 | NB 단층 CSS·children Omit, HC 스케줄 복제·비모달 스택·트리거 a, defaultOpen 데모 |
 | [2026-08-17 알림 묶음 구현 중 결정](decisions/2026-08-17-feedback-batch-implementation.md) | 활성 | inert 면제 범위, z-toast·linear easing 근거, Toast 타이머·마크업, VR reducedMotion 무효 발견 |
+| [2026-08-19 테마 생성기 구현 중 결정](decisions/2026-08-19-theme-generator-implementation.md) | 활성 | **솔버 비단조 버그(hue 264)와 노랑 전제 반전**, tsc 방출·index 재수출, Tailwind 실측 3건 |
 | [2026-08-16 파생 3종 구현 중 결정](decisions/2026-08-16-batch-3-implementation.md) | 활성 | select-core 추출·useOptionRegistry, Sheet side는 Root·radius 0, ContextMenu primitive 직결, **레시피 코드젠 불채택과 새 트리거** |
 
 ## 스펙
@@ -57,6 +58,7 @@
 | [Tooltip·Popover](specs/archive/2026-08-16-tooltip-popover.md) | 0.8.0 | Provider 그룹 지연, autoFocus 겸용, arrow, 탭 포커스 열림(표준 이탈) |
 | [소형 묶음 2](specs/archive/2026-08-16-small-batch-2.md) | 0.9.0 | NotificationBadge(count·max·isShowEmpty)·HoverCard(hover 전용, 콘텐츠 유지) |
 | [알림 묶음](specs/archive/2026-08-17-feedback-batch.md) | 미배포 | Toast(훅 API·모달 위)·Alert·Spinner·Progress·Button loading, live region 정책 |
+| [테마 생성기](specs/archive/2026-08-19-theme-generator.md) | 미배포 | createTheme(hex→WCAG 통과 테마)·CLI·브릿지 보강·커스터마이즈 계약 |
 | [파생 3종](specs/archive/2026-08-16-multi-select-sheet-context-menu.md) | 0.9.0 | MultiSelect(요약 트리거·토글)·Sheet(4방향)·ContextMenu(마우스 전용) + internal 추출 |
 
 각 스펙의 인터뷰 기록은 같은 이름 `-interview.md`로 분리돼 있다.
