@@ -101,3 +101,5 @@ module.exports = {};
 ## 스타일 오버라이드
 
 `className` prop으로 오버라이드한다. 컴포넌트가 방출하는 CSS 클래스 이름(`.dds-button--variant_solid` 등)은 **공개 API가 아니며** 예고 없이 바뀔 수 있다 — 직접 참조하지 말 것.
+
+`className`과 컴포넌트 CSS(`@layer dds`)가 실제로 어떤 순서로 이기는지, 토큰 오버라이드·`createTheme` 전체 브랜드 교체까지 포함한 계약 전체는 [docs/customization.md](../../docs/customization.md) 참고.

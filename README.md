@@ -40,5 +40,6 @@ pnpm --filter @dg-design/storybook dev   # Storybook (다크 토글 툴바 내�
 
 ## 문서
 
+- 커스터마이즈(토큰 오버라이드·`@layer` 규칙·`createTheme`): [docs/customization.md](docs/customization.md)
 - 아키텍처·토큰 체계 결정: [docs/decisions/](docs/decisions/)
 - 완료된 스펙(이력): [docs/specs/archive/](docs/specs/archive/)

@@ -14,6 +14,10 @@
 
 [follow-ups.md](follow-ups.md) — 남은 것 3건과 각각의 착수 조건, 그리고 "모르면 첫 시도에서 틀리는" 실측 사실 4가지.
 
+## 가이드
+
+[customization.md](customization.md) — 소비 프로젝트 커스터마이즈 계약: 공개/비공개 표면, `@layer` 규칙, `createTheme`, 예시 3종.
+
 ## 결정 기록
 
 | 문서 | 상태 | 다루는 것 |

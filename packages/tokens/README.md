@@ -38,3 +38,7 @@ import "@dg-design/tokens/tokens.css";
 | 공개 | 비공개 |
 |------|--------|
 | semantic 색 토큰 · dimension/radius/typography 스케일 · `data-dds-theme` · exports 경로 | `--dds-color-palette-*` |
+
+## 커스터마이즈
+
+브랜드 hex 하나로 전체 토큰 CSS를 새로 생성하는 `createTheme`(+ CLI), 토큰 오버라이드, `@layer` 규칙은 [docs/customization.md](../../docs/customization.md)에서 다룬다.
