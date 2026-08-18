@@ -38,11 +38,14 @@
   },
   "scripts": {
     "generate": "node --disable-warning=ExperimentalWarning src/generate.ts",
-    "build": "pnpm run generate",
+    "build": "pnpm run generate && tsc -p tsconfig.build.json && node --disable-warning=ExperimentalWarning src/create-theme.check.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/node": "^22.20.1",
     "typescript": "catalog:"
+  },
+  "bin": {
+    "dds-tokens": "./dist/cli.js"
   }
 }
