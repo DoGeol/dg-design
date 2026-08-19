@@ -33,9 +33,17 @@
       "types": "./dist/badge/Badge.d.ts",
       "default": "./dist/badge/Badge.js"
     },
+    "./breadcrumb": {
+      "types": "./dist/breadcrumb/Breadcrumb.d.ts",
+      "default": "./dist/breadcrumb/Breadcrumb.js"
+    },
     "./button": {
       "types": "./dist/button/Button.d.ts",
       "default": "./dist/button/Button.js"
+    },
+    "./card": {
+      "types": "./dist/card/Card.d.ts",
+      "default": "./dist/card/Card.js"
     },
     "./checkbox": {
       "types": "./dist/checkbox/Checkbox.d.ts",
@@ -69,6 +77,10 @@
       "types": "./dist/notification-badge/NotificationBadge.d.ts",
       "default": "./dist/notification-badge/NotificationBadge.js"
     },
+    "./pagination": {
+      "types": "./dist/pagination/Pagination.d.ts",
+      "default": "./dist/pagination/Pagination.js"
+    },
     "./popover": {
       "types": "./dist/popover/Popover.d.ts",
       "default": "./dist/popover/Popover.js"
@@ -96,6 +108,14 @@
     "./switch": {
       "types": "./dist/switch/Switch.d.ts",
       "default": "./dist/switch/Switch.js"
+    },
+    "./table": {
+      "types": "./dist/table/Table.d.ts",
+      "default": "./dist/table/Table.js"
+    },
+    "./tabs": {
+      "types": "./dist/tabs/Tabs.d.ts",
+      "default": "./dist/tabs/Tabs.js"
     },
     "./text-area": {
       "types": "./dist/text-area/TextArea.d.ts",

@@ -1,0 +1,38 @@
+@layer dds {
+  .dds-pagination__list {
+    display: flex;
+    align-items: center;
+    gap: var(--dds-dimension-x1);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* 색·hover·pressed·focus-visible은 재사용한 button.css 클래스가 전부 맡는다 —
+     여기서는 anchor 기본값(밑줄) 하나만 지운다. */
+  .dds-pagination__link {
+    text-decoration: none;
+  }
+
+  .dds-pagination__ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--dds-dimension-x10);
+    height: var(--dds-dimension-x10);
+    color: var(--dds-color-fg-neutral-weak);
+  }
+
+  /* 저장소에 공용 sr-only 유틸이 없어(스펙 확인) 여기서 로컬로 정의한다. */
+  .dds-pagination__sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}

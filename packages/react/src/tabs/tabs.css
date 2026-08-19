@@ -1,0 +1,75 @@
+@layer dds {
+  .dds-tabs {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .dds-tabs__list {
+    display: flex;
+    flex-shrink: 0;
+    gap: var(--dds-dimension-x1);
+    border-bottom: 1px solid var(--dds-color-stroke-neutral-weak);
+  }
+
+  .dds-tabs__trigger {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--dds-dimension-x1);
+    min-height: var(--dds-dimension-x9);
+    padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2);
+    border: 0;
+    /* 활성 밑줄은 비활성일 때도 투명하게 자리를 잡아 전환 시 글자가 흔들리지 않는다.
+       list의 1px 경계선 위에 겹쳐 그리려고 그만큼 아래로 당긴다. */
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    border-radius: var(--dds-radius-r1) var(--dds-radius-r1) 0 0;
+    background-color: transparent;
+    color: var(--dds-color-fg-neutral-weak);
+    font-family: inherit;
+    font-size: var(--dds-font-size-t4);
+    line-height: var(--dds-line-height-t4);
+    font-weight: var(--dds-font-weight-bold);
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .dds-tabs__trigger:hover:not(:is(:disabled, [disabled], [data-disabled])) {
+    background-color: var(--dds-color-bg-transparent-hover);
+    color: var(--dds-color-fg-neutral);
+  }
+
+  .dds-tabs__trigger:active:not(:is(:disabled, [disabled], [data-disabled])) {
+    background-color: var(--dds-color-bg-transparent-pressed);
+  }
+
+  .dds-tabs__trigger[data-state="active"] {
+    border-bottom-color: var(--dds-color-fg-brand);
+    color: var(--dds-color-fg-brand);
+  }
+
+  .dds-tabs__trigger:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: calc(-1 * var(--dds-dimension-x0_5));
+  }
+
+  .dds-tabs__trigger:is(:disabled, [disabled], [data-disabled]) {
+    color: var(--dds-color-fg-disabled);
+    cursor: not-allowed;
+  }
+
+  /* display를 정하지 않는다 — 정하는 순간 [hidden]의 display:none을 이겨 비활성
+     패널이 그대로 보인다. */
+  .dds-tabs__content {
+    padding-top: var(--dds-dimension-x3);
+    color: var(--dds-color-fg-neutral);
+    font-size: var(--dds-font-size-t4);
+    line-height: var(--dds-line-height-t4);
+  }
+
+  .dds-tabs__content:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: calc(-1 * var(--dds-dimension-x0_5));
+    border-radius: var(--dds-radius-r1);
+  }
+}

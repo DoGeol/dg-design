@@ -1,0 +1,10 @@
+@layer dds {
+  /* padding은 스펙 미고정 — 어드민 카드 여백 관례로 x4(16px) 채택 */
+  .dds-card {
+    box-sizing: border-box;
+    padding: var(--dds-dimension-x4);
+    border: 1px solid var(--dds-color-stroke-neutral-weak);
+    border-radius: var(--dds-radius-r3);
+    background-color: var(--dds-color-bg-layer-default);
+  }
+}

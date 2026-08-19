@@ -1,0 +1,51 @@
+@layer dds {
+  .dds-table__wrapper {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .dds-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--dds-color-fg-neutral);
+    font-family: inherit;
+  }
+
+  .dds-table__row {
+    border-bottom: 1px solid var(--dds-color-stroke-neutral-weak);
+  }
+
+  .dds-table__row:hover {
+    background-color: var(--dds-color-bg-transparent-hover);
+  }
+
+  /* padding은 스펙 미고정 — Card(x4) 관례를 잇는 어드민 표 여백으로 x3/x4 채택.
+     text-align:left는 th 기본값(center)만 실제로 덮어쓰지만 td에도 명시해 표 전체
+     정렬 기준을 한곳에서 고정한다 (소비자는 className/style로 얼마든지 재정의). */
+  .dds-table__head,
+  .dds-table__cell {
+    box-sizing: border-box;
+    padding: var(--dds-dimension-x3) var(--dds-dimension-x4);
+    text-align: left;
+  }
+
+  .dds-table__head {
+    color: var(--dds-color-fg-neutral-weak);
+    font-size: var(--dds-font-size-t3);
+    line-height: var(--dds-line-height-t3);
+    font-weight: var(--dds-font-weight-bold);
+  }
+
+  .dds-table__cell {
+    font-size: var(--dds-font-size-t4);
+    line-height: var(--dds-line-height-t4);
+  }
+
+  .dds-table__caption {
+    padding-block: var(--dds-dimension-x2);
+    color: var(--dds-color-fg-neutral-weak);
+    font-size: var(--dds-font-size-t3);
+    line-height: var(--dds-line-height-t3);
+    text-align: left;
+  }
+}
