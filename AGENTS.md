@@ -5,7 +5,7 @@
 # dg-design
 
 Dogeol Design System (DDS). daangn/seed-design 참고한 개인 디자인시스템.
-**react 0.10.0 · tokens 0.7.0(createTheme) 배포, 컴포넌트 21종.** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
+**react 0.10.0 · tokens 0.7.0 배포, 컴포넌트 26종, 미배포 changeset 대기.** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
 
 ## 절대 규칙
 
