@@ -9,7 +9,9 @@ Dogeol Design System (DDS). [daangn/seed-design](https://github.com/daangn/seed-
 | 패키지 | 버전 | 설명 |
 |--------|------|------|
 | [`@dg-design/tokens`](https://www.npmjs.com/package/@dg-design/tokens) | 0.7.0 | OKLCH 파생 팔레트 → CSS 변수 + Tailwind v4 브릿지 + 타입. 코드젠에 WCAG 대비 검사 내장 |
-| [`@dg-design/react`](https://www.npmjs.com/package/@dg-design/react) | 0.10.0 | React 컴포넌트 21종 (Button, Badge, NotificationBadge, Alert, Toast, Spinner, Progress, Checkbox, Switch, TextField·Field, TextArea, RadioGroup, Select, MultiSelect, Dialog, Sheet, DropdownMenu, ContextMenu, Tooltip, Popover, HoverCard). plain CSS + CVA, Tailwind 비종속 |
+| [`@dg-design/react`](https://www.npmjs.com/package/@dg-design/react) | 0.11.0 | React 컴포넌트 31종 (Accordion, Alert, Avatar, Badge, Breadcrumb, Button, Card, Checkbox, Collapsible, ContextMenu, Dialog, DropdownMenu, TextField·Field, HoverCard, MultiSelect, NotificationBadge, Pagination, Popover, Progress, RadioGroup, Select, Separator, Sheet, Skeleton, Spinner, Switch, Table, Tabs, TextArea, Toast, Tooltip). plain CSS + CVA, Tailwind 비종속 |
+
+Skeleton·Avatar·Separator·Collapsible·Accordion을 담은 minor changeset이 대기 중이며 다음 React 버전은 0.12.0 예정이다. 현재 변경은 미커밋·미배포 상태다.
 
 ## 사용
 

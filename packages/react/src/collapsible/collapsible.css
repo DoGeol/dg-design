@@ -1,0 +1,51 @@
+@layer dds {
+  .dds-collapsible__trigger {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    border: 0;
+    border-radius: var(--dds-radius-r1);
+    background-color: transparent;
+    color: var(--dds-color-fg-neutral);
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .dds-collapsible__trigger:hover:not(:is(:disabled, [disabled], [data-disabled])) {
+    background-color: var(--dds-color-bg-transparent-hover);
+  }
+
+  .dds-collapsible__trigger:active:not(:is(:disabled, [disabled], [data-disabled])) {
+    background-color: var(--dds-color-bg-transparent-pressed);
+  }
+
+  .dds-collapsible__trigger:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-collapsible__trigger:is(:disabled, [disabled], [data-disabled]) {
+    color: var(--dds-color-fg-disabled);
+    cursor: not-allowed;
+  }
+
+  .dds-collapsible__content {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      height var(--dds-duration-base) var(--dds-easing-out),
+      opacity var(--dds-duration-fast) var(--dds-easing-out);
+  }
+
+  .dds-collapsible__content[data-state="open"] {
+    height: var(--dds-collapsible-content-height, auto);
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dds-collapsible__content {
+      transition: none;
+    }
+  }
+}

@@ -25,9 +25,17 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
+    "./accordion": {
+      "types": "./dist/accordion/Accordion.d.ts",
+      "default": "./dist/accordion/Accordion.js"
+    },
     "./alert": {
       "types": "./dist/alert/Alert.d.ts",
       "default": "./dist/alert/Alert.js"
+    },
+    "./avatar": {
+      "types": "./dist/avatar/Avatar.d.ts",
+      "default": "./dist/avatar/Avatar.js"
     },
     "./badge": {
       "types": "./dist/badge/Badge.d.ts",
@@ -48,6 +56,10 @@
     "./checkbox": {
       "types": "./dist/checkbox/Checkbox.d.ts",
       "default": "./dist/checkbox/Checkbox.js"
+    },
+    "./collapsible": {
+      "types": "./dist/collapsible/Collapsible.d.ts",
+      "default": "./dist/collapsible/Collapsible.js"
     },
     "./context-menu": {
       "types": "./dist/context-menu/ContextMenu.d.ts",
@@ -97,9 +109,17 @@
       "types": "./dist/select/Select.d.ts",
       "default": "./dist/select/Select.js"
     },
+    "./separator": {
+      "types": "./dist/separator/Separator.d.ts",
+      "default": "./dist/separator/Separator.js"
+    },
     "./sheet": {
       "types": "./dist/sheet/Sheet.d.ts",
       "default": "./dist/sheet/Sheet.js"
+    },
+    "./skeleton": {
+      "types": "./dist/skeleton/Skeleton.d.ts",
+      "default": "./dist/skeleton/Skeleton.js"
     },
     "./spinner": {
       "types": "./dist/spinner/Spinner.d.ts",

@@ -1,0 +1,53 @@
+@layer dds {
+  .dds-skeleton {
+    display: inline-block;
+    box-sizing: border-box;
+    overflow: hidden;
+    background-color: var(--dds-color-bg-neutral-weak);
+  }
+
+  .dds-skeleton::after {
+    display: block;
+    width: 100%;
+    height: 100%;
+    content: "";
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--dds-color-bg-neutral-weak-hover) 50%,
+      transparent 100%
+    );
+    animation: dds-skeleton-shimmer var(--dds-duration-spin) var(--dds-easing-linear) infinite;
+  }
+
+  .dds-skeleton--radius_none {
+    border-radius: 0;
+  }
+
+  .dds-skeleton--radius_small {
+    border-radius: var(--dds-radius-r2);
+  }
+
+  .dds-skeleton--radius_medium {
+    border-radius: var(--dds-radius-r4);
+  }
+
+  .dds-skeleton--radius_full {
+    border-radius: var(--dds-radius-r-full);
+  }
+
+  @keyframes dds-skeleton-shimmer {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dds-skeleton::after {
+      animation: none;
+    }
+  }
+}

@@ -8,6 +8,8 @@ const INDEX_JSON = path.resolve(HERE, "../../storybook/storybook-static/index.js
 
 const SPINNER = "spinner--state-matrix";
 const PROGRESS = "progress--state-matrix";
+const SKELETON = "skeleton--state-matrix";
+const COLLAPSIBLE = "collapsible--state-matrix";
 
 /** 스토리가 아직 빌드에 없을 수 있다 — 실패 대신 스킵. */
 function hasStory(id: string): boolean {
@@ -60,5 +62,27 @@ test.describe("prefers-reduced-motion", () => {
     });
     expect(animationName).toBe("none");
     expect(transitionDuration === "0s" || transitionDuration === "").toBe(true);
+  });
+
+  test("Skeleton shimmer가 멈춘다", async ({ page }) => {
+    test.skip(!hasStory(SKELETON), `스토리 없음: ${SKELETON}`);
+    await page.goto(`/iframe.html?id=${SKELETON}&viewMode=story`);
+    const skeleton = page.locator(".dds-skeleton").first();
+
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await expect
+      .poll(() => skeleton.evaluate((el) => getComputedStyle(el, "::after").animationName))
+      .toBe("none");
+  });
+
+  test("Collapsible 전환이 즉시 끝난다", async ({ page }) => {
+    test.skip(!hasStory(COLLAPSIBLE), `스토리 없음: ${COLLAPSIBLE}`);
+    await page.goto(`/iframe.html?id=${COLLAPSIBLE}&viewMode=story`);
+    const content = page.locator(".dds-collapsible__content").first();
+
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await expect
+      .poll(() => content.evaluate((el) => getComputedStyle(el).transitionDuration))
+      .toBe("0s");
   });
 });

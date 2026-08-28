@@ -38,6 +38,7 @@
 | [2026-08-19 테마 생성기 구현 중 결정](decisions/2026-08-19-theme-generator-implementation.md) | 활성 | **솔버 비단조 버그(hue 264)와 노랑 전제 반전**, tsc 방출·index 재수출, Tailwind 실측 3건 |
 | [2026-08-19 어드민 1차 구현 중 결정](decisions/2026-08-19-admin-batch-implementation.md) | 활성 | Tabs onFocus 활성화·키 별칭 roving·hidden display 함정, Table border-collapse, barrel 정렬 실수 |
 | [2026-08-16 파생 3종 구현 중 결정](decisions/2026-08-16-batch-3-implementation.md) | 활성 | select-core 추출·useOptionRegistry, Sheet side는 Root·radius 0, ContextMenu primitive 직결, **레시피 코드젠 불채택과 새 트리거** |
+| [2026-08-28 우선순위 컴포넌트 1차 구현 중 결정](decisions/2026-08-28-priority-components-batch-implementation.md) | 활성 | 5종 구현 경계, Accordion duplicate value ID P1 수정, Storybook P2 보완, 최종 검증 |
 
 ## 스펙
 
@@ -62,5 +63,6 @@
 | [테마 생성기](specs/archive/2026-08-19-theme-generator.md) | 미배포 | createTheme(hex→WCAG 통과 테마)·CLI·브릿지 보강·커스터마이즈 계약 |
 | [어드민 1차](specs/archive/2026-08-19-admin-batch.md) | 미배포 | Table·Card·Tabs·Pagination·Breadcrumb — 로직은 소비자, automatic 탭 |
 | [파생 3종](specs/archive/2026-08-16-multi-select-sheet-context-menu.md) | 0.9.0 | MultiSelect(요약 트리거·토글)·Sheet(4방향)·ContextMenu(마우스 전용) + internal 추출 |
+| [우선순위 컴포넌트 1차](specs/archive/2026-08-28-priority-components-batch.md) | 0.12.0 예정 | Skeleton·Avatar·Separator·Collapsible·Accordion, 합격 조건 20/20 |
 
 각 스펙의 인터뷰 기록은 같은 이름 `-interview.md`로 분리돼 있다.

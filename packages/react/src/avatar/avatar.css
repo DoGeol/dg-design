@@ -1,0 +1,44 @@
+@layer dds {
+  .dds-avatar {
+    position: relative;
+    display: inline-flex;
+    flex: none;
+    overflow: visible;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--dds-color-stroke-neutral-weak);
+    border-radius: var(--dds-radius-r-full);
+  }
+
+  .dds-avatar--size_small { width: 24px; height: 24px; }
+  .dds-avatar--size_medium { width: 36px; height: 36px; }
+  .dds-avatar--size_large { width: 48px; height: 48px; }
+  .dds-avatar--size_xlarge { width: 64px; height: 64px; }
+
+  .dds-avatar__image,
+  .dds-avatar__fallback {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+  }
+
+  .dds-avatar__image { object-fit: cover; }
+
+  .dds-avatar__fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: var(--dds-color-bg-neutral-weak);
+    color: var(--dds-color-fg-neutral);
+  }
+
+  .dds-avatar__badge {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    transform: translate(18%, 18%);
+  }
+}

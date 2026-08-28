@@ -1,0 +1,17 @@
+@layer dds {
+  .dds-separator {
+    display: block;
+    flex-shrink: 0;
+    background-color: var(--dds-color-stroke-neutral-weak);
+  }
+
+  .dds-separator--orientation_horizontal {
+    width: 100%;
+    height: 1px;
+  }
+
+  .dds-separator--orientation_vertical {
+    width: 1px;
+    align-self: stretch;
+  }
+}

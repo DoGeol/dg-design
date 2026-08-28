@@ -97,6 +97,8 @@
 
   .dds-checkbox__label {
     color: var(--dds-color-fg-neutral);
+    /* 폰트의 ascender 비율 때문에 기하학적 중앙보다 위로 보여 1px 광학 보정한다. */
+    transform: translateY(1px);
   }
   .dds-checkbox__input:is(:disabled, [disabled], [data-disabled]) ~ .dds-checkbox__label {
     color: var(--dds-color-fg-disabled);
