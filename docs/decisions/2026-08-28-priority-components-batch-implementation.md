@@ -24,7 +24,7 @@
 - 독립 재QA: 5종 전부 PASS.
 - 최종 검증: `pnpm generate`, `pnpm build`, React 32 files/342 tests, `pnpm typecheck`, publint PASS.
 - `pnpm vr`: 56 PASS/62 SKIP. SKIP은 로컬 Linux baseline 부재 정책이며 기준 이미지는 CI에서만 생성한다.
-- 현재 React 버전은 0.11.0이다. minor changeset이 있어 다음 버전은 0.12.0 예정이며 변경은 미커밋·미배포 상태다.
+- React 0.12.0은 npm `latest`로 배포됐고 `@dg-design/react@0.12.0` Git 태그가 `main`의 릴리스 커밋을 가리킨다.
 
 ## 남긴 범위
 

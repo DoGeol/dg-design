@@ -12,7 +12,7 @@
 
 ## 후속 작업
 
-[follow-ups.md](follow-ups.md) — 남은 것 3건과 각각의 착수 조건, 그리고 "모르면 첫 시도에서 틀리는" 실측 사실 4가지.
+[follow-ups.md](follow-ups.md) — 남은 것 2건과 각각의 착수 조건, 그리고 "모르면 첫 시도에서 틀리는" 실측 사실 4가지.
 
 ## 가이드
 
@@ -63,6 +63,6 @@
 | [테마 생성기](specs/archive/2026-08-19-theme-generator.md) | 미배포 | createTheme(hex→WCAG 통과 테마)·CLI·브릿지 보강·커스터마이즈 계약 |
 | [어드민 1차](specs/archive/2026-08-19-admin-batch.md) | 미배포 | Table·Card·Tabs·Pagination·Breadcrumb — 로직은 소비자, automatic 탭 |
 | [파생 3종](specs/archive/2026-08-16-multi-select-sheet-context-menu.md) | 0.9.0 | MultiSelect(요약 트리거·토글)·Sheet(4방향)·ContextMenu(마우스 전용) + internal 추출 |
-| [우선순위 컴포넌트 1차](specs/archive/2026-08-28-priority-components-batch.md) | 0.12.0 예정 | Skeleton·Avatar·Separator·Collapsible·Accordion, 합격 조건 20/20 |
+| [우선순위 컴포넌트 1차](specs/archive/2026-08-28-priority-components-batch.md) | 0.12.0 | Skeleton·Avatar·Separator·Collapsible·Accordion, 합격 조건 20/20 |
 
 각 스펙의 인터뷰 기록은 같은 이름 `-interview.md`로 분리돼 있다.

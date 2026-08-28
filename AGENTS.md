@@ -5,7 +5,7 @@
 # dg-design
 
 Dogeol Design System. daangn/seed-design 참고.
-**react 0.11.0 · tokens 0.7.0, 컴포넌트 31종. minor changeset으로 0.12.0 예정(미커밋·미배포).** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
+**react 0.12.0 · tokens 0.7.0 배포, 컴포넌트 31종.** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
 
 ## 절대 규칙
 
@@ -24,7 +24,7 @@ Dogeol Design System. daangn/seed-design 참고.
 - `pnpm vr` — Playwright 시각 회귀 + 기능 테스트. **기준 이미지는 CI(ubuntu)에서만 생성·갱신**(로컬 `-u`는 가드가 막음, visual-baseline 워크플로 수동 트리거). 얇은 요소 추가는 diff 임계(0.5%) 아래로 조용히 통과하니 스토리 확장 시 기준을 삭제해 재촬영. VR은 `*--state-matrix`를 우선 집으니 **기능 테스트용 데모 스토리는 닫힌 상태로** 두라(열어두면 오버레이가 트리거를 덮는다)
 - `pnpm build` — 전체 빌드(Vite lib + preserveModules). publint는 `pnpm --filter @dg-design/react exec publint`
 - CI: install → generate → build → test → typecheck → publint → vr. tokens dist가 gitignore라 generate 선행, storybook typecheck가 react dist 참조라 build 뒤
-- 배포: changesets. **changeset frontmatter의 `@` 키는 반드시 따옴표 인용**(미인용은 YAML 파싱 실패로 version이 죽는다). publish는 npm 재인증 때문에 사용자가 터미널에서 직접
+- 배포: changesets. **changeset frontmatter의 `@` 키는 반드시 따옴표 인용**(미인용은 YAML 파싱 실패로 version이 죽는다). publish는 npm 웹 로그인과 OTP 승인이 필요할 수 있다
 
 ## 핵심 관습 (변경 시 결정 기록 먼저 확인)
 
