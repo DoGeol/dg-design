@@ -12,7 +12,7 @@
 
 ## 후속 작업
 
-[follow-ups.md](follow-ups.md) — 남은 것 2건과 각각의 착수 조건, 그리고 "모르면 첫 시도에서 틀리는" 실측 사실 4가지.
+[follow-ups.md](follow-ups.md) — 남은 것 1건과 착수 조건, 그리고 "모르면 첫 시도에서 틀리는" 실측 사실 4가지.
 
 ## 가이드
 
@@ -40,6 +40,7 @@
 | [2026-08-16 파생 3종 구현 중 결정](decisions/2026-08-16-batch-3-implementation.md) | 활성 | select-core 추출·useOptionRegistry, Sheet side는 Root·radius 0, ContextMenu primitive 직결, **레시피 코드젠 불채택과 새 트리거** |
 | [2026-08-28 우선순위 컴포넌트 1차 구현 중 결정](decisions/2026-08-28-priority-components-batch-implementation.md) | 활성 | 5종 구현 경계, Accordion duplicate value ID P1 수정, Storybook P2 보완, 최종 검증 |
 | [2026-09-05 컴포넌트 구성 규칙](decisions/2026-09-05-component-composition-rules.md) | 활성 | leaf·compound·preset 판별 순서, 서브컴포넌트 이름 관례, dg-studio 승격 후보 판정 |
+| [2026-09-06 배포 자동화](decisions/2026-09-06-release-automation.md) | 활성 | npm trusted publishing(OIDC)+changesets/action v2, Version PR 머지=배포 승인, setup-node registry-url·pnpm 11 함정 |
 
 ## 스펙
 

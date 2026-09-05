@@ -1,0 +1,55 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+concurrency: release-${{ github.ref }}
+
+permissions:
+  contents: write # Version Packages PR 커밋 · 태그 · GitHub 릴리스
+  pull-requests: write # Version Packages PR 생성
+  id-token: write # npm trusted publishing(OIDC)
+
+env:
+  COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # npm 11(OIDC 지원)이 동봉된 Node 24. registry-url은 주지 않는다 —
+      # 주면 .npmrc에 NODE_AUTH_TOKEN 플레이스홀더가 쓰여 OIDC 대신 빈 토큰이 나가 404가 난다
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Enable pnpm via corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # tokens dist가 gitignore라 generate 선행
+      - name: Generate tokens
+        run: pnpm generate
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Check React package quality
+        run: pnpm --filter @dg-design/react exec publint
+
+      # changeset이 있으면 Version Packages PR을 만들고, 그 PR이 머지된 push에서는 publish한다
+      - name: Version or publish
+        uses: changesets/action@v2
+        with:
+          version-script: pnpm changeset version
+          publish-script: pnpm changeset publish
+          push-git-tags: true
+          create-github-releases: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}

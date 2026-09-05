@@ -1,6 +1,6 @@
 # 후속 작업
 
-0.9.0 검토(렌즈 6개 감사)에서 나온 30건 중 **28건이 처리됐고 2건이 남았다.** 남은 둘은 미루다 남은 게 아니라 **지금 하지 않는 것이 맞다고 판단된 것**들이라, 각각 "무엇이 정해져야 착수할 수 있는지"를 같이 적는다.
+0.9.0 검토(렌즈 6개 감사)에서 나온 30건 중 **29건이 처리됐고 1건이 남았다.** 남은 하나는 미루다 남은 게 아니라 **지금 하지 않는 것이 맞다고 판단된 것**이라, "무엇이 정해져야 착수할 수 있는지"를 같이 적는다.
 
 근거 문서: [0.9.0 감사 결과](decisions/2026-08-17-feedback-batch-implementation.md) 및 각 구현 결정 기록.
 
@@ -16,10 +16,6 @@
 
 **현재 우회**: 색 토큰을 바꾸면 영향 기준을 **지워서** 재촬영한다. 이 절차가 [AGENTS.md](../AGENTS.md)에 기록돼 있다.
 
-### 릴리스 운영 — npm 2FA 승인
-
-0.12.0 배포에서 npm 웹 로그인 뒤에도 OTP가 필요했다. 배포 전 `npm whoami`로 인증을 확인하고, `changeset publish`가 EOTP를 반환하면 웹 승인 또는 터미널의 OTP 입력으로 재시도한다. 스코프 패키지는 권한이 없을 때 403이 아니라 **404(PUT)**로 나오므로, 그건 "패키지 없음"이 아니라 재인증 신호다(`npm whoami`가 401이면 확정).
-
 ## 알아두면 첫 시도에서 안 틀리는 것
 
 이번 세션에서 실측으로 확인된 것들 — 재현 경로와 근거는 `docs/decisions/`에 있다.
@@ -33,11 +29,12 @@
 
 ## 처리된 것
 
-30건 중 28건. 큰 갈래만:
+30건 중 29건. 큰 갈래만:
 
 - **P1 6건** — 중첩 오버레이가 조상을 닫던 문제, controlled 리셋 미반영, Field 미연동 3종, z-index 부재, 보조 텍스트 AA 미달, CSS 트리셰이킹 차단
 - **기능 공백** — Toast(+ live region 정책 신설) · Alert · Spinner · Progress · Button loading · Button critical intent
 - **버그 6건** — 사라진 옵션 선택, RadioGroup 접근 이름, ContextMenu 포커스 소실, Tooltip 그룹 스킵, 닫히는 오버레이 inert, DropdownMenu ArrowUp
 - **테스트 인프라** — Button 테스트 신설, 오버레이 퇴장·재열림 Playwright 커버리지
 - **다듬기 8건** — keyframes 공용화, 닫힘 prop·`initialFocusRef` 비대칭 해소, `aria-controls`·`aria-hidden` 보강, i18n 경로, 테두리 정책, easing 토큰
+- **릴리스 운영** — npm trusted publishing + changesets/action으로 자동화. 근거는 [배포 자동화 결정](decisions/2026-09-06-release-automation.md)
 - **A5 완료** — Tabs에 이어 Skeleton·Avatar·Separator·Collapsible·Accordion 추가. Accordion duplicate value ID P1 수정과 독립 재QA까지 완료
