@@ -25,10 +25,12 @@ export interface TabsRootProps
   value?: string;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
+  /** px 단위 브레이크포인트. 지정 시 이상에서 List 숨김 및 Content 전체 표시 */
+  responsive?: number;
 }
 
 const TabsRoot = React.forwardRef<HTMLDivElement, TabsRootProps>((props, ref) => {
-  const { className, value, defaultValue, onValueChange, children, ...rest } = props;
+  const { className, value, defaultValue, onValueChange, responsive, children, style, ...rest } = props;
 
   const handleChange = React.useCallback(
     (next: string | undefined) => {
@@ -44,15 +46,57 @@ const TabsRoot = React.forwardRef<HTMLDivElement, TabsRootProps>((props, ref) =>
     onChange: handleChange,
   });
 
+  const [isWide, setIsWide] = React.useState(false);
+
+  React.useEffect(() => {
+    if (responsive === undefined || typeof window === "undefined" || !window.matchMedia) {
+      setIsWide(false);
+      return;
+    }
+
+    const mql = window.matchMedia(`(min-width: ${responsive}px)`);
+    setIsWide(mql.matches);
+
+    const handler = (event: MediaQueryListEvent) => {
+      setIsWide(event.matches);
+    };
+
+    if (mql.addEventListener) {
+      mql.addEventListener("change", handler);
+      return () => mql.removeEventListener("change", handler);
+    } else {
+      mql.addListener(handler);
+      return () => mql.removeListener(handler);
+    }
+  }, [responsive]);
+
   const baseId = React.useId();
   const context = React.useMemo(
-    () => ({ value: current, setValue: setCurrent as (next: string) => void, baseId }),
-    [current, setCurrent, baseId],
+    () => ({
+      value: current,
+      setValue: setCurrent as (next: string) => void,
+      baseId,
+      responsive,
+      isWide,
+    }),
+    [current, setCurrent, baseId, responsive, isWide],
   );
+
+  const rootStyle: React.CSSProperties = {
+    ...style,
+    ...(responsive !== undefined ? { ["--dds-tabs-breakpoint" as string]: `${responsive}px` } : {}),
+  };
 
   return (
     <TabsContext.Provider value={context}>
-      <div {...rest} ref={ref} className={clsx("dds-tabs", className)}>
+      <div
+        {...rest}
+        ref={ref}
+        data-responsive={responsive !== undefined ? "" : undefined}
+        data-wide={isWide ? "" : undefined}
+        style={rootStyle}
+        className={clsx("dds-tabs", className)}
+      >
         {children}
       </div>
     </TabsContext.Provider>
@@ -137,6 +181,7 @@ const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
   ({ className, value, ...props }, ref) => {
     const context = useTabsContext("Tabs.Content");
     const selected = context.value === value;
+    const isHidden = context.isWide ? false : !selected;
 
     return (
       <div
@@ -146,7 +191,8 @@ const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
         id={contentId(context.baseId, value)}
         aria-labelledby={triggerId(context.baseId, value)}
         // 언마운트가 아니라 hidden — 패널 안 폼 상태가 탭을 오가도 살아남는다.
-        hidden={!selected}
+        // wide 모드에서는 hidden을 해제하여 모든 패널을 표시한다.
+        hidden={isHidden}
         // 패널에 포커스 가능한 요소가 없어도 키보드로 스크롤할 수 있어야 한다.
         tabIndex={0}
         data-state={selected ? "active" : "inactive"}

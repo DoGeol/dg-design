@@ -38,6 +38,13 @@
     font-weight: var(--dds-font-weight-regular);
   }
 
+  .dds-alert__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--dds-dimension-x2);
+    margin-top: var(--dds-dimension-x2);
+  }
+
   .dds-alert__close {
     display: inline-flex;
     align-items: center;

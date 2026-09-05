@@ -65,3 +65,39 @@ export const StateMatrix: StoryObj<typeof meta> = {
     </div>
   ),
 };
+
+export const Responsive: StoryObj<typeof meta> = {
+  name: "Responsive",
+  render: () => (
+    <div style={{ padding: 24, width: "100%", maxWidth: 800 }}>
+      <p style={{ marginBottom: 12, fontSize: 13, color: "var(--dds-color-fg-neutral-weak)" }}>
+        화면 너비 600px 이상에서 탭 목록이 숨겨지고 모든 패널이 나란히 표시됩니다.
+      </p>
+      <Tabs.Root defaultValue="info" responsive={600}>
+        <Tabs.List aria-label="반응형 탭">
+          <Tabs.Trigger value="info">정보</Tabs.Trigger>
+          <Tabs.Trigger value="settings">설정</Tabs.Trigger>
+          <Tabs.Trigger value="logs">로그</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="info">
+          <div style={{ padding: 16, border: "1px solid var(--dds-color-stroke-neutral-weak)", borderRadius: 8 }}>
+            <h4 style={{ margin: 0, marginBottom: 8 }}>정보 패널</h4>
+            <p style={{ margin: 0 }}>기본 정보가 표시됩니다.</p>
+          </div>
+        </Tabs.Content>
+        <Tabs.Content value="settings">
+          <div style={{ padding: 16, border: "1px solid var(--dds-color-stroke-neutral-weak)", borderRadius: 8 }}>
+            <h4 style={{ margin: 0, marginBottom: 8 }}>설정 패널</h4>
+            <p style={{ margin: 0 }}>설정 항목들이 표시됩니다.</p>
+          </div>
+        </Tabs.Content>
+        <Tabs.Content value="logs">
+          <div style={{ padding: 16, border: "1px solid var(--dds-color-stroke-neutral-weak)", borderRadius: 8 }}>
+            <h4 style={{ margin: 0, marginBottom: 8 }}>로그 패널</h4>
+            <p style={{ margin: 0 }}>시스템 로그가 표시됩니다.</p>
+          </div>
+        </Tabs.Content>
+      </Tabs.Root>
+    </div>
+  ),
+};

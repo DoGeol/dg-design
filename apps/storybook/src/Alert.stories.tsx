@@ -53,3 +53,49 @@ export const StateMatrix: Story = {
     </div>
   ),
 };
+
+/** actions slot과 닫기 버튼이 함께 있는 배너 형태의 스토리 */
+export const WithActions: Story = {
+  name: "With actions",
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 480, padding: 24 }}>
+      <Alert
+        intent="brand"
+        title="임시 저장된 내용이 있습니다"
+        description="이전에 작성하던 초안을 복원하시겠습니까?"
+        actions={
+          <>
+            <button
+              type="button"
+              style={{
+                padding: "4px 12px",
+                borderRadius: 6,
+                border: "none",
+                background: "var(--dds-color-bg-brand-solid)",
+                color: "var(--dds-color-fg-brand-contrast)",
+                cursor: "pointer",
+                fontWeight: "bold",
+              }}
+            >
+              복원
+            </button>
+            <button
+              type="button"
+              style={{
+                padding: "4px 12px",
+                borderRadius: 6,
+                border: "1px solid var(--dds-color-stroke-neutral-weak)",
+                background: "transparent",
+                color: "inherit",
+                cursor: "pointer",
+              }}
+            >
+              폐기
+            </button>
+          </>
+        }
+        onClose={() => {}}
+      />
+    </div>
+  ),
+};

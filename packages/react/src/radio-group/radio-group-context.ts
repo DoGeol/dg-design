@@ -6,6 +6,7 @@ export interface RadioGroupContextValue {
   name: string;
   orientation: "vertical" | "horizontal";
   disabled: boolean;
+  variant?: "default" | "segmented";
 }
 
 export const RadioGroupContext = React.createContext<RadioGroupContextValue | undefined>(

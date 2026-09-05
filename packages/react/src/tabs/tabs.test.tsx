@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as React from "react";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { Tabs } from "./Tabs";
 
@@ -148,5 +148,69 @@ describe("Tabs 접근성", () => {
     expect(tab("첫째").getAttribute("tabindex")).toBe("0");
     expect(tab("둘째").getAttribute("tabindex")).toBe("-1");
     expect(tab("셋째").getAttribute("tabindex")).toBe("-1");
+  });
+});
+
+describe("Tabs responsive", () => {
+  let matchMediaListeners: Array<(event: { matches: boolean }) => void> = [];
+  let currentMatches = false;
+
+  beforeEach(() => {
+    matchMediaListeners = [];
+    currentMatches = false;
+    window.matchMedia = vi.fn().mockImplementation((query: string) => ({
+      matches: currentMatches,
+      media: query,
+      onchange: null,
+      addListener: vi.fn((fn) => matchMediaListeners.push(fn)),
+      removeListener: vi.fn(),
+      addEventListener: vi.fn((_, fn) => matchMediaListeners.push(fn)),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    }));
+  });
+
+  it("responsive prop이 지정되면 data-responsive와 --dds-tabs-breakpoint가 지정된다", () => {
+    render(<Basic responsive={768} />);
+    const root = screen.getByRole("tablist").parentElement!;
+    expect(root.hasAttribute("data-responsive")).toBe(true);
+    expect(root.style.getPropertyValue("--dds-tabs-breakpoint")).toBe("768px");
+  });
+
+  it("wide 화면(matches: true)이면 Root에 data-wide가 붙고 모든 Content의 hidden이 제거된다", () => {
+    currentMatches = true;
+    render(<Basic responsive={768} defaultValue="one" />);
+
+    const root = screen.getByRole("tablist").parentElement!;
+    expect(root.hasAttribute("data-wide")).toBe(true);
+
+    const panels = screen.getAllByRole("tabpanel");
+    expect(panels).toHaveLength(3);
+    for (const p of panels) {
+      expect(p.hasAttribute("hidden")).toBe(false);
+    }
+  });
+
+  it("미디어쿼리 change 이벤트로 wide가 되면 hidden이 제거된다", async () => {
+    const { act } = await import("@testing-library/react");
+    currentMatches = false;
+    render(<Basic responsive={768} defaultValue="one" />);
+
+    expect(screen.getByText("첫째 패널").hasAttribute("hidden")).toBe(false);
+    expect(screen.getByText("메모").closest("[role='tabpanel']")?.hasAttribute("hidden")).toBe(true);
+
+    act(() => {
+      for (const listener of matchMediaListeners) {
+        listener({ matches: true });
+      }
+    });
+
+    const root = screen.getByRole("tablist").parentElement!;
+    expect(root.hasAttribute("data-wide")).toBe(true);
+    const panelsAfter = screen.getAllByRole("tabpanel");
+    expect(panelsAfter).toHaveLength(3);
+    for (const p of panelsAfter) {
+      expect(p.hasAttribute("hidden")).toBe(false);
+    }
   });
 });

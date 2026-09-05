@@ -1,0 +1,132 @@
+@layer dds {
+  .dds-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    display: block;
+    width: 100%;
+    background: transparent;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .dds-slider--size_small {
+    --dds-slider-track-height: 4px;
+    --dds-slider-thumb-size: 14px;
+    height: 14px;
+  }
+
+  .dds-slider--size_medium {
+    --dds-slider-track-height: 6px;
+    --dds-slider-thumb-size: 18px;
+    height: 18px;
+  }
+
+  /* WebKit Track */
+  .dds-slider::-webkit-slider-runnable-track {
+    width: 100%;
+    height: var(--dds-slider-track-height);
+    border-radius: var(--dds-radius-r-full);
+    background: linear-gradient(
+      to right,
+      var(--dds-color-bg-brand-solid) 0%,
+      var(--dds-color-bg-brand-solid) var(--dds-slider-fill, 0%),
+      var(--dds-color-bg-neutral-weak) var(--dds-slider-fill, 0%),
+      var(--dds-color-bg-neutral-weak) 100%
+    );
+    border: none;
+  }
+
+  /* Firefox Track */
+  .dds-slider::-moz-range-track {
+    width: 100%;
+    height: var(--dds-slider-track-height);
+    border-radius: var(--dds-radius-r-full);
+    background: linear-gradient(
+      to right,
+      var(--dds-color-bg-brand-solid) 0%,
+      var(--dds-color-bg-brand-solid) var(--dds-slider-fill, 0%),
+      var(--dds-color-bg-neutral-weak) var(--dds-slider-fill, 0%),
+      var(--dds-color-bg-neutral-weak) 100%
+    );
+    border: none;
+  }
+
+  /* WebKit Thumb */
+  .dds-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+    width: var(--dds-slider-thumb-size);
+    height: var(--dds-slider-thumb-size);
+    border-radius: var(--dds-radius-r-full);
+    background-color: var(--dds-color-bg-layer-default);
+    border: var(--dds-dimension-x0_5) solid var(--dds-color-bg-brand-solid);
+    margin-top: calc((var(--dds-slider-track-height) - var(--dds-slider-thumb-size)) / 2);
+    cursor: pointer;
+    transition: box-shadow 0.15s ease;
+  }
+
+  .dds-slider:not(:is(:disabled, [disabled], [data-disabled])):hover::-webkit-slider-thumb {
+    box-shadow: 0 0 0 6px var(--dds-color-bg-brand-weak);
+  }
+
+  /* Firefox Thumb */
+  .dds-slider::-moz-range-thumb {
+    box-sizing: border-box;
+    width: var(--dds-slider-thumb-size);
+    height: var(--dds-slider-thumb-size);
+    border-radius: var(--dds-radius-r-full);
+    background-color: var(--dds-color-bg-layer-default);
+    border: var(--dds-dimension-x0_5) solid var(--dds-color-bg-brand-solid);
+    cursor: pointer;
+    transition: box-shadow 0.15s ease;
+  }
+
+  .dds-slider:not(:is(:disabled, [disabled], [data-disabled])):hover::-moz-range-thumb {
+    box-shadow: 0 0 0 6px var(--dds-color-bg-brand-weak);
+  }
+
+  /* Focus visible */
+  .dds-slider:focus-visible {
+    outline: none;
+  }
+
+  .dds-slider:focus-visible::-webkit-slider-thumb {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-slider:focus-visible::-moz-range-thumb {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  /* Disabled */
+  .dds-slider:is(:disabled, [disabled], [data-disabled]) {
+    cursor: not-allowed;
+  }
+
+  .dds-slider:is(:disabled, [disabled], [data-disabled])::-webkit-slider-runnable-track {
+    background: var(--dds-color-bg-disabled);
+  }
+
+  .dds-slider:is(:disabled, [disabled], [data-disabled])::-moz-range-track {
+    background: var(--dds-color-bg-disabled);
+  }
+
+  .dds-slider:is(:disabled, [disabled], [data-disabled])::-webkit-slider-thumb {
+    cursor: not-allowed;
+    border-color: var(--dds-color-stroke-neutral-weak);
+    background-color: var(--dds-color-bg-disabled);
+    box-shadow: none;
+  }
+
+  .dds-slider:is(:disabled, [disabled], [data-disabled])::-moz-range-thumb {
+    cursor: not-allowed;
+    border-color: var(--dds-color-stroke-neutral-weak);
+    background-color: var(--dds-color-bg-disabled);
+    box-shadow: none;
+  }
+}

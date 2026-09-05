@@ -22,7 +22,18 @@ export { Select } from "./select/Select";
 export { Separator, type SeparatorProps } from "./separator/Separator";
 export { Sheet } from "./sheet/Sheet";
 export { Skeleton, type SkeletonProps } from "./skeleton/Skeleton";
+export { Slider, type SliderProps } from "./slider/Slider";
 export { Spinner, type SpinnerProps } from "./spinner/Spinner";
+export {
+  StatePanel,
+  type StatePanelRootProps,
+  type StatePanelIconProps,
+  type StatePanelTitleProps,
+  type StatePanelDescriptionProps,
+  type StatePanelActionsProps,
+  type StatePanelFooterProps,
+  type StatePanelLoadingProps,
+} from "./state-panel/StatePanel";
 export { Switch, type SwitchProps } from "./switch/Switch";
 export { Table } from "./table/Table";
 export { Tabs } from "./tabs/Tabs";

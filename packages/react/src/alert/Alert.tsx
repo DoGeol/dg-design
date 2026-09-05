@@ -129,6 +129,8 @@ export interface AlertProps
   title?: React.ReactNode;
   /** 본문. 생략 가능. */
   description?: React.ReactNode;
+  /** 액션 슬롯. description 아래 가로 flex로 렌더된다. 없으면 DOM 없음. */
+  actions?: React.ReactNode;
   /** 지정하면 닫기 버튼이 렌더되고 클릭 시 호출된다. 생략하면 닫기 버튼 없음. */
   onClose?: () => void;
   /** 닫기 버튼 aria-label. */
@@ -142,6 +144,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
       intent = "neutral",
       title,
       description,
+      actions,
       onClose,
       closeLabel = "닫기",
       ...props
@@ -161,6 +164,7 @@ export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
         <div className="dds-alert__body">
           {title != null ? <p className="dds-alert__title">{title}</p> : null}
           {description != null ? <p className="dds-alert__description">{description}</p> : null}
+          {actions != null ? <div className="dds-alert__actions">{actions}</div> : null}
         </div>
         {onClose ? (
           <button
