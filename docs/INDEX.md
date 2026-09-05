@@ -43,7 +43,9 @@
 
 ## 스펙
 
-진행 중인 스펙 없음. 새 작업은 `deep-interview`가 여기에 만든다.
+| 문서 | 상태 | 다루는 것 |
+|------|------|-----------|
+| [dg-studio 승격 1차](specs/2026-09-05-studio-promotion-batch.md) | 승인 | StatePanel compound, Slider, RadioGroup segmented, Tabs responsive, Alert actions — 0.13.0 |
 
 ## 아카이브 (완료)
 
