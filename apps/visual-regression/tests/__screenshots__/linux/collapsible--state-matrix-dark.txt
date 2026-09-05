@@ -1,0 +1,9 @@
+dds-collapsible | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-collapsible__trigger | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-collapsible__content | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-collapsible | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-collapsible__trigger | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-collapsible__content | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-collapsible | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-collapsible__trigger | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-collapsible__content | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none

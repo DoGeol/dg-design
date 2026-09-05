@@ -1,0 +1,32 @@
+dds-switch dds-switch--size_medium | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__track | rgb(0, 0, 0) | rgb(208, 213, 213) | none | rgb(0, 0, 0) | none
+dds-switch__thumb | rgb(0, 0, 0) | rgb(255, 255, 255) | none | rgb(0, 0, 0) | none
+dds-switch dds-switch--size_medium | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__track | rgb(0, 0, 0) | rgb(25, 97, 97) | none | rgb(0, 0, 0) | none
+dds-switch__thumb | rgb(0, 0, 0) | rgb(255, 255, 255) | none | rgb(0, 0, 0) | none
+dds-switch dds-switch--size_medium | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
+dds-switch__track | rgb(0, 0, 0) | rgb(228, 233, 232) | none | rgb(0, 0, 0) | none
+dds-switch__thumb | rgb(0, 0, 0) | rgb(137, 141, 141) | none | rgb(0, 0, 0) | none
+dds-switch dds-switch--size_medium | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
+dds-switch__track | rgb(0, 0, 0) | rgb(228, 233, 232) | none | rgb(0, 0, 0) | none
+dds-switch__thumb | rgb(0, 0, 0) | rgb(137, 141, 141) | none | rgb(0, 0, 0) | none
+dds-switch dds-switch--size_large | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__track | rgb(0, 0, 0) | rgb(208, 213, 213) | none | rgb(0, 0, 0) | none
+dds-switch__thumb | rgb(0, 0, 0) | rgb(255, 255, 255) | none | rgb(0, 0, 0) | none
+dds-switch dds-switch--size_large | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__track | rgb(0, 0, 0) | rgb(25, 97, 97) | none | rgb(0, 0, 0) | none
+dds-switch__thumb | rgb(0, 0, 0) | rgb(255, 255, 255) | none | rgb(0, 0, 0) | none
+dds-switch dds-switch--size_large | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
+dds-switch__track | rgb(0, 0, 0) | rgb(228, 233, 232) | none | rgb(0, 0, 0) | none
+dds-switch__thumb | rgb(0, 0, 0) | rgb(137, 141, 141) | none | rgb(0, 0, 0) | none
+dds-switch dds-switch--size_large | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
+dds-switch__track | rgb(0, 0, 0) | rgb(228, 233, 232) | none | rgb(0, 0, 0) | none
+dds-switch__thumb | rgb(0, 0, 0) | rgb(137, 141, 141) | none | rgb(0, 0, 0) | none

@@ -1,0 +1,74 @@
+dds-table__wrapper | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-table | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__header | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__row | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) rgb(36, 39, 39) rgb(228, 233, 232) | none
+dds-table__head | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-table__head | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-table__head | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-table__head | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-table__head | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-table__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__row | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) rgb(36, 39, 39) rgb(228, 233, 232) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__row | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) rgb(36, 39, 39) rgb(228, 233, 232) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__row | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) rgb(36, 39, 39) rgb(228, 233, 232) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__row | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) rgb(36, 39, 39) rgb(228, 233, 232) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__footer | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__row | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) rgb(36, 39, 39) rgb(228, 233, 232) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__wrapper | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-table | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__header | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__row | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) rgb(36, 39, 39) rgb(228, 233, 232) | none
+dds-table__head | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-table__head | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-table__head | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-table__head | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-table__head | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-table__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__row | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) rgb(36, 39, 39) rgb(228, 233, 232) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__row | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) rgb(36, 39, 39) rgb(228, 233, 232) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__row | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) rgb(36, 39, 39) rgb(228, 233, 232) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__row | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) rgb(36, 39, 39) rgb(228, 233, 232) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__footer | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-table__row | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) rgb(36, 39, 39) rgb(228, 233, 232) | none
+dds-table__cell | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none

@@ -1,0 +1,8 @@
+dds-text-area dds-text-area--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
+dds-text-area dds-text-area--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(199, 39, 45) | none
+dds-text-area dds-text-area--size_medium | rgb(137, 141, 141) | rgb(228, 233, 232) | none | rgb(107, 112, 111) | none
+dds-text-area dds-text-area--size_medium | rgb(36, 39, 39) | rgb(241, 246, 246) | none | rgb(228, 233, 232) | none
+dds-text-area dds-text-area--size_large | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
+dds-text-area dds-text-area--size_large | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(199, 39, 45) | none
+dds-text-area dds-text-area--size_large | rgb(137, 141, 141) | rgb(228, 233, 232) | none | rgb(107, 112, 111) | none
+dds-text-area dds-text-area--size_large | rgb(36, 39, 39) | rgb(241, 246, 246) | none | rgb(228, 233, 232) | none

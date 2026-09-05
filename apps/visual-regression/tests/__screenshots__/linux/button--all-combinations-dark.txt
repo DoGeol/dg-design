@@ -1,0 +1,27 @@
+dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_small | rgb(15, 18, 18) | rgb(87, 197, 197) | none | rgb(15, 18, 18) | none
+dds-button dds-button--intent_brand dds-button--variant_weak dds-button--size_small | rgb(131, 232, 231) | rgb(7, 45, 45) | none | rgb(131, 232, 231) | none
+dds-button dds-button--intent_brand dds-button--variant_ghost dds-button--size_small | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
+dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_medium | rgb(15, 18, 18) | rgb(87, 197, 197) | none | rgb(15, 18, 18) | none
+dds-button dds-button--intent_brand dds-button--variant_weak dds-button--size_medium | rgb(131, 232, 231) | rgb(7, 45, 45) | none | rgb(131, 232, 231) | none
+dds-button dds-button--intent_brand dds-button--variant_ghost dds-button--size_medium | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
+dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_large | rgb(15, 18, 18) | rgb(87, 197, 197) | none | rgb(15, 18, 18) | none
+dds-button dds-button--intent_brand dds-button--variant_weak dds-button--size_large | rgb(131, 232, 231) | rgb(7, 45, 45) | none | rgb(131, 232, 231) | none
+dds-button dds-button--intent_brand dds-button--variant_ghost dds-button--size_large | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
+dds-button dds-button--intent_neutral dds-button--variant_solid dds-button--size_small | rgb(15, 18, 18) | rgb(208, 213, 213) | none | rgb(15, 18, 18) | none
+dds-button dds-button--intent_neutral dds-button--variant_weak dds-button--size_small | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-button dds-button--intent_neutral dds-button--variant_ghost dds-button--size_small | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-button dds-button--intent_neutral dds-button--variant_solid dds-button--size_medium | rgb(15, 18, 18) | rgb(208, 213, 213) | none | rgb(15, 18, 18) | none
+dds-button dds-button--intent_neutral dds-button--variant_weak dds-button--size_medium | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-button dds-button--intent_neutral dds-button--variant_ghost dds-button--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-button dds-button--intent_neutral dds-button--variant_solid dds-button--size_large | rgb(15, 18, 18) | rgb(208, 213, 213) | none | rgb(15, 18, 18) | none
+dds-button dds-button--intent_neutral dds-button--variant_weak dds-button--size_large | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-button dds-button--intent_neutral dds-button--variant_ghost dds-button--size_large | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-button dds-button--intent_critical dds-button--variant_solid dds-button--size_small | rgb(15, 18, 18) | rgb(239, 149, 142) | none | rgb(15, 18, 18) | none
+dds-button dds-button--intent_critical dds-button--variant_weak dds-button--size_small | rgb(240, 201, 197) | rgb(75, 9, 11) | none | rgb(240, 201, 197) | none
+dds-button dds-button--intent_critical dds-button--variant_ghost dds-button--size_small | rgb(240, 201, 197) | rgba(0, 0, 0, 0) | none | rgb(240, 201, 197) | none
+dds-button dds-button--intent_critical dds-button--variant_solid dds-button--size_medium | rgb(15, 18, 18) | rgb(239, 149, 142) | none | rgb(15, 18, 18) | none
+dds-button dds-button--intent_critical dds-button--variant_weak dds-button--size_medium | rgb(240, 201, 197) | rgb(75, 9, 11) | none | rgb(240, 201, 197) | none
+dds-button dds-button--intent_critical dds-button--variant_ghost dds-button--size_medium | rgb(240, 201, 197) | rgba(0, 0, 0, 0) | none | rgb(240, 201, 197) | none
+dds-button dds-button--intent_critical dds-button--variant_solid dds-button--size_large | rgb(15, 18, 18) | rgb(239, 149, 142) | none | rgb(15, 18, 18) | none
+dds-button dds-button--intent_critical dds-button--variant_weak dds-button--size_large | rgb(240, 201, 197) | rgb(75, 9, 11) | none | rgb(240, 201, 197) | none
+dds-button dds-button--intent_critical dds-button--variant_ghost dds-button--size_large | rgb(240, 201, 197) | rgba(0, 0, 0, 0) | none | rgb(240, 201, 197) | none

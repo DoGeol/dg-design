@@ -1,0 +1,3 @@
+dds-select__trigger dds-select__trigger--size_medium | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-select__value | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-select__caret | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none

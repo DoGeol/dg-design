@@ -1,0 +1,17 @@
+dds-state-panel | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-state-panel__icon | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-state-panel__title | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-state-panel__description | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-state-panel__actions | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_medium | rgb(15, 18, 18) | rgb(87, 197, 197) | none | rgb(15, 18, 18) | none
+dds-state-panel | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-state-panel__icon | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-state-panel__title | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-state-panel__description | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-state-panel__actions | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-button dds-button--intent_neutral dds-button--variant_weak dds-button--size_medium | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-state-panel__footer | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-state-panel | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-state-panel__icon | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-spinner dds-spinner--size_medium | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) rgb(137, 141, 141) rgb(137, 141, 141) | none
+dds-state-panel__description | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none

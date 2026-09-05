@@ -1,0 +1,8 @@
+dds-notification-badge dds-notification-badge--intent_critical dds-notification-badge--dot | rgb(255, 255, 255) | rgb(155, 28, 34) | none | rgb(255, 255, 255) | none
+dds-notification-badge dds-notification-badge--intent_critical dds-notification-badge--pill | rgb(255, 255, 255) | rgb(155, 28, 34) | none | rgb(255, 255, 255) | none
+dds-notification-badge dds-notification-badge--intent_critical dds-notification-badge--pill | rgb(255, 255, 255) | rgb(155, 28, 34) | none | rgb(255, 255, 255) | none
+dds-notification-badge dds-notification-badge--intent_critical dds-notification-badge--pill | rgb(255, 255, 255) | rgb(155, 28, 34) | none | rgb(255, 255, 255) | none
+dds-notification-badge dds-notification-badge--intent_brand dds-notification-badge--dot | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgb(255, 255, 255) | none
+dds-notification-badge dds-notification-badge--intent_brand dds-notification-badge--pill | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgb(255, 255, 255) | none
+dds-notification-badge dds-notification-badge--intent_brand dds-notification-badge--pill | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgb(255, 255, 255) | none
+dds-notification-badge dds-notification-badge--intent_brand dds-notification-badge--pill | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgb(255, 255, 255) | none

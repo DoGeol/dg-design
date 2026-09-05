@@ -1,0 +1,60 @@
+dds-checkbox dds-checkbox--size_medium | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__box | rgb(255, 255, 255) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-checkbox__check-icon | rgb(255, 255, 255) | rgba(0, 0, 0, 0) | none | rgb(255, 255, 255) | none
+dds-checkbox__dash-icon | rgb(255, 255, 255) | rgba(0, 0, 0, 0) | none | rgb(255, 255, 255) | none
+dds-checkbox dds-checkbox--size_medium | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__box | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgba(0, 0, 0, 0) | none
+dds-checkbox__check-icon | rgb(255, 255, 255) | rgba(0, 0, 0, 0) | none | rgb(255, 255, 255) | none
+dds-checkbox__dash-icon | rgb(255, 255, 255) | rgba(0, 0, 0, 0) | none | rgb(255, 255, 255) | none
+dds-checkbox dds-checkbox--size_medium | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__box | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgba(0, 0, 0, 0) | none
+dds-checkbox__check-icon | rgb(255, 255, 255) | rgba(0, 0, 0, 0) | none | rgb(255, 255, 255) | none
+dds-checkbox__dash-icon | rgb(255, 255, 255) | rgba(0, 0, 0, 0) | none | rgb(255, 255, 255) | none
+dds-checkbox dds-checkbox--size_medium | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
+dds-checkbox__box | rgb(137, 141, 141) | rgb(228, 233, 232) | none | rgb(228, 233, 232) | none
+dds-checkbox__check-icon | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox__dash-icon | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox dds-checkbox--size_medium | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
+dds-checkbox__box | rgb(137, 141, 141) | rgb(228, 233, 232) | none | rgba(0, 0, 0, 0) | none
+dds-checkbox__check-icon | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox__dash-icon | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox dds-checkbox--size_medium | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
+dds-checkbox__box | rgb(137, 141, 141) | rgb(228, 233, 232) | none | rgba(0, 0, 0, 0) | none
+dds-checkbox__check-icon | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox__dash-icon | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox dds-checkbox--size_large | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__box | rgb(255, 255, 255) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-checkbox__check-icon | rgb(255, 255, 255) | rgba(0, 0, 0, 0) | none | rgb(255, 255, 255) | none
+dds-checkbox__dash-icon | rgb(255, 255, 255) | rgba(0, 0, 0, 0) | none | rgb(255, 255, 255) | none
+dds-checkbox dds-checkbox--size_large | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__box | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgba(0, 0, 0, 0) | none
+dds-checkbox__check-icon | rgb(255, 255, 255) | rgba(0, 0, 0, 0) | none | rgb(255, 255, 255) | none
+dds-checkbox__dash-icon | rgb(255, 255, 255) | rgba(0, 0, 0, 0) | none | rgb(255, 255, 255) | none
+dds-checkbox dds-checkbox--size_large | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__box | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgba(0, 0, 0, 0) | none
+dds-checkbox__check-icon | rgb(255, 255, 255) | rgba(0, 0, 0, 0) | none | rgb(255, 255, 255) | none
+dds-checkbox__dash-icon | rgb(255, 255, 255) | rgba(0, 0, 0, 0) | none | rgb(255, 255, 255) | none
+dds-checkbox dds-checkbox--size_large | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
+dds-checkbox__box | rgb(137, 141, 141) | rgb(228, 233, 232) | none | rgb(228, 233, 232) | none
+dds-checkbox__check-icon | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox__dash-icon | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox dds-checkbox--size_large | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
+dds-checkbox__box | rgb(137, 141, 141) | rgb(228, 233, 232) | none | rgba(0, 0, 0, 0) | none
+dds-checkbox__check-icon | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox__dash-icon | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox dds-checkbox--size_large | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
+dds-checkbox__box | rgb(137, 141, 141) | rgb(228, 233, 232) | none | rgba(0, 0, 0, 0) | none
+dds-checkbox__check-icon | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox__dash-icon | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none

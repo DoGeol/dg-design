@@ -1,0 +1,2 @@
+dds-card | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-card | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none

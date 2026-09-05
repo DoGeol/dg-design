@@ -1,0 +1,8 @@
+dds-tabs | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-tabs__list | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) rgb(0, 0, 0) rgb(58, 62, 62) | none
+dds-tabs__trigger | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
+dds-tabs__trigger | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) rgb(137, 141, 141) rgba(0, 0, 0, 0) | none
+dds-tabs__trigger | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) rgb(137, 141, 141) rgba(0, 0, 0, 0) | none
+dds-tabs__content | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-tabs__content | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-tabs__content | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none

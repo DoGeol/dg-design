@@ -1,0 +1,17 @@
+dds-breadcrumb | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-breadcrumb__list | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-breadcrumb__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-breadcrumb__link | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-breadcrumb__separator | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-breadcrumb__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-breadcrumb__page | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-breadcrumb | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-breadcrumb__list | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-breadcrumb__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-breadcrumb__link | rgb(137, 141, 141) | rgb(239, 239, 239) | none | rgb(0, 0, 0) | none
+dds-breadcrumb__separator | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-breadcrumb__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-breadcrumb__link | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-breadcrumb__separator | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-breadcrumb__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-breadcrumb__page | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none

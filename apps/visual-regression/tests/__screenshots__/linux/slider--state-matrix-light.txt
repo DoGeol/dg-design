@@ -1,0 +1,12 @@
+dds-slider dds-slider--size_medium | rgb(157, 150, 142) | rgba(0, 0, 0, 0) | none | rgb(157, 150, 142) | none
+dds-slider dds-slider--size_medium | rgb(157, 150, 142) | rgba(0, 0, 0, 0) | none | rgb(157, 150, 142) | none
+dds-slider dds-slider--size_medium | rgb(157, 150, 142) | rgba(0, 0, 0, 0) | none | rgb(157, 150, 142) | none
+dds-slider dds-slider--size_medium | rgb(197, 197, 197) | rgba(0, 0, 0, 0) | none | rgba(118, 118, 118, 0.3) | none
+dds-slider dds-slider--size_small | rgb(157, 150, 142) | rgba(0, 0, 0, 0) | none | rgb(157, 150, 142) | none
+dds-slider dds-slider--size_small | rgb(157, 150, 142) | rgba(0, 0, 0, 0) | none | rgb(157, 150, 142) | none
+dds-slider dds-slider--size_small | rgb(157, 150, 142) | rgba(0, 0, 0, 0) | none | rgb(157, 150, 142) | none
+dds-slider dds-slider--size_small | rgb(197, 197, 197) | rgba(0, 0, 0, 0) | none | rgba(118, 118, 118, 0.3) | none
+dds-field | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-field__label | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-slider dds-slider--size_medium | rgb(157, 150, 142) | rgba(0, 0, 0, 0) | none | rgb(157, 150, 142) | none
+dds-field__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none

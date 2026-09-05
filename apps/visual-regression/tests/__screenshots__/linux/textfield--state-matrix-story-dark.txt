@@ -1,0 +1,8 @@
+dds-text-field dds-text-field--size_medium | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-text-field dds-text-field--size_medium | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(240, 70, 70) | none
+dds-text-field dds-text-field--size_medium | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(137, 141, 141) | none
+dds-text-field dds-text-field--size_medium | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(58, 62, 62) | none
+dds-text-field dds-text-field--size_large | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-text-field dds-text-field--size_large | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(240, 70, 70) | none
+dds-text-field dds-text-field--size_large | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(137, 141, 141) | none
+dds-text-field dds-text-field--size_large | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(58, 62, 62) | none

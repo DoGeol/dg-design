@@ -1,0 +1,4 @@
+dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_medium | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgb(255, 255, 255) | none
+dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_medium | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgb(255, 255, 255) | none
+dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_medium | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgb(255, 255, 255) | none
+dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_medium | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgb(255, 255, 255) | none
