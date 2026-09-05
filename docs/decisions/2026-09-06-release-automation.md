@@ -31,6 +31,7 @@ trusted publishing + changesets/action v2. GitHub Actions가 OIDC로 "DoGeol/dg-
 - pnpm 11은 OIDC 회귀 이슈(pnpm/pnpm#11513)가 열려 있다. `packageManager`는 10.x에 둔다.
 - 레포 설정 "Allow GitHub Actions to create and approve pull requests"가 꺼져 있으면 Version PR 생성이 실패한다. 워크플로 밖의 전제 조건이다.
 - `GITHUB_TOKEN`이 만든 PR에는 GitHub 정책상 다른 워크플로가 트리거되지 않는다. Version PR은 package.json·CHANGELOG만 바꾸므로 원래 커밋의 CI로 충분하다고 판단했다. 필수 status check를 도입하면 GitHub App 토큰으로 바꾼다.
+- Trusted Publisher의 "Allowed actions"는 기본이 `npm stage publish`만 허용이다. **Allow npm publish**를 체크하지 않으면 필드가 전부 맞아도 `403 OIDC permission denied for this action`이 난다(0.13.1 검증 배포에서 실측). 이 항목은 저장 뒤에도 수정 가능하다.
 - npm의 Trusted Publisher 등록은 저장 시 검증하지 않고 수정도 불가(삭제 후 재생성). 대소문자·`.yml` 확장자·환경명 공란까지 정확히 맞춰야 한다.
 
 ## 미뤄둔 것
