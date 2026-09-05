@@ -10,6 +10,8 @@ pnpm add @dg-design/react @dg-design/tokens
 
 peer dependency: `react` / `react-dom` `^18 || ^19`
 
+배포는 GitHub Actions에서 npm trusted publishing으로 이뤄지며, 각 버전에 provenance가 첨부된다.
+
 컴포넌트 CSS는 side-effect import로 자동 로드되지만, 토큰 값(`--dds-*`)은 별도 패키지에 있다. 소비 앱이 진입점에서 `@dg-design/tokens/tokens.css`를 직접 로드해야 한다.
 
 ```ts
