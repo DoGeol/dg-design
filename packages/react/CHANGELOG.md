@@ -1,5 +1,11 @@
 # @dg-design/react
 
+## 0.13.1
+
+### Patch Changes
+
+- b3a5280: 배포 자동화(npm trusted publishing) 검증 릴리스. README에 배포 방식 한 줄 추가, 기능 변경 없음.
+
 ## 0.13.0
 
 ### Minor Changes
