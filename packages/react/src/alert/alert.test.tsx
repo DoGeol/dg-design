@@ -79,4 +79,40 @@ describe("Alert", () => {
     expect(screen.queryByRole("alert")).toBeTruthy();
     expect(screen.queryByRole("status")).toBeNull();
   });
+
+  describe("Alert actions slot", () => {
+    it("actions가 없으면 dds-alert__actions DOM 요소가 렌더되지 않는다", () => {
+      const { container } = render(<Alert title="알림" description="설명" />);
+      expect(container.querySelector(".dds-alert__actions")).toBeNull();
+    });
+
+    it("actions가 제공되면 dds-alert__actions 컨테이너 안에 렌더된다", () => {
+      const { container } = render(
+        <Alert
+          title="초안 복원"
+          description="이전에 작성 중이던 글이 있습니다."
+          actions={<button type="button">복원하기</button>}
+        />,
+      );
+
+      const actionsContainer = container.querySelector(".dds-alert__actions");
+      expect(actionsContainer).not.toBeNull();
+      expect(screen.getByRole("button", { name: "복원하기" })).toBeTruthy();
+    });
+
+    it("actions와 onClose가 공존할 때 둘 다 정상 렌더된다", () => {
+      const { container } = render(
+        <Alert
+          title="세션 만료 경고"
+          description="5분 뒤 로그아웃됩니다."
+          actions={<button type="button">세션 연장</button>}
+          onClose={() => {}}
+        />,
+      );
+
+      expect(container.querySelector(".dds-alert__actions")).not.toBeNull();
+      expect(screen.getByRole("button", { name: "세션 연장" })).toBeTruthy();
+      expect(screen.getByRole("button", { name: "닫기" })).toBeTruthy();
+    });
+  });
 });

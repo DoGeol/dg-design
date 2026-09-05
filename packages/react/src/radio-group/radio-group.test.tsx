@@ -237,3 +237,78 @@ describe("RadioGroup Field 연동", () => {
     expect(group.getAttribute("aria-invalid")).toBe("false");
   });
 });
+
+describe("RadioGroup segmented variant", () => {
+  function Segmented(props: Partial<React.ComponentProps<typeof RadioGroup.Root>>) {
+    return (
+      <RadioGroup.Root variant="segmented" aria-label="테마 선택" defaultValue="light" {...props}>
+        <RadioGroup.Item value="light">라이트</RadioGroup.Item>
+        <RadioGroup.Item value="dark">다크</RadioGroup.Item>
+        <RadioGroup.Item value="system">시스템</RadioGroup.Item>
+      </RadioGroup.Root>
+    );
+  }
+
+  it("variant='segmented'면 세그먼트 클래스와 size_medium 기본 클래스를 갖는다", () => {
+    render(<Segmented />);
+    const group = screen.getByRole("radiogroup");
+
+    expect(group.classList.contains("dds-radio-group--variant_segmented")).toBe(true);
+    expect(group.classList.contains("dds-radio-group--size_medium")).toBe(true);
+  });
+
+  it("size small과 large에 대응하는 클래스를 갖는다", () => {
+    const { rerender } = render(<Segmented size="small" />);
+    const group = screen.getByRole("radiogroup");
+    expect(group.classList.contains("dds-radio-group--size_small")).toBe(true);
+
+    rerender(<Segmented size="large" />);
+    expect(group.classList.contains("dds-radio-group--size_large")).toBe(true);
+  });
+
+  it("default variant는 size prop을 무시하여 size 클래스가 붙지 않는다", () => {
+    render(<RadioGroup.Root aria-label="테마" size="small" />);
+    const group = screen.getByRole("radiogroup");
+    expect(group.classList.contains("dds-radio-group--size_small")).toBe(false);
+    expect(group.classList.contains("dds-radio-group--size_medium")).toBe(false);
+  });
+
+  it("segmented는 orientation='vertical'을 전달해도 horizontal로 강제된다", async () => {
+    const user = userEvent.setup();
+    render(<Segmented orientation="vertical" defaultValue="light" />);
+    const group = screen.getByRole("radiogroup");
+
+    expect(group.getAttribute("aria-orientation")).toBe("horizontal");
+    expect(group.classList.contains("dds-radio-group--orientation_horizontal")).toBe(true);
+
+    const light = screen.getByRole("radio", { name: "라이트" }) as HTMLInputElement;
+    const dark = screen.getByRole("radio", { name: "다크" }) as HTMLInputElement;
+
+    light.focus();
+    // vertical 키(ArrowDown)는 무시됨
+    await user.keyboard("{ArrowDown}");
+    expect(light.checked).toBe(true);
+
+    // horizontal 키(ArrowRight)로 이동+선택
+    await user.keyboard("{ArrowRight}");
+    expect(dark.checked).toBe(true);
+  });
+
+  it("클릭으로 선택을 이동하고 data-state를 갱신한다", async () => {
+    const user = userEvent.setup();
+    render(<Segmented defaultValue="light" />);
+
+    const dark = screen.getByRole("radio", { name: "다크" }) as HTMLInputElement;
+    const darkLabel = dark.closest("label");
+    const light = screen.getByRole("radio", { name: "라이트" }) as HTMLInputElement;
+    const lightLabel = light.closest("label");
+
+    expect(lightLabel?.getAttribute("data-state")).toBe("checked");
+    expect(darkLabel?.getAttribute("data-state")).toBe("unchecked");
+
+    await user.click(dark);
+    expect(dark.checked).toBe(true);
+    expect(darkLabel?.getAttribute("data-state")).toBe("checked");
+    expect(lightLabel?.getAttribute("data-state")).toBe("unchecked");
+  });
+});

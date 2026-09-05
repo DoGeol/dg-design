@@ -1,0 +1,56 @@
+@layer dds {
+  .dds-state-panel {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 16rem;
+    padding: var(--dds-dimension-x6) var(--dds-dimension-x4);
+    border-radius: var(--dds-radius-r3);
+    background-color: var(--dds-color-bg-neutral-weak);
+    color: var(--dds-color-fg-neutral);
+    font-family: inherit;
+  }
+
+  .dds-state-panel__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dds-color-fg-neutral-weak);
+    margin-bottom: var(--dds-dimension-x3);
+  }
+
+  .dds-state-panel__title {
+    margin: 0;
+    font-size: var(--dds-font-size-t4);
+    line-height: var(--dds-line-height-t4);
+    font-weight: var(--dds-font-weight-bold);
+    color: var(--dds-color-fg-neutral);
+  }
+
+  .dds-state-panel__description {
+    margin: 0;
+    margin-top: var(--dds-dimension-x1);
+    font-size: var(--dds-font-size-t3);
+    line-height: var(--dds-line-height-t3);
+    color: var(--dds-color-fg-neutral-weak);
+    max-width: 32rem;
+  }
+
+  .dds-state-panel__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--dds-dimension-x2);
+    margin-top: var(--dds-dimension-x4);
+  }
+
+  .dds-state-panel__footer {
+    margin-top: var(--dds-dimension-x4);
+    color: var(--dds-color-fg-neutral-weak);
+    font-size: var(--dds-font-size-t2);
+    line-height: var(--dds-line-height-t2);
+  }
+}

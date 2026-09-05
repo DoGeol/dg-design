@@ -10,12 +10,22 @@ import { RadioGroupContext } from "./radio-group-context";
 
 const radioGroup = cva("dds-radio-group", {
   variants: {
+    variant: {
+      default: "dds-radio-group--variant_default",
+      segmented: "dds-radio-group--variant_segmented",
+    },
     orientation: {
       vertical: "dds-radio-group--orientation_vertical",
       horizontal: "dds-radio-group--orientation_horizontal",
     },
+    size: {
+      small: "dds-radio-group--size_small",
+      medium: "dds-radio-group--size_medium",
+      large: "dds-radio-group--size_large",
+    },
   },
   defaultVariants: {
+    variant: "default",
     orientation: "vertical",
   },
 });
@@ -28,6 +38,8 @@ export interface RadioGroupRootProps
   name?: string;
   orientation?: "vertical" | "horizontal";
   disabled?: boolean;
+  variant?: "default" | "segmented";
+  size?: "small" | "medium" | "large";
 }
 
 /**
@@ -43,6 +55,8 @@ const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootProps>((pr
     onValueChange,
     name,
     orientation = "vertical",
+    variant = "default",
+    size = "medium",
     disabled = false,
     onKeyDown,
     children,
@@ -52,6 +66,11 @@ const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootProps>((pr
     "aria-labelledby": ariaLabelledBy,
     ...rest
   } = props;
+
+  // segmented는 horizontal 강제 — vertical + segmented는 타입에서 막지 않고 런타임 경고 없이 horizontal로 렌더.
+  // default variant는 size 무시(현행 유지).
+  const resolvedOrientation = variant === "segmented" ? "horizontal" : orientation;
+  const resolvedSize = variant === "segmented" ? size : undefined;
 
   const generatedName = React.useId();
   const handleChange = React.useCallback(
@@ -73,10 +92,10 @@ const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootProps>((pr
       onKeyDown?.(event);
       if (event.defaultPrevented) return;
       const crossAxisKeys =
-        orientation === "horizontal" ? ["ArrowUp", "ArrowDown"] : ["ArrowLeft", "ArrowRight"];
+        resolvedOrientation === "horizontal" ? ["ArrowUp", "ArrowDown"] : ["ArrowLeft", "ArrowRight"];
       if (crossAxisKeys.includes(event.key)) event.preventDefault();
     },
-    [onKeyDown, orientation],
+    [onKeyDown, resolvedOrientation],
   );
 
   // Field.Root 안이면 context에서 id·invalid·describedby를 받는다. 개별 radio가 아니라
@@ -97,10 +116,11 @@ const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootProps>((pr
       value: current,
       setValue: setCurrent,
       name: name ?? generatedName,
-      orientation,
+      orientation: resolvedOrientation,
       disabled,
+      variant,
     }),
-    [current, setCurrent, name, generatedName, orientation, disabled],
+    [current, setCurrent, name, generatedName, resolvedOrientation, disabled, variant],
   );
 
   return (
@@ -110,11 +130,18 @@ const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootProps>((pr
         ref={ref}
         role="radiogroup"
         id={resolvedId}
-        aria-orientation={orientation}
+        aria-orientation={resolvedOrientation}
         aria-labelledby={resolvedLabelledBy}
         aria-describedby={resolvedDescribedBy}
         aria-invalid={resolvedInvalid}
-        className={clsx(radioGroup({ orientation }), className)}
+        className={clsx(
+          radioGroup({
+            variant,
+            orientation: resolvedOrientation,
+            size: resolvedSize,
+          }),
+          className,
+        )}
         onKeyDown={handleKeyDown}
       >
         {children}
@@ -138,15 +165,16 @@ const RadioGroupItem = React.forwardRef<HTMLInputElement, RadioGroupItemProps>(
     if (!ctx) throw new Error("RadioGroup.Item must be used within RadioGroup.Root");
 
     const disabled = ctx.disabled || itemDisabled || false;
+    const isChecked = ctx.value === value;
 
     return (
-      <label className={clsx("dds-radio", className)}>
+      <label className={clsx("dds-radio", className)} data-state={isChecked ? "checked" : "unchecked"}>
         <input
           type="radio"
           ref={ref}
           name={ctx.name}
           value={value}
-          checked={ctx.value === value}
+          checked={isChecked}
           disabled={disabled}
           onChange={() => ctx.setValue(value)}
           className="dds-radio__input"

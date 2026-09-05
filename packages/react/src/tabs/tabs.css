@@ -72,4 +72,16 @@
     outline-offset: calc(-1 * var(--dds-dimension-x0_5));
     border-radius: var(--dds-radius-r1);
   }
+
+  /* Responsive tabs (브레이크포인트 이상) */
+  .dds-tabs[data-responsive][data-wide] {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: var(--dds-dimension-x4);
+  }
+
+  .dds-tabs[data-responsive][data-wide] > .dds-tabs__list {
+    display: none;
+  }
 }

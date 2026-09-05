@@ -6,6 +6,8 @@ export interface TabsContextValue {
   setValue: (next: string) => void;
   /** Trigger·Content id의 공통 접두사 — SSR 안정성을 위해 useId에서 온다. */
   baseId: string;
+  responsive?: number;
+  isWide?: boolean;
 }
 
 export const TabsContext = React.createContext<TabsContextValue | undefined>(undefined);

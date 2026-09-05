@@ -62,6 +62,32 @@ function StateMatrix() {
           </div>
         </section>
       ))}
+
+      <section>
+        <h2 style={{ font: "600 14px sans-serif", marginBottom: 12 }}>
+          variant: segmented (small, medium, large, disabled)
+        </h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          {(["small", "medium", "large"] as const).map((size) => (
+            <div key={size} style={{ display: "flex", alignItems: "center", gap: 16 }}>
+              <span style={{ font: "500 12px sans-serif", width: 60 }}>{size}</span>
+              <RadioGroup.Root variant="segmented" size={size} defaultValue="dark" aria-label={`테마 ${size}`}>
+                <RadioGroup.Item value="light">Light</RadioGroup.Item>
+                <RadioGroup.Item value="dark">Dark</RadioGroup.Item>
+                <RadioGroup.Item value="system">System</RadioGroup.Item>
+              </RadioGroup.Root>
+            </div>
+          ))}
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            <span style={{ font: "500 12px sans-serif", width: 60 }}>disabled</span>
+            <RadioGroup.Root variant="segmented" size="medium" defaultValue="dark" disabled aria-label="테마 비활성">
+              <RadioGroup.Item value="light">Light</RadioGroup.Item>
+              <RadioGroup.Item value="dark">Dark</RadioGroup.Item>
+              <RadioGroup.Item value="system">System</RadioGroup.Item>
+            </RadioGroup.Root>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

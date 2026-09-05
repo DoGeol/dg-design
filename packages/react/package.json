@@ -121,9 +121,17 @@
       "types": "./dist/skeleton/Skeleton.d.ts",
       "default": "./dist/skeleton/Skeleton.js"
     },
+    "./slider": {
+      "types": "./dist/slider/Slider.d.ts",
+      "default": "./dist/slider/Slider.js"
+    },
     "./spinner": {
       "types": "./dist/spinner/Spinner.d.ts",
       "default": "./dist/spinner/Spinner.js"
+    },
+    "./state-panel": {
+      "types": "./dist/state-panel/StatePanel.d.ts",
+      "default": "./dist/state-panel/StatePanel.js"
     },
     "./switch": {
       "types": "./dist/switch/Switch.d.ts",
