@@ -12,7 +12,7 @@
 
 ## 후속 작업
 
-[follow-ups.md](follow-ups.md) — 남은 것 0건, 그리고 "모르면 첫 시도에서 틀리는" 실측 사실 4가지.
+[follow-ups.md](follow-ups.md) — 남은 것 2건(dg-studio 도입에서 드러난 D1·D2)과 착수 조건, 그리고 "모르면 첫 시도에서 틀리는" 실측 사실 4가지.
 
 ## 가이드
 

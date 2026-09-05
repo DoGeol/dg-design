@@ -6,7 +6,23 @@
 
 ## 남은 것
 
-없음. 30건 전부 처리됐다. 새 항목은 여기에 "무엇이 정해져야 착수할 수 있는지"와 함께 적는다.
+0.9.0 감사 30건은 전부 처리됐다. 아래는 dg-studio에 0.13.1을 실제 도입하며(2026-09-06) 드러난 것들이다.
+
+### D1 — compound 객체 export가 React Server Component에서 안 풀린다
+
+**문제**: react 빌드가 모든 모듈에 `'use client'` 배너를 붙인다(`vite.config.ts` `renderBanner`). 서버 컴포넌트가 `Button`처럼 **컴포넌트 자체**를 import하면 client reference로 정상 동작하지만, `StatePanel`·`Tabs`·`RadioGroup`처럼 **객체**를 import해 `StatePanel.Root`로 접근하면 속성이 `undefined`가 되어 "Element type is invalid"로 죽는다. dg-studio의 `state.tsx`는 서버 컴포넌트였다가 이 때문에 `"use client"`를 붙였다.
+
+**착수 전에 정해야 할 것**: 두 방향 중 하나.
+- compound마다 서브컴포넌트를 named export로도 내보낸다(`StatePanelRoot` 등). 객체 export는 유지 — 소비자 선택.
+- 문서에 "compound는 client 컴포넌트에서만 조립한다"를 명시하고 끝낸다.
+
+첫 번째가 맞아 보이지만 barrel·`exports`·d.ts 노출 면적이 늘어나므로, 다음 컴포넌트 배치와 같이 간다.
+
+### D2 — `Tabs.Content`의 `tabIndex`를 소비자가 못 바꾼다
+
+**문제**: `Tabs.Content`가 `{...props}` 뒤에 `tabIndex={0}`을 고정한다. 패널 안에 포커스 가능한 요소가 많으면 패널 자체의 tab stop은 잡음이다(APG는 포커스 가능한 자식이 없을 때만 패널을 tabbable로 둔다). dg-studio 이력서 편집기는 미리보기 패널이 tab stop이 되어 키보드 순서 테스트를 고쳐야 했다.
+
+**착수 조건**: 없음 — `tabIndex`를 props 뒤로 옮겨 소비자 override를 허용하면 된다(기본 0 유지). 다음 patch에 포함.
 
 ## 알아두면 첫 시도에서 안 틀리는 것
 
