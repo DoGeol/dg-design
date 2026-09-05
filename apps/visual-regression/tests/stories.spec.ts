@@ -16,6 +16,40 @@ const THEMES = ["light", "dark"] as const;
 
 type Entry = { id: string; title: string; type?: string };
 
+/**
+ * 렌더된 dds 요소의 실효 색을 줄 단위 텍스트로 뽑는다.
+ * 스크린샷은 작은 글자 색 변화가 diff 임계(0.5%) 아래로 조용히 통과하고 기준 갱신도 no-op이 되지만,
+ * 텍스트 스냅샷은 임계가 없어 1값 차이도 잡히고 -u가 항상 갱신한다.
+ * ponytail: opacity·filter로 만든 색 변화는 못 잡는다 — 현재 두 속성은 퇴장 애니메이션에만 쓰인다.
+ */
+function collectColors(): string {
+  const PROPS = [
+    "color",
+    "background-color",
+    "background-image",
+    "border-color",
+    "box-shadow",
+  ];
+  const lines: string[] = [];
+  const nodes = document.querySelectorAll<HTMLElement>(
+    '#storybook-root [class*="dds-"]',
+  );
+  for (const el of nodes) {
+    const cls = [...el.classList].filter((c) => c.startsWith("dds-")).join(" ");
+    if (!cls) continue;
+    const s = getComputedStyle(el);
+    lines.push(`${cls} | ${PROPS.map((p) => s.getPropertyValue(p)).join(" | ")}`);
+    for (const pseudo of ["::before", "::after"]) {
+      const ps = getComputedStyle(el, pseudo);
+      if (ps.content === "none" || ps.content === "") continue;
+      lines.push(
+        `${cls}${pseudo} | ${PROPS.map((p) => ps.getPropertyValue(p)).join(" | ")}`,
+      );
+    }
+  }
+  return lines.join("\n") + "\n";
+}
+
 function targetStories(): Entry[] {
   if (!existsSync(INDEX_JSON)) {
     throw new Error(
@@ -79,6 +113,16 @@ for (const story of targetStories()) {
       await page.evaluate(async () => {
         await document.fonts.ready;
       });
+
+      // 색 텍스트 스냅샷. 기준(txt)이 아직 없으면 이 단언만 건너뛴다 — 스크린샷 검증은 계속 돈다.
+      const colorSnapshot = `${story.id}-${theme}.txt`;
+      if (
+        testInfo.config.updateSnapshots !== "none" ||
+        existsSync(path.join(SNAPSHOT_DIR, colorSnapshot))
+      ) {
+        const colors = await page.evaluate(collectColors);
+        expect.soft(colors).toMatchSnapshot(colorSnapshot);
+      }
 
       await expect(root).toHaveScreenshot(snapshot);
     });

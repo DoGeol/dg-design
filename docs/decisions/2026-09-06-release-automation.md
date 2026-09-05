@@ -38,3 +38,14 @@ trusted publishing + changesets/action v2. GitHub Actions가 OIDC로 "DoGeol/dg-
 
 - version/publish 잡 분리(`id-token: write`를 publish에만): 외부 기여 PR을 받기 시작하면.
 - Version PR에 CI 붙이기(GitHub App 토큰): 브랜치 보호 규칙에 필수 체크를 넣을 때.
+
+## 후속: C3 색 회귀 — 색 텍스트 스냅샷 (같은 날)
+
+`stories.spec.ts`의 스크린샷 단언 앞에, 렌더된 `dds-*` 요소(및 content 있는 `::before/::after`)의 `color`·`background-color`·`background-image`·`border-color`·`box-shadow`를 줄 단위 텍스트로 뽑아 `{story}-{theme}.txt`로 `toMatchSnapshot`한다.
+
+- 별도 spec이 아니라 같은 테스트에 넣은 이유: `snapshotPathTemplate`의 `{platform}`과 `updateSnapshots: "none"`을 그대로 타서 설정 변경이 없고, 페이지 로드도 한 번이다.
+- 줄 단위 텍스트인 이유: JSON 객체는 요소 하나가 끼면 뒤 인덱스가 전부 밀려 diff가 읽히지 않는다.
+- `background-image`·`box-shadow`를 넣은 이유: Slider 채움 트랙과 Skeleton은 gradient, RadioGroup segmented 선택 표시는 그림자로 그린다.
+- 천장: `opacity`·`filter`로 만든 색 변화는 못 잡는다. 현재 둘은 퇴장 애니메이션에만 쓰인다.
+- 도입 절차: txt 기준이 없으면 색 단언만 건너뛰므로 spec 머지 직후 CI는 초록이다. 이후 visual-baseline 워크플로 1회로 txt가 생성되고 그때부터 검증된다.
+- "기준 이미지를 지워 재촬영" 절차는 폐기 — 색 변화·요소 추가 둘 다 txt가 잡는다.

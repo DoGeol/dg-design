@@ -1,20 +1,12 @@
 # 후속 작업
 
-0.9.0 검토(렌즈 6개 감사)에서 나온 30건 중 **29건이 처리됐고 1건이 남았다.** 남은 하나는 미루다 남은 게 아니라 **지금 하지 않는 것이 맞다고 판단된 것**이라, "무엇이 정해져야 착수할 수 있는지"를 같이 적는다.
+0.9.0 검토(렌즈 6개 감사)에서 나온 30건 중 **30건 전부 처리됐다.**
 
 근거 문서: [0.9.0 감사 결과](decisions/2026-08-17-feedback-batch-implementation.md) 및 각 구현 결정 기록.
 
 ## 남은 것
 
-### C3 — 색 회귀를 잡을 수단
-
-**문제**: 작은 글자의 색 변화는 VR 임계(`maxDiffPixelRatio: 0.005`) 아래라 스크린샷 비교로 안 잡힌다. 더 나쁜 건 **기준 갱신조차 no-op**이라는 점이다 — Playwright의 `--update-snapshots`는 임계를 넘은 것만 다시 쓴다. 보조 텍스트 AA 대비를 고칠 때 실제로 그랬고, 기준 12장을 손으로 지워 강제 재촬영했다.
-
-**착수 전에 정해야 할 것**: 어느 쪽으로 풀지가 안 정해졌다.
-- 임계를 컴포넌트별로 낮춘다 → 텍스트가 많은 스토리에서 폰트 렌더링 차이로 거짓 실패가 늘 수 있다
-- 계산된 색을 단언하는 별도 테스트를 둔다 → VR과 별개 축이 생기고, 무엇을 단언 대상으로 삼을지(토큰? 컴포넌트별 실효색?) 결정이 필요하다
-
-**현재 우회**: 색 토큰을 바꾸면 영향 기준을 **지워서** 재촬영한다. 이 절차가 [AGENTS.md](../AGENTS.md)에 기록돼 있다.
+없음. 30건 전부 처리됐다. 새 항목은 여기에 "무엇이 정해져야 착수할 수 있는지"와 함께 적는다.
 
 ## 알아두면 첫 시도에서 안 틀리는 것
 
@@ -29,12 +21,13 @@
 
 ## 처리된 것
 
-30건 중 29건. 큰 갈래만:
+30건 중 30건. 큰 갈래만:
 
 - **P1 6건** — 중첩 오버레이가 조상을 닫던 문제, controlled 리셋 미반영, Field 미연동 3종, z-index 부재, 보조 텍스트 AA 미달, CSS 트리셰이킹 차단
 - **기능 공백** — Toast(+ live region 정책 신설) · Alert · Spinner · Progress · Button loading · Button critical intent
 - **버그 6건** — 사라진 옵션 선택, RadioGroup 접근 이름, ContextMenu 포커스 소실, Tooltip 그룹 스킵, 닫히는 오버레이 inert, DropdownMenu ArrowUp
 - **테스트 인프라** — Button 테스트 신설, 오버레이 퇴장·재열림 Playwright 커버리지
 - **다듬기 8건** — keyframes 공용화, 닫힘 prop·`initialFocusRef` 비대칭 해소, `aria-controls`·`aria-hidden` 보강, i18n 경로, 테두리 정책, easing 토큰
+- **C3 색 회귀** — 스크린샷 테스트에 색 텍스트 스냅샷(`*.txt`) 추가. 임계 없음이라 1값 차이도 잡히고 `-u`가 항상 갱신. 근거는 [배포 자동화 결정](decisions/2026-09-06-release-automation.md)의 후속 항목
 - **릴리스 운영** — npm trusted publishing + changesets/action으로 자동화. 근거는 [배포 자동화 결정](decisions/2026-09-06-release-automation.md)
 - **A5 완료** — Tabs에 이어 Skeleton·Avatar·Separator·Collapsible·Accordion 추가. Accordion duplicate value ID P1 수정과 독립 재QA까지 완료

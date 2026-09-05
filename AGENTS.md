@@ -21,10 +21,10 @@ Dogeol Design System. daangn/seed-design 참고.
 - `pnpm generate` — CSS/타입 생성 + WCAG 대비·gamut 검사(미달 시 실패). 의존성 0
 - `pnpm typecheck` — 3개 프로젝트 `tsc --noEmit`; 빌드가 놓치는 타입 에러 검출
 - React test는 vitest. 인터랙션은 fireEvent 금지, user-event 사용(jsdom disabled 차단 미구현)
-- `pnpm vr` — Playwright 시각 회귀 + 기능 테스트. **기준 이미지는 CI(ubuntu)에서만 생성·갱신**(로컬 `-u`는 가드가 막음, visual-baseline 워크플로 수동 트리거). 얇은 요소 추가는 diff 임계(0.5%) 아래로 조용히 통과하니 스토리 확장 시 기준을 삭제해 재촬영. VR은 `*--state-matrix`를 우선 집으니 **기능 테스트용 데모 스토리는 닫힌 상태로** 두라(열어두면 오버레이가 트리거를 덮는다)
+- `pnpm vr` — Playwright 시각 회귀 + 기능 테스트. **기준 이미지는 CI(ubuntu)에서만 생성·갱신**(로컬 `-u`는 가드가 막음, visual-baseline 워크플로 수동 트리거). 색·요소 추가는 같은 테스트의 **색 텍스트 스냅샷**(`*.txt`, 임계 없음)이 잡는다 — 갱신도 같은 visual-baseline 워크플로. VR은 `*--state-matrix`를 우선 집으니 **기능 테스트용 데모 스토리는 닫힌 상태로** 두라(열어두면 오버레이가 트리거를 덮는다)
 - `pnpm build` — 전체 빌드(Vite lib + preserveModules). publint는 `pnpm --filter @dg-design/react exec publint`
 - CI: install → generate → build → test → typecheck → publint → vr. tokens dist가 gitignore라 generate 선행, storybook typecheck가 react dist 참조라 build 뒤
-- 배포: changesets + `release.yml`(npm trusted publishing). **changeset frontmatter의 `@` 키는 반드시 따옴표 인용**(미인용은 YAML 파싱 실패로 version이 죽는다). changeset 포함 커밋이 main에 오르면 봇이 "Version Packages" PR을 만들고, **그 PR 머지가 배포 승인**이다. 로컬 `changeset version`·`changeset publish`·수동 태그 푸시는 하지 않는다(중복 게시·중복 태그). Version PR에는 CI가 돌지 않는다(GITHUB_TOKEN이 만든 PR은 워크플로를 트리거하지 않음) — 원래 커밋의 CI 결과를 본다
+- 배포: changesets + `release.yml`(npm trusted publishing). **changeset frontmatter의 `@` 키는 반드시 따옴표 인용**(미인용은 YAML 파싱 실패로 version이 죽는다). changeset 포함 커밋이 main에 오르면 봇이 "Version Packages" PR을 만들고, **그 PR 머지가 배포 승인**이다. 로컬 `changeset version`·`changeset publish`·수동 태그 푸시는 하지 않는다(중복 게시·중복 태그). Version PR에는 CI가 돌지 않는다(GITHUB_TOKEN이 만든 PR은 워크플로를 트리거하지 않음) — 원래 커밋의 CI 결과를 본다. publish만 실패하면 main은 이미 버전이 올라간 상태라 **워크플로 re-run이 유일한 복구**다
 
 ## 핵심 관습 (변경 시 결정 기록 먼저 확인)
 
