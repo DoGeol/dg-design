@@ -6,7 +6,7 @@ import * as React from "react";
 
 export interface BreadcrumbRootProps extends React.HTMLAttributes<HTMLElement> {}
 
-const BreadcrumbRoot = React.forwardRef<HTMLElement, BreadcrumbRootProps>(
+export const BreadcrumbRoot = React.forwardRef<HTMLElement, BreadcrumbRootProps>(
   ({ className, ...props }, ref) => (
     <nav
       ref={ref}
@@ -20,7 +20,7 @@ BreadcrumbRoot.displayName = "Breadcrumb.Root";
 
 export interface BreadcrumbListProps extends React.HTMLAttributes<HTMLOListElement> {}
 
-const BreadcrumbList = React.forwardRef<HTMLOListElement, BreadcrumbListProps>(
+export const BreadcrumbList = React.forwardRef<HTMLOListElement, BreadcrumbListProps>(
   ({ className, ...props }, ref) => (
     <ol ref={ref} className={clsx("dds-breadcrumb__list", className)} {...props} />
   ),
@@ -29,7 +29,7 @@ BreadcrumbList.displayName = "Breadcrumb.List";
 
 export interface BreadcrumbItemProps extends React.HTMLAttributes<HTMLLIElement> {}
 
-const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProps>(
+export const BreadcrumbItem = React.forwardRef<HTMLLIElement, BreadcrumbItemProps>(
   ({ className, ...props }, ref) => (
     <li ref={ref} className={clsx("dds-breadcrumb__item", className)} {...props} />
   ),
@@ -41,7 +41,7 @@ export interface BreadcrumbLinkProps extends React.AnchorHTMLAttributes<HTMLAnch
   asChild?: boolean;
 }
 
-const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
+export const BreadcrumbLink = React.forwardRef<HTMLAnchorElement, BreadcrumbLinkProps>(
   ({ className, asChild, ...props }, ref) => {
     const Comp = asChild ? Slot : "a";
     return <Comp ref={ref} className={clsx("dds-breadcrumb__link", className)} {...props} />;
@@ -52,7 +52,7 @@ BreadcrumbLink.displayName = "Breadcrumb.Link";
 export interface BreadcrumbPageProps extends React.HTMLAttributes<HTMLSpanElement> {}
 
 // 현재 위치 — 링크가 아니라 span이다(자기 자신으로 이동할 필요가 없다는 표준 breadcrumb 관례).
-const BreadcrumbPage = React.forwardRef<HTMLSpanElement, BreadcrumbPageProps>(
+export const BreadcrumbPage = React.forwardRef<HTMLSpanElement, BreadcrumbPageProps>(
   ({ className, ...props }, ref) => (
     <span
       ref={ref}
@@ -68,7 +68,7 @@ export interface BreadcrumbSeparatorProps extends React.HTMLAttributes<HTMLLIEle
 
 // Item과 나란히 List(ol)에 들어가는 li다 — aria-hidden이라 스크린 리더 순회에서 빠진다.
 // 기본 기호는 "/"(스펙에서 위임) — 자식으로 아이콘 등으로 교체 가능.
-const BreadcrumbSeparator = React.forwardRef<HTMLLIElement, BreadcrumbSeparatorProps>(
+export const BreadcrumbSeparator = React.forwardRef<HTMLLIElement, BreadcrumbSeparatorProps>(
   ({ className, children, ...props }, ref) => (
     <li
       ref={ref}

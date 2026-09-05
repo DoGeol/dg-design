@@ -137,3 +137,5 @@ const Badge = React.forwardRef<HTMLDivElement, AvatarBadgeProps>(({ className, .
 Badge.displayName = "Avatar.Badge";
 
 export const Avatar = { Root, Image, Fallback, Badge };
+
+export { Root as AvatarRoot, Image as AvatarImage, Fallback as AvatarFallback, Badge as AvatarBadge };

@@ -33,7 +33,7 @@ export interface TooltipProviderProps {
  * 지연 그룹 스코프. 안에서 툴팁 하나가 열리면 다른 트리거로 이동할 때 openDelay를 생략한다.
  * Provider 없이 `Tooltip.Root`만 써도 에러 없이 단독 지연(항상 openDelay 적용)으로 동작한다.
  */
-function TooltipProvider({ children, skipDelayDuration = DEFAULT_SKIP_DELAY }: TooltipProviderProps) {
+export function TooltipProvider({ children, skipDelayDuration = DEFAULT_SKIP_DELAY }: TooltipProviderProps) {
   const skippedRef = React.useRef(false);
   const graceTimer = React.useRef<ReturnType<typeof setTimeout>>(undefined);
   // 열려 있는 툴팁 수. 떠나는 툴팁의 closeDelay가 뒤늦게 끝나도 다른 툴팁이 아직
@@ -81,7 +81,7 @@ export interface TooltipRootProps {
   children?: React.ReactNode;
 }
 
-function TooltipRoot({
+export function TooltipRoot({
   open,
   defaultOpen = false,
   onOpenChange,
@@ -178,7 +178,7 @@ export interface TooltipTriggerProps extends React.ButtonHTMLAttributes<HTMLButt
   asChild?: boolean;
 }
 
-const TooltipTrigger = React.forwardRef<HTMLButtonElement, TooltipTriggerProps>(
+export const TooltipTrigger = React.forwardRef<HTMLButtonElement, TooltipTriggerProps>(
   ({ asChild, onMouseEnter, onMouseLeave, onFocus, onBlur, ...props }, ref) => {
     const context = useTooltipContext("Tooltip.Trigger");
     const setRef = React.useMemo(
@@ -220,7 +220,7 @@ TooltipTrigger.displayName = "Tooltip.Trigger";
 export interface TooltipContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 /** 안에 포커스 가능한 요소를 넣지 않는다 — 비인터랙티브 전제다. 상호작용 콘텐츠는 Popover를 쓴다. */
-const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
+export const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>(
   ({ className, children, ...props }, ref) => {
     const context = useTooltipContext("Tooltip.Content");
     const setRef = React.useMemo(

@@ -10,7 +10,7 @@ export interface StatePanelRootProps extends React.HTMLAttributes<HTMLDivElement
   minHeight?: number | string;
 }
 
-const StatePanelRoot = React.forwardRef<HTMLDivElement, StatePanelRootProps>(
+export const StatePanelRoot = React.forwardRef<HTMLDivElement, StatePanelRootProps>(
   ({ className, minHeight, style, children, ...props }, ref) => {
     const computedStyle = React.useMemo(() => {
       if (minHeight === undefined) return style;
@@ -34,7 +34,7 @@ StatePanelRoot.displayName = "StatePanel.Root";
 
 export interface StatePanelIconProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const StatePanelIcon = React.forwardRef<HTMLDivElement, StatePanelIconProps>(
+export const StatePanelIcon = React.forwardRef<HTMLDivElement, StatePanelIconProps>(
   ({ className, ...props }, ref) => {
     return <div ref={ref} className={clsx("dds-state-panel__icon", className)} {...props} />;
   },
@@ -45,7 +45,7 @@ export interface StatePanelTitleProps extends React.HTMLAttributes<HTMLHeadingEl
   asChild?: boolean;
 }
 
-const StatePanelTitle = React.forwardRef<HTMLHeadingElement, StatePanelTitleProps>(
+export const StatePanelTitle = React.forwardRef<HTMLHeadingElement, StatePanelTitleProps>(
   ({ className, asChild, ...props }, ref) => {
     const Comp = asChild ? Slot : "h2";
     return <Comp ref={ref} className={clsx("dds-state-panel__title", className)} {...props} />;
@@ -55,7 +55,7 @@ StatePanelTitle.displayName = "StatePanel.Title";
 
 export interface StatePanelDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
 
-const StatePanelDescription = React.forwardRef<
+export const StatePanelDescription = React.forwardRef<
   HTMLParagraphElement,
   StatePanelDescriptionProps
 >(({ className, ...props }, ref) => {
@@ -65,7 +65,7 @@ StatePanelDescription.displayName = "StatePanel.Description";
 
 export interface StatePanelActionsProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const StatePanelActions = React.forwardRef<HTMLDivElement, StatePanelActionsProps>(
+export const StatePanelActions = React.forwardRef<HTMLDivElement, StatePanelActionsProps>(
   ({ className, ...props }, ref) => {
     return <div ref={ref} className={clsx("dds-state-panel__actions", className)} {...props} />;
   },
@@ -74,7 +74,7 @@ StatePanelActions.displayName = "StatePanel.Actions";
 
 export interface StatePanelFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const StatePanelFooter = React.forwardRef<HTMLDivElement, StatePanelFooterProps>(
+export const StatePanelFooter = React.forwardRef<HTMLDivElement, StatePanelFooterProps>(
   ({ className, ...props }, ref) => {
     return <div ref={ref} className={clsx("dds-state-panel__footer", className)} {...props} />;
   },
@@ -86,7 +86,7 @@ export interface StatePanelLoadingProps
   label: React.ReactNode;
 }
 
-const StatePanelLoading = React.forwardRef<HTMLDivElement, StatePanelLoadingProps>(
+export const StatePanelLoading = React.forwardRef<HTMLDivElement, StatePanelLoadingProps>(
   ({ label, ...props }, ref) => {
     return (
       <StatePanelRoot ref={ref} role="status" aria-live="polite" {...props}>

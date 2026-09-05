@@ -60,7 +60,7 @@ export interface ToastProviderProps {
   children?: React.ReactNode;
 }
 
-function ToastProvider({ closeLabel = "닫기", children }: ToastProviderProps) {
+export function ToastProvider({ closeLabel = "닫기", children }: ToastProviderProps) {
   const [entries, setEntries] = React.useState<ToastEntry[]>([]);
   const [viewport, setViewport] = React.useState<HTMLElement | null>(null);
 

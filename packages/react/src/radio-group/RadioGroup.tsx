@@ -47,7 +47,7 @@ export interface RadioGroupRootProps
  * 반응하므로, orientation의 반대 축 키만 keydown에서 preventDefault해 축을 제한한다.
  * disabled 항목은 네이티브가 자동으로 건너뛴다 — roving-focus 유틸은 쓰지 않는다.
  */
-const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootProps>((props, ref) => {
+export const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootProps>((props, ref) => {
   const {
     className,
     value,
@@ -159,7 +159,7 @@ export interface RadioGroupItemProps
   value: string;
 }
 
-const RadioGroupItem = React.forwardRef<HTMLInputElement, RadioGroupItemProps>(
+export const RadioGroupItem = React.forwardRef<HTMLInputElement, RadioGroupItemProps>(
   ({ className, value, disabled: itemDisabled, children, ...props }, ref) => {
     const ctx = React.useContext(RadioGroupContext);
     if (!ctx) throw new Error("RadioGroup.Item must be used within RadioGroup.Root");

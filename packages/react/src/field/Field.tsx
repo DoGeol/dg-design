@@ -7,7 +7,7 @@ import { FieldContext, type FieldContextValue } from "./field-context";
 
 export interface FieldRootProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const FieldRoot = React.forwardRef<HTMLDivElement, FieldRootProps>(
+export const FieldRoot = React.forwardRef<HTMLDivElement, FieldRootProps>(
   ({ className, children, ...props }, ref) => {
     const baseId = React.useId();
     const inputId = `${baseId}-input`;
@@ -54,7 +54,7 @@ FieldRoot.displayName = "Field.Root";
 
 export interface FieldLabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {}
 
-const FieldLabel = React.forwardRef<HTMLLabelElement, FieldLabelProps>(
+export const FieldLabel = React.forwardRef<HTMLLabelElement, FieldLabelProps>(
   ({ className, htmlFor, id, ...props }, ref) => {
     const ctx = React.useContext(FieldContext);
     return (
@@ -72,7 +72,7 @@ FieldLabel.displayName = "Field.Label";
 
 export interface FieldDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
 
-const FieldDescription = React.forwardRef<HTMLParagraphElement, FieldDescriptionProps>(
+export const FieldDescription = React.forwardRef<HTMLParagraphElement, FieldDescriptionProps>(
   ({ className, id, ...props }, ref) => {
     const ctx = React.useContext(FieldContext);
     const resolvedId = id ?? ctx?.descriptionId;
@@ -91,7 +91,7 @@ FieldDescription.displayName = "Field.Description";
 
 export interface FieldErrorMessageProps extends React.HTMLAttributes<HTMLParagraphElement> {}
 
-const FieldErrorMessage = React.forwardRef<HTMLParagraphElement, FieldErrorMessageProps>(
+export const FieldErrorMessage = React.forwardRef<HTMLParagraphElement, FieldErrorMessageProps>(
   ({ className, id, role = "alert", ...props }, ref) => {
     const ctx = React.useContext(FieldContext);
     const resolvedId = id ?? ctx?.errorId;

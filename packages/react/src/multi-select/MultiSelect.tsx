@@ -49,7 +49,7 @@ export interface MultiSelectRootProps {
   children?: React.ReactNode;
 }
 
-function MultiSelectRoot({
+export function MultiSelectRoot({
   value,
   defaultValue = NO_VALUES,
   onValueChange,
@@ -184,7 +184,7 @@ function summarize(
   return formatCount(value.length);
 }
 
-const MultiSelectTrigger = React.forwardRef<HTMLButtonElement, MultiSelectTriggerProps>(
+export const MultiSelectTrigger = React.forwardRef<HTMLButtonElement, MultiSelectTriggerProps>(
   (
     {
       className,
@@ -267,7 +267,7 @@ MultiSelectTrigger.displayName = "MultiSelect.Trigger";
 
 export interface MultiSelectContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const MultiSelectContent = React.forwardRef<HTMLDivElement, MultiSelectContentProps>(
+export const MultiSelectContent = React.forwardRef<HTMLDivElement, MultiSelectContentProps>(
   ({ className, onKeyDown, ...props }, ref) => {
     const context = useMultiSelectContext("MultiSelect.Content");
     const setRef = React.useMemo(
@@ -315,7 +315,7 @@ export interface MultiSelectOptionProps
   value: string;
 }
 
-const MultiSelectOption = React.forwardRef<HTMLButtonElement, MultiSelectOptionProps>(
+export const MultiSelectOption = React.forwardRef<HTMLButtonElement, MultiSelectOptionProps>(
   ({ className, value, children, onClick, ...props }, ref) => {
     const context = useMultiSelectContext("MultiSelect.Option");
     const { registerOption } = context;
@@ -378,3 +378,6 @@ export const MultiSelect = {
   Group: Select.Group,
   Label: Select.Label,
 };
+
+export const MultiSelectGroup = Select.Group;
+export const MultiSelectLabel = Select.Label;

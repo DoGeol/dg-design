@@ -36,7 +36,7 @@ export interface ContextMenuRootProps {
   children?: React.ReactNode;
 }
 
-function ContextMenuRoot({ open, defaultOpen = false, onOpenChange, children }: ContextMenuRootProps) {
+export function ContextMenuRoot({ open, defaultOpen = false, onOpenChange, children }: ContextMenuRootProps) {
   const [isOpen, setOpen] = useControllableState({
     value: open,
     defaultValue: defaultOpen,
@@ -130,7 +130,7 @@ export interface ContextMenuTriggerProps extends React.HTMLAttributes<HTMLDivEle
  * 구현하지 않는다 — HoverCard와 같은 논리로 이건 보조 경로이고, 메뉴가 제공하는 동작은
  * 화면의 다른 UI(버튼·툴바 등)로도 도달 가능해야 한다는 전제 위에 있다.
  */
-const ContextMenuTrigger = React.forwardRef<HTMLDivElement, ContextMenuTriggerProps>(
+export const ContextMenuTrigger = React.forwardRef<HTMLDivElement, ContextMenuTriggerProps>(
   ({ asChild, onContextMenu, ...props }, ref) => {
     const context = useContextMenuContext("ContextMenu.Trigger");
     const setRef = React.useMemo(
@@ -174,7 +174,7 @@ ContextMenuTrigger.displayName = "ContextMenu.Trigger";
 
 export interface ContextMenuContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const ContextMenuContent = React.forwardRef<HTMLDivElement, ContextMenuContentProps>(
+export const ContextMenuContent = React.forwardRef<HTMLDivElement, ContextMenuContentProps>(
   ({ className, onKeyDown, ...props }, ref) => {
     const context = useContextMenuContext("ContextMenu.Content");
     const setRef = React.useMemo(
@@ -213,7 +213,7 @@ export interface ContextMenuItemProps extends React.ButtonHTMLAttributes<HTMLBut
   onSelect?: () => void;
 }
 
-const ContextMenuItem = React.forwardRef<HTMLButtonElement, ContextMenuItemProps>(
+export const ContextMenuItem = React.forwardRef<HTMLButtonElement, ContextMenuItemProps>(
   ({ className, onSelect, onClick, ...props }, ref) => {
     const context = useContextMenuContext("ContextMenu.Item");
     return (
@@ -238,7 +238,7 @@ ContextMenuItem.displayName = "ContextMenu.Item";
 
 export interface ContextMenuSeparatorProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const ContextMenuSeparator = React.forwardRef<HTMLDivElement, ContextMenuSeparatorProps>(
+export const ContextMenuSeparator = React.forwardRef<HTMLDivElement, ContextMenuSeparatorProps>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
@@ -252,7 +252,7 @@ ContextMenuSeparator.displayName = "ContextMenu.Separator";
 
 export interface ContextMenuLabelProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const ContextMenuLabel = React.forwardRef<HTMLDivElement, ContextMenuLabelProps>(
+export const ContextMenuLabel = React.forwardRef<HTMLDivElement, ContextMenuLabelProps>(
   ({ className, ...props }, ref) => (
     <div ref={ref} className={clsx("dds-dropdown-menu__label", className)} {...props} />
   ),

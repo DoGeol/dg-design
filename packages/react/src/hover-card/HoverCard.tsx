@@ -38,7 +38,7 @@ export interface HoverCardRootProps {
   children?: React.ReactNode;
 }
 
-function HoverCardRoot({
+export function HoverCardRoot({
   open,
   defaultOpen = false,
   onOpenChange,
@@ -138,7 +138,7 @@ export interface HoverCardTriggerProps extends React.AnchorHTMLAttributes<HTMLAn
  * 정보(링크 미리보기 등)는 트리거 자체가 이미 다른 경로(예: 실제 링크 이동)로 도달 가능해야
  * 한다 — HoverCard는 그 경로에 곁들이는 프리뷰일 뿐, 유일한 경로가 되면 안 된다.
  */
-const HoverCardTrigger = React.forwardRef<HTMLAnchorElement, HoverCardTriggerProps>(
+export const HoverCardTrigger = React.forwardRef<HTMLAnchorElement, HoverCardTriggerProps>(
   ({ asChild, onMouseEnter, onMouseLeave, ...props }, ref) => {
     const context = useHoverCardContext("HoverCard.Trigger");
     const setRef = React.useMemo(
@@ -172,7 +172,7 @@ export interface HoverCardContentProps extends React.HTMLAttributes<HTMLDivEleme
  * 취소해 열림을 유지한다 — 이게 Tooltip과 정확히 갈라지는 지점(콘텐츠가 인터랙티브해도 된다).
  * autoFocus 없음 — 포커스를 옮기지 않는다(hover 시맨틱을 지키기 위해 의도적으로 뺐다).
  */
-const HoverCardContent = React.forwardRef<HTMLDivElement, HoverCardContentProps>(
+export const HoverCardContent = React.forwardRef<HTMLDivElement, HoverCardContentProps>(
   ({ className, onMouseEnter, onMouseLeave, children, ...props }, ref) => {
     const context = useHoverCardContext("HoverCard.Content");
     const setRef = React.useMemo(

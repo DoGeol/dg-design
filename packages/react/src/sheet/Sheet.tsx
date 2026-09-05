@@ -46,7 +46,7 @@ export interface SheetRootProps {
  * 이 컴포넌트는 Dialog.Root를 거의 그대로 복제한다(공유 컨텍스트로 묶으면 Dialog 쪽이
  * Sheet 전용 개념인 side를 몰라도 되는 이점이 사라진다).
  */
-function SheetRoot({
+export function SheetRoot({
   side = "right",
   open,
   defaultOpen = false,
@@ -165,7 +165,7 @@ export interface SheetTriggerProps extends React.ButtonHTMLAttributes<HTMLButton
   asChild?: boolean;
 }
 
-const SheetTrigger = React.forwardRef<HTMLButtonElement, SheetTriggerProps>(
+export const SheetTrigger = React.forwardRef<HTMLButtonElement, SheetTriggerProps>(
   ({ asChild, onClick, ...props }, ref) => {
     const context = useSheetContext("Sheet.Trigger");
     const Comp = asChild ? Slot : "button";
@@ -188,7 +188,7 @@ SheetTrigger.displayName = "Sheet.Trigger";
 
 export interface SheetOverlayProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const SheetOverlay = React.forwardRef<HTMLDivElement, SheetOverlayProps>(
+export const SheetOverlay = React.forwardRef<HTMLDivElement, SheetOverlayProps>(
   ({ className, onClick, ...props }, ref) => {
     const context = useSheetContext("Sheet.Overlay");
     if (!context.present || !context.container) return null;
@@ -212,7 +212,7 @@ SheetOverlay.displayName = "Sheet.Overlay";
 
 export interface SheetContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const SheetContent = React.forwardRef<HTMLDivElement, SheetContentProps>(
+export const SheetContent = React.forwardRef<HTMLDivElement, SheetContentProps>(
   ({ className, ...props }, ref) => {
     const context = useSheetContext("Sheet.Content");
     if (!context.present || !context.container) return null;
@@ -238,7 +238,7 @@ SheetContent.displayName = "Sheet.Content";
 
 export interface SheetTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
 
-const SheetTitle = React.forwardRef<HTMLHeadingElement, SheetTitleProps>(
+export const SheetTitle = React.forwardRef<HTMLHeadingElement, SheetTitleProps>(
   ({ className, id, ...props }, ref) => {
     const context = useSheetContext("Sheet.Title");
     const resolvedId = id ?? context.titleId;
@@ -255,7 +255,7 @@ SheetTitle.displayName = "Sheet.Title";
 
 export interface SheetDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
 
-const SheetDescription = React.forwardRef<HTMLParagraphElement, SheetDescriptionProps>(
+export const SheetDescription = React.forwardRef<HTMLParagraphElement, SheetDescriptionProps>(
   ({ className, id, ...props }, ref) => {
     const context = useSheetContext("Sheet.Description");
     const resolvedId = id ?? context.descriptionId;
@@ -279,7 +279,7 @@ export interface SheetCloseProps extends React.ButtonHTMLAttributes<HTMLButtonEl
   asChild?: boolean;
 }
 
-const SheetClose = React.forwardRef<HTMLButtonElement, SheetCloseProps>(
+export const SheetClose = React.forwardRef<HTMLButtonElement, SheetCloseProps>(
   ({ asChild, onClick, ...props }, ref) => {
     const context = useSheetContext("Sheet.Close");
     const Comp = asChild ? Slot : "button";

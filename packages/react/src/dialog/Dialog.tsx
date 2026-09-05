@@ -27,7 +27,7 @@ export interface DialogRootProps {
   children?: React.ReactNode;
 }
 
-function DialogRoot({
+export function DialogRoot({
   open,
   defaultOpen = false,
   onOpenChange,
@@ -145,7 +145,7 @@ export interface DialogTriggerProps extends React.ButtonHTMLAttributes<HTMLButto
   asChild?: boolean;
 }
 
-const DialogTrigger = React.forwardRef<HTMLButtonElement, DialogTriggerProps>(
+export const DialogTrigger = React.forwardRef<HTMLButtonElement, DialogTriggerProps>(
   ({ asChild, onClick, ...props }, ref) => {
     const context = useDialogContext("Dialog.Trigger");
     const Comp = asChild ? Slot : "button";
@@ -168,7 +168,7 @@ DialogTrigger.displayName = "Dialog.Trigger";
 
 export interface DialogOverlayProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const DialogOverlay = React.forwardRef<HTMLDivElement, DialogOverlayProps>(
+export const DialogOverlay = React.forwardRef<HTMLDivElement, DialogOverlayProps>(
   ({ className, onClick, ...props }, ref) => {
     const context = useDialogContext("Dialog.Overlay");
     if (!context.present || !context.container) return null;
@@ -192,7 +192,7 @@ DialogOverlay.displayName = "Dialog.Overlay";
 
 export interface DialogContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
+export const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
   ({ className, ...props }, ref) => {
     const context = useDialogContext("Dialog.Content");
     if (!context.present || !context.container) return null;
@@ -217,7 +217,7 @@ DialogContent.displayName = "Dialog.Content";
 
 export interface DialogTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
 
-const DialogTitle = React.forwardRef<HTMLHeadingElement, DialogTitleProps>(
+export const DialogTitle = React.forwardRef<HTMLHeadingElement, DialogTitleProps>(
   ({ className, id, ...props }, ref) => {
     const context = useDialogContext("Dialog.Title");
     const resolvedId = id ?? context.titleId;
@@ -234,7 +234,7 @@ DialogTitle.displayName = "Dialog.Title";
 
 export interface DialogDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
 
-const DialogDescription = React.forwardRef<HTMLParagraphElement, DialogDescriptionProps>(
+export const DialogDescription = React.forwardRef<HTMLParagraphElement, DialogDescriptionProps>(
   ({ className, id, ...props }, ref) => {
     const context = useDialogContext("Dialog.Description");
     const resolvedId = id ?? context.descriptionId;
@@ -258,7 +258,7 @@ export interface DialogCloseProps extends React.ButtonHTMLAttributes<HTMLButtonE
   asChild?: boolean;
 }
 
-const DialogClose = React.forwardRef<HTMLButtonElement, DialogCloseProps>(
+export const DialogClose = React.forwardRef<HTMLButtonElement, DialogCloseProps>(
   ({ asChild, onClick, ...props }, ref) => {
     const context = useDialogContext("Dialog.Close");
     const Comp = asChild ? Slot : "button";

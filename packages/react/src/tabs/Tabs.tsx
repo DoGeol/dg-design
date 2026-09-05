@@ -29,7 +29,7 @@ export interface TabsRootProps
   responsive?: number;
 }
 
-const TabsRoot = React.forwardRef<HTMLDivElement, TabsRootProps>((props, ref) => {
+export const TabsRoot = React.forwardRef<HTMLDivElement, TabsRootProps>((props, ref) => {
   const { className, value, defaultValue, onValueChange, responsive, children, style, ...rest } = props;
 
   const handleChange = React.useCallback(
@@ -106,7 +106,7 @@ TabsRoot.displayName = "Tabs.Root";
 
 export interface TabsListProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
+export const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
   ({ className, onKeyDown, ...props }, ref) => {
     const listRef = React.useRef<HTMLDivElement | null>(null);
     const setRef = React.useMemo(() => mergeRefs(ref, listRef), [ref]);
@@ -136,7 +136,7 @@ export interface TabsTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonE
   value: string;
 }
 
-const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
+export const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
   ({ className, value, disabled, onClick, onFocus, ...props }, ref) => {
     const context = useTabsContext("Tabs.Trigger");
     const selected = context.value === value;
@@ -177,8 +177,8 @@ export interface TabsContentProps extends React.HTMLAttributes<HTMLDivElement> {
   value: string;
 }
 
-const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
-  ({ className, value, ...props }, ref) => {
+export const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
+  ({ className, value, tabIndex = 0, ...props }, ref) => {
     const context = useTabsContext("Tabs.Content");
     const selected = context.value === value;
     const isHidden = context.isWide ? false : !selected;
@@ -193,8 +193,8 @@ const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
         // 언마운트가 아니라 hidden — 패널 안 폼 상태가 탭을 오가도 살아남는다.
         // wide 모드에서는 hidden을 해제하여 모든 패널을 표시한다.
         hidden={isHidden}
-        // 패널에 포커스 가능한 요소가 없어도 키보드로 스크롤할 수 있어야 한다.
-        tabIndex={0}
+        // Allow consumers to override tabIndex. Default is 0 so panels remain keyboard accessible when they have no focusable children (APG).
+        tabIndex={tabIndex}
         data-state={selected ? "active" : "inactive"}
         className={clsx("dds-tabs__content", className)}
       />

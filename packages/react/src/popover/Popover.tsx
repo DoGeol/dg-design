@@ -33,7 +33,7 @@ export interface PopoverRootProps {
   children?: React.ReactNode;
 }
 
-function PopoverRoot({
+export function PopoverRoot({
   open,
   defaultOpen = false,
   onOpenChange,
@@ -76,7 +76,7 @@ export interface PopoverTriggerProps extends React.ButtonHTMLAttributes<HTMLButt
   asChild?: boolean;
 }
 
-const PopoverTrigger = React.forwardRef<HTMLButtonElement, PopoverTriggerProps>(
+export const PopoverTrigger = React.forwardRef<HTMLButtonElement, PopoverTriggerProps>(
   ({ asChild, onClick, ...props }, ref) => {
     const context = usePopoverContext("Popover.Trigger");
     const setRef = React.useMemo(
@@ -103,7 +103,7 @@ PopoverTrigger.displayName = "Popover.Trigger";
 
 export interface PopoverContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
+export const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
   ({ className, ...props }, ref) => {
     const context = usePopoverContext("Popover.Content");
     const setRef = React.useMemo(
@@ -134,7 +134,7 @@ PopoverContent.displayName = "Popover.Content";
 
 export interface PopoverArrowProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const PopoverArrow = React.forwardRef<HTMLDivElement, PopoverArrowProps>(
+export const PopoverArrow = React.forwardRef<HTMLDivElement, PopoverArrowProps>(
   ({ className, ...props }, ref) => {
     const context = usePopoverContext("Popover.Arrow");
     const setRef = React.useMemo(
@@ -157,7 +157,7 @@ export interface PopoverCloseProps extends React.ButtonHTMLAttributes<HTMLButton
   asChild?: boolean;
 }
 
-const PopoverClose = React.forwardRef<HTMLButtonElement, PopoverCloseProps>(
+export const PopoverClose = React.forwardRef<HTMLButtonElement, PopoverCloseProps>(
   ({ asChild, onClick, ...props }, ref) => {
     const context = usePopoverContext("Popover.Close");
     const Comp = asChild ? Slot : "button";

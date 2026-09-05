@@ -22,7 +22,7 @@ function paginationLinkClass(isActive: boolean | undefined, className: string | 
 
 export interface PaginationRootProps extends React.HTMLAttributes<HTMLElement> {}
 
-const PaginationRoot = React.forwardRef<HTMLElement, PaginationRootProps>(
+export const PaginationRoot = React.forwardRef<HTMLElement, PaginationRootProps>(
   ({ className, ...props }, ref) => (
     <nav
       ref={ref}
@@ -36,7 +36,7 @@ PaginationRoot.displayName = "Pagination.Root";
 
 export interface PaginationListProps extends React.HTMLAttributes<HTMLUListElement> {}
 
-const PaginationList = React.forwardRef<HTMLUListElement, PaginationListProps>(
+export const PaginationList = React.forwardRef<HTMLUListElement, PaginationListProps>(
   ({ className, ...props }, ref) => (
     <ul ref={ref} className={clsx("dds-pagination__list", className)} {...props} />
   ),
@@ -45,7 +45,7 @@ PaginationList.displayName = "Pagination.List";
 
 export interface PaginationItemProps extends React.HTMLAttributes<HTMLLIElement> {}
 
-const PaginationItem = React.forwardRef<HTMLLIElement, PaginationItemProps>(
+export const PaginationItem = React.forwardRef<HTMLLIElement, PaginationItemProps>(
   ({ className, ...props }, ref) => (
     <li ref={ref} className={clsx("dds-pagination__item", className)} {...props} />
   ),
@@ -59,7 +59,7 @@ export interface PaginationLinkProps extends React.AnchorHTMLAttributes<HTMLAnch
   asChild?: boolean;
 }
 
-const PaginationLink = React.forwardRef<HTMLAnchorElement, PaginationLinkProps>(
+export const PaginationLink = React.forwardRef<HTMLAnchorElement, PaginationLinkProps>(
   ({ className, isActive, asChild, ...props }, ref) => {
     const Comp = asChild ? Slot : "a";
     return (
@@ -110,7 +110,7 @@ export interface PaginationPreviousProps extends React.AnchorHTMLAttributes<HTML
 
 // Link와 별도 컴포넌트인 이유: isActive·asChild는 Previous/Next에 없다(스펙에서 asChild
 // 실사용 지점을 Link·Breadcrumb.Link로만 한정) — 얇은 anchor로 직접 둔다.
-const PaginationPrevious = React.forwardRef<HTMLAnchorElement, PaginationPreviousProps>(
+export const PaginationPrevious = React.forwardRef<HTMLAnchorElement, PaginationPreviousProps>(
   ({ className, label = "이전 페이지", children, ...props }, ref) => (
     <a ref={ref} aria-label={label} className={paginationLinkClass(false, className)} {...props}>
       {children ?? <ChevronLeftIcon />}
@@ -124,7 +124,7 @@ export interface PaginationNextProps extends React.AnchorHTMLAttributes<HTMLAnch
   label?: string;
 }
 
-const PaginationNext = React.forwardRef<HTMLAnchorElement, PaginationNextProps>(
+export const PaginationNext = React.forwardRef<HTMLAnchorElement, PaginationNextProps>(
   ({ className, label = "다음 페이지", children, ...props }, ref) => (
     <a ref={ref} aria-label={label} className={paginationLinkClass(false, className)} {...props}>
       {children ?? <ChevronRightIcon />}
@@ -138,7 +138,7 @@ export interface PaginationEllipsisProps extends React.HTMLAttributes<HTMLSpanEl
   label?: string;
 }
 
-const PaginationEllipsis = React.forwardRef<HTMLSpanElement, PaginationEllipsisProps>(
+export const PaginationEllipsis = React.forwardRef<HTMLSpanElement, PaginationEllipsisProps>(
   ({ className, label = "더 많은 페이지", children, ...props }, ref) => (
     <span ref={ref} className={clsx("dds-pagination__ellipsis", className)} {...props}>
       <span aria-hidden="true">{children ?? "…"}</span>

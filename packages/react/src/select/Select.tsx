@@ -48,7 +48,7 @@ export interface SelectRootProps {
   children?: React.ReactNode;
 }
 
-function SelectRoot(props: SelectRootProps) {
+export function SelectRoot(props: SelectRootProps) {
   const {
     value,
     defaultValue,
@@ -150,7 +150,7 @@ export interface SelectTriggerProps
   placeholder?: React.ReactNode;
 }
 
-const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerProps>(
+export const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerProps>(
   ({ className, size, placeholder, children, id, onClick, onKeyDown, ...props }, ref) => {
     const context = useSelectContext("Select.Trigger");
     const setRef = React.useMemo(
@@ -226,7 +226,7 @@ SelectTrigger.displayName = "Select.Trigger";
 
 export interface SelectContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps>(
+export const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps>(
   ({ className, onKeyDown, ...props }, ref) => {
     const context = useSelectContext("Select.Content");
     const setRef = React.useMemo(
@@ -272,7 +272,7 @@ export interface SelectOptionProps
   value: string;
 }
 
-const SelectOption = React.forwardRef<HTMLButtonElement, SelectOptionProps>(
+export const SelectOption = React.forwardRef<HTMLButtonElement, SelectOptionProps>(
   ({ className, value, children, onClick, ...props }, ref) => {
     const context = useSelectContext("Select.Option");
     const selected = context.value === value;
@@ -325,7 +325,7 @@ SelectOption.displayName = "Select.Option";
 
 export interface SelectGroupProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const SelectGroup = React.forwardRef<HTMLDivElement, SelectGroupProps>(
+export const SelectGroup = React.forwardRef<HTMLDivElement, SelectGroupProps>(
   ({ className, children, ...props }, ref) => {
     const labelId = React.useId();
     return (
@@ -347,7 +347,7 @@ SelectGroup.displayName = "Select.Group";
 
 export interface SelectLabelProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const SelectLabel = React.forwardRef<HTMLDivElement, SelectLabelProps>(
+export const SelectLabel = React.forwardRef<HTMLDivElement, SelectLabelProps>(
   ({ className, id, ...props }, ref) => {
     const groupLabelId = React.useContext(SelectGroupContext);
     return (

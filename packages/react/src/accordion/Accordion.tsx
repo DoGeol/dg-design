@@ -57,7 +57,7 @@ export interface AccordionRootProps
   size?: AccordionSize;
 }
 
-const AccordionRoot = React.forwardRef<HTMLDivElement, AccordionRootProps>((props, ref) => {
+export const AccordionRoot = React.forwardRef<HTMLDivElement, AccordionRootProps>((props, ref) => {
   const {
     className,
     values,
@@ -145,7 +145,7 @@ export interface AccordionItemProps extends React.HTMLAttributes<HTMLDivElement>
   disabled?: boolean;
 }
 
-const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
+export const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
   ({ className, value, disabled: itemDisabled = false, children, ...props }, ref) => {
     const rootContext = useAccordionRootContext("Accordion.Item");
     const disabled = rootContext.disabled || itemDisabled;
@@ -187,7 +187,7 @@ export interface AccordionHeaderProps extends React.HTMLAttributes<HTMLHeadingEl
   asChild?: boolean;
 }
 
-const AccordionHeader = React.forwardRef<HTMLHeadingElement, AccordionHeaderProps>(
+export const AccordionHeader = React.forwardRef<HTMLHeadingElement, AccordionHeaderProps>(
   ({ className, asChild, ...props }, ref) => {
     useAccordionItemContext("Accordion.Header");
     const Comp = asChild ? Slot : "h3";
@@ -200,7 +200,7 @@ export interface AccordionTriggerProps extends React.ButtonHTMLAttributes<HTMLBu
   asChild?: boolean;
 }
 
-const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTriggerProps>(
+export const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTriggerProps>(
   ({ className, asChild, onKeyDown, ...props }, ref) => {
     const itemContext = useAccordionItemContext("Accordion.Trigger");
     const rootContext = useAccordionRootContext("Accordion.Trigger");
@@ -230,7 +230,7 @@ AccordionTrigger.displayName = "Accordion.Trigger";
 
 export interface AccordionContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>(
+export const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>(
   ({ className, ...props }, ref) => {
     const context = useAccordionItemContext("Accordion.Content");
     return (
@@ -249,7 +249,7 @@ AccordionContent.displayName = "Accordion.Content";
 
 export interface AccordionBodyProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const AccordionBody = React.forwardRef<HTMLDivElement, AccordionBodyProps>((props, ref) => {
+export const AccordionBody = React.forwardRef<HTMLDivElement, AccordionBodyProps>((props, ref) => {
   useAccordionItemContext("Accordion.Body");
   const { className, ...rest } = props;
   return <div ref={ref} className={clsx("dds-accordion__body", className)} {...rest} />;
@@ -258,7 +258,7 @@ AccordionBody.displayName = "Accordion.Body";
 
 export interface AccordionTitleProps extends React.HTMLAttributes<HTMLSpanElement> {}
 
-const AccordionTitle = React.forwardRef<HTMLSpanElement, AccordionTitleProps>((props, ref) => {
+export const AccordionTitle = React.forwardRef<HTMLSpanElement, AccordionTitleProps>((props, ref) => {
   useAccordionItemContext("Accordion.Title");
   const { className, ...rest } = props;
   return <span ref={ref} className={clsx("dds-accordion__title", className)} {...rest} />;
@@ -267,7 +267,7 @@ AccordionTitle.displayName = "Accordion.Title";
 
 export interface AccordionDescriptionProps extends React.HTMLAttributes<HTMLSpanElement> {}
 
-const AccordionDescription = React.forwardRef<HTMLSpanElement, AccordionDescriptionProps>(
+export const AccordionDescription = React.forwardRef<HTMLSpanElement, AccordionDescriptionProps>(
   (props, ref) => {
     useAccordionItemContext("Accordion.Description");
     const { className, ...rest } = props;
@@ -280,7 +280,7 @@ AccordionDescription.displayName = "Accordion.Description";
 
 export interface AccordionPrefixProps extends React.HTMLAttributes<HTMLSpanElement> {}
 
-const AccordionPrefix = React.forwardRef<HTMLSpanElement, AccordionPrefixProps>((props, ref) => {
+export const AccordionPrefix = React.forwardRef<HTMLSpanElement, AccordionPrefixProps>((props, ref) => {
   useAccordionItemContext("Accordion.Prefix");
   const { className, ...rest } = props;
   return <span ref={ref} className={clsx("dds-accordion__prefix", className)} {...rest} />;
@@ -289,7 +289,7 @@ AccordionPrefix.displayName = "Accordion.Prefix";
 
 export interface AccordionSuffixIconProps extends React.HTMLAttributes<HTMLSpanElement> {}
 
-const AccordionSuffixIcon = React.forwardRef<HTMLSpanElement, AccordionSuffixIconProps>(
+export const AccordionSuffixIcon = React.forwardRef<HTMLSpanElement, AccordionSuffixIconProps>(
   (props, ref) => {
     useAccordionItemContext("Accordion.SuffixIcon");
     const { className, ...rest } = props;

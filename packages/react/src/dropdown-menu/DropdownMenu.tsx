@@ -34,7 +34,7 @@ export interface DropdownMenuRootProps {
   children?: React.ReactNode;
 }
 
-function DropdownMenuRoot({
+export function DropdownMenuRoot({
   open,
   defaultOpen = false,
   onOpenChange,
@@ -78,7 +78,7 @@ export interface DropdownMenuTriggerProps extends React.ButtonHTMLAttributes<HTM
   asChild?: boolean;
 }
 
-const DropdownMenuTrigger = React.forwardRef<HTMLButtonElement, DropdownMenuTriggerProps>(
+export const DropdownMenuTrigger = React.forwardRef<HTMLButtonElement, DropdownMenuTriggerProps>(
   ({ asChild, onClick, onKeyDown, ...props }, ref) => {
     const context = useDropdownMenuContext("DropdownMenu.Trigger");
     // 매 렌더 새 콜백 ref를 넘기면 React가 null→node로 다시 호출해 상태가 왕복한다.
@@ -118,7 +118,7 @@ DropdownMenuTrigger.displayName = "DropdownMenu.Trigger";
 
 export interface DropdownMenuContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const DropdownMenuContent = React.forwardRef<HTMLDivElement, DropdownMenuContentProps>(
+export const DropdownMenuContent = React.forwardRef<HTMLDivElement, DropdownMenuContentProps>(
   ({ className, onKeyDown, ...props }, ref) => {
     const context = useDropdownMenuContext("DropdownMenu.Content");
     const setRef = React.useMemo(
@@ -158,7 +158,7 @@ export interface DropdownMenuItemProps extends React.ButtonHTMLAttributes<HTMLBu
   onSelect?: () => void;
 }
 
-const DropdownMenuItem = React.forwardRef<HTMLButtonElement, DropdownMenuItemProps>(
+export const DropdownMenuItem = React.forwardRef<HTMLButtonElement, DropdownMenuItemProps>(
   ({ className, onSelect, onClick, ...props }, ref) => {
     const context = useDropdownMenuContext("DropdownMenu.Item");
     return (
@@ -183,7 +183,7 @@ DropdownMenuItem.displayName = "DropdownMenu.Item";
 
 export interface DropdownMenuSeparatorProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const DropdownMenuSeparator = React.forwardRef<HTMLDivElement, DropdownMenuSeparatorProps>(
+export const DropdownMenuSeparator = React.forwardRef<HTMLDivElement, DropdownMenuSeparatorProps>(
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
@@ -197,7 +197,7 @@ DropdownMenuSeparator.displayName = "DropdownMenu.Separator";
 
 export interface DropdownMenuLabelProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const DropdownMenuLabel = React.forwardRef<HTMLDivElement, DropdownMenuLabelProps>(
+export const DropdownMenuLabel = React.forwardRef<HTMLDivElement, DropdownMenuLabelProps>(
   ({ className, ...props }, ref) => (
     <div ref={ref} className={clsx("dds-dropdown-menu__label", className)} {...props} />
   ),

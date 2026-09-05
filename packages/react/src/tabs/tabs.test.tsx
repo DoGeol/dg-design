@@ -149,6 +149,21 @@ describe("Tabs 접근성", () => {
     expect(tab("둘째").getAttribute("tabindex")).toBe("-1");
     expect(tab("셋째").getAttribute("tabindex")).toBe("-1");
   });
+
+  it("Content의 tabIndex를 -1로 전달하면 tabpanel의 tabindex가 -1이 된다", () => {
+    render(
+      <Tabs.Root defaultValue="one">
+        <Tabs.List>
+          <Tabs.Trigger value="one">첫째</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="one" tabIndex={-1}>
+          첫째 패널
+        </Tabs.Content>
+      </Tabs.Root>,
+    );
+
+    expect(visiblePanel().getAttribute("tabindex")).toBe("-1");
+  });
 });
 
 describe("Tabs responsive", () => {

@@ -33,7 +33,7 @@ export interface CollapsibleRootProps
   disabled?: boolean;
 }
 
-const CollapsibleRoot = React.forwardRef<HTMLDivElement, CollapsibleRootProps>((props, ref) => {
+export const CollapsibleRoot = React.forwardRef<HTMLDivElement, CollapsibleRootProps>((props, ref) => {
   const { className, open: openProp, defaultOpen = false, onOpenChange, disabled = false, ...rest } =
     props;
   // `false`가 유효한 controlled 값이라 존재 여부로만 controlled를 판별한다.
@@ -68,7 +68,7 @@ export interface CollapsibleTriggerProps extends React.ButtonHTMLAttributes<HTML
   asChild?: boolean;
 }
 
-const CollapsibleTrigger = React.forwardRef<HTMLButtonElement, CollapsibleTriggerProps>(
+export const CollapsibleTrigger = React.forwardRef<HTMLButtonElement, CollapsibleTriggerProps>(
   ({ asChild, className, disabled: disabledProp, onClick, ...props }, ref) => {
     const context = useCollapsibleContext("Collapsible.Trigger");
     const disabled = context.disabled || Boolean(disabledProp);
@@ -99,7 +99,7 @@ CollapsibleTrigger.displayName = "Collapsible.Trigger";
 
 export interface CollapsibleContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-const CollapsibleContent = React.forwardRef<HTMLDivElement, CollapsibleContentProps>(
+export const CollapsibleContent = React.forwardRef<HTMLDivElement, CollapsibleContentProps>(
   ({ className, style, ...props }, ref) => {
     const context = useCollapsibleContext("Collapsible.Content");
     const contentRef = React.useRef<HTMLDivElement | null>(null);
