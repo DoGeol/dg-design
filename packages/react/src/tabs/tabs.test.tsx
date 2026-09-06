@@ -199,7 +199,8 @@ describe("Tabs responsive", () => {
     const root = screen.getByRole("tablist").parentElement!;
     expect(root.hasAttribute("data-wide")).toBe(true);
 
-    const panels = screen.getAllByRole("tabpanel");
+    // wide에서는 List가 숨어 트리거가 없으므로 role="tabpanel"이 아니다 — 클래스로 찾는다.
+    const panels = document.querySelectorAll(".dds-tabs__content");
     expect(panels).toHaveLength(3);
     for (const p of panels) {
       expect(p.hasAttribute("hidden")).toBe(false);
@@ -222,10 +223,38 @@ describe("Tabs responsive", () => {
 
     const root = screen.getByRole("tablist").parentElement!;
     expect(root.hasAttribute("data-wide")).toBe(true);
-    const panelsAfter = screen.getAllByRole("tabpanel");
+    const panelsAfter = document.querySelectorAll(".dds-tabs__content");
     expect(panelsAfter).toHaveLength(3);
     for (const p of panelsAfter) {
       expect(p.hasAttribute("hidden")).toBe(false);
     }
+  });
+
+  it("wide 모드에서 Content는 role·aria-labelledby·data-state·기본 tabIndex를 떼어 고아 tabpanel을 만들지 않는다", () => {
+    currentMatches = true;
+    render(<Basic responsive={768} defaultValue="one" />);
+
+    expect(screen.queryAllByRole("tabpanel")).toHaveLength(0);
+    const content = screen.getByText("첫째 패널");
+    expect(content.hasAttribute("role")).toBe(false);
+    expect(content.hasAttribute("aria-labelledby")).toBe(false);
+    expect(content.hasAttribute("data-state")).toBe(false);
+    expect(content.hasAttribute("tabindex")).toBe(false);
+  });
+
+  it("wide 모드에서도 소비자가 명시한 tabIndex는 그대로 붙는다", () => {
+    currentMatches = true;
+    render(
+      <Tabs.Root defaultValue="one" responsive={768}>
+        <Tabs.List>
+          <Tabs.Trigger value="one">첫째</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="one" tabIndex={-1}>
+          첫째 패널
+        </Tabs.Content>
+      </Tabs.Root>,
+    );
+
+    expect(screen.getByText("첫째 패널").getAttribute("tabindex")).toBe("-1");
   });
 });

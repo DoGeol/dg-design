@@ -178,24 +178,36 @@ export interface TabsContentProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
-  ({ className, value, tabIndex = 0, ...props }, ref) => {
+  ({ className, value, tabIndex, ...props }, ref) => {
     const context = useTabsContext("Tabs.Content");
     const selected = context.value === value;
     const isHidden = context.isWide ? false : !selected;
 
+    // wide 모드는 List가 display:none으로 숨어 트리거가 없다 — role="tabpanel"·
+    // aria-labelledby를 유지하면 존재하지 않는 트리거를 가리키는 고아 tabpanel이 된다.
+    // 일반 div로 내려 접근성 트리에서 tab 관계를 끊는다.
+    const wideProps = context.isWide
+      ? {}
+      : {
+          role: "tabpanel" as const,
+          "aria-labelledby": triggerId(context.baseId, value),
+          "data-state": selected ? "active" : "inactive",
+        };
+    // Allow consumers to override tabIndex. Default is 0 (only in narrow/tabpanel mode)
+    // so panels remain keyboard accessible when they have no focusable children (APG).
+    // wide 모드에서는 소비자가 명시하지 않는 한 붙이지 않는다 — 일반 div라 탭 정지점이 아니다.
+    const resolvedTabIndex = tabIndex ?? (context.isWide ? undefined : 0);
+
     return (
       <div
         {...props}
+        {...wideProps}
         ref={ref}
-        role="tabpanel"
         id={contentId(context.baseId, value)}
-        aria-labelledby={triggerId(context.baseId, value)}
         // 언마운트가 아니라 hidden — 패널 안 폼 상태가 탭을 오가도 살아남는다.
         // wide 모드에서는 hidden을 해제하여 모든 패널을 표시한다.
         hidden={isHidden}
-        // Allow consumers to override tabIndex. Default is 0 so panels remain keyboard accessible when they have no focusable children (APG).
-        tabIndex={tabIndex}
-        data-state={selected ? "active" : "inactive"}
+        tabIndex={resolvedTabIndex}
         className={clsx("dds-tabs__content", className)}
       />
     );

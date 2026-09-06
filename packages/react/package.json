@@ -73,6 +73,10 @@
       "types": "./dist/dropdown-menu/DropdownMenu.d.ts",
       "default": "./dist/dropdown-menu/DropdownMenu.js"
     },
+    "./file-input": {
+      "types": "./dist/file-input/FileInput.d.ts",
+      "default": "./dist/file-input/FileInput.js"
+    },
     "./field": {
       "types": "./dist/field/Field.d.ts",
       "default": "./dist/field/Field.js"
@@ -104,6 +108,10 @@
     "./radio-group": {
       "types": "./dist/radio-group/RadioGroup.d.ts",
       "default": "./dist/radio-group/RadioGroup.js"
+    },
+    "./save-status": {
+      "types": "./dist/save-status/SaveStatus.d.ts",
+      "default": "./dist/save-status/SaveStatus.js"
     },
     "./select": {
       "types": "./dist/select/Select.d.ts",

@@ -4,9 +4,9 @@
  * DropdownMenu(`menuitem`)와 Select(`option`)가 role만 바꿔 함께 쓴다.
  */
 
-/** disabled 항목은 애초에 목록에서 빠지므로 이동이 자연스럽게 건너뛴다. */
+/** disabled·hidden 항목은 애초에 목록에서 빠지므로 이동이 자연스럽게 건너뛴다. */
 function itemSelector(role: string): string {
-  return `[role="${role}"]:not([disabled]):not([data-disabled])`;
+  return `[role="${role}"]:not([hidden]):not([disabled]):not([data-disabled])`;
 }
 
 export function getItems(content: HTMLElement | null | undefined, role: string): HTMLElement[] {

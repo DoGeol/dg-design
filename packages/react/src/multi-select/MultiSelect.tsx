@@ -1,8 +1,10 @@
 // 외관은 Select와 완전히 같다 — 다중 선택은 값 모양과 닫힘 정책만 다르므로 CSS를 새로 쓰지 않는다.
 import "../select/select.css";
+// 검색 모드에서만 쓰는 칩·검색 입력·만들기 항목. 기존 모드에는 걸리는 규칙이 없다.
+import "./multi-select.css";
 
 import type { Placement } from "@floating-ui/dom";
-import { cva, type VariantProps } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
 import clsx from "clsx";
 import * as React from "react";
 import { createPortal } from "react-dom";
@@ -27,6 +29,16 @@ import {
   useMultiSelectContext,
   type MultiSelectContextValue,
 } from "./multi-select-context";
+import {
+  MultiSelectCaret,
+  MultiSelectContentSearch,
+  MultiSelectCreateItem,
+  MultiSelectSearchTrigger,
+  triggerCva,
+  useMultiSelectSearch,
+  type MultiSelectCreate,
+  type MultiSelectFilter,
+} from "./multi-select-search";
 
 /** defaultValue 미지정 시 렌더마다 새 배열이 생기지 않도록 고정 참조를 쓴다. */
 const NO_VALUES: string[] = [];
@@ -46,6 +58,24 @@ export interface MultiSelectRootProps {
   closeOnEscape?: boolean;
   /** 바깥 클릭으로 닫히는지. */
   closeOnOutsideClick?: boolean;
+  /**
+   * 검색 입력 자리. `"trigger"`는 트리거 안에 칩 + combobox 입력을,
+   * `"content"`는 패널 첫 자식에 searchbox를 놓는다. 기본은 검색 없음(현행).
+   */
+  search?: "trigger" | "content";
+  searchValue?: string;
+  defaultSearchValue?: string;
+  onSearchChange?: (value: string) => void;
+  /** 검색 입력에 그대로 얹을 속성 — placeholder·aria-label 같은 문구는 소비자 소유다. */
+  searchProps?: React.InputHTMLAttributes<HTMLInputElement>;
+  /** 기본은 라벨 텍스트의 NFKC 소문자 포함 비교. `null`이면 필터하지 않는다(서버 검색). */
+  filter?: MultiSelectFilter | null;
+  /** resolve가 옵션을 주면 선택에 추가하고 질의를 비운다. void면 아무것도 하지 않는다. */
+  onCreate?: MultiSelectCreate;
+  /** `onCreate`와 함께 줄 때만 "만들기" 항목이 생긴다 — 문구는 소비자 소유다. */
+  createLabel?: (query: string) => React.ReactNode;
+  /** 없으면 실패해도 문구를 띄우지 않고 항목만 복구한다. */
+  createErrorLabel?: (error: unknown, query: string) => React.ReactNode;
   children?: React.ReactNode;
 }
 
@@ -60,6 +90,15 @@ export function MultiSelectRoot({
   closeOnEscape = true,
   closeOnOutsideClick = true,
   name,
+  search,
+  searchValue,
+  defaultSearchValue,
+  onSearchChange,
+  searchProps,
+  filter,
+  onCreate,
+  createLabel,
+  createErrorLabel,
   children,
 }: MultiSelectRootProps) {
   const [selectedValues, setValue] = useControllableState<string[]>({
@@ -68,7 +107,7 @@ export function MultiSelectRoot({
     onChange: onValueChange,
   });
 
-  const { options, registerOption } = useOptionRegistry(children, MultiSelectOption);
+  const { options: registered, registerOption } = useOptionRegistry(children, MultiSelectOption);
 
   const toggleValue = React.useCallback(
     (next: string) => {
@@ -81,8 +120,24 @@ export function MultiSelectRoot({
     [selectedValues, setValue],
   );
 
+  const addValue = React.useCallback(
+    (next: string) => {
+      if (!selectedValues.includes(next)) setValue([...selectedValues, next]);
+    },
+    [selectedValues, setValue],
+  );
+
   // 열릴 때는 선택된 것 중 첫 옵션으로(없으면 첫 옵션) — Select와 같은 자리.
+  // 검색 모드는 DOM 포커스가 입력에 있어야 하므로 여기로 오지 않는다.
   const focusSelectedOption = (content: HTMLElement) => {
+    if (search === "trigger") return;
+    if (search === "content") {
+      const input = content.querySelector<HTMLElement>("[data-dds-search]");
+      if (input) {
+        input.focus();
+        return;
+      }
+    }
     const items = getItems(content, OPTION_ROLE);
     const index = items.findIndex((item) => {
       const itemValue = item.getAttribute(VALUE_ATTR);
@@ -108,9 +163,43 @@ export function MultiSelectRoot({
   const contentId = `${generatedId}-content`;
   const typeahead = useTypeahead();
 
+  // search가 없어도 훅 순서를 지키려고 항상 부르되, filter를 꺼서 아무 일도 하지 않게 둔다.
+  const searchState = useMultiSelectSearch({
+    mode: search ?? "content",
+    searchValue,
+    defaultSearchValue,
+    onSearchChange,
+    searchProps,
+    filter: search === undefined ? null : filter,
+    onCreate,
+    createLabel,
+    createErrorLabel,
+    options: registered,
+    contentId,
+    open: overlay.open,
+    addValue,
+    toggleValue,
+  });
+  const { createdOptions } = searchState;
+
+  // onCreate가 돌려준 옵션은 소비자가 목록에 넣기 전에도 칩 라벨로 쓰인다.
+  const options = React.useMemo(
+    () =>
+      createdOptions.length === 0
+        ? registered
+        : [
+            ...registered,
+            ...createdOptions.filter(
+              (entry) => !registered.some((option) => option.value === entry.value),
+            ),
+          ],
+    [registered, createdOptions],
+  );
+
   const context = React.useMemo<MultiSelectContextValue>(
     () => ({
       ...overlay,
+      search: search === undefined ? undefined : searchState,
       triggerId,
       contentId,
       describedBy: fieldCtx?.describedBy,
@@ -123,6 +212,8 @@ export function MultiSelectRoot({
     }),
     [
       overlay,
+      search,
+      searchState,
       triggerId,
       contentId,
       fieldCtx?.describedBy,
@@ -148,23 +239,15 @@ export function MultiSelectRoot({
 }
 MultiSelectRoot.displayName = "MultiSelect.Root";
 
-const trigger = cva("dds-select__trigger", {
-  variants: {
-    size: {
-      medium: "dds-select__trigger--size_medium",
-      large: "dds-select__trigger--size_large",
-    },
-  },
-  defaultVariants: { size: "medium" },
-});
-
 export interface MultiSelectTriggerProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "value">,
-    VariantProps<typeof trigger> {
+    VariantProps<typeof triggerCva> {
   /** 선택이 없을 때 보여줄 내용. 회색으로 표시된다. */
   placeholder?: React.ReactNode;
   /** 2개 이상 선택됐을 때의 요약 문구. 앱 언어에 맞춰 바꾼다. */
   formatCount?: (count: number) => React.ReactNode;
+  /** `search="trigger"`에서만 쓴다 — 칩 제거 버튼의 접근 이름. */
+  formatRemoveLabel?: (option: { value: string; label: React.ReactNode }) => string;
 }
 
 /**
@@ -191,6 +274,7 @@ export const MultiSelectTrigger = React.forwardRef<HTMLButtonElement, MultiSelec
       size,
       placeholder,
       formatCount = (count) => `${count}개 선택됨`,
+      formatRemoveLabel,
       children,
       id,
       onClick,
@@ -206,6 +290,21 @@ export const MultiSelectTrigger = React.forwardRef<HTMLButtonElement, MultiSelec
     );
     const empty = context.value.length === 0;
 
+    // 검색 모드의 트리거는 button이 아니라 combobox 입력을 품은 컨테이너다.
+    if (context.search?.mode === "trigger") {
+      return (
+        <MultiSelectSearchTrigger
+          ref={ref as unknown as React.Ref<HTMLDivElement>}
+          className={className}
+          size={size}
+          placeholder={placeholder}
+          formatRemoveLabel={formatRemoveLabel}
+          onClick={onClick as unknown as React.MouseEventHandler<HTMLDivElement>}
+          {...(props as React.HTMLAttributes<HTMLDivElement>)}
+        />
+      );
+    }
+
     return (
       <button
         ref={setRef}
@@ -218,7 +317,7 @@ export const MultiSelectTrigger = React.forwardRef<HTMLButtonElement, MultiSelec
         aria-invalid={context.invalid}
         aria-describedby={context.describedBy}
         data-state={context.open ? "open" : "closed"}
-        className={clsx(trigger({ size }), className)}
+        className={clsx(triggerCva({ size }), className)}
         onClick={(event) => {
           onClick?.(event);
           if (!event.defaultPrevented) context.setOpen(!context.open);
@@ -243,22 +342,7 @@ export const MultiSelectTrigger = React.forwardRef<HTMLButtonElement, MultiSelec
         <span className="dds-select__value" data-placeholder={empty ? "" : undefined}>
           {children ?? summarize(context.value, context.options, placeholder, formatCount)}
         </span>
-        <svg
-          className="dds-select__caret"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M4 6l4 4 4-4"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <MultiSelectCaret />
       </button>
     );
   },
@@ -268,7 +352,7 @@ MultiSelectTrigger.displayName = "MultiSelect.Trigger";
 export interface MultiSelectContentProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const MultiSelectContent = React.forwardRef<HTMLDivElement, MultiSelectContentProps>(
-  ({ className, onKeyDown, ...props }, ref) => {
+  ({ className, onKeyDown, children, ...props }, ref) => {
     const context = useMultiSelectContext("MultiSelect.Content");
     const setRef = React.useMemo(
       () =>
@@ -303,7 +387,11 @@ export const MultiSelectContent = React.forwardRef<HTMLDivElement, MultiSelectCo
           if (handled) event.preventDefault();
         }}
         {...props}
-      />,
+      >
+        {context.search?.mode === "content" ? <MultiSelectContentSearch /> : null}
+        {children}
+        {context.search === undefined ? null : <MultiSelectCreateItem />}
+      </div>,
       context.container,
     );
   },
@@ -318,7 +406,7 @@ export interface MultiSelectOptionProps
 export const MultiSelectOption = React.forwardRef<HTMLButtonElement, MultiSelectOptionProps>(
   ({ className, value, children, onClick, ...props }, ref) => {
     const context = useMultiSelectContext("MultiSelect.Option");
-    const { registerOption } = context;
+    const { registerOption, search } = context;
     const disabled = (props as { disabled?: boolean }).disabled === true;
     React.useEffect(
       () => registerOption({ value, label: children, text: nodeToText(children), disabled }),
@@ -332,6 +420,16 @@ export const MultiSelectOption = React.forwardRef<HTMLButtonElement, MultiSelect
         role={OPTION_ROLE}
         aria-selected={context.value.includes(value)}
         tabIndex={-1}
+        // 필터에서 떨어져도 언마운트하지 않는다 — 등록 목록과 활성 이동 기준이 흔들린다.
+        hidden={search?.hidden.has(value) || undefined}
+        id={search?.mode === "trigger" ? search.optionId(value) : undefined}
+        data-active={
+          search?.mode === "trigger" && search.activeValue === value ? "" : undefined
+        }
+        // 활성 표시가 aria-activedescendant뿐이라 DOM 포커스는 입력에 붙들어 둔다.
+        onMouseDown={
+          search?.mode === "trigger" ? (event) => event.preventDefault() : undefined
+        }
         {...{ [VALUE_ATTR]: value }}
         className={clsx("dds-select__option", className)}
         onClick={(event) => {
@@ -381,3 +479,10 @@ export const MultiSelect = {
 
 export const MultiSelectGroup = Select.Group;
 export const MultiSelectLabel = Select.Label;
+
+// 검색·생성 props의 타입은 서브패스(`@dg-design/react/multi-select`)에서도 보여야 한다.
+export type {
+  MultiSelectCreate,
+  MultiSelectFilter,
+  MultiSelectFilterOption,
+} from "./multi-select-search";

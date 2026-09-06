@@ -52,6 +52,53 @@ export const FunctionalDemo: StoryObj<typeof meta> = {
   ),
 };
 
+/**
+ * `search="trigger"` 기능 데모. Playwright가 `multiselect--search-trigger-demo`를 쓴다.
+ * 닫힌 채로 시작한다 — 열린 패널이 트리거를 덮으면 키보드 흐름 검증이 막힌다.
+ * onCreate는 잠깐 뒤 resolve해서 보류(Spinner) 표시가 실제로 잡히도록 한다.
+ */
+export const SearchTriggerDemo: StoryObj<typeof meta> = {
+  name: "Search trigger demo",
+  render: () => (
+    <div style={{ padding: 24, maxWidth: 360 }}>
+      <MultiSelect.Root
+        search="trigger"
+        searchProps={{ "aria-label": "과일 검색" }}
+        createLabel={(query) => `"${query}" 만들기`}
+        createErrorLabel={() => "만들지 못했습니다."}
+        onCreate={(query) =>
+          new Promise((resolve) => {
+            setTimeout(() => resolve({ value: query, label: query }), 400);
+          })
+        }
+      >
+        <MultiSelect.Trigger placeholder="과일을 고르세요" />
+        <MultiSelect.Content>
+          <DemoOptions />
+        </MultiSelect.Content>
+      </MultiSelect.Root>
+    </div>
+  ),
+};
+
+/** `search="content"` 기능 데모. Playwright가 `multiselect--search-content-demo`를 쓴다. */
+export const SearchContentDemo: StoryObj<typeof meta> = {
+  name: "Search content demo",
+  render: () => (
+    <div style={{ padding: 24, maxWidth: 360 }}>
+      <MultiSelect.Root
+        search="content"
+        searchProps={{ "aria-label": "과일 검색", placeholder: "검색" }}
+      >
+        <MultiSelect.Trigger placeholder="과일을 고르세요" />
+        <MultiSelect.Content>
+          <DemoOptions />
+        </MultiSelect.Content>
+      </MultiSelect.Root>
+    </div>
+  ),
+};
+
 function MatrixCell({
   label,
   children,
@@ -105,6 +152,38 @@ function StateMatrixGrid() {
       </MatrixCell>
       <MatrixCell label="disabled">
         <MultiSelect.Root defaultValue={["apple"]}>
+          <MultiSelect.Trigger placeholder="과일을 고르세요" disabled />
+          <MultiSelect.Content>
+            <DemoOptions />
+          </MultiSelect.Content>
+        </MultiSelect.Root>
+      </MatrixCell>
+      <MatrixCell label="search 0개">
+        <MultiSelect.Root search="trigger" searchProps={{ "aria-label": "과일 검색" }}>
+          <MultiSelect.Trigger placeholder="과일을 고르세요" />
+          <MultiSelect.Content>
+            <DemoOptions />
+          </MultiSelect.Content>
+        </MultiSelect.Root>
+      </MatrixCell>
+      <MatrixCell label="search 칩 2개">
+        <MultiSelect.Root
+          search="trigger"
+          defaultValue={["apple", "banana"]}
+          searchProps={{ "aria-label": "과일 검색" }}
+        >
+          <MultiSelect.Trigger placeholder="과일을 고르세요" />
+          <MultiSelect.Content>
+            <DemoOptions />
+          </MultiSelect.Content>
+        </MultiSelect.Root>
+      </MatrixCell>
+      <MatrixCell label="search disabled">
+        <MultiSelect.Root
+          search="trigger"
+          defaultValue={["apple"]}
+          searchProps={{ "aria-label": "과일 검색" }}
+        >
           <MultiSelect.Trigger placeholder="과일을 고르세요" disabled />
           <MultiSelect.Content>
             <DemoOptions />

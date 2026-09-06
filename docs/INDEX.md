@@ -42,6 +42,7 @@
 | [2026-09-05 컴포넌트 구성 규칙](decisions/2026-09-05-component-composition-rules.md) | 활성 | leaf·compound·preset 판별 순서, 서브컴포넌트 이름 관례, dg-studio 승격 후보 판정 |
 | [2026-09-06 배포 자동화](decisions/2026-09-06-release-automation.md) | 활성 | npm trusted publishing(OIDC)+changesets/action v2, Version PR 머지=배포 승인, setup-node registry-url·pnpm 11 함정 |
 | [2026-09-06 compound named export](decisions/2026-09-06-compound-named-exports.md) | 활성 | RSC 경계에서 객체 export 실패 근거, `{Compound}{Sub}` 규약, Tabs.Content tabIndex override |
+| [2026-09-06 승격 2차 구현 중 결정](decisions/2026-09-06-studio-promotion-batch-2-implementation.md) | 활성 | SaveStatus·MultiSelect 검색/onCreate·FileInput 구현 결정, 디자인 검토 5건 전후 값, `[hidden]` vs display 함정 |
 
 ## 스펙
 
@@ -69,5 +70,6 @@
 | [어드민 1차](specs/archive/2026-08-19-admin-batch.md) | 미배포 | Table·Card·Tabs·Pagination·Breadcrumb — 로직은 소비자, automatic 탭 |
 | [파생 3종](specs/archive/2026-08-16-multi-select-sheet-context-menu.md) | 0.9.0 | MultiSelect(요약 트리거·토글)·Sheet(4방향)·ContextMenu(마우스 전용) + internal 추출 |
 | [우선순위 컴포넌트 1차](specs/archive/2026-08-28-priority-components-batch.md) | 0.12.0 | Skeleton·Avatar·Separator·Collapsible·Accordion, 합격 조건 20/20 |
+| [dg-studio 승격 2차](specs/archive/2026-09-06-studio-promotion-batch-2.md) | 0.14.0 | SaveStatus 4상태 · MultiSelect search 2모드+onCreate Promise · FileInput compound(검증까지) · 합격 조건에 dg-studio 교체 PR |
 
 각 스펙의 인터뷰 기록은 같은 이름 `-interview.md`로 분리돼 있다.

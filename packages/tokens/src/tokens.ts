@@ -113,7 +113,7 @@ export const semanticColors: Record<string, { light: ColorRef; dark: ColorRef }>
   "fg-neutral": { light: "gray-900", dark: "gray-100" },
   // 도움말·그룹 라벨 등 상시 노출 보조 텍스트. fg-disabled와 회색조가 비슷해 보이지만
   // 그쪽은 WCAG 면제 대상이라 4.5:1을 못 넘긴다 — 겸용하면 본문 텍스트가 AA를 놓친다.
-  "fg-neutral-weak": { light: "gray-600", dark: "gray-500" },
+  "fg-neutral-weak": { light: "gray-600", dark: "gray-400" },
   "fg-neutral-contrast": { light: "gray-00", dark: "gray-1000" },
 
   // ── critical (8) — intent 중 유일하게 hover/pressed가 있다. Badge 때는 base만 뒀는데
@@ -210,6 +210,8 @@ export const contrastChecks: ContrastCheck[] = [
   { fg: "fg-neutral", bg: "bg-layer-default", min: 4.5 },
   // 보조 텍스트 — 상시 노출이라 아래 fg-disabled 면제가 적용되지 않는다
   { fg: "fg-neutral-weak", bg: "bg-layer-default", min: 4.5 },
+  // 보조 텍스트가 약한 배경 위에 놓이는 조합(예: StatePanel 본문) — F4
+  { fg: "fg-neutral-weak", bg: "bg-neutral-weak", min: 4.5 },
   // 포커스 링 (비텍스트)
   { fg: "stroke-focus-ring", bg: "bg-layer-default", min: 3.0 }, // WCAG 1.4.11
   // 인터랙티브 컨트롤 테두리 (비텍스트)

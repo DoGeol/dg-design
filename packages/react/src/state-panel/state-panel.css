@@ -24,8 +24,8 @@
 
   .dds-state-panel__title {
     margin: 0;
-    font-size: var(--dds-font-size-t4);
-    line-height: var(--dds-line-height-t4);
+    font-size: var(--dds-font-size-t5);
+    line-height: var(--dds-line-height-t5);
     font-weight: var(--dds-font-weight-bold);
     color: var(--dds-color-fg-neutral);
   }

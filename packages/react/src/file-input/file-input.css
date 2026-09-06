@@ -1,0 +1,82 @@
+@layer dds {
+  .dds-file-input__dropzone {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--dds-dimension-x2);
+    padding: var(--dds-dimension-x6) var(--dds-dimension-x4);
+    border: 1px dashed var(--dds-color-stroke-neutral-weak);
+    border-radius: var(--dds-radius-r3);
+    background-color: transparent;
+    color: var(--dds-color-fg-neutral-weak);
+    text-align: center;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .dds-file-input__dropzone:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-file-input__dropzone[data-dragging] {
+    border-color: var(--dds-color-stroke-focus-ring);
+    background-color: var(--dds-color-bg-brand-weak);
+  }
+
+  .dds-file-input__dropzone[aria-invalid="true"] {
+    border-color: var(--dds-color-stroke-critical);
+  }
+
+  .dds-file-input__dropzone[data-disabled] {
+    cursor: not-allowed;
+    color: var(--dds-color-fg-disabled);
+    border-color: var(--dds-color-bg-disabled);
+    background-color: var(--dds-color-bg-disabled);
+  }
+
+  .dds-file-input__trigger {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--dds-dimension-x2);
+    border: 1px solid var(--dds-color-stroke-neutral-weak);
+    border-radius: var(--dds-radius-r3);
+    padding: var(--dds-dimension-x2) var(--dds-dimension-x4);
+    background-color: transparent;
+    color: var(--dds-color-fg-neutral);
+    font-family: inherit;
+    font-weight: var(--dds-font-weight-bold);
+    cursor: pointer;
+  }
+
+  .dds-file-input__trigger:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-file-input__trigger[aria-invalid="true"] {
+    border-color: var(--dds-color-stroke-critical);
+  }
+
+  .dds-file-input__trigger:is(:disabled, [disabled], [data-disabled]) {
+    cursor: not-allowed;
+    color: var(--dds-color-fg-disabled);
+    border-color: var(--dds-color-bg-disabled);
+  }
+
+  .dds-file-input__preview {
+    display: flex;
+    flex-direction: column;
+    gap: var(--dds-dimension-x2);
+  }
+
+  .dds-file-input__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--dds-dimension-x2);
+  }
+}

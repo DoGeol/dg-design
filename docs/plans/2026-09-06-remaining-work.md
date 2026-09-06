@@ -1,6 +1,6 @@
 # 남은 작업 진행 계획 (2026-09-06)
 
-> 상태: **승인 대기** · 감독 세션이 관리, 실행은 서브에이전트
+> 상태: **A·B·C 완료, D 대기** · 감독 세션이 관리, 실행은 서브에이전트
 > 선행: dg-studio PR #59(DDS 0.13.1 도입) 열림 · dg-design follow-ups D1·D2 기록됨
 
 ## 트랙
@@ -46,7 +46,7 @@ deep-interview로 확정할 것(구성 규칙 문서의 사전 판정 반영):
 | MultiSelect `onCreate` | 기존 compound 옵션 | 생성 항목 표시(“‘x’ 만들기”), 비동기 생성 중 상태, 실패 표시, 최대 개수 |
 | 파일 입력 | 미판정 | leaf(`FileInput` 버튼형) vs compound(dropzone+미리보기). cover-field는 hidden input + 버튼 + 미리보기 + alt 텍스트 |
 
-산출: `docs/specs/2026-09-06-studio-promotion-batch-2.md` → 승인 → implement-spec(태스크 분해·모델 배정은 그때).
+산출: [승격 2차 스펙](../specs/archive/2026-09-06-studio-promotion-batch-2.md) — 승인·구현 완료(2026-09-06). 결정 기록 `decisions/2026-09-06-studio-promotion-batch-2-implementation.md`.
 
 ## 감독 처리
 

@@ -1,0 +1,133 @@
+@layer dds {
+  /* search="trigger": 트리거가 칩을 감싸므로 높이 고정이 풀린다.
+     min-height로 기본 모드와 같은 줄 높이를 지키되 칩이 늘면 아래로 자란다. */
+  .dds-multi-select__trigger--search {
+    height: auto;
+    min-height: var(--dds-dimension-x10);
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: var(--dds-dimension-x1_5);
+    padding-block: var(--dds-dimension-x1_5);
+    cursor: text;
+  }
+
+  .dds-multi-select__trigger--search:has(.dds-multi-select__search:focus-visible) {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-multi-select__trigger--search[data-disabled] {
+    cursor: not-allowed;
+    background-color: var(--dds-color-bg-disabled);
+    color: var(--dds-color-fg-disabled);
+  }
+
+  .dds-multi-select__trigger--search .dds-select__caret {
+    margin-inline-start: auto;
+  }
+
+  /* 입력은 남는 자리를 먹되 칩이 줄을 채우면 다음 줄로 내려간다. */
+  .dds-multi-select__search {
+    flex: 1 1 var(--dds-dimension-x16);
+    min-width: 0;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    outline: none;
+  }
+
+  .dds-multi-select__search::placeholder {
+    color: var(--dds-color-fg-disabled);
+  }
+
+  /* search="content": 패널 첫 자식. 옵션과 같은 좌우 여백에 아래로 구분선. */
+  .dds-multi-select__search--content {
+    box-sizing: border-box;
+    flex: none;
+    width: 100%;
+    min-height: var(--dds-dimension-x8);
+    padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2);
+    margin-block-end: var(--dds-dimension-x1);
+    border-block-end: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-neutral);
+    font-size: var(--dds-font-size-t4);
+    line-height: var(--dds-line-height-t4);
+  }
+
+  .dds-multi-select__search--content:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: calc(-1 * var(--dds-dimension-x0_5));
+  }
+
+  .dds-multi-select__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--dds-dimension-x1);
+    max-width: 100%;
+    padding-inline: var(--dds-dimension-x2);
+    padding-block: var(--dds-dimension-x0_5);
+    border-radius: var(--dds-radius-r1_5);
+    background-color: var(--dds-color-bg-neutral-weak);
+    color: var(--dds-color-fg-neutral);
+    font-size: var(--dds-font-size-t2);
+    line-height: var(--dds-line-height-t2);
+  }
+
+  .dds-multi-select__chip-label {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .dds-multi-select__chip-remove {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    border-radius: var(--dds-radius-r-full);
+    background: transparent;
+    color: var(--dds-color-fg-neutral-weak);
+    cursor: pointer;
+  }
+
+  .dds-multi-select__chip-remove:hover:not(:is(:disabled, [disabled], [data-disabled])) {
+    color: var(--dds-color-fg-neutral);
+  }
+
+  .dds-multi-select__chip-remove:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-multi-select__chip-remove:is(:disabled, [disabled], [data-disabled]) {
+    cursor: not-allowed;
+    color: var(--dds-color-fg-disabled);
+  }
+
+  /* 활성 항목이 aria-activedescendant로만 표시되는 trigger 모드의 하이라이트 —
+     DOM 포커스가 입력에 남아 :focus-visible이 안 걸린다. */
+  .dds-select__option[data-active] {
+    background-color: var(--dds-color-bg-transparent-hover);
+  }
+
+  .dds-multi-select__option--create {
+    justify-content: space-between;
+  }
+
+  .dds-multi-select__option--create[aria-disabled="true"] {
+    cursor: progress;
+    color: var(--dds-color-fg-neutral-weak);
+  }
+
+  .dds-multi-select__create-error {
+    padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2);
+    color: var(--dds-color-fg-critical);
+    font-size: var(--dds-font-size-t2);
+    line-height: var(--dds-line-height-t2);
+  }
+}

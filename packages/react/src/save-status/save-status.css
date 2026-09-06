@@ -1,0 +1,34 @@
+@layer dds {
+  .dds-save-status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--dds-dimension-x1);
+    font-family: inherit;
+    font-size: var(--dds-font-size-t2);
+    line-height: var(--dds-line-height-t2);
+    color: var(--dds-color-fg-neutral-weak);
+  }
+
+  .dds-save-status__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .dds-save-status--status_saved {
+    color: var(--dds-color-fg-neutral-weak);
+  }
+
+  .dds-save-status--status_dirty {
+    color: var(--dds-color-fg-warning);
+  }
+
+  .dds-save-status--status_saving {
+    color: var(--dds-color-fg-neutral-weak);
+  }
+
+  .dds-save-status--status_error {
+    color: var(--dds-color-fg-critical);
+  }
+}

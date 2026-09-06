@@ -2,6 +2,7 @@ import * as React from "react";
 
 import type { OptionEntry, Typeahead } from "../internal/select-core";
 import type { Overlay } from "../internal/use-overlay";
+import type { MultiSelectSearchState } from "./multi-select-search";
 
 export interface MultiSelectContextValue extends Overlay {
   /** Field 안이면 Field의 inputId — Field.Label의 htmlFor가 트리거 버튼을 가리킨다. */
@@ -17,6 +18,8 @@ export interface MultiSelectContextValue extends Overlay {
   options: OptionEntry[];
   registerOption: (entry: OptionEntry) => () => void;
   typeahead: Typeahead;
+  /** search prop을 준 경우에만 있다 — 없으면 검색 코드는 어디에서도 돌지 않는다. */
+  search?: MultiSelectSearchState;
 }
 
 export const MultiSelectContext = React.createContext<MultiSelectContextValue | undefined>(

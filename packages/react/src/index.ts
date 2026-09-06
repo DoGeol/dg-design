@@ -67,6 +67,21 @@ export {
   DropdownMenuLabel,
 } from "./dropdown-menu/DropdownMenu";
 export {
+  FileInput,
+  FileInputRoot,
+  FileInputDropzone,
+  FileInputTrigger,
+  FileInputPreview,
+  FileInputActions,
+  type FileInputRootProps,
+  type FileInputDropzoneProps,
+  type FileInputTriggerProps,
+  type FileInputPreviewProps,
+  type FileInputActionsProps,
+  type FileRejectReason,
+  type RejectedFile,
+} from "./file-input/FileInput";
+export {
   Field,
   FieldRoot,
   FieldLabel,
@@ -87,6 +102,9 @@ export {
   MultiSelectOption,
   MultiSelectGroup,
   MultiSelectLabel,
+  type MultiSelectFilter,
+  type MultiSelectFilterOption,
+  type MultiSelectCreate,
 } from "./multi-select/MultiSelect";
 export { NotificationBadge, type NotificationBadgeProps } from "./notification-badge/NotificationBadge";
 export {
@@ -109,6 +127,7 @@ export {
 } from "./popover/Popover";
 export { Progress, type ProgressProps } from "./progress/Progress";
 export { RadioGroup, RadioGroupRoot, RadioGroupItem } from "./radio-group/RadioGroup";
+export { SaveStatus, type SaveStatusProps, type SaveStatusValue } from "./save-status/SaveStatus";
 export {
   Select,
   SelectRoot,

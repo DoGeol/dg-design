@@ -99,6 +99,11 @@
     animation-fill-mode: forwards;
   }
 
+  /* display:flex가 [hidden]의 UA display:none을 이긴다 — MultiSelect 검색 필터가 옵션을 hidden으로 숨긴다. */
+  .dds-select__option[hidden] {
+    display: none;
+  }
+
   .dds-select__option {
     box-sizing: border-box;
     display: flex;
