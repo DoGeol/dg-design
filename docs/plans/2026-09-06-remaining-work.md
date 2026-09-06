@@ -1,6 +1,6 @@
 # 남은 작업 진행 계획 (2026-09-06)
 
-> 상태: **A·B·C 완료, D 대기** · 감독 세션이 관리, 실행은 서브에이전트
+> 상태: **완료 (2026-09-06)** — A·B·C·D 전부. dg-studio PR #59·#60 머지, react 0.14.0 · tokens 0.7.1 배포
 > 선행: dg-studio PR #59(DDS 0.13.1 도입) 열림 · dg-design follow-ups D1·D2 기록됨
 
 ## 트랙
@@ -51,3 +51,10 @@ deep-interview로 확정할 것(구성 규칙 문서의 사전 판정 반영):
 ## 감독 처리
 
 커밋·푸시·PR 갱신·Version PR 머지, 결정 판정, barrel 편집, 현황판 갱신.
+
+## 결과 (2026-09-06)
+
+- A: 스크린샷 15장, 디자인 검토 14건 반영, PR #59 머지.
+- B·C: react 0.14.0 · tokens 0.7.1 배포. 스펙 합격 조건 8/8.
+- D: dg-studio PR #60 머지 — TagPicker→MultiSelect, CoverField→FileInput, 저장 상태→SaveStatus.
+- 서브에이전트 합계 약 150만 토큰(Workflow 3회 + 단독 5). 감독이 잡은 결함: `[hidden]` vs display 2건, trigger 활성 항목 초기화 1건.

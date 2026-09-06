@@ -3,7 +3,7 @@
 - 날짜: 2026-09-06
 - 스펙: [dg-studio 승격 2차](../specs/archive/2026-09-06-studio-promotion-batch-2.md)
 - 근거: [컴포넌트 구성 규칙](../decisions/2026-09-05-component-composition-rules.md), [1차 구현 결정](./2026-09-05-studio-promotion-batch-implementation.md)
-- 상태: 활성
+- 상태: 활성 (dg-studio 교체 PR #60 머지로 합격 조건 8/8, 2026-09-06)
 
 ## 합격 조건 대조표
 

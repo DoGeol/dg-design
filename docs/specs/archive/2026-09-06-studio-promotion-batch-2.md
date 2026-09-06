@@ -9,7 +9,7 @@
 - 근거: [컴포넌트 구성 규칙](../../decisions/2026-09-05-component-composition-rules.md) — SaveStatus leaf, MultiSelect 옵션 확장 사전 판정. [잔여 작업 계획](../../plans/2026-09-06-remaining-work.md) 트랙 C
 - 출처: dg-studio `src/features/homeground-blog-editor/tag-picker.tsx`, `cover-field.tsx`, `editor-screen.tsx` 툴바 status, `src/features/homeground-resume-editor/resume-editor.tsx` 툴바 status
 - 승인: **승인됨 (2026-09-06)**
-- 구현: **완료** — react 0.14.0 (2026-09-06). 합격 조건 7/8 (dg-studio 교체 PR은 배포 뒤, 트랙 D). 결정 기록: [구현 중 결정](../../decisions/2026-09-06-studio-promotion-batch-2-implementation.md)
+- 구현: **완료** — react 0.14.0 (2026-09-06). 합격 조건 8/8 (dg-studio 교체 PR #60 머지, 2026-09-06). 결정 기록: [구현 중 결정](../../decisions/2026-09-06-studio-promotion-batch-2-implementation.md)
 
 ## 명확도
 | 차원 | 점수 | 가중치 | 가중 점수 |
@@ -94,7 +94,7 @@ dg-studio가 편집기에서 직접 만들어 쓰는 저장 상태 표시·태�
 - [ ] `onCreate` — resolve 옵션이 선택에 추가되고 query가 비워진다. reject 시 항목 복구 + `createErrorLabel` 표시. 보류 중 다른 옵션 조작 가능.
 - [ ] `FileInput` — accept·maxSize·maxFiles 위반이 `rejected`로 사유와 함께 오고 통과분만 `files`. Dropzone 키보드로 열림, `data-dragging` 토글. Field 안에서 `aria-describedby`·`aria-invalid` 연결.
 - [ ] 신규 색 토큰 0, 대비 검사 쌍 수 불변.
-- [ ] **dg-studio 교체 PR**(0.14.0 배포 뒤): `tag-picker.tsx` → `MultiSelect search="trigger" onCreate`, 블로그·이력서 툴바 status → `SaveStatus`, `cover-field.tsx` → `FileInput.Root/Trigger/Preview/Actions` + `Field.ErrorMessage`. dg-studio `typecheck·lint·unit·E2E` 전부 통과. 여기까지 끝나야 완료.
+- [x] **dg-studio 교체 PR**(0.14.0 배포 뒤): `tag-picker.tsx` → `MultiSelect search="trigger" onCreate`, 블로그·이력서 툴바 status → `SaveStatus`, `cover-field.tsx` → `FileInput.Root/Trigger/Preview/Actions` + `Field.ErrorMessage`. dg-studio `typecheck·lint·unit·E2E` 전부 통과. 여기까지 끝나야 완료.
 - [ ] 구현 중 결정은 `docs/decisions/2026-09-06-studio-promotion-batch-2-implementation.md`.
 
 ## 드러난 가정과 결론
