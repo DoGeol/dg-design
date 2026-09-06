@@ -1,0 +1,10 @@
+dds-file-input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-file-input__dropzone | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) | none
+dds-file-input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-file-input__dropzone | rgb(174, 178, 178) | rgb(7, 45, 45) | none | rgb(87, 197, 197) | none
+dds-file-input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-file-input__dropzone | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
+dds-field | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-file-input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-file-input__dropzone | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(240, 70, 70) | none
+dds-field__error-message | rgb(240, 201, 197) | rgba(0, 0, 0, 0) | none | rgb(240, 201, 197) | none
