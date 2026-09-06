@@ -8,10 +8,10 @@ Dogeol Design System (DDS). [daangn/seed-design](https://github.com/daangn/seed-
 
 | 패키지 | 버전 | 설명 |
 |--------|------|------|
-| [`@dg-design/tokens`](https://www.npmjs.com/package/@dg-design/tokens) | 0.7.0 | OKLCH 파생 팔레트 → CSS 변수 + Tailwind v4 브릿지 + 타입. 코드젠에 WCAG 대비 검사 내장 |
-| [`@dg-design/react`](https://www.npmjs.com/package/@dg-design/react) | 0.12.0 | React 컴포넌트 31종 (Accordion, Alert, Avatar, Badge, Breadcrumb, Button, Card, Checkbox, Collapsible, ContextMenu, Dialog, DropdownMenu, TextField·Field, HoverCard, MultiSelect, NotificationBadge, Pagination, Popover, Progress, RadioGroup, Select, Separator, Sheet, Skeleton, Spinner, Switch, Table, Tabs, TextArea, Toast, Tooltip). plain CSS + CVA, Tailwind 비종속 |
+| [`@dg-design/tokens`](https://www.npmjs.com/package/@dg-design/tokens) | 0.7.1 | OKLCH 파생 팔레트 → CSS 변수 + Tailwind v4 브릿지 + 타입. 코드젠에 WCAG 대비 검사 내장 |
+| [`@dg-design/react`](https://www.npmjs.com/package/@dg-design/react) | 0.14.0 | React 컴포넌트 35종 (Accordion, Alert, Avatar, Badge, Breadcrumb, Button, Card, Checkbox, Collapsible, ContextMenu, Dialog, DropdownMenu, TextField·Field, FileInput, HoverCard, MultiSelect, NotificationBadge, Pagination, Popover, Progress, RadioGroup, SaveStatus, Select, Separator, Sheet, Skeleton, Slider, Spinner, StatePanel, Switch, Table, Tabs, TextArea, Toast, Tooltip). plain CSS + CVA, Tailwind 비종속 |
 
-Skeleton·Avatar·Separator·Collapsible·Accordion과 컨트롤 텍스트 정렬 보정을 포함한 0.12.0이 배포됐다.
+최근: 0.14.0 — SaveStatus·FileInput 신규, MultiSelect 검색·생성, compound 서브컴포넌트 named export(서버 컴포넌트 호환). 배포는 GitHub Actions trusted publishing으로 자동.
 
 ## 사용
 

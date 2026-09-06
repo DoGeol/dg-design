@@ -3,8 +3,9 @@
 ## 메타
 - 생성: 2026-09-05
 - 유형: 브라운필드 (react 0.12.0 위에 추가)
-- 상태: 승인됨 (2026-09-05) — 구현 대기
-- 근거: [docs/decisions/2026-09-05-component-composition-rules.md](../decisions/2026-09-05-component-composition-rules.md)
+- 상태: 승인됨 (2026-09-05)
+- 구현: **완료** — react 0.13.0 (2026-09-05). 결정 기록: [구현 중 결정](../../decisions/2026-09-05-studio-promotion-batch-implementation.md). dg-studio 교체는 PR #59(0.13.1)로 완료
+- 근거: [docs/decisions/2026-09-05-component-composition-rules.md](../../decisions/2026-09-05-component-composition-rules.md)
 - 출처: dg-studio `src/shared/ui/state.tsx`, `theme-toggle.tsx`, `homeground/blog/[id]/editor-screen.tsx`, `features/experiments/*` range 입력 6곳
 - 시안: dg-studio 세션 scratchpad `mockups/01~04-*.png` (StatePanel 시안은 preset 형태라 참고만, 구조는 이 스펙이 정본)
 

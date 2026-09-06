@@ -7,12 +7,21 @@
 - **결정 기록**(`decisions/`) — "왜 이렇게 했나". 현행 판단의 근거. 여기가 먼저다
 - **스펙**(`specs/`) — 진행 중인 작업 명세. 완료되면 `specs/archive/`로 옮긴다
 - **아카이브**(`specs/archive/`) — 이력. 현행 규칙의 근거로 삼지 말 것. 구현 결과는 코드가 진실이다
+- **계획**(`plans/`) — 배치 단위 진행 계획과 결과. 스펙이 "무엇"이면 계획은 "누가 어떤 순서로". 완료된 계획은 상태 줄에 완료를 적고 그대로 둔다
+- **QA 기록**(`qa/`) — 배치별 독립 QA 결과. 재발 방지용 근거이지 현행 규칙은 아니다
 - 인터뷰 기록(`*-interview.md`)은 **재결정할 때만** 읽는다. 구현에는 불필요하다
 - 문서 하나가 10KB를 넘으면 분할을 검토한다
 
 ## 후속 작업
 
 [follow-ups.md](follow-ups.md) — 남은 것 0건, 그리고 "모르면 첫 시도에서 틀리는" 실측 사실 4가지.
+
+## 계획
+
+| 문서 | 상태 | 다루는 것 |
+|------|------|-----------|
+| [2026-08-28 우선순위 컴포넌트](plans/2026-08-28-priority-components/) | 완료 0.12.0 | 컴포넌트별 계획 5개(accordion·avatar·collapsible·separator·skeleton), QA는 `qa/` 같은 이름 |
+| [2026-09-06 잔여 작업](plans/2026-09-06-remaining-work.md) | 완료 | PR #59 스크린샷·D1/D2·승격 2차·dg-studio 교체 네 트랙, 서브에이전트 배정과 결과 |
 
 ## 가이드
 
@@ -34,42 +43,21 @@
 | [2026-08-16 소형 묶음 구현 중 결정](decisions/2026-08-16-small-batch-implementation.md) | 활성 | autoResize 배타 설계, 라디오 네이티브 위임, outline 변수 재사용 |
 | [2026-08-16 Tooltip·Popover 구현 중 결정](decisions/2026-08-16-tooltip-popover-implementation.md) | 활성 | Provider ref 신호, use-overlay 옵션화 수용(D1), Popover.Arrow 합성 |
 | [2026-08-16 소형 묶음 2 구현 중 결정](decisions/2026-08-16-small-batch-2-implementation.md) | 활성 | NB 단층 CSS·children Omit, HC 스케줄 복제·비모달 스택·트리거 a, defaultOpen 데모 |
+| [2026-08-16 파생 3종 구현 중 결정](decisions/2026-08-16-batch-3-implementation.md) | 활성 | select-core 추출·useOptionRegistry, Sheet side는 Root·radius 0, ContextMenu primitive 직결, **레시피 코드젠 불채택과 새 트리거** |
 | [2026-08-17 알림 묶음 구현 중 결정](decisions/2026-08-17-feedback-batch-implementation.md) | 활성 | inert 면제 범위, z-toast·linear easing 근거, Toast 타이머·마크업, VR reducedMotion 무효 발견 |
 | [2026-08-19 테마 생성기 구현 중 결정](decisions/2026-08-19-theme-generator-implementation.md) | 활성 | **솔버 비단조 버그(hue 264)와 노랑 전제 반전**, tsc 방출·index 재수출, Tailwind 실측 3건 |
 | [2026-08-19 어드민 1차 구현 중 결정](decisions/2026-08-19-admin-batch-implementation.md) | 활성 | Tabs onFocus 활성화·키 별칭 roving·hidden display 함정, Table border-collapse, barrel 정렬 실수 |
-| [2026-08-16 파생 3종 구현 중 결정](decisions/2026-08-16-batch-3-implementation.md) | 활성 | select-core 추출·useOptionRegistry, Sheet side는 Root·radius 0, ContextMenu primitive 직결, **레시피 코드젠 불채택과 새 트리거** |
 | [2026-08-28 우선순위 컴포넌트 1차 구현 중 결정](decisions/2026-08-28-priority-components-batch-implementation.md) | 활성 | 5종 구현 경계, Accordion duplicate value ID P1 수정, Storybook P2 보완, 최종 검증 |
 | [2026-09-05 컴포넌트 구성 규칙](decisions/2026-09-05-component-composition-rules.md) | 활성 | leaf·compound·preset 판별 순서, 서브컴포넌트 이름 관례, dg-studio 승격 후보 판정 |
+| [2026-09-05 승격 1차 구현 중 결정](decisions/2026-09-05-studio-promotion-batch-implementation.md) | 활성 | StatePanel compound 형태, Slider 채움 변수, segmented 강제 horizontal, Tabs responsive matchMedia, Alert actions slot |
 | [2026-09-06 배포 자동화](decisions/2026-09-06-release-automation.md) | 활성 | npm trusted publishing(OIDC)+changesets/action v2, Version PR 머지=배포 승인, setup-node registry-url·pnpm 11 함정 |
 | [2026-09-06 compound named export](decisions/2026-09-06-compound-named-exports.md) | 활성 | RSC 경계에서 객체 export 실패 근거, `{Compound}{Sub}` 규약, Tabs.Content tabIndex override |
 | [2026-09-06 승격 2차 구현 중 결정](decisions/2026-09-06-studio-promotion-batch-2-implementation.md) | 활성 | SaveStatus·MultiSelect 검색/onCreate·FileInput 구현 결정, 디자인 검토 5건 전후 값, `[hidden]` vs display 함정 |
 
 ## 스펙
 
-| 문서 | 상태 | 다루는 것 |
-|------|------|-----------|
-| [dg-studio 승격 1차](specs/2026-09-05-studio-promotion-batch.md) | 승인 | StatePanel compound, Slider, RadioGroup segmented, Tabs responsive, Alert actions — 0.13.0 |
+진행 중인 스펙 없음. 새 스펙은 `deep-interview` 스킬이 `specs/`에 만든다.
 
 ## 아카이브 (완료)
 
-| 문서 | 릴리스 | 다루는 것 |
-|------|--------|-----------|
-| [DDS 아키텍처](specs/archive/2026-08-14-dds-architecture.md) | 0.1.0 | 토큰 파이프라인·스타일링·빌드/배포·Tailwind 브릿지 |
-| [토큰 체계와 Button 0.1.0](specs/archive/2026-08-14-dds-token-system.md) | 0.1.0 | 팔레트 값, 대비 검사 쌍, 비색상 토큰, Button API, 공개 API 범위 |
-| [Badge + intent 축](specs/archive/2026-08-15-badge-intent-axis.md) | 0.2.0 | intent 4종 실값화, 대비 24건, Badge(asChild·truncate), 합격 조건 12/12 |
-| [Checkbox·Switch + stroke 축](specs/archive/2026-08-15-checkbox-switch-stroke-axis.md) | 0.3.0 | stroke 2종, 폼 컨트롤 2개, vitest 도입, 합격 조건 13/13 |
-| [TextField·Field + 시각 회귀](specs/archive/2026-08-15-textfield.md) | 0.4.0 | Field compound, TextField 5상태, Playwright 시각 회귀 도입 |
-| [Dialog](specs/archive/2026-08-15-dialog.md) | 0.5.0 | 자체 구현 오버레이(presence·스택·inert), compound 7종, 모션 토큰 |
-| [DropdownMenu](specs/archive/2026-08-16-dropdown-menu.md) | 0.6.0 | 비모달 오버레이, floating-ui, roving tabindex, 스택 modal 플래그 |
-| [Select](specs/archive/2026-08-16-select.md) | 0.7.0 | 폼 단일 선택, typeahead, Field 연동, use-overlay 공통 추출 |
-| [소형 묶음](specs/archive/2026-08-16-small-batch.md) | 0.8.0 | TextArea(autoResize)·RadioGroup(네이티브 위임)·Badge outline |
-| [Tooltip·Popover](specs/archive/2026-08-16-tooltip-popover.md) | 0.8.0 | Provider 그룹 지연, autoFocus 겸용, arrow, 탭 포커스 열림(표준 이탈) |
-| [소형 묶음 2](specs/archive/2026-08-16-small-batch-2.md) | 0.9.0 | NotificationBadge(count·max·isShowEmpty)·HoverCard(hover 전용, 콘텐츠 유지) |
-| [알림 묶음](specs/archive/2026-08-17-feedback-batch.md) | 미배포 | Toast(훅 API·모달 위)·Alert·Spinner·Progress·Button loading, live region 정책 |
-| [테마 생성기](specs/archive/2026-08-19-theme-generator.md) | 미배포 | createTheme(hex→WCAG 통과 테마)·CLI·브릿지 보강·커스터마이즈 계약 |
-| [어드민 1차](specs/archive/2026-08-19-admin-batch.md) | 미배포 | Table·Card·Tabs·Pagination·Breadcrumb — 로직은 소비자, automatic 탭 |
-| [파생 3종](specs/archive/2026-08-16-multi-select-sheet-context-menu.md) | 0.9.0 | MultiSelect(요약 트리거·토글)·Sheet(4방향)·ContextMenu(마우스 전용) + internal 추출 |
-| [우선순위 컴포넌트 1차](specs/archive/2026-08-28-priority-components-batch.md) | 0.12.0 | Skeleton·Avatar·Separator·Collapsible·Accordion, 합격 조건 20/20 |
-| [dg-studio 승격 2차](specs/archive/2026-09-06-studio-promotion-batch-2.md) | 0.14.0 | SaveStatus 4상태 · MultiSelect search 2모드+onCreate Promise · FileInput compound(검증까지) · 합격 조건에 dg-studio 교체 PR |
-
-각 스펙의 인터뷰 기록은 같은 이름 `-interview.md`로 분리돼 있다.
+[specs/archive/README.md](specs/archive/README.md) — 릴리스별 완료 스펙 17건 목록. 현행 규칙의 근거로 삼지 말 것.

@@ -1,7 +1,7 @@
 # dg-studio 승격 1차 구현 중 결정
 
 - 날짜: 2026-09-05
-- 스펙: [dg-studio 승격 1차](../specs/2026-09-05-studio-promotion-batch.md)
+- 스펙: [dg-studio 승격 1차](../specs/archive/2026-09-05-studio-promotion-batch.md)
 - 근거: [컴포넌트 구성 규칙](../decisions/2026-09-05-component-composition-rules.md)
 - 상태: 활성
 

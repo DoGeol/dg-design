@@ -21,17 +21,18 @@ Dogeol Design System. daangn/seed-design 참고.
 - `pnpm generate` — CSS/타입 생성 + WCAG 대비·gamut 검사(미달 시 실패). 의존성 0
 - `pnpm typecheck` — 3개 프로젝트 `tsc --noEmit`; 빌드가 놓치는 타입 에러 검출
 - React test는 vitest. 인터랙션은 fireEvent 금지, user-event 사용(jsdom disabled 차단 미구현)
-- `pnpm vr` — Playwright 시각 회귀 + 기능 테스트. **기준 이미지는 CI(ubuntu)에서만 생성·갱신**(로컬 `-u`는 가드가 막음, visual-baseline 워크플로 수동 트리거). 색·요소 추가는 같은 테스트의 **색 텍스트 스냅샷**(`*.txt`, 임계 없음)이 잡는다 — 갱신도 같은 visual-baseline 워크플로. VR은 `*--state-matrix`를 우선 집으니 **기능 테스트용 데모 스토리는 닫힌 상태로** 두라(열어두면 오버레이가 트리거를 덮는다)
+- `pnpm vr` — Playwright 시각 회귀(png + 색 텍스트 스냅샷 txt) + 기능 테스트. **기준은 CI에서만 생성·갱신**(visual-baseline 워크플로 수동 트리거, 로컬 `-u`는 가드가 막음). VR은 `*--state-matrix`를 우선 집으니 **기능 데모 스토리는 닫힌 상태로**
 - `pnpm build` — 전체 빌드(Vite lib + preserveModules). publint는 `pnpm --filter @dg-design/react exec publint`
 - CI: install → generate → build → test → typecheck → publint → vr. tokens dist가 gitignore라 generate 선행, storybook typecheck가 react dist 참조라 build 뒤
-- 배포: changesets + `release.yml`(npm trusted publishing). **changeset frontmatter의 `@` 키는 반드시 따옴표 인용**(미인용은 YAML 파싱 실패로 version이 죽는다). changeset 포함 커밋이 main에 오르면 봇이 "Version Packages" PR을 만들고, **그 PR 머지가 배포 승인**이다. 로컬 `changeset version`·`changeset publish`·수동 태그 푸시는 하지 않는다(중복 게시·중복 태그). Version PR에는 CI가 돌지 않는다(GITHUB_TOKEN이 만든 PR은 워크플로를 트리거하지 않음) — 원래 커밋의 CI 결과를 본다. publish만 실패하면 main은 이미 버전이 올라간 상태라 **워크플로 re-run이 유일한 복구**다
+- 배포: changesets + `release.yml`(npm trusted publishing). **changeset frontmatter의 `@` 키는 따옴표 인용.** changeset 커밋이 main에 오르면 봇이 Version PR을 만들고 **그 PR 머지가 배포 승인**. 로컬 `changeset version/publish`·수동 태그 금지. Version PR에는 CI가 안 돈다(원래 커밋 CI를 본다). publish만 실패하면 워크플로 re-run이 복구. 상세는 [배포 자동화 결정](docs/decisions/2026-09-06-release-automation.md)
 
 ## 핵심 관습 (변경 시 결정 기록 먼저 확인)
 
 - 토큰: `--dds-color-{role}-{intent}-{emphasis}[-{state}]`, role마다 축이 다름. palette는 내부 구현, semantic만 공개 API. intent 6종 — hover/pressed는 brand·neutral·critical만(나머지는 base). warning solid는 밝은 황 + 어두운 fg
 - 다크모드: `[data-dds-theme="dark"]` 재정의. palette는 모드 무관, semantic만 분기
 - **tokens.css는 소비 앱이 수동 로드.** react 컴포넌트는 토큰 CSS를 import하지 않는다
-- 컴포넌트 CSS: 수기+CVA, `@layer dds`, `.dds-x--variant_y`(비공개), `:focus-visible`, disabled 3중 매칭, 테두리 1px. **`hidden` 속성으로 숨기는 요소는 자기 `display` 규칙 옆에 `[hidden] { display: none }`을 둔다**(author display가 UA `[hidden]`을 이긴다 — Tabs.Content·MultiSelect 옵션에서 실측)
+- 컴포넌트 CSS: 수기+CVA, `@layer dds`, `.dds-x--variant_y`(비공개), `:focus-visible`, disabled 3중 매칭, 테두리 1px. **`hidden`으로 숨기는 요소는 자기 `display` 규칙 옆에 `[hidden] { display: none }`**(author display가 UA `[hidden]`을 이긴다)
+- compound는 객체 export + `{Compound}{Sub}` named export 둘 다(서버 컴포넌트는 객체 속성 접근이 안 된다)
 - react 빌드에서 CSS는 external + raw copy 플러그인 (vite.config.ts 참조). barrel(src/index.ts)은 병렬 작업 시 에이전트 수정 금지 — 감독이 직결
 - 공통은 `internal/`: use-overlay(오버레이 배선, 모달 여부는 dialog-stack), select-core(옵션 목록), overlay-motion.css(공용 keyframes). **클릭 토글·트리거 기준 배치가 아니면**(hover·우클릭) use-overlay 대신 primitive를 직접 조립한다
 - live region: critical intent만 `role="alert"`, 나머지는 `role="status"`. `aria-live`는 얹지 않는다(role이 암묵적 politeness를 갖는다)
