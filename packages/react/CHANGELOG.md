@@ -1,5 +1,12 @@
 # @dg-design/react
 
+## 0.14.0
+
+### Minor Changes
+
+- 84aad10: compound 20종의 서브컴포넌트를 named export로도 내보낸다(`StatePanelRoot`, `TabsContent`, `DialogTrigger` 등). 객체 export는 그대로다. 빌드가 모든 모듈에 `'use client'`를 붙이므로 서버 컴포넌트에서 `StatePanel.Root`처럼 객체 속성으로 접근하면 undefined가 됐던 문제의 해법이다. `Tabs.Content`는 `tabIndex`를 소비자가 덮어쓸 수 있다(기본 0).
+- 948b18c: 승격 2차: `SaveStatus`(저장 상태 4종 leaf), `MultiSelect` 검색 입력(`search="trigger" | "content"`)과 `onCreate` Promise 생성 흐름, `FileInput` compound(선택·드롭·검증). 디자인 검토 반영 — 다크 `fg-neutral-weak` 대비 상향(검사 쌍 추가), Slider hit box 24px·미채움 트랙 `stroke-neutral`, StatePanel 제목 t5, responsive Tabs wide 모드에서 고아 tabpanel role 제거.
+
 ## 0.13.1
 
 ### Patch Changes
