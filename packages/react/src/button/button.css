@@ -11,6 +11,49 @@
     font-weight: var(--dds-font-weight-bold);
     white-space: nowrap;
     user-select: none;
+    /* 중앙 Spinner 레이어의 기준 */
+    position: relative;
+  }
+
+  /* children 래퍼. 버튼이 직접 flex 컨테이너였을 때의 간격·정렬을 그대로 재현하고(gap: inherit),
+     로딩 중에도 자리를 지켜 버튼 폭이 변하지 않게 한다. transition-property를 비워 두는 이유는
+     기본값 all이 duration 0에서도 "전환 가능"이라 모션을 끄는 순간 진행 중 전환이 안 멈추기 때문. */
+  .dds-button > [data-layer="content"] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: inherit;
+    flex: 1 1 auto;
+    transition-property: none;
+  }
+
+  /* Spinner는 흐름 밖에서 버튼 전체를 덮고 가운데 선다 — 레이아웃 계산에 끼지 않는다. */
+  .dds-button > [data-layer="spinner"] {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition-property: none;
+  }
+
+  .dds-button[data-loading] > [data-layer="content"] {
+    opacity: 0;
+  }
+  .dds-button[data-loading] > [data-layer="spinner"] {
+    opacity: 1;
+  }
+
+  /* motion="none"이면 이 규칙이 빠져 즉시 바뀐다. 위치 변화 없는 opacity만 쓰므로 reduce에서도 유지한다. */
+  .dds-button[data-motion] > :is([data-layer="content"], [data-layer="spinner"]) {
+    transition: opacity var(--dds-duration-fast) var(--dds-easing-out);
+  }
+
+  /* 사라지는 스피너는 회전을 멈춘다 — 보이지 않는 무한 애니메이션은 비용만 낸다. */
+  .dds-button:not([data-loading]) .dds-button__spinner {
+    animation: none;
   }
 
   .dds-button:focus-visible {

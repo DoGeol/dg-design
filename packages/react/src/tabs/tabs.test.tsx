@@ -166,6 +166,65 @@ describe("Tabs 접근성", () => {
   });
 });
 
+/** 실제 프레임·좌표는 jsdom이 판정할 수 없어 브라우저 기능 테스트가 맡는다 — 배선만 본다. */
+describe("Tabs 활성 밑줄", () => {
+  const list = () => screen.getByRole("tablist");
+
+  it("List 안에 장식 밑줄을 두고, 측정 전에는 Trigger 밑줄 fallback을 유지한다", () => {
+    render(<Basic />);
+
+    const indicator = list().querySelector(".dds-tabs__indicator");
+    expect(indicator).not.toBeNull();
+    expect(indicator?.getAttribute("aria-hidden")).toBe("true");
+    // jsdom은 레이아웃이 없어 rect가 0이다 — 자리를 못 잡았으니 fallback이 남아야 한다.
+    expect(list().hasAttribute("data-indicator")).toBe(false);
+  });
+
+  it("밑줄을 넣어도 Trigger 순서와 접근성 배선은 그대로다", () => {
+    render(<Basic />);
+
+    expect(list().firstElementChild?.classList.contains("dds-tabs__indicator")).toBe(true);
+    expect(screen.getAllByRole("tab").map((el) => el.textContent)).toEqual([
+      "첫째",
+      "둘째",
+      "셋째",
+    ]);
+    expect(list().getAttribute("aria-orientation")).toBe("horizontal");
+  });
+
+  it("motion prop은 DOM에 새지 않는다", () => {
+    render(<Basic motion="none" />);
+    expect(list().parentElement?.hasAttribute("motion")).toBe(false);
+  });
+
+  it("List의 사용자 핸들러를 보존하고 화살표 이동도 그대로다", async () => {
+    const user = userEvent.setup();
+    const onPointerDown = vi.fn();
+    const onClick = vi.fn();
+    const onKeyDown = vi.fn();
+    render(
+      <Tabs.Root defaultValue="one">
+        <Tabs.List onPointerDown={onPointerDown} onClick={onClick} onKeyDown={onKeyDown}>
+          <Tabs.Trigger value="one">첫째</Tabs.Trigger>
+          <Tabs.Trigger value="two">둘째</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="one">첫째 패널</Tabs.Content>
+        <Tabs.Content value="two">둘째 패널</Tabs.Content>
+      </Tabs.Root>,
+    );
+
+    await user.click(tab("둘째"));
+    expect(onPointerDown).toHaveBeenCalled();
+    expect(onClick).toHaveBeenCalled();
+    expect(selected("둘째")).toBe("true");
+
+    await user.keyboard("{ArrowLeft}");
+    expect(onKeyDown).toHaveBeenCalled();
+    expect(selected("첫째")).toBe("true");
+    expect(document.activeElement).toBe(tab("첫째"));
+  });
+});
+
 describe("Tabs responsive", () => {
   let matchMediaListeners: Array<(event: { matches: boolean }) => void> = [];
   let currentMatches = false;
@@ -240,6 +299,15 @@ describe("Tabs responsive", () => {
     expect(content.hasAttribute("aria-labelledby")).toBe(false);
     expect(content.hasAttribute("data-state")).toBe(false);
     expect(content.hasAttribute("tabindex")).toBe(false);
+  });
+
+  it("wide 모드에서는 밑줄을 자리잡지 않는다(List가 숨겨져 잴 수 없다)", () => {
+    currentMatches = true;
+    render(<Basic responsive={768} defaultValue="one" />);
+
+    expect(screen.getByRole("tablist", { hidden: true }).hasAttribute("data-indicator")).toBe(
+      false,
+    );
   });
 
   it("wide 모드에서도 소비자가 명시한 tabIndex는 그대로 붙는다", () => {

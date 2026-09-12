@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { RadioGroup } from "@dg-design/react";
+import * as React from "react";
 
 // Select/DropdownMenu와 같은 이유로 component를 지정하지 않는다 — barrel엔 RadioGroup
 // 객체 하나뿐이라 개별 compound의 컴포넌트 타입에 이름을 붙일 수 없다(TS4023).
@@ -30,6 +31,84 @@ export const FunctionalDemo: StoryObj<typeof meta> = {
       </RadioGroup.Root>
     </div>
   ),
+};
+
+/**
+ * 모션 데모: 포인터로 누른 선택만 배경이 이동하고 기본형 점이 교차하는지 확인한다.
+ * 처음은 정지 상태이며, 폭이 다른 항목·RTL·항목 추가·키보드·프로그램 변경을 한자리에서 본다.
+ */
+function MotionDemoView() {
+  const [value, setValue] = React.useState("all");
+  const [rtl, setRtl] = React.useState(false);
+  const [extra, setExtra] = React.useState(false);
+  const [wide, setWide] = React.useState(false);
+  const [shipping, setShipping] = React.useState("standard");
+
+  return (
+    <div
+      dir={rtl ? "rtl" : "ltr"}
+      style={{ padding: 24, display: "flex", flexDirection: "column", gap: 16, alignItems: "flex-start" }}
+    >
+      {/* 폭이 제각각인 항목 — FLIP이 위치와 크기를 같이 맞춰야 한다 */}
+      <div data-testid="motion-segmented">
+        <RadioGroup.Root
+          variant="segmented"
+          aria-label="필터"
+          value={value}
+          onValueChange={setValue}
+        >
+          <RadioGroup.Item value="all">전체</RadioGroup.Item>
+          <RadioGroup.Item value="mine">{wide ? "아주 긴 내 항목 라벨" : "내 것"}</RadioGroup.Item>
+          <RadioGroup.Item value="archived">보관함(오래된 항목)</RadioGroup.Item>
+          {extra ? <RadioGroup.Item value="trash">휴지통</RadioGroup.Item> : null}
+        </RadioGroup.Root>
+      </div>
+
+      <div data-testid="motion-none-segmented">
+        <RadioGroup.Root variant="segmented" aria-label="모션 없음" defaultValue="all" motion="none">
+          <RadioGroup.Item value="all">전체</RadioGroup.Item>
+          <RadioGroup.Item value="mine">내 것</RadioGroup.Item>
+          <RadioGroup.Item value="archived">보관함(오래된 항목)</RadioGroup.Item>
+        </RadioGroup.Root>
+      </div>
+
+      <div data-testid="motion-disabled-segmented">
+        <RadioGroup.Root variant="segmented" aria-label="비활성" defaultValue="mine" disabled>
+          <RadioGroup.Item value="all">전체</RadioGroup.Item>
+          <RadioGroup.Item value="mine">내 것</RadioGroup.Item>
+        </RadioGroup.Root>
+      </div>
+
+      {/* 기본형 점 — 나가는 점과 들어오는 점이 교차한다 */}
+      <div data-testid="motion-default">
+        <RadioGroup.Root aria-label="배송 방법" value={shipping} onValueChange={setShipping}>
+          <RadioGroup.Item value="standard">일반배송</RadioGroup.Item>
+          <RadioGroup.Item value="express">빠른배송</RadioGroup.Item>
+          <RadioGroup.Item value="pickup">방문수령</RadioGroup.Item>
+        </RadioGroup.Root>
+      </div>
+
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        <button type="button" data-testid="set-archived" onClick={() => setValue("archived")}>
+          프로그램 선택
+        </button>
+        <button type="button" data-testid="toggle-rtl" onClick={() => setRtl((on) => !on)}>
+          RTL 토글
+        </button>
+        <button type="button" data-testid="toggle-extra" onClick={() => setExtra((on) => !on)}>
+          항목 추가/제거
+        </button>
+        <button type="button" data-testid="toggle-wide" onClick={() => setWide((on) => !on)}>
+          라벨 폭 변경
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export const MotionDemo: StoryObj<typeof meta> = {
+  name: "Motion demo",
+  render: () => <MotionDemoView />,
 };
 
 /** orientation(2) x disabled(2) 그리드 — 각 셀은 3항목 라디오그룹, 두 번째 항목 선택 상태 */

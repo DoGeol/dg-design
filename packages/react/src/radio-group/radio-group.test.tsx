@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as React from "react";
 import { describe, expect, it, vi } from "vitest";
@@ -177,6 +177,111 @@ describe("RadioGroup", () => {
   });
 });
 
+/** 모션 허용 여부만 본다 — 실제 프레임·좌표는 jsdom이 판정할 수 없어 브라우저 기능 테스트가 맡는다. */
+describe("RadioGroup 선택 전환", () => {
+  const group = () => screen.getByRole("radiogroup");
+  const motionOn = () => group().hasAttribute("data-motion");
+
+  it("최초 렌더에는 모션이 꺼져 있다", () => {
+    render(<Basic defaultValue="standard" />);
+    expect(motionOn()).toBe(false);
+  });
+
+  it("포인터 선택은 모션을 켜고 전환이 끝나면 꺼진다", async () => {
+    const user = userEvent.setup();
+    render(<Basic defaultValue="standard" />);
+
+    await user.click(screen.getByText("빠른배송"));
+    expect((screen.getByRole("radio", { name: "빠른배송" }) as HTMLInputElement).checked).toBe(
+      true,
+    );
+    expect(motionOn()).toBe(true);
+
+    // 전환 종료는 사용자 인터랙션이 아니라 브라우저 생명주기 이벤트라 user-event에 대응이 없다.
+    fireEvent.transitionEnd(group());
+    expect(motionOn()).toBe(false);
+  });
+
+  it("키보드 화살표 선택은 모션을 켜지 않고 남아 있던 모션도 끈다", async () => {
+    const user = userEvent.setup();
+    render(<Basic defaultValue="standard" />);
+
+    await user.click(screen.getByText("빠른배송"));
+    expect(motionOn()).toBe(true);
+
+    // 전환이 끝나기 전에 키보드로 개입 — 선택은 바뀌고 모션 허용은 사라진다.
+    (screen.getByRole("radio", { name: "빠른배송" }) as HTMLInputElement).focus();
+    await user.keyboard("{ArrowDown}");
+    expect((screen.getByRole("radio", { name: "방문수령" }) as HTMLInputElement).checked).toBe(
+      true,
+    );
+    expect(motionOn()).toBe(false);
+  });
+
+  it("외부 값 변경은 모션을 켜지 않는다", async () => {
+    const user = userEvent.setup();
+    function Controlled() {
+      const [value, setValue] = React.useState("standard");
+      return (
+        <>
+          <Basic value={value} onValueChange={setValue} />
+          <button type="button" onClick={() => setValue("pickup")}>
+            프로그램 선택
+          </button>
+        </>
+      );
+    }
+    render(<Controlled />);
+
+    await user.click(screen.getByRole("button", { name: "프로그램 선택" }));
+    expect((screen.getByRole("radio", { name: "방문수령" }) as HTMLInputElement).checked).toBe(
+      true,
+    );
+    expect(motionOn()).toBe(false);
+  });
+
+  it('motion="none"이면 포인터 선택에도 모션을 켜지 않고 DOM에 새지 않는다', async () => {
+    const user = userEvent.setup();
+    render(<Basic defaultValue="standard" motion="none" />);
+
+    await user.click(screen.getByText("빠른배송"));
+    expect((screen.getByRole("radio", { name: "빠른배송" }) as HTMLInputElement).checked).toBe(
+      true,
+    );
+    expect(motionOn()).toBe(false);
+    expect(group().hasAttribute("motion")).toBe(false);
+  });
+
+  it("사용자 onClick·onTransitionEnd 핸들러를 보존한다", async () => {
+    const user = userEvent.setup();
+    const onClick = vi.fn();
+    const onTransitionEnd = vi.fn();
+    render(<Basic defaultValue="standard" onClick={onClick} onTransitionEnd={onTransitionEnd} />);
+
+    await user.click(screen.getByText("빠른배송"));
+    expect(onClick).toHaveBeenCalled();
+
+    fireEvent.transitionEnd(group());
+    expect(onTransitionEnd).toHaveBeenCalledTimes(1);
+  });
+
+  it("항목이 사라져도 등록 해제만 하고 터지지 않는다", () => {
+    function Dynamic({ extra }: { extra: boolean }) {
+      return (
+        <RadioGroup.Root variant="segmented" aria-label="필터" defaultValue="all">
+          <RadioGroup.Item value="all">전체</RadioGroup.Item>
+          {extra ? <RadioGroup.Item value="mine">내 것</RadioGroup.Item> : null}
+        </RadioGroup.Root>
+      );
+    }
+    const { rerender } = render(<Dynamic extra />);
+    expect(screen.getAllByRole("radio")).toHaveLength(2);
+
+    rerender(<Dynamic extra={false} />);
+    expect(screen.getAllByRole("radio")).toHaveLength(1);
+  });
+});
+
 describe("RadioGroup Field 연동", () => {
   // Field.Label의 htmlFor·aria는 개별 radio가 아니라 그룹이 받는다 (RadioGroup.tsx 주석 참고).
   function WithField() {
@@ -292,6 +397,24 @@ describe("RadioGroup segmented variant", () => {
     // horizontal 키(ArrowRight)로 이동+선택
     await user.keyboard("{ArrowRight}");
     expect(dark.checked).toBe(true);
+  });
+
+  it("선택 배경 요소를 렌더하고, 측정 전에는 항목 배경 fallback을 유지한다", () => {
+    render(<Segmented />);
+    const group = screen.getByRole("radiogroup");
+
+    const indicator = group.querySelector(".dds-radio-group__indicator");
+    expect(indicator).not.toBeNull();
+    expect(indicator?.getAttribute("aria-hidden")).toBe("true");
+    // jsdom은 레이아웃이 없어 rect가 0이다 — 자리를 못 잡았으니 fallback 표시가 남아야 한다.
+    expect(group.hasAttribute("data-indicator")).toBe(false);
+  });
+
+  it("default variant에는 선택 배경 요소가 없다", () => {
+    render(<Basic defaultValue="standard" />);
+    expect(
+      screen.getByRole("radiogroup").querySelector(".dds-radio-group__indicator"),
+    ).toBeNull();
   });
 
   it("클릭으로 선택을 이동하고 data-state를 갱신한다", async () => {

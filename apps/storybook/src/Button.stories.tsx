@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "@dg-design/react";
+import * as React from "react";
 
 const INTENTS = ["brand", "neutral", "critical"] as const;
 const VARIANTS = ["solid", "weak", "ghost"] as const;
@@ -102,4 +103,54 @@ export const AllCombinations: Story = {
 /** disabled 상태 18조합 — hover해도 색이 바뀌지 않는지 육안 확인용 */
 export const Disabled: Story = {
   render: () => <CombinationGrid disabled />,
+};
+
+/**
+ * 모션 데모: 로딩이 켜지고 꺼질 때 라벨과 중앙 Spinner가 교차하는지, 그동안 버튼 크기가
+ * 그대로인지 본다. 처음은 정지 상태(로딩 꺼짐)이고 버튼을 눌러야 바뀐다.
+ */
+function MotionDemoView() {
+  const [loading, setLoading] = React.useState(false);
+
+  return (
+    <div style={{ padding: 24, display: "flex", flexDirection: "column", gap: 16, width: 320 }}>
+      <div data-testid="motion-button">
+        <Button loading={loading}>저장하기</Button>
+      </div>
+
+      <div data-testid="motion-icon-button">
+        <Button loading={loading} intent="neutral" variant="weak">
+          <span aria-hidden="true">★</span>
+          즐겨찾기에 추가
+        </Button>
+      </div>
+
+      <div data-testid="motion-full-button">
+        <Button loading={loading} style={{ width: "100%" }}>
+          전체 폭 버튼
+        </Button>
+      </div>
+
+      <div data-testid="motion-none-button">
+        <Button loading={loading} motion="none">
+          모션 없음
+        </Button>
+      </div>
+
+      <div data-testid="motion-aschild">
+        <Button asChild variant="ghost">
+          <a href="#none">링크형 버튼</a>
+        </Button>
+      </div>
+
+      <button type="button" data-testid="toggle-loading" onClick={() => setLoading((on) => !on)}>
+        로딩 토글
+      </button>
+    </div>
+  );
+}
+
+export const MotionDemo: StoryObj<typeof meta> = {
+  name: "Motion demo",
+  render: () => <MotionDemoView />,
 };

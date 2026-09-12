@@ -53,6 +53,7 @@
 | [2026-09-06 배포 자동화](decisions/2026-09-06-release-automation.md) | 활성 | npm trusted publishing(OIDC)+changesets/action v2, Version PR 머지=배포 승인, setup-node registry-url·pnpm 11 함정 |
 | [2026-09-06 compound named export](decisions/2026-09-06-compound-named-exports.md) | 활성 | RSC 경계에서 객체 export 실패 근거, `{Compound}{Sub}` 규약, Tabs.Content tabIndex override |
 | [2026-09-06 승격 2차 구현 중 결정](decisions/2026-09-06-studio-promotion-batch-2-implementation.md) | 활성 | SaveStatus·MultiSelect 검색/onCreate·FileInput 구현 결정, 디자인 검토 5건 전후 값, `[hidden]` vs display 함정 |
+| [2026-09-13 컴포넌트 모션 API](decisions/2026-09-13-component-motion-api.md) | 활성 | `motion` prop 6종과 기본값(Avatar만 none), 기존 토큰 재사용, 포인터 대 키보드 판별, 공용 FLIP 헬퍼, VR 기준 CI 전용 갱신 |
 
 ## 스펙
 

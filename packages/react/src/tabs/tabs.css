@@ -9,6 +9,24 @@
     flex-shrink: 0;
     gap: var(--dds-dimension-x1);
     border-bottom: 1px solid var(--dds-color-stroke-neutral-weak);
+    /* 활성 밑줄의 컨테이닝 블록 */
+    position: relative;
+  }
+
+  /* 활성 밑줄 하나가 탭 사이를 옮겨 다닌다. 좌표·크기는 JS가 최종값으로 직접 넣고 이동만
+     transform으로 하므로 레이아웃이 매 프레임 다시 돌지 않는다. 상자는 활성 Trigger와 같은
+     사각형이고 칠하는 건 아래 2px뿐이라 기존 밑줄 위치·색이 그대로다. */
+  .dds-tabs__indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    box-sizing: border-box;
+    border-bottom: 2px solid var(--dds-color-fg-brand);
+    transform-origin: 0 0;
+    pointer-events: none;
   }
 
   .dds-tabs__trigger {
@@ -46,6 +64,12 @@
   .dds-tabs__trigger[data-state="active"] {
     border-bottom-color: var(--dds-color-fg-brand);
     color: var(--dds-color-fg-brand);
+  }
+
+  /* 밑줄이 실제로 자리를 잡은 뒤에만 Trigger 자신의 밑줄을 지운다 — 그전(SSR·측정 불가·wide)
+     에는 위 규칙이 그대로 fallback이다. 글자색은 계속 Trigger가 즉시 바꾼다. */
+  .dds-tabs__list[data-indicator] .dds-tabs__trigger[data-state="active"] {
+    border-bottom-color: transparent;
   }
 
   .dds-tabs__trigger:focus-visible {

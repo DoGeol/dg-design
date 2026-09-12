@@ -16,6 +16,52 @@
     flex-shrink: 0;
   }
 
+  /* 기본 아이콘은 두 레이어를 같은 16px 셀에 겹쳐 둔다 — 교차 페이드가 현재 opacity에서
+     이어지려면 레이어 노드가 status 변경 뒤에도 살아 있어야 한다. 고정 크기라 문구가 밀리지도
+     않는다. 커스텀 icon(레이어 없음)은 예전처럼 크기를 컨텐츠에 맡긴다. */
+  .dds-save-status__icon:has(> [data-layer]) {
+    display: inline-grid;
+    place-items: center;
+    width: var(--dds-dimension-x4);
+    height: var(--dds-dimension-x4);
+  }
+
+  /* transition-property를 명시적으로 비워 둔다. 기본값 all은 duration이 0이어도 "전환 가능"이라
+     진행 중인 전환이 취소되지 않고 끝까지 달린다 — none이어야 중단 시 즉시 최종값으로 간다. */
+  .dds-save-status__icon > [data-layer] {
+    grid-area: 1 / 1;
+    display: inline-flex;
+    transition-property: none;
+  }
+
+  .dds-save-status__icon > [data-layer="spinner"] {
+    opacity: 0;
+  }
+  .dds-save-status__icon > [data-layer="glyph"] {
+    opacity: 1;
+  }
+  .dds-save-status--status_saving .dds-save-status__icon > [data-layer="spinner"] {
+    opacity: 1;
+  }
+  /* saving 동안 glyph는 비어 있지만 opacity는 0으로 눌러 둔다 — 완료 시 0에서 1로 전환할 시작값이다. */
+  .dds-save-status--status_saving .dds-save-status__icon > [data-layer="glyph"] {
+    opacity: 0;
+  }
+
+  /* 저장 완료에서만 켜진다. 도중에 다른 status가 오면 이 속성이 사라져 전환이 즉시 취소된다.
+     reduce에서도 유지 — 위치·크기 변화 없이 opacity만 바꾸므로 없앨 이유가 없다. */
+  .dds-save-status__icon[data-crossfade] > [data-layer] {
+    transition: opacity var(--dds-duration-fast) var(--dds-easing-out);
+  }
+
+  /* 사라지는 스피너는 회전을 멈춘다 — 보이지 않는 무한 애니메이션은 비용만 낸다. */
+  .dds-save-status:not(.dds-save-status--status_saving)
+    .dds-save-status__icon
+    > [data-layer="spinner"]
+    .dds-spinner {
+    animation: none;
+  }
+
   .dds-save-status--status_saved {
     color: var(--dds-color-fg-neutral-weak);
   }

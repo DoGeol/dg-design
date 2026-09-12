@@ -1,6 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { SaveStatus } from "@dg-design/react";
+import { SaveStatus, type SaveStatusValue } from "@dg-design/react";
 import * as React from "react";
+
+const STATUSES: SaveStatusValue[] = ["saved", "dirty", "saving", "error"];
+const LABEL: Record<SaveStatusValue, string> = {
+  saved: "저장됨",
+  dirty: "변경사항 있음",
+  saving: "저장 중…",
+  error: "저장 실패",
+};
 
 const meta = {
   title: "SaveStatus",
@@ -40,6 +48,50 @@ export const StateMatrix: Story = {
       <SaveStatus status="error">저장 실패</SaveStatus>
     </div>
   ),
+};
+
+/**
+ * 모션 데모: 저장 완료(saving → saved)의 아이콘 교차 페이드를 눈과 브라우저 테스트로 확인한다.
+ * 처음은 정지 상태(saved)로 두고, 버튼을 누를 때만 상태가 바뀐다.
+ */
+export const MotionDemo: Story = {
+  name: "Motion demo",
+  render: () => {
+    function Demo() {
+      const [status, setStatus] = React.useState<SaveStatusValue>("saved");
+      const [motion, setMotion] = React.useState<"auto" | "none">("auto");
+
+      return (
+        <div style={{ display: "flex", flexDirection: "column", gap: 12, padding: 24 }}>
+          <SaveStatus status={status} motion={motion} data-testid="motion-status">
+            {LABEL[status]}
+          </SaveStatus>
+          <div style={{ display: "flex", gap: 8 }}>
+            {STATUSES.map((value) => (
+              <button
+                key={value}
+                type="button"
+                data-testid={`motion-set-${value}`}
+                onClick={() => setStatus(value)}
+              >
+                {value}
+              </button>
+            ))}
+          </div>
+          <label style={{ display: "flex", alignItems: "center", gap: 8 }}>
+            <input
+              type="checkbox"
+              data-testid="motion-none"
+              checked={motion === "none"}
+              onChange={(event) => setMotion(event.target.checked ? "none" : "auto")}
+            />
+            motion=&quot;none&quot;
+          </label>
+        </div>
+      );
+    }
+    return <Demo />;
+  },
 };
 
 /**

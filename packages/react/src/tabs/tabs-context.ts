@@ -8,6 +8,19 @@ export interface TabsContextValue {
   baseId: string;
   responsive?: number;
   isWide?: boolean;
+  /**
+   * 포인터로 누른 선택인지. automatic 활성화는 focus에서 일어나 click보다 이르기 때문에
+   * pointerdown에서 기록하고, click·pointercancel·keydown에서 내린다.
+   */
+  pointerIntentRef?: React.MutableRefObject<boolean>;
+  /** 활성 밑줄 배선 — Root가 만들고 List가 붙인다. */
+  indicator?: {
+    listRef: React.RefObject<HTMLDivElement | null>;
+    elementRef: React.RefObject<HTMLElement | null>;
+    registerTrigger: (value: string, node: HTMLElement | null) => void;
+    /** 자리를 잡았는지. 그전에는 Trigger 자신의 border-bottom이 fallback이다. */
+    active: boolean;
+  };
 }
 
 export const TabsContext = React.createContext<TabsContextValue | undefined>(undefined);
