@@ -6,6 +6,7 @@ import * as React from "react";
 import { mergeRefs } from "../internal/merge-refs";
 import { moveFocus } from "../internal/roving-focus";
 import { useControllableState } from "../internal/use-controllable-state";
+import { useSelectionIndicator } from "../internal/use-selection-indicator";
 import { contentId, TabsContext, triggerId, useTabsContext } from "./tabs-context";
 
 /** 항목의 role — roving 조회와 aria가 같은 값을 쓴다. */
@@ -27,10 +28,14 @@ export interface TabsRootProps
   onValueChange?: (value: string) => void;
   /** px 단위 브레이크포인트. 지정 시 이상에서 List 숨김 및 Content 전체 표시 */
   responsive?: number;
+  /** 기본값 "auto" — 포인터로 고른 탭에서만 활성 밑줄이 150ms 이동한다.
+   * 키보드·프로그램 선택·초기 렌더·resize는 언제나 즉시. */
+  motion?: "auto" | "none";
 }
 
 export const TabsRoot = React.forwardRef<HTMLDivElement, TabsRootProps>((props, ref) => {
-  const { className, value, defaultValue, onValueChange, responsive, children, style, ...rest } = props;
+  const { className, value, defaultValue, onValueChange, responsive, motion = "auto", children, style, ...rest } =
+    props;
 
   const handleChange = React.useCallback(
     (next: string | undefined) => {
@@ -70,16 +75,48 @@ export const TabsRoot = React.forwardRef<HTMLDivElement, TabsRootProps>((props, 
     }
   }, [responsive]);
 
+  // automatic 활성화는 focus에서 일어나 click보다 이르다 — 입력 방식은 pointerdown에서 기록해야
+  // 늦지 않는다. 실제 값이 바뀌는 순간에만 찍고 배치 직후 지우므로, 늦게 온 controlled 변경이나
+  // 선택이 안 바뀌는 클릭에는 번지지 않는다.
+  const pointerIntentRef = React.useRef(false);
+  const animateNextRef = React.useRef(false);
+  const selectValue = React.useCallback(
+    (next: string) => {
+      animateNextRef.current = pointerIntentRef.current && motion === "auto";
+      setCurrent(next);
+    },
+    [motion, setCurrent],
+  );
+
+  const indicator = useSelectionIndicator<HTMLDivElement>({
+    // wide에서는 List가 display:none이라 잴 수도, 보일 수도 없다.
+    enabled: !isWide,
+    value: current,
+    animateNextRef,
+    axis: "horizontal",
+  });
+
   const baseId = React.useId();
+  const indicatorWiring = React.useMemo(
+    () => ({
+      listRef: indicator.containerRef,
+      elementRef: indicator.indicatorRef,
+      registerTrigger: indicator.registerItem,
+      active: indicator.measured && !isWide,
+    }),
+    [indicator.containerRef, indicator.indicatorRef, indicator.registerItem, indicator.measured, isWide],
+  );
   const context = React.useMemo(
     () => ({
       value: current,
-      setValue: setCurrent as (next: string) => void,
+      setValue: selectValue,
       baseId,
       responsive,
       isWide,
+      pointerIntentRef,
+      indicator: indicatorWiring,
     }),
-    [current, setCurrent, baseId, responsive, isWide],
+    [current, selectValue, baseId, responsive, isWide, indicatorWiring],
   );
 
   const rootStyle: React.CSSProperties = {
@@ -107,9 +144,19 @@ TabsRoot.displayName = "Tabs.Root";
 export interface TabsListProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
-  ({ className, onKeyDown, ...props }, ref) => {
+  (
+    { className, onKeyDown, onPointerDown, onPointerCancel, onClick, children, ...props },
+    ref,
+  ) => {
+    // Root 밖에서도 죽지 않게 직접 읽는다 — 밑줄 배선은 전부 선택적이다.
+    const context = React.useContext(TabsContext);
     const listRef = React.useRef<HTMLDivElement | null>(null);
-    const setRef = React.useMemo(() => mergeRefs(ref, listRef), [ref]);
+    const indicator = context?.indicator;
+    const setRef = React.useMemo(
+      () => mergeRefs(ref, listRef, indicator?.listRef),
+      [ref, indicator?.listRef],
+    );
+    const pointerIntentRef = context?.pointerIntentRef;
 
     return (
       <div
@@ -117,15 +164,38 @@ export const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
         ref={setRef}
         role="tablist"
         aria-orientation="horizontal"
+        data-indicator={indicator?.active ? "" : undefined}
         className={clsx("dds-tabs__list", className)}
         onKeyDown={(event) => {
+          // 키보드가 시작되는 순간 포인터 의도를 내린다 — moveFocus가 부르는 automatic
+          // 활성화보다 먼저 지워야 화살표 이동이 애니메이션을 얻지 않는다.
+          if (pointerIntentRef) pointerIntentRef.current = false;
           onKeyDown?.(event);
           if (event.defaultPrevented) return;
           const aliased = KEY_ALIAS[event.key];
           // 포커스만 옮기면 된다 — 활성화는 Trigger의 focus 핸들러가 맡는다(automatic).
           if (aliased && moveFocus(listRef.current, TAB_ROLE, aliased)) event.preventDefault();
         }}
-      />
+        onPointerDown={(event) => {
+          if (pointerIntentRef) pointerIntentRef.current = true;
+          onPointerDown?.(event);
+        }}
+        // click은 focus 활성화(그리고 Safari의 click 활성화)보다 뒤라 여기서 정리해도 늦지 않는다.
+        onClick={(event) => {
+          onClick?.(event);
+          if (pointerIntentRef) pointerIntentRef.current = false;
+        }}
+        onPointerCancel={(event) => {
+          if (pointerIntentRef) pointerIntentRef.current = false;
+          onPointerCancel?.(event);
+        }}
+      >
+        {/* 자리를 잡기 전에는 숨어 있고, 그동안은 활성 Trigger의 border-bottom이 fallback이다. */}
+        {indicator ? (
+          <span className="dds-tabs__indicator" aria-hidden="true" ref={indicator.elementRef} />
+        ) : null}
+        {children}
+      </div>
     );
   },
 );
@@ -141,10 +211,18 @@ export const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>
     const context = useTabsContext("Tabs.Trigger");
     const selected = context.value === value;
 
+    // 밑줄이 따라갈 대상. value가 바뀌면 콜백 정체성이 바뀌어 옛 등록이 먼저 해제된다.
+    const registerTrigger = context.indicator?.registerTrigger;
+    const registerRef = React.useCallback(
+      (node: HTMLButtonElement | null) => registerTrigger?.(value, node),
+      [registerTrigger, value],
+    );
+    const setRef = React.useMemo(() => mergeRefs(ref, registerRef), [ref, registerRef]);
+
     return (
       <button
         {...props}
-        ref={ref}
+        ref={setRef}
         type="button"
         role="tab"
         id={triggerId(context.baseId, value)}

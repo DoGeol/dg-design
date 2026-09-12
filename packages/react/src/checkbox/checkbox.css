@@ -31,6 +31,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    /* 아이콘 둘을 겹쳐 둘 컨테이닝 블록 */
+    position: relative;
     box-sizing: border-box;
     /* 1px 하드코딩 — TextField·Select 테두리와 동일 관례. x0_5(2px)는 소형 박스에 무겁다. */
     border: 1px solid var(--dds-color-stroke-neutral);
@@ -38,21 +40,45 @@
     color: var(--dds-color-fg-brand-contrast);
   }
 
+  /* display 토글 대신 겹쳐 두고 opacity로 드러낸다 — 전환이 현재값에서 이어지려면 둘 다 살아 있어야 한다.
+     흐름에서 빼는(position: absolute) 이유는 정렬이다: 흐름에 남기면 박스의 baseline이 "표시된
+     아이콘"에 따라 달라져 체크할 때마다 줄 전체가 1~6px 움직인다(기존 display 토글의 부작용).
+     transition-property를 명시적으로 비워 둔다. 기본값 all은 duration이 0이어도 "전환 가능"이라
+     모션을 끄는 순간(키보드 개입 등) 진행 중인 전환이 취소되지 않고 끝까지 달린다. */
   .dds-checkbox__check-icon,
   .dds-checkbox__dash-icon {
-    display: none;
+    position: absolute;
     width: 70%;
     height: 70%;
+    opacity: 0;
+    transform: scale(0.95);
+    transition-property: none;
   }
 
+  /* 최종값은 transform: none — 정지 상태에 transform을 남기지 않아야 래스터가 지금과 같다. */
   .dds-checkbox__input:checked ~ .dds-checkbox__box .dds-checkbox__check-icon {
-    display: block;
+    opacity: 1;
+    transform: none;
   }
   .dds-checkbox__input:indeterminate ~ .dds-checkbox__box .dds-checkbox__dash-icon {
-    display: block;
+    opacity: 1;
+    transform: none;
   }
   .dds-checkbox__input:indeterminate ~ .dds-checkbox__box .dds-checkbox__check-icon {
-    display: none;
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  /* 포인터로 누른 변경에만 켜진다. 의미 상태 CSS가 최종값이고 여기는 전환만 얹는다. */
+  .dds-checkbox__box[data-motion] :is(.dds-checkbox__check-icon, .dds-checkbox__dash-icon) {
+    transition:
+      opacity var(--dds-duration-fast) var(--dds-easing-out),
+      transform var(--dds-duration-fast) var(--dds-easing-out);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dds-checkbox__box[data-motion] :is(.dds-checkbox__check-icon, .dds-checkbox__dash-icon) {
+      transition: opacity var(--dds-duration-fast) var(--dds-easing-out);
+    }
   }
 
   .dds-checkbox__input:is(:checked, :indeterminate) ~ .dds-checkbox__box {

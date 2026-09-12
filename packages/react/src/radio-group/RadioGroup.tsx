@@ -5,7 +5,9 @@ import clsx from "clsx";
 import * as React from "react";
 
 import { FieldContext } from "../field/field-context";
+import { mergeRefs } from "../internal/merge-refs";
 import { useControllableState } from "../internal/use-controllable-state";
+import { useSelectionIndicator } from "../internal/use-selection-indicator";
 import { RadioGroupContext } from "./radio-group-context";
 
 const radioGroup = cva("dds-radio-group", {
@@ -40,6 +42,9 @@ export interface RadioGroupRootProps
   disabled?: boolean;
   variant?: "default" | "segmented";
   size?: "small" | "medium" | "large";
+  /** 기본값 "auto" — 포인터로 누른 선택에서만 기본형 점이 페이드하고 segmented 배경이 이동한다.
+   * 키보드·외부 값 변경·초기 렌더·resize는 언제나 즉시. 항목이 아주 많은 화면은 "none". */
+  motion?: "auto" | "none";
 }
 
 /**
@@ -58,7 +63,10 @@ export const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootPro
     variant = "default",
     size = "medium",
     disabled = false,
+    motion = "auto",
     onKeyDown,
+    onClick,
+    onTransitionEnd,
     children,
     id,
     "aria-describedby": ariaDescribedBy,
@@ -87,6 +95,48 @@ export const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootPro
     onChange: handleChange,
   });
 
+  // 포인터로 누른 선택만 움직인다. radio는 change 직전에 항상 click이 먼저 오고(실측),
+  // 키보드 화살표·프로그램 click은 detail=0으로 도착한다 — 그 한 가지로 갈린다.
+  const pointerSelectRef = React.useRef(false);
+  // 실제 값 변경 시점에 찍는다. 선택이 바뀌지 않는 클릭은 아무것도 남기지 않고,
+  // 소비자가 늦게 controlled 값을 바꾸면 그 변경은 프로그램 변경으로 처리된다.
+  const animateNextRef = React.useRef(false);
+  const [pointerMotion, setPointerMotion] = React.useState(false);
+
+  const handleClick = React.useCallback(
+    (event: React.MouseEvent<HTMLDivElement>) => {
+      onClick?.(event);
+      pointerSelectRef.current = event.detail > 0 && !event.defaultPrevented;
+    },
+    [onClick],
+  );
+
+  const selectValue = React.useCallback(
+    (next: string) => {
+      const animate = pointerSelectRef.current && motion === "auto";
+      animateNextRef.current = animate;
+      setPointerMotion(animate);
+      setCurrent(next);
+    },
+    [motion, setCurrent],
+  );
+
+  // 전환이 끝나면 모션 허용을 내린다 — 포인터 뒤의 키보드·프로그램 변경에 남지 않는다.
+  const handleTransitionEnd = React.useCallback(
+    (event: React.TransitionEvent<HTMLDivElement>) => {
+      onTransitionEnd?.(event);
+      setPointerMotion(false);
+    },
+    [onTransitionEnd],
+  );
+
+  const segmented = variant === "segmented";
+  const indicator = useSelectionIndicator<HTMLDivElement>({
+    enabled: segmented,
+    value: current,
+    animateNextRef,
+  });
+
   const handleKeyDown = React.useCallback(
     (event: React.KeyboardEvent<HTMLDivElement>) => {
       onKeyDown?.(event);
@@ -111,23 +161,34 @@ export const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootPro
   // id를 직접 참조해야 접근 이름이 생긴다.
   const resolvedLabelledBy = ariaLabelledBy ?? fieldCtx?.labelId;
 
+  const registerItem = segmented ? indicator.registerItem : undefined;
   const contextValue = React.useMemo(
     () => ({
       value: current,
-      setValue: setCurrent,
+      setValue: selectValue,
       name: name ?? generatedName,
       orientation: resolvedOrientation,
       disabled,
       variant,
+      registerItem,
     }),
-    [current, setCurrent, name, generatedName, resolvedOrientation, disabled, variant],
+    [
+      current,
+      selectValue,
+      name,
+      generatedName,
+      resolvedOrientation,
+      disabled,
+      variant,
+      registerItem,
+    ],
   );
 
   return (
     <RadioGroupContext.Provider value={contextValue}>
       <div
         {...rest}
-        ref={ref}
+        ref={segmented ? mergeRefs(ref, indicator.containerRef) : ref}
         role="radiogroup"
         id={resolvedId}
         aria-orientation={resolvedOrientation}
@@ -142,8 +203,16 @@ export const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootPro
           }),
           className,
         )}
+        data-motion={pointerMotion ? "" : undefined}
+        data-indicator={segmented && indicator.measured ? "" : undefined}
         onKeyDown={handleKeyDown}
+        onClick={handleClick}
+        onTransitionEnd={handleTransitionEnd}
       >
+        {/* 측정 전(SSR·jsdom)에는 자리를 못 잡으니 숨어 있고, 그동안은 항목 자체 배경이 fallback이다. */}
+        {segmented ? (
+          <span className="dds-radio-group__indicator" aria-hidden="true" ref={indicator.indicatorRef} />
+        ) : null}
         {children}
       </div>
     </RadioGroupContext.Provider>
@@ -167,8 +236,19 @@ export const RadioGroupItem = React.forwardRef<HTMLInputElement, RadioGroupItemP
     const disabled = ctx.disabled || itemDisabled || false;
     const isChecked = ctx.value === value;
 
+    // segmented 배경이 따라갈 대상. value가 바뀌면 콜백 정체성이 바뀌어 옛 등록이 먼저 해제된다.
+    const { registerItem } = ctx;
+    const labelRef = React.useCallback(
+      (node: HTMLLabelElement | null) => registerItem?.(value, node),
+      [registerItem, value],
+    );
+
     return (
-      <label className={clsx("dds-radio", className)} data-state={isChecked ? "checked" : "unchecked"}>
+      <label
+        ref={labelRef}
+        className={clsx("dds-radio", className)}
+        data-state={isChecked ? "checked" : "unchecked"}
+      >
         <input
           type="radio"
           ref={ref}

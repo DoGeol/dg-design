@@ -46,6 +46,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    /* 점을 겹쳐 둘 컨테이닝 블록 */
+    position: relative;
     box-sizing: border-box;
     width: var(--dds-dimension-x4);
     height: var(--dds-dimension-x4);
@@ -54,16 +56,27 @@
     background-color: transparent;
   }
 
+  /* display 토글 대신 opacity로 드러낸다. 흐름에서 빼는(position: absolute) 이유는 정렬이다 —
+     흐름에 남기면 박스의 baseline이 선택 여부에 따라 달라져 라벨 없는 라디오가 선택될 때 내려앉는다.
+     transition-property는 명시적으로 비워 둔다: 기본값 all은 duration이 0이어도 "전환 가능"이라
+     모션을 끄는 순간 진행 중인 전환이 취소되지 않고 끝까지 달린다. */
   .dds-radio__dot {
-    display: none;
+    position: absolute;
     width: 45%;
     height: 45%;
     border-radius: var(--dds-radius-r-full);
     background-color: var(--dds-color-fg-brand-contrast);
+    opacity: 0;
+    transition-property: none;
   }
 
   .dds-radio__input:checked ~ .dds-radio__box .dds-radio__dot {
-    display: block;
+    opacity: 1;
+  }
+
+  /* 포인터로 누른 선택에만 켜진다 — 나가는 점과 들어오는 점이 같이 교차한다. */
+  .dds-radio-group[data-motion] .dds-radio__dot {
+    transition: opacity var(--dds-duration-fast) var(--dds-easing-out);
   }
 
   .dds-radio__input:checked ~ .dds-radio__box {
@@ -117,6 +130,8 @@
     display: inline-flex;
     flex-direction: row;
     align-items: center;
+    /* 선택 배경의 컨테이닝 블록 */
+    position: relative;
     padding: var(--dds-dimension-x0_5);
     background-color: var(--dds-color-bg-neutral-weak);
     border-radius: var(--dds-radius-r-full);
@@ -137,9 +152,32 @@
     height: 44px;
   }
 
+  /* 선택 배경 하나가 항목 사이를 옮겨 다닌다. 좌표·크기는 JS가 최종값으로 직접 넣고
+     이동만 transform으로 하므로 매 프레임 레이아웃이 다시 돌지 않는다. 색·그림자·반경은
+     기존 선택 항목 배경과 같은 값이라 정착 그림이 바뀌지 않는다. */
+  .dds-radio-group__indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    border-radius: var(--dds-radius-r-full);
+    background-color: var(--dds-color-bg-layer-default);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transform-origin: 0 0;
+    pointer-events: none;
+  }
+  .dds-radio-group__indicator[data-disabled] {
+    background-color: var(--dds-color-bg-disabled);
+    box-shadow: none;
+  }
+
   .dds-radio-group--variant_segmented .dds-radio {
     height: 100%;
     box-sizing: border-box;
+    /* 위치 지정만으로 칠 순서가 배경 위로 올라간다(z-index 불필요) */
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -188,6 +226,16 @@
     background-color: var(--dds-color-bg-layer-default);
     color: var(--dds-color-fg-neutral);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 배경이 실제로 자리를 잡은 뒤에는 항목 자체 배경을 지운다 — 그전(SSR·측정 불가)에는
+     위 규칙이 그대로 fallback으로 남는다. 글자색·굵기는 항목이 계속 즉시 바꾼다. */
+  .dds-radio-group--variant_segmented[data-indicator] .dds-radio[data-state="checked"] {
+    background-color: transparent;
+    box-shadow: none;
+    /* 배경·그림자는 이제 배경 요소가 그린다 — fallback에서 넘어올 때 항목이 흰 배경을
+       150ms 동안 겹쳐 페이드아웃하지 않도록 그 둘만 전환 대상에서 뺀다. */
+    transition-property: color;
   }
 
   .dds-radio-group--variant_segmented .dds-radio[data-state="checked"] .dds-radio__label {

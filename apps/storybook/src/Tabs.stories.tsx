@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Field, Tabs, TextField } from "@dg-design/react";
+import * as React from "react";
 
 // RadioGroup과 같은 이유로 component를 지정하지 않는다 — barrel엔 Tabs 객체 하나뿐이라
 // 개별 compound의 컴포넌트 타입에 이름을 붙일 수 없다(TS4023). 모든 스토리가 render를 쓴다.
@@ -45,6 +46,80 @@ export const FunctionalDemo: StoryObj<typeof meta> = {
       </Tabs.Root>
     </div>
   ),
+};
+
+/**
+ * 모션 데모: 포인터로 고른 탭만 밑줄이 이동하는지 확인한다. 처음은 정지 상태이며
+ * 라벨 길이가 제각각이라 위치와 폭을 같이 맞춰야 한다. 패널 안 입력으로 상태 보존도 같이 본다.
+ */
+function MotionDemoView() {
+  const [value, setValue] = React.useState("summary");
+  const [rtl, setRtl] = React.useState(false);
+  const [extra, setExtra] = React.useState(false);
+
+  return (
+    <div
+      dir={rtl ? "rtl" : "ltr"}
+      style={{ padding: 24, display: "flex", flexDirection: "column", gap: 24 }}
+    >
+      <div data-testid="motion-tabs">
+        <Tabs.Root value={value} onValueChange={setValue}>
+          <Tabs.List aria-label="계정">
+            <Tabs.Trigger value="summary">요약</Tabs.Trigger>
+            <Tabs.Trigger value="billing">결제 및 정산 내역</Tabs.Trigger>
+            <Tabs.Trigger value="alerts">알림</Tabs.Trigger>
+            {extra ? <Tabs.Trigger value="logs">감사 로그</Tabs.Trigger> : null}
+          </Tabs.List>
+          <Tabs.Content value="summary">요약 패널</Tabs.Content>
+          <Tabs.Content value="billing">
+            <label htmlFor="motion-memo">메모</label>
+            <input id="motion-memo" />
+          </Tabs.Content>
+          <Tabs.Content value="alerts">알림 패널</Tabs.Content>
+          {extra ? <Tabs.Content value="logs">감사 로그 패널</Tabs.Content> : null}
+        </Tabs.Root>
+      </div>
+
+      <div data-testid="motion-none-tabs">
+        <Tabs.Root defaultValue="summary" motion="none">
+          <Tabs.List aria-label="모션 없음">
+            <Tabs.Trigger value="summary">요약</Tabs.Trigger>
+            <Tabs.Trigger value="billing">결제 및 정산 내역</Tabs.Trigger>
+          </Tabs.List>
+          <Tabs.Content value="summary">요약 패널</Tabs.Content>
+          <Tabs.Content value="billing">결제 패널</Tabs.Content>
+        </Tabs.Root>
+      </div>
+
+      <div data-testid="motion-responsive-tabs">
+        <Tabs.Root defaultValue="summary" responsive={600}>
+          <Tabs.List aria-label="반응형">
+            <Tabs.Trigger value="summary">요약</Tabs.Trigger>
+            <Tabs.Trigger value="billing">결제 및 정산 내역</Tabs.Trigger>
+          </Tabs.List>
+          <Tabs.Content value="summary">요약 패널</Tabs.Content>
+          <Tabs.Content value="billing">결제 패널</Tabs.Content>
+        </Tabs.Root>
+      </div>
+
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+        <button type="button" data-testid="set-alerts" onClick={() => setValue("alerts")}>
+          프로그램 선택
+        </button>
+        <button type="button" data-testid="toggle-rtl" onClick={() => setRtl((on) => !on)}>
+          RTL 토글
+        </button>
+        <button type="button" data-testid="toggle-extra" onClick={() => setExtra((on) => !on)}>
+          탭 추가/제거
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export const MotionDemo: StoryObj<typeof meta> = {
+  name: "Motion demo",
+  render: () => <MotionDemoView />,
 };
 
 /** VR 기준. FunctionalDemo와 안 겹치게 폼 없이 트리거·패널 시각만 담은 단순 3탭 구성. */

@@ -16,14 +16,39 @@
   .dds-avatar--size_large { width: 48px; height: 48px; }
   .dds-avatar--size_xlarge { width: 64px; height: 64px; }
 
+  /* 이미지와 fallback을 같은 자리에 겹친다 — 페이드 중 둘이 나란히 서서 폭을 나눠 갖지 않는다.
+     흐름에서 빠져도 Root의 고정 크기(24/36/48/64)가 그대로 영역을 정한다. */
   .dds-avatar__image,
   .dds-avatar__fallback {
+    position: absolute;
+    inset: 0;
+    /* 대체 요소(img)는 inset만으로는 늘어나지 않고 고유 크기를 쓴다 — 크기를 직접 준다. */
     width: 100%;
     height: 100%;
     border-radius: inherit;
   }
+  /* author display가 UA의 [hidden]을 이기므로 display를 정하는 요소 옆에 가드를 둔다. */
+  .dds-avatar__image[hidden],
+  .dds-avatar__fallback[hidden] {
+    display: none;
+  }
 
-  .dds-avatar__image { object-fit: cover; }
+  /* 지연 로드 이미지만 페이드한다(data-fade). 캐시·오류·motion="none"은 속성이 붙지 않아 즉시 표시.
+     transition-property를 명시적으로 비워 둔다 — 기본값 all은 duration이 0이어도 "전환 가능"이라
+     모션을 끄는 순간 진행 중 전환이 취소되지 않는다. 위치 변화 없는 opacity라 reduce에서도 유지한다. */
+  .dds-avatar__image {
+    /* fallback 위에 그린다 — DOM 순서와 무관하게 칠 순서를 고정한다(Badge는 뒤에서 z-index로 덮는다). */
+    z-index: 1;
+    object-fit: cover;
+    transition-property: none;
+  }
+  .dds-avatar__image[data-fade="start"] {
+    opacity: 0;
+  }
+  .dds-avatar__image[data-fade="run"] {
+    opacity: 1;
+    transition: opacity var(--dds-duration-fast) var(--dds-easing-out);
+  }
 
   .dds-avatar__fallback {
     display: flex;
@@ -34,11 +59,12 @@
     color: var(--dds-color-fg-neutral);
   }
 
+  /* Badge는 이미지(z-index 1)보다 위에 남아야 한다 — Root의 overflow: visible과 함께 잘리지 않는다. */
   .dds-avatar__badge {
     position: absolute;
     right: 0;
     bottom: 0;
-    z-index: 1;
+    z-index: 2;
     transform: translate(18%, 18%);
   }
 }
