@@ -63,12 +63,13 @@ dds-radio__box | rgb(0, 0, 0) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
 dds-radio__dot | rgb(0, 0, 0) | rgb(107, 112, 111) | none | rgb(0, 0, 0) | none
 dds-radio__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
 dds-radio-group dds-radio-group--variant_segmented dds-radio-group--orientation_horizontal dds-radio-group--size_small | rgb(0, 0, 0) | rgb(36, 39, 39) | none | rgb(0, 0, 0) | none
+dds-radio-group__indicator | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(0, 0, 0) | rgba(0, 0, 0, 0.1) 0px 1px 3px 0px
 dds-radio | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-radio__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
 dds-radio__box | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
 dds-radio__dot | rgb(174, 178, 178) | rgb(15, 18, 18) | none | rgb(174, 178, 178) | none
 dds-radio__label | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
-dds-radio | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | rgba(0, 0, 0, 0.1) 0px 1px 3px 0px
+dds-radio | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-radio__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
 dds-radio__box | rgb(241, 246, 246) | rgb(87, 197, 197) | none | rgba(0, 0, 0, 0) | none
 dds-radio__dot | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
@@ -79,12 +80,13 @@ dds-radio__box | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 14
 dds-radio__dot | rgb(174, 178, 178) | rgb(15, 18, 18) | none | rgb(174, 178, 178) | none
 dds-radio__label | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-radio-group dds-radio-group--variant_segmented dds-radio-group--orientation_horizontal dds-radio-group--size_medium | rgb(0, 0, 0) | rgb(36, 39, 39) | none | rgb(0, 0, 0) | none
+dds-radio-group__indicator | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(0, 0, 0) | rgba(0, 0, 0, 0.1) 0px 1px 3px 0px
 dds-radio | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-radio__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
 dds-radio__box | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
 dds-radio__dot | rgb(174, 178, 178) | rgb(15, 18, 18) | none | rgb(174, 178, 178) | none
 dds-radio__label | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
-dds-radio | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | rgba(0, 0, 0, 0.1) 0px 1px 3px 0px
+dds-radio | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-radio__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
 dds-radio__box | rgb(241, 246, 246) | rgb(87, 197, 197) | none | rgba(0, 0, 0, 0) | none
 dds-radio__dot | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
@@ -95,12 +97,13 @@ dds-radio__box | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 14
 dds-radio__dot | rgb(174, 178, 178) | rgb(15, 18, 18) | none | rgb(174, 178, 178) | none
 dds-radio__label | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-radio-group dds-radio-group--variant_segmented dds-radio-group--orientation_horizontal dds-radio-group--size_large | rgb(0, 0, 0) | rgb(36, 39, 39) | none | rgb(0, 0, 0) | none
+dds-radio-group__indicator | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(0, 0, 0) | rgba(0, 0, 0, 0.1) 0px 1px 3px 0px
 dds-radio | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-radio__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
 dds-radio__box | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
 dds-radio__dot | rgb(174, 178, 178) | rgb(15, 18, 18) | none | rgb(174, 178, 178) | none
 dds-radio__label | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
-dds-radio | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | rgba(0, 0, 0, 0.1) 0px 1px 3px 0px
+dds-radio | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-radio__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
 dds-radio__box | rgb(241, 246, 246) | rgb(87, 197, 197) | none | rgba(0, 0, 0, 0) | none
 dds-radio__dot | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
@@ -111,6 +114,7 @@ dds-radio__box | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 14
 dds-radio__dot | rgb(174, 178, 178) | rgb(15, 18, 18) | none | rgb(174, 178, 178) | none
 dds-radio__label | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-radio-group dds-radio-group--variant_segmented dds-radio-group--orientation_horizontal dds-radio-group--size_medium | rgb(0, 0, 0) | rgb(36, 39, 39) | none | rgb(0, 0, 0) | none
+dds-radio-group__indicator | rgb(0, 0, 0) | rgb(58, 62, 62) | none | rgb(0, 0, 0) | none
 dds-radio | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
 dds-radio__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
 dds-radio__box | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
