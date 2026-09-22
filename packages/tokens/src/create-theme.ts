@@ -22,7 +22,7 @@ export interface CreateThemeOptions {
 }
 
 export interface CreateThemeResult {
-  /** tokens.css와 드롭인 호환인 완성 CSS. `:root` + `[data-dds-theme="dark"]`. */
+  /** tokens.css와 드롭인 호환인 완성 CSS. `:root` + `[data-dds-theme="light"|"dark"]`. */
   css: string;
   /** 입력 hex에서 추출된 OKLCH hue (0~360). 진단·로그용. */
   brandHue: number;

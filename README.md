@@ -24,7 +24,7 @@ import { Button } from "@dg-design/react";
 <Button intent="brand" variant="solid" size="medium">확인</Button>
 ```
 
-다크모드: `<html data-dds-theme="dark">`. 시스템 감지는 앱 책임.
+다크모드: `<html data-dds-theme="dark">`. 하위 요소의 `data-dds-theme="light"|"dark"`로 영역별 중첩 가능. 시스템 감지는 앱 책임.
 
 Tailwind v4: tokens.css 선로드 후 `@import "@dg-design/tokens/tailwind.css";` → `bg-bg-brand-solid` 형태 유틸 사용.
 

@@ -29,6 +29,23 @@ Tailwind를 안 쓰면 `tokens.css`만 로드하면 된다.
 
 실제 사례(react 0.10.0 ↔ tokens 0.6.0): `Field` 설명문·그룹 라벨이 쓰는 `--dds-color-fg-neutral-weak`, 오버레이 `z-index`용 `--dds-z-overlay`·`--dds-z-toast`가 이 릴리스에서 같이 신설됐다. tokens를 0.5.x에 고정한 채 react만 0.10.0으로 올리면 오버레이가 다시 `z-index: auto`로 돌아가 소비 앱의 sticky 헤더 밑에 깔린다 — 정확히 0.6.0이 고친 버그가 재발한다. 두 패키지는 같이 올린다.
 
+## 다크 모드와 중첩 스코프
+
+`<html data-dds-theme="dark">`가 문서 전체를 다크로 바꾼다. 하위 요소에 `data-dds-theme="light"` 또는 `"dark"`를 붙이면 그 서브트리만 해당 모드가 된다 — 다크 안의 라이트, 라이트 안의 다크, 여러 겹 중첩 모두 **가장 가까운 조상의 값**을 따른다(tokens 0.8.0부터).
+
+```html
+<html data-dds-theme="dark">
+  <main data-dds-theme="light"> <!-- 라이트로 고정한 영역 -->
+    <aside data-dds-theme="dark">…</aside> <!-- 다시 다크 -->
+  </main>
+</html>
+```
+
+`tokens.css`는 `:root`(라이트 기본값) 외에 `[data-dds-theme="light"]`·`[data-dds-theme="dark"]` 두 블록이 semantic 색을 전부 재정의한다. palette·스케일은 모드 무관이라 스코프 블록에 없다. 스코프가 먹는 조건 둘:
+
+- **값은 `--dds-color-*`로 직접 참조한다.** 앱 CSS에서 `:root`에 별칭(`--my-bg: var(--dds-color-bg-layer-default)`)을 정의하면 그 별칭은 루트에서 한 번 해석돼 하위 스코프를 따라가지 않는다. Tailwind 브릿지는 이 문제 때문에 `@theme inline`으로 방출한다 — 유틸 클래스가 `var(--dds-color-*)`를 직접 쓴다. 같은 이유로 Tailwind의 `--color-*` 변수를 `var()`로 직접 쓰면 루트 모드 값에 고정된다.
+- **토큰을 손으로 오버라이드하면 스코프 셀렉터도 같이 적는다** — 아래 예시 ① 참고.
+
 ## 공개 표면
 
 | 표면 | 무엇을 보장하나 |
@@ -103,7 +120,8 @@ DDS 자신도 이 문제를 warning에서만 반전 규칙(밝은 스텝을 soli
 
 ```css
 /* my-theme.css — tokens.css보다 나중에 로드 */
-:root {
+:root,
+[data-dds-theme="light"] {
   --dds-color-bg-brand-solid: #7c3aed;
   --dds-color-bg-brand-solid-hover: #6d28d9;
   --dds-color-bg-brand-solid-pressed: #5b21b6;
@@ -124,7 +142,7 @@ import "@dg-design/tokens/tokens.css";
 import "./my-theme.css"; // tokens.css 다음
 ```
 
-`var(--dds-color-bg-brand-solid)`를 참조하는 컴포넌트(Button의 `intent="brand" variant="solid"` 등)가 즉시 새 색을 쓴다. 주의 둘: 이 값은 손으로 넣은 것이라 `pnpm generate`의 대비 검사를 거치지 않는다 — WCAG 확인은 소비자 책임이다. 그리고 위 "비공개 표면"에서 설명했듯 semantic 토큰은 서로 연결돼 있지 않으므로, 포커스 링(`stroke-focus-ring`)처럼 같은 계열로 보이는 다른 토큰까지 바꾸려면 그것도 목록에 따로 추가해야 한다.
+`var(--dds-color-bg-brand-solid)`를 참조하는 컴포넌트(Button의 `intent="brand" variant="solid"` 등)가 즉시 새 색을 쓴다. 라이트 값을 `:root`에만 넣으면 다크 조상 아래의 `[data-dds-theme="light"]` 영역에서는 `tokens.css`의 라이트 스코프 블록 값이 이긴다(같은 명시도, 요소 자신에 선언) — 중첩 스코프를 쓰면 위처럼 두 셀렉터를 함께 적는다. 주의 둘 더: 이 값은 손으로 넣은 것이라 `pnpm generate`의 대비 검사를 거치지 않는다 — WCAG 확인은 소비자 책임이다. 그리고 위 "비공개 표면"에서 설명했듯 semantic 토큰은 서로 연결돼 있지 않으므로, 포커스 링(`stroke-focus-ring`)처럼 같은 계열로 보이는 다른 토큰까지 바꾸려면 그것도 목록에 따로 추가해야 한다.
 
 ### ② Tailwind 유틸로 개별 인스턴스 커스텀
 
@@ -155,4 +173,4 @@ writeFileSync("src/styles/dds-tokens.css", createTheme({ brand: "#6D28D9" }));
   import "@dg-design/tokens/tailwind.css"; // 그대로 — 브릿지는 var() 참조뿐이라 브랜드 무관
 ```
 
-생성 CSS는 기존 `tokens.css`와 같은 `:root` + `[data-dds-theme="dark"]` 구조라 드롭인 교체다 — 둘 중 하나만 로드한다.
+생성 CSS는 기존 `tokens.css`와 같은 `:root` + `[data-dds-theme="light"]` + `[data-dds-theme="dark"]` 구조(중첩 스코프 포함)라 드롭인 교체다 — 둘 중 하나만 로드한다.

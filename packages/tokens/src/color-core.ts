@@ -215,6 +215,9 @@ export function tokensCss(
       ...scale("easing", easing),
     ]),
     "",
+    // 중첩 스코프용. `:root`만으로는 다크 조상 아래의 라이트 영역이 다크 값을 상속한다.
+    block('[data-dds-theme="light"]', ["/* semantic (light) — 중첩 스코프 */", ...semanticVars("light")]),
+    "",
     block('[data-dds-theme="dark"]', ["/* semantic (dark) */", ...semanticVars("dark")]),
     "",
   ].join("\n");
@@ -233,12 +236,17 @@ export function tokensCss(
  * full"(방향 접두 `r-` + 크기 `full`)로 먼저 해석돼 우리 키와 클래스명이 충돌한다
  * (실측: 좌우 코너에 다른 값이 섞여 방출됨). 어차피 Tailwind 기본 `rounded-full`이
  * 같은 값(완전 원형)을 이미 프리픽스 없이 제공해 바인딩이 불필요하다.
+ *
+ * `inline`은 중첩 테마 스코프 때문이다. 일반 `@theme`이면 유틸이 `var(--color-*)`를 쓰고
+ * 그 변수가 `:root`에서 해석돼, `[data-dds-theme]` 하위에서도 루트 모드 값이 고정된다
+ * (실측: 다크 루트 아래 라이트 스코프의 `bg-bg-layer-default`가 여전히 다크).
+ * `inline`은 유틸에 `var(--dds-*)`를 직접 박아 가장 가까운 스코프를 따르게 한다.
  */
 export const tailwindCss = () =>
   [
     "/* 생성 파일. `tokens.css`를 먼저 로드해야 동작한다. */",
     "",
-    block("@theme", [
+    block("@theme inline", [
       ...Object.keys(semanticColors).map((name) => `--color-${name}: var(--dds-color-${name});`),
       "",
       ...Object.keys(radius)
