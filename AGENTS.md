@@ -29,14 +29,14 @@ Dogeol Design System. daangn/seed-design 참고.
 ## 핵심 관습 (변경 시 결정 기록 먼저 확인)
 
 - 토큰: `--dds-color-{role}-{intent}-{emphasis}[-{state}]`, role마다 축이 다름. palette는 내부 구현, semantic만 공개 API. intent 6종 — hover/pressed는 brand·neutral·critical만(나머지는 base). warning solid는 밝은 황 + 어두운 fg
-- 다크모드: `[data-dds-theme="dark"]` 재정의. palette는 모드 무관, semantic만 분기
+- 다크모드: `[data-dds-theme="dark"]`·`[data-dds-theme="light"]`(중첩 스코프) 재정의. palette는 모드 무관, semantic만 분기
 - **tokens.css는 소비 앱이 수동 로드.** react 컴포넌트는 토큰 CSS를 import하지 않는다
 - 컴포넌트 CSS: 수기+CVA, `@layer dds`, `.dds-x--variant_y`(비공개), `:focus-visible`, disabled 3중 매칭, 테두리 1px. **`hidden`으로 숨기는 요소는 자기 `display` 규칙 옆에 `[hidden] { display: none }`**(author display가 UA `[hidden]`을 이긴다)
 - compound는 객체 export + `{Compound}{Sub}` named export 둘 다(서버 컴포넌트는 객체 속성 접근이 안 된다)
 - react 빌드에서 CSS는 external + raw copy 플러그인 (vite.config.ts 참조). barrel(src/index.ts)은 병렬 작업 시 에이전트 수정 금지 — 감독이 직결
 - 공통은 `internal/`: use-overlay(오버레이 배선, 모달 여부는 dialog-stack), select-core(옵션 목록), overlay-motion.css(공용 keyframes). **클릭 토글·트리거 기준 배치가 아니면**(hover·우클릭) use-overlay 대신 primitive를 직접 조립한다
 - live region: critical intent만 `role="alert"`, 나머지는 `role="status"`. `aria-live`는 얹지 않는다(role이 암묵적 politeness를 갖는다)
-- Tailwind 브릿지: `@theme` 재바인딩, 유틸명은 `bg-bg-brand-solid` 형태
+- Tailwind 브릿지: `@theme inline` 재바인딩(유틸이 `var(--dds-*)`를 직접 참조해야 중첩 스코프를 따른다), 유틸명은 `bg-bg-brand-solid` 형태
 
 ## 코드 컨벤션
 

@@ -15,7 +15,7 @@ pnpm add @dg-design/tokens
 ```ts
 import "@dg-design/tokens/tokens.css";
 ```
-다크 모드는 `<html data-dds-theme="dark">`로 전환한다. 시스템 감지는 소비 앱 책임이다.
+다크 모드는 `<html data-dds-theme="dark">`로 전환한다. 시스템 감지는 소비 앱 책임이다. 하위 요소에 `data-dds-theme="light"`/`"dark"`를 붙이면 그 영역만 모드가 바뀌고, 중첩되면 가장 가까운 조상을 따른다([중첩 스코프](../../docs/customization.md#다크-모드와-중첩-스코프)).
 
 ## Tailwind v4 브릿지
 
