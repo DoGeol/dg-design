@@ -1,0 +1,110 @@
+@layer dds {
+  .dds-data-table__wrapper {
+    overflow: auto;
+  }
+
+  .dds-data-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    min-width: 100%;
+    width: max-content;
+  }
+
+  .dds-data-table .dds-table__head {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: var(--dds-color-bg-layer-default);
+    border-bottom: 1px solid var(--dds-color-stroke-neutral-weak);
+  }
+
+  .dds-data-table .dds-data-table__pinned {
+    position: sticky;
+    z-index: 1;
+    background-color: var(--dds-color-bg-layer-default);
+  }
+
+  .dds-data-table .dds-table__head.dds-data-table__pinned {
+    z-index: 3;
+  }
+
+  .dds-data-table .dds-table__row:hover .dds-data-table__pinned {
+    background-color: var(--dds-color-bg-neutral-weak);
+  }
+
+  .dds-data-table .dds-table__head,
+  .dds-data-table .dds-table__cell {
+    overflow: hidden;
+  }
+
+  .dds-data-table .dds-data-table__row > td {
+    border-bottom: 1px solid var(--dds-color-stroke-neutral-weak);
+  }
+
+  .dds-data-table--virtual .dds-data-table__row > td {
+    height: var(--dds-data-row-height);
+    padding-block: 0;
+  }
+
+  .dds-data-table__heading {
+    white-space: nowrap;
+  }
+
+  .dds-data-table__sort {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-weight: inherit;
+    cursor: pointer;
+  }
+
+  .dds-data-table__sort:focus-visible,
+  .dds-data-table__filter:focus-visible,
+  .dds-data-table__wrapper:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-data-table__filter {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    margin-top: var(--dds-dimension-x2);
+    border: 1px solid var(--dds-color-stroke-neutral-weak);
+    border-radius: var(--dds-radius-r1);
+    background-color: var(--dds-color-bg-layer-default);
+    color: var(--dds-color-fg-neutral);
+    font: inherit;
+  }
+
+  .dds-data-table__select {
+    width: 44px;
+    min-width: 44px;
+    padding-inline: 0;
+    text-align: center;
+  }
+
+  .dds-data-table__cell-content {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dds-data-table__row {
+    box-sizing: border-box;
+  }
+
+  .dds-data-table__spacer td {
+    border: 0;
+    padding: 0;
+  }
+
+  .dds-data-table__empty {
+    text-align: center;
+    color: var(--dds-color-fg-neutral-weak);
+  }
+}

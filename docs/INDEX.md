@@ -14,12 +14,13 @@
 
 ## 후속 작업
 
-[follow-ups.md](follow-ups.md) — 남은 것 0건, 그리고 "모르면 첫 시도에서 틀리는" 실측 사실 4가지.
+[follow-ups.md](follow-ups.md) — Table v2 계획 착수 조건과 "모르면 첫 시도에서 틀리는" 실측 사실 4가지.
 
 ## 계획
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
+| [2026-09-25 Table v2 사용성·대량 데이터](plans/2026-09-25-table-v2.md) | 로컬 구현 완료 | 데이터 기반 API 2종, 1만 행 가상화, 정렬·필터·선택, 고정 헤더·열의 단계별 계획 |
 | [2026-08-28 우선순위 컴포넌트](plans/2026-08-28-priority-components/) | 완료 0.12.0 | 컴포넌트별 계획 5개(accordion·avatar·collapsible·separator·skeleton), QA는 `qa/` 같은 이름 |
 | [2026-09-06 잔여 작업](plans/2026-09-06-remaining-work.md) | 완료 | PR #59 스크린샷·D1/D2·승격 2차·dg-studio 교체 네 트랙, 서브에이전트 배정과 결과 |
 
@@ -54,10 +55,19 @@
 | [2026-09-06 compound named export](decisions/2026-09-06-compound-named-exports.md) | 활성 | RSC 경계에서 객체 export 실패 근거, `{Compound}{Sub}` 규약, Tabs.Content tabIndex override |
 | [2026-09-06 승격 2차 구현 중 결정](decisions/2026-09-06-studio-promotion-batch-2-implementation.md) | 활성 | SaveStatus·MultiSelect 검색/onCreate·FileInput 구현 결정, 디자인 검토 5건 전후 값, `[hidden]` vs display 함정 |
 | [2026-09-13 컴포넌트 모션 API](decisions/2026-09-13-component-motion-api.md) | 활성 | `motion` prop 6종과 기본값(Avatar만 none), 기존 토큰 재사용, 포인터 대 키보드 판별, 공용 FLIP 헬퍼, VR 기준 CI 전용 갱신 |
+| [2026-09-25 Table v2 구현 중 결정](decisions/2026-09-25-table-v2-implementation.md) | 활성 | dual API, 순수 데이터 모델, 네이티브 표 가상화, 접근성·패키지 export 판단 |
 
 ## 스펙
 
-진행 중인 스펙 없음. 새 스펙은 `deep-interview` 스킬이 `specs/`에 만든다.
+| 문서 | 상태 | 다루는 것 |
+|------|------|-----------|
+| [2026-09-25 Table v2 구현 스펙](specs/2026-09-25-table-v2.md) | 로컬 구현 완료 | 공개 API, 구현 경계, 합격 조건 |
+
+## QA
+
+| 문서 | 상태 | 다루는 것 |
+|------|------|-----------|
+| [2026-09-25 Table v2 로컬 QA](qa/2026-09-25-table-v2.md) | 로컬 통과 | 1만 행·고정 열·접근성·브라우저 성능 실측과 남은 CI/스크린리더 검증 |
 
 ## 아카이브 (완료)
 

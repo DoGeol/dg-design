@@ -48,6 +48,16 @@ export {
   ContextMenuLabel,
 } from "./context-menu/ContextMenu";
 export {
+  DataTable,
+  type DataTableProps,
+  type DataColumn,
+  type DataTableFilter,
+  type DataTableFilters,
+  type DataTableSelection,
+  type DataTableSort,
+  type RowKey,
+} from "./data-table/DataTable";
+export {
   Dialog,
   DialogRoot,
   DialogTrigger,

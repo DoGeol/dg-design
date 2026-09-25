@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import * as React from "react";
 import { describe, expect, it } from "vitest";
 
@@ -50,6 +51,44 @@ describe("Table", () => {
     const wrapper = table.parentElement;
     expect(wrapper?.tagName).toBe("DIV");
     expect(wrapper?.classList.contains("dds-table__wrapper")).toBe(true);
+    expect(wrapper?.hasAttribute("tabindex")).toBe(false);
+    expect(screen.queryByRole("region")).toBeNull();
+  });
+
+  it("Root의 래퍼는 이름 있는 키보드 스크롤 영역으로 설정할 수 있고 table 속성과 ref를 유지한다", async () => {
+    const user = userEvent.setup();
+    const tableRef = React.createRef<HTMLTableElement>();
+    const wrapperRef = React.createRef<HTMLDivElement>();
+
+    render(
+      <Table.Root
+        ref={tableRef}
+        className="custom-table"
+        data-table="yes"
+        wrapperRef={wrapperRef}
+        wrapperProps={{
+          role: "region",
+          "aria-label": "사용자 목록 가로 스크롤",
+          tabIndex: 0,
+          className: "custom-wrapper",
+        }}
+      >
+        <Table.Caption>사용자 목록</Table.Caption>
+      </Table.Root>,
+    );
+
+    const table = screen.getByRole("table", { name: "사용자 목록" });
+    const wrapper = screen.getByRole("region", { name: "사용자 목록 가로 스크롤" });
+    expect(tableRef.current).toBe(table);
+    expect(wrapperRef.current).toBe(wrapper);
+    expect(table.className).toBe("dds-table custom-table");
+    expect(table.getAttribute("data-table")).toBe("yes");
+    expect(table.hasAttribute("tabindex")).toBe(false);
+    expect(wrapper.className).toBe("dds-table__wrapper custom-wrapper");
+    expect(wrapper.getAttribute("data-table")).toBeNull();
+
+    await user.tab();
+    expect(document.activeElement).toBe(wrapper);
   });
 
   it("Head는 기본 scope=col을 갖지만 소비자가 덮어쓸 수 있다", () => {
