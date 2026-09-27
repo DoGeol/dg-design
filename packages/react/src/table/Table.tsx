@@ -3,17 +3,26 @@ import "./table.css";
 import clsx from "clsx";
 import * as React from "react";
 
-export interface TableRootProps extends React.TableHTMLAttributes<HTMLTableElement> {}
+export interface TableRootProps extends React.TableHTMLAttributes<HTMLTableElement> {
+  wrapperProps?: Omit<
+    React.HTMLAttributes<HTMLDivElement>,
+    "children" | "dangerouslySetInnerHTML"
+  >;
+  wrapperRef?: React.Ref<HTMLDivElement>;
+}
 
 /**
  * 어드민 표는 뷰포트를 쉽게 넘친다 — table을 overflow-x:auto div로 감싼다.
- * 래퍼는 고정 클래스만 쓰는 순수 레이아웃 요소라 className·ref·나머지 props는
- * 전부 table에 그대로 간다 (시맨틱은 getByRole("table")이 그대로 잡도록 유지,
- * 래퍼 자체를 확장하는 통로는 두지 않음 — sticky·정렬 등 옵션 없음 방침과 동일 선상).
+ * table의 className·ref·HTML 속성은 기존처럼 table에 전달한다. 이름 있는
+ * 키보드 스크롤 영역이 필요하면 wrapperProps와 wrapperRef를 별도로 쓴다.
  */
 export const TableRoot = React.forwardRef<HTMLTableElement, TableRootProps>(
-  ({ className, ...props }, ref) => (
-    <div className="dds-table__wrapper">
+  ({ className, wrapperProps, wrapperRef, ...props }, ref) => (
+    <div
+      {...wrapperProps}
+      ref={wrapperRef}
+      className={clsx("dds-table__wrapper", wrapperProps?.className)}
+    >
       <table ref={ref} className={clsx("dds-table", className)} {...props} />
     </div>
   ),

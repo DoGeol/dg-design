@@ -4,6 +4,11 @@
     overflow-x: auto;
   }
 
+  .dds-table__wrapper:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
   .dds-table {
     width: 100%;
     border-collapse: collapse;
