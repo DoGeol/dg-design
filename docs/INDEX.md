@@ -14,14 +14,14 @@
 
 ## 후속 작업
 
-[follow-ups.md](follow-ups.md) — DatePicker 구현·Table v2 릴리스 착수 조건과 "모르면 첫 시도에서 틀리는" 실측 사실 4가지.
+[follow-ups.md](follow-ups.md) — DatePicker·Table v2 실기기 QA와 "모르면 첫 시도에서 틀리는" 실측 사실 4가지.
 
 ## 계획
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
-| [2026-09-27 DatePicker 구현](plans/2026-09-27-datepicker.md) | 로컬 구현 · 릴리스 QA 대기 | 값·DST 기술 게이트, 입력·달력·반응형 패널, 검증 순서와 작업 배정 |
-| [2026-09-25 Table v2 사용성·대량 데이터](plans/2026-09-25-table-v2.md) | main 병합 · 릴리스 대기 | 데이터 기반 API 2종, 1만 행 가상화, 정렬·필터·선택, 고정 헤더·열의 단계별 계획 |
+| [2026-09-27 DatePicker 구현](plans/2026-09-27-datepicker.md) | npm 0.16.1 배포 · 실기기 QA 후속 | 값·DST 기술 게이트, 입력·달력·반응형 패널, 검증 순서와 작업 배정 |
+| [2026-09-25 Table v2 사용성·대량 데이터](plans/2026-09-25-table-v2.md) | npm 0.16.0 배포 · 스크린리더 QA 후속 | 데이터 기반 API 2종, 1만 행 가상화, 정렬·필터·선택, 고정 헤더·열의 단계별 계획 |
 | [2026-08-28 우선순위 컴포넌트](plans/2026-08-28-priority-components/) | 완료 0.12.0 | 컴포넌트별 계획 5개(accordion·avatar·collapsible·separator·skeleton), QA는 `qa/` 같은 이름 |
 | [2026-09-06 잔여 작업](plans/2026-09-06-remaining-work.md) | 완료 | PR #59 스크린샷·D1/D2·승격 2차·dg-studio 교체 네 트랙, 서브에이전트 배정과 결과 |
 
@@ -33,7 +33,7 @@
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
-| [2026-09-27 DatePicker 구현 결정](decisions/2026-09-27-datepicker-implementation.md) | 로컬 구현 | 엄격한 날짜 입력·DST 후보, 달력 훅과 DDS 오버레이, 반응형 레이아웃·패키지 export |
+| [2026-09-27 DatePicker 구현 결정](decisions/2026-09-27-datepicker-implementation.md) | npm 0.16.1 배포 · 실기기 QA 후속 | 엄격한 날짜 입력·DST 후보, 달력 훅과 DDS 오버레이, 반응형 레이아웃·패키지 export |
 | [2026-08-14 토큰 체계와 a11y 기준선](decisions/2026-08-14-dds-token-system.md) | 활성 | 토큰 이름 문법, hover 축 추가, 대비 검사 도입, focus/disabled 관습 |
 | [2026-08-15 0.1.0 구현 중 결정](decisions/2026-08-15-dds-010-implementation.md) | 활성 | Vite CSS raw copy, lightness/chroma 배열, 컴포넌트 위임값, 브릿지 범위, publish 운영 |
 | [2026-08-15 Badge + intent 축](decisions/2026-08-15-badge-intent-axis.md) | 활성 | 컴포넌트 로드맵 A→B→C→D, intent 6종 확정, outline·hover/pressed 제외 근거 |
@@ -63,15 +63,15 @@
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
-| [2026-09-27 DatePicker 스펙](specs/2026-09-27-datepicker.md) | 구현 승인 · 진행 | 단일/범위 × 날짜/시간, 시간대, 모바일 시트, 프리셋, 합격 조건 |
-| [2026-09-25 Table v2 구현 스펙](specs/2026-09-25-table-v2.md) | main 병합 · 릴리스 대기 | 공개 API, 구현 경계, 합격 조건 |
+| [2026-09-27 DatePicker 스펙](specs/2026-09-27-datepicker.md) | npm 0.16.1 배포 · 실기기 QA 후속 | 단일/범위 × 날짜/시간, 시간대, 모바일 시트, 프리셋, 합격 조건 |
+| [2026-09-25 Table v2 구현 스펙](specs/2026-09-25-table-v2.md) | npm 0.16.0 배포 · 스크린리더 QA 후속 | 공개 API, 구현 경계, 합격 조건 |
 
 ## QA
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
-| [2026-09-27 DatePicker QA](qa/2026-09-27-datepicker.md) | Linux 시각 기준 통과 · 실기기 QA 대기 | 값·DST·브라우저·모바일 자동 검증과 남은 실기기 검증 |
-| [2026-09-25 Table v2 로컬 QA](qa/2026-09-25-table-v2.md) | Linux 시각 기준 통과 · 스크린리더 QA 대기 | 1만 행·고정 열·접근성·브라우저 성능 실측과 남은 스크린리더 검증 |
+| [2026-09-27 DatePicker QA](qa/2026-09-27-datepicker.md) | npm 0.16.1 배포 · 실기기 QA 대기 | 값·DST·브라우저·모바일 자동 검증과 남은 실기기 검증 |
+| [2026-09-25 Table v2 QA](qa/2026-09-25-table-v2.md) | npm 0.16.0 배포 · 스크린리더 QA 대기 | 1만 행·고정 열·접근성·브라우저 성능 실측과 남은 스크린리더 검증 |
 
 ## 아카이브 (완료)
 

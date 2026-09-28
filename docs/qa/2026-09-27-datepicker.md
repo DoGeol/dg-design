@@ -2,7 +2,7 @@
 
 - 날짜: 2026-09-27 (최종 자동 검증 2026-09-28)
 - 브랜치: `codex/datepicker-plan`
-- 상태: 로컬 구현·자동 검증 및 Linux 시각 기준 검토 완료. 실기기/스크린리더 청취는 미검증
+- 상태: `@dg-design/react@0.16.1` npm 공개 tarball 검증 완료. 실기기/스크린리더 청취는 미검증
 - 계약: [스펙](../specs/2026-09-27-datepicker.md) · [구현 계획](../plans/2026-09-27-datepicker.md)
 
 ## Phase 0 결과
@@ -35,10 +35,16 @@ Storybook production build의 DatePicker 공유 청크는 약 **124.7KB / gzip 3
 
 Chromium 브라우저에서 단일 날짜 즉시 확정·포커스 복귀·폼 값, 범위의 두 달 가로 배치·적용/취소·중간 불가일, 375px 한 달 시트·터치 조작, 430px 축소 높이의 적용 버튼, 열려 있는 상태의 데스크톱↔모바일 전환과 draft 보존, DST overlap 오프셋 선택을 확인했다. 달력을 열 때 선택된 날짜로 포커스가 이동했고 전환 뒤에도 유지됐다. 시트 진입 모션이 끝나기 전 좌표를 읽어 실패하던 터치 테스트는 애니메이션 완료 후 터치하도록 고쳤다. 키보드만으로 열기·날짜 이동·선택·포커스 복귀, 직접 입력 후 달력 클릭과 바깥 blur 확정도 확인했다.
 
+## 발행·패키지 확인 (2026-09-29 KST)
+
+- [기능 PR #10](https://github.com/DoGeol/dg-design/pull/10)과 [Version PR #9](https://github.com/DoGeol/dg-design/pull/9)를 병합해 `@dg-design/react@0.16.0`을 발행했다. npm 공개 tarball에서 pnpm 내부 파일 93개가 확인됐다(압축 176KB). 이는 빌드가 `react-aria/*` 서브패스를 외부 의존성으로 처리하지 않은 패키징 결함이다.
+- [패키징 PR #11](https://github.com/DoGeol/dg-design/pull/11)에서 의존성 서브패스를 external로 처리하고 `dist/node_modules` 생성 시 빌드 실패 가드를 추가했다. 수정 빌드 tarball은 내부 파일 0개·압축 124KB다. 전체 빌드·491개 React 테스트·typecheck·publint·VR 115개가 통과했다.
+- [Version PR #12](https://github.com/DoGeol/dg-design/pull/12) 병합 뒤 [Release 워크플로](https://github.com/DoGeol/dg-design/actions/runs/36440197096)와 [GitHub 릴리스](https://github.com/DoGeol/dg-design/releases/tag/%40dg-design/react%400.16.1)가 `0.16.1` 성공을 보고했다. npm CDN 전파 중 2026-09-29 00:08 KST에는 tarball GET이 404였으나, **00:09 KST에 공개 npm tarball을 내려받아** 압축 124KB·pnpm 내부 파일 0개·정상 외부 import를 확인했다. npm `latest`도 `0.16.1`이다. [main CI](https://github.com/DoGeol/dg-design/actions/runs/36440197100) 통과.
+
 ## 남은 검증
 
 - [x] 모델·컴포넌트 단위 테스트: 값 종류, strict parse, 윤년·월 경계, DST, 범위 제약, 프리셋.
 - [x] 네 사용 방식의 데스크톱·375px 브라우저 기능과 직접 입력·적용/취소·리사이즈 중 draft/포커스.
 - [x] `pnpm generate`·`pnpm build`·React test·`pnpm typecheck`·publint·`pnpm vr`, 새 의존성의 Storybook 소비 청크 크기.
 - [x] Linux 시각 기준 생성·검토. [첫 기준 워크플로](https://github.com/DoGeol/dg-design/actions/runs/36363667117)가 단일·범위 state matrix와 DataTable 기능 화면을, [열린 화면 워크플로](https://github.com/DoGeol/dg-design/actions/runs/36364017991)가 단일·범위 팝오버와 모바일 시트를 생성했다. 단일 달력 폭 수정 뒤 [최종 기준 워크플로](https://github.com/DoGeol/dg-design/actions/runs/36364277419)가 열린 단일 달력 이미지만 갱신했다. 라이트·다크·375px 이미지를 눈으로 확인했다.
-- [ ] 실제 모바일 가상 키보드·터치와 VoiceOver/TalkBack 청취. 릴리스 전 수행.
+- [ ] 실제 모바일 가상 키보드·터치와 VoiceOver/TalkBack 청취. 사용자 배포 요청에 따라 공개 발행 후 후속 QA로 남음.

@@ -10,8 +10,8 @@
 
 | 항목 | 상태 | 착수 조건 |
 | --- | --- | --- |
-| DatePicker 릴리스 QA | [PR #10](https://github.com/DoGeol/dg-design/pull/10) · [QA](qa/2026-09-27-datepicker.md) | 코드·자동 검증·Linux 시각 기준 완료. 실제 모바일 가상 키보드·VoiceOver/TalkBack 청취는 미검증. 사용자가 2026-09-28 커밋·푸시·배포를 요청했다. |
-| Table v2 릴리스 | [main 병합 #8](https://github.com/DoGeol/dg-design/pull/8) · [QA](qa/2026-09-25-table-v2.md) | Linux 시각 기준 완료. 실제 스크린리더 청취는 미검증. DatePicker 병합 뒤 갱신된 [Version Packages #9](https://github.com/DoGeol/dg-design/pull/9)로 함께 릴리스한다. |
+| DatePicker 실기기 QA | [릴리스 0.16.1](https://github.com/DoGeol/dg-design/releases/tag/%40dg-design/react%400.16.1) · [QA](qa/2026-09-27-datepicker.md) | npm 배포·Linux 시각 기준 완료. 실제 모바일 가상 키보드와 VoiceOver/TalkBack 청취는 미검증. |
+| Table v2 스크린리더 QA | [릴리스 0.16.0](https://github.com/DoGeol/dg-design/releases/tag/%40dg-design/react%400.16.0) · [QA](qa/2026-09-25-table-v2.md) | npm 배포·Linux 시각 기준 완료. 실제 스크린리더 청취는 미검증. |
 
 ## 알아두면 첫 시도에서 안 틀리는 것
 
