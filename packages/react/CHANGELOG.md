@@ -1,5 +1,12 @@
 # @dg-design/react
 
+## 0.16.0
+
+### Minor Changes
+
+- 51377e0: Add responsive DatePicker and DateRangePicker components with date and time entry, time-zone-aware values, validation, and consumer-defined presets.
+- b8407da: Add a typed data-driven DataTable with local sort, filter, selection, optional fixed-height row virtualization, and pinned headers and columns. Expose accessible scroll-wrapper props on the existing Table primitive.
+
 ## 0.15.0
 
 ### Minor Changes
