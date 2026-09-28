@@ -2,7 +2,7 @@
 
 - 날짜: 2026-09-27 (최종 자동 검증 2026-09-28)
 - 브랜치: `codex/datepicker-plan`
-- 상태: 로컬 구현·자동 검증 통과. Linux 시각 기준·실기기/스크린리더 청취는 릴리스 전 후속
+- 상태: 로컬 구현·자동 검증 및 Linux 시각 기준 검토 완료. 실기기/스크린리더 청취는 미검증
 - 계약: [스펙](../specs/2026-09-27-datepicker.md) · [구현 계획](../plans/2026-09-27-datepicker.md)
 
 ## Phase 0 결과
@@ -40,5 +40,5 @@ Chromium 브라우저에서 단일 날짜 즉시 확정·포커스 복귀·폼 �
 - [x] 모델·컴포넌트 단위 테스트: 값 종류, strict parse, 윤년·월 경계, DST, 범위 제약, 프리셋.
 - [x] 네 사용 방식의 데스크톱·375px 브라우저 기능과 직접 입력·적용/취소·리사이즈 중 draft/포커스.
 - [x] `pnpm generate`·`pnpm build`·React test·`pnpm typecheck`·publint·`pnpm vr`, 새 의존성의 Storybook 소비 청크 크기.
-- [ ] Linux 시각 기준 생성·검토. 워크플로는 커밋·푸시하므로 별도 사용자 승인 후 실행.
+- [x] Linux 시각 기준 생성·검토. [첫 기준 워크플로](https://github.com/DoGeol/dg-design/actions/runs/36363667117)가 단일·범위 state matrix와 DataTable 기능 화면을, [열린 화면 워크플로](https://github.com/DoGeol/dg-design/actions/runs/36364017991)가 단일·범위 팝오버와 모바일 시트를 생성했다. 단일 달력 폭 수정 뒤 [최종 기준 워크플로](https://github.com/DoGeol/dg-design/actions/runs/36364277419)가 열린 단일 달력 이미지만 갱신했다. 라이트·다크·375px 이미지를 눈으로 확인했다.
 - [ ] 실제 모바일 가상 키보드·터치와 VoiceOver/TalkBack 청취. 릴리스 전 수행.
