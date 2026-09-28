@@ -58,6 +58,19 @@ export {
   type RowKey,
 } from "./data-table/DataTable";
 export {
+  DatePicker,
+  DateRangePicker,
+  type DatePickerKind,
+  type DatePickerValueMap,
+  type DatePickerValue,
+  type DatePickerRange,
+  type DatePickerPreset,
+  type DatePickerProps,
+  type DateRangePickerProps,
+  type DatePickerErrorCode,
+  type DatePickerValidationError,
+} from "./date-picker/DatePicker";
+export {
   Dialog,
   DialogRoot,
   DialogTrigger,

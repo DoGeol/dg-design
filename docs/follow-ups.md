@@ -10,7 +10,8 @@
 
 | 항목 | 상태 | 착수 조건 |
 | --- | --- | --- |
-| Table v2 릴리스 | [로컬 구현 계획](plans/2026-09-25-table-v2.md) · [QA](qa/2026-09-25-table-v2.md) | Linux CI에서 신규 시각 기준을 만들고 스크린리더 청취 검증 후, 별도 요청에 따라 PR·릴리스한다. |
+| DatePicker 코드 리뷰·릴리스 QA | [계획](plans/2026-09-27-datepicker.md) · [QA](qa/2026-09-27-datepicker.md) | 로컬 구현·자동 검증 완료. Linux 시각 기준과 실제 모바일·VoiceOver/TalkBack 청취 검증 후, 커밋·PR·릴리스는 별도 요청에 따라 진행한다. |
+| Table v2 릴리스 | [main 병합 #8](https://github.com/DoGeol/dg-design/pull/8) · [QA](qa/2026-09-25-table-v2.md) | Linux CI 신규 시각 기준과 스크린리더 청취 검증 후 [Version Packages #9](https://github.com/DoGeol/dg-design/pull/9) 병합을 별도로 요청한다. |
 
 ## 알아두면 첫 시도에서 안 틀리는 것
 

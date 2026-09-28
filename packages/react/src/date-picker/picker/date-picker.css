@@ -1,0 +1,17 @@
+@layer dds {
+  .dds-date-picker { display: inline-flex; flex-direction: column; gap: var(--dds-dimension-x2); min-width: 0; font-family: inherit; color: var(--dds-color-fg-neutral); }
+  .dds-date-picker__label { font-size: var(--dds-font-size-t4); font-weight: var(--dds-font-weight-bold); }
+  .dds-date-picker__description { margin: 0; color: var(--dds-color-fg-neutral-weak); }
+  .dds-popover__content.dds-date-picker__popover { width: min(43rem, calc(100vw - 2rem)); max-width: min(43rem, calc(100vw - 2rem)); max-height: min(90vh, 48rem); padding: var(--dds-dimension-x4); overflow-y: auto; box-sizing: border-box; }
+  .dds-date-picker__sheet.dds-sheet--side_bottom { height: min(90dvh, calc(100% - 1rem)); overflow: hidden; padding-bottom: max(var(--dds-dimension-x6), env(safe-area-inset-bottom)); }
+  .dds-date-picker__body { display: flex; flex-direction: column; gap: var(--dds-dimension-x4); min-height: 0; }
+  .dds-date-picker__sheet .dds-date-picker__body { flex: 1; }
+  .dds-date-picker__fields { display: flex; flex-wrap: wrap; gap: var(--dds-dimension-x3); }
+  .dds-date-picker__fields > * { flex: 1 1 12rem; min-width: 0; }
+  .dds-date-picker__calendar-scroll { min-height: 0; overflow: auto; }
+  .dds-date-picker__presets, .dds-date-picker__actions { display: flex; flex-wrap: wrap; gap: var(--dds-dimension-x2); }
+  .dds-date-picker__sheet .dds-date-picker__actions { flex: none; margin-top: auto; }
+  .dds-date-picker__error { margin: 0; color: var(--dds-color-fg-critical); }
+  .dds-date-picker__offsets { display: flex; flex-wrap: wrap; gap: var(--dds-dimension-x2); border: 0; }
+  .dds-date-picker__offsets label { display: inline-flex; align-items: center; min-height: 44px; }
+}
