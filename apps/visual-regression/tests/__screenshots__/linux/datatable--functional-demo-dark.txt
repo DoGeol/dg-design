@@ -1,0 +1,78 @@
+dds-table__wrapper dds-data-table__wrapper | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-table dds-data-table | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-table__caption | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-table__header | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-table__row | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-table__head dds-data-table__pinned dds-data-table__select | rgb(174, 178, 178) | rgb(15, 18, 18) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-checkbox dds-checkbox--size_medium | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-checkbox__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__box | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox__check-icon | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-checkbox__dash-icon | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-table__head dds-data-table__pinned | rgb(174, 178, 178) | rgb(15, 18, 18) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-data-table__heading | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-data-table__sort | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-data-table__filter | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-table__head | rgb(174, 178, 178) | rgb(15, 18, 18) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-data-table__heading | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-data-table__filter | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-table__head dds-data-table__pinned | rgb(174, 178, 178) | rgb(15, 18, 18) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-data-table__heading | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-data-table__filter | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-table__body | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-table__row dds-data-table__row | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-table__cell dds-data-table__pinned dds-data-table__select | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-checkbox dds-checkbox--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-checkbox__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__box | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox__check-icon | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-checkbox__dash-icon | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-table__cell dds-data-table__pinned | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-data-table__cell-content | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-table__cell | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-data-table__cell-content | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-table__cell dds-data-table__pinned | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-data-table__cell-content | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-badge dds-badge--intent_positive dds-badge--variant_weak dds-badge--size_medium | rgb(131, 242, 137) | rgb(6, 48, 11) | none | rgb(131, 242, 137) | none
+dds-table__row dds-data-table__row | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-table__cell dds-data-table__pinned dds-data-table__select | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-checkbox dds-checkbox--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-checkbox__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__box | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox__check-icon | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-checkbox__dash-icon | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-table__cell dds-data-table__pinned | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-data-table__cell-content | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-table__cell | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-data-table__cell-content | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-table__cell dds-data-table__pinned | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-data-table__cell-content | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-badge dds-badge--intent_neutral dds-badge--variant_weak dds-badge--size_medium | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-table__row dds-data-table__row | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-table__cell dds-data-table__pinned dds-data-table__select | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-checkbox dds-checkbox--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-checkbox__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__box | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox__check-icon | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-checkbox__dash-icon | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-table__cell dds-data-table__pinned | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-data-table__cell-content | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-table__cell | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-data-table__cell-content | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-table__cell dds-data-table__pinned | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-data-table__cell-content | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-badge dds-badge--intent_positive dds-badge--variant_weak dds-badge--size_medium | rgb(131, 242, 137) | rgb(6, 48, 11) | none | rgb(131, 242, 137) | none
+dds-table__row dds-data-table__row | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-table__cell dds-data-table__pinned dds-data-table__select | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-checkbox dds-checkbox--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-checkbox__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__box | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox__check-icon | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-checkbox__dash-icon | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-table__cell dds-data-table__pinned | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-data-table__cell-content | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-table__cell | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-data-table__cell-content | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-table__cell dds-data-table__pinned | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgb(58, 62, 62) | none
+dds-data-table__cell-content | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-badge dds-badge--intent_neutral dds-badge--variant_weak dds-badge--size_medium | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
