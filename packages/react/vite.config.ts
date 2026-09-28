@@ -9,6 +9,10 @@ import dts from "vite-plugin-dts";
 import pkg from "./package.json" with { type: "json" };
 
 const root = path.dirname(fileURLToPath(import.meta.url));
+const externalPackages = [
+  ...Object.keys(pkg.dependencies ?? {}),
+  ...Object.keys(pkg.peerDependencies ?? {}),
+];
 
 // ESM only, per-module CSS output (seed packages/react/vite.config.mts pattern,
 // minus the CJS output — DDS ships ESM only).
@@ -21,6 +25,7 @@ export default defineConfig({
     }),
     react(),
     copyComponentCss(),
+    assertExternalImports(),
   ],
   build: {
     target: "esnext",
@@ -35,12 +40,8 @@ export default defineConfig({
       // .css is external too: hand-authored CSS is shipped as-is (see copyComponentCss
       // below), not run through Vite's CSS pipeline, which drops the side-effect import
       // in preserveModules output instead of pointing it at the extracted chunk.
-      external: [
-        /\.css$/,
-        ...Object.keys(pkg.dependencies ?? {}),
-        ...Object.keys(pkg.peerDependencies ?? {}),
-        "react/jsx-runtime",
-      ],
+      external: (id) => /\.css$/.test(id) || externalPackages.some((name) =>
+        id === name || id.startsWith(`${name}/`)),
       output: {
         preserveModules: true,
         preserveModulesRoot: "src",
@@ -51,6 +52,17 @@ export default defineConfig({
     },
   },
 });
+
+function assertExternalImports(): Plugin {
+  return {
+    name: "dds-assert-external-imports",
+    closeBundle() {
+      if (fs.existsSync(path.join(root, "dist/node_modules"))) {
+        throw new Error("React build bundled a declared dependency into dist/node_modules");
+      }
+    },
+  };
+}
 
 /** Copies every src/**\/*.css verbatim to the matching dist/**\/*.css path. */
 function copyComponentCss(): Plugin {
