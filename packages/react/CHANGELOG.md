@@ -1,5 +1,11 @@
 # @dg-design/react
 
+## 0.16.1
+
+### Patch Changes
+
+- 557dc3a: Keep React Aria and React Stately subpath imports external in the published package instead of copying pnpm internals into dist.
+
 ## 0.16.0
 
 ### Minor Changes
