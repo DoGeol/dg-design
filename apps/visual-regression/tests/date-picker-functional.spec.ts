@@ -9,6 +9,8 @@ test.describe("DatePicker 기능", () => {
     await trigger.click();
     const dialog = page.getByRole("dialog", { name: "방문 날짜" });
     await expect(dialog).toBeVisible();
+    const box = await dialog.boundingBox();
+    expect(box && box.width <= 400).toBeTruthy();
     await dialog.locator('[data-date="2026-09-28"]').click();
     await expect(dialog).toBeHidden();
     await expect(trigger).toContainText("28");

@@ -313,7 +313,8 @@ function Picker({ props, range }: { props: PickerProps; range: boolean }) {
           </Sheet.Root>
         : <Popover.Root open={open} onOpenChange={handleOpenChange} placement="bottom-start">
             <Popover.Trigger asChild>{trigger}</Popover.Trigger>
-            <Popover.Content role="dialog" aria-label={title} className="dds-date-picker__popover">
+            <Popover.Content role="dialog" aria-label={title}
+              className={`dds-date-picker__popover${range ? " dds-date-picker__popover--range" : ""}`}>
               {panel}
             </Popover.Content>
           </Popover.Root>}
