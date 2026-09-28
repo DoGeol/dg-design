@@ -1,0 +1,9 @@
+dds-date-picker | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-date-picker__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-button dds-button--intent_neutral dds-button--variant_weak dds-button--size_medium | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-date-picker | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-date-picker__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-button dds-button--intent_neutral dds-button--variant_weak dds-button--size_medium | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-date-picker | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-date-picker__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-button dds-button--intent_neutral dds-button--variant_weak dds-button--size_medium | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
