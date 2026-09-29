@@ -1,6 +1,6 @@
 # DatePicker 구현 결정
 
-> 상태: 로컬 구현·자동 검증 완료 (2026-09-27). [스펙](../specs/2026-09-27-datepicker.md) · [계획](../plans/2026-09-27-datepicker.md) · [QA](../qa/2026-09-27-datepicker.md). 커밋·PR·릴리스 전.
+> 상태: `@dg-design/react@0.16.1` npm 발행 (2026-09-29 KST). [스펙](../specs/2026-09-27-datepicker.md) · [계획](../plans/2026-09-27-datepicker.md) · [QA](../qa/2026-09-27-datepicker.md). 실기기·스크린리더 QA 후속.
 
 ## 공개 값과 날짜 연산
 
@@ -21,4 +21,8 @@
 
 - `@internationalized/date@3.12.4`, `react-aria@3.52.1`, `react-stately@3.50.0`을 React 런타임 의존성에 추가했다. 달력 훅은 서브패스로 import했지만 Storybook의 DatePicker 공유 청크는 약 122.6KB(gzip 38.5KB)였다. 이는 Storybook 소비 측정값이다.
 - `@dg-design/react/date-picker` 서브패스와 루트 export, changeset을 추가했다. 빌드의 re-export 전용 파일은 JS가 생성되지 않아 서브패스 runtime 경로를 실제 `picker/DatePicker.js`로 지정했다.
-- Linux 시각 기준 이미지는 macOS 로컬에서 만들지 않았다. 기준 생성 워크플로는 브랜치에 커밋·푸시하므로 별도 승인 후 실행한다. 실제 모바일 가상 키보드와 VoiceOver/TalkBack 청취도 릴리스 전 검증한다.
+- Linux 시각 기준 이미지는 visual-baseline 워크플로에서 만들고 눈으로 확인했다. macOS 로컬에서는 갱신하지 않았다. 실제 모바일 가상 키보드와 VoiceOver/TalkBack 청취는 사용자 배포 요청 뒤 후속 QA로 남았다.
+
+## 0.16.1 패키징 수정
+
+0.16.0의 Vite `external` 배열은 패키지 루트 이름만 잡았다. `react-aria/useCalendar` 같은 서브패스가 번들에 들어가 `dist/node_modules/.pnpm` 내부 파일 93개를 npm tarball에 포함했다. [PR #11](https://github.com/DoGeol/dg-design/pull/11)은 dependency·peerDependency의 루트와 `/` 서브패스를 모두 external 처리하고, `dist/node_modules`가 생기면 빌드를 실패시킨다. 0.16.0 tarball 176KB 대비 [Version PR #12](https://github.com/DoGeol/dg-design/pull/12)로 발행한 0.16.1의 공개 tarball은 124KB·내부 파일 0개다. 정상 외부 import와 npm `latest` 지정도 [QA](../qa/2026-09-27-datepicker.md)에서 확인했다.

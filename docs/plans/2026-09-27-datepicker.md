@@ -1,6 +1,7 @@
 # DatePicker 구현 계획
 
-> 상태: **로컬 구현·자동 검증 완료, 릴리스 QA 대기** (2026-09-27). [승인된 스펙](../specs/2026-09-27-datepicker.md)을 구현 가능한 작업으로 나눈 계획이다. [구현 결정](../decisions/2026-09-27-datepicker-implementation.md) · [QA](../qa/2026-09-27-datepicker.md). 커밋·푸시·릴리스 승인은 별개다.
+> 상태: **npm 0.16.1 배포, 실기기 QA 후속** (2026-09-29 KST). [승인된 스펙](../specs/2026-09-27-datepicker.md)을 구현 가능한 작업으로 나눈 계획이다. [구현 결정](../decisions/2026-09-27-datepicker-implementation.md) · [QA](../qa/2026-09-27-datepicker.md).
+> 사용자 배포 요청으로 아래 실기기·스크린리더 릴리스 전 게이트는 미검증 상태로 후속 QA에 이월했다.
 
 ## 목표와 첫 버전 경계
 
