@@ -3,7 +3,17 @@ dds-file-input__dropzone | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(22
 dds-file-input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
 dds-file-input__dropzone | rgb(107, 112, 111) | rgb(223, 252, 251) | none | rgb(25, 97, 97) | none
 dds-file-input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-file-input__dropzone | rgb(107, 112, 111) | rgba(15, 18, 18, 0.06) | none | rgb(228, 233, 232) | none
+dds-file-input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-file-input__dropzone | rgb(107, 112, 111) | rgba(15, 18, 18, 0.12) | none | rgb(228, 233, 232) | none
+dds-file-input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
 dds-file-input__dropzone | rgb(137, 141, 141) | rgb(228, 233, 232) | none | rgb(228, 233, 232) | none
+dds-file-input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-file-input__trigger | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(228, 233, 232) | none
+dds-file-input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-file-input__trigger | rgb(36, 39, 39) | rgba(15, 18, 18, 0.06) | none | rgb(228, 233, 232) | none
+dds-file-input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-file-input__trigger | rgb(36, 39, 39) | rgba(15, 18, 18, 0.12) | none | rgb(228, 233, 232) | none
 dds-field | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
 dds-file-input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
 dds-file-input__dropzone | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(199, 39, 45) | none
