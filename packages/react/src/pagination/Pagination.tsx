@@ -27,8 +27,10 @@ function anchorDisabledProps(
   { href, onClick, ...rest }: React.AnchorHTMLAttributes<HTMLAnchorElement>,
 ): React.AnchorHTMLAttributes<HTMLAnchorElement> & { "data-disabled"?: "" } {
   if (!disabled) return { href, onClick, ...rest };
+  // href가 없는 <a>는 generic role이라 aria-label·aria-disabled가 금지된다(ARIA 1.2) — 링크 역할을 명시해 둘 다 유효하게 둔다.
   return {
     ...rest,
+    role: "link",
     "aria-disabled": true,
     tabIndex: -1,
     onClick: (event) => event.preventDefault(),
