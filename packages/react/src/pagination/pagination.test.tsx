@@ -86,7 +86,7 @@ describe("Pagination.Previous / Next disabled", () => {
     ["Next", Pagination.Next, "다음 페이지"],
   ] as const)("%s: disabled면 href가 없고 aria-disabled·data-disabled·tabIndex -1이다", (_n, Comp, name) => {
     render(<Comp href="?page=1" disabled />);
-    const el = screen.getByLabelText(name);
+    const el = screen.getByRole("link", { name });
     expect(el.hasAttribute("href")).toBe(false);
     expect(el.getAttribute("aria-disabled")).toBe("true");
     expect(el.hasAttribute("data-disabled")).toBe(true);
