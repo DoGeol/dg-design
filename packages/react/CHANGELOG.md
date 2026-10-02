@@ -1,5 +1,11 @@
 # @dg-design/react
 
+## 0.17.2
+
+### Patch Changes
+
+- a4e68e3: `Pagination.Previous`·`Next`에 `disabled`를 주면 href가 빠진 `<a>`가 generic role이 되어 `aria-label`·`aria-disabled`가 금지 속성(axe `aria-prohibited-attr`)이 되던 문제를 고칩니다. 비활성일 때 `role="link"`를 명시합니다.
+
 ## 0.17.1
 
 ### Patch Changes
