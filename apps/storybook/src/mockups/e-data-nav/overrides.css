@@ -1,0 +1,49 @@
+/* e-data-nav 그룹(A안) 보정. overrides-a.css와 같은 방식으로 레이어 밖 + 시안 화면에서만 걸린다.
+   구현에 옮길 때는 data-table.css·pagination.css에 같은 값을 반영하면 된다. */
+
+/* DataTable 정렬 표시: 텍스트 글리프 ▲▼↕ → 16px stroke 셰브론 SVG. DESIGN.md 아이콘 규칙(글리프 금지) */
+:root:has([data-mockup="a"]) .dds-data-table__sort {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--dds-dimension-x1);
+}
+:root:has([data-mockup="a"]) .dds-data-table__sort > span {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  font-size: 0;
+  background-color: var(--dds-color-fg-disabled);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 6.5l3-3 3 3M5 9.5l3 3 3-3'/%3E%3C/svg%3E") center / 16px no-repeat;
+}
+/* 정렬 중인 열: 머리글 글자 #6D6F72 → #252629, 아이콘도 같은 색. 어느 열로 정렬 중인지 한눈에 보이게 */
+:root:has([data-mockup="a"]) :is([aria-sort="ascending"], [aria-sort="descending"]) .dds-data-table__sort {
+  color: var(--dds-color-fg-neutral);
+}
+:root:has([data-mockup="a"]) [aria-sort="ascending"] .dds-data-table__sort > span {
+  background-color: currentColor;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 10l4-4 4 4'/%3E%3C/svg%3E");
+}
+:root:has([data-mockup="a"]) [aria-sort="descending"] .dds-data-table__sort > span {
+  background-color: currentColor;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+}
+
+/* DataTable 필터: 높이·패딩 없음, 머리글의 bold 상속 → 높이 32 · 좌우 8 · radius 8 · 13px regular. 브라우저 기본 크기에 맡기지 않고 인라인 박스 기준에 맞춘다 */
+:root:has([data-mockup="a"]) .dds-data-table__filter {
+  height: var(--dds-dimension-x8);
+  padding: 0 var(--dds-dimension-x2);
+  border-radius: var(--dds-radius-r2);
+  font-size: var(--dds-font-size-t3);
+  font-weight: var(--dds-font-weight-regular);
+}
+
+/* DataTable 선택 행: 배경 변화 없음 → brand weak #F1F5FC. 체크박스만으로는 선택 행이 잘 안 보인다(고정 열 배경까지 함께 덮는다) */
+:root:has([data-mockup="a"]) .dds-data-table__row:has(> .dds-data-table__select input:checked) > td {
+  background-color: var(--dds-color-bg-brand-weak);
+}
+
+/* Pagination 항목: 좌우 16px(숫자 자릿수마다 폭이 달라짐) → 최소 폭 40 · 좌우 8. 1~3자리 쪽 번호가 같은 40px 칸을 써서 쪽을 옮겨도 줄이 흔들리지 않는다 */
+:root:has([data-mockup="a"]) .dds-pagination__link {
+  min-width: var(--dds-dimension-x10);
+  padding-inline: var(--dds-dimension-x2);
+}

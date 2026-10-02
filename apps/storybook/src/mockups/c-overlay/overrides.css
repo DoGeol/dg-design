@@ -1,0 +1,7 @@
+/* c-overlay 그룹 A안 보정. overrides-a.css와 같은 범위(:root:has)라 포털 패널에도 걸린다. */
+
+/* 줄바꿈: 현재 음절 단위(브라우저 기본) → 어절 단위 keep-all. 좁은 패널(Tooltip 256px 등)에서 "않습/니다"처럼 낱말이 쪼개지기 때문 */
+:root:has([data-mockup="a"]) :is(.dds-tooltip__content, .dds-popover__content, .dds-hover-card__content, .dds-dialog__content, .dds-sheet__content, .dds-dropdown-menu__content) {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}

@@ -1,0 +1,18 @@
+/* f-display 그룹 시안 A 보정. 레이어 밖 규칙이라 @layer dds를 이긴다. */
+
+/* Avatar 이니셜: 14px 상속 고정 → 크기별 11/13/16/20px bold. 24px 원에 14px는 꽉 차고 64px 원에서는 너무 작다 */
+:root:has([data-mockup="a"]) .dds-avatar__fallback {
+  font-weight: var(--dds-font-weight-bold);
+  line-height: 1;
+}
+:root:has([data-mockup="a"]) .dds-avatar--size_small .dds-avatar__fallback { font-size: var(--dds-font-size-t1); }
+:root:has([data-mockup="a"]) .dds-avatar--size_medium .dds-avatar__fallback { font-size: var(--dds-font-size-t3); }
+:root:has([data-mockup="a"]) .dds-avatar--size_large .dds-avatar__fallback { font-size: var(--dds-font-size-t5); }
+:root:has([data-mockup="a"]) .dds-avatar--size_xlarge .dds-avatar__fallback { font-size: var(--dds-font-size-t7); }
+
+/* Collapsible 트리거: 패딩·간격 0 → 4×8px, 간격 4px. hover·pressed 배경과 focus 링이 글자에 붙어 보인다.
+   Accordion 트리거도 같은 클래스를 받으므로 제외한다(자기 패딩이 있다) */
+:root:has([data-mockup="a"]) .dds-collapsible__trigger:not(.dds-accordion__trigger) {
+  gap: var(--dds-dimension-x1);
+  padding: var(--dds-dimension-x1) var(--dds-dimension-x2);
+}

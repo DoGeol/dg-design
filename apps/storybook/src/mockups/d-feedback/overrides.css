@@ -1,0 +1,18 @@
+/* d-feedback 그룹의 시안 A 보정. 시안 화면이 있을 때만 걸린다. */
+
+/* Skeleton radius medium 16 → 12: 자리를 대신할 Card(r3 12)와 모서리를 맞춘다 */
+:root:has([data-mockup="a"]) .dds-skeleton--radius_medium {
+  border-radius: var(--dds-radius-r3);
+}
+
+/* Badge truncate: 현재 inline-flex라 text-overflow가 안 걸려 글자가 양쪽에서 잘림 → 시안은 끝에 말줄임표.
+   flex 컨테이너에는 말줄임이 그려지지 않아 truncate일 때만 inline-block + 높이와 같은 line-height로 세로 가운데를 맞춘다 */
+:root:has([data-mockup="a"]) .dds-badge--truncate {
+  display: inline-block;
+}
+:root:has([data-mockup="a"]) .dds-badge--truncate.dds-badge--size_medium {
+  line-height: var(--dds-dimension-x5);
+}
+:root:has([data-mockup="a"]) .dds-badge--truncate.dds-badge--size_large {
+  line-height: var(--dds-dimension-x6);
+}
