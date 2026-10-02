@@ -5,6 +5,7 @@ import clsx from "clsx";
 import * as React from "react";
 
 import { FieldContext } from "../field/field-context";
+import { useLatestRef } from "../internal/use-latest-ref";
 import { FileInputContext, useFileInputContext } from "./file-input-context";
 import { validateFiles, type FileRejectReason, type RejectedFile } from "./file-validation";
 
@@ -47,8 +48,7 @@ export const FileInputRoot = React.forwardRef<HTMLDivElement, FileInputRootProps
     const generatedId = React.useId();
     const inputId = fieldCtx?.inputId ?? generatedId;
 
-    const onFilesChangeRef = React.useRef(onFilesChange);
-    onFilesChangeRef.current = onFilesChange;
+    const onFilesChangeRef = useLatestRef(onFilesChange);
 
     const assignFiles = React.useCallback(
       (fileList: FileList | File[]) => {
@@ -66,7 +66,7 @@ export const FileInputRoot = React.forwardRef<HTMLDivElement, FileInputRootProps
 
         onFilesChangeRef.current?.(result.files, result.rejected);
       },
-      [accept, maxSize, maxFiles, multiple],
+      [accept, maxSize, maxFiles, multiple, onFilesChangeRef],
     );
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

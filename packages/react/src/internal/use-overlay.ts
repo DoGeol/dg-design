@@ -3,6 +3,7 @@ import * as React from "react";
 
 import { pushDialog } from "./dialog-stack";
 import { useControllableState } from "./use-controllable-state";
+import { useLatestRef } from "./use-latest-ref";
 import { useOverlayPosition } from "./use-overlay-position";
 import { usePresence } from "./use-presence";
 
@@ -122,9 +123,8 @@ export function useOverlay({
 
   useOverlayPosition(triggerNode, contentNode, isOpen, placement, matchTriggerWidth, arrowNode);
 
-  const closeRef = React.useRef<() => void>(() => {});
-  closeRef.current = () => setOpen(false);
-  const close = React.useMemo(() => () => closeRef.current(), []);
+  const closeRef = useLatestRef(() => setOpen(false));
+  const close = React.useMemo(() => () => closeRef.current(), [closeRef]);
 
   const entry = React.useMemo<OpenOverlay>(
     () => ({ close, content: contentRef }),
@@ -171,8 +171,7 @@ export function useOverlay({
     return () => document.removeEventListener("mousedown", onMouseDown);
   }, [isOpen, closeOnOutsideClick, triggerNode, contentRef, close, entry]);
 
-  const focusRef = React.useRef(onOpenFocus);
-  focusRef.current = onOpenFocus;
+  const focusRef = useLatestRef(onOpenFocus);
 
   // 열리면 지정된 항목으로 들어가고, 닫힐 때 포커스가 아직 패널 안에 있으면 트리거로 돌려준다.
   // 바깥 클릭처럼 포커스가 이미 다른 곳으로 옮겨간 경우는 뺏지 않는다.
@@ -182,7 +181,7 @@ export function useOverlay({
     return () => {
       if (contentNode.contains(document.activeElement)) triggerNode?.focus();
     };
-  }, [isOpen, contentNode, triggerNode]);
+  }, [isOpen, contentNode, triggerNode, focusRef]);
 
   return React.useMemo(
     () => ({
