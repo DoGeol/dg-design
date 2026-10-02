@@ -12,6 +12,7 @@ dds-checkbox__dash-icon | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18
 dds-table__head dds-data-table__pinned | rgb(174, 178, 178) | rgb(15, 18, 18) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
 dds-data-table__heading | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-data-table__sort | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-data-table__sort-icon | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-data-table__filter | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
 dds-table__head | rgb(174, 178, 178) | rgb(15, 18, 18) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
 dds-data-table__heading | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
