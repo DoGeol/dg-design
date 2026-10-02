@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useLatestRef } from "./use-latest-ref";
 
 /**
  * controlled(`value` + `onChange`) / uncontrolled(`defaultValue`) 겸용 상태.
@@ -24,15 +25,14 @@ export function useControllableState<T>({
 }): [T, (next: T) => void] {
   const [uncontrolled, setUncontrolled] = React.useState(defaultValue);
 
-  const onChangeRef = React.useRef(onChange);
-  onChangeRef.current = onChange;
+  const onChangeRef = useLatestRef(onChange);
 
   const setState = React.useCallback(
     (next: T) => {
       if (!controlled) setUncontrolled(next);
       onChangeRef.current?.(next);
     },
-    [controlled],
+    [controlled, onChangeRef],
   );
 
   // controlled면 value가 곧 상태다 — T가 undefined를 포함할 수 있어 캐스트가 필요하다.

@@ -23,7 +23,7 @@ function MatrixCell({ label, children }: { label: string; children: React.ReactN
 const dropzoneBody = (
   <>
     <span style={{ fontSize: 24 }}>📎</span>
-    <span>파일을 끌어다 놓거나 클릭하세요</span>
+    <span>파일 선택 또는 끌어놓기</span>
   </>
 );
 
@@ -68,6 +68,7 @@ export const StateMatrix: StoryObj<typeof meta> = {
 function CoverFieldDemo() {
   const [file, setFile] = React.useState<File | null>(null);
   const [error, setError] = React.useState<string | null>(null);
+  const [resetKey, setResetKey] = React.useState(0);
 
   return (
     <Field.Root>
@@ -75,6 +76,7 @@ function CoverFieldDemo() {
       <FileInput.Root
         accept="image/png,image/jpeg"
         maxSize={5 * 1024 * 1024}
+        resetKey={resetKey}
         onFilesChange={(files, rejected) => {
           if (files[0]) {
             setFile(files[0]);
@@ -98,7 +100,7 @@ function CoverFieldDemo() {
             <Button
               variant="ghost"
               intent="critical"
-              onClick={() => setFile(null)}
+              onClick={() => { setFile(null); setResetKey((key) => key + 1); }}
               type="button"
             >
               제거
