@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useLatestRef } from "./use-latest-ref";
 
 /** 토큰과 같은 값(--dds-duration-fast / --dds-easing-out). WAAPI는 CSS 변수를 못 읽어 여기서 맞춘다. */
 const DURATION_MS = 150;
@@ -58,12 +59,9 @@ export function useSelectionIndicator<T extends HTMLElement = HTMLElement>({
   const [measured, setMeasured] = React.useState(false);
 
   // place()는 ResizeObserver 콜백에서도 불려야 해서 정체성이 고정이다 — 최신 값은 ref로 읽는다.
-  const valueRef = React.useRef(value);
-  valueRef.current = value;
-  const enabledRef = React.useRef(enabled);
-  enabledRef.current = enabled;
-  const axisRef = React.useRef(axis);
-  axisRef.current = axis;
+  const valueRef = useLatestRef(value);
+  const enabledRef = useLatestRef(enabled);
+  const axisRef = useLatestRef(axis);
 
   const place = React.useCallback((animate: boolean) => {
     const container = containerRef.current;
@@ -143,7 +141,7 @@ export function useSelectionIndicator<T extends HTMLElement = HTMLElement>({
       [{ transform: `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})` }, { transform: "none" }],
       { duration: DURATION_MS, easing: EASING },
     );
-  }, []);
+  }, [axisRef, enabledRef, valueRef]);
 
   const registerItem = React.useCallback(
     (itemValue: string, node: HTMLElement | null) => {

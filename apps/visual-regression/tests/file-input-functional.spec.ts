@@ -83,4 +83,19 @@ test.describe("FileInput 기능", () => {
 
     expect(chooser).toBeTruthy();
   });
+
+  test("제거 후 내부 파일 값이 비고 같은 파일을 다시 선택할 수 있다", async ({ page }) => {
+    const cover = page.locator("#storybook-root .dds-file-input").first();
+    const file = { name: "photo.png", mimeType: "image/png", buffer: Buffer.from("photo") };
+
+    await cover.locator('input[type="file"]').setInputFiles(file);
+    await expect(cover.getByText("photo.png")).toBeVisible();
+
+    await cover.getByRole("button", { name: "제거" }).click();
+    await expect(cover.getByText("선택된 파일 없음")).toBeVisible();
+    await expect.poll(() => cover.locator('input[type="file"]').evaluate((input: HTMLInputElement) => input.files?.length)).toBe(0);
+
+    await cover.locator('input[type="file"]').setInputFiles(file);
+    await expect(cover.getByText("photo.png")).toBeVisible();
+  });
 });

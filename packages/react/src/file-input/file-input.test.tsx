@@ -278,4 +278,33 @@ describe("FileInput Field 연동", () => {
     const input = document.querySelector("input[type='file']") as HTMLInputElement;
     expect(input.name).toBe("cover");
   });
+
+  it("resetKey가 바뀌면 이전 파일을 제출하지 않고 같은 파일을 다시 선택할 수 있다", async () => {
+    const user = userEvent.setup();
+    const onFilesChange = vi.fn();
+    const renderForm = (resetKey: number) => (
+      <form>
+        <FileInput.Root name="cover" resetKey={resetKey} onFilesChange={onFilesChange}>
+          <FileInput.Dropzone>파일 선택</FileInput.Dropzone>
+        </FileInput.Root>
+      </form>
+    );
+    const { container, rerender } = render(renderForm(0));
+    const file = makeFile("photo.png", "image/png");
+    const input = container.querySelector("input[type='file']") as HTMLInputElement;
+
+    await user.upload(input, file);
+    expect(input.files?.[0]?.name).toBe("photo.png");
+    expect(onFilesChange).toHaveBeenCalledTimes(1);
+
+    rerender(renderForm(1));
+    const resetInput = container.querySelector("input[type='file']") as HTMLInputElement;
+    expect(resetInput).not.toBe(input);
+    expect(resetInput.files).toHaveLength(0);
+    expect((new FormData(container.querySelector("form")!).get("cover") as File).name).not.toBe("photo.png");
+
+    await user.upload(resetInput, file);
+    expect(onFilesChange).toHaveBeenCalledTimes(2);
+    expect(resetInput.files?.[0]?.name).toBe("photo.png");
+  });
 });
