@@ -23,6 +23,8 @@ export interface FileInputRootProps
   disabled?: boolean;
   /** 주면 네이티브 폼 제출에 통과분 파일이 실리도록 hidden input에 name을 붙인다. */
   name?: string;
+  /** 값이 바뀌면 내부 파일 입력만 초기화한다. 미리보기 상태는 소비자가 지운다. */
+  resetKey?: string | number;
   /** 통과분과 거부분을 한 번에 받는다 — 거부 사유는 코드뿐, 문구는 소비자 몫. */
   onFilesChange?: (files: File[], rejected: RejectedFile[]) => void;
 }
@@ -37,6 +39,7 @@ export const FileInputRoot = React.forwardRef<HTMLDivElement, FileInputRootProps
       maxFiles,
       disabled = false,
       name,
+      resetKey,
       onFilesChange,
       children,
       ...props
@@ -93,6 +96,7 @@ export const FileInputRoot = React.forwardRef<HTMLDivElement, FileInputRootProps
       <FileInputContext.Provider value={contextValue}>
         <div ref={ref} className={clsx("dds-file-input", className)} {...props}>
           <input
+            key={resetKey}
             ref={inputRef}
             type="file"
             id={inputId}
