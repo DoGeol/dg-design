@@ -1,5 +1,40 @@
 # @dg-design/react
 
+## 0.17.0
+
+### Minor Changes
+
+- 6cea804: 시안 A에서 드러난 컴포넌트 공백을 채웁니다.
+  
+  - Pagination: `Previous`·`Next`에 `disabled`를 추가하고, 현재 쪽을 brand solid로 바꿔 흰 배경에서도 구분되게 합니다. 생략 기호는 SVG입니다.
+  - Breadcrumb: 기본 구분자를 `/` 텍스트에서 셰브론 SVG로 바꿉니다. children으로 교체하는 방식은 그대로입니다.
+  - DatePicker·DateRangePicker: `open`·`defaultOpen`·`onOpenChange`를 추가합니다.
+  - DropdownMenu·ContextMenu: `Item`에 `intent="critical"`, 단축키 표기용 `Shortcut`(`DropdownMenuShortcut`·`ContextMenuShortcut`)을 추가합니다. ContextMenu가 커서 좌표 없이 열리면 트리거 왼쪽 위를 기준으로 뜹니다.
+  - Dialog·Sheet·Popover: 열릴 때 프로그램 포커스를 받는 패널 자체에는 focus 링을 그리지 않습니다.
+  - Popover·HoverCard: 화살표의 바깥 두 변에 연한 테두리를 그려 흰 배경에서도 보이게 합니다.
+  - TextField: `prefix`·`suffix`를 추가합니다. 둘 다 없으면 DOM은 그대로입니다. 있으면 input을 감싸는 요소가 생기고 테두리·`className`이 그 요소로 옮겨 갑니다(ref와 나머지 props는 input).
+  - TextArea: `showCount`를 추가합니다. `maxLength`가 있으면 "현재/최대"로 표시합니다.
+  - Checkbox·RadioGroup: `aria-invalid`(Field 오류)일 때 테두리를 critical로 표시합니다.
+  - Switch: `labelPlacement="start"`로 라벨을 트랙 왼쪽에 둘 수 있습니다.
+  - Button: 정사각형 아이콘 전용 버튼 `iconOnly`를 추가합니다. 접근 이름(`aria-label`)이 없으면 경고합니다.
+  - Toast: `ToastProvider`에 `max`(기본 3), Provider 없이 그리는 정적 표시 `Toast.View`(`ToastView`)를 추가합니다.
+  - FileInput: Dropzone·Trigger에 hover·pressed 배경을 추가합니다.
+  - Card: `asChild`로 링크나 버튼이 되면 hover·focus 외관을 갖습니다.
+  - Accordion: Prefix가 있으면 펼친 본문을 제목 시작선에 맞춥니다. Prefix 칸은 최소 24px(`--dds-accordion-prefix-size`)이라 더 좁은 prefix를 쓰던 항목은 제목이 조금 오른쪽으로 옮겨 갑니다.
+  - Avatar: 크기를 dimension 토큰으로 바꿉니다(값 변화 없음).
+- 923cd08: 시안 A 보정을 컴포넌트 기본 스타일에 반영합니다. 화면이 바뀌므로 소비 앱의 시각 회귀 기준을 갱신해야 합니다.
+  
+  - 입력류(TextField·TextArea·Select·MultiSelect): 테두리 1px `stroke-neutral`, hover `fg-neutral`. focus는 바깥 링 없이 테두리 2px(`stroke-focus-ring`)로 표시하고 오류 상태는 critical 테두리를 유지합니다. 버튼 등 비입력 컨트롤의 focus 링은 그대로입니다. DataTable 필터는 높이 32px·radius r2·연한 테두리로 줄이고 focus만 같은 규칙을 따릅니다.
+  - 오버레이: Popover·HoverCard·DropdownMenu·ContextMenu·Select 패널 radius r3, Tooltip r2, Sheet는 화면 안쪽 두 모서리 r4. 본문은 어절 단위로 줄바꿈합니다.
+  - DatePicker 달력 이동 버튼과 DataTable 정렬 표시를 글자 기호에서 SVG 아이콘으로 바꿉니다. 정렬 중인 열은 머리글이 진해지고, 선택된 행은 brand-weak 배경을 씁니다.
+  - Badge `truncate`가 말줄임표를 실제로 표시합니다.
+  - Avatar 이니셜 크기·굵기, Pagination 숫자 버튼 최소 폭, Collapsible 트리거 여백, FileInput 트리거 radius(r2), Skeleton medium radius(r3), MultiSelect 생성 옵션 들여쓰기를 맞춥니다.
+
+### Patch Changes
+
+- d74a8e3: Accordion 트리거가 Collapsible의 radius를 물려받아 hover·pressed 배경 모서리가 둥글던 문제를 고쳐, 배경이 행 전체를 채웁니다.
+- f16c612: FileInput.Root에 resetKey를 추가해 파일 제거 후 네이티브 입력과 폼 값을 초기화할 수 있습니다.
+
 ## 0.16.1
 
 ### Patch Changes
