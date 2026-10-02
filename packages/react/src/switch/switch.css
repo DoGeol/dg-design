@@ -9,6 +9,11 @@
     user-select: none;
   }
 
+  /* DOM 순서(input→track→label)는 그대로 두고 시각만 뒤집는다 — 접근성 이름·sibling 셀렉터 유지 */
+  .dds-switch--label_start {
+    flex-direction: row-reverse;
+  }
+
   .dds-switch:has(.dds-switch__input:is(:disabled, [disabled], [data-disabled])) {
     cursor: not-allowed;
   }

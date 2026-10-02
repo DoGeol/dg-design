@@ -29,7 +29,7 @@ function MailIcon() {
 function IconWithBadge({ label, count, icon = <BellIcon /> }: { label: string; count?: number; icon?: React.ReactNode }) {
   return (
     <span style={{ position: "relative", display: "inline-flex" }}>
-      <Button intent="neutral" variant="ghost" size="small" aria-label={label} style={{ paddingInline: 8 }}>{icon}</Button>
+      <Button intent="neutral" variant="ghost" size="small" aria-label={label} iconOnly>{icon}</Button>
       <NotificationBadge
         count={count}
         aria-hidden="true"

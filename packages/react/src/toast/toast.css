@@ -24,6 +24,10 @@
     border-radius: var(--dds-radius-r3);
     box-shadow: var(--dds-shadow-overlay);
     font-family: inherit;
+  }
+
+  /* 입장 모션은 Provider가 data-state를 붙인 항목만 — 정적 View는 마운트 때 움직이지 않는다. */
+  .dds-toast[data-state] {
     animation: dds-toast-in var(--dds-duration-base) var(--dds-easing-out);
   }
 
@@ -75,6 +79,13 @@
     line-height: var(--dds-line-height-t2);
   }
 
+  .dds-toast__action {
+    margin-top: var(--dds-dimension-x1);
+    font-size: var(--dds-font-size-t2);
+    line-height: var(--dds-line-height-t2);
+    font-weight: var(--dds-font-weight-bold);
+  }
+
   .dds-toast__close {
     flex: none;
     display: inline-flex;
@@ -124,7 +135,7 @@
 
   /* presence가 계산된 애니메이션 길이를 읽는다 — 여기서 0이 되면 즉시 언마운트된다. */
   @media (prefers-reduced-motion: reduce) {
-    .dds-toast {
+    .dds-toast[data-state] {
       animation: none;
     }
   }

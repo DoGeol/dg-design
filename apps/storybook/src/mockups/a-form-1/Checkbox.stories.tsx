@@ -62,6 +62,9 @@ export const Overview: StoryObj = {
         <MockupState label="disabled · unchecked"><Checkbox disabled>약관에 동의합니다</Checkbox></MockupState>
         <MockupState label="disabled · checked"><Checkbox disabled defaultChecked>약관에 동의합니다</Checkbox></MockupState>
         <MockupState label="disabled · indeterminate"><Checkbox disabled indeterminate>전체 선택</Checkbox></MockupState>
+        <MockupState label="error · unchecked"><Checkbox aria-invalid>약관에 동의합니다</Checkbox></MockupState>
+        <MockupState label="error · hover" force="hover"><Checkbox aria-invalid>약관에 동의합니다</Checkbox></MockupState>
+        <MockupState label="error · checked"><Checkbox aria-invalid defaultChecked>약관에 동의합니다</Checkbox></MockupState>
         <MockupState label="label 없음"><Checkbox aria-label="이 행 선택" defaultChecked /></MockupState>
       </MockupSection>
 
@@ -94,6 +97,7 @@ export const Overview: StoryObj = {
         ["박스–라벨 간격", "8px", "--dds-dimension-x2"],
         ["라벨 medium / large", "14·19 / 18·24px · #252629", "--dds-font-size-t4 / t6, --dds-color-fg-neutral"],
         ["테두리 (unchecked)", "1px #6D6F72", "--dds-color-stroke-neutral"],
+        ["error 테두리 (unchecked)", "1px #C7272D · aria-invalid 또는 Field 오류일 때. checked·disabled는 그대로", "--dds-color-stroke-critical"],
         ["checked·indeterminate 배경 / hover / pressed", "#1550A9 / #0B397E / #042454", "--dds-color-bg-brand-solid(-hover/-pressed)"],
         ["체크·대시 아이콘", "#FFFFFF stroke 1.5, 박스의 70%", "--dds-color-fg-brand-contrast"],
         ["unchecked hover", "rgb(16 18 20 / 0.06)", "--dds-color-bg-transparent-hover"],

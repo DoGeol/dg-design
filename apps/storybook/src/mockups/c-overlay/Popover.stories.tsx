@@ -40,7 +40,7 @@ function InfoPopover() {
   return (
     <Popover.Root placement="bottom-start" autoFocus={false}>
       <Popover.Trigger asChild>
-        <Button size="small" intent="neutral" variant="ghost" aria-label="공개 범위 설명"><InfoIcon /></Button>
+        <Button size="small" intent="neutral" variant="ghost" aria-label="공개 범위 설명" iconOnly><InfoIcon /></Button>
       </Popover.Trigger>
       <Popover.Content aria-label="공개 범위 설명" style={{ width: 280 }}>
         <Popover.Arrow />
@@ -58,10 +58,10 @@ export const Overview: StoryObj = {
         <MockupState label="아이콘 트리거 · 설명"><span>공개 범위</span><InfoPopover /></MockupState>
       </MockupSection>
 
-      <MockupSection title="상태와 동작" note="패널 자체의 시각 상태는 open·closed와 focus입니다.">
+      <MockupSection title="상태와 동작" note="패널 자체의 시각 상태는 open·closed 두 가지입니다.">
         <MockupState label="open">트리거 아래 4px 간격, 150ms 동안 scale 0.96에서 1로 나타납니다. 공간이 부족하면 위로 뒤집힙니다.</MockupState>
         <MockupState label="closed">ESC·바깥 클릭·트리거 재클릭·Popover.Close로 닫힙니다.</MockupState>
-        <MockupState label="focus">autoFocus 기본값이면 패널이 포커스를 받아 2px 링이 보입니다. 설명용은 autoFocus를 끕니다.</MockupState>
+        <MockupState label="focus">autoFocus 기본값이면 패널이 프로그램 포커스를 받지만 패널 자체에는 링을 그리지 않습니다. 링은 안쪽의 조작 요소에만 보입니다. 설명용은 autoFocus를 끕니다.</MockupState>
       </MockupSection>
 
       <MockupSection title="사용 예" columns={1}>
@@ -79,9 +79,9 @@ export const Overview: StoryObj = {
         ["radius", "12px", "--dds-radius-r3"],
         ["배경 / 그림자", "#FFFFFF · 0 12px 32px rgba(15,15,15,.18), 0 4px 8px rgba(15,15,15,.08)", "--dds-color-bg-layer-default / --dds-shadow-overlay"],
         ["줄바꿈", "어절 단위(word-break: keep-all)", "—"],
-        ["화살표", "8 × 8px 정사각형 45° 회전 · 패널 배경색 · 변에 절반 걸침", "--dds-dimension-x2"],
+        ["화살표", "8 × 8px 정사각형 45° 회전 · 패널 배경색 · 변에 절반 걸침 · 패널 밖으로 나온 두 변에 1px #E5E8EB 테두리", "--dds-dimension-x2 · --dds-color-stroke-neutral-weak"],
         ["트리거 간격 / 화면 여백", "4 / 8px (floating-ui 상수)", "—"],
-        ["focus ring(패널)", "2px #1550A9 · offset 2px", "--dds-color-stroke-focus-ring"],
+        ["focus ring(패널)", "없음 · 안쪽 조작 요소만 2px #1550A9", "--dds-color-stroke-focus-ring"],
         ["z-index", "2000", "--dds-z-overlay"],
         ["등장 모션", "150ms · scale 0.96 → 1 · ease-out", "--dds-duration-fast · --dds-easing-out"],
       ]} />

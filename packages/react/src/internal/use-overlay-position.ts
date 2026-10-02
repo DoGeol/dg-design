@@ -68,7 +68,10 @@ export function useOverlayPosition(
 
         if (!arrowElement || !middlewareData.arrow) return;
         const { x: arrowX, y: arrowY } = middlewareData.arrow;
-        const staticSide = STATIC_SIDE[finalPlacement.split("-")[0]!]!;
+        const side = finalPlacement.split("-")[0]!;
+        const staticSide = STATIC_SIDE[side]!;
+        // flip 이후의 최종 side. CSS가 패널 밖으로 나온 두 변에만 테두리를 그린다.
+        arrowElement.dataset.side = side;
         Object.assign(arrowElement.style, {
           left: arrowX != null ? `${arrowX}px` : "",
           top: arrowY != null ? `${arrowY}px` : "",

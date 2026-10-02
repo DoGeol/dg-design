@@ -11,10 +11,10 @@
     border-radius: var(--dds-radius-r-full);
   }
 
-  .dds-avatar--size_small { width: 24px; height: 24px; }
-  .dds-avatar--size_medium { width: 36px; height: 36px; }
-  .dds-avatar--size_large { width: 48px; height: 48px; }
-  .dds-avatar--size_xlarge { width: 64px; height: 64px; }
+  .dds-avatar--size_small { width: var(--dds-dimension-x6); height: var(--dds-dimension-x6); }
+  .dds-avatar--size_medium { width: var(--dds-dimension-x9); height: var(--dds-dimension-x9); }
+  .dds-avatar--size_large { width: var(--dds-dimension-x12); height: var(--dds-dimension-x12); }
+  .dds-avatar--size_xlarge { width: var(--dds-dimension-x16); height: var(--dds-dimension-x16); }
 
   /* 이미지와 fallback을 같은 자리에 겹친다 — 페이드 중 둘이 나란히 서서 폭을 나눠 갖지 않는다.
      흐름에서 빠져도 Root의 고정 크기(24/36/48/64)가 그대로 영역을 정한다. */

@@ -47,10 +47,36 @@ export const StateMatrix: StoryObj<typeof meta> = {
         </FileInput.Root>
       </MatrixCell>
 
+      <MatrixCell label="hover (강제)">
+        <FileInput.Root>
+          <FileInput.Dropzone data-hover>{dropzoneBody}</FileInput.Dropzone>
+        </FileInput.Root>
+      </MatrixCell>
+
+      <MatrixCell label="pressed (강제)">
+        <FileInput.Root>
+          <FileInput.Dropzone data-pressed>{dropzoneBody}</FileInput.Dropzone>
+        </FileInput.Root>
+      </MatrixCell>
+
       <MatrixCell label="disabled">
         <FileInput.Root disabled>
           <FileInput.Dropzone>{dropzoneBody}</FileInput.Dropzone>
         </FileInput.Root>
+      </MatrixCell>
+
+      <MatrixCell label="Trigger 기본 · hover · pressed">
+        <div style={{ display: "flex", gap: 8 }}>
+          <FileInput.Root>
+            <FileInput.Trigger>파일 선택</FileInput.Trigger>
+          </FileInput.Root>
+          <FileInput.Root>
+            <FileInput.Trigger data-hover>파일 선택</FileInput.Trigger>
+          </FileInput.Root>
+          <FileInput.Root>
+            <FileInput.Trigger data-pressed>파일 선택</FileInput.Trigger>
+          </FileInput.Root>
+        </div>
       </MatrixCell>
 
       <MatrixCell label="invalid (Field)">

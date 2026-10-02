@@ -25,6 +25,10 @@ const button = cva("dds-button", {
       medium: "dds-button--size_medium",
       large: "dds-button--size_large",
     },
+    /** 아이콘만 있는 정사각 버튼. 접근 이름은 소비자가 aria-label로 준다. */
+    iconOnly: {
+      true: "dds-button--icon-only",
+    },
   },
   defaultVariants: {
     intent: "brand",
@@ -52,6 +56,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       intent,
       variant,
       size,
+      iconOnly,
       asChild,
       loading,
       motion = "auto",
@@ -71,7 +76,11 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       );
     }
 
-    const classes = clsx(button({ intent, variant, size }), className);
+    if (iconOnly && !props["aria-label"] && !props["aria-labelledby"]) {
+      console.warn("Button: `iconOnly`는 접근 이름이 필요합니다. `aria-label`(또는 `aria-labelledby`)을 주세요.");
+    }
+
+    const classes = clsx(button({ intent, variant, size, iconOnly }), className);
     const isLoading = Boolean(loading) && !asChild;
 
     // 사라지는 동안에도 같은 레이어가 남아야 opacity 전환이 현재 값에서 이어진다 — 전환이

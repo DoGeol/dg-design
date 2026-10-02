@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as React from "react";
 import { describe, expect, it, vi } from "vitest";
@@ -264,5 +264,21 @@ describe("Popover aria", () => {
     expect(trigger.getAttribute("aria-expanded")).toBe("false");
     await user.click(trigger);
     expect(trigger.getAttribute("aria-expanded")).toBe("true");
+  });
+});
+
+describe("Popover arrow", () => {
+  it("arrow에 최종 placement의 side가 data-side로 붙는다", async () => {
+    const user = userEvent.setup();
+    render(
+      <Popover.Root placement="right">
+        <Popover.Trigger>열기</Popover.Trigger>
+        <Popover.Content aria-label="패널">
+          <Popover.Arrow data-testid="arrow" />
+        </Popover.Content>
+      </Popover.Root>,
+    );
+    await user.click(screen.getByRole("button", { name: "열기" }));
+    await waitFor(() => expect(screen.getByTestId("arrow").getAttribute("data-side")).toBe("right"));
   });
 });

@@ -106,3 +106,62 @@ describe("TextArea", () => {
     expect(textarea.value).toBe("여러 줄\n입력");
   });
 });
+
+describe("TextArea showCount", () => {
+  it("showCount가 없으면 wrapper·카운터가 없다", () => {
+    const { container } = render(<TextArea aria-label="소개" />);
+    expect(container.firstElementChild?.tagName).toBe("TEXTAREA");
+  });
+
+  it("maxLength가 있으면 현재/최대, 없으면 현재 글자 수만 보인다 (uncontrolled)", async () => {
+    const user = userEvent.setup();
+    render(
+      <>
+        <TextArea aria-label="a" showCount maxLength={10} defaultValue="가나" />
+        <TextArea aria-label="b" showCount />
+      </>,
+    );
+
+    expect(screen.getByText("2/10")).toBeTruthy();
+    await user.type(screen.getByRole("textbox", { name: "a" }), "다");
+    expect(screen.getByText("3/10")).toBeTruthy();
+
+    await user.type(screen.getByRole("textbox", { name: "b" }), "abcd");
+    expect(screen.getByText("4")).toBeTruthy();
+  });
+
+  it("controlled 값을 그대로 세고 onChange도 전달한다", async () => {
+    const user = userEvent.setup();
+    const seen: string[] = [];
+    function Controlled() {
+      const [v, setV] = React.useState("");
+      return (
+        <TextArea
+          aria-label="c"
+          showCount
+          maxLength={5}
+          value={v}
+          onChange={(e) => {
+            seen.push(e.target.value);
+            setV(e.target.value.toUpperCase());
+          }}
+        />
+      );
+    }
+    render(<Controlled />);
+
+    await user.type(screen.getByRole("textbox"), "ab");
+    expect(screen.getByText("2/5")).toBeTruthy();
+    expect(seen).toEqual(["a", "Ab"]);
+  });
+
+  it("카운터는 aria-describedby로 연결되고 기존 describedby와 병합된다", () => {
+    render(<TextArea aria-label="d" showCount aria-describedby="extra" />);
+    const textarea = screen.getByRole("textbox");
+    const [first, countId = ""] = (textarea.getAttribute("aria-describedby") ?? "").split(" ");
+
+    expect(first).toBe("extra");
+    expect(document.getElementById(countId)?.textContent).toBe("0");
+    expect(document.querySelector("[aria-live]")).toBeNull();
+  });
+});

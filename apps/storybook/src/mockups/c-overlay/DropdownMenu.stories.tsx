@@ -3,7 +3,7 @@ import type * as React from "react";
 import { Button, Card, DropdownMenu } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import { CopyIcon, DownloadIcon, EditIcon, LinkIcon, MoreIcon, Shortcut, TrashIcon, criticalItem } from "./icons";
+import { CopyIcon, DownloadIcon, EditIcon, LinkIcon, MoreIcon, TrashIcon } from "./icons";
 
 const meta = { title: "Mockups/A/DropdownMenu", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;
@@ -17,19 +17,19 @@ function DocumentMenu({ defaultOpen = false }: { defaultOpen?: boolean }) {
   return (
     <DropdownMenu.Root defaultOpen={defaultOpen}>
       <DropdownMenu.Trigger asChild>
-        <Button size="small" intent="neutral" variant="ghost" aria-label="문서 메뉴"><MoreIcon size={18} /></Button>
+        <Button size="small" intent="neutral" variant="ghost" aria-label="문서 메뉴" iconOnly><MoreIcon size={18} /></Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Label>문서</DropdownMenu.Label>
-        <DropdownMenu.Item><EditIcon />이름 변경<Shortcut>F2</Shortcut></DropdownMenu.Item>
-        <DropdownMenu.Item><CopyIcon />복제<Shortcut>Ctrl+D</Shortcut></DropdownMenu.Item>
-        <DropdownMenu.Item><LinkIcon />링크 복사<Shortcut>Ctrl+Shift+C</Shortcut></DropdownMenu.Item>
+        <DropdownMenu.Item><EditIcon />이름 변경<DropdownMenu.Shortcut>F2</DropdownMenu.Shortcut></DropdownMenu.Item>
+        <DropdownMenu.Item><CopyIcon />복제<DropdownMenu.Shortcut>Ctrl+D</DropdownMenu.Shortcut></DropdownMenu.Item>
+        <DropdownMenu.Item><LinkIcon />링크 복사<DropdownMenu.Shortcut>Ctrl+Shift+C</DropdownMenu.Shortcut></DropdownMenu.Item>
         <DropdownMenu.Separator />
         <DropdownMenu.Label>내보내기</DropdownMenu.Label>
         <DropdownMenu.Item><DownloadIcon />PDF로 내보내기</DropdownMenu.Item>
         <DropdownMenu.Item disabled><DownloadIcon />Word로 내보내기 (준비 중)</DropdownMenu.Item>
         <DropdownMenu.Separator />
-        <DropdownMenu.Item style={criticalItem}><TrashIcon />삭제<Shortcut>Delete</Shortcut></DropdownMenu.Item>
+        <DropdownMenu.Item intent="critical"><TrashIcon />삭제<DropdownMenu.Shortcut>Delete</DropdownMenu.Shortcut></DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>
   );
@@ -58,9 +58,9 @@ export const Overview: StoryObj = {
         <MockupState label="pressed" force="pressed"><LoneItem><CopyIcon />복제</LoneItem></MockupState>
         <MockupState label="focus · 키보드 이동" force="focus"><LoneItem><CopyIcon />복제</LoneItem></MockupState>
         <MockupState label="disabled"><LoneItem disabled><DownloadIcon />Word로 내보내기</LoneItem></MockupState>
-        <MockupState label="critical (소비 측 색)"><LoneItem style={criticalItem}><TrashIcon />삭제</LoneItem></MockupState>
-        <MockupState label="critical · hover" force="hover"><LoneItem style={criticalItem}><TrashIcon />삭제</LoneItem></MockupState>
-        <MockupState label="단축키 (소비 측 조립)"><LoneItem><LinkIcon />링크 복사<Shortcut>Ctrl+Shift+C</Shortcut></LoneItem></MockupState>
+        <MockupState label="critical"><LoneItem intent="critical"><TrashIcon />삭제</LoneItem></MockupState>
+        <MockupState label="critical · hover" force="hover"><LoneItem intent="critical"><TrashIcon />삭제</LoneItem></MockupState>
+        <MockupState label="단축키"><LoneItem><LinkIcon />링크 복사<DropdownMenu.Shortcut>Ctrl+Shift+C</DropdownMenu.Shortcut></LoneItem></MockupState>
       </MockupSection>
 
       <MockupSection title="라벨 · 구분선" columns={2}>
@@ -68,7 +68,7 @@ export const Overview: StoryObj = {
           <div style={panel}><DropdownMenu.Root><DropdownMenu.Label>내보내기</DropdownMenu.Label><DropdownMenu.Item><DownloadIcon />PDF로 내보내기</DropdownMenu.Item></DropdownMenu.Root></div>
         </MockupState>
         <MockupState label="Separator · 1px, 패널 좌우 끝까지">
-          <div style={panel}><DropdownMenu.Root><DropdownMenu.Item><LinkIcon />링크 복사</DropdownMenu.Item><DropdownMenu.Separator /><DropdownMenu.Item style={criticalItem}><TrashIcon />삭제</DropdownMenu.Item></DropdownMenu.Root></div>
+          <div style={panel}><DropdownMenu.Root><DropdownMenu.Item><LinkIcon />링크 복사</DropdownMenu.Item><DropdownMenu.Separator /><DropdownMenu.Item intent="critical"><TrashIcon />삭제</DropdownMenu.Item></DropdownMenu.Root></div>
         </MockupState>
       </MockupSection>
 
@@ -87,8 +87,8 @@ export const Overview: StoryObj = {
         ["항목 hover·focus / pressed", "rgb(16 18 20 / 0.06) / 0.12", "--dds-color-bg-transparent-hover / -pressed"],
         ["항목 focus ring", "2px #1550A9 · offset −2px(안쪽)", "--dds-color-stroke-focus-ring"],
         ["항목 disabled", "글자 #8A8C8F · not-allowed", "--dds-color-fg-disabled"],
-        ["critical 항목(소비 측)", "글자 #731115", "--dds-color-fg-critical"],
-        ["단축키(소비 측)", "오른쪽 정렬 · 12px #6D6F72", "--dds-font-size-t2 · fg-neutral-weak"],
+        ["critical 항목 (intent)", "글자 #731115 · hover·focus 배경 #F4E3E1 / pressed #F0C9C5", "--dds-color-fg-critical · bg-critical-weak-hover / -pressed"],
+        ["Shortcut", "오른쪽 정렬 · 12px #6D6F72 · 왼쪽 여백 16px", "--dds-font-size-t2 · fg-neutral-weak · --dds-dimension-x4"],
         ["Label", "6·8px 패딩 · 12 / 16px bold · #6D6F72", "--dds-font-size-t2 · fg-neutral-weak"],
         ["Separator", "1px #E5E8EB · 위아래 4px, 좌우는 패널 끝까지", "--dds-color-stroke-neutral-weak"],
         ["배치 / 트리거 간격", "bottom-start · 4px", "—"],

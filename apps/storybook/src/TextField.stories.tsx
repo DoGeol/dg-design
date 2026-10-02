@@ -47,21 +47,25 @@ function StateMatrix() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                {STATES.map((state) => (
-                  <td key={state} style={{ padding: 8 }}>
-                    <TextField
-                      size={size}
-                      placeholder="이름을 입력하세요"
-                      aria-label={`${size} ${state}`}
-                      aria-invalid={state === "invalid"}
-                      disabled={state === "disabled"}
-                      readOnly={state === "readonly"}
-                      defaultValue={state === "readonly" ? "고정값" : undefined}
-                    />
-                  </td>
-                ))}
-              </tr>
+              {[false, true].map((affix) => (
+                <tr key={String(affix)}>
+                  {STATES.map((state) => (
+                    <td key={state} style={{ padding: 8 }}>
+                      <TextField
+                        size={size}
+                        placeholder="이름을 입력하세요"
+                        aria-label={`${size} ${state}${affix ? " affix" : ""}`}
+                        aria-invalid={state === "invalid"}
+                        disabled={state === "disabled"}
+                        readOnly={state === "readonly"}
+                        defaultValue={state === "readonly" ? "고정값" : undefined}
+                        prefix={affix ? "₩" : undefined}
+                        suffix={affix ? "원" : undefined}
+                      />
+                    </td>
+                  ))}
+                </tr>
+              ))}
             </tbody>
           </table>
         </section>
@@ -70,7 +74,7 @@ function StateMatrix() {
   );
 }
 
-/** state(4) x size(2) = 8조합 전체 그리드 */
+/** state(4) x size(2) x prefix/suffix 유무(2) 전체 그리드 */
 export const StateMatrixStory: StoryObj<typeof meta> = {
   name: "State matrix",
   render: () => <StateMatrix />,

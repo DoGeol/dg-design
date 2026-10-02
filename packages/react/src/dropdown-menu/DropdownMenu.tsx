@@ -156,10 +156,12 @@ DropdownMenuContent.displayName = "DropdownMenu.Content";
 export interface DropdownMenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** 선택됐을 때 호출된다. 호출 뒤 메뉴는 항상 닫힌다. */
   onSelect?: () => void;
+  /** critical은 삭제 같은 파괴적 동작 — 글자·하이라이트가 critical 색을 쓴다. */
+  intent?: "neutral" | "critical";
 }
 
 export const DropdownMenuItem = React.forwardRef<HTMLButtonElement, DropdownMenuItemProps>(
-  ({ className, onSelect, onClick, ...props }, ref) => {
+  ({ className, intent = "neutral", onSelect, onClick, ...props }, ref) => {
     const context = useDropdownMenuContext("DropdownMenu.Item");
     return (
       <button
@@ -167,7 +169,11 @@ export const DropdownMenuItem = React.forwardRef<HTMLButtonElement, DropdownMenu
         type="button"
         role={ITEM_ROLE}
         tabIndex={-1}
-        className={clsx("dds-dropdown-menu__item", className)}
+        className={clsx(
+          "dds-dropdown-menu__item",
+          intent === "critical" && "dds-dropdown-menu__item--intent_critical",
+          className,
+        )}
         onClick={(event) => {
           onClick?.(event);
           if (event.defaultPrevented) return;
@@ -204,8 +210,17 @@ export const DropdownMenuLabel = React.forwardRef<HTMLDivElement, DropdownMenuLa
 );
 DropdownMenuLabel.displayName = "DropdownMenu.Label";
 
+export interface DropdownMenuShortcutProps extends React.HTMLAttributes<HTMLSpanElement> {}
+
+export const DropdownMenuShortcut = React.forwardRef<HTMLSpanElement, DropdownMenuShortcutProps>(
+  ({ className, ...props }, ref) => (
+    <span ref={ref} className={clsx("dds-dropdown-menu__shortcut", className)} {...props} />
+  ),
+);
+DropdownMenuShortcut.displayName = "DropdownMenu.Shortcut";
+
 /**
- * compound: DropdownMenu.Root/Trigger/Content/Item/Separator/Label.
+ * compound: DropdownMenu.Root/Trigger/Content/Item/Separator/Label/Shortcut.
  * 로직(상태·presence·비모달 스택·roving·floating 배치)은 Select와 공유하는
  * `internal/use-overlay`·`internal/roving-focus`에 있고 여기는 조립과 스타일만 맡는다.
  */
@@ -216,4 +231,5 @@ export const DropdownMenu = {
   Item: DropdownMenuItem,
   Separator: DropdownMenuSeparator,
   Label: DropdownMenuLabel,
+  Shortcut: DropdownMenuShortcut,
 };

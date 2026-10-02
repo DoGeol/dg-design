@@ -12,9 +12,14 @@ const switchRoot = cva("dds-switch", {
       medium: "dds-switch--size_medium",
       large: "dds-switch--size_large",
     },
+    labelPlacement: {
+      end: "",
+      start: "dds-switch--label_start",
+    },
   },
   defaultVariants: {
     size: "medium",
+    labelPlacement: "end",
   },
 });
 
@@ -27,6 +32,7 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
     {
       className,
       size,
+      labelPlacement,
       children,
       id,
       "aria-describedby": ariaDescribedBy,
@@ -46,7 +52,7 @@ export const Switch = React.forwardRef<HTMLInputElement, SwitchProps>(
     const resolvedInvalid = ariaInvalid ?? fieldCtx?.invalid ?? false;
 
     return (
-      <label className={clsx(switchRoot({ size }), className)}>
+      <label className={clsx(switchRoot({ size, labelPlacement }), className)}>
         <input
           type="checkbox"
           role="switch"

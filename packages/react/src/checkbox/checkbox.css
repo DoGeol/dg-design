@@ -81,6 +81,14 @@
     }
   }
 
+  /* 오류: 비어 있는 박스만 테두리로 알린다. 채워진 박스는 채움색이 주 신호라 그대로 둔다. */
+  .dds-checkbox__input[aria-invalid="true"]:not(:is(:checked, :indeterminate)):not(
+      :is(:disabled, [disabled], [data-disabled])
+    )
+    ~ .dds-checkbox__box {
+    border-color: var(--dds-color-stroke-critical);
+  }
+
   .dds-checkbox__input:is(:checked, :indeterminate) ~ .dds-checkbox__box {
     border-color: transparent;
     background-color: var(--dds-color-bg-brand-solid);

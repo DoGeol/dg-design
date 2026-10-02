@@ -105,6 +105,33 @@ export const Disabled: Story = {
   render: () => <CombinationGrid disabled />,
 };
 
+const PlusIcon = ({ size }: { size: number }) => (
+  <svg width={size} height={size} viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+
+/** iconOnly: size 3종 x variant 3종 + disabled. 아이콘은 small·medium 16, large 20. */
+export const IconOnly: Story = {
+  name: "Icon only",
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 24 }}>
+      {SIZES.map((size) => (
+        <div key={size} style={{ display: "flex", gap: 12, alignItems: "center" }}>
+          {VARIANTS.map((variant) => (
+            <Button key={variant} iconOnly size={size} variant={variant} aria-label="추가">
+              <PlusIcon size={size === "large" ? 20 : 16} />
+            </Button>
+          ))}
+          <Button iconOnly size={size} disabled aria-label="추가 (비활성)">
+            <PlusIcon size={size === "large" ? 20 : 16} />
+          </Button>
+        </div>
+      ))}
+    </div>
+  ),
+};
+
 /**
  * 모션 데모: 로딩이 켜지고 꺼질 때 라벨과 중앙 Spinner가 교차하는지, 그동안 버튼 크기가
  * 그대로인지 본다. 처음은 정지 상태(로딩 꺼짐)이고 버튼을 눌러야 바뀐다.

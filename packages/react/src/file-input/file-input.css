@@ -16,6 +16,14 @@
     font-family: inherit;
   }
 
+  /* 드래그 중 외관(brand-weak)은 hover가 덮지 않는다. */
+  .dds-file-input__dropzone:not(:is([data-disabled], [data-dragging])):is(:hover, [data-hover]) {
+    background-color: var(--dds-color-bg-transparent-hover);
+  }
+  .dds-file-input__dropzone:not(:is([data-disabled], [data-dragging])):is(:active, [data-pressed]) {
+    background-color: var(--dds-color-bg-transparent-pressed);
+  }
+
   .dds-file-input__dropzone:focus-visible {
     outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
     outline-offset: var(--dds-dimension-x0_5);
@@ -52,6 +60,13 @@
     font-family: inherit;
     font-weight: var(--dds-font-weight-bold);
     cursor: pointer;
+  }
+
+  .dds-file-input__trigger:not(:is(:disabled, [disabled], [data-disabled])):is(:hover, [data-hover]) {
+    background-color: var(--dds-color-bg-transparent-hover);
+  }
+  .dds-file-input__trigger:not(:is(:disabled, [disabled], [data-disabled])):is(:active, [data-pressed]) {
+    background-color: var(--dds-color-bg-transparent-pressed);
   }
 
   .dds-file-input__trigger:focus-visible {

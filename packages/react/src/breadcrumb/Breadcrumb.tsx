@@ -64,10 +64,24 @@ export const BreadcrumbPage = React.forwardRef<HTMLSpanElement, BreadcrumbPagePr
 );
 BreadcrumbPage.displayName = "Breadcrumb.Page";
 
+function ChevronRightIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path
+        d="M6 4l4 4-4 4"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export interface BreadcrumbSeparatorProps extends React.HTMLAttributes<HTMLLIElement> {}
 
 // Item과 나란히 List(ol)에 들어가는 li다 — aria-hidden이라 스크린 리더 순회에서 빠진다.
-// 기본 기호는 "/"(스펙에서 위임) — 자식으로 아이콘 등으로 교체 가능.
+// 기본 기호는 오른쪽 셰브론 — 자식으로 교체 가능.
 export const BreadcrumbSeparator = React.forwardRef<HTMLLIElement, BreadcrumbSeparatorProps>(
   ({ className, children, ...props }, ref) => (
     <li
@@ -76,7 +90,7 @@ export const BreadcrumbSeparator = React.forwardRef<HTMLLIElement, BreadcrumbSep
       className={clsx("dds-breadcrumb__separator", className)}
       {...props}
     >
-      {children ?? "/"}
+      {children ?? <ChevronRightIcon />}
     </li>
   ),
 );

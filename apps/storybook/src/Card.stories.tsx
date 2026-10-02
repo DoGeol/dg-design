@@ -17,12 +17,15 @@ type Story = StoryObj<typeof meta>;
 export const StateMatrix: Story = {
   name: "State matrix",
   render: () => (
-    <div style={{ display: "flex", gap: 16 }}>
+    <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
       <Card style={{ width: 200 }}>기본 div 카드</Card>
       <Card asChild style={{ width: 200 }}>
-        <a href="#" style={{ display: "block", textDecoration: "none", color: "inherit" }}>
+        <a href="#" style={{ display: "block" }}>
           asChild로 렌더한 a 카드
         </a>
+      </Card>
+      <Card asChild style={{ width: 200 }}>
+        <button type="button">asChild로 렌더한 button 카드</button>
       </Card>
     </div>
   ),

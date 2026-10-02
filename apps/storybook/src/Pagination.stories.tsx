@@ -84,6 +84,32 @@ export const StateMatrix: StoryObj<typeof meta> = {
       </section>
       <section>
         <h2 style={{ font: "600 14px sans-serif", marginBottom: 12 }}>
+          Previous/Next 비활성 + 생략 기호
+        </h2>
+        <Pagination.Root aria-label="비활성 페이지 이동">
+          <Pagination.List>
+            <Pagination.Item>
+              <Pagination.Previous href="#" disabled />
+            </Pagination.Item>
+            <Pagination.Item>
+              <Pagination.Link href="#" isActive>
+                1
+              </Pagination.Link>
+            </Pagination.Item>
+            <Pagination.Item>
+              <Pagination.Ellipsis />
+            </Pagination.Item>
+            <Pagination.Item>
+              <Pagination.Link href="#">20</Pagination.Link>
+            </Pagination.Item>
+            <Pagination.Item>
+              <Pagination.Next href="#" disabled />
+            </Pagination.Item>
+          </Pagination.List>
+        </Pagination.Root>
+      </section>
+      <section>
+        <h2 style={{ font: "600 14px sans-serif", marginBottom: 12 }}>
           asChild로 버튼형 교체(라우터 onClick 연동 대비)
         </h2>
         <Pagination.Root aria-label="버튼형 페이지 이동">

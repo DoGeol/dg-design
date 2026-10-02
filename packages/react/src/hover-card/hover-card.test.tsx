@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as React from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
@@ -110,5 +110,16 @@ describe("HoverCard 트리거", () => {
     expect(content()).toBeTruthy();
     expect(document.activeElement).toBe(activeBefore);
     expect(document.activeElement).not.toBe(contentEl());
+  });
+});
+
+describe("HoverCard arrow", () => {
+  it("arrow에 최종 placement의 side가 data-side로 붙는다", async () => {
+    render(<Basic openDelay={0} placement="left" />);
+
+    await userEvent.setup().hover(trigger());
+    await waitFor(() =>
+      expect(contentEl().querySelector(".dds-hover-card__arrow")?.getAttribute("data-side")).toBe("left"),
+    );
   });
 });

@@ -5,6 +5,7 @@ import clsx from "clsx";
 import * as React from "react";
 
 import { FieldContext } from "../field/field-context";
+import { mergeRefs } from "../internal/merge-refs";
 
 const textField = cva("dds-text-field", {
   variants: {
@@ -22,9 +23,15 @@ const textField = cva("dds-text-field", {
 export type TextFieldType = "text" | "email" | "password" | "tel" | "url" | "search" | "number";
 
 export interface TextFieldProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "type">,
+  // HTML `prefix`(RDFa 속성)와 이름이 겹쳐 Omit으로 덮어쓴다.
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size" | "type" | "prefix">,
     VariantProps<typeof textField> {
   type?: TextFieldType;
+  /** 입력 앞 장식(아이콘·단위 등). prefix/suffix 중 하나라도 있으면 wrapper div가 생기고
+   * className은 wrapper에 붙는다. 둘 다 없으면 DOM은 input 하나 그대로다. */
+  prefix?: React.ReactNode;
+  /** 입력 뒤 장식. prefix와 같은 규칙. */
+  suffix?: React.ReactNode;
 }
 
 export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
@@ -32,6 +39,8 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     {
       className,
       size,
+      prefix,
+      suffix,
       type = "text",
       id,
       "aria-describedby": ariaDescribedBy,
@@ -49,17 +58,60 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     const resolvedDescribedBy =
       [fieldCtx?.describedBy, ariaDescribedBy].filter(Boolean).join(" ") || undefined;
     const resolvedInvalid = ariaInvalid ?? fieldCtx?.invalid ?? false;
+    const innerRef = React.useRef<HTMLInputElement>(null);
+
+    const hasAffix = prefix != null || suffix != null;
+    const inputProps = {
+      type,
+      id: resolvedId,
+      "aria-describedby": resolvedDescribedBy,
+      "aria-invalid": resolvedInvalid,
+    };
+
+    if (!hasAffix) {
+      return (
+        <input
+          {...inputProps}
+          ref={ref}
+          className={clsx(textField({ size }), className)}
+          {...props}
+        />
+      );
+    }
+
+    // 장식 영역을 눌러도 입력에 포커스가 가게 한다. 안의 버튼·링크 클릭은 건드리지 않도록
+    // wrapper·affix 자체를 누른 경우만 가로챈다.
+    const focusInput = (event: React.MouseEvent<HTMLDivElement>) => {
+      const target = event.target as HTMLElement;
+      if (target === event.currentTarget || target.classList.contains("dds-text-field__affix")) {
+        event.preventDefault();
+        innerRef.current?.focus();
+      }
+    };
 
     return (
-      <input
-        type={type}
-        ref={ref}
-        id={resolvedId}
-        aria-describedby={resolvedDescribedBy}
-        aria-invalid={resolvedInvalid}
-        className={clsx(textField({ size }), className)}
-        {...props}
-      />
+      <div
+        // 베이스 .dds-text-field는 :read-only가 div에도 매치돼 wrapper에 쓰지 않고 size 클래스만 공유한다.
+        className={clsx(
+          "dds-text-field__wrapper",
+          `dds-text-field--size_${size ?? "medium"}`,
+          className,
+        )}
+        onMouseDown={focusInput}
+      >
+        {prefix != null ? (
+          <span className="dds-text-field__affix dds-text-field__prefix">{prefix}</span>
+        ) : null}
+        <input
+          {...inputProps}
+          ref={mergeRefs(ref, innerRef)}
+          className="dds-text-field__input"
+          {...props}
+        />
+        {suffix != null ? (
+          <span className="dds-text-field__affix dds-text-field__suffix">{suffix}</span>
+        ) : null}
+      </div>
     );
   },
 );

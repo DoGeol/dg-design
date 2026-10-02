@@ -83,11 +83,20 @@ export const StateMatrixStory: StoryObj<typeof meta> = {
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
           <DropdownMenu.Label>파일</DropdownMenu.Label>
-          <DropdownMenu.Item>새 문서</DropdownMenu.Item>
+          <DropdownMenu.Item>
+            새 문서<DropdownMenu.Shortcut>⌘N</DropdownMenu.Shortcut>
+          </DropdownMenu.Item>
           <DropdownMenu.Item>복제</DropdownMenu.Item>
-          <DropdownMenu.Item disabled>내보내기</DropdownMenu.Item>
+          <DropdownMenu.Item disabled>
+            내보내기<DropdownMenu.Shortcut>⌘E</DropdownMenu.Shortcut>
+          </DropdownMenu.Item>
           <DropdownMenu.Separator />
-          <DropdownMenu.Item>삭제</DropdownMenu.Item>
+          <DropdownMenu.Item intent="critical">
+            삭제<DropdownMenu.Shortcut>⌘⌫</DropdownMenu.Shortcut>
+          </DropdownMenu.Item>
+          <DropdownMenu.Item intent="critical" disabled>
+            영구 삭제
+          </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
     </div>

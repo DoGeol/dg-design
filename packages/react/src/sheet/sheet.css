@@ -27,9 +27,9 @@
     animation-timing-function: var(--dds-easing-out);
   }
 
+  /* Dialog와 같은 이유 — 열릴 때 프로그램 포커스를 받는 패널 자체에는 링을 그리지 않는다. */
   .dds-sheet__content:focus-visible {
-    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
-    outline-offset: calc(-1 * var(--dds-dimension-x0_5));
+    outline: none;
   }
 
   /* 좌우는 화면 높이 전체를 세로로 채우고 폭만 제한, 상하는 그 반대 —

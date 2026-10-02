@@ -90,7 +90,7 @@ export const FunctionalDemo: StoryObj<typeof meta> = {
  * intent 6종을 마운트 시 한 번에 순서대로 띄운다. VR은 클릭 같은 상호작용을 하지 않으므로
  * (stories.spec.ts 참조) 버튼 대신 useEffect로 자동 발화한다.
  *
- * 주의: Toast 구현의 동시 표시 최대 개수(현재 3, `toast/Toast.tsx`의 `MAX_VISIBLE`)가 6보다
+ * 주의: Toast 구현의 동시 표시 최대 개수(기본 3, `Toast.Provider`의 `max`)가 6보다
  * 작아, 정지 화면엔 나중에 발화한 3개(positive·warning·informative)만 남고 앞의 3개는
  * 퇴장 애니메이션 후 사라진다 — "최대 개수를 넘기면 오래된 것부터 사라진다"는 합격 조건을
  * 그대로 보여주는 결과라 캡션으로 명시한다. 6종이 동시에 한 화면에 잡히는 캡처는 뷰포트가
@@ -128,6 +128,20 @@ export const StateMatrix: StoryObj<typeof meta> = {
       <Toast.Provider>
         <StateMatrixContent />
       </Toast.Provider>
+      {/* Provider 없이 정적으로 그리는 Toast.View — 6종 intent 전부와 action·닫기 변형 */}
+      <div style={{ display: "flex", flexDirection: "column", gap: 8, width: 360, marginTop: 16 }}>
+        {INTENTS.map((intent) => (
+          <Toast.View
+            key={intent}
+            live={false}
+            intent={intent}
+            title={`${intent} 토스트`}
+            description="정적 표시"
+            onClose={() => {}}
+          />
+        ))}
+        <Toast.View live={false} title="항목을 삭제했습니다" action={<a href="#undo">실행 취소</a>} />
+      </div>
     </div>
   ),
 };

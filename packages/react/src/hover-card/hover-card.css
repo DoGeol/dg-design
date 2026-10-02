@@ -27,13 +27,37 @@
   }
 
   /* 정사각형을 45도 돌린 다이아몬드. floating-ui가 left/top으로 변 위 위치를,
-     반대쪽 정적 변 오프셋(-절반 폭)으로 패널 테두리에 절반만 걸치게 만든다. */
+     반대쪽 정적 변 오프셋으로 패널 테두리에 절반만 걸치게 만든다.
+     패널은 그림자만 있어 흰 배경에서 흰 화살표가 사라진다 — 패널 밖으로 나온 두 변에만 연한 테두리를 준다.
+     data-side는 훅이 flip 이후의 최종 side로 쓴다(패널이 트리거의 어느 쪽에 있는지).
+     45도 회전 후 바깥쪽 두 변 = 원래 변: bottom→top·left, top→bottom·right, right→left·bottom, left→top·right. */
   .dds-hover-card__arrow {
     position: absolute;
+    box-sizing: border-box;
     width: var(--dds-dimension-x2);
     height: var(--dds-dimension-x2);
     background-color: var(--dds-color-bg-layer-default);
     transform: rotate(45deg);
+  }
+
+  .dds-hover-card__arrow[data-side="bottom"] {
+    border-top: 1px solid var(--dds-color-stroke-neutral-weak);
+    border-left: 1px solid var(--dds-color-stroke-neutral-weak);
+  }
+
+  .dds-hover-card__arrow[data-side="top"] {
+    border-right: 1px solid var(--dds-color-stroke-neutral-weak);
+    border-bottom: 1px solid var(--dds-color-stroke-neutral-weak);
+  }
+
+  .dds-hover-card__arrow[data-side="right"] {
+    border-bottom: 1px solid var(--dds-color-stroke-neutral-weak);
+    border-left: 1px solid var(--dds-color-stroke-neutral-weak);
+  }
+
+  .dds-hover-card__arrow[data-side="left"] {
+    border-top: 1px solid var(--dds-color-stroke-neutral-weak);
+    border-right: 1px solid var(--dds-color-stroke-neutral-weak);
   }
 
 

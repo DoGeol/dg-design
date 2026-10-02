@@ -41,4 +41,8 @@
     align-items: center;
     color: var(--dds-color-fg-neutral-weak);
   }
+  /* 기본 셰브론 SVG만 대상 — 소비자가 children으로 넣은 요소는 건드리지 않는다. */
+  [dir="rtl"] .dds-breadcrumb__separator > svg {
+    transform: scaleX(-1);
+  }
 }

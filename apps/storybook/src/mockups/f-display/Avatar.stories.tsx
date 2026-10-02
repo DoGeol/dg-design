@@ -131,7 +131,7 @@ export const Overview: StoryObj = {
       </MockupSection>
 
       <MockupSpec rows={[
-        ["크기 small / medium / large / xlarge", "24 / 36 / 48 / 64px", "— (avatar.css 고정 px)"],
+        ["크기 small / medium / large / xlarge", "24 / 36 / 48 / 64px", "--dds-dimension-x6 / x9 / x12 / x16"],
         ["모양", "원형", "--dds-radius-r-full"],
         ["테두리", "1px #E5E8EB", "--dds-color-stroke-neutral-weak"],
         ["fallback 배경 / 글자", "#F3F5F9 / #252629", "--dds-color-bg-neutral-weak / fg-neutral"],

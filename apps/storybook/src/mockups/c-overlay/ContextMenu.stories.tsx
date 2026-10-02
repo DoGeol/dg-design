@@ -3,7 +3,7 @@ import * as React from "react";
 import { ContextMenu } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import { CopyIcon, EditIcon, FileIcon, LinkIcon, Shortcut, TrashIcon, criticalItem } from "./icons";
+import { CopyIcon, EditIcon, FileIcon, LinkIcon, TrashIcon } from "./icons";
 
 const meta = { title: "Mockups/A/ContextMenu", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;
@@ -14,8 +14,8 @@ const panel = { width: "100%", padding: 4, borderRadius: 12, background: "var(--
 const FILES = ["표지.png", "소개.md", "작업 목록.md", "회고.md"];
 
 /**
- * 우클릭 대상 영역 + 메뉴. openAt이 있으면 마운트 직후 그 좌표(영역 기준)로 contextmenu
- * 이벤트를 보낸다 — 이 컴포넌트는 defaultOpen만으로는 커서 좌표가 없어 (0, 0)에 뜬다.
+ * 우클릭 대상 영역 + 메뉴. openAt이 있으면 마운트 직후 그 좌표(영역 기준)로 contextmenu 이벤트를 보낸다.
+ * defaultOpen은 트리거 왼쪽 위에 뜨는데, 시안은 커서가 파일 위에 있는 장면이라 좌표를 주입한다.
  */
 function FileGrid({ openAt }: { openAt?: { x: number; y: number } }) {
   const ref = React.useRef<HTMLDivElement>(null);
@@ -39,12 +39,12 @@ function FileGrid({ openAt }: { openAt?: { x: number; y: number } }) {
       </ContextMenu.Trigger>
       <ContextMenu.Content>
         <ContextMenu.Label>소개.md</ContextMenu.Label>
-        <ContextMenu.Item><EditIcon />이름 변경<Shortcut>F2</Shortcut></ContextMenu.Item>
-        <ContextMenu.Item><CopyIcon />복제<Shortcut>Ctrl+D</Shortcut></ContextMenu.Item>
+        <ContextMenu.Item><EditIcon />이름 변경<ContextMenu.Shortcut>F2</ContextMenu.Shortcut></ContextMenu.Item>
+        <ContextMenu.Item><CopyIcon />복제<ContextMenu.Shortcut>Ctrl+D</ContextMenu.Shortcut></ContextMenu.Item>
         <ContextMenu.Item><LinkIcon />링크 복사</ContextMenu.Item>
         <ContextMenu.Item disabled><FileIcon />다른 프로젝트로 이동 (권한 없음)</ContextMenu.Item>
         <ContextMenu.Separator />
-        <ContextMenu.Item style={criticalItem}><TrashIcon />삭제<Shortcut>Delete</Shortcut></ContextMenu.Item>
+        <ContextMenu.Item intent="critical"><TrashIcon />삭제<ContextMenu.Shortcut>Delete</ContextMenu.Shortcut></ContextMenu.Item>
       </ContextMenu.Content>
     </ContextMenu.Root>
   );
@@ -57,7 +57,7 @@ function LoneItem(props: React.ComponentProps<typeof ContextMenu.Item>) {
 export const Overview: StoryObj = {
   render: () => (
     <MockupPage title="ContextMenu" summary="영역을 우클릭한 자리에 뜨는 메뉴입니다. 패널·항목 외관은 DropdownMenu와 같고, 여는 방법과 위치 기준만 다릅니다.">
-      <MockupSection title="우클릭 대상 영역" columns={1} note="영역 안을 우클릭하면 실제로 열립니다. 열린 화면은 Open 스토리입니다. 트리거 자체에는 스타일이 없어 소비 측이 그립니다.">
+      <MockupSection title="우클릭 대상 영역" columns={1} note="영역 안을 우클릭하면 실제로 열립니다. 열린 화면은 Open 스토리입니다. 트리거 자체에는 스타일이 없어 점선·배경은 시안에서 그렸습니다.">
         <MockupState label="파일 목록 · 점선은 시안 표시용"><FileGrid /></MockupState>
       </MockupSection>
 
@@ -65,7 +65,7 @@ export const Overview: StoryObj = {
         <MockupState label="default"><LoneItem><CopyIcon />복제</LoneItem></MockupState>
         <MockupState label="hover · focus" force="focus"><LoneItem><CopyIcon />복제</LoneItem></MockupState>
         <MockupState label="disabled"><LoneItem disabled><FileIcon />다른 프로젝트로 이동</LoneItem></MockupState>
-        <MockupState label="critical (소비 측 색)"><LoneItem style={criticalItem}><TrashIcon />삭제</LoneItem></MockupState>
+        <MockupState label="critical"><LoneItem intent="critical"><TrashIcon />삭제</LoneItem></MockupState>
       </MockupSection>
 
       <MockupSection title="동작">
@@ -80,7 +80,7 @@ export const Overview: StoryObj = {
         ["패널 radius", "12px (dropdown-menu 클래스 공유)", "--dds-radius-r3"],
         ["항목", "최소 높이 32 · radius 6 · 14px", "--dds-dimension-x8 · radius-r1_5 · font-size-t4"],
         ["항목 hover·focus / pressed", "rgb(16 18 20 / 0.06) / 0.12", "--dds-color-bg-transparent-hover / -pressed"],
-        ["critical 항목(소비 측)", "글자 #731115", "--dds-color-fg-critical"],
+        ["critical 항목 (intent)", "글자 #731115 · hover·focus 배경 #F4E3E1 / pressed #F0C9C5", "--dds-color-fg-critical · bg-critical-weak-hover / -pressed"],
         ["선택 대상 표시(소비 측)", "배경 #F1F5FC · 글자 #0B397E · radius 8", "--dds-color-bg-brand-weak · fg-brand · radius-r2"],
         ["등장 모션", "150ms · scale 0.96 → 1 · ease-out", "--dds-duration-fast · --dds-easing-out"],
       ]} />

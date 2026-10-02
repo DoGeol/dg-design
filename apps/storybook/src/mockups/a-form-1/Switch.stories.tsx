@@ -54,14 +54,20 @@ export const Overview: StoryObj = {
         </MockupState>
       </MockupSection>
 
-      <MockupSection title="라벨 배치" columns={2} note="오른쪽 라벨은 children, 왼쪽 라벨은 Field.Label을 앞에 둡니다.">
+      <MockupSection title="라벨 배치" columns={3} note="기본은 라벨이 오른쪽이고, labelPlacement=&quot;start&quot;면 왼쪽입니다. 양 끝으로 벌리는 행은 Field.Label을 앞에 둡니다.">
         <MockupState label="라벨 오른쪽 · children">
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             <Switch defaultChecked>새 댓글 알림</Switch>
             <Switch>주간 요약 메일</Switch>
           </div>
         </MockupState>
-        <MockupState label="라벨 왼쪽 · Field.Label + 오른쪽 정렬">
+        <MockupState label="라벨 왼쪽 · labelPlacement=start">
+          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <Switch labelPlacement="start" defaultChecked>새 댓글 알림</Switch>
+            <Switch labelPlacement="start">주간 요약 메일</Switch>
+          </div>
+        </MockupState>
+        <MockupState label="양 끝 정렬 · Field.Label + 오른쪽 스위치">
           <div style={{ display: "flex", flexDirection: "column", gap: 12, width: "100%" }}>
             <Field.Root style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", width: "100%" }}>
               <Field.Label>새 댓글 알림</Field.Label>
@@ -95,6 +101,7 @@ export const Overview: StoryObj = {
         ["on 트랙 / hover / pressed", "#1550A9 / #0B397E / #042454", "--dds-color-bg-brand-solid(-hover/-pressed)"],
         ["focus ring (트랙)", "2px #1550A9 outline, offset 2px", "--dds-color-stroke-focus-ring"],
         ["disabled", "트랙 #E5E8EB · 썸·라벨 #8A8C8F", "--dds-color-bg-disabled / fg-disabled"],
+        ["labelPlacement=start", "라벨이 왼쪽 · DOM 순서와 접근성 이름은 그대로", "—"],
         ["테두리", "없음 (채움 트랙)", "—"],
       ]} />
     </MockupPage>
