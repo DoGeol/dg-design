@@ -1,0 +1,43 @@
+/* 시안 페이지 틀. 컴포넌트 외관은 건드리지 않는다. */
+.mk-page {
+  box-sizing: border-box;
+  width: 1200px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background: var(--dds-color-bg-layer-default);
+  color: var(--dds-color-fg-neutral);
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+  font-size: var(--dds-font-size-t4);
+  line-height: var(--dds-line-height-t4);
+}
+.mk-head { display: flex; flex-direction: column; gap: 4px; }
+.mk-eyebrow { margin: 0; font-size: var(--dds-font-size-t2); color: var(--dds-color-fg-brand); font-weight: var(--dds-font-weight-bold); letter-spacing: 0.04em; }
+.mk-title { margin: 0; font-size: var(--dds-font-size-t9); line-height: var(--dds-line-height-t9); }
+.mk-summary { margin: 0; color: var(--dds-color-fg-neutral-weak); }
+.mk-section { display: flex; flex-direction: column; gap: 12px; }
+.mk-section-head { display: flex; align-items: baseline; gap: 12px; border-bottom: 1px solid var(--dds-color-stroke-neutral-weak); padding-bottom: 8px; }
+.mk-section-title { margin: 0; font-size: var(--dds-font-size-t5); line-height: var(--dds-line-height-t5); }
+.mk-note { margin: 0; font-size: var(--dds-font-size-t3); color: var(--dds-color-fg-neutral-weak); }
+.mk-grid { display: grid; gap: 16px; }
+.mk-state {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  border-radius: var(--dds-radius-r3);
+  background: var(--dds-color-bg-neutral-weak);
+  min-width: 0;
+}
+.mk-state-label { font-size: var(--dds-font-size-t2); color: var(--dds-color-fg-neutral-weak); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.mk-state-body { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; min-width: 0; }
+.mk-spec { border-collapse: collapse; width: 100%; font-size: var(--dds-font-size-t3); }
+.mk-spec th, .mk-spec td { text-align: left; padding: 8px 12px; border-bottom: 1px solid var(--dds-color-stroke-neutral-weak); vertical-align: top; }
+.mk-spec thead th { color: var(--dds-color-fg-neutral-weak); font-weight: var(--dds-font-weight-regular); }
+.mk-spec tbody th { font-weight: var(--dds-font-weight-bold); width: 28%; }
+.mk-spec code { font-size: var(--dds-font-size-t2); color: var(--dds-color-fg-neutral-weak); }
+/* 포털로 body에 붙는 오버레이도 같은 글꼴을 쓰게 한다. */
+:root:has([data-mockup="a"]) body {
+  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+}

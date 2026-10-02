@@ -57,7 +57,15 @@
     overflow: hidden;
     background-color: var(--dds-color-bg-neutral-weak);
     color: var(--dds-color-fg-neutral);
+    font-weight: var(--dds-font-weight-bold);
+    line-height: 1;
   }
+
+  /* 이니셜은 원 크기를 따라간다 — 상속 14px 고정이면 24px 원에서는 꽉 차고 64px 원에서는 너무 작다 */
+  .dds-avatar--size_small .dds-avatar__fallback { font-size: var(--dds-font-size-t1); }
+  .dds-avatar--size_medium .dds-avatar__fallback { font-size: var(--dds-font-size-t3); }
+  .dds-avatar--size_large .dds-avatar__fallback { font-size: var(--dds-font-size-t5); }
+  .dds-avatar--size_xlarge .dds-avatar__fallback { font-size: var(--dds-font-size-t7); }
 
   /* Badge는 이미지(z-index 1)보다 위에 남아야 한다 — Root의 overflow: visible과 함께 잘리지 않는다. */
   .dds-avatar__badge {

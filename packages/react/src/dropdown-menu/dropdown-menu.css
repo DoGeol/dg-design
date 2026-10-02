@@ -12,7 +12,9 @@
     max-height: calc(100vh - var(--dds-dimension-x4));
     overflow-y: auto;
     padding: var(--dds-dimension-x1);
-    border-radius: var(--dds-radius-r2);
+    border-radius: var(--dds-radius-r3);
+    word-break: keep-all;
+    overflow-wrap: anywhere;
     background-color: var(--dds-color-bg-layer-default);
     box-shadow: var(--dds-shadow-overlay);
     color: var(--dds-color-fg-neutral);

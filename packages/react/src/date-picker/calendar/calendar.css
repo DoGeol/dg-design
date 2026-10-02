@@ -1,7 +1,7 @@
 @layer dds {
   .dds-date-picker-calendar { color: var(--dds-color-fg-neutral); }
   .dds-date-picker-calendar__nav { display: flex; align-items: center; justify-content: space-between; gap: var(--dds-dimension-x1); }
-  .dds-date-picker-calendar__nav button { min-width: 44px; min-height: 44px; border: 0; border-radius: var(--dds-radius-r2); background: transparent; color: inherit; cursor: pointer; }
+  .dds-date-picker-calendar__nav button { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; border: 0; border-radius: var(--dds-radius-r2); background: transparent; color: inherit; cursor: pointer; }
   .dds-date-picker-calendar__nav button:not(:disabled):hover { background: var(--dds-color-bg-transparent-hover); }
   .dds-date-picker-calendar__nav button:focus-visible { outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring); }
   .dds-date-picker-calendar__nav button:disabled { color: var(--dds-color-fg-disabled); cursor: not-allowed; }

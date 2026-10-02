@@ -28,8 +28,9 @@
     border-radius: var(--dds-radius-r2);
   }
 
+  /* 자리를 대신할 Card(r3)와 모서리를 맞춘다 */
   .dds-skeleton--radius_medium {
-    border-radius: var(--dds-radius-r4);
+    border-radius: var(--dds-radius-r3);
   }
 
   .dds-skeleton--radius_full {

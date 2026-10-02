@@ -119,16 +119,16 @@ function CalendarView({ state, aria, locale, visibleMonths = 1 }: {
     <div {...aria.calendarProps} ref={rootRef} data-range={"highlightedRange" in state || undefined} className="dds-date-picker-calendar">
       <div className="dds-date-picker-calendar__nav">
         <button type="button" onClick={() => state.focusPreviousSection(true)} disabled={previousYearDisabled}
-          aria-label={korean ? "이전 연도" : "Previous year"}>«</button>
+          aria-label={korean ? "이전 연도" : "Previous year"}><NavIcon d="M8 4L4 8l4 4M12 4L8 8l4 4" /></button>
         <button type="button" onClick={() => state.focusPreviousPage()}
           disabled={state.isDisabled || Boolean(aria.prevButtonProps.isDisabled)}
-          aria-label={korean ? "이전 달" : "Previous month"}>{"‹"}</button>
+          aria-label={korean ? "이전 달" : "Previous month"}><NavIcon d="M10 4L6 8l4 4" /></button>
         <h2 className="dds-date-picker-calendar__title" role="status">{aria.title}</h2>
         <button type="button" onClick={() => state.focusNextPage()}
           disabled={state.isDisabled || Boolean(aria.nextButtonProps.isDisabled)}
-          aria-label={korean ? "다음 달" : "Next month"}>{"›"}</button>
+          aria-label={korean ? "다음 달" : "Next month"}><NavIcon d="M6 4l4 4-4 4" /></button>
         <button type="button" onClick={() => state.focusNextSection(true)} disabled={nextYearDisabled}
-          aria-label={korean ? "다음 연도" : "Next year"}>»</button>
+          aria-label={korean ? "다음 연도" : "Next year"}><NavIcon d="M4 4l4 4-4 4M8 4l4 4-4 4" /></button>
       </div>
       <div className="dds-date-picker-calendar__months">
         {Array.from({ length: visibleMonths }, (_, index) =>
@@ -171,6 +171,15 @@ function RangeCalendar(props: DateRangePickerCalendarProps) {
   const ref = React.useRef<HTMLDivElement>(null);
   const aria = useRangeCalendar({ "aria-label": props.ariaLabel }, state, ref);
   return <div ref={ref}><CalendarView state={state} aria={aria} locale={locale} visibleMonths={visibleMonths} /></div>;
+}
+
+/** 저장소에 아이콘 모듈이 없다(Pagination 선례) — 이동 버튼 전용 셰브론을 로컬로 둔다. */
+function NavIcon({ d }: { d: string }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d={d} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
 }
 
 export function DatePickerCalendar(props: DatePickerCalendarProps) {

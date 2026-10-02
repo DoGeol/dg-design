@@ -64,6 +64,8 @@ function targetStories(): Entry[] {
   const byTitle = new Map<string, Entry[]>();
   for (const entry of Object.values(entries)) {
     if (entry.type && entry.type !== "story") continue;
+    // 시안 스토리(Mockups/*)는 디자인 검토용이라 시각 회귀 기준을 두지 않는다.
+    if (entry.title.startsWith("Mockups/")) continue;
     const group = byTitle.get(entry.title);
     if (group) group.push(entry);
     else byTitle.set(entry.title, [entry]);
