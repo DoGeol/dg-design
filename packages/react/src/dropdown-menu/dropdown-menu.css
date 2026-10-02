@@ -67,6 +67,33 @@
     cursor: not-allowed;
   }
 
+  /* 소스 순서가 곧 우선순위다 — disabled는 :not으로 빠져 기본 disabled 색을 유지한다. */
+  .dds-dropdown-menu__item--intent_critical:not(:is(:disabled, [disabled], [data-disabled])) {
+    color: var(--dds-color-fg-critical);
+  }
+
+  .dds-dropdown-menu__item--intent_critical:hover:not(:is(:disabled, [disabled], [data-disabled])),
+  .dds-dropdown-menu__item--intent_critical:focus-visible:not(:is(:disabled, [disabled], [data-disabled])) {
+    background-color: var(--dds-color-bg-critical-weak-hover);
+  }
+
+  .dds-dropdown-menu__item--intent_critical:active:not(:is(:disabled, [disabled], [data-disabled])) {
+    background-color: var(--dds-color-bg-critical-weak-pressed);
+  }
+
+  .dds-dropdown-menu__shortcut {
+    margin-inline-start: auto;
+    padding-inline-start: var(--dds-dimension-x4);
+    color: var(--dds-color-fg-neutral-weak);
+    font-size: var(--dds-font-size-t2);
+    line-height: var(--dds-line-height-t2);
+    white-space: nowrap;
+  }
+
+  .dds-dropdown-menu__item:is(:disabled, [disabled], [data-disabled]) .dds-dropdown-menu__shortcut {
+    color: inherit;
+  }
+
   .dds-dropdown-menu__separator {
     height: 1px;
     margin: var(--dds-dimension-x1) calc(-1 * var(--dds-dimension-x1));

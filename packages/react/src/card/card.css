@@ -7,4 +7,29 @@
     border-radius: var(--dds-radius-r3);
     background-color: var(--dds-color-bg-layer-default);
   }
+
+  /* asChild로 링크·버튼이 되면 눌러지는 카드 — 새 prop 없이 요소 종류로 판별한다. */
+  .dds-card:is(a[href], button) {
+    cursor: pointer;
+    color: inherit;
+    text-decoration: none;
+  }
+  .dds-card:is(a[href], button):hover {
+    border-color: var(--dds-color-stroke-neutral);
+  }
+  .dds-card:is(a[href], button):focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+  .dds-card:is(button) {
+    width: 100%;
+    font: inherit;
+    text-align: start;
+  }
+  .dds-card:is(button):disabled {
+    cursor: not-allowed;
+  }
+  .dds-card:is(button):disabled:hover {
+    border-color: var(--dds-color-stroke-neutral-weak);
+  }
 }

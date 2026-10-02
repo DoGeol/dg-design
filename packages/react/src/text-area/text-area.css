@@ -68,6 +68,20 @@
     field-sizing: content;
   }
 
+  /* showCount일 때만 존재. 카운터는 입력 아래 오른쪽에 약하게 둔다(최대 도달해도 색은 그대로). */
+  .dds-text-area__wrapper {
+    display: block;
+    width: 100%;
+  }
+  .dds-text-area__count {
+    display: block;
+    margin-top: var(--dds-dimension-x1);
+    text-align: right;
+    font-size: var(--dds-font-size-t2);
+    line-height: var(--dds-line-height-t2);
+    color: var(--dds-color-fg-neutral-weak);
+  }
+
   /* size: 세로 패딩은 TextField에 없는 축이라 dimension 스케일에서 새로 골랐다 (폭은 그대로 재사용) */
   .dds-text-area--size_medium {
     padding-block: var(--dds-dimension-x2);

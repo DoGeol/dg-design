@@ -41,7 +41,11 @@ export function usePickerState(props: PickerProps, range: boolean) {
     defaultValue: initial.isControlled ? null : initial.value,
     onChange: props.onValueChange as (value: Selection) => void,
   });
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useControllableState<boolean>({
+    value: props.open,
+    defaultValue: props.defaultOpen ?? false,
+    onChange: props.onOpenChange,
+  });
   const [start, setStart] = React.useState<DatePickerValue | null>(null);
   const [end, setEnd] = React.useState<DatePickerValue | null>(null);
   const [startError, setStartError] = React.useState<DatePickerValidationError | null>(null);
@@ -72,15 +76,21 @@ export function usePickerState(props: PickerProps, range: boolean) {
     if (open) restoreDraft(committed);
   }, [selectionId, committed, open, restoreDraft]);
 
-  const handleOpenChange = (next: boolean) => {
+  // 열림은 외부(controlled open)에서도 바뀌므로 초안 복원·포커스 날짜는 핸들러가 아니라 전이에서 처리한다.
+  // 초기값 false 기준이라 처음부터 열린 채 마운트(defaultOpen)도 한 번 걸린다.
+  const lastOpenRef = React.useRef(false);
+  React.useEffect(() => {
+    if (open === lastOpenRef.current) return;
+    lastOpenRef.current = open;
     restoreDraft(committed);
-    if (next) {
+    if (open) {
       const currentDate = isRange(committed) ? committed.start : committed;
       setFocusedDate(currentDate ? toCalendarDate(currentDate)
         : today(props.kind === "zoned-date-time" ? props.timeZone : getLocalTimeZone()));
     }
-    setOpen(next);
-  };
+  }, [open, committed, restoreDraft, props.kind, props.timeZone]);
+
+  const handleOpenChange = setOpen;
 
   const constraints: DatePickerConstraints = {
     minValue: props.minValue, maxValue: props.maxValue,

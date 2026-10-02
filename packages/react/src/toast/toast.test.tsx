@@ -70,6 +70,22 @@ describe("Toast 기본", () => {
     expect(screen.getByText("알림 4")).toBeTruthy();
   });
 
+  it("max로 최대 개수를 바꾼다", async () => {
+    const user = userEvent.setup();
+    render(
+      <Toast.Provider max={1}>
+        <Spammer />
+      </Toast.Provider>,
+    );
+
+    const trigger = screen.getByRole("button", { name: "띄우기" });
+    await user.click(trigger);
+    await user.click(trigger);
+
+    expect(screen.queryByText("알림 1")).toBeNull();
+    expect(screen.getByText("알림 2")).toBeTruthy();
+  });
+
   it("Provider 밖에서 useToast를 부르면 에러", () => {
     // React가 렌더 예외를 콘솔에도 뱉는다 — 테스트 출력만 조용히 시킨다.
     const spy = vi.spyOn(console, "error").mockImplementation(() => {});
@@ -152,5 +168,40 @@ describe("Toast 자동 닫힘", () => {
 
     act(() => void vi.advanceTimersByTime(20000));
     expect(screen.getByText("저장했다")).toBeTruthy();
+  });
+});
+
+describe("Toast.View", () => {
+  it("Provider 없이 그려지고 intent별 role을 단다", () => {
+    render(
+      <>
+        <Toast.View title="저장했다" description="변경분" />
+        <Toast.View intent="critical" title="실패" />
+      </>,
+    );
+
+    expect(screen.getByRole("status").textContent).toContain("저장했다");
+    expect(screen.getByRole("alert").textContent).toContain("실패");
+    expect(screen.getByRole("status").classList.contains("dds-toast--intent_neutral")).toBe(true);
+  });
+
+  it("onClose가 있을 때만 닫기 버튼을 그리고 클릭하면 호출한다", async () => {
+    const user = userEvent.setup();
+    const onClose = vi.fn();
+    const { rerender } = render(<Toast.View title="a" />);
+    expect(screen.queryByRole("button")).toBeNull();
+
+    rerender(<Toast.View title="a" onClose={onClose} closeLabel="close" />);
+    await user.click(screen.getByRole("button", { name: "close" }));
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  it("live={false}면 role이 없고 action 슬롯을 그린다", () => {
+    render(<Toast.View live={false} title="a" action={<a href="/undo">되돌리기</a>} />);
+
+    expect(screen.queryByRole("status")).toBeNull();
+    expect(screen.getByRole("link", { name: "되돌리기" }).parentElement?.className).toBe(
+      "dds-toast__action",
+    );
   });
 });

@@ -8,6 +8,7 @@ const meta = {
   component: Switch,
   argTypes: {
     size: { control: "radio", options: SIZES },
+    labelPlacement: { control: "radio", options: ["end", "start"] },
     disabled: { control: "boolean" },
   },
   args: {
@@ -66,6 +67,16 @@ function StateMatrix() {
           </table>
         </section>
       ))}
+      <section>
+        <h2 style={{ font: "600 14px sans-serif", marginBottom: 12 }}>labelPlacement</h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: 12, width: 240 }}>
+          {(["end", "start"] as const).map((labelPlacement) => (
+            <Switch key={labelPlacement} labelPlacement={labelPlacement} defaultChecked>
+              {labelPlacement}
+            </Switch>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

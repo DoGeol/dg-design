@@ -34,7 +34,7 @@ export const FunctionalDemo: StoryObj<typeof meta> = {
 };
 
 /**
- * VR 기준. 기본 구분자("/") 짧은 경로와, 커스텀 구분자·asChild(a → button, 라우터
+ * VR 기준. 기본 구분자(셰브론) 짧은 경로와, 커스텀 구분자·asChild(a → button, 라우터
  * onClick 연동 대비) 긴 경로를 함께 담아 Separator 위임·asChild 두 축을 커버한다.
  */
 export const StateMatrix: StoryObj<typeof meta> = {

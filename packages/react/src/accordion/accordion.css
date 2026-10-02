@@ -95,7 +95,14 @@
     align-items: center;
   }
 
+  /* 펼친 본문이 제목 시작선에 맞도록 prefix 폭을 변수로 고정한다. 아이콘이 이보다 넓으면
+     항목(또는 Root)에서 --dds-accordion-prefix-size를 덮어쓴다. */
+  .dds-accordion__item {
+    --dds-accordion-prefix-size: var(--dds-dimension-x6);
+  }
+
   .dds-accordion__prefix {
+    min-width: var(--dds-accordion-prefix-size);
     margin-right: var(--dds-dimension-x3);
     color: var(--dds-color-fg-neutral);
   }
@@ -153,6 +160,10 @@
 
   .dds-accordion__content > .dds-accordion__body {
     padding: 0 var(--dds-dimension-x4) var(--dds-dimension-x4);
+  }
+
+  .dds-accordion__item:has(.dds-accordion__prefix) .dds-accordion__content > .dds-accordion__body {
+    padding-left: calc(var(--dds-dimension-x4) + var(--dds-accordion-prefix-size) + var(--dds-dimension-x3));
   }
 
   .dds-accordion--size_large .dds-accordion__content > .dds-accordion__body {

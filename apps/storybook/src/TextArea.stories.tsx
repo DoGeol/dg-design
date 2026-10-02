@@ -71,6 +71,13 @@ function StateMatrix() {
           </table>
         </section>
       ))}
+      <section style={{ maxWidth: 320 }}>
+        <h2 style={{ font: "600 14px sans-serif", marginBottom: 12 }}>showCount</h2>
+        <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <TextArea aria-label="maxLength 있음" showCount maxLength={100} defaultValue="안녕하세요" />
+          <TextArea aria-label="maxLength 없음" showCount defaultValue="안녕하세요" />
+        </div>
+      </section>
     </div>
   );
 }

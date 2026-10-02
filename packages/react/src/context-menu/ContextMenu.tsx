@@ -60,8 +60,27 @@ export function ContextMenuRoot({ open, defaultOpen = false, onOpenChange, child
     };
   }, [present]);
 
+  // 퇴장이 끝나면 마지막 커서 좌표를 버린다 — 남기면 다음에 좌표 없이 열릴 때(controlled open) 옛 위치로 뜬다.
+  React.useEffect(() => {
+    if (!present) setVirtualRef(null);
+  }, [present]);
+
+  // 좌표 없이 열리면(defaultOpen·controlled open) 트리거의 왼쪽 위를 기준으로 삼는다. 중앙이 아닌 이유:
+  // 큰 트리거는 중앙이 화면 밖일 수 있고, 키보드로 여는 네이티브 컨텍스트 메뉴도 요소 모서리에서 뜬다.
+  const anchor = React.useMemo<VirtualElement | null>(() => {
+    if (virtualRef) return virtualRef;
+    if (!triggerNode) return null;
+    return {
+      contextElement: triggerNode,
+      getBoundingClientRect: () => {
+        const { left, top } = triggerNode.getBoundingClientRect();
+        return { x: left, y: top, width: 0, height: 0, top, left, right: left, bottom: top } as DOMRect;
+      },
+    };
+  }, [virtualRef, triggerNode]);
+
   // 커서 좌표 기준 배치. bottom-start 계열 고정(스펙) — flip·shift는 훅 내부 미들웨어가 처리.
-  useOverlayPosition(virtualRef, contentNode, isOpen, "bottom-start");
+  useOverlayPosition(anchor, contentNode, isOpen, "bottom-start");
 
   const openAt = React.useCallback(
     (virtualElement: VirtualElement) => {
@@ -211,10 +230,12 @@ ContextMenuContent.displayName = "ContextMenu.Content";
 export interface ContextMenuItemProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** 선택됐을 때 호출된다. 호출 뒤 메뉴는 항상 닫힌다. */
   onSelect?: () => void;
+  /** critical은 삭제 같은 파괴적 동작 — 글자·하이라이트가 critical 색을 쓴다. */
+  intent?: "neutral" | "critical";
 }
 
 export const ContextMenuItem = React.forwardRef<HTMLButtonElement, ContextMenuItemProps>(
-  ({ className, onSelect, onClick, ...props }, ref) => {
+  ({ className, intent = "neutral", onSelect, onClick, ...props }, ref) => {
     const context = useContextMenuContext("ContextMenu.Item");
     return (
       <button
@@ -222,7 +243,11 @@ export const ContextMenuItem = React.forwardRef<HTMLButtonElement, ContextMenuIt
         type="button"
         role={ITEM_ROLE}
 
-        className={clsx("dds-dropdown-menu__item", className)}
+        className={clsx(
+          "dds-dropdown-menu__item",
+          intent === "critical" && "dds-dropdown-menu__item--intent_critical",
+          className,
+        )}
         onClick={(event) => {
           onClick?.(event);
           if (event.defaultPrevented) return;
@@ -259,8 +284,17 @@ export const ContextMenuLabel = React.forwardRef<HTMLDivElement, ContextMenuLabe
 );
 ContextMenuLabel.displayName = "ContextMenu.Label";
 
+export interface ContextMenuShortcutProps extends React.HTMLAttributes<HTMLSpanElement> {}
+
+export const ContextMenuShortcut = React.forwardRef<HTMLSpanElement, ContextMenuShortcutProps>(
+  ({ className, ...props }, ref) => (
+    <span ref={ref} className={clsx("dds-dropdown-menu__shortcut", className)} {...props} />
+  ),
+);
+ContextMenuShortcut.displayName = "ContextMenu.Shortcut";
+
 /**
- * compound: ContextMenu.Root/Trigger(asChild)/Content/Item/Separator/Label — DropdownMenu 대칭.
+ * compound: ContextMenu.Root/Trigger(asChild)/Content/Item/Separator/Label/Shortcut — DropdownMenu 대칭.
  * 여는 경로만 마우스 우클릭 전용이고, 연 뒤 키보드(roving 화살표·Enter·ESC)는 DropdownMenu와
  * 동일한 `internal/roving-focus`·`internal/dialog-stack`을 그대로 쓴다. 패널·항목 CSS도
  * dropdown-menu.css를 그대로 재사용해 신규 토큰이 없다.
@@ -272,4 +306,5 @@ export const ContextMenu = {
   Item: ContextMenuItem,
   Separator: ContextMenuSeparator,
   Label: ContextMenuLabel,
+  Shortcut: ContextMenuShortcut,
 };

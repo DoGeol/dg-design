@@ -33,9 +33,9 @@
     animation: dds-dialog-content-in var(--dds-duration-base) var(--dds-easing-out);
   }
 
+  /* initialFocusRef가 없으면 패널로 프로그램 포커스가 가는데, 패널은 조작 대상이 아니라 링이 오해만 부른다. */
   .dds-dialog__content:focus-visible {
-    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
-    outline-offset: var(--dds-dimension-x0_5);
+    outline: none;
   }
 
   /* forwards가 없으면 animationend와 React unmount 사이 1~2프레임 동안

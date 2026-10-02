@@ -55,6 +55,93 @@
     border-color: var(--dds-color-stroke-neutral-weak);
   }
 
+  /* prefix/suffix: 테두리·배경·상태 외관을 wrapper가 갖고 안쪽 input은 비운다.
+     size 클래스(높이·패딩·반경·타이포)는 input 때와 같은 것을 wrapper에 공유한다.
+     :read-only는 div에도 매치돼 상태는 :has(> input …)로만 판단한다. */
+  .dds-text-field__wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--dds-dimension-x2);
+    width: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    color: var(--dds-color-fg-neutral);
+    background-color: var(--dds-color-bg-layer-default);
+    border: 1px solid var(--dds-color-stroke-neutral);
+    transition: border-color var(--dds-duration-fast) var(--dds-easing-out);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dds-text-field__wrapper {
+      transition: none;
+    }
+  }
+
+  .dds-text-field__input {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+  }
+  .dds-text-field__input::placeholder {
+    color: var(--dds-color-fg-disabled);
+  }
+
+  .dds-text-field__affix {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    color: var(--dds-color-fg-neutral-weak);
+  }
+  .dds-text-field__affix svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .dds-text-field__wrapper:hover:not(
+      :has(> .dds-text-field__input:is(:disabled, [disabled], [data-disabled], :read-only))
+    ) {
+    border-color: var(--dds-color-fg-neutral);
+  }
+
+  .dds-text-field__wrapper:has(> .dds-text-field__input:focus-visible) {
+    border-color: var(--dds-color-stroke-focus-ring);
+    box-shadow: inset 0 0 0 1px var(--dds-color-stroke-focus-ring);
+  }
+
+  .dds-text-field__wrapper:has(> .dds-text-field__input[aria-invalid="true"]) {
+    border-color: var(--dds-color-stroke-critical);
+  }
+  .dds-text-field__wrapper:has(> .dds-text-field__input[aria-invalid="true"]:focus-visible) {
+    box-shadow: inset 0 0 0 1px var(--dds-color-stroke-critical);
+  }
+
+  .dds-text-field__wrapper:has(> .dds-text-field__input:is(:disabled, [disabled], [data-disabled])) {
+    cursor: not-allowed;
+    border-color: var(--dds-color-stroke-neutral-weak);
+    background-color: var(--dds-color-bg-disabled);
+    color: var(--dds-color-fg-disabled);
+  }
+  .dds-text-field__wrapper:has(> .dds-text-field__input:is(:disabled, [disabled], [data-disabled]))
+    .dds-text-field__affix {
+    color: var(--dds-color-fg-disabled);
+  }
+  .dds-text-field__input:is(:disabled, [disabled], [data-disabled]) {
+    cursor: not-allowed;
+  }
+
+  .dds-text-field__wrapper:has(
+      > .dds-text-field__input:read-only:not(:is(:disabled, [disabled], [data-disabled]))
+    ) {
+    background-color: var(--dds-color-bg-neutral-weak);
+    border-color: var(--dds-color-stroke-neutral-weak);
+  }
+
   /* size: 치수는 Button의 medium/large 높이·라운드·타이포와 통일 (폼 컨트롤 축) */
   .dds-text-field--size_medium {
     height: var(--dds-dimension-x10);

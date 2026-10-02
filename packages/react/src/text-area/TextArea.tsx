@@ -25,6 +25,8 @@ export interface TextAreaProps
     VariantProps<typeof textArea> {
   /** true면 입력량에 따라 높이가 늘어난다. 기본 false — 네이티브 rows + resize: vertical. */
   autoResize?: boolean;
+  /** true면 textarea 아래에 글자 수를 보인다. maxLength가 있으면 "현재/최대". 켜면 wrapper div가 생긴다. */
+  showCount?: boolean;
 }
 
 export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
@@ -33,9 +35,11 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       className,
       size,
       autoResize = false,
+      showCount = false,
       rows = 3,
       id,
       onInput,
+      onChange,
       "aria-describedby": ariaDescribedBy,
       "aria-invalid": ariaInvalid,
       ...props
@@ -49,12 +53,19 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     const innerRef = React.useRef<HTMLTextAreaElement>(null);
     const { handleInput } = useAutoResize(innerRef, autoResize);
 
+    const countId = React.useId();
+    // controlled면 value가 기준, uncontrolled면 onChange로 따라간다.
+    const [typedLength, setTypedLength] = React.useState(String(props.defaultValue ?? "").length);
+    const count = props.value !== undefined ? String(props.value).length : typedLength;
+
     const resolvedId = id ?? fieldCtx?.inputId ?? generatedId;
     const resolvedDescribedBy =
-      [fieldCtx?.describedBy, ariaDescribedBy].filter(Boolean).join(" ") || undefined;
+      [fieldCtx?.describedBy, ariaDescribedBy, showCount ? countId : undefined]
+        .filter(Boolean)
+        .join(" ") || undefined;
     const resolvedInvalid = ariaInvalid ?? fieldCtx?.invalid ?? false;
 
-    return (
+    const textarea = (
       <textarea
         ref={mergeRefs(ref, innerRef)}
         id={resolvedId}
@@ -71,7 +82,23 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           onInput?.(event);
         }}
         {...props}
+        onChange={(event) => {
+          setTypedLength(event.target.value.length);
+          onChange?.(event);
+        }}
       />
+    );
+
+    if (!showCount) return textarea;
+
+    // 카운터는 aria-live 없이 describedby로만 연결한다 — 매 타이핑마다 읽히지 않게.
+    return (
+      <div className="dds-text-area__wrapper">
+        {textarea}
+        <span id={countId} className="dds-text-area__count">
+          {props.maxLength != null ? `${count}/${props.maxLength}` : count}
+        </span>
+      </div>
     );
   },
 );

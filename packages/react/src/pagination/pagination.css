@@ -29,6 +29,11 @@
     color: var(--dds-color-fg-neutral-weak);
   }
 
+  /* inline svg의 baseline 여백이 점을 아래로 밀지 않게 한다 */
+  .dds-pagination__ellipsis svg {
+    display: block;
+  }
+
   /* 저장소에 공용 sr-only 유틸이 없어(스펙 확인) 여기서 로컬로 정의한다. */
   .dds-pagination__sr-only {
     position: absolute;

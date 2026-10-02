@@ -264,3 +264,23 @@ describe("DropdownMenu aria-controls", () => {
     expect(trigger.getAttribute("aria-controls")).toBe(screen.getByRole("menu").id);
   });
 });
+
+describe("DropdownMenu Item intent·Shortcut", () => {
+  it("critical만 modifier 클래스를 얻고 Shortcut은 텍스트로 읽힌다", () => {
+    render(
+      <DropdownMenu.Root defaultOpen>
+        <DropdownMenu.Trigger>메뉴</DropdownMenu.Trigger>
+        <DropdownMenu.Content>
+          <DropdownMenu.Item>복사</DropdownMenu.Item>
+          <DropdownMenu.Item intent="critical">삭제<DropdownMenu.Shortcut>⌘⌫</DropdownMenu.Shortcut></DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>,
+    );
+    const [copy, del] = items();
+    expect(copy!.className).not.toContain("intent_critical");
+    expect(del!.className).toContain("dds-dropdown-menu__item--intent_critical");
+    expect(del!.hasAttribute("intent")).toBe(false);
+    expect(screen.getByRole("menuitem", { name: /⌘⌫/ })).toBeTruthy();
+    expect(screen.getByText("⌘⌫").className).toBe("dds-dropdown-menu__shortcut");
+  });
+});

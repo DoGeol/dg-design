@@ -46,6 +46,7 @@ export {
   ContextMenuItem,
   ContextMenuSeparator,
   ContextMenuLabel,
+  ContextMenuShortcut,
 } from "./context-menu/ContextMenu";
 export {
   DataTable,
@@ -88,6 +89,7 @@ export {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuLabel,
+  DropdownMenuShortcut,
 } from "./dropdown-menu/DropdownMenu";
 export {
   FileInput,
@@ -215,8 +217,11 @@ export { TextField, type TextFieldProps } from "./text-field/TextField";
 export {
   Toast,
   ToastProvider,
+  ToastView,
   useToast,
+  type ToastIntent,
   type ToastOptions,
+  type ToastViewProps,
 } from "./toast/Toast";
 export {
   Tooltip,

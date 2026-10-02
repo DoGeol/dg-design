@@ -52,19 +52,20 @@ function StateMatrix() {
               </tr>
             </thead>
             <tbody>
-              {[false, true].map((disabled) => (
-                <tr key={String(disabled)}>
+              {(["enabled", "disabled", "invalid"] as const).map((row) => (
+                <tr key={row}>
                   <th style={{ font: "500 12px sans-serif", padding: 8, textAlign: "right" }}>
-                    {disabled ? "disabled" : "enabled"}
+                    {row}
                   </th>
                   {STATES.map((state) => (
                     <td key={state} style={{ padding: 8 }}>
                       <Checkbox
                         size={size}
-                        disabled={disabled}
+                        disabled={row === "disabled"}
+                        aria-invalid={row === "invalid"}
                         defaultChecked={state === "checked"}
                         indeterminate={state === "indeterminate"}
-                        aria-label={`${size} ${state} ${disabled ? "disabled" : "enabled"}`}
+                        aria-label={`${size} ${state} ${row}`}
                       />
                     </td>
                   ))}
@@ -78,7 +79,7 @@ function StateMatrix() {
   );
 }
 
-/** state(3) x size(2) x disabled(2) = 12조합 전체 그리드 */
+/** state(3) x size(2) x enabled/disabled/invalid(3) = 18조합 전체 그리드 */
 export const StateMatrixStory: StoryObj<typeof meta> = {
   name: "State matrix",
   render: () => <StateMatrix />,

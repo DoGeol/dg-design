@@ -23,6 +23,22 @@ function Item({ value, title, description, disabled, children }: ItemProps) {
   );
 }
 
+function PlainItem({ value, title }: { value: string; title: string }) {
+  return (
+    <Accordion.Item value={value}>
+      <Accordion.Header>
+        <Accordion.Trigger>
+          <Accordion.Body>
+            <Accordion.Title>{title}</Accordion.Title>
+          </Accordion.Body>
+          <Accordion.SuffixIcon aria-hidden>⌄</Accordion.SuffixIcon>
+        </Accordion.Trigger>
+      </Accordion.Header>
+      <Accordion.Content><Accordion.Body>Prefix 없는 항목의 본문</Accordion.Body></Accordion.Content>
+    </Accordion.Item>
+  );
+}
+
 function DemoAccordion({ variant = "inline", size = "medium", defaultValues = [] }: {
   variant?: "inline" | "separated";
   size?: "medium" | "large";
@@ -94,6 +110,12 @@ export const StateMatrix: StoryObj<typeof meta> = {
           </div>
         )),
       )}
+      <div style={{ display: "grid", gap: 8 }}>
+        <span style={{ font: "500 12px sans-serif" }}>prefix 없음 (본문 들여쓰기 없음)</span>
+        <Accordion.Root defaultValues={["plain"]}>
+          <PlainItem value="plain" title="Prefix 없는 항목" />
+        </Accordion.Root>
+      </div>
     </div>
   ),
 };

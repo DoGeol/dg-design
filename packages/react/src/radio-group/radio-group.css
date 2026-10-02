@@ -84,6 +84,13 @@
     background-color: var(--dds-color-bg-brand-solid);
   }
 
+  /* 오류: aria-invalid는 그룹에 걸리므로 그룹 기준으로 선택 안 된 원의 테두리만 바꾼다. */
+  .dds-radio-group[aria-invalid="true"]
+    .dds-radio__input:not(:checked):not(:is(:disabled, [disabled], [data-disabled]))
+    ~ .dds-radio__box {
+    border-color: var(--dds-color-stroke-critical);
+  }
+
   .dds-radio__input:not(:checked):not(:is(:disabled, [disabled], [data-disabled])):hover
     ~ .dds-radio__box {
     background-color: var(--dds-color-bg-transparent-hover);

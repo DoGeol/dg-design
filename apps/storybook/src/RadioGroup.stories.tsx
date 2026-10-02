@@ -143,6 +143,15 @@ function StateMatrix() {
       ))}
 
       <section>
+        <h2 style={{ font: "600 14px sans-serif", marginBottom: 12 }}>invalid</h2>
+        <RadioGroup.Root aria-label="invalid" aria-invalid defaultValue="b">
+          <RadioGroup.Item value="a">A</RadioGroup.Item>
+          <RadioGroup.Item value="b">B</RadioGroup.Item>
+          <RadioGroup.Item value="c">C</RadioGroup.Item>
+        </RadioGroup.Root>
+      </section>
+
+      <section>
         <h2 style={{ font: "600 14px sans-serif", marginBottom: 12 }}>
           variant: segmented (small, medium, large, disabled)
         </h2>

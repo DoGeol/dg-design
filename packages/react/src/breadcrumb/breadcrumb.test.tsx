@@ -83,7 +83,7 @@ describe("Breadcrumb.Page", () => {
 });
 
 describe("Breadcrumb.Separator", () => {
-  it("aria-hidden이고 기본 기호는 '/'다", () => {
+  it("aria-hidden이고 기본 기호는 셰브론 SVG다", () => {
     render(
       <Breadcrumb.Root>
         <Breadcrumb.List>
@@ -93,7 +93,8 @@ describe("Breadcrumb.Separator", () => {
     );
     const sep = screen.getByTestId("sep");
     expect(sep.getAttribute("aria-hidden")).toBe("true");
-    expect(sep.textContent).toBe("/");
+    expect(sep.textContent).toBe("");
+    expect(sep.querySelector("svg")?.getAttribute("aria-hidden")).toBe("true");
   });
 
   it("children을 주면 기본 기호 대신 그것을 렌더한다", () => {

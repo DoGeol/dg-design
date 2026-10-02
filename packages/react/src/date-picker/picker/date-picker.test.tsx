@@ -148,4 +148,33 @@ describe("DatePicker", () => {
     expect((screen.getByRole("textbox", { name: "Controlled" }) as HTMLInputElement).value).toContain("10/02/2026");
     expect(onValueChange).not.toHaveBeenCalled();
   });
+
+  it("opens from defaultOpen with the committed draft restored and reports changes", async () => {
+    const user = userEvent.setup();
+    const onOpenChange = vi.fn();
+    render(<DatePicker kind="date" label="Open" defaultOpen defaultValue={new CalendarDate(2026, 9, 27)} onOpenChange={onOpenChange} />);
+    expect((screen.getByRole("textbox", { name: "Open" }) as HTMLInputElement).value).toContain("09/27/2026");
+    await user.click(document.querySelector('[data-date="2026-09-20"]')!);
+    expect(onOpenChange).toHaveBeenCalledWith(false);
+    expect(screen.queryByRole("dialog")).toBeNull();
+  });
+
+  it("follows a controlled open prop and restores the draft on each reopen", async () => {
+    const user = userEvent.setup();
+    const onOpenChange = vi.fn();
+    const value = new CalendarDate(2026, 9, 27);
+    const ui = (open: boolean) => <DatePicker kind="date" label="Ctl" value={value} open={open} onOpenChange={onOpenChange} />;
+    const { rerender } = render(ui(false));
+    expect(screen.queryByRole("dialog")).toBeNull();
+    await user.click(screen.getByRole("button", { name: /Ctl/ }));
+    expect(onOpenChange).toHaveBeenCalledWith(true);
+    expect(screen.queryByRole("dialog")).toBeNull();
+    rerender(ui(true));
+    const input = screen.getByRole("textbox", { name: "Ctl" }) as HTMLInputElement;
+    expect(input.value).toContain("09/27/2026");
+    await user.clear(input);
+    rerender(ui(false));
+    rerender(ui(true));
+    expect((screen.getByRole("textbox", { name: "Ctl" }) as HTMLInputElement).value).toContain("09/27/2026");
+  });
 });

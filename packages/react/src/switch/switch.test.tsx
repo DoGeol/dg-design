@@ -70,3 +70,20 @@ describe("Switch Field 연동", () => {
     expect(input.getAttribute("aria-invalid")).toBe("false");
   });
 });
+
+describe("Switch labelPlacement", () => {
+  it("기본은 end, start면 클래스만 붙고 DOM 순서와 접근성 이름은 그대로다", () => {
+    const { container, rerender } = render(<Switch>알림</Switch>);
+    const label = container.firstElementChild as HTMLElement;
+    expect(label.classList.contains("dds-switch--label_start")).toBe(false);
+
+    rerender(<Switch labelPlacement="start">알림</Switch>);
+    expect(label.classList.contains("dds-switch--label_start")).toBe(true);
+    expect(Array.from(label.children).map((c) => c.className.split(" ")[0])).toEqual([
+      "dds-switch__input",
+      "dds-switch__track",
+      "dds-switch__label",
+    ]);
+    expect(screen.getByRole("switch", { name: "알림" })).toBeTruthy();
+  });
+});

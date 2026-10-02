@@ -57,6 +57,11 @@ export interface DatePickerCommonProps {
   readOnly?: boolean;
   required?: boolean;
   className?: string;
+  /** controlled 열림. 넘기면 `onOpenChange`로만 바뀐다. */
+  open?: boolean;
+  /** uncontrolled 열림의 초기값. */
+  defaultOpen?: boolean;
+  onOpenChange?: (open: boolean) => void;
   errorMessages?: Partial<Record<DatePickerErrorCode, string>>;
 }
 type KindProps<K extends DatePickerKind, T> = DatePickerCommonProps &

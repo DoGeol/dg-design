@@ -1,11 +1,12 @@
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import * as React from "react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { Pagination } from "./Pagination";
 
 describe("Pagination.Link", () => {
-  it("isActive면 aria-current=page와 활성(weak) 클래스를 갖는다", () => {
+  it("isActive면 aria-current=page와 활성(solid) 클래스를 갖는다", () => {
     render(
       <Pagination.Link href="?page=2" isActive>
         2
@@ -13,7 +14,7 @@ describe("Pagination.Link", () => {
     );
     const link = screen.getByRole("link", { name: "2" });
     expect(link.getAttribute("aria-current")).toBe("page");
-    expect(link.classList.contains("dds-button--variant_weak")).toBe(true);
+    expect(link.classList.contains("dds-button--variant_solid")).toBe(true);
     expect(link.classList.contains("dds-button--variant_ghost")).toBe(false);
   });
 
@@ -79,11 +80,42 @@ describe("Pagination.Previous / Pagination.Next", () => {
   });
 });
 
+describe("Pagination.Previous / Next disabled", () => {
+  it.each([
+    ["Previous", Pagination.Previous, "이전 페이지"],
+    ["Next", Pagination.Next, "다음 페이지"],
+  ] as const)("%s: disabled면 href가 없고 aria-disabled·data-disabled·tabIndex -1이다", (_n, Comp, name) => {
+    render(<Comp href="?page=1" disabled />);
+    const el = screen.getByLabelText(name);
+    expect(el.hasAttribute("href")).toBe(false);
+    expect(el.getAttribute("aria-disabled")).toBe("true");
+    expect(el.hasAttribute("data-disabled")).toBe(true);
+    expect(el.getAttribute("tabindex")).toBe("-1");
+  });
+
+  it("disabled면 클릭해도 onClick이 호출되지 않는다", async () => {
+    const onClick = vi.fn();
+    render(<Pagination.Next href="?page=3" disabled onClick={onClick} />);
+    await userEvent.click(screen.getByLabelText("다음 페이지"));
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it("disabled가 아니면 href와 onClick이 그대로 동작한다", async () => {
+    const onClick = vi.fn((e: React.MouseEvent) => e.preventDefault());
+    render(<Pagination.Next href="?page=3" onClick={onClick} />);
+    const el = screen.getByRole("link", { name: "다음 페이지" });
+    expect(el.getAttribute("href")).toBe("?page=3");
+    expect(el.hasAttribute("aria-disabled")).toBe(false);
+    await userEvent.click(el);
+    expect(onClick).toHaveBeenCalledTimes(1);
+  });
+});
+
 describe("Pagination.Ellipsis", () => {
   it("시각 기호는 aria-hidden이고 sr 전용 텍스트로 '더 많은 페이지'를 제공한다", () => {
-    render(<Pagination.Ellipsis />);
-    const symbol = screen.getByText("…");
-    expect(symbol.getAttribute("aria-hidden")).toBe("true");
+    const { container } = render(<Pagination.Ellipsis />);
+    const symbol = container.querySelector("svg")?.parentElement;
+    expect(symbol?.getAttribute("aria-hidden")).toBe("true");
     expect(screen.getByText("더 많은 페이지").classList.contains("dds-pagination__sr-only")).toBe(
       true,
     );

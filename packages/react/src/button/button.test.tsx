@@ -134,6 +134,30 @@ describe("Button loading", () => {
   });
 });
 
+describe("Button iconOnly", () => {
+  it("iconOnly면 정사각 클래스가 붙는다", () => {
+    render(<Button iconOnly aria-label="설정">+</Button>);
+    expect(button().classList.contains("dds-button--icon-only")).toBe(true);
+  });
+
+  it("기본은 icon-only 클래스가 없다", () => {
+    render(<Button>확인</Button>);
+    expect(button().classList.contains("dds-button--icon-only")).toBe(false);
+  });
+
+  it("aria-label이 없으면 경고하고, 있으면 조용하다", () => {
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const { unmount } = render(<Button iconOnly>+</Button>);
+    expect(warn).toHaveBeenCalledTimes(1);
+    unmount();
+    warn.mockClear();
+
+    render(<Button iconOnly aria-label="설정">+</Button>);
+    expect(warn).not.toHaveBeenCalled();
+    warn.mockRestore();
+  });
+});
+
 /** 프레임·좌표는 jsdom이 판정할 수 없어 브라우저 기능 테스트가 맡는다 — 구조와 배선만 본다. */
 describe("Button 로딩 전환", () => {
   const content = () => button().querySelector<HTMLElement>('[data-layer="content"]')!;

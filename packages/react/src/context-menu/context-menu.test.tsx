@@ -192,3 +192,44 @@ describe("ContextMenu 비모달", () => {
     document.body.style.overflow = "";
   });
 });
+
+describe("ContextMenu 좌표 없이 열림", () => {
+  it("defaultOpen이면 트리거의 왼쪽 위를 기준으로 뜬다", async () => {
+    const original = HTMLElement.prototype.getBoundingClientRect;
+    HTMLElement.prototype.getBoundingClientRect = function () {
+      const isTrigger = (this as HTMLElement).dataset.testid === "trigger";
+      const rect = isTrigger ? { left: 200, top: 100, width: 300, height: 200 } : { left: 0, top: 0, width: 0, height: 0 };
+      return {
+        ...rect, x: rect.left, y: rect.top,
+        right: rect.left + rect.width, bottom: rect.top + rect.height, toJSON() {},
+      } as DOMRect;
+    };
+    try {
+      render(<Basic defaultOpen />);
+      const content = screen.getByRole("menu");
+      await waitFor(() => expect(parseFloat(content.style.left)).toBeCloseTo(200, 0));
+      expect(parseFloat(content.style.top)).toBeGreaterThanOrEqual(100);
+    } finally {
+      HTMLElement.prototype.getBoundingClientRect = original;
+    }
+  });
+});
+
+describe("ContextMenu Item intent·Shortcut", () => {
+  it("critical만 modifier 클래스를 얻는다", () => {
+    render(
+      <ContextMenu.Root defaultOpen>
+        <ContextMenu.Trigger>t</ContextMenu.Trigger>
+        <ContextMenu.Content>
+          <ContextMenu.Item>복사</ContextMenu.Item>
+          <ContextMenu.Item intent="critical">삭제<ContextMenu.Shortcut>⌘⌫</ContextMenu.Shortcut></ContextMenu.Item>
+        </ContextMenu.Content>
+      </ContextMenu.Root>,
+    );
+    const [copy, del] = items();
+    expect(copy!.className).not.toContain("intent_critical");
+    expect(del!.className).toContain("dds-dropdown-menu__item--intent_critical");
+    expect(del!.hasAttribute("intent")).toBe(false);
+    expect(screen.getByText("⌘⌫").className).toBe("dds-dropdown-menu__shortcut");
+  });
+});

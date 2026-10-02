@@ -119,6 +119,26 @@ function MatrixCell({
 }
 
 /**
+ * StateMatrix 전용 — DemoOptions 래퍼 컴포넌트는 collectOptions가 안쪽을 읽지 못해(select-core 주석)
+ * 닫힌 트리거에 라벨 대신 값이 나온다. 엘리먼트를 직접 두어 닫힌 상태에서도 라벨이 보이게 한다.
+ */
+const matrixOptions = (
+  <>
+    <MultiSelect.Group>
+      <MultiSelect.Label>과일</MultiSelect.Label>
+      <MultiSelect.Option value="apple">Apple</MultiSelect.Option>
+      <MultiSelect.Option value="banana">Banana</MultiSelect.Option>
+      <MultiSelect.Option value="cherry">Cherry</MultiSelect.Option>
+      <MultiSelect.Option value="durian" disabled>
+        Durian (품절)
+      </MultiSelect.Option>
+    </MultiSelect.Group>
+    <MultiSelect.Option value="melon">Melon</MultiSelect.Option>
+    <MultiSelect.Option value="peach">Peach</MultiSelect.Option>
+  </>
+);
+
+/**
  * 트리거 요약 문구 3분기(0개→placeholder·1개→라벨·2개+→"n개 선택됨") + disabled·invalid를
  * 닫힌 트리거 5개로 한 장에 늘어놓는다. Content는 닫혀 있어도(마운트되지 않아도) collectOptions가
  * Root children 엘리먼트 트리를 읽어 라벨을 채우므로 요약 문구는 그대로 나온다.
@@ -130,7 +150,7 @@ function StateMatrixGrid() {
         <MultiSelect.Root>
           <MultiSelect.Trigger placeholder="과일을 고르세요" />
           <MultiSelect.Content>
-            <DemoOptions />
+            {matrixOptions}
           </MultiSelect.Content>
         </MultiSelect.Root>
       </MatrixCell>
@@ -138,7 +158,7 @@ function StateMatrixGrid() {
         <MultiSelect.Root defaultValue={["apple"]}>
           <MultiSelect.Trigger placeholder="과일을 고르세요" />
           <MultiSelect.Content>
-            <DemoOptions />
+            {matrixOptions}
           </MultiSelect.Content>
         </MultiSelect.Root>
       </MatrixCell>
@@ -146,7 +166,7 @@ function StateMatrixGrid() {
         <MultiSelect.Root defaultValue={["apple", "banana", "cherry"]}>
           <MultiSelect.Trigger placeholder="과일을 고르세요" />
           <MultiSelect.Content>
-            <DemoOptions />
+            {matrixOptions}
           </MultiSelect.Content>
         </MultiSelect.Root>
       </MatrixCell>
@@ -154,7 +174,7 @@ function StateMatrixGrid() {
         <MultiSelect.Root defaultValue={["apple"]}>
           <MultiSelect.Trigger placeholder="과일을 고르세요" disabled />
           <MultiSelect.Content>
-            <DemoOptions />
+            {matrixOptions}
           </MultiSelect.Content>
         </MultiSelect.Root>
       </MatrixCell>
@@ -162,7 +182,7 @@ function StateMatrixGrid() {
         <MultiSelect.Root search="trigger" searchProps={{ "aria-label": "과일 검색" }}>
           <MultiSelect.Trigger placeholder="과일을 고르세요" />
           <MultiSelect.Content>
-            <DemoOptions />
+            {matrixOptions}
           </MultiSelect.Content>
         </MultiSelect.Root>
       </MatrixCell>
@@ -174,7 +194,7 @@ function StateMatrixGrid() {
         >
           <MultiSelect.Trigger placeholder="과일을 고르세요" />
           <MultiSelect.Content>
-            <DemoOptions />
+            {matrixOptions}
           </MultiSelect.Content>
         </MultiSelect.Root>
       </MatrixCell>
@@ -186,7 +206,7 @@ function StateMatrixGrid() {
         >
           <MultiSelect.Trigger placeholder="과일을 고르세요" disabled />
           <MultiSelect.Content>
-            <DemoOptions />
+            {matrixOptions}
           </MultiSelect.Content>
         </MultiSelect.Root>
       </MatrixCell>
@@ -195,7 +215,7 @@ function StateMatrixGrid() {
           <MultiSelect.Root defaultValue={["apple"]}>
             <MultiSelect.Trigger placeholder="과일을 고르세요" />
             <MultiSelect.Content>
-              <DemoOptions />
+              {matrixOptions}
             </MultiSelect.Content>
           </MultiSelect.Root>
           <Field.ErrorMessage>과일을 골라주세요.</Field.ErrorMessage>
