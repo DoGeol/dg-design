@@ -98,10 +98,10 @@ export const Overview: StoryObj = {
       </MockupSection>
 
       <MockupSpec rows={[
-        ["트리거 외관", "Select 트리거와 같습니다(높이 40/52 · radius 8/12 · 테두리 2px)", "Select 스펙 참조"],
+        ["트리거 외관", "Select 트리거와 같습니다(높이 40/52 · radius 8/12 · 테두리 1px, focus 2px 브랜드)", "Select 스펙 참조"],
         ["검색 트리거 높이", "최소 40px, 칩이 늘면 아래로 자람 · 위아래 패딩 6px", "--dds-dimension-x10, x1_5"],
         ["검색 트리거 칩·입력 간격", "6px", "--dds-dimension-x1_5"],
-        ["검색 트리거 focus", "입력 포커스 시 트리거 전체에 2px #1550A9 outline, offset 2px", "--dds-color-stroke-focus-ring"],
+        ["검색 트리거 focus", "입력 포커스 시 트리거 테두리 2px #1550A9(링 없음)", "--dds-color-stroke-focus-ring"],
         ["칩", "패딩 2px 8px · radius 6px · 12px/16px · 배경 #F3F5F9 · 글자 #252629", "--dds-radius-r1_5, --dds-font-size-t2, --dds-color-bg-neutral-weak"],
         ["칩 제거 버튼", "원형 · #6D6F72, hover #252629 · 라벨과 간격 4px", "--dds-color-fg-neutral-weak / fg-neutral, --dds-dimension-x1"],
         ["패널 검색(search=content)", "최소 높이 32px · 패딩 6px 8px · 아래 구분선 2px #6D6F72 · 아래 여백 4px", "--dds-dimension-x8, --dds-color-stroke-neutral"],
