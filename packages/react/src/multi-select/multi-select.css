@@ -41,7 +41,12 @@
     outline: none;
   }
 
+  /* placeholder 대비 근거는 text-field.css 참고 */
   .dds-multi-select__search::placeholder {
+    color: var(--dds-color-fg-neutral-weak);
+  }
+
+  .dds-multi-select__search:disabled::placeholder {
     color: var(--dds-color-fg-disabled);
   }
 

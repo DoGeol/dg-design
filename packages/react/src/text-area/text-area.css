@@ -16,7 +16,12 @@
     }
   }
 
+  /* placeholder는 비활성 텍스트가 아니라 WCAG 1.4.3 대비(4.5:1) 대상이다 — fg-disabled는 3.4:1이라 못 쓴다. 비활성 필드 안에서만 disabled 색 */
   .dds-text-area::placeholder {
+    color: var(--dds-color-fg-neutral-weak);
+  }
+
+  .dds-text-area:is(:disabled, [disabled], [data-disabled])::placeholder {
     color: var(--dds-color-fg-disabled);
   }
 
