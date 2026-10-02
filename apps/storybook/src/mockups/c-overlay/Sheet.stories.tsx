@@ -18,7 +18,7 @@ function Header({ title, closeRef }: { title: string; closeRef: React.Ref<HTMLBu
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
       <Sheet.Title>{title}</Sheet.Title>
       <Sheet.Close asChild>
-        <Button ref={closeRef} size="small" intent="neutral" variant="ghost" aria-label="닫기"><CloseIcon size={18} /></Button>
+        <Button ref={closeRef} size="small" intent="neutral" variant="ghost" aria-label="닫기" iconOnly><CloseIcon size={18} /></Button>
       </Sheet.Close>
     </div>
   );
@@ -99,7 +99,7 @@ export const Overview: StoryObj = {
       <MockupSection title="상태와 동작" note="left·top도 같은 규칙으로 대칭입니다.">
         <MockupState label="open">200ms 동안 자기 쪽 가장자리에서 미끄러져 들어옵니다. 배경은 딤과 inert로 막힙니다.</MockupState>
         <MockupState label="closed">ESC·딤 클릭·Sheet.Close로 닫히고, 연 트리거로 포커스가 돌아갑니다.</MockupState>
-        <MockupState label="focus">패널이 포커스를 받으면 안쪽 2px 링이 생깁니다. 시안은 닫기 버튼에 초기 포커스를 둡니다.</MockupState>
+        <MockupState label="focus">패널이 포커스를 받아도 패널에는 링을 그리지 않습니다. 시안은 닫기 버튼에 초기 포커스를 둡니다.</MockupState>
       </MockupSection>
 
       <MockupSection title="사용 예" columns={1}>
@@ -121,7 +121,7 @@ export const Overview: StoryObj = {
         ["딤", "rgb(16 18 20 / 0.5)", "--dds-color-bg-overlay"],
         ["제목 / 설명", "20 / 27px bold · 14 / 19px regular", "--dds-font-size-t7 / t4"],
         ["하단 버튼(소비 측 조립)", "margin-top auto로 바닥에 붙임 · 위 구분선 1px #E5E8EB · 간격 8px", "--dds-color-stroke-neutral-weak"],
-        ["focus ring(패널)", "2px #1550A9 · offset −2px(안쪽)", "--dds-color-stroke-focus-ring"],
+        ["focus ring(패널)", "없음 · 안쪽 조작 요소만 2px #1550A9", "--dds-color-stroke-focus-ring"],
         ["z-index", "2000", "--dds-z-overlay"],
         ["등장 모션", "200ms translate 100% → 0 · ease-out", "--dds-duration-base · --dds-easing-out"],
       ]} />

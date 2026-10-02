@@ -23,7 +23,7 @@ const LINK = "M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-
 const LIST = "M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01";
 
 function ToolButton({ label, d }: { label: string; d: string }) {
-  return <Button intent="neutral" variant="ghost" size="small" aria-label={label} style={{ paddingInline: "var(--dds-dimension-x2)" }}><Icon d={d} /></Button>;
+  return <Button intent="neutral" variant="ghost" size="small" aria-label={label} iconOnly><Icon d={d} /></Button>;
 }
 
 const SETTINGS = [

@@ -80,7 +80,7 @@ export const Overview: StoryObj = {
         ["radius", "12px", "--dds-radius-r3"],
         ["배경 / 그림자", "#FFFFFF · 0 12px 32px rgba(15,15,15,.18), 0 4px 8px rgba(15,15,15,.08)", "--dds-color-bg-layer-default / --dds-shadow-overlay"],
         ["줄바꿈", "어절 단위(word-break: keep-all)", "—"],
-        ["화살표", "8 × 8px 45° 회전 · 자동 포함", "--dds-dimension-x2"],
+        ["화살표", "8 × 8px 45° 회전 · 자동 포함 · 패널 밖으로 나온 두 변에 1px #E5E8EB 테두리", "--dds-dimension-x2 · --dds-color-stroke-neutral-weak"],
         ["프로필 카드(소비 측 조립)", "폭 288 · 요소 간격 12 · Avatar large 48 · 보조 글자 13px #6D6F72", "--dds-dimension-x3 · font-size-t3 · fg-neutral-weak"],
         ["멘션 링크(소비 측)", "#0B397E · bold", "--dds-color-fg-brand · font-weight-bold"],
         ["지연", "열림 700ms · 닫힘 300ms", "—"],

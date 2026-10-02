@@ -24,9 +24,9 @@ function Visibility({ orientation }: { orientation: "vertical" | "horizontal" })
 }
 
 /** 강제 상태 칸은 대상 요소가 하나여야 해서 항목 하나짜리 그룹으로 그린다. */
-function One({ checked, disabled }: { checked?: boolean; disabled?: boolean }) {
+function One({ checked, disabled, invalid }: { checked?: boolean; disabled?: boolean; invalid?: boolean }) {
   return (
-    <RadioGroup.Root aria-label="공개 범위" defaultValue={checked ? "public" : undefined} disabled={disabled}>
+    <RadioGroup.Root aria-label="공개 범위" defaultValue={checked ? "public" : undefined} disabled={disabled} aria-invalid={invalid}>
       <RadioGroup.Item value="public">전체 공개</RadioGroup.Item>
     </RadioGroup.Root>
   );
@@ -62,6 +62,9 @@ export const Overview: StoryObj = {
         <MockupState label="focus" force="focus"><One checked /></MockupState>
         <MockupState label="disabled · unchecked"><One disabled /></MockupState>
         <MockupState label="disabled · checked"><One disabled checked /></MockupState>
+        <MockupState label="error · unchecked"><One invalid /></MockupState>
+        <MockupState label="error · hover" force="hover"><One invalid /></MockupState>
+        <MockupState label="error · checked"><One invalid checked /></MockupState>
       </MockupSection>
 
       <MockupSection title="segmented" columns={3} note="가로 고정입니다. 크기는 segmented에만 적용됩니다. 트랙이 #F3F5F9라 흰 표면 위에 둡니다.">
@@ -112,6 +115,7 @@ export const Overview: StoryObj = {
       <MockupSpec rows={[
         ["원 크기 · radius", "16px · full", "--dds-dimension-x4, --dds-radius-r-full"],
         ["테두리 (unchecked)", "2px #6D6F72", "--dds-dimension-x0_5, --dds-color-stroke-neutral"],
+        ["error 테두리 (unchecked)", "2px #C7272D · 그룹의 aria-invalid 또는 Field 오류일 때. checked·disabled는 그대로", "--dds-color-stroke-critical"],
         ["checked 배경 / hover / pressed", "#1550A9 / #0B397E / #042454", "--dds-color-bg-brand-solid(-hover/-pressed)"],
         ["checked 점", "원의 45% · #FFFFFF", "--dds-color-fg-brand-contrast"],
         ["unchecked hover", "rgb(16 18 20 / 0.06)", "--dds-color-bg-transparent-hover"],

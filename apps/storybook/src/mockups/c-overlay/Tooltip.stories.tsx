@@ -21,7 +21,7 @@ function Tip({ label, icon, open, placement, intent = "neutral" }: {
   return (
     <Tooltip.Root defaultOpen={open} placement={placement}>
       <Tooltip.Trigger asChild>
-        <Button size="small" intent={intent} variant="ghost" aria-label={label}>{icon}</Button>
+        <Button size="small" intent={intent} variant="ghost" aria-label={label} iconOnly>{icon}</Button>
       </Tooltip.Trigger>
       <Tooltip.Content>{label}</Tooltip.Content>
     </Tooltip.Root>
@@ -50,7 +50,7 @@ export const Overview: StoryObj = {
         <MockupState label="긴 문구 · 최대 폭 256" minHeight={128}>
           <div style={{ display: "flex", ...center, paddingTop: 56 }}>
             <Tooltip.Root defaultOpen>
-              <Tooltip.Trigger asChild><Button size="small" intent="neutral" variant="ghost" aria-label="내보내기"><DownloadIcon /></Button></Tooltip.Trigger>
+              <Tooltip.Trigger asChild><Button size="small" intent="neutral" variant="ghost" aria-label="내보내기" iconOnly><DownloadIcon /></Button></Tooltip.Trigger>
               <Tooltip.Content>PDF로 내보냅니다. 비공개 문서는 포함되지 않습니다.</Tooltip.Content>
             </Tooltip.Root>
           </div>

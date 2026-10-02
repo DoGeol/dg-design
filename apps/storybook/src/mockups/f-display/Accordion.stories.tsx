@@ -110,6 +110,7 @@ export const Overview: StoryObj = {
         ["설명 medium / large", "13 / 16px · #6D6F72, 제목과 간격 2px", "--dds-font-size-t3 / t5, fg-neutral-weak"],
         ["Prefix · SuffixIcon 간격", "12px", "--dds-dimension-x3"],
         ["본문 패딩 medium / large", "0 16 16 / 0 16 20px", "--dds-dimension-x4 / x5"],
+        ["본문 왼쪽 들여쓰기 (Prefix 있을 때)", "16 + Prefix 24 + 간격 12 = 52px — 제목 시작선에 맞춤. 아이콘이 24px보다 넓으면 --dds-accordion-prefix-size로 덮어씀", "--dds-dimension-x4 + x6 + x3"],
         ["inline 구분선", "1px #E5E8EB, 좌우 12px 안쪽", "--dds-color-stroke-neutral-weak, x3"],
         ["separated 항목", "1px #E5E8EB, radius 8px, 간격 12 / 16px", "--dds-radius-r2, --dds-dimension-x3 / x4"],
         ["hover / pressed 배경", "rgb(16 18 20 / 0.06) / 0.12", "--dds-color-bg-transparent-hover / -pressed"],

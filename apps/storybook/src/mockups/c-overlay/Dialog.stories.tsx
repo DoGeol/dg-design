@@ -87,10 +87,10 @@ export const Overview: StoryObj = {
         <MockupState label="폼 · 입력 + 저장"><ProjectDialog kind="form" trigger={<Button variant="weak">이름 변경</Button>} /></MockupState>
       </MockupSection>
 
-      <MockupSection title="상태와 동작" note="패널 자체의 시각 상태는 open·closed와 focus 두 가지입니다.">
+      <MockupSection title="상태와 동작" note="패널 자체의 시각 상태는 open·closed 두 가지입니다.">
         <MockupState label="open">중앙 정렬, 200ms 동안 scale 0.96에서 1로 커지며 서서히 나타납니다.</MockupState>
         <MockupState label="closed">ESC·딤 클릭·Dialog.Close로 닫히고, 연 트리거로 포커스가 돌아갑니다.</MockupState>
-        <MockupState label="focus">initialFocusRef가 없으면 패널이 포커스를 받아 2px 링이 보입니다. 삭제 확인은 취소 버튼, 폼은 첫 입력에 초기 포커스를 둡니다.</MockupState>
+        <MockupState label="focus">initialFocusRef가 없으면 패널이 포커스를 받지만 패널에는 링을 그리지 않습니다. 삭제 확인은 취소 버튼, 폼은 첫 입력에 초기 포커스를 둡니다.</MockupState>
       </MockupSection>
 
       <MockupSection title="사용 예" columns={1}>
@@ -116,7 +116,7 @@ export const Overview: StoryObj = {
         ["제목", "20 / 27px · bold · #252629", "--dds-font-size-t7 · line-height-t7 · fg-neutral"],
         ["설명", "14 / 19px · regular", "--dds-font-size-t4 · line-height-t4"],
         ["하단 버튼(소비 측 조립)", "오른쪽 정렬 · 간격 8px · 위 여백 24px(gap 12 + 12)", "--dds-dimension-x2 / x3"],
-        ["focus ring(패널)", "2px #1550A9 outline · offset 2px", "--dds-color-stroke-focus-ring · dimension-x0_5"],
+        ["focus ring(패널)", "없음 · 안쪽 조작 요소만 2px #1550A9", "--dds-color-stroke-focus-ring"],
         ["z-index", "2000", "--dds-z-overlay"],
         ["등장 모션", "200ms · cubic-bezier(0, 0, 0.2, 1)", "--dds-duration-base · --dds-easing-out"],
       ]} />

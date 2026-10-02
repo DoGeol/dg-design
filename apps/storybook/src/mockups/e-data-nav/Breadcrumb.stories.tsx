@@ -7,14 +7,6 @@ import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit
 const meta = { title: "Mockups/A/Breadcrumb", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;
 
-function ChevronIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
 function MoreIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
@@ -79,8 +71,8 @@ export const Overview: StoryObj = {
       </MockupSection>
 
       <MockupSection title="구분자" columns={2}>
-        <MockupState label="기본 · 슬래시"><Trail path={["홈", "설정", "알림"]} /></MockupState>
-        <MockupState label="아이콘 · chevron 14px"><Trail path={["홈", "설정", "알림"]} separator={<ChevronIcon />} /></MockupState>
+        <MockupState label="기본 · chevron 16px"><Trail path={["홈", "설정", "알림"]} /></MockupState>
+        <MockupState label="children으로 교체 · 슬래시"><Trail path={["홈", "설정", "알림"]} separator="/" /></MockupState>
       </MockupSection>
 
       <MockupSection title="사용 예" columns={1}>
@@ -104,7 +96,7 @@ export const Overview: StoryObj = {
         ["상위 링크 / hover", "#6D6F72 / #252629 + 밑줄", "--dds-color-fg-neutral-weak / fg-neutral"],
         ["현재 페이지", "#252629 · bold · 링크 아님 (aria-current=page)", "--dds-color-fg-neutral · --dds-font-weight-bold"],
         ["항목 사이 간격", "6px (구분자 양옆)", "--dds-dimension-x1_5"],
-        ["구분자", "기본 \"/\" · 아이콘으로 바꿀 때 14px chevron · #6D6F72", "--dds-color-fg-neutral-weak"],
+        ["구분자", "기본 16px chevron(SVG, stroke 1.5) · children으로 교체 가능 · #6D6F72", "--dds-color-fg-neutral-weak"],
         ["focus ring", "2px #1550A9 outline · offset 2px · radius 4", "--dds-color-stroke-focus-ring · --dds-radius-r1"],
         ["생략 기준 (소비자)", "6단계 이상: 처음 1 + 더보기 + 마지막 2"],
         ["줄바꿈", "폭이 모자라면 다음 줄로 감김 (flex-wrap)"],

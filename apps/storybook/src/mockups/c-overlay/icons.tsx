@@ -22,11 +22,3 @@ export const FilterIcon = (p: P) => <Icon {...p}><path d="M4 6h16" /><path d="M7
 export const CloseIcon = (p: P) => <Icon {...p}><path d="M6 6l12 12M18 6L6 18" /></Icon>;
 export const FileIcon = (p: P) => <Icon {...p}><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" /><path d="M14 3v5h5" /></Icon>;
 export const ShareIcon = (p: P) => <Icon {...p}><circle cx="18" cy="5" r="2.5" /><circle cx="6" cy="12" r="2.5" /><circle cx="18" cy="19" r="2.5" /><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4" /></Icon>;
-
-/** 메뉴 항목 오른쪽 단축키 표기. Item에 슬롯이 없어 소비 측에서 붙인다. */
-export function Shortcut({ children }: { children: React.ReactNode }) {
-  return <span style={{ marginLeft: "auto", paddingLeft: 16, color: "var(--dds-color-fg-neutral-weak)", fontSize: "var(--dds-font-size-t2)" }}>{children}</span>;
-}
-
-/** critical 항목 글자색. Item에 intent가 없어 소비 측 인라인 스타일로 칠한다. */
-export const criticalItem = { color: "var(--dds-color-fg-critical)" } as const;

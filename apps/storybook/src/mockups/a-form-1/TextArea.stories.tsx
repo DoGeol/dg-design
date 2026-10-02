@@ -16,7 +16,7 @@ export const Overview: StoryObj = {
   render: () => (
     <MockupPage
       title="TextArea"
-      summary="여러 줄 입력입니다. 기본은 3줄 높이에 세로 크기 조절, autoResize를 켜면 내용만큼 늘어납니다. 글자 수 표시는 컴포넌트에 없습니다."
+      summary="여러 줄 입력입니다. 기본은 3줄 높이에 세로 크기 조절, autoResize를 켜면 내용만큼 늘어납니다. showCount를 켜면 아래에 글자 수를 보이고, maxLength가 있으면 ‘현재/최대’로 보입니다."
     >
       <MockupSection title="Field 구성" columns={2}>
         <MockupState label="Label + Description">
@@ -44,6 +44,18 @@ export const Overview: StoryObj = {
         <MockupState label="disabled"><TextArea aria-label="소개" disabled defaultValue={BIO} /></MockupState>
         <MockupState label="readonly · 흰 표면"><div style={surface}><TextArea aria-label="처리 메모" readOnly defaultValue="2026.10.01 접수, 담당자 배정을 마쳤습니다." /></div></MockupState>
         <MockupState label="autoResize"><TextArea aria-label="소개" autoResize rows={1} defaultValue={`${BIO}\n주말에는 사진을 찍습니다.`} /></MockupState>
+      </MockupSection>
+
+      <MockupSection title="글자 수 표시" columns={3} note="showCount는 입력 아래 오른쪽에 12px 글자 수를 둡니다. 스크린 리더에는 설명으로 연결되고 입력할 때마다 읽지는 않습니다.">
+        <MockupState label="showCount · maxLength 없음"><TextArea aria-label="소개" showCount defaultValue={BIO} /></MockupState>
+        <MockupState label="showCount · maxLength 100"><TextArea aria-label="소개" showCount maxLength={100} defaultValue={BIO} /></MockupState>
+        <MockupState label="showCount · error">
+          <Field.Root style={full}>
+            <Field.Label>신고 사유</Field.Label>
+            <TextArea showCount maxLength={100} aria-invalid defaultValue="내용이 너무 짧습니다." />
+            <Field.ErrorMessage>10자 이상 입력해 주십시오.</Field.ErrorMessage>
+          </Field.Root>
+        </MockupState>
       </MockupSection>
 
       <MockupSection title="크기" columns={2}>
@@ -78,6 +90,7 @@ export const Overview: StoryObj = {
         ["error 테두리", "1px #C7272D · focus 시 2px", "--dds-color-stroke-critical"],
         ["disabled", "배경 #E5E8EB · 글자 #8A8C8F · resize 없음", "--dds-color-bg-disabled / fg-disabled"],
         ["readonly", "배경 #F3F5F9 · 테두리 #E5E8EB · resize 없음", "--dds-color-bg-neutral-weak / stroke-neutral-weak"],
+        ["글자 수 (showCount)", "입력 아래 오른쪽 정렬 · 12/16px #6D6F72 · 간격 4px", "--dds-font-size-t2 · fg-neutral-weak · --dds-dimension-x1"],
         ["크기 조절", "기본 vertical, autoResize면 none + field-sizing: content", "autoResize prop"],
       ]} />
     </MockupPage>
