@@ -13,6 +13,30 @@
 | DatePicker 실기기 QA | [릴리스 0.16.1](https://github.com/DoGeol/dg-design/releases/tag/%40dg-design/react%400.16.1) · [QA](qa/2026-09-27-datepicker.md) | npm 배포·Linux 시각 기준 완료. 실제 모바일 가상 키보드와 VoiceOver/TalkBack 청취는 미검증. |
 | Table v2 스크린리더 QA | [릴리스 0.16.0](https://github.com/DoGeol/dg-design/releases/tag/%40dg-design/react%400.16.0) · [QA](qa/2026-09-25-table-v2.md) | npm 배포·Linux 시각 기준 완료. 실제 스크린리더 청취는 미검증. |
 
+### 시안 A에서 드러난 공백 (2026-10-02)
+
+시안 A(`apps/storybook/src/mockups/`)를 실제 컴포넌트로 그리면서 소비 측 우회가 필요했던 것. 시각 보정과 Badge truncate·Accordion hover radius는 처리됨.
+
+| 우선 | 컴포넌트 | 공백 | 착수 조건 |
+| --- | --- | --- | --- |
+| 1 | Pagination | Previous·Next `disabled` prop 없음 — 지금은 `aria-disabled`+`data-disabled` 수동 | 바로 |
+| 1 | DatePicker | `open`·`defaultOpen`·`onOpenChange` 없음(내부 state) | 바로 |
+| 1 | DropdownMenu·ContextMenu | Item critical intent·단축키 슬롯 없음 — 소비 측 인라인 스타일 | 바로 |
+| 2 | Popover·HoverCard | 화살표가 테두리·그림자 없는 흰 사각형이라 흰 배경에서 안 보임 | 바로 |
+| 2 | Pagination | 현재 쪽 배경 대비 1.07:1 (`aria-current`는 있음) | 바로 |
+| 2 | Checkbox·RadioGroup | `aria-invalid`는 걸리지만 오류 외관 없음. 회색 면 위 unchecked·disabled 식별 약함 | 바로 |
+| 3 | MultiSelect | 옵션을 래퍼 컴포넌트로 감싸면 첫 열기 전 트리거에 값 문자열(`select-core.ts` 한계). 기존 StateMatrix 스토리가 이 패턴 | 스토리 수정 vs registry 개선 결정 후 |
+| 3 | ContextMenu | `defaultOpen`만 주면 (0, 0)에 열림 | 초기 좌표 요구 시 |
+| 3 | Button | 아이콘 전용 변형 없음 | 소비 요청 시 |
+| 3 | Toast | 단독 렌더 API 없음, 표시 3개 고정(`MAX_VISIBLE`) | 소비 요청 시 |
+| 3 | TextField·TextArea | 접두·접미 슬롯, 글자 수 표시 없음 | 소비 요청 시 |
+| 3 | Switch | 라벨 왼쪽 배치 없음 | 소비 요청 시 |
+| 3 | Breadcrumb | 기본 구분자 `/`·`…`가 텍스트 글리프, 생략 로직은 소비자 몫 | 소비 요청 시 |
+| 3 | FileInput·Card | Dropzone·Trigger hover/pressed 없음, `asChild` 링크 카드 hover/focus 없음 | 소비 요청 시 |
+| 3 | Accordion | Prefix가 있을 때 본문 시작선이 제목과 어긋남 | 바로 |
+| 3 | Avatar | 크기 24/36/48/64가 토큰 아닌 고정 px | 토큰 정리 시 |
+| 3 | Dialog | 열릴 때 프로그램 포커스에 링이 보임 — 시안 자동 열기 탓일 수 있음 | 실기기 확인 후 |
+
 ## 알아두면 첫 시도에서 안 틀리는 것
 
 실측으로 확인된 것들 — 재현 경로와 근거는 `docs/decisions/`에 있다.
