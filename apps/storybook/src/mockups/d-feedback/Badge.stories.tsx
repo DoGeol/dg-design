@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Badge, Card } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 
 const meta = { title: "Mockups/A/Badge", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;
@@ -42,7 +41,7 @@ export const Overview: StoryObj = {
       <MockupSection title="크기" columns={4}>
         <MockupState label="medium · 20"><div style={surface}><Badge intent="positive">게시됨</Badge><Badge intent="brand" variant="solid">신규</Badge></div></MockupState>
         <MockupState label="large · 24"><div style={surface}><Badge intent="positive" size="large">게시됨</Badge><Badge intent="brand" variant="solid" size="large">신규</Badge></div></MockupState>
-        <MockupState label="truncate · 폭 96px (시안 보정: 말줄임)" span={2}>
+        <MockupState label="truncate · 폭 96px" span={2}>
           <div style={surface}><div style={{ width: 96 }}>
             <Badge intent="neutral" size="large" truncate title="외부 협력사 공유 문서">외부 협력사 공유 문서</Badge>
           </div></div>
@@ -80,7 +79,7 @@ export const Overview: StoryObj = {
         ["weak 배경", "brand #F1F5FC · neutral #F3F5F9 · critical #FCF3F2 · positive #E7FCE7 · warning #FCF4E5 · informative #F0F6FC", "--dds-color-bg-{intent}-weak"],
         ["weak 글자 · outline 글자와 테두리", "brand #0B397E · neutral #252629 · critical #731115 · positive #0F4A17 · warning #4D3A0C · informative #0D3F6A", "--dds-color-fg-{intent}"],
         ["outline 테두리", "1px, 배경 투명", "—"],
-        ["truncate", "max-width 100%, 넘치면 끝에 말줄임표 (시안 보정: inline-block + line-height 20/24px)", "--dds-dimension-x5 / x6"],
+        ["truncate", "max-width 100%, 넘치면 끝에 말줄임표 (inline-block + line-height 20/24px)", "--dds-dimension-x5 / x6"],
       ]} />
     </MockupPage>
   ),

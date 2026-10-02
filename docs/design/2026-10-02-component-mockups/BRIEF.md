@@ -32,7 +32,7 @@
 
 ## 공통 규칙
 
-- 입력류(TextField·TextArea·Select·MultiSelect·DatePicker 필드) focus는 바깥 링 없이 테두리로만 표시한다(2026-10-02 결정): 기본 1px #8A8C8F → hover 1px #545558 → focus 2px #1550A9, 오류는 같은 두께에 critical. 비입력 컨트롤(Button·Checkbox·Switch 등)은 기존 2px 링을 유지한다.
+- 입력류(TextField·TextArea·Select·MultiSelect·DatePicker 필드) focus는 바깥 링 없이 테두리로만 표시한다(2026-10-02 결정): 기본 1px `stroke-neutral` → hover 1px `fg-neutral` → focus 2px `stroke-focus-ring`(테두리 1px + 안쪽 그림자 1px), 오류는 같은 두께에 critical. 비입력 컨트롤(Button·Checkbox·Switch 등)은 기존 2px 링을 유지한다.
 - 아이콘은 단일 stroke SVG 스타일. 이모지·텍스트 글리프(↑ ↓ ⋮ ›)를 아이콘으로 쓰지 않는다.
 - 문구는 최소화한다. 라벨 자리는 회색 막대(placeholder bar)로 그려도 된다. 글자를 쓰면 짧은
   한국어 합쇼체이고, 말줄임표·과장 표현은 쓰지 않는다.

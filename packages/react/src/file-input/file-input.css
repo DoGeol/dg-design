@@ -44,7 +44,8 @@
     justify-content: center;
     gap: var(--dds-dimension-x2);
     border: 1px solid var(--dds-color-stroke-neutral-weak);
-    border-radius: var(--dds-radius-r3);
+    /* 같은 높이대 Button(small·medium)과 같은 radius */
+    border-radius: var(--dds-radius-r2);
     padding: var(--dds-dimension-x2) var(--dds-dimension-x4);
     background-color: transparent;
     color: var(--dds-color-fg-neutral);

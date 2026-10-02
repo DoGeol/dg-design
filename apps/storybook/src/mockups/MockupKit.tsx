@@ -1,5 +1,4 @@
 import "./theme-a.generated.css";
-import "./overrides-a.css";
 import "./mockup-kit.css";
 
 import * as React from "react";
@@ -36,7 +35,7 @@ function patchPseudoStates() {
   }
 }
 
-/** 시안 페이지 틀. data-mockup="a"가 있어야 블루 테마와 A 보정이 걸린다. */
+/** 시안 페이지 틀. data-mockup="a"가 있어야 블루 테마가 걸린다. */
 export function MockupPage({ title, summary, children }: {
   title: string;
   summary: React.ReactNode;

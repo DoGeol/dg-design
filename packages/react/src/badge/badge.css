@@ -92,9 +92,18 @@
     padding-inline: var(--dds-dimension-x2);
   }
 
+  /* flex 컨테이너에는 말줄임표가 그려지지 않는다 — truncate일 때만 inline-block으로 바꾸고
+     높이와 같은 line-height로 세로 가운데를 유지한다. */
   .dds-badge--truncate {
+    display: inline-block;
     max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+  .dds-badge--truncate.dds-badge--size_medium {
+    line-height: var(--dds-dimension-x5);
+  }
+  .dds-badge--truncate.dds-badge--size_large {
+    line-height: var(--dds-dimension-x6);
   }
 }

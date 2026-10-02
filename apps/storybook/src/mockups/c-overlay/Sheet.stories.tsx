@@ -3,7 +3,6 @@ import * as React from "react";
 import { Button, Card, Checkbox, Sheet, TextField } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 import { CloseIcon, FilterIcon, ShareIcon } from "./icons";
 
 const meta = { title: "Mockups/A/Sheet", parameters: { layout: "fullscreen" } } satisfies Meta;
@@ -116,9 +115,9 @@ export const Overview: StoryObj = {
         ["left·right 크기", "폭 min(384px, 화면 − 32px) · 높이 100%", "24rem · --dds-dimension-x8"],
         ["top·bottom 크기", "높이 min(320px, 화면 − 32px) · 폭 100%", "20rem · --dds-dimension-x8"],
         ["패딩 / 요소 간격", "24 / 12px", "--dds-dimension-x6 / x3"],
-        ["radius (A)", "현재 0 → 화면 안쪽 두 모서리만 16px (overrides-a.css)", "--dds-radius-r4"],
+        ["radius", "화면 안쪽 두 모서리만 16px", "--dds-radius-r4"],
         ["배경 / 그림자", "#FFFFFF · 0 12px 32px rgba(15,15,15,.18), 0 4px 8px rgba(15,15,15,.08)", "--dds-color-bg-layer-default / --dds-shadow-overlay"],
-        ["줄바꿈 (A)", "현재 음절 단위 → 어절 단위 keep-all (c-overlay/overrides.css)", "—"],
+        ["줄바꿈", "어절 단위(word-break: keep-all)", "—"],
         ["딤", "rgb(16 18 20 / 0.5)", "--dds-color-bg-overlay"],
         ["제목 / 설명", "20 / 27px bold · 14 / 19px regular", "--dds-font-size-t7 / t4"],
         ["하단 버튼(소비 측 조립)", "margin-top auto로 바닥에 붙임 · 위 구분선 1px #E5E8EB · 간격 8px", "--dds-color-stroke-neutral-weak"],

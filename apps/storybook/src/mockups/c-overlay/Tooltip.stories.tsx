@@ -3,7 +3,6 @@ import type * as React from "react";
 import { Button, Tooltip } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 import { CopyIcon, DownloadIcon, EditIcon, LinkIcon, TrashIcon } from "./icons";
 
 type Placement = React.ComponentProps<typeof Tooltip.Root>["placement"];
@@ -72,9 +71,9 @@ export const Overview: StoryObj = {
 
       <MockupSpec rows={[
         ["최대 폭", "256px, 넘치면 줄바꿈", "16rem"],
-        ["줄바꿈 (A)", "현재 음절 단위 → 어절 단위 keep-all (c-overlay/overrides.css)", "—"],
+        ["줄바꿈", "어절 단위(word-break: keep-all)", "—"],
         ["패딩", "6 / 8px (세로 / 가로)", "--dds-dimension-x1_5 / x2"],
-        ["radius (A)", "현재 6 → 8px (overrides-a.css)", "--dds-radius-r1_5 → r2"],
+        ["radius", "8px", "--dds-radius-r2"],
         ["배경 / 글자", "#3B3D40 / #FFFFFF", "--dds-color-bg-neutral-solid / fg-neutral-contrast"],
         ["글자", "12 / 16px · regular", "--dds-font-size-t2 · line-height-t2"],
         ["그림자", "0 12px 32px rgba(15,15,15,.18), 0 4px 8px rgba(15,15,15,.08)", "--dds-shadow-overlay"],

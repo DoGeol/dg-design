@@ -3,7 +3,6 @@ import * as React from "react";
 import { Breadcrumb, Button } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 
 const meta = { title: "Mockups/A/Breadcrumb", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;

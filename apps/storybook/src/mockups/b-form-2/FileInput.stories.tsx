@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button, Field, FileInput } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 
 const meta = { title: "Mockups/A/FileInput", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;
@@ -164,7 +163,7 @@ export const Overview: StoryObj = {
         ["error", "테두리 #C7272D · 문구 13px #731115", "--dds-color-stroke-critical / fg-critical"],
         ["disabled", "배경·테두리 #E5E8EB · 글자 #8A8C8F", "--dds-color-bg-disabled / fg-disabled"],
         ["focus ring", "2px #1550A9 outline, offset 2px", "--dds-color-stroke-focus-ring"],
-        ["Trigger", "패딩 8px 16px · radius 8px(A 보정, 현재 12) · 1px #E5E8EB · bold · 글자 #252629", "--dds-dimension-x2 / x4, --dds-radius-r2"],
+        ["Trigger", "패딩 8px 16px · radius 8px · 1px #E5E8EB · bold · 글자 #252629", "--dds-dimension-x2 / x4, --dds-radius-r2"],
         ["Trigger disabled", "글자 #8A8C8F · 테두리 #E5E8EB", "--dds-color-fg-disabled / bg-disabled"],
         ["Preview / Actions 간격", "8px (Preview 세로, Actions 가로)", "--dds-dimension-x2"],
         ["파일 행(소비자 조립)", "1px #E5E8EB · radius 8px · 제거는 Button small critical ghost", "--dds-color-stroke-neutral-weak, --dds-radius-r2"],

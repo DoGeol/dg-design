@@ -63,7 +63,7 @@ export function DataTableHeader<T>({
               <div className="dds-data-table__heading">
                 {column.sortable ? (
                   <button type="button" className="dds-data-table__sort" aria-label={`${column.header} 정렬`} onClick={() => onSort(id)}>
-                    {column.header}<span aria-hidden="true">{direction === "asc" ? " ▲" : direction === "desc" ? " ▼" : " ↕"}</span>
+                    {column.header}<SortIcon direction={direction} />
                   </button>
                 ) : column.header}
               </div>
@@ -80,5 +80,16 @@ export function DataTableHeader<T>({
         })}
       </tr>
     </thead>
+  );
+}
+
+const SORT_PATH = { asc: "M4 10l4-4 4 4", desc: "M4 6l4 4 4-4", none: "M5 6.5l3-3 3 3M5 9.5l3 3 3-3" } as const;
+
+/** 저장소에 아이콘 모듈이 없다(Pagination 선례) — 정렬 방향 셰브론을 로컬로 둔다. */
+function SortIcon({ direction }: { direction?: "asc" | "desc" }) {
+  return (
+    <svg className="dds-data-table__sort-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d={SORT_PATH[direction ?? "none"]} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
   );
 }

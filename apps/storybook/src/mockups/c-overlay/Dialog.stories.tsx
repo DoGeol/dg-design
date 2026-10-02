@@ -3,7 +3,6 @@ import * as React from "react";
 import { Button, Card, Dialog, Field, TextField } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 
 const meta = { title: "Mockups/A/Dialog", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;
@@ -112,7 +111,7 @@ export const Overview: StoryObj = {
         ["패딩 / 요소 간격", "24 / 12px", "--dds-dimension-x6 / x3"],
         ["radius", "16px", "--dds-radius-r4"],
         ["배경 / 그림자", "#FFFFFF · 0 12px 32px rgba(15,15,15,.18), 0 4px 8px rgba(15,15,15,.08)", "--dds-color-bg-layer-default / --dds-shadow-overlay"],
-        ["줄바꿈 (A)", "현재 음절 단위 → 어절 단위 keep-all (c-overlay/overrides.css)", "—"],
+        ["줄바꿈", "어절 단위(word-break: keep-all)", "—"],
         ["딤", "rgb(16 18 20 / 0.5)", "--dds-color-bg-overlay"],
         ["제목", "20 / 27px · bold · #252629", "--dds-font-size-t7 · line-height-t7 · fg-neutral"],
         ["설명", "14 / 19px · regular", "--dds-font-size-t4 · line-height-t4"],

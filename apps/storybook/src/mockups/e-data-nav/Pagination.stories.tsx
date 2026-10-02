@@ -3,7 +3,6 @@ import type * as React from "react";
 import { Pagination } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 
 const meta = { title: "Mockups/A/Pagination", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;
@@ -72,7 +71,7 @@ export const Overview: StoryObj = {
       </MockupSection>
 
       <MockupSpec rows={[
-        ["항목 크기 (시안 보정)", "높이 40px · 최소 폭 40px · 좌우 8px (현재 좌우 16px)", "--dds-dimension-x10 / x2"],
+        ["항목 크기", "높이 40px · 최소 폭 40px · 좌우 8px", "--dds-dimension-x10 / x2"],
         ["항목 간격", "4px", "--dds-dimension-x1"],
         ["radius", "8px", "--dds-radius-r2"],
         ["글자", "14px / 19px · bold", "--dds-font-size-t4 · --dds-font-weight-bold"],

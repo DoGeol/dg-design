@@ -3,7 +3,6 @@ import { Field, MultiSelect } from "@dg-design/react";
 import type * as React from "react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 
 const meta = { title: "Mockups/A/MultiSelect", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;
@@ -105,10 +104,10 @@ export const Overview: StoryObj = {
         ["칩", "패딩 2px 8px · radius 6px · 12px/16px · 배경 #F3F5F9 · 글자 #252629", "--dds-radius-r1_5, --dds-font-size-t2, --dds-color-bg-neutral-weak"],
         ["칩 제거 버튼", "원형 · #6D6F72, hover #252629 · 라벨과 간격 4px", "--dds-color-fg-neutral-weak / fg-neutral, --dds-dimension-x1"],
         ["패널 검색(search=content)", "최소 높이 32px · 패딩 6px 8px · 아래 구분선 2px #6D6F72 · 아래 여백 4px", "--dds-dimension-x8, --dds-color-stroke-neutral"],
-        ["만들기 항목", "옵션과 같은 행 · 시작선 32px(A 보정, 현재 8) · 보류 중 글자 #6D6F72 + Spinner small(16px)", "--dds-color-fg-neutral-weak"],
+        ["만들기 항목", "옵션과 같은 행 · 시작선 32px · 보류 중 글자 #6D6F72 + Spinner small(16px)", "--dds-color-fg-neutral-weak"],
         ["만들기 실패 문구", "12px · #731115 · 패딩 6px 8px", "--dds-color-fg-critical"],
         ["활성 옵션(검색 트리거 키보드)", "rgb(16 18 20 / .06)", "--dds-color-bg-transparent-hover"],
-        ["목록 패널·옵션", "Select와 같습니다(radius 12 A 보정 · 옵션 32px)", "Select 스펙 참조"],
+        ["목록 패널·옵션", "Select와 같습니다(radius 12 · 옵션 32px)", "Select 스펙 참조"],
         ["disabled", "배경 #E5E8EB · 글자 #8A8C8F · 칩 제거 버튼도 비활성", "--dds-color-bg-disabled / fg-disabled"],
       ]} />
     </MockupPage>

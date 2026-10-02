@@ -20,6 +20,9 @@
     box-shadow: var(--dds-shadow-overlay);
     color: var(--dds-color-fg-neutral);
     font-family: inherit;
+    /* 한국어가 좁은 패널에서 "않습/니다"처럼 음절 단위로 쪼개지지 않게 어절 단위로 줄바꿈한다 */
+    word-break: keep-all;
+    overflow-wrap: anywhere;
     animation-duration: var(--dds-duration-base);
     animation-timing-function: var(--dds-easing-out);
   }
@@ -37,12 +40,15 @@
     height: 100%;
     width: min(24rem, calc(100% - var(--dds-dimension-x8)));
   }
+  /* 화면 안쪽 모서리만 Dialog와 같은 16으로 굴린다 */
   .dds-sheet--side_left {
     left: 0;
+    border-radius: 0 var(--dds-radius-r4) var(--dds-radius-r4) 0;
     animation-name: dds-sheet-content-in-left;
   }
   .dds-sheet--side_right {
     right: 0;
+    border-radius: var(--dds-radius-r4) 0 0 var(--dds-radius-r4);
     animation-name: dds-sheet-content-in-right;
   }
 
@@ -54,10 +60,12 @@
   }
   .dds-sheet--side_top {
     top: 0;
+    border-radius: 0 0 var(--dds-radius-r4) var(--dds-radius-r4);
     animation-name: dds-sheet-content-in-top;
   }
   .dds-sheet--side_bottom {
     bottom: 0;
+    border-radius: var(--dds-radius-r4) var(--dds-radius-r4) 0 0;
     animation-name: dds-sheet-content-in-bottom;
   }
 

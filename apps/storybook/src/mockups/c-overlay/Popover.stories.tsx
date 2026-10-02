@@ -3,7 +3,6 @@ import * as React from "react";
 import { Button, Popover, Switch } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 import { InfoIcon } from "./icons";
 
 const meta = { title: "Mockups/A/Popover", parameters: { layout: "fullscreen" } } satisfies Meta;
@@ -77,9 +76,9 @@ export const Overview: StoryObj = {
       <MockupSpec rows={[
         ["최대 폭", "min(384px, 화면 − 16px)", "24rem · --dds-dimension-x4"],
         ["패딩", "16px", "--dds-dimension-x4"],
-        ["radius (A)", "현재 8 → 12px (overrides-a.css)", "--dds-radius-r2 → r3"],
+        ["radius", "12px", "--dds-radius-r3"],
         ["배경 / 그림자", "#FFFFFF · 0 12px 32px rgba(15,15,15,.18), 0 4px 8px rgba(15,15,15,.08)", "--dds-color-bg-layer-default / --dds-shadow-overlay"],
-        ["줄바꿈 (A)", "현재 음절 단위 → 어절 단위 keep-all (c-overlay/overrides.css)", "—"],
+        ["줄바꿈", "어절 단위(word-break: keep-all)", "—"],
         ["화살표", "8 × 8px 정사각형 45° 회전 · 패널 배경색 · 변에 절반 걸침", "--dds-dimension-x2"],
         ["트리거 간격 / 화면 여백", "4 / 8px (floating-ui 상수)", "—"],
         ["focus ring(패널)", "2px #1550A9 · offset 2px", "--dds-color-stroke-focus-ring"],

@@ -3,7 +3,6 @@ import * as React from "react";
 import { Badge, Button, DataTable, type DataColumn } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 
 const meta = { title: "Mockups/A/DataTable", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;
@@ -152,13 +151,14 @@ export const Overview: StoryObj = {
         ["행 높이 (virtual)", "소비자 지정 · 시안 48px", "virtual.rowHeight"],
         ["선택 열 폭", "44px · 체크박스 16px · radius 4", "토큰 없음 · --dds-dimension-x4 · --dds-radius-r1"],
         ["머리글", "13px bold #6D6F72 · 배경 #FFFFFF · 아래 1px #E5E8EB · sticky top 0", "--dds-font-size-t3 · --dds-color-bg-layer-default"],
-        ["정렬 아이콘 (시안 보정)", "16px stroke 셰브론 · 정렬 중 #252629, 미정렬 #8A8C8F", "--dds-color-fg-neutral / fg-disabled"],
-        ["필터 입력 (시안 보정)", "높이 32px · 좌우 8px · radius 8 · 1px #E5E8EB · 13px regular · 머리글과 8px", "--dds-dimension-x8 / x2 · --dds-radius-r2"],
+        ["정렬 아이콘", "16px stroke 셰브론 · 정렬 중 #252629, 미정렬 #6D6F72", "--dds-color-fg-neutral / fg-neutral-weak"],
+        ["필터 입력", "높이 32px · 좌우 8px · radius 8 · 1px #E5E8EB · 13px regular · 머리글과 8px", "--dds-dimension-x8 / x2 · --dds-radius-r2"],
         ["고정 열 배경 / hover", "#FFFFFF / #F3F5F9", "--dds-color-bg-layer-default / bg-neutral-weak"],
-        ["선택 행 배경 (시안 보정)", "#F1F5FC", "--dds-color-bg-brand-weak"],
+        ["선택 행 배경", "#F1F5FC", "--dds-color-bg-brand-weak"],
         ["행 구분선", "아래 1px #E5E8EB", "--dds-color-stroke-neutral-weak"],
         ["빈 결과", "가운데 정렬 14px #6D6F72 · \"표시할 데이터가 없습니다.\"", "--dds-color-fg-neutral-weak"],
-        ["focus (스크롤 영역·정렬·필터)", "2px #1550A9 outline · offset 2px", "--dds-color-stroke-focus-ring"],
+        ["focus (스크롤 영역·정렬)", "2px #1550A9 outline · offset 2px", "--dds-color-stroke-focus-ring"],
+        ["focus (필터)", "링 없음 · 테두리 2px #1550A9", "--dds-color-stroke-focus-ring"],
       ]} />
     </MockupPage>
   ),

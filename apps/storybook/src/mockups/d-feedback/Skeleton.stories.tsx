@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Avatar, Badge, Card, Skeleton } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 
 const meta = { title: "Mockups/A/Skeleton", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;
@@ -108,7 +107,7 @@ export const Overview: StoryObj = {
       <MockupSpec rows={[
         ["배경", "#F3F5F9", "--dds-color-bg-neutral-weak"],
         ["shimmer", "가운데 #E5E8EB 그라디언트가 1000ms linear로 왼쪽→오른쪽, reduced-motion에서 정지", "--dds-color-bg-neutral-weak-hover / duration-spin"],
-        ["radius none / small / medium / full", "0 / 8 / 12 / 9999px (medium은 시안 보정 16 → 12)", "--dds-radius-r2 / r3 / r-full"],
+        ["radius none / small / medium / full", "0 / 8 / 12 / 9999px", "--dds-radius-r2 / r3 / r-full"],
         ["텍스트 줄 높이", "본문 14px · 보조 12px, 줄 간격 8px", "--dds-dimension-x2"],
         ["크기", "컴포넌트에 크기 prop 없음 — 실제 요소와 같은 width·height를 style로 지정", "—"],
         ["접근성", "기본 aria-hidden. 감싸는 영역에 aria-busy와 로딩 문구", "—"],

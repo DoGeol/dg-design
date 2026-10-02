@@ -3,7 +3,6 @@ import * as React from "react";
 import { Avatar, Card } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 
 const meta = { title: "Mockups/A/Avatar", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;
@@ -82,7 +81,7 @@ export const Overview: StoryObj = {
         <MockupState label="error · 이미지 실패 → 이니셜"><Surface><A size="large" src={BROKEN} name="이서준" initial="이" /></Surface></MockupState>
       </MockupSection>
 
-      <MockupSection title="크기" columns={4} note="이니셜 글자 크기는 시안 보정입니다(현재 컴포넌트는 14px 고정).">
+      <MockupSection title="크기" columns={4} note="이니셜 글자 크기는 아바타 크기를 따라갑니다.">
         {SIZES.map(([size, px]) => (
           <MockupState key={size} label={`${size} · ${px}`}>
             <Surface>
@@ -136,7 +135,7 @@ export const Overview: StoryObj = {
         ["모양", "원형", "--dds-radius-r-full"],
         ["테두리", "1px #E5E8EB", "--dds-color-stroke-neutral-weak"],
         ["fallback 배경 / 글자", "#F3F5F9 / #252629", "--dds-color-bg-neutral-weak / fg-neutral"],
-        ["이니셜 글자 (시안 보정)", "11 / 13 / 16 / 20px · bold", "--dds-font-size-t1 / t3 / t5 / t7"],
+        ["이니셜 글자", "11 / 13 / 16 / 20px · bold", "--dds-font-size-t1 / t3 / t5 / t7"],
         ["대체 아이콘", "지름의 60%, stroke 1.5", undefined],
         ["Badge 위치", "오른쪽 아래, translate(18%, 18%)", undefined],
         ["온라인 배지 (예시)", "#196623 + 2px 흰 테두리", "--dds-color-bg-positive-solid"],

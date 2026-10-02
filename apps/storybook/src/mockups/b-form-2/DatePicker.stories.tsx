@@ -4,7 +4,6 @@ import { DatePicker, DateRangePicker } from "@dg-design/react";
 import * as React from "react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 
 const meta = { title: "Mockups/A/DatePicker", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;
@@ -84,11 +83,11 @@ export const Overview: StoryObj = {
         ["트리거 disabled", "배경 #E5E8EB · 글자 #8A8C8F", "--dds-color-bg-disabled / fg-disabled"],
         ["설명 문구", "#6D6F72", "--dds-color-fg-neutral-weak"],
         ["패널 폭 단일 / 기간", "24rem(384px) / 43rem(688px), 화면 폭 - 2rem 이내", "—"],
-        ["패널 패딩 · radius", "16px · 12px(A 보정, 현재 8)", "--dds-dimension-x4, --dds-radius-r3"],
+        ["패널 패딩 · radius", "16px · 12px", "--dds-dimension-x4, --dds-radius-r3"],
         ["패널 그림자", "0 12px 32px rgba(15,15,15,.18), 0 4px 8px rgba(15,15,15,.08)", "--dds-shadow-overlay"],
         ["패널 구획 간격", "16px (입력 필드 · 달력 · 빠른 선택 · 버튼)", "--dds-dimension-x4"],
         ["직접 입력 필드", "TextField medium 40px · 필드 사이 12px", "--dds-dimension-x10, x3"],
-        ["달력 이동 버튼", "44 × 44px · radius 8px · hover rgb(16 18 20 / .06) · 셰브론 16px(A 보정, 현재 글리프)", "--dds-radius-r2, --dds-color-bg-transparent-hover"],
+        ["달력 이동 버튼", "44 × 44px · radius 8px · hover rgb(16 18 20 / .06) · 셰브론 16px", "--dds-radius-r2, --dds-color-bg-transparent-hover"],
         ["요일 머리", "높이 32px · 13px regular", "--dds-font-size-t3"],
         ["날짜 칸", "최소 44 × 44px · radius 8px", "--dds-radius-r2"],
         ["선택한 날짜", "배경 #1550A9 · 글자 #FFFFFF", "--dds-color-bg-brand-solid / fg-brand-contrast"],

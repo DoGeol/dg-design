@@ -3,7 +3,6 @@ import * as React from "react";
 import { Card, Collapsible, Separator, Switch } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 
 const meta = { title: "Mockups/A/Collapsible", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;
@@ -110,7 +109,7 @@ export const Overview: StoryObj = {
       </MockupSection>
 
       <MockupSpec rows={[
-        ["트리거 패딩 (시안 보정)", "4 × 8px, 아이콘 간격 4px (현재 0)", "--dds-dimension-x1 / x2"],
+        ["트리거 패딩", "4 × 8px, 아이콘 간격 4px", "--dds-dimension-x1 / x2"],
         ["트리거 radius", "4px", "--dds-radius-r1"],
         ["카드 안 정렬", "트리거를 -8px 당겨 글자를 제목 왼쪽 끝에 맞춤", "--dds-dimension-x2"],
         ["트리거 글자", "상속 (예시 14px)", "--dds-font-size-t4"],

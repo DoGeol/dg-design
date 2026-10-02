@@ -3,7 +3,6 @@ import * as React from "react";
 import { ContextMenu } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 import { CopyIcon, EditIcon, FileIcon, LinkIcon, Shortcut, TrashIcon, criticalItem } from "./icons";
 
 const meta = { title: "Mockups/A/ContextMenu", parameters: { layout: "fullscreen" } } satisfies Meta;
@@ -78,7 +77,7 @@ export const Overview: StoryObj = {
       <MockupSpec rows={[
         ["위치", "우클릭 좌표 기준 bottom-start · 간격 4px · 화면 여백 8px", "—"],
         ["패널", "DropdownMenu와 같음 · 최소 폭 192 · 패딩 4", "12rem · --dds-dimension-x1"],
-        ["패널 radius (A)", "현재 8 → 12px (overrides-a.css, dropdown-menu 클래스 공유)", "--dds-radius-r2 → r3"],
+        ["패널 radius", "12px (dropdown-menu 클래스 공유)", "--dds-radius-r3"],
         ["항목", "최소 높이 32 · radius 6 · 14px", "--dds-dimension-x8 · radius-r1_5 · font-size-t4"],
         ["항목 hover·focus / pressed", "rgb(16 18 20 / 0.06) / 0.12", "--dds-color-bg-transparent-hover / -pressed"],
         ["critical 항목(소비 측)", "글자 #731115", "--dds-color-fg-critical"],

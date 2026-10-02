@@ -21,6 +21,9 @@
     overflow-y: auto;
     padding: var(--dds-dimension-x6);
     border-radius: var(--dds-radius-r4);
+    /* 한국어가 좁은 패널에서 "않습/니다"처럼 음절 단위로 쪼개지지 않게 어절 단위로 줄바꿈한다 */
+    word-break: keep-all;
+    overflow-wrap: anywhere;
     background-color: var(--dds-color-bg-layer-default);
     box-shadow: var(--dds-shadow-overlay);
     color: var(--dds-color-fg-neutral);

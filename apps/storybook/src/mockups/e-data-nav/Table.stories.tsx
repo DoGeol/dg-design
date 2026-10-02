@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Badge, Button, Pagination, Skeleton, StatePanel, Table } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 
 const meta = { title: "Mockups/A/Table", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;

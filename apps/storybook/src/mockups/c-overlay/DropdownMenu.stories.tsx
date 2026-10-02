@@ -3,7 +3,6 @@ import type * as React from "react";
 import { Button, Card, DropdownMenu } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 import { CopyIcon, DownloadIcon, EditIcon, LinkIcon, MoreIcon, Shortcut, TrashIcon, criticalItem } from "./icons";
 
 const meta = { title: "Mockups/A/DropdownMenu", parameters: { layout: "fullscreen" } } satisfies Meta;
@@ -80,9 +79,9 @@ export const Overview: StoryObj = {
       <MockupSpec rows={[
         ["패널 최소 폭 / 최대 높이", "192px / 화면 − 16px(넘치면 스크롤)", "12rem · --dds-dimension-x4"],
         ["패널 패딩", "4px", "--dds-dimension-x1"],
-        ["패널 radius (A)", "현재 8 → 12px (overrides-a.css)", "--dds-radius-r2 → r3"],
+        ["패널 radius", "12px", "--dds-radius-r3"],
         ["패널 배경 / 그림자", "#FFFFFF · 0 12px 32px rgba(15,15,15,.18), 0 4px 8px rgba(15,15,15,.08)", "--dds-color-bg-layer-default / --dds-shadow-overlay"],
-        ["줄바꿈 (A)", "현재 음절 단위 → 어절 단위 keep-all (c-overlay/overrides.css)", "—"],
+        ["줄바꿈", "어절 단위(word-break: keep-all)", "—"],
         ["항목 높이 / 패딩 / 간격", "최소 32 / 6·8px / 아이콘과 8px", "--dds-dimension-x8 / x1_5·x2 / x2"],
         ["항목 radius / 글자", "6px · 14 / 19px", "--dds-radius-r1_5 · font-size-t4"],
         ["항목 hover·focus / pressed", "rgb(16 18 20 / 0.06) / 0.12", "--dds-color-bg-transparent-hover / -pressed"],

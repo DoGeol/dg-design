@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Field, Select } from "@dg-design/react";
 
 import { MockupPage, MockupSection, MockupSpec, MockupState } from "../MockupKit";
-import "./overrides.css";
 
 const meta = { title: "Mockups/A/Select", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;
@@ -98,14 +97,14 @@ export const Overview: StoryObj = {
         ["트리거 radius medium / large", "8 / 12px", "--dds-radius-r2 / r3"],
         ["트리거 좌우 패딩 medium / large", "12 / 16px", "--dds-dimension-x3 / x4"],
         ["트리거 글자 medium / large", "14px·19px / 18px·24px · regular", "--dds-font-size-t4 / t6, --dds-line-height-t4 / t6"],
-        ["트리거 테두리", "1px #8A8C8F · hover #545558", "palette gray-500 / gray-700 (semantic 토큰 신설 필요)"],
+        ["트리거 테두리", "1px #6D6F72 · hover #252629", "--dds-color-stroke-neutral / fg-neutral"],
         ["트리거 배경 / 글자", "#FFFFFF / #252629", "--dds-color-bg-layer-default / fg-neutral"],
         ["placeholder", "#8A8C8F", "--dds-color-fg-disabled"],
         ["값과 캐럿 간격 · 캐럿", "8px · 16px stroke 1.5, 열리면 180° 회전", "--dds-dimension-x2"],
         ["focus", "링 없음 · 테두리 2px #1550A9(1px 테두리 + 안쪽 1px 그림자)", "--dds-color-stroke-focus-ring"],
         ["error 테두리", "1px #C7272D · focus 시 2px", "--dds-color-stroke-critical"],
         ["disabled", "배경 #E5E8EB · 글자 #8A8C8F · 테두리 1px #E5E8EB", "--dds-color-bg-disabled / fg-disabled / stroke-neutral-weak"],
-        ["목록 패널", "radius 12px(A 보정, 현재 8) · 패딩 4px · 최소 폭 12rem 또는 트리거 폭", "--dds-radius-r3, --dds-dimension-x1"],
+        ["목록 패널", "radius 12px · 패딩 4px · 최소 폭 12rem 또는 트리거 폭", "--dds-radius-r3, --dds-dimension-x1"],
         ["목록 그림자", "0 12px 32px rgba(15,15,15,.18), 0 4px 8px rgba(15,15,15,.08)", "--dds-shadow-overlay"],
         ["옵션", "최소 높이 32px · 패딩 6px 8px · radius 6px · 14px", "--dds-dimension-x8, x1_5 / x2, --dds-radius-r1_5"],
         ["옵션 hover / pressed", "rgb(16 18 20 / .06) / rgb(16 18 20 / .12)", "--dds-color-bg-transparent-hover / -pressed"],

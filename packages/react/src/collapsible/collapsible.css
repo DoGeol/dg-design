@@ -11,6 +11,13 @@
     cursor: pointer;
   }
 
+  /* hover·pressed 배경과 focus 링이 글자에 붙지 않게 4×8 여백을 둔다.
+     Accordion 트리거도 이 클래스를 받지만 자기 패딩이 있어 제외한다. */
+  .dds-collapsible__trigger:not(.dds-accordion__trigger) {
+    gap: var(--dds-dimension-x1);
+    padding: var(--dds-dimension-x1) var(--dds-dimension-x2);
+  }
+
   .dds-collapsible__trigger:hover:not(:is(:disabled, [disabled], [data-disabled])) {
     background-color: var(--dds-color-bg-transparent-hover);
   }

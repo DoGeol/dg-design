@@ -76,7 +76,7 @@ export const Overview: StoryObj = {
         ["radius medium / large", "8 / 12px", "--dds-radius-r2 / r3"],
         ["좌우 패딩 medium / large", "12 / 16px", "--dds-dimension-x3 / x4"],
         ["글자 medium / large", "14·19 / 18·24px · regular", "--dds-font-size-t4 / t6, --dds-line-height-t4 / t6"],
-        ["테두리 / hover", "1px #8A8C8F / #545558", "palette gray-500 / gray-700 (semantic 토큰 신설 필요)"],
+        ["테두리 / hover", "1px #6D6F72 / #252629", "--dds-color-stroke-neutral / fg-neutral"],
         ["배경 · 글자 · placeholder", "#FFFFFF · #252629 · #8A8C8F", "--dds-color-bg-layer-default / fg-neutral / fg-disabled"],
         ["focus", "링 없음 · 테두리 2px #1550A9(1px 테두리 + 안쪽 1px 그림자)", "--dds-color-stroke-focus-ring"],
         ["error 테두리", "1px #C7272D · focus 시 2px", "--dds-color-stroke-critical"],
