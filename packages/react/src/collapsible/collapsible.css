@@ -4,7 +4,6 @@
     display: inline-flex;
     align-items: center;
     border: 0;
-    border-radius: var(--dds-radius-r1);
     background-color: transparent;
     color: var(--dds-color-fg-neutral);
     font: inherit;
@@ -12,9 +11,10 @@
   }
 
   /* hover·pressed 배경과 focus 링이 글자에 붙지 않게 4×8 여백을 둔다.
-     Accordion 트리거도 이 클래스를 받지만 자기 패딩이 있어 제외한다. */
+     Accordion 트리거도 이 클래스를 받지만 행 전체를 채우는 배경이라 여백·radius 모두 제외한다. */
   .dds-collapsible__trigger:not(.dds-accordion__trigger) {
     gap: var(--dds-dimension-x1);
+    border-radius: var(--dds-radius-r1);
     padding: var(--dds-dimension-x1) var(--dds-dimension-x2);
   }
 
