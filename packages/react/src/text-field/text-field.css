@@ -16,7 +16,14 @@
     }
   }
 
-  .dds-text-field::placeholder {
+  /* placeholder는 비활성 텍스트가 아니라 WCAG 1.4.3 대비(4.5:1) 대상이다 — fg-disabled는 3.4:1이라 못 쓴다. 비활성 필드 안에서만 disabled 색 */
+  .dds-text-field::placeholder,
+  .dds-text-field__input::placeholder {
+    color: var(--dds-color-fg-neutral-weak);
+  }
+
+  .dds-text-field:is(:disabled, [disabled], [data-disabled])::placeholder,
+  .dds-text-field__input:disabled::placeholder {
     color: var(--dds-color-fg-disabled);
   }
 
@@ -88,10 +95,6 @@
     color: inherit;
     font: inherit;
   }
-  .dds-text-field__input::placeholder {
-    color: var(--dds-color-fg-disabled);
-  }
-
   .dds-text-field__affix {
     flex-shrink: 0;
     display: inline-flex;

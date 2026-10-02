@@ -99,7 +99,7 @@ export const Overview: StoryObj = {
         ["트리거 글자 medium / large", "14px·19px / 18px·24px · regular", "--dds-font-size-t4 / t6, --dds-line-height-t4 / t6"],
         ["트리거 테두리", "1px #6D6F72 · hover #252629", "--dds-color-stroke-neutral / fg-neutral"],
         ["트리거 배경 / 글자", "#FFFFFF / #252629", "--dds-color-bg-layer-default / fg-neutral"],
-        ["placeholder", "#8A8C8F", "--dds-color-fg-disabled"],
+        ["placeholder", "#6D6F72 (비활성 필드 안에서는 #8A8C8F)", "--dds-color-fg-neutral-weak / fg-disabled"],
         ["값과 캐럿 간격 · 캐럿", "8px · 16px stroke 1.5, 열리면 180° 회전", "--dds-dimension-x2"],
         ["focus", "링 없음 · 테두리 2px #1550A9(1px 테두리 + 안쪽 1px 그림자)", "--dds-color-stroke-focus-ring"],
         ["error 테두리", "1px #C7272D · focus 시 2px", "--dds-color-stroke-critical"],

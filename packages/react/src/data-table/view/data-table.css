@@ -100,6 +100,10 @@
     font-weight: var(--dds-font-weight-regular);
   }
 
+  .dds-data-table__filter::placeholder {
+    color: var(--dds-color-fg-neutral-weak);
+  }
+
   /* 입력류 focus 관습: 바깥 링 없이 테두리 2px 브랜드(테두리 1px + 안쪽 1px 그림자, 레이아웃 변화 없음) */
   .dds-data-table__filter:focus-visible {
     outline: none;
