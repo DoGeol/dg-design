@@ -8,7 +8,9 @@
     box-sizing: border-box;
     max-width: min(24rem, calc(100vw - var(--dds-dimension-x4)));
     padding: var(--dds-dimension-x4);
-    /* 부유형 패널(Popover·HoverCard·Menu·Select 목록)은 radius 12로 통일 */
+    /* 부유형 패널(Popover·HoverCard·Menu·Select 목록)은 백드롭이 없어 그림자만으로는 다크에서
+       페이지에 묻힌다 — 테두리 1px로 경계를 긋는다. radius는 12로 통일 */
+    border: 1px solid var(--dds-color-stroke-neutral-weak);
     border-radius: var(--dds-radius-r3);
     /* 한국어가 좁은 패널에서 "않습/니다"처럼 음절 단위로 쪼개지지 않게 어절 단위로 줄바꿈한다 */
     word-break: keep-all;
@@ -33,7 +35,7 @@
 
   /* 정사각형을 45도 돌린 다이아몬드. floating-ui가 left/top으로 변 위 위치를,
      반대쪽 정적 변 오프셋으로 패널 테두리에 절반만 걸치게 만든다.
-     패널은 그림자만 있어 흰 배경에서 흰 화살표가 사라진다 — 패널 밖으로 나온 두 변에만 연한 테두리를 준다.
+     패널 밖으로 나온 두 변에만 패널과 같은 테두리를 줘 패널 테두리가 화살표 윤곽으로 이어지게 한다.
      data-side는 훅이 flip 이후의 최종 side로 쓴다(패널이 트리거의 어느 쪽에 있는지).
      45도 회전 후 바깥쪽 두 변 = 원래 변: bottom→top·left, top→bottom·right, right→left·bottom, left→top·right. */
   .dds-popover__arrow {

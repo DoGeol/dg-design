@@ -20,6 +20,8 @@
     max-height: calc(100% - var(--dds-dimension-x8));
     overflow-y: auto;
     padding: var(--dds-dimension-x6);
+    /* 다크에서는 패널·페이지·백드롭 합성색이 모두 같고 어두운 그림자도 묻힌다 — 경계는 테두리가 맡는다. */
+    border: 1px solid var(--dds-color-stroke-neutral-weak);
     border-radius: var(--dds-radius-r4);
     /* 한국어가 좁은 패널에서 "않습/니다"처럼 음절 단위로 쪼개지지 않게 어절 단위로 줄바꿈한다 */
     word-break: keep-all;
