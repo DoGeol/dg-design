@@ -12,6 +12,8 @@
     max-height: calc(100vh - var(--dds-dimension-x4));
     overflow-y: auto;
     padding: var(--dds-dimension-x1);
+    /* popover.css와 같은 이유 — 다크에서 그림자만으로는 경계가 안 보인다 */
+    border: 1px solid var(--dds-color-stroke-neutral-weak);
     border-radius: var(--dds-radius-r3);
     word-break: keep-all;
     overflow-wrap: anywhere;

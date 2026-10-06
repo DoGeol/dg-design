@@ -306,10 +306,11 @@ export const lineHeight = {
 export const fontWeight = { regular: "400", bold: "700" } as const;
 
 /**
- * 그림자. 첫 항목은 overlay(Dialog Content 등 백드롭 위 표면) 하나뿐이라
- * sm/md/lg 스케일을 만들지 않는다 — 소비자 늘면 그때. 모드 분기 없음: 이 그림자는
- * 항상 bg-overlay 백드롭 위에서만 쓰이므로 페이지 배경이 밝든 어둡든 배경 대비가
- * 아니라 백드롭과의 구분만 필요하고, 그 구분은 고정 알파로 충분하다.
+ * 그림자. 소비자가 부유 패널(Dialog·Sheet·Popover·Menu·Select 목록 등)뿐이라
+ * sm/md/lg 스케일을 만들지 않는다 — 소비자 늘면 그때. 모드 분기 없음: 어두운 알파
+ * 그림자는 다크 배경에서 거의 보이지 않으므로 패널 경계는 그림자가 아니라 각 패널의
+ * stroke-neutral-weak 테두리 1px가 맡는다(백드롭 없는 Popover·Menu도 같다). 그림자는
+ * 라이트에서 깊이감만 더한다.
  */
 export const shadow = {
   overlay: "0 12px 32px rgba(15, 15, 15, 0.18), 0 4px 8px rgba(15, 15, 15, 0.08)",

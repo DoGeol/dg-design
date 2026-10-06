@@ -20,6 +20,7 @@
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
+| [2026-10-06 다크 모드 부유 패널 경계](plans/2026-10-06-dark-overlay-boundary.md) | 구현 완료 · 배포 대기 | 다크에서 패널이 페이지에 묻히는 문제의 실측·원인, 테두리 1px 변경 범위와 검증 |
 | [2026-09-27 DatePicker 구현](plans/2026-09-27-datepicker.md) | npm 0.16.1 배포 · 실기기 QA 후속 | 값·DST 기술 게이트, 입력·달력·반응형 패널, 검증 순서와 작업 배정 |
 | [2026-09-25 Table v2 사용성·대량 데이터](plans/2026-09-25-table-v2.md) | npm 0.16.0 배포 · 스크린리더 QA 후속 | 데이터 기반 API 2종, 1만 행 가상화, 정렬·필터·선택, 고정 헤더·열의 단계별 계획 |
 | [2026-08-28 우선순위 컴포넌트](plans/2026-08-28-priority-components/) | 완료 0.12.0 | 컴포넌트별 계획 5개(accordion·avatar·collapsible·separator·skeleton), QA는 `qa/` 같은 이름 |
@@ -33,6 +34,7 @@
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
+| [2026-10-06 부유 패널 테두리](decisions/2026-10-06-floating-panel-border.md) | 활성 | 패널 경계는 그림자가 아니라 테두리 1px, Sheet는 안쪽 변만, 화살표 오프셋 보정 |
 | [2026-09-27 DatePicker 구현 결정](decisions/2026-09-27-datepicker-implementation.md) | npm 0.16.1 배포 · 실기기 QA 후속 | 엄격한 날짜 입력·DST 후보, 달력 훅과 DDS 오버레이, 반응형 레이아웃·패키지 export |
 | [2026-08-14 토큰 체계와 a11y 기준선](decisions/2026-08-14-dds-token-system.md) | 활성 | 토큰 이름 문법, hover 축 추가, 대비 검사 도입, focus/disabled 관습 |
 | [2026-08-15 0.1.0 구현 중 결정](decisions/2026-08-15-dds-010-implementation.md) | 활성 | Vite CSS raw copy, lightness/chroma 배열, 컴포넌트 위임값, 브릿지 범위, publish 운영 |

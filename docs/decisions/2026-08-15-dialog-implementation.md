@@ -8,7 +8,7 @@
 
 **토큰**
 - `bg-overlay`: 양 모드 `gray-1000/0.5` 동일 — 오버레이는 표면색이 아니라 균일 감광막(seed도 static alpha 단일값). Tailwind bg-black/50·Material 관례와 일치
-- `shadow-overlay`: semantic 분기 없이 비색상 단일 스케일 — 항상 오버레이 위에서만 쓰여 배경 명암 무관. `--dds-shadow-overlay`
+- `shadow-overlay`: semantic 분기 없이 비색상 단일 스케일 — 항상 오버레이 위에서만 쓰여 배경 명암 무관. `--dds-shadow-overlay` (2026-10-06 대체: [부유 패널 테두리](2026-10-06-floating-panel-border.md))
 - 모션: `duration-fast` 150ms / `duration-base` 200ms / `easing-out`(cubic-bezier(0,0,0.2,1), Material 감속) 1종만 — enter/exit 분리는 수요 오면
 
 **Dialog 핵심 설계**

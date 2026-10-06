@@ -40,14 +40,17 @@
     height: 100%;
     width: min(24rem, calc(100% - var(--dds-dimension-x8)));
   }
-  /* 화면 안쪽 모서리만 Dialog와 같은 16으로 굴린다 */
+  /* 화면 안쪽 모서리만 Dialog와 같은 16으로 굴린다. 테두리도 Dialog와 같은 이유로 긋되
+     화면 가장자리에 붙는 변에는 선이 남지 않게 안쪽 변에만 둔다 */
   .dds-sheet--side_left {
     left: 0;
+    border-right: 1px solid var(--dds-color-stroke-neutral-weak);
     border-radius: 0 var(--dds-radius-r4) var(--dds-radius-r4) 0;
     animation-name: dds-sheet-content-in-left;
   }
   .dds-sheet--side_right {
     right: 0;
+    border-left: 1px solid var(--dds-color-stroke-neutral-weak);
     border-radius: var(--dds-radius-r4) 0 0 var(--dds-radius-r4);
     animation-name: dds-sheet-content-in-right;
   }
@@ -60,11 +63,13 @@
   }
   .dds-sheet--side_top {
     top: 0;
+    border-bottom: 1px solid var(--dds-color-stroke-neutral-weak);
     border-radius: 0 0 var(--dds-radius-r4) var(--dds-radius-r4);
     animation-name: dds-sheet-content-in-top;
   }
   .dds-sheet--side_bottom {
     bottom: 0;
+    border-top: 1px solid var(--dds-color-stroke-neutral-weak);
     border-radius: var(--dds-radius-r4) var(--dds-radius-r4) 0 0;
     animation-name: dds-sheet-content-in-bottom;
   }

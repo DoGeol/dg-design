@@ -72,12 +72,14 @@ export function useOverlayPosition(
         const staticSide = STATIC_SIDE[side]!;
         // flip 이후의 최종 side. CSS가 패널 밖으로 나온 두 변에만 테두리를 그린다.
         arrowElement.dataset.side = side;
+        // absolute 기준은 패널 padding box다 — 테두리 폭만큼 더 내보내야 화살표 중심이 바깥 테두리선에 걸린다.
+        const border = floating.clientTop;
         Object.assign(arrowElement.style, {
           left: arrowX != null ? `${arrowX}px` : "",
           top: arrowY != null ? `${arrowY}px` : "",
           right: "",
           bottom: "",
-          [staticSide]: `${-arrowElement.offsetWidth / 2}px`,
+          [staticSide]: `${-arrowElement.offsetWidth / 2 - border}px`,
         });
       });
     });
