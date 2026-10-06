@@ -26,4 +26,5 @@
 
 - 다크 테두리(`#3a3e3e`)는 패널 위에서 1.74:1이다. 패널 경계는 조작 대상이 아니라 WCAG 1.4.11의 3:1 대상이 아니므로 대비 검사 행을 추가하지 않았다. Card가 같은 값을 쓴다.
 - 화살표는 패널 padding box 기준으로 놓인다. 테두리가 생기면 중심이 바깥 테두리선보다 안쪽에 와서 화살표 변 끝이 패널 안으로 삐져나온다. `internal/use-overlay-position.ts`가 `floating.clientTop`(테두리 폭)만큼 더 내보낸다.
-- VR 스크린샷은 1px 선이 `maxDiffPixelRatio` 0.005 안에 들어가 통과할 수 있다. 테두리 유무는 `overlay-boundary.spec.ts`가 계산값으로 확인한다.
+- 테두리만큼 패널이 달라진다. 크기를 지정한 축은 안쪽이 2px 줄고, 내용에 맞춰 늘어나는 축은 바깥이 2px 늘어난다.
+- 스토리 전체를 찍는 VR 스크린샷은 1px 선이 `maxDiffPixelRatio` 0.005 안에 들어가 기준을 갱신하지 않아도 통과한다. 그래서 테두리 유무는 `overlay-boundary.spec.ts`가 계산값으로 확인한다. 패널 요소만 찍는 DatePicker 스크린샷은 크기가 달라져 기준 갱신이 필요했다.

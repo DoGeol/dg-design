@@ -49,7 +49,7 @@ Tooltip만 반전 배경이라 구분된다. 나머지 여섯은 패널 배경�
 
 ## 변경 (안 1)
 
-전부 `packages/react/src` 아래 CSS다. 패널은 모두 `box-sizing: border-box`라 바깥 크기는 그대로이고 안쪽이 축마다 2px 줄어든다.
+전부 `packages/react/src` 아래 CSS다. 패널은 모두 `box-sizing: border-box`다. 크기를 지정한 축은 바깥 크기가 그대로이고 안쪽이 2px 줄어든다. 내용에 맞춰 늘어나는 축(대부분의 높이)은 바깥 크기가 2px 늘어난다.
 
 | 파일 | 변경 |
 | --- | --- |
@@ -117,6 +117,6 @@ Storybook 스크린샷으로 다크의 Dialog, Popover, HoverCard, DropdownMenu,
 남은 것:
 
 - `overlay-exit.spec.ts`의 Dialog "ESC 직후 data-state=closed" 테스트가 간헐적으로 실패했다(전체 실행 1회, 5회 반복 실행 1회. 그 테스트만 30회 반복은 직렬·병렬 모두 통과). 이번 변경은 그 테스트가 타는 경로를 건드리지 않는다. `overlay-exit.spec.ts`와 `use-presence.ts`는 그대로고 `dialog.css`에는 `border` 한 줄만 더했다(애니메이션 규칙 불변). 그래서 기존 불안정으로 분류했다. main과 비교 실행은 하지 않았다.
-- VR 기준 PNG 갱신. 1px 선은 `maxDiffPixelRatio` 0.005 안에 들어 CI가 그대로 통과할 수 있다. 기준을 새 모습에 맞추려면 `visual-baseline` 워크플로를 돌린다.
+- VR 기준 PNG 갱신. PR #22 CI에서 198 통과 / 3 실패였다. 실패 3건은 전부 `date-picker-visual.spec.ts`의 열린 패널 요소 스크린샷이고, 패널 높이가 2px 늘어 크기부터 달랐다(예: 384×525 → 384×527). 스토리 전체를 찍는 나머지 스크린샷은 1px 선이 `maxDiffPixelRatio` 0.005 안이라 통과했다. `visual-baseline` 워크플로로 기준을 갱신해야 한다.
 - DatePicker 모바일 시트는 Sheet `side="bottom"` 규칙을 그대로 타지만 따로 열어 보지는 않았다.
 - 커밋·푸시·Version PR 머지, 그리고 dg-studio 버전 올리기.
