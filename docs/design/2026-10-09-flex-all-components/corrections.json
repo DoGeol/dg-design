@@ -1,0 +1,26 @@
+[
+  {
+    "id": "01-controls",
+    "output": "01-controls-v2.png",
+    "refs": [
+      "/Users/pdg/WebstormProjects/dg-design/docs/design/2026-10-09-flex-all-components/01-controls.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Edit the provided dg-design \"01 · Controls\" specimen. Change ONLY the Button zone. The \"더 보기\" button must be a true ghost: remove its enclosing border and filled rectangle, keep the label and click-area spacing. In the \"처리 중\" blue button, remove the visible \"저장 중...\" text and place a single small WHITE spinner exactly centered; preserve the button width and the separate \"처리 중\" caption above. Keep every other pixel and all other component zones, words, colors, layout and proportions unchanged. No new content or redesign. Keep an opaque background."
+  },
+  {
+    "id": "08-data",
+    "output": "08-data-v2.png",
+    "refs": [
+      "/Users/pdg/WebstormProjects/dg-design/docs/design/2026-10-09-flex-all-components/08-data.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Edit the provided dg-design \"08 · Data & Identity\" specimen. Two tightly localized state corrections only. In the RIGHT DataTable HEADER, change the empty selection square to an indeterminate square with blue fill and a centered WHITE horizontal minus, because exactly one of the three rows is selected. Do not change the checked first body row or the two unchecked rows, and keep \"1개 선택\". In the LEFT plain Table, change ONLY the third row's pale blue hover background to a neutral very pale gray #F6F6F8; preserve all text and badge fills. Keep all other pixels, titles, layout, Avatar/Badge/NotificationBadge zones and copy unchanged. Opaque background."
+  },
+  {
+    "id": "10-loading",
+    "output": "10-loading-v2.png",
+    "refs": [
+      "/Users/pdg/WebstormProjects/dg-design/docs/design/2026-10-09-flex-all-components/10-loading.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Edit the provided dg-design \"10 · Loading\" specimen. Change ONLY two details. In the Progress area, replace the full-width striped indeterminate bar under \"진행률을 알 수 없는 경우\" with a light gray neutral track and a single solid blue rounded segment of approximately40% track width, positioned around the middle. No stripes, gradients, percentage text or decorative motion trails on that second bar. Keep the FIRST 60% bar exactly as it is. In the Spinner zone's blue loading button, remove the visible \"저장\" label and center one small WHITE spinner in the same unchanged button rectangle. Preserve every other word, all three component headings, the Skeleton before/after rows, colors and geometry. Opaque background."
+  }
+]

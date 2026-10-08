@@ -34,6 +34,8 @@
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
+| [flex 전체 컴포넌트 시안](design/2026-10-09-flex-all-components/README.md) | 생성 완료 · 구현 전 | 38개 공개 컴포넌트, 10개 채택 보드, 갤러리·프롬프트 |
+| [flex 전체 시안 검수](design/2026-10-09-flex-all-components/QA.md) | 시각 검토 | 보드별 존재·상태 확인, 보정3건, 구현 전 차이 |
 | [flex → dg-design 적용 검토](reports/flex-adoption-review/README.md) | 제안 · 구현 전 | React 0.17.3 / tokens 0.8.0 기준, 출처와 보존 계약 |
 | [컴포넌트 38개 비교](reports/flex-adoption-review/components.md) | 제안 | 유지·확장·새 종류와 앱 조합의 경계 |
 | [조합 API 검토](reports/flex-adoption-review/composition.md) | 제안 | 선택·메뉴·작업 패널·모바일·데이터 계약 |
@@ -44,6 +46,8 @@
 | [탐색·메뉴 7개 적용안](reports/flex-adoption-review/design-application/navigation.md) | 제안 | 탭·명령·경로·페이지·접힘의 표현 |
 | [표면·레이어 7개 적용안](reports/flex-adoption-review/design-application/surfaces.md) | 제안 | Dialog·Sheet·Popover·Card 등의 구조와 표면 |
 | [데이터·피드백 12개 적용안](reports/flex-adoption-review/design-application/data-feedback.md) | 제안 | 표·사람·배지·알림·로딩 표현 |
+| [스킬 미사용 재검토 비교](reports/flex-adoption-review/skill-free-comparison/README.md) | 비교 · 구현 전 | 앞선 안과 원문 우선안의 차이, HTML 비교판 |
+| [스킬 미사용 38개 컴포넌트 비교](reports/flex-adoption-review/skill-free-comparison/components.md) | 비교 | 변경·유지 판단과 신규 종류의 우선순위 |
 
 ## 결정 기록
 

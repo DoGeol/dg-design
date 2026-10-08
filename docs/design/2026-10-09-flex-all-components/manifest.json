@@ -1,0 +1,387 @@
+{
+  "date": "2026-10-09",
+  "mode": "built-in image_gen",
+  "basis": "source-first B review; no design skills or ponytail",
+  "react_version": "0.17.3",
+  "tokens_version": "0.8.0",
+  "public_component_subpaths": 38,
+  "selected_boards": 10,
+  "generated_pngs": 13,
+  "boards": [
+    {
+      "id": "01-controls",
+      "title": "01 · Controls",
+      "components": [
+        "button",
+        "checkbox",
+        "radio-group",
+        "switch",
+        "slider"
+      ],
+      "selectedFile": "01-controls-v2.png",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "02-fields",
+      "title": "02 · Fields",
+      "components": [
+        "field",
+        "text-field",
+        "text-area",
+        "file-input"
+      ],
+      "selectedFile": "02-fields.png",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "03-selection",
+      "title": "03 · Selection",
+      "components": [
+        "select",
+        "multi-select",
+        "date-picker"
+      ],
+      "selectedFile": "03-selection.png",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "04-navigation",
+      "title": "04 · Navigation & Menus",
+      "components": [
+        "dropdown-menu",
+        "context-menu",
+        "tabs",
+        "breadcrumb",
+        "pagination"
+      ],
+      "selectedFile": "04-navigation.png",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "05-structure",
+      "title": "05 · Structure",
+      "components": [
+        "accordion",
+        "collapsible",
+        "card",
+        "separator"
+      ],
+      "selectedFile": "05-structure.png",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "06-modal",
+      "title": "06 · Dialog & Sheet",
+      "components": [
+        "dialog",
+        "sheet"
+      ],
+      "selectedFile": "06-modal.png",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "07-floating",
+      "title": "07 · Floating Information",
+      "components": [
+        "popover",
+        "hover-card",
+        "tooltip"
+      ],
+      "selectedFile": "07-floating.png",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "08-data",
+      "title": "08 · Data & Identity",
+      "components": [
+        "table",
+        "data-table",
+        "avatar",
+        "badge",
+        "notification-badge"
+      ],
+      "selectedFile": "08-data-v2.png",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "09-feedback",
+      "title": "09 · Feedback",
+      "components": [
+        "alert",
+        "toast",
+        "state-panel",
+        "save-status"
+      ],
+      "selectedFile": "09-feedback.png",
+      "width": 1448,
+      "height": 1086
+    },
+    {
+      "id": "10-loading",
+      "title": "10 · Loading",
+      "components": [
+        "progress",
+        "spinner",
+        "skeleton"
+      ],
+      "selectedFile": "10-loading-v2.png",
+      "width": 1448,
+      "height": 1086
+    }
+  ],
+  "components": {
+    "button": {
+      "board": "01-controls",
+      "file": "01-controls-v2.png"
+    },
+    "checkbox": {
+      "board": "01-controls",
+      "file": "01-controls-v2.png"
+    },
+    "radio-group": {
+      "board": "01-controls",
+      "file": "01-controls-v2.png"
+    },
+    "switch": {
+      "board": "01-controls",
+      "file": "01-controls-v2.png"
+    },
+    "slider": {
+      "board": "01-controls",
+      "file": "01-controls-v2.png"
+    },
+    "field": {
+      "board": "02-fields",
+      "file": "02-fields.png"
+    },
+    "text-field": {
+      "board": "02-fields",
+      "file": "02-fields.png"
+    },
+    "text-area": {
+      "board": "02-fields",
+      "file": "02-fields.png"
+    },
+    "file-input": {
+      "board": "02-fields",
+      "file": "02-fields.png"
+    },
+    "select": {
+      "board": "03-selection",
+      "file": "03-selection.png"
+    },
+    "multi-select": {
+      "board": "03-selection",
+      "file": "03-selection.png"
+    },
+    "date-picker": {
+      "board": "03-selection",
+      "file": "03-selection.png"
+    },
+    "dropdown-menu": {
+      "board": "04-navigation",
+      "file": "04-navigation.png"
+    },
+    "context-menu": {
+      "board": "04-navigation",
+      "file": "04-navigation.png"
+    },
+    "tabs": {
+      "board": "04-navigation",
+      "file": "04-navigation.png"
+    },
+    "breadcrumb": {
+      "board": "04-navigation",
+      "file": "04-navigation.png"
+    },
+    "pagination": {
+      "board": "04-navigation",
+      "file": "04-navigation.png"
+    },
+    "accordion": {
+      "board": "05-structure",
+      "file": "05-structure.png"
+    },
+    "collapsible": {
+      "board": "05-structure",
+      "file": "05-structure.png"
+    },
+    "card": {
+      "board": "05-structure",
+      "file": "05-structure.png"
+    },
+    "separator": {
+      "board": "05-structure",
+      "file": "05-structure.png"
+    },
+    "dialog": {
+      "board": "06-modal",
+      "file": "06-modal.png"
+    },
+    "sheet": {
+      "board": "06-modal",
+      "file": "06-modal.png"
+    },
+    "popover": {
+      "board": "07-floating",
+      "file": "07-floating.png"
+    },
+    "hover-card": {
+      "board": "07-floating",
+      "file": "07-floating.png"
+    },
+    "tooltip": {
+      "board": "07-floating",
+      "file": "07-floating.png"
+    },
+    "table": {
+      "board": "08-data",
+      "file": "08-data-v2.png"
+    },
+    "data-table": {
+      "board": "08-data",
+      "file": "08-data-v2.png"
+    },
+    "avatar": {
+      "board": "08-data",
+      "file": "08-data-v2.png"
+    },
+    "badge": {
+      "board": "08-data",
+      "file": "08-data-v2.png"
+    },
+    "notification-badge": {
+      "board": "08-data",
+      "file": "08-data-v2.png"
+    },
+    "alert": {
+      "board": "09-feedback",
+      "file": "09-feedback.png"
+    },
+    "toast": {
+      "board": "09-feedback",
+      "file": "09-feedback.png"
+    },
+    "state-panel": {
+      "board": "09-feedback",
+      "file": "09-feedback.png"
+    },
+    "save-status": {
+      "board": "09-feedback",
+      "file": "09-feedback.png"
+    },
+    "progress": {
+      "board": "10-loading",
+      "file": "10-loading-v2.png"
+    },
+    "spinner": {
+      "board": "10-loading",
+      "file": "10-loading-v2.png"
+    },
+    "skeleton": {
+      "board": "10-loading",
+      "file": "10-loading-v2.png"
+    }
+  },
+  "assets": [
+    {
+      "file": "01-controls-v2.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1429841,
+      "sha256": "b40b343fc311c212dcfbaf12e3d0aa50b870110cee1624e3f026484050aac956"
+    },
+    {
+      "file": "01-controls.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1160675,
+      "sha256": "79759a74479336f66a7cfbd3d94f11adf5ca2964ecec659f46ede43f758949ca"
+    },
+    {
+      "file": "02-fields.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1194642,
+      "sha256": "92057df1169887876f5026b2b7b79980f62414c977e2a809fc663cd49bd0dd15"
+    },
+    {
+      "file": "03-selection.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1243959,
+      "sha256": "a69f0b81873c4fbd53d8f29de8ddbaa150ae229e6916d2e8f998154695852d52"
+    },
+    {
+      "file": "04-navigation.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1180119,
+      "sha256": "7a9ef42ab1e8e2bd8cb57ca331749c8302c9418f78e08649d961541a8db2c545"
+    },
+    {
+      "file": "05-structure.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1215701,
+      "sha256": "76bef49dfa5beb52dc0472b367ce38bfbaa7c302744642c309776c87912d6305"
+    },
+    {
+      "file": "06-modal.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1328587,
+      "sha256": "9d5c6b97e28b04c2223f48c1e5b7d0be007ad1a01c3a1efeaf23d378c5a9720f"
+    },
+    {
+      "file": "07-floating.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1293370,
+      "sha256": "7209c15426ab7d65afd4e7f7ece818899f0b9befa9a2e032e6880412252b334d"
+    },
+    {
+      "file": "08-data-v2.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1529064,
+      "sha256": "3c70022073703de725108be1161416fdc3b3a81dba0645852eec851c9180ed16"
+    },
+    {
+      "file": "08-data.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1206305,
+      "sha256": "2dfdfcb0e9a89dedd364431cfb19ebf618ed13eeba6335dfcb034ece6e39a5f0"
+    },
+    {
+      "file": "09-feedback.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1304997,
+      "sha256": "1b401396cf5861b2af1e67d4554da5193ed8c157221691b1e119f2fbddd5ddb1"
+    },
+    {
+      "file": "10-loading-v2.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1449232,
+      "sha256": "b68a31f8e6aaa90f9fd4aee592954d05228e9c4f6b07de24a0a4e8740375da93"
+    },
+    {
+      "file": "10-loading.png",
+      "width": 1448,
+      "height": 1086,
+      "bytes": 1167957,
+      "sha256": "482fee71cab357edf0a7b81e8d1d5ddd26a557bf99ea809a1b1df65a1949831c"
+    }
+  ]
+}
