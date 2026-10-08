@@ -1,0 +1,20 @@
+{
+  "checked_on": "2026-10-08",
+  "baseline_commit": "3789b49404ea146b6499066f0a642d8e87893469",
+  "scope": "Report integrity, public-subpath coverage, entry hashes via collect-token-evidence.mjs, and token generator outputs; no UI/runtime regression test.",
+  "markdown_files": {
+    "README.md": 5641,
+    "components.md": 7596,
+    "composition.md": 8184,
+    "plan.md": 6841,
+    "tokens.md": 8552
+  },
+  "local_links_checked": 47,
+  "external_links_not_refetched": 5,
+  "component_matrix_rows": 38,
+  "entry_source_hashes_verified": 38,
+  "tracked_changes": [
+    "docs/INDEX.md"
+  ],
+  "errors": []
+}

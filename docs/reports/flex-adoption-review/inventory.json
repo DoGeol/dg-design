@@ -1,0 +1,531 @@
+{
+  "baseline_commit": "3789b49404ea146b6499066f0a642d8e87893469",
+  "baseline_branch_before_review": "main",
+  "review_branch": "codex/flex-adoption-review-v0173",
+  "react_version": "0.17.3",
+  "tokens_version": "0.8.0",
+  "public_component_subpaths": 38,
+  "scope": "All public subpaths inventoried. Deep static API/CSS inspection focused on tokens,Button,Field,TextField,TextArea,Select,MultiSelect,DropdownMenu,Dialog,Sheet,Tabs,RadioGroup,DatePicker,DataTable and shared overlay/selection infrastructure. Not a full repository bug audit.",
+  "components": [
+    {
+      "subpath": "./accordion",
+      "entry": "packages/react/src/accordion/Accordion.tsx",
+      "source_sha256": "2286ed11a3c10c0bc6f4062444b74e0a072c78776f0cb49f3a306dd7e290ea84",
+      "exported_props": [
+        "AccordionBodyProps",
+        "AccordionContentProps",
+        "AccordionDescriptionProps",
+        "AccordionHeaderProps",
+        "AccordionItemProps",
+        "AccordionPrefixProps",
+        "AccordionRootProps",
+        "AccordionSuffixIconProps",
+        "AccordionTitleProps",
+        "AccordionTriggerProps"
+      ],
+      "css_files": [
+        "packages/react/src/accordion/accordion.css"
+      ]
+    },
+    {
+      "subpath": "./alert",
+      "entry": "packages/react/src/alert/Alert.tsx",
+      "source_sha256": "2d1b284688f50f8d2af71d693bde4770823043077ce427dd1053ea816345aa49",
+      "exported_props": [
+        "AlertProps"
+      ],
+      "css_files": [
+        "packages/react/src/alert/alert.css"
+      ]
+    },
+    {
+      "subpath": "./avatar",
+      "entry": "packages/react/src/avatar/Avatar.tsx",
+      "source_sha256": "2dc4ebd1814eecb45e820e1b3ee0d40ce43e385a6a811303c621f984a3a41576",
+      "exported_props": [
+        "AvatarBadgeProps",
+        "AvatarFallbackProps",
+        "AvatarImageProps",
+        "AvatarRootProps"
+      ],
+      "css_files": [
+        "packages/react/src/avatar/avatar.css"
+      ]
+    },
+    {
+      "subpath": "./badge",
+      "entry": "packages/react/src/badge/Badge.tsx",
+      "source_sha256": "203dba78850614ea51665d979180e07e16688b17e29412ea7f0b6393f98ef9a0",
+      "exported_props": [
+        "BadgeProps"
+      ],
+      "css_files": [
+        "packages/react/src/badge/badge.css"
+      ]
+    },
+    {
+      "subpath": "./breadcrumb",
+      "entry": "packages/react/src/breadcrumb/Breadcrumb.tsx",
+      "source_sha256": "82d4e0f9bfd76a45506710e5261a68b1a929147abb906f0960471427bca7d3d4",
+      "exported_props": [
+        "BreadcrumbItemProps",
+        "BreadcrumbLinkProps",
+        "BreadcrumbListProps",
+        "BreadcrumbPageProps",
+        "BreadcrumbRootProps",
+        "BreadcrumbSeparatorProps"
+      ],
+      "css_files": [
+        "packages/react/src/breadcrumb/breadcrumb.css"
+      ]
+    },
+    {
+      "subpath": "./button",
+      "entry": "packages/react/src/button/Button.tsx",
+      "source_sha256": "45f8b9a5540c6ec4b3fb41051a426cb160b512d5692ad142f77048be480d47b8",
+      "exported_props": [
+        "ButtonProps"
+      ],
+      "css_files": [
+        "packages/react/src/button/button.css"
+      ]
+    },
+    {
+      "subpath": "./card",
+      "entry": "packages/react/src/card/Card.tsx",
+      "source_sha256": "bba79874f84f27c265bccdd0d3fdd41aac135db85ae5b7967a8676c09f423677",
+      "exported_props": [
+        "CardProps"
+      ],
+      "css_files": [
+        "packages/react/src/card/card.css"
+      ]
+    },
+    {
+      "subpath": "./checkbox",
+      "entry": "packages/react/src/checkbox/Checkbox.tsx",
+      "source_sha256": "e89bd8104f37837bab51255450beb7d0765fd5297dc89fffba08afb984333e6c",
+      "exported_props": [
+        "CheckboxProps"
+      ],
+      "css_files": [
+        "packages/react/src/checkbox/checkbox.css"
+      ]
+    },
+    {
+      "subpath": "./collapsible",
+      "entry": "packages/react/src/collapsible/Collapsible.tsx",
+      "source_sha256": "ac815d7efd2f0cf982d031e0ffb02712a85fcd449a52463367c7b5097445c4b8",
+      "exported_props": [
+        "CollapsibleContentProps",
+        "CollapsibleRootProps",
+        "CollapsibleTriggerProps"
+      ],
+      "css_files": [
+        "packages/react/src/collapsible/collapsible.css"
+      ]
+    },
+    {
+      "subpath": "./context-menu",
+      "entry": "packages/react/src/context-menu/ContextMenu.tsx",
+      "source_sha256": "84205234f96af7893286c8604edbfc2c0ee581b0c4f1aca836d5864a268e4d01",
+      "exported_props": [
+        "ContextMenuContentProps",
+        "ContextMenuItemProps",
+        "ContextMenuLabelProps",
+        "ContextMenuRootProps",
+        "ContextMenuSeparatorProps",
+        "ContextMenuShortcutProps",
+        "ContextMenuTriggerProps"
+      ],
+      "css_files": []
+    },
+    {
+      "subpath": "./data-table",
+      "entry": "packages/react/src/data-table/view/DataTable.tsx",
+      "source_sha256": "ccbd9b932e36a1eab60422b3dd9e009caf88c0811cb0923179e23e705da7a734",
+      "exported_props": [
+        "DataTableProps"
+      ],
+      "css_files": [
+        "packages/react/src/data-table/view/data-table.css"
+      ]
+    },
+    {
+      "subpath": "./date-picker",
+      "entry": "packages/react/src/date-picker/picker/DatePicker.tsx",
+      "source_sha256": "c98528d8bc5f234574c17e8915e4b26fc497d69c91a1f17d1076885411786eda",
+      "exported_props": [
+        "DatePickerCalendarProps",
+        "DatePickerFieldProps",
+        "DateRangePickerCalendarProps"
+      ],
+      "css_files": [
+        "packages/react/src/date-picker/calendar/calendar.css",
+        "packages/react/src/date-picker/field/field.css",
+        "packages/react/src/date-picker/picker/date-picker.css"
+      ]
+    },
+    {
+      "subpath": "./dialog",
+      "entry": "packages/react/src/dialog/Dialog.tsx",
+      "source_sha256": "4d2260fb4744076ae40a6c81485880e02ed7c5c92081a222f1393bd13997d35e",
+      "exported_props": [
+        "DialogCloseProps",
+        "DialogContentProps",
+        "DialogDescriptionProps",
+        "DialogOverlayProps",
+        "DialogRootProps",
+        "DialogTitleProps",
+        "DialogTriggerProps"
+      ],
+      "css_files": [
+        "packages/react/src/dialog/dialog.css"
+      ]
+    },
+    {
+      "subpath": "./dropdown-menu",
+      "entry": "packages/react/src/dropdown-menu/DropdownMenu.tsx",
+      "source_sha256": "2964276df6ee8c2c5e81eb472ccd8064ddb224fe412a2d3f2b53938c02417ae1",
+      "exported_props": [
+        "DropdownMenuContentProps",
+        "DropdownMenuItemProps",
+        "DropdownMenuLabelProps",
+        "DropdownMenuRootProps",
+        "DropdownMenuSeparatorProps",
+        "DropdownMenuShortcutProps",
+        "DropdownMenuTriggerProps"
+      ],
+      "css_files": [
+        "packages/react/src/dropdown-menu/dropdown-menu.css"
+      ]
+    },
+    {
+      "subpath": "./file-input",
+      "entry": "packages/react/src/file-input/FileInput.tsx",
+      "source_sha256": "64e722e1756f9957c123cd13e868b1ec924cc654a179b5dede127064153767a5",
+      "exported_props": [
+        "FileInputActionsProps",
+        "FileInputDropzoneProps",
+        "FileInputPreviewProps",
+        "FileInputRootProps",
+        "FileInputTriggerProps"
+      ],
+      "css_files": [
+        "packages/react/src/file-input/file-input.css"
+      ]
+    },
+    {
+      "subpath": "./field",
+      "entry": "packages/react/src/field/Field.tsx",
+      "source_sha256": "838091ce3f970b99371de278e38aa29a4d4af37572e9344dcbefcd231f0da01f",
+      "exported_props": [
+        "FieldDescriptionProps",
+        "FieldErrorMessageProps",
+        "FieldLabelProps",
+        "FieldRootProps"
+      ],
+      "css_files": [
+        "packages/react/src/field/field.css"
+      ]
+    },
+    {
+      "subpath": "./hover-card",
+      "entry": "packages/react/src/hover-card/HoverCard.tsx",
+      "source_sha256": "27d8877b84a8d35886351c2f1527abbac40dde6a4bbaed4985f92368cdc097cd",
+      "exported_props": [
+        "HoverCardContentProps",
+        "HoverCardRootProps",
+        "HoverCardTriggerProps"
+      ],
+      "css_files": [
+        "packages/react/src/hover-card/hover-card.css"
+      ]
+    },
+    {
+      "subpath": "./multi-select",
+      "entry": "packages/react/src/multi-select/MultiSelect.tsx",
+      "source_sha256": "e03ce4f1acdff5be2e3002bcd098ae79bb972e2a6e346a8fd201cd7b4d2cdcd5",
+      "exported_props": [
+        "MultiSelectContentProps",
+        "MultiSelectOptionProps",
+        "MultiSelectRootProps",
+        "MultiSelectSearchTriggerProps",
+        "MultiSelectTriggerProps"
+      ],
+      "css_files": [
+        "packages/react/src/multi-select/multi-select.css"
+      ]
+    },
+    {
+      "subpath": "./notification-badge",
+      "entry": "packages/react/src/notification-badge/NotificationBadge.tsx",
+      "source_sha256": "990ccdfdbc022b65b379bd8364b2324ea326f4289c8afd80cf357a5834e8669f",
+      "exported_props": [
+        "NotificationBadgeProps"
+      ],
+      "css_files": [
+        "packages/react/src/notification-badge/notification-badge.css"
+      ]
+    },
+    {
+      "subpath": "./pagination",
+      "entry": "packages/react/src/pagination/Pagination.tsx",
+      "source_sha256": "be89ab61952ab4379f27d087dd885b7f717178eebbd305606047f9eaf797cbdf",
+      "exported_props": [
+        "PaginationEllipsisProps",
+        "PaginationItemProps",
+        "PaginationLinkProps",
+        "PaginationListProps",
+        "PaginationNextProps",
+        "PaginationPreviousProps",
+        "PaginationRootProps"
+      ],
+      "css_files": [
+        "packages/react/src/pagination/pagination.css"
+      ]
+    },
+    {
+      "subpath": "./popover",
+      "entry": "packages/react/src/popover/Popover.tsx",
+      "source_sha256": "3cc7f7c2db5acec28fd5bfdf3d0079b83c745019b71644546c0b40ffc772cb5d",
+      "exported_props": [
+        "PopoverArrowProps",
+        "PopoverCloseProps",
+        "PopoverContentProps",
+        "PopoverRootProps",
+        "PopoverTriggerProps"
+      ],
+      "css_files": [
+        "packages/react/src/popover/popover.css"
+      ]
+    },
+    {
+      "subpath": "./progress",
+      "entry": "packages/react/src/progress/Progress.tsx",
+      "source_sha256": "c231033d0301effc8f7beebfa36ec35b6d857ae98fa4cce35cf4c564b7fdfde9",
+      "exported_props": [
+        "ProgressProps"
+      ],
+      "css_files": [
+        "packages/react/src/progress/progress.css"
+      ]
+    },
+    {
+      "subpath": "./radio-group",
+      "entry": "packages/react/src/radio-group/RadioGroup.tsx",
+      "source_sha256": "2da90b5a2d6e67ed4cc2f52a8fa51f0c799438d4533a0ba5136e9c89e0dcd5d6",
+      "exported_props": [
+        "RadioGroupItemProps",
+        "RadioGroupRootProps"
+      ],
+      "css_files": [
+        "packages/react/src/radio-group/radio-group.css"
+      ]
+    },
+    {
+      "subpath": "./save-status",
+      "entry": "packages/react/src/save-status/SaveStatus.tsx",
+      "source_sha256": "c7bb9556a90494dc439cd7989425125f894121f5f6b84d25aebcf5a399add783",
+      "exported_props": [
+        "SaveStatusProps"
+      ],
+      "css_files": [
+        "packages/react/src/save-status/save-status.css"
+      ]
+    },
+    {
+      "subpath": "./select",
+      "entry": "packages/react/src/select/Select.tsx",
+      "source_sha256": "9abb8eb5c50ec1b6fef449dbbdc266b8a78b6dd0c7ec5be3a2684415426ac33e",
+      "exported_props": [
+        "SelectContentProps",
+        "SelectGroupProps",
+        "SelectLabelProps",
+        "SelectOptionProps",
+        "SelectRootProps",
+        "SelectTriggerProps"
+      ],
+      "css_files": [
+        "packages/react/src/select/select.css"
+      ]
+    },
+    {
+      "subpath": "./separator",
+      "entry": "packages/react/src/separator/Separator.tsx",
+      "source_sha256": "5da499243bd061e563d92b5061cf428fbab365f4f4b477558b77a62d95adec97",
+      "exported_props": [
+        "SeparatorProps"
+      ],
+      "css_files": [
+        "packages/react/src/separator/separator.css"
+      ]
+    },
+    {
+      "subpath": "./sheet",
+      "entry": "packages/react/src/sheet/Sheet.tsx",
+      "source_sha256": "e3b4497b9860c8b310fdf4946d3781d0fba9c77115fb166578111822a7e4b71e",
+      "exported_props": [
+        "SheetCloseProps",
+        "SheetContentProps",
+        "SheetDescriptionProps",
+        "SheetOverlayProps",
+        "SheetRootProps",
+        "SheetTitleProps",
+        "SheetTriggerProps"
+      ],
+      "css_files": [
+        "packages/react/src/sheet/sheet.css"
+      ]
+    },
+    {
+      "subpath": "./skeleton",
+      "entry": "packages/react/src/skeleton/Skeleton.tsx",
+      "source_sha256": "f2c17d9803b6bf5efd39bd2862acc13d2f71dbea408d6d65970bf27f542d184d",
+      "exported_props": [
+        "SkeletonProps"
+      ],
+      "css_files": [
+        "packages/react/src/skeleton/skeleton.css"
+      ]
+    },
+    {
+      "subpath": "./slider",
+      "entry": "packages/react/src/slider/Slider.tsx",
+      "source_sha256": "3187988a4a55b1f5b17780d111f997801f49873bbd83bf8ffe3b25d88aa4559c",
+      "exported_props": [
+        "SliderProps"
+      ],
+      "css_files": [
+        "packages/react/src/slider/slider.css"
+      ]
+    },
+    {
+      "subpath": "./spinner",
+      "entry": "packages/react/src/spinner/Spinner.tsx",
+      "source_sha256": "2b93361f67a1ae410760daa7f9215d983e742f29b8542bb03e8bd3b3bb0b0e55",
+      "exported_props": [
+        "SpinnerProps"
+      ],
+      "css_files": [
+        "packages/react/src/spinner/spinner.css"
+      ]
+    },
+    {
+      "subpath": "./state-panel",
+      "entry": "packages/react/src/state-panel/StatePanel.tsx",
+      "source_sha256": "4e0b49f2f41a5cd522ba419c5ba657f989aace463a1a2c3155ba99a4ee39bfef",
+      "exported_props": [
+        "StatePanelActionsProps",
+        "StatePanelDescriptionProps",
+        "StatePanelFooterProps",
+        "StatePanelIconProps",
+        "StatePanelLoadingProps",
+        "StatePanelRootProps",
+        "StatePanelTitleProps"
+      ],
+      "css_files": [
+        "packages/react/src/state-panel/state-panel.css"
+      ]
+    },
+    {
+      "subpath": "./switch",
+      "entry": "packages/react/src/switch/Switch.tsx",
+      "source_sha256": "fb92a0c250f99585310e90eaba1eea8b2a9734a1cd18e29693e3dd36c6e1ff8c",
+      "exported_props": [
+        "SwitchProps"
+      ],
+      "css_files": [
+        "packages/react/src/switch/switch.css"
+      ]
+    },
+    {
+      "subpath": "./table",
+      "entry": "packages/react/src/table/Table.tsx",
+      "source_sha256": "82231b6371e155b9d6326efb6190fdbfa3b38eca77eb2493d475b0eb7f1569ff",
+      "exported_props": [
+        "TableBodyProps",
+        "TableCaptionProps",
+        "TableCellProps",
+        "TableFooterProps",
+        "TableHeadProps",
+        "TableHeaderProps",
+        "TableRootProps",
+        "TableRowProps"
+      ],
+      "css_files": [
+        "packages/react/src/table/table.css"
+      ]
+    },
+    {
+      "subpath": "./tabs",
+      "entry": "packages/react/src/tabs/Tabs.tsx",
+      "source_sha256": "8b3ede5e77b854a8ce1697a265aca413de6cbfd888f9199f4d1feafc94d9bbcb",
+      "exported_props": [
+        "TabsContentProps",
+        "TabsListProps",
+        "TabsRootProps",
+        "TabsTriggerProps"
+      ],
+      "css_files": [
+        "packages/react/src/tabs/tabs.css"
+      ]
+    },
+    {
+      "subpath": "./text-area",
+      "entry": "packages/react/src/text-area/TextArea.tsx",
+      "source_sha256": "8dfcc5b905d4dd767d243a4ef1b42d2c2cf70c23e6a82916eaf1fa0ca0e2b796",
+      "exported_props": [
+        "TextAreaProps"
+      ],
+      "css_files": [
+        "packages/react/src/text-area/text-area.css"
+      ]
+    },
+    {
+      "subpath": "./text-field",
+      "entry": "packages/react/src/text-field/TextField.tsx",
+      "source_sha256": "4ca0a3b15407fe90569e274f7f6a91023a53f7900df446d611372ae6cba6908e",
+      "exported_props": [
+        "TextFieldProps"
+      ],
+      "css_files": [
+        "packages/react/src/text-field/text-field.css"
+      ]
+    },
+    {
+      "subpath": "./toast",
+      "entry": "packages/react/src/toast/Toast.tsx",
+      "source_sha256": "9a2367f502fd0ecbaaabb47ca77d5608e9efc7dc42409d69e0d84398260dc778",
+      "exported_props": [
+        "ToastProviderProps",
+        "ToastViewProps"
+      ],
+      "css_files": [
+        "packages/react/src/toast/toast.css"
+      ]
+    },
+    {
+      "subpath": "./tooltip",
+      "entry": "packages/react/src/tooltip/Tooltip.tsx",
+      "source_sha256": "10547e271e235f67ac43a54346b54005bad51940bcd20e86d9b018f7272b9a04",
+      "exported_props": [
+        "TooltipContentProps",
+        "TooltipProviderProps",
+        "TooltipRootProps",
+        "TooltipTriggerProps"
+      ],
+      "css_files": [
+        "packages/react/src/tooltip/tooltip.css"
+      ]
+    }
+  ],
+  "initial_local_commit": "715b8e1467e0b291a2243b54a1a22542f1d9fffb",
+  "remote_main_verified": "3789b49404ea146b6499066f0a642d8e87893469",
+  "baseline_update_note": "Remote main included react0.17.3 floating panel border fix. Review branch was created from that existing commit; original untracked component mockups preserved.",
+  "inventory_notes": {
+    "exported_props": "Names discovered in the component source directory; not a complete signature or all inherited/re-exported types. Read the entry and public index for the full API.",
+    "source_sha256": "SHA-256 of the listed entry file only. CSS and all transitive modules are not covered by this entry hash.",
+    "baseline_date": "2026-10-08"
+  }
+}

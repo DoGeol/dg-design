@@ -30,6 +30,16 @@
 
 [customization.md](customization.md) — 소비 프로젝트 커스터마이즈 계약: 공개/비공개 표면, `@layer` 규칙, `createTheme`, 예시 3종.
 
+## 검토
+
+| 문서 | 상태 | 다루는 것 |
+|------|------|-----------|
+| [flex → dg-design 적용 검토](reports/flex-adoption-review/README.md) | 제안 · 구현 전 | React 0.17.3 / tokens 0.8.0 기준, 출처와 보존 계약 |
+| [컴포넌트 38개 비교](reports/flex-adoption-review/components.md) | 제안 | 유지·확장·새 종류와 앱 조합의 경계 |
+| [조합 API 검토](reports/flex-adoption-review/composition.md) | 제안 | 선택·메뉴·작업 패널·모바일·데이터 계약 |
+| [토큰 적용 검토](reports/flex-adoption-review/tokens.md) | 제안 | 역할 토큰, 치수 대응, 색·타이포·Tailwind |
+| [직접 업데이트 순서](reports/flex-adoption-review/plan.md) | 제안 | 변경 묶음, 완료 조건, 호환성·전환·검증 |
+
 ## 결정 기록
 
 | 문서 | 상태 | 다루는 것 |
