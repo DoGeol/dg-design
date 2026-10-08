@@ -54,4 +54,32 @@ const evidence = {
   verification: { default_contrast: "passed", default_contrast_rows: contrastRows, blue_contrast: "createTheme returned successfully after its internal checks", gamut: "Both CSS outputs generated successfully through the existing gamut-checked conversion" },
 };
 writeFileSync(new URL("token-comparison.json", directory), `${JSON.stringify(evidence, null, 2)}\n`);
-console.log(JSON.stringify({ baseline, counts: evidence.counts, inventory: evidence.inventory_verified, output: "token-comparison.json" }, null, 2));
+const sharedStyles = {
+  "./context-menu": ["packages/react/src/dropdown-menu/dropdown-menu.css"],
+  "./multi-select": ["packages/react/src/select/select.css"],
+  "./data-table": ["packages/react/src/table/table.css"],
+};
+const componentStyles = inventory.components.map((item) => ({
+  component: item.subpath.slice(2),
+  files: [...new Set([...item.css_files, ...(sharedStyles[item.subpath] ?? [])])],
+}));
+const cssFiles = [...new Set(componentStyles.flatMap((item) => item.files))].sort();
+const styleEvidence = {
+  baseline_commit: baseline,
+  scope: "CSS declaration excerpts, not computed styles. Includes size variants, state rules and visually hidden elements; read source selectors before interpreting. Token values are in token-comparison.json.",
+  components: componentStyles,
+  files: cssFiles.map((file) => {
+    const source = readFileSync(`${root}${file}`, "utf8");
+    const withoutComments = source.replace(/\/\*[\s\S]*?\*\//g, (comment) => comment.replace(/[^\n]/g, " "));
+    return {
+      file,
+      source_sha256: createHash("sha256").update(source).digest("hex"),
+      geometry_declarations: withoutComments.split("\n").flatMap((line, index) => {
+        const declarations = [...line.matchAll(/(?<![\w-])(?:height|width|min-width|max-width|min-height|max-height|border-radius|padding(?:-[\w-]+)?|gap|font-size|line-height):\s*[^;{}]+/g)].map((match) => match[0].trim());
+        return declarations.length ? [{ line: index + 1, declarations }] : [];
+      }),
+    };
+  }),
+};
+writeFileSync(new URL("design-application/source-evidence.json", directory), `${JSON.stringify(styleEvidence, null, 2)}\n`);
+console.log(JSON.stringify({ baseline, counts: evidence.counts, inventory: evidence.inventory_verified, css_sources: cssFiles.length, outputs: ["token-comparison.json", "design-application/source-evidence.json"] }, null, 2));

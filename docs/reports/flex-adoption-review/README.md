@@ -24,6 +24,7 @@ dg-design의 기반을 유지하면서 flex의 구성 원칙을 적용할 수 �
 | [인벤토리](inventory.json) | 기준 커밋·버전·엔트리·소스 해시 |
 | [토큰 출력 증거](token-comparison.json) | 현재 스케일과 기본/블루 테마의 실제 출력 |
 | [검토 파일 검증](validation.json) | 링크·문서 크기·38개 대응 범위·소스 보존 확인 |
+| [컴포넌트별 디자인 적용안](design-application/README.md) | 38개 각각의 현재 치수·외형 제안·모바일·상태·변경 수준 |
 
 토큰 출력은 저장소 루트에서 Node 24로 `node docs/reports/flex-adoption-review/collect-token-evidence.mjs`를 실행해 재현한다. [수집 스크립트](collect-token-evidence.mjs)는 기준 커밋 대비 두 패키지의 변경 유무와 38개 엔트리 해시를 확인하고 보고서 JSON만 기록한다. 문서만 추가한 커밋에서는 재실행할 수 있다. 기준 소스가 바뀌면 보고서부터 다시 검토해야 한다.
 

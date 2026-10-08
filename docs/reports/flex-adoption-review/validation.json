@@ -1,20 +1,30 @@
 {
   "checked_on": "2026-10-08",
   "baseline_commit": "3789b49404ea146b6499066f0a642d8e87893469",
-  "scope": "Report integrity, public-subpath coverage, entry hashes via collect-token-evidence.mjs, and token generator outputs; no UI/runtime regression test.",
+  "scope": "Report integrity, 38-component inventory and application coverage, entry/CSS hashes, token outputs. No browser, visual or runtime regression assertion.",
   "markdown_files": {
-    "README.md": 5641,
+    "README.md": 5794,
     "components.md": 7596,
     "composition.md": 8184,
+    "design-application/README.md": 6341,
+    "design-application/data-feedback.md": 7973,
+    "design-application/forms.md": 8388,
+    "design-application/navigation.md": 5429,
+    "design-application/surfaces.md": 5314,
     "plan.md": 6841,
     "tokens.md": 8552
   },
-  "local_links_checked": 47,
+  "local_links_checked": 101,
   "external_links_not_refetched": 5,
   "component_matrix_rows": 38,
+  "component_design_applications": 38,
   "entry_source_hashes_verified": 38,
-  "tracked_changes": [
-    "docs/INDEX.md"
+  "css_source_hashes_verified": 39,
+  "reviewed_packages_unchanged_from_baseline": true,
+  "tracked_changes_at_validation": [
+    "docs/INDEX.md",
+    "docs/reports/flex-adoption-review/README.md",
+    "docs/reports/flex-adoption-review/collect-token-evidence.mjs"
   ],
   "errors": []
 }

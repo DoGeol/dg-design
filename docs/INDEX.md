@@ -39,6 +39,11 @@
 | [조합 API 검토](reports/flex-adoption-review/composition.md) | 제안 | 선택·메뉴·작업 패널·모바일·데이터 계약 |
 | [토큰 적용 검토](reports/flex-adoption-review/tokens.md) | 제안 | 역할 토큰, 치수 대응, 색·타이포·Tailwind |
 | [직접 업데이트 순서](reports/flex-adoption-review/plan.md) | 제안 | 변경 묶음, 완료 조건, 호환성·전환·검증 |
+| [컴포넌트별 디자인 적용안](reports/flex-adoption-review/design-application/README.md) | 제안 · 렌더링 검증 전 | 현재 CSS와 적용 후 외형·공통 프로필·신규 종류 |
+| [입력·선택 12개 적용안](reports/flex-adoption-review/design-application/forms.md) | 제안 | 폼·선택·날짜·업로드의 치수·상태·모바일 |
+| [탐색·메뉴 7개 적용안](reports/flex-adoption-review/design-application/navigation.md) | 제안 | 탭·명령·경로·페이지·접힘의 표현 |
+| [표면·레이어 7개 적용안](reports/flex-adoption-review/design-application/surfaces.md) | 제안 | Dialog·Sheet·Popover·Card 등의 구조와 표면 |
+| [데이터·피드백 12개 적용안](reports/flex-adoption-review/design-application/data-feedback.md) | 제안 | 표·사람·배지·알림·로딩 표현 |
 
 ## 결정 기록
 
