@@ -22,8 +22,9 @@ Dogeol Design System. daangn/seed-design 참고.
 - `pnpm typecheck` — 3개 프로젝트 `tsc --noEmit`; 빌드가 놓치는 타입 에러 검출
 - React test는 vitest. 인터랙션은 fireEvent 금지, user-event 사용(jsdom disabled 차단 미구현)
 - `pnpm vr` — Playwright 시각 회귀(png + 색 텍스트 스냅샷 txt) + 기능 테스트. **기준은 CI에서만 생성·갱신**(visual-baseline 워크플로 수동 트리거, 로컬 `-u`는 가드가 막음). VR은 `*--state-matrix`를 우선 집으니 **기능 데모 스토리는 닫힌 상태로**
+- 사용 가이드 스킬: 예제 원본 `packages/react/skill-src/<컴포넌트>.tsx` → `pnpm --filter @dg-design/react run build:skill`이 `skill/dg-design/references`·SKILL.md 표를 만든다(생성물 커밋, CI `check:skill`). **컴포넌트 API를 바꾸면 그 예제도 같이 고친다** — 예제는 typecheck(하위 경로 import, dist 타입)와 vitest 스모크를 탄다
 - `pnpm build` — 전체 빌드(Vite lib + preserveModules). publint는 `pnpm --filter @dg-design/react exec publint`
-- CI: install → generate → build → test → typecheck → publint → vr. tokens dist가 gitignore라 generate 선행, storybook typecheck가 react dist 참조라 build 뒤
+- CI: install → generate → build → check:subpaths·check:skill → test → typecheck → publint → vr. tokens dist가 gitignore라 generate 선행, storybook typecheck가 react dist 참조라 build 뒤
 - 배포: changesets + `release.yml`(npm trusted publishing). **changeset frontmatter의 `@` 키는 따옴표 인용.** changeset 커밋이 main에 오르면 봇이 Version PR을 만들고 **그 PR 머지가 배포 승인**. 로컬 `changeset version/publish`·수동 태그 금지. Version PR에는 CI가 안 돈다(원래 커밋 CI를 본다). publish만 실패하면 워크플로 re-run이 복구. 상세는 [배포 자동화 결정](docs/decisions/2026-09-06-release-automation.md)
 
 ## 핵심 관습 (변경 시 결정 기록 먼저 확인)

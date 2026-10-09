@@ -1,6 +1,6 @@
 # flex 적용 방향 (2026-10-09)
 
-> 상태: 활성 · **구현 중** — P6(폼 확장)까지 반영. 진행은 [구현 계획](../plans/2026-10-09-flex-adoption.md).
+> 상태: 활성 · **구현 중** — P7(사용 가이드 스킬)까지 반영 — 구현 계획 전 단계 완료. 진행은 [구현 계획](../plans/2026-10-09-flex-adoption.md).
 > 근거: [A·B 이중검토 종합](../reports/flex-adoption-review/review/synthesis.md) · [B 치수 명세](../reports/flex-adoption-review/skill-free-comparison/design-application/README.md) · [A·B 공통 관점 보완](../reports/flex-adoption-review/gaps.md) · Storybook `Mockups/Flex`
 
 ## 결정
@@ -132,6 +132,8 @@
 - `variant="box"|"line"`은 모바일 밀도(`[data-dds-density="mobile"]`) 안에서만 외관을 바꾼다. 데스크톱은 variant를 줘도 outline이다 — 위 "데스크톱은 outline 하나"를 소비자 규율 대신 패키지가 지킨다.
 - box는 표면만 바꾸고 stroke-neutral 경계를 유지한다(관점 보완 §1 대비표). 상태 규칙(hover·focus·오류·비활성·읽기 전용)은 outline 것을 그대로 쓴다.
 - 내부 라벨 box(`.fx-inbox`)와 Select·MultiSelect 트리거 box는 넣지 않았다.
+
+**P7 사용 가이드 스킬 (2026-10-09)** — [사용 가이드 스킬 결정](2026-10-09-usage-skill.md)의 "구현" 절. P3~P6 예제를 단계마다 쓰지 않아 42개 컴포넌트 예제를 이 단계에서 모두 썼다.
 
 ## 다음
 

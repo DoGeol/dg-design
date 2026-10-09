@@ -4,7 +4,7 @@
 
 ## 한 줄 상태
 
-**P0~P2 배포 완료(2026-10-09, tokens 0.9.0 · react 0.18.0). P3 접근성·API 배포(react 0.19.0, [스펙](../specs/2026-10-09-p3-a11y-api.md)). P4 새 종류 배포(react 0.20.0 · tokens 0.10.0, [스펙](../specs/2026-10-09-p4-new-kinds.md)). 다음은 P5 표시 방식(스펙부터).**
+**P0~P2 배포 완료(2026-10-09, tokens 0.9.0 · react 0.18.0). P3 접근성·API 배포(react 0.19.0, [스펙](../specs/2026-10-09-p3-a11y-api.md)). P4 새 종류 배포(react 0.20.0 · tokens 0.10.0, [스펙](../specs/2026-10-09-p4-new-kinds.md)). P5 표시 방식([스펙](../specs/2026-10-09-p5-presentation.md))은 main 머지, P6 폼 확장([스펙](../specs/2026-10-09-p6-form-variants.md))·P7 사용 가이드 스킬([결정](../decisions/2026-10-09-usage-skill.md))은 `feat/p6-form-variants` 브랜치. 셋을 react 0.21.0 한 번으로 배포한다(Version PR #35에 changeset이 모인다).**
 
 ## 브랜치와 PR
 
@@ -50,7 +50,7 @@
 
 - 패키지 설정(`exports` 하위 경로 38개, `sideEffects: ["*.css"]`, ESM `preserveModules`, 컴포넌트마다 자기 CSS import)은 맞다.
 - webpack·Turbopack(Next 16 빌드 기본)은 측정하지 못했다. dg-studio는 하위 경로만 써서(348건, 배럴 0건) 영향 없음.
-- DatePicker는 Sheet·Popover를 둘 다 싣는다. P5 표시 방식 작업 때 검토 후보.
+- DatePicker는 Sheet·Popover를 둘 다 싣는다. P5에서 검토했고 높이 값이 Sheet `tall`과 달라 그대로 뒀다.
 
 ## 결정안 미리보기 보는 법
 

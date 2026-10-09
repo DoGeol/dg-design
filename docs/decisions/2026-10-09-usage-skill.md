@@ -1,6 +1,6 @@
 # 사용 가이드 스킬 (2026-10-09)
 
-> 상태: 활성 · **구현 전**. 관련: [flex 적용 방향](2026-10-09-flex-adoption-direction.md)
+> 상태: 활성 · **구현(2026-10-09, P7)**. 관련: [flex 적용 방향](2026-10-09-flex-adoption-direction.md)
 
 ## 결정
 
@@ -35,6 +35,15 @@ dg-design을 쓰는 규칙은 문서가 아니라 **컴포넌트별 사용 예�
 - **설치 스크립트(postinstall)로 자동 연결**: 설치만으로 다른 프로젝트의 폴더를 바꾸는 부작용이 있고, pnpm은 기본적으로 설치 스크립트를 막는다. 에이전트마다 위치도 달라 한 스크립트로 맞추기 어렵다.
 - **스킬 폴더만 넣고 연결은 README 한 줄로 안내**: 처음 판의 결정이었다. 연결을 누가 하는지가 비어 있고, 프로젝트별 layout 규칙을 담을 자리가 없었다(2026-10-09 사용자 지적으로 바꿈).
 - **layout 프리셋을 패키지에 고정**: 프로젝트마다 페이지 구조가 달라 강제하면 우회 코드가 늘어난다. 반복이 확인된 조합만 [구성 규칙](2026-09-05-component-composition-rules.md)대로 승격한다.
+
+## 구현 (2026-10-09, P7)
+
+- 위치: 예제 원본 `packages/react/skill-src/<컴포넌트>.tsx`(배포 안 함) → 생성물 `packages/react/skill/dg-design/{SKILL.md, references/*.md}`(배포). 설정 가이드는 `packages/react/AGENT-SETUP.md`. 패키지 `files`에 `skill`·`AGENT-SETUP.md`를 넣었다.
+- 예제 형식: 파일 맨 앞 JSDoc(`@title`·`@summary` + 언제 쓰나·쓰지 말 때·핵심 API·접근성) + export 함수 예제. `scripts/build-skill.js`(의존성 0)가 JSDoc과 코드를 참조 md로 만들고 SKILL.md 컴포넌트 표를 갱신한다. `--check`는 CI에서 생성물이 원본과 다르면 실패한다.
+- 검증: 예제는 소비자처럼 하위 경로(`@dg-design/react/<이름>`)로 import한다. `tsconfig.skill.json`이 패키지 자기 참조로 dist 타입을 읽어 검사한다(`pnpm typecheck`에 포함). Storybook에는 올리지 않고(사용자 결정), vitest 스모크(`src/skill-examples.test.tsx`)가 모든 예제를 렌더해 에러·경고가 없는지 본다. vitest는 exports를 src로 돌리는 alias로 빌드 없이 돈다.
+- 설정 가이드 검증: 빈 프로젝트에 pnpm pack tarball을 설치하고 Claude Code(`claude -p`)·Codex(`codex exec`) 비대화 실행에 가이드를 읽혔다. 둘 다 심링크·`dg-design.local.md`를 만들었고 새 세션 스킬 목록에 `dg-design`이 떴다. 다만 두 도구 모두 기본 권한(Claude 비대화, Codex `workspace-write`)에서는 `.claude/`·`.agents/` 쓰기를 막았다 — 가이드에 "거부되면 사용자에게 실행·승인 요청, 안 되면 규칙 파일 참조로 대신"을 적었다.
+- 로컬 규칙 파일 이름은 `dg-design.local.md`(프로젝트 루트). 스킬 옆에 두면 심링크로 `node_modules` 안을 고치게 되어 루트로 정했다.
+- 예제를 쓰며 드러난 라이브러리 문제는 [후속 작업](../follow-ups.md)에 모았다.
 
 ## 다음
 
