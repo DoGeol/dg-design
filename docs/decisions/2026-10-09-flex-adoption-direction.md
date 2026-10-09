@@ -1,6 +1,6 @@
 # flex 적용 방향 (2026-10-09)
 
-> 상태: 활성 · **구현 중** — P5(표시 방식)까지 반영. 진행은 [구현 계획](../plans/2026-10-09-flex-adoption.md).
+> 상태: 활성 · **구현 중** — P6(폼 확장)까지 반영. 진행은 [구현 계획](../plans/2026-10-09-flex-adoption.md).
 > 근거: [A·B 이중검토 종합](../reports/flex-adoption-review/review/synthesis.md) · [B 치수 명세](../reports/flex-adoption-review/skill-free-comparison/design-application/README.md) · [A·B 공통 관점 보완](../reports/flex-adoption-review/gaps.md) · Storybook `Mockups/Flex`
 
 ## 결정
@@ -125,6 +125,13 @@
 - Select 시트 표시는 Sheet 컴포넌트를 쓰지 않고 `internal/select-sheet.tsx`가 Sheet 클래스만 빌려 그린다. 열기·닫기·포커스·dialog-stack은 기존 `useOverlay`(`positioned: false`, `modal: true`)가 그대로 맡아 listbox 계약이 바뀌지 않는다.
 - MultiSelect `search="trigger"`는 시트 표시에서 `content`처럼 동작한다(키보드가 올라와도 목록이 보이게).
 - DatePicker Sheet는 높이가 `tall`과 달라 그대로 뒀다.
+
+**P6 폼 확장 (2026-10-09)** — [스펙](../specs/2026-10-09-p6-form-variants.md)
+
+- dg-studio 소비처는 box 1곳(실험 화면 raw input), line 0곳이었다. 사용자 결정으로 구성 규칙 예외로 넣고 "초기 API"로 배포한다.
+- `variant="box"|"line"`은 모바일 밀도(`[data-dds-density="mobile"]`) 안에서만 외관을 바꾼다. 데스크톱은 variant를 줘도 outline이다 — 위 "데스크톱은 outline 하나"를 소비자 규율 대신 패키지가 지킨다.
+- box는 표면만 바꾸고 stroke-neutral 경계를 유지한다(관점 보완 §1 대비표). 상태 규칙(hover·focus·오류·비활성·읽기 전용)은 outline 것을 그대로 쓴다.
+- 내부 라벨 box(`.fx-inbox`)와 Select·MultiSelect 트리거 box는 넣지 않았다.
 
 ## 다음
 
