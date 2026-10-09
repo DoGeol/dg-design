@@ -198,11 +198,15 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "skill",
+    "AGENT-SETUP.md"
   ],
   "scripts": {
     "build": "vite build",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.skill.json",
+    "build:skill": "node scripts/build-skill.js",
+    "check:skill": "node scripts/build-skill.js --check",
     "test": "vitest run",
     "check:subpaths": "node scripts/check-subpaths.js",
     "lint:publish": "publint"

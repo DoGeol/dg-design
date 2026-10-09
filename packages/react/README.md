@@ -2,6 +2,8 @@
 
 Dogeol Design System(DDS)의 React 컴포넌트 패키지.
 
+> **코딩 에이전트용 사용 가이드 스킬**이 패키지에 들어 있다(`skill/dg-design/`). 연결 방법은 [AGENT-SETUP.md](./AGENT-SETUP.md) — 에이전트에게 "설치된 dg-design의 설정 가이드를 읽고 스킬을 구성해줘"라고 요청하면 된다.
+
 ## 설치
 
 ```sh
