@@ -1,5 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Field, TextField } from "@dg-design/react";
+import * as React from "react";
+
+import { Caption, DensityColumns } from "./new-kinds-frame";
 
 const SIZES = ["medium", "large"] as const;
 
@@ -100,5 +103,42 @@ export const WithField: StoryObj<typeof meta> = {
         <TextField placeholder="닉네임" />
       </Field.Root>
     </div>
+  ),
+};
+
+const VARIANT_STATES = ["default", "invalid", "disabled", "readonly"] as const;
+
+/**
+ * box·line(P6) — 모바일 밀도에서만 외관이 바뀐다. 데스크톱 열은 같은 variant를 줘도 outline이어야 한다.
+ * focus 모양은 VR 기능 테스트가 잰다.
+ */
+export const VariantStateMatrix: StoryObj<typeof meta> = {
+  name: "Variant state matrix",
+  render: () => (
+    <DensityColumns>
+      {() =>
+        (["box", "line"] as const).map((variant) => (
+          <React.Fragment key={variant}>
+            <Caption>{variant}</Caption>
+            <div style={{ display: "grid", gap: 12 }}>
+              {VARIANT_STATES.map((state) => (
+                <Field.Root key={state}>
+                  <Field.Label>{state}</Field.Label>
+                  <TextField
+                    variant={variant}
+                    placeholder="제목을 입력하세요"
+                    aria-invalid={state === "invalid"}
+                    disabled={state === "disabled"}
+                    readOnly={state === "readonly"}
+                    defaultValue={state === "default" ? undefined : "컴포넌트 디자인 기록"}
+                    suffix={variant === "line" && state === "default" ? "0/40" : undefined}
+                  />
+                </Field.Root>
+              ))}
+            </div>
+          </React.Fragment>
+        ))
+      }
+    </DensityColumns>
   ),
 };

@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Field, TextArea } from "@dg-design/react";
 import * as React from "react";
 
+import { Caption, DensityColumns } from "./new-kinds-frame";
+
 const SIZES = ["medium", "large"] as const;
 
 const meta = {
@@ -133,5 +135,40 @@ export const AutoResize: StoryObj<typeof meta> = {
         />
       </div>
     </div>
+  ),
+};
+
+const VARIANT_STATES = ["default", "invalid", "disabled", "readonly"] as const;
+
+/** box·line(P6) — 모바일 밀도에서만 외관이 바뀐다. 데스크톱 열은 같은 variant를 줘도 outline이어야 한다. */
+export const VariantStateMatrix: StoryObj<typeof meta> = {
+  name: "Variant state matrix",
+  render: () => (
+    <DensityColumns>
+      {() =>
+        (["box", "line"] as const).map((variant) => (
+          <React.Fragment key={variant}>
+            <Caption>{variant}</Caption>
+            <div style={{ display: "grid", gap: 12 }}>
+              {VARIANT_STATES.map((state) => (
+                <TextArea
+                  key={state}
+                  variant={variant}
+                  rows={2}
+                  aria-label={`${variant} ${state}`}
+                  placeholder="댓글을 남기세요"
+                  aria-invalid={state === "invalid"}
+                  disabled={state === "disabled"}
+                  readOnly={state === "readonly"}
+                  defaultValue={state === "default" ? undefined : "좋은 정리입니다. 표 부분만 다시 봐 주십시오."}
+                  showCount={state === "default"}
+                  maxLength={state === "default" ? 200 : undefined}
+                />
+              ))}
+            </div>
+          </React.Fragment>
+        ))
+      }
+    </DensityColumns>
   ),
 };
