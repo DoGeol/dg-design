@@ -23,7 +23,7 @@ main 위의 7커밋(오래된 순):
 | `ded6dc0` | 사용 가이드 스킬 결정 |
 | `8c4d3b1` | 결정안 미리보기(Decided 스토리 46개), 표 정렬·Sheet 모서리 |
 
-**정할 것:** 검토 브랜치를 main에 먼저 병합할지, `feat/flex-adoption`의 구현과 함께 하나의 PR로 올릴지. 검토 브랜치는 문서와 Storybook 시안만 바꿨고 `packages/`는 그대로다.
+**정함(2026-10-09):** 검토 브랜치를 먼저 main에 병합한다 — [PR #24](https://github.com/DoGeol/dg-design/pull/24). 구현은 `feat/flex-adoption`에서 단계별 PR로 올린다. #24가 squash 병합되면 `feat/flex-adoption`을 main 위로 rebase한다.
 
 ## 확정된 결정
 
@@ -85,9 +85,9 @@ pnpm --filter @dg-design/storybook dev   # http://localhost:6006
 
 ## 열린 질문과 위험
 
-- **Sheet "배경 모서리 제거"의 해석:** 사용자 요청 "drawer(sheet)의 경우 배경의 round를 제거"를 Sheet 패널 반경 0으로 해석해 반영했다. 미리보기 회색 배경 프레임도 함께 각지게 했다. 사용자가 프레임만 뜻했을 가능성을 물었으나 답을 받지 못했다. P2 전에 한 번 확인한다.
-- **검토 브랜치 병합 방식**(위 "정할 것").
-- **Turbopack 배럴 동작 미측정.**
+- ~~Sheet "배경 모서리 제거"의 해석~~ — **확인(2026-10-09): Sheet 패널 반경 0이 맞다.** 결정 기록 그대로 P2에 넣는다.
+- ~~검토 브랜치 병합 방식~~ — 위 "정함" 참고.
+- **Turbopack 배럴 동작 미측정** — 측정하지 않기로 했다(2026-10-09). README는 "번들러에 따라 다르다"로만 쓴다.
 - **보강 이미지 결함**(B 12 오타 등)은 다시 그리지 않기로 했다. 이미지는 방향 참고이고 구현은 Storybook을 따른다.
 
 ## 환경 주의
