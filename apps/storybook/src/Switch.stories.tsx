@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Switch } from "@dg-design/react";
 
-const SIZES = ["medium", "large"] as const;
+const SIZES = ["small", "medium", "large"] as const;
 
 const meta = {
   title: "Switch",

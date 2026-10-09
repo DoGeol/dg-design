@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Avatar } from "@dg-design/react";
 import * as React from "react";
 
-const SIZES = ["small", "medium", "large", "xlarge"] as const;
+const SIZES = ["xsmall", "small", "medium", "large", "xlarge"] as const;
 const AVATAR_DATA_URL =
   "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%239a72ee'/%3E%3Ccircle cx='32' cy='25' r='12' fill='%23f7e7ce'/%3E%3Cpath d='M10 62c4-14 14-21 22-21s18 7 22 21' fill='%233b2a54'/%3E%3C/svg%3E";
 const FAILED_AVATAR_SRC = "data:image/svg+xml;base64,not-a-valid-image";

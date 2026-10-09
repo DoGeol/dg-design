@@ -13,7 +13,14 @@
   }
 
   /* size: Button(small 36px·medium 40px·large 52px) 안에 얹혀도 여백이 남는 두 단계.
-     16px/20px는 흔한 인라인 아이콘 크기 — Select 화살표(20px대)와 같은 눈금. */
+     16px/20px는 흔한 인라인 아이콘 크기 — Select 화살표(20px대)와 같은 눈금.
+     Button xsmall(28)은 small을 쓴다. xsmall 12는 글자 12 줄 안의 인라인 표시용. */
+  .dds-spinner--size_xsmall {
+    width: var(--dds-dimension-x3);
+    height: var(--dds-dimension-x3);
+    border-width: var(--dds-dimension-x0_5);
+  }
+
   .dds-spinner--size_small {
     width: var(--dds-dimension-x4);
     height: var(--dds-dimension-x4);

@@ -19,7 +19,7 @@
 
 | prop | 값 | 메모 |
 | --- | --- | --- |
-| `size` | `medium`(기본) · `large` | `small`은 없다 |
+| `size` | `xsmall` · `medium`(기본) · `large` | `small`은 없다. `xsmall`은 한 줄 높이 28, 모바일 밀도에서는 `medium` |
 | `variant` | `outline`(기본) · `box` · `line` | `box`·`line`은 `[data-dds-density="mobile"]` 안에서만 적용된다 |
 | `autoResize` | boolean | 입력량에 따라 높이가 늘어난다. 기본은 `rows` + 세로 resize |
 | `showCount` | boolean | 글자 수 표시. `maxLength`가 있으면 "현재/최대". 켜면 wrapper가 생긴다 |

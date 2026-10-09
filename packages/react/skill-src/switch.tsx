@@ -18,7 +18,7 @@
  * | prop | 값 | 메모 |
  * | --- | --- | --- |
  * | `children` | ReactNode | 라벨 |
- * | `size` | `medium`(기본) · `large` | `large`는 모바일 |
+ * | `size` | `small` · `medium`(기본) · `large` | `small`(28×16)은 Button `xsmall` 줄, `large`는 모바일 |
  * | `labelPlacement` | `end`(기본) · `start` | 라벨 위치. 설정 행은 `start`로 오른쪽 정렬 |
  * | `checked`·`defaultChecked`·`onChange`·`name`·`disabled` | input 표준 | controlled/uncontrolled 모두 가능 |
  *

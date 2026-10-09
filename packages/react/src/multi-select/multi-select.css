@@ -11,6 +11,19 @@
     cursor: text;
   }
 
+  /* xsmall: 칩(24)이 28 줄에 들어가게 위아래 여백을 테두리만큼만 남긴다. 모바일은 medium으로 그린다(select.css). */
+  .dds-multi-select__trigger--search.dds-select__trigger--size_xsmall {
+    height: auto;
+    min-height: var(--dds-dimension-x7);
+    padding-block: calc((var(--dds-dimension-x7) - var(--dds-size-chip-height) - 2px) / 2);
+  }
+  /* select.css의 모바일 xsmall 고정 높이(0,2,0)를 다시 풀어 칩이 늘면 자라게 한다. */
+  [data-dds-density="mobile"] .dds-multi-select__trigger--search.dds-select__trigger--size_xsmall {
+    height: auto;
+    min-height: var(--dds-size-field-height);
+    padding-block: var(--dds-dimension-x1_5);
+  }
+
   /* 입력류 focus 관습(select.css 트리거와 동일): 링 없이 테두리 2px 브랜드 */
   .dds-multi-select__trigger--search:has(.dds-multi-select__search:focus-visible) {
     border-color: var(--dds-color-stroke-focus-ring);

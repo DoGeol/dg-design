@@ -88,7 +88,16 @@
   }
 
   /* size: 세로 패딩은 TextField에 없는 축이라 dimension 스케일에서 새로 골랐다 (폭은 그대로 재사용) */
-  .dds-text-area--size_medium {
+  /* xsmall: 한 줄 높이 28(TextField xsmall과 같음). 모바일 밀도에서는 medium으로 그린다(TextField와 같은 이유). */
+  .dds-text-area--size_xsmall {
+    padding-block: calc((var(--dds-dimension-x7) - var(--dds-line-height-t2) - 2px) / 2);
+    padding-inline: var(--dds-dimension-x2);
+    border-radius: var(--dds-radius-r1);
+    font-size: var(--dds-font-size-t2);
+    line-height: var(--dds-line-height-t2);
+  }
+  .dds-text-area--size_medium,
+  [data-dds-density="mobile"] .dds-text-area--size_xsmall {
     padding-block: var(--dds-dimension-x2);
     padding-inline: var(--dds-space-field-inset);
     border-radius: var(--dds-radius-field);
@@ -96,7 +105,7 @@
     line-height: var(--dds-line-height-body);
   }
   /* 모바일 한 줄 높이를 필드 높이에 맞춘다: (56 − 24) ÷ 2. */
-  [data-dds-density="mobile"] .dds-text-area--size_medium {
+  [data-dds-density="mobile"] :is(.dds-text-area--size_medium, .dds-text-area--size_xsmall) {
     padding-block: var(--dds-dimension-x4);
   }
   .dds-text-area--size_large {

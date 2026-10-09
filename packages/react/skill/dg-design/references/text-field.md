@@ -21,7 +21,7 @@
 | prop | 값 | 메모 |
 | --- | --- | --- |
 | `type` | `text`(기본) · `email` · `password` · `tel` · `url` · `search` · `number` | |
-| `size` | `medium`(기본) · `large` | `small`은 없다 |
+| `size` | `xsmall`(28) · `medium`(기본) · `large` | `small`은 없다. `xsmall`은 데스크톱 표 툴바·필터 줄에서 Button `xsmall`(28) 옆에 둔다. 모바일 밀도에서는 `medium`으로 그린다(16px 미만 입력은 iOS가 확대) |
 | `variant` | `outline`(기본) · `box` · `line` | `box`·`line`은 `[data-dds-density="mobile"]` 안에서만 적용된다 |
 | `prefix`·`suffix` | ReactNode | 둘 중 하나라도 있으면 wrapper가 생기고 `className`은 wrapper에 붙는다 |
 | `value`·`defaultValue`·`onChange`·`name`·`placeholder`·`disabled`·`readOnly` | input 표준 | |

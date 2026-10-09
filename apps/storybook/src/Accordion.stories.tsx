@@ -41,7 +41,7 @@ function PlainItem({ value, title }: { value: string; title: string }) {
 
 function DemoAccordion({ variant = "inline", size = "medium", defaultValues = [] }: {
   variant?: "inline" | "separated";
-  size?: "medium" | "large";
+  size?: "small" | "medium" | "large";
   defaultValues?: string[];
 }) {
   return (
@@ -102,7 +102,7 @@ export const StateMatrix: StoryObj<typeof meta> = {
   render: () => (
     <div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))", gap: 24, padding: 24 }}>
       {(["inline", "separated"] as const).flatMap((variant) =>
-        (["medium", "large"] as const).map((size) => (
+        (["small", "medium", "large"] as const).map((size) => (
           <div key={`${variant}-${size}`} style={{ display: "grid", gap: 8 }}>
             <span style={{ font: "500 12px sans-serif" }}>{variant} · {size}</span>
             <DemoAccordion variant={variant} size={size} defaultValues={["profile"]} />

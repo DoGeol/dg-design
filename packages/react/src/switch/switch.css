@@ -95,6 +95,21 @@
   }
 
   /* size: 치수는 스펙 위임 — 기존 dimension 토큰에서 선택, thumb 이동거리는 로컬 변수로 계산해둔 값 */
+  .dds-switch--size_small .dds-switch__track {
+    width: var(--dds-dimension-x7);
+    height: var(--dds-dimension-x4);
+  }
+  .dds-switch--size_small .dds-switch__thumb {
+    width: var(--dds-dimension-x3);
+    height: var(--dds-dimension-x3);
+    --dds-switch-thumb-inset: var(--dds-dimension-x0_5);
+    --dds-switch-thumb-travel: var(--dds-dimension-x3);
+  }
+  .dds-switch--size_small .dds-switch__label {
+    font-size: var(--dds-font-size-t3);
+    line-height: var(--dds-line-height-t3);
+  }
+
   .dds-switch--size_medium .dds-switch__track {
     width: var(--dds-dimension-x8);
     height: var(--dds-dimension-x5);

@@ -21,6 +21,7 @@ const radioGroup = cva("dds-radio-group", {
       horizontal: "dds-radio-group--orientation_horizontal",
     },
     size: {
+      xsmall: "dds-radio-group--size_xsmall",
       small: "dds-radio-group--size_small",
       medium: "dds-radio-group--size_medium",
       large: "dds-radio-group--size_large",
@@ -41,7 +42,7 @@ export interface RadioGroupRootProps
   orientation?: "vertical" | "horizontal";
   disabled?: boolean;
   variant?: "default" | "segmented";
-  size?: "small" | "medium" | "large";
+  size?: "xsmall" | "small" | "medium" | "large";
   /** 기본값 "auto" — 포인터로 누른 선택에서만 기본형 점이 페이드하고 segmented 배경이 이동한다.
    * 키보드·외부 값 변경·초기 렌더·resize는 언제나 즉시. 항목이 아주 많은 화면은 "none". */
   motion?: "auto" | "none";

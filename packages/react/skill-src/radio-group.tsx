@@ -19,7 +19,7 @@
  * | 부품 | 주요 prop | 메모 |
  * | --- | --- | --- |
  * | `RadioGroup.Root` | `value`·`defaultValue`·`onValueChange`·`name`·`disabled` | `value`가 있으면 controlled |
- * | `RadioGroup.Root` | `orientation`(`vertical` 기본·`horizontal`)·`variant`(`default`·`segmented`)·`size`(`small`·`medium`·`large`)·`motion`(`auto`·`none`) | `size`는 segmented에만 적용. segmented는 항상 horizontal |
+ * | `RadioGroup.Root` | `orientation`(`vertical` 기본·`horizontal`)·`variant`(`default`·`segmented`)·`size`(`xsmall` 24·`small` 28·`medium` 36·`large` 44)·`motion`(`auto`·`none`) | `size`는 segmented에만 적용. segmented는 항상 horizontal |
  * | `RadioGroup.Item` | `value`(필수)·`disabled`·`children` | children이 라벨 |
  *
  * ## 접근성

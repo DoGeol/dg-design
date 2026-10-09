@@ -22,7 +22,7 @@
 | --- | --- | --- |
 | `MultiSelect.Root` | `value`·`defaultValue`·`onValueChange`(`string[]`)·`name`·`presentation` | `name`을 주면 선택 수만큼 hidden input이 제출에 실린다 |
 | `MultiSelect.Root` | `search`(`trigger`·`content`)·`filter`·`onCreate`·`createLabel` | `filter={null}`은 서버 검색. `onCreate`는 Promise로 새 옵션 `{ value, label }`을 돌려준다. 만들기 문구는 소비자가 쓴다 |
-| `MultiSelect.Trigger` | `placeholder`·`formatCount` | 2개 이상 선택 요약 문구 |
+| `MultiSelect.Trigger` | `placeholder`·`formatCount`·`size`(`xsmall`·`medium` 기본·`large`) | 2개 이상 선택 요약 문구. `size`는 Select와 같다 |
 | `MultiSelect.Content` | `title` | Sheet 표시일 때 제목 |
 | `MultiSelect.Option` | `value`·`disabled`·`label`·`textValue` | `Select.Option`과 같은 규칙 |
 | `MultiSelect.Group` · `MultiSelect.Label` | — | 묶음 |

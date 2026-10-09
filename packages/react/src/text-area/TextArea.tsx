@@ -11,6 +11,7 @@ import { useAutoResize } from "./use-auto-resize";
 const textArea = cva("dds-text-area", {
   variants: {
     size: {
+      xsmall: "dds-text-area--size_xsmall",
       medium: "dds-text-area--size_medium",
       large: "dds-text-area--size_large",
     },

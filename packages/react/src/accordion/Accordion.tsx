@@ -25,6 +25,7 @@ const root = cva("dds-accordion", {
       separated: "dds-accordion--variant_separated",
     },
     size: {
+      small: "dds-accordion--size_small",
       medium: "dds-accordion--size_medium",
       large: "dds-accordion--size_large",
     },

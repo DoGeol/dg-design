@@ -10,6 +10,7 @@ import { mergeRefs } from "../internal/merge-refs";
 const textField = cva("dds-text-field", {
   variants: {
     size: {
+      xsmall: "dds-text-field--size_xsmall",
       medium: "dds-text-field--size_medium",
       large: "dds-text-field--size_large",
     },

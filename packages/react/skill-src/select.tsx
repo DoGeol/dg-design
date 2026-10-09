@@ -20,7 +20,7 @@
  * | 부품 | 주요 prop | 메모 |
  * | --- | --- | --- |
  * | `Select.Root` | `value`·`defaultValue`·`onValueChange`·`name`·`disabled`·`presentation` | `presentation`: `popover`(기본)·`sheet`·`auto`(루트 `data-dds-density="mobile"`이면 Sheet) |
- * | `Select.Trigger` | `placeholder`·`size`(`medium` 기본·`large`)·`variant`(`field` 기본·`chip`)·`active` | 선택 값의 표시 이름을 보여 준다 |
+ * | `Select.Trigger` | `placeholder`·`size`(`xsmall`(28, 모바일 밀도에서는 `medium`)·`medium` 기본·`large`)·`variant`(`field` 기본·`chip`)·`active` | 선택 값의 표시 이름을 보여 준다 |
  * | `Select.Content` | `title` | `title`은 Sheet 표시일 때 보이는 제목 |
  * | `Select.Option` | `value`·`disabled`·`label`·`textValue` | `label`: 트리거에 보일 이름(children이 풍부할 때), `textValue`: 타이핑 검색용 |
  * | `Select.Group` · `Select.Label` | — | 옵션 묶음과 묶음 제목 |

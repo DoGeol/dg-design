@@ -362,13 +362,16 @@ describe("RadioGroup segmented variant", () => {
     expect(group.classList.contains("dds-radio-group--size_medium")).toBe(true);
   });
 
-  it("size small과 large에 대응하는 클래스를 갖는다", () => {
+  it("size xsmall·small·large에 대응하는 클래스를 갖는다", () => {
     const { rerender } = render(<Segmented size="small" />);
     const group = screen.getByRole("radiogroup");
     expect(group.classList.contains("dds-radio-group--size_small")).toBe(true);
 
     rerender(<Segmented size="large" />);
     expect(group.classList.contains("dds-radio-group--size_large")).toBe(true);
+
+    rerender(<Segmented size="xsmall" />);
+    expect(group.classList.contains("dds-radio-group--size_xsmall")).toBe(true);
   });
 
   it("default variant는 size prop을 무시하여 size 클래스가 붙지 않는다", () => {
