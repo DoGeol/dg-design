@@ -7,11 +7,11 @@ import { HoverRow, POSTS, STATUS_INTENT, Surface, num, tableRow, type Post } fro
 const meta = { title: "Mockups/Flex/DataFeedback/DataTable", parameters: { layout: "fullscreen" } } satisfies Meta;
 export default meta;
 
-/** DataColumn에는 정렬·className 옵션이 없다 — 숫자는 셀 안 span(fx-num)으로만 끝 정렬할 수 있고 머리글은 못 맞춘다. */
+/** 숫자 열은 `align: "end"`(머리글·본문 끝 정렬, 정렬 아이콘은 라벨 앞). 고정폭 숫자는 셀 안 span(fx-num)이 맡는다. */
 const COLUMNS: DataColumn<Post>[] = [
   { field: "title", header: "제목", sortable: true, width: 128, pin: "left" },
-  { field: "views", header: "조회수", sortable: true, width: 84, cell: (p) => <span className="fx-num">{num(p.views)}</span> },
-  { field: "comments", header: "댓글", width: 64, cell: (p) => <span className="fx-num">{num(p.comments)}</span> },
+  { field: "views", header: "조회수", sortable: true, width: 84, align: "end", cell: (p) => <span className="fx-num">{num(p.views)}</span> },
+  { field: "comments", header: "댓글", width: 64, align: "end", cell: (p) => <span className="fx-num">{num(p.comments)}</span> },
   { field: "status", header: "상태", width: 80, cell: (p) => <Badge intent={STATUS_INTENT[p.status]}>{p.status}</Badge> },
 ];
 const FILTERED: DataColumn<Post>[] = [{ ...COLUMNS[0]!, filter: "text" } as DataColumn<Post>, ...COLUMNS.slice(1)];

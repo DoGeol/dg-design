@@ -15,8 +15,8 @@ const TABS: readonly [string, string, readonly PostStatus[] | null][] = [
 /** 데스크톱 표본 폭(약 400px)에 맞춘 열. 오른쪽 고정 열은 좁은 폭에서 끝 정렬 숫자를 덮어 쓰지 않는다. */
 const COLUMNS: DataColumn<Post>[] = [
   { field: "title", header: "제목", sortable: true, width: 128, pin: "left" },
-  { field: "views", header: "조회수", sortable: true, width: 84, cell: (p) => <span className="fx-num">{num(p.views)}</span> },
-  { field: "comments", header: "댓글", sortable: true, width: 64, cell: (p) => <span className="fx-num">{num(p.comments)}</span> },
+  { field: "views", header: "조회수", sortable: true, width: 84, align: "end", cell: (p) => <span className="fx-num">{num(p.views)}</span> },
+  { field: "comments", header: "댓글", sortable: true, width: 64, align: "end", cell: (p) => <span className="fx-num">{num(p.comments)}</span> },
   { field: "status", header: "상태", width: 80, cell: (p) => <Badge intent={STATUS_INTENT[p.status]}>{p.status}</Badge> },
 ];
 

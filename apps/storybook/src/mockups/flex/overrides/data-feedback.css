@@ -29,21 +29,3 @@
 :root:is([data-flex="a"], [data-flex="final"]) .fx-df-compact .dds-state-panel__icon { margin-bottom: var(--dds-dimension-x2); }
 :root:is([data-flex="a"], [data-flex="final"]) .fx-df-compact .dds-state-panel__title { font-size: var(--dds-font-size-t4); line-height: var(--dds-line-height-t4); }
 :root:is([data-flex="a"], [data-flex="final"]) .fx-df-compact .dds-state-panel__actions { margin-top: var(--dds-dimension-x3); }
-
-/* 표 정렬(2026-10-09, gaps.md §13). 선택 칸 체크박스 정렬과 위 정렬 머리글은 패키지 기본값이 됐다(P2). 숫자 열은 DataColumn 정렬 옵션(P3) 전까지 시안으로 둔다. */
-/* 숫자 열 머리글 — DataColumn에 정렬 옵션이 없어, 본문에 .fx-num이 있는 열의 머리글을 끝 정렬한다.
-   정렬 아이콘은 라벨 앞으로 옮겨 라벨 끝이 숫자 끝선과 맞게 한다. */
-:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(2) .fx-num) thead th:nth-child(2),
-:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(3) .fx-num) thead th:nth-child(3),
-:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(4) .fx-num) thead th:nth-child(4),
-:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(5) .fx-num) thead th:nth-child(5),
-:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(6) .fx-num) thead th:nth-child(6),
-:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(7) .fx-num) thead th:nth-child(7),
-:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(8) .fx-num) thead th:nth-child(8) { text-align: end; }
-:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(2) .fx-num) thead th:nth-child(2) .dds-data-table__sort,
-:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(3) .fx-num) thead th:nth-child(3) .dds-data-table__sort,
-:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(4) .fx-num) thead th:nth-child(4) .dds-data-table__sort,
-:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(5) .fx-num) thead th:nth-child(5) .dds-data-table__sort,
-:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(6) .fx-num) thead th:nth-child(6) .dds-data-table__sort,
-:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(7) .fx-num) thead th:nth-child(7) .dds-data-table__sort,
-:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(8) .fx-num) thead th:nth-child(8) .dds-data-table__sort { flex-direction: row-reverse; }

@@ -97,6 +97,18 @@ export const StateMatrixStory: StoryObj<typeof meta> = {
           <DropdownMenu.Item intent="critical" disabled>
             영구 삭제
           </DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Label>보기</DropdownMenu.Label>
+          <DropdownMenu.CheckboxItem checked>격자</DropdownMenu.CheckboxItem>
+          <DropdownMenu.CheckboxItem checked={false}>미리보기</DropdownMenu.CheckboxItem>
+          <DropdownMenu.CheckboxItem checked disabled>
+            잠금
+          </DropdownMenu.CheckboxItem>
+          <DropdownMenu.Separator />
+          <DropdownMenu.RadioGroup aria-label="정렬" value="recent">
+            <DropdownMenu.RadioItem value="recent">최근 순</DropdownMenu.RadioItem>
+            <DropdownMenu.RadioItem value="name">이름 순</DropdownMenu.RadioItem>
+          </DropdownMenu.RadioGroup>
         </DropdownMenu.Content>
       </DropdownMenu.Root>
     </div>
