@@ -48,11 +48,23 @@
 | [데이터·피드백 12개 적용안](reports/flex-adoption-review/design-application/data-feedback.md) | 제안 | 표·사람·배지·알림·로딩 표현 |
 | [스킬 미사용 재검토 비교](reports/flex-adoption-review/skill-free-comparison/README.md) | 비교 · 구현 전 | 앞선 안과 원문 우선안의 차이, HTML 비교판 |
 | [스킬 미사용 38개 컴포넌트 비교](reports/flex-adoption-review/skill-free-comparison/components.md) | 비교 | 변경·유지 판단과 신규 종류의 우선순위 |
+| [B 치수 명세](reports/flex-adoption-review/skill-free-comparison/design-application/README.md) | 제안 · 구현 전 | B를 A 수준 구체 치수로 고정, 유도 규칙·A와 차이, Storybook 비교 사용법 |
+| [B 입력·선택 12개](reports/flex-adoption-review/skill-free-comparison/design-application/forms.md) | 제안 | 현재·A·B 치수표와 외관·상태·다크·모바일 |
+| [B 탐색·메뉴 7개](reports/flex-adoption-review/skill-free-comparison/design-application/navigation.md) | 제안 | 같은 형식 |
+| [B 표면·레이어 7개](reports/flex-adoption-review/skill-free-comparison/design-application/surfaces.md) | 제안 | 같은 형식 + 작업 패널 시나리오 |
+| [B 데이터·피드백 12개](reports/flex-adoption-review/skill-free-comparison/design-application/data-feedback.md) | 제안 | 같은 형식 + 비교 표 시나리오 |
+| [B 새 종류 3개](reports/flex-adoption-review/skill-free-comparison/design-application/new-kinds.md) | 제안 | List·Chip·PropertyField와 폼·사람 선택·객체 목록 시나리오 |
+| [A·B 공통 관점 보완](reports/flex-adoption-review/gaps.md) | 검토 | 다크·모바일·box 입력 대비·브랜드 3안·포털·인프라·출처 의존 |
+| [A·B 이중검토 종합](reports/flex-adoption-review/review/synthesis.md) | 검토 완료 · 결정 반영 | Claude·Gemini 2라운드 결과, 합의 8개, 사용자 결정 4개, 구현 스펙 후보 순서 |
+| [Gemini 1라운드](reports/flex-adoption-review/review/gemini-round1.md) · [Claude 답변](reports/flex-adoption-review/review/claude-round1.md) · [Gemini 2라운드](reports/flex-adoption-review/review/gemini-round2.md) | 검토 기록 | 지적 17건과 판정·조치·재반박 |
+| [flex A·B 보강 시안](design/2026-10-09-flex-ab-supplement/README.md) | 11–14 완료 · 구현 전 | A·B 11–14 보드, 범위 결정, codex 한도 경위, 확인된 결함 |
+| [flex A·B 보강 시안 브리프](design/2026-10-09-flex-ab-supplement/BRIEF.md) | 생성 지침 | DDS 기반 A·B 보드, 고정 조건과 치수표 |
 
 ## 결정 기록
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
+| [2026-10-09 flex 적용 방향](decisions/2026-10-09-flex-adoption-direction.md) | 활성 · 구현 전 | A 기본 + B 사용례, 모서리 입력 4·버튼 6, outline 기본 + 모바일 확장, 브랜드 createTheme #1550A9 |
 | [2026-10-06 부유 패널 테두리](decisions/2026-10-06-floating-panel-border.md) | 활성 | 패널 경계는 그림자가 아니라 테두리 1px, Sheet는 안쪽 변만, 화살표 오프셋 보정 |
 | [2026-09-27 DatePicker 구현 결정](decisions/2026-09-27-datepicker-implementation.md) | npm 0.16.1 배포 · 실기기 QA 후속 | 엄격한 날짜 입력·DST 후보, 달력 훅과 DDS 오버레이, 반응형 레이아웃·패키지 export |
 | [2026-08-14 토큰 체계와 a11y 기준선](decisions/2026-08-14-dds-token-system.md) | 활성 | 토큰 이름 문법, hover 축 추가, 대비 검사 도입, focus/disabled 관습 |

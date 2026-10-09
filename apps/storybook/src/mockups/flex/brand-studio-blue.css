@@ -1,0 +1,25 @@
+/* dg-studio src/shared/ui/studio-brand-theme.css(2026-10-09, react 0.17.2 소비)의 값을 그대로 옮겼다.
+   createTheme 결과(#1550A9)와 다른 출처라 브랜드 결정 전에 둘을 나란히 보려고 둔다. */
+:root[data-flex-brand="studio-blue"] {
+  --dds-color-bg-brand-solid: #155eef;
+  --dds-color-bg-brand-solid-hover: #175cd3;
+  --dds-color-bg-brand-solid-pressed: #1849a9;
+  --dds-color-bg-brand-weak: #eff4ff;
+  --dds-color-bg-brand-weak-hover: #d1e0ff;
+  --dds-color-bg-brand-weak-pressed: #b2ccff;
+  --dds-color-fg-brand: #0d4ac4;
+  --dds-color-fg-brand-contrast: #ffffff;
+  --dds-color-stroke-focus-ring: #2b7fff;
+}
+
+:root[data-flex-brand="studio-blue"][data-dds-theme="dark"] {
+  --dds-color-bg-brand-solid: #5298ff;
+  --dds-color-bg-brand-solid-hover: #70a6ff;
+  --dds-color-bg-brand-solid-pressed: #a4caff;
+  --dds-color-bg-brand-weak: #0b254a;
+  --dds-color-bg-brand-weak-hover: #103366;
+  --dds-color-bg-brand-weak-pressed: #174585;
+  --dds-color-fg-brand: #84b9ff;
+  --dds-color-fg-brand-contrast: #0f1212;
+  --dds-color-stroke-focus-ring: #5298ff;
+}

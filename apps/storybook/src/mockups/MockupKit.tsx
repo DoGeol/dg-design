@@ -15,7 +15,7 @@ const patched = new WeakSet<CSSStyleSheet>();
  * 정적 시안에서 hover·focus·pressed를 보이려고 :hover 등을 쓰는 규칙을 복제해
  * 조상 클래스(.mk-hover 등)로도 걸리게 한다. 복제 규칙은 원래 규칙과 같은 @layer 안에 들어간다.
  */
-function patchPseudoStates() {
+export function patchPseudoStates() {
   const visit = (parent: CSSStyleSheet | CSSGroupingRule) => {
     const rules = Array.from(parent.cssRules);
     for (let i = rules.length - 1; i >= 0; i -= 1) {
