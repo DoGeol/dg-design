@@ -153,7 +153,7 @@ export const ROLES = {
     b: { desktop: d(24), mobile: m(20, "B", "M020 26×0.75=19.5") },
   },
 
-  /* 목록·칩·설정 행 (새 종류 후보) */
+  /* 목록·칩·설정 행 (P4 새 종류) */
   "list-row-2": {
     id: "list-row-2", label: "목록 두 줄 행 높이", current: null, currentNote: "List 없음",
     a: { desktop: m(64, "C", "연구 proposed"), mobile: m(64, "C", "연구 proposed") },
@@ -276,6 +276,12 @@ const TOKEN: Partial<Record<RoleId, readonly [group: keyof typeof roles, name: s
   "touch-target": ["size", "touch-target"],
   "body-size": ["font-size", "body"],
   "body-line": ["line-height", "body"],
+  "list-row-1": ["size", "list-row-1"],
+  "list-row-2": ["size", "list-row-2"],
+  "list-inset": ["space", "list-inset"],
+  "list-leading-gap": ["space", "list-leading-gap"],
+  "setting-row-height": ["size", "setting-row-height"],
+  "setting-row-radius": ["radius", "setting-row"],
 };
 
 /** 토큰 값(px·rem·0)을 px 숫자로. 1rem = 16px. */
@@ -288,30 +294,16 @@ function tokenMeasure(id: RoleId, density: Density): Measure | undefined {
   return m(toPx((density === "mobile" ? value.mobile : undefined) ?? value.desktop), "C", `역할 토큰 --dds-${ref[0]}-${ref[1]}`);
 }
 
-/**
- * 결정안(2026-10-09 docs/decisions/2026-10-09-flex-adoption-direction.md) 중 아직 토큰이 아닌 역할.
- * 목록·설정 행은 P4에서 그 컴포넌트와 함께 토큰이 된다. B 사용례로 흡수한 치수다.
- */
-export const FINAL: Partial<Record<RoleId, "b">> = {
-  "list-row-1": "b",
-  "list-row-2": "b",
-  "list-inset": "b",
-  "list-leading-gap": "b",
-  "setting-row-height": "b",
-  "setting-row-radius": "b",
-};
-
 /** 결정안에서 이 역할이 어디서 왔는지. 토큰이 된 역할은 tokens.ts가 정본이다. */
-export function finalSource(id: RoleId): "a" | "b" | "토큰" {
-  if (TOKEN[id]) return "토큰";
-  return FINAL[id] === "b" ? "b" : "a";
+export function finalSource(id: RoleId): "a" | "토큰" {
+  return TOKEN[id] ? "토큰" : "a";
 }
 
 /** 해당 안·밀도의 값. A/B 모바일 값이 없으면 데스크톱 값을 쓴다. */
 export function resolve(role: Role, variant: Variant, density: Density): Measure {
   if (variant === "current") return d(role.current);
   if (variant === "final") {
-    return tokenMeasure(role.id as RoleId, density) ?? resolve(role, FINAL[role.id as RoleId] ?? "a", density);
+    return tokenMeasure(role.id as RoleId, density) ?? resolve(role, "a", density);
   }
   const side = role[variant];
   return (density === "mobile" ? side.mobile : undefined) ?? side.desktop;
