@@ -159,6 +159,10 @@
     color: var(--dds-color-fg-neutral-weak);
   }
 
+  [data-dds-density="mobile"] .dds-property-field :is(.dds-select__trigger, .dds-property-field__trigger):is(:disabled, [disabled], [data-disabled]) {
+    color: var(--dds-color-fg-disabled);
+  }
+
   /* 묶음 표면 안 행은 표면 반경을 따라 hover가 모서리를 넘지 않게 한다(overflow hidden). */
   [data-dds-density="mobile"] .dds-property-field-group :is(.dds-select__trigger, .dds-property-field__trigger)::before,
   [data-dds-density="mobile"] .dds-property-field-group :is(.dds-select__trigger, .dds-property-field__trigger)::after {
