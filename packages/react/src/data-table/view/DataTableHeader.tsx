@@ -1,7 +1,8 @@
+import clsx from "clsx";
 import * as React from "react";
 
 import { Checkbox } from "../../checkbox/Checkbox";
-import { columnId, type DataColumn, type DataTableFilters, type DataTableSort } from "../model/data-table-model";
+import { alignClass, columnId, type DataColumn, type DataTableFilters, type DataTableSort } from "../model/data-table-model";
 
 type DataTableHeaderProps<T> = {
   columns: readonly DataColumn<T>[];
@@ -56,7 +57,7 @@ export function DataTableHeader<T>({
             <th
               key={id}
               scope="col"
-              className={`dds-table__head${column.pin ? " dds-data-table__pinned" : ""}`}
+              className={clsx("dds-table__head", column.pin && "dds-data-table__pinned", alignClass(column))}
               style={pinStyle(column)}
               aria-sort={column.sortable ? (direction === "asc" ? "ascending" : direction === "desc" ? "descending" : "none") : undefined}
             >

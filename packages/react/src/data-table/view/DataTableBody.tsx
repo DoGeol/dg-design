@@ -1,7 +1,8 @@
+import clsx from "clsx";
 import * as React from "react";
 
 import { Checkbox } from "../../checkbox/Checkbox";
-import { columnId, rowKeyOf, type DataColumn, type RowKey } from "../model/data-table-model";
+import { alignClass, columnId, rowKeyOf, type DataColumn, type RowKey } from "../model/data-table-model";
 
 type DataTableBodyProps<T> = {
   rows: readonly T[];
@@ -44,7 +45,7 @@ export function DataTableBody<T>({
               </td>
             ) : null}
             {columns.map((column) => (
-              <td key={columnId(column)} className={`dds-table__cell${column.pin ? " dds-data-table__pinned" : ""}`} style={pinStyle(column)}>
+              <td key={columnId(column)} className={clsx("dds-table__cell", column.pin && "dds-data-table__pinned", alignClass(column))} style={pinStyle(column)}>
                 <span className="dds-data-table__cell-content">{column.cell ? column.cell(row) : column.field === undefined || row[column.field] == null ? "" : String(row[column.field])}</span>
               </td>
             ))}

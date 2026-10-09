@@ -205,3 +205,26 @@ describe("Toast.View", () => {
     );
   });
 });
+
+describe("Toast action", () => {
+  it("action 버튼을 누르면 onClick이 한 번 불리고 그 토스트가 닫힌다", async () => {
+    const user = userEvent.setup();
+    const undo = vi.fn();
+    renderWithProvider(
+      <Trigger options={{ title: "보관함으로 옮겼습니다", action: { label: "되돌리기", onClick: undo } }} />,
+    );
+    await user.click(screen.getByRole("button", { name: "띄우기" }));
+    await user.click(screen.getByRole("button", { name: "되돌리기" }));
+
+    expect(undo).toHaveBeenCalledTimes(1);
+    expect(screen.queryByText("보관함으로 옮겼습니다")).toBeNull();
+  });
+
+  it("action이 없으면 행동 버튼을 그리지 않는다", async () => {
+    const user = userEvent.setup();
+    renderWithProvider(<Trigger options={{ title: "저장했다" }} />);
+    await user.click(screen.getByRole("button", { name: "띄우기" }));
+    expect(screen.getAllByRole("button").map((b) => b.textContent)).not.toContain("되돌리기");
+    expect(document.querySelector(".dds-toast__action")).toBeNull();
+  });
+});

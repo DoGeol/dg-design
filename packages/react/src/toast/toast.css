@@ -86,6 +86,23 @@
     font-weight: var(--dds-font-weight-bold);
   }
 
+  /* ToastOptions.action의 글자 버튼. intent 글자색을 그대로 쓴다. */
+  .dds-toast__action-button {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-decoration: underline;
+    text-underline-offset: var(--dds-dimension-x0_5);
+    cursor: pointer;
+  }
+  .dds-toast__action-button:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+    border-radius: var(--dds-radius-r0_5);
+  }
+
   .dds-toast__close {
     flex: none;
     display: inline-flex;

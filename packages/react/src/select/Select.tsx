@@ -14,7 +14,8 @@ import {
   handleOpenKeyDown,
   isTypeaheadKey,
   matchOption,
-  nodeToText,
+  optionLabel,
+  type OptionLabelProps,
   OPTION_ROLE,
   useOptionRegistry,
   useTypeahead,
@@ -268,19 +269,20 @@ export const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps
 SelectContent.displayName = "Select.Content";
 
 export interface SelectOptionProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "value"> {
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "value">,
+    OptionLabelProps {
   value: string;
 }
 
 export const SelectOption = React.forwardRef<HTMLButtonElement, SelectOptionProps>(
-  ({ className, value, children, onClick, ...props }, ref) => {
+  ({ className, value, label, textValue, children, onClick, ...props }, ref) => {
     const context = useSelectContext("Select.Option");
     const selected = context.value === value;
     const { registerOption } = context;
     const disabled = (props as { disabled?: boolean }).disabled === true;
     React.useEffect(
-      () => registerOption({ value, label: children, text: nodeToText(children), disabled }),
-      [registerOption, value, children, disabled],
+      () => registerOption({ value, ...optionLabel({ label, textValue, children }), disabled }),
+      [registerOption, value, label, textValue, children, disabled],
     );
 
     return (

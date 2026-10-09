@@ -15,7 +15,8 @@ import { focusItem, getItems } from "../internal/roving-focus";
 import {
   handleOpenKeyDown,
   isTypeaheadKey,
-  nodeToText,
+  optionLabel,
+  type OptionLabelProps,
   OPTION_ROLE,
   useOptionRegistry,
   useTypeahead,
@@ -399,18 +400,19 @@ export const MultiSelectContent = React.forwardRef<HTMLDivElement, MultiSelectCo
 MultiSelectContent.displayName = "MultiSelect.Content";
 
 export interface MultiSelectOptionProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "value"> {
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "value">,
+    OptionLabelProps {
   value: string;
 }
 
 export const MultiSelectOption = React.forwardRef<HTMLButtonElement, MultiSelectOptionProps>(
-  ({ className, value, children, onClick, ...props }, ref) => {
+  ({ className, value, label, textValue, children, onClick, ...props }, ref) => {
     const context = useMultiSelectContext("MultiSelect.Option");
     const { registerOption, search } = context;
     const disabled = (props as { disabled?: boolean }).disabled === true;
     React.useEffect(
-      () => registerOption({ value, label: children, text: nodeToText(children), disabled }),
-      [registerOption, value, children, disabled],
+      () => registerOption({ value, ...optionLabel({ label, textValue, children }), disabled }),
+      [registerOption, value, label, textValue, children, disabled],
     );
 
     return (

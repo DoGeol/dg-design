@@ -335,3 +335,35 @@ describe("MultiSelect search 회귀", () => {
     expect(document.activeElement).toBe(option("Apple"));
   });
 });
+
+describe("MultiSelect 옵션 label·textValue", () => {
+  function People(props: React.ComponentProps<typeof MultiSelect.Root> = {}) {
+    return (
+      <MultiSelect.Root search="trigger" searchProps={{ "aria-label": "사람 검색" }} {...props}>
+        <MultiSelect.Trigger placeholder="담당자" />
+        <MultiSelect.Content>
+          <MultiSelect.Option value="kim" label="김도걸" textValue="김도걸 디자인팀">
+            김도걸 <span>디자인팀</span>
+          </MultiSelect.Option>
+          <MultiSelect.Option value="lee" label="이수민" textValue="Sumin 이수민 개발팀">
+            이수민 <span>개발팀</span>
+          </MultiSelect.Option>
+        </MultiSelect.Content>
+      </MultiSelect.Root>
+    );
+  }
+
+  it("검색은 children이 아니라 textValue로 거른다", async () => {
+    const user = userEvent.setup();
+    render(<People />);
+    await user.type(input(), "sumin");
+    expect(optionNames()).toEqual(["이수민 개발팀"]);
+  });
+
+  it("칩에는 label만 보이고 제거 버튼 이름도 label에서 나온다", () => {
+    render(<People defaultValue={["kim"]} />);
+    expect(screen.getByText("김도걸", { selector: ".dds-multi-select__chip-label" })).toBeTruthy();
+    expect(screen.queryByText("디자인팀")).toBeNull();
+    expect(screen.getByRole("button", { name: /김도걸/ })).toBeTruthy();
+  });
+});

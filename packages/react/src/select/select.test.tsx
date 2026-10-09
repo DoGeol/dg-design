@@ -416,3 +416,44 @@ describe("Select aria", () => {
     expect(screen.getByRole("group", { name: "흔한 것" })).toBeTruthy();
   });
 });
+
+describe("Select 옵션 label·textValue", () => {
+  function People(props: React.ComponentProps<typeof Select.Root> = {}) {
+    return (
+      <Select.Root {...props}>
+        <Select.Trigger placeholder="담당자" />
+        <Select.Content>
+          <Select.Option value="kim" label="김도걸" textValue="김도걸 디자인팀">
+            김도걸 <span>디자인팀</span>
+          </Select.Option>
+          <Select.Option value="lee" label="이수민" textValue="Sumin 이수민 개발팀">
+            이수민 <span>개발팀</span>
+          </Select.Option>
+        </Select.Content>
+      </Select.Root>
+    );
+  }
+
+  it("닫힌 트리거에는 행 전체가 아니라 label만 보인다 — 첫 열기 전에도", () => {
+    render(<People defaultValue="kim" />);
+    expect(trigger().textContent).toBe("김도걸");
+  });
+
+  it("고른 뒤에도 트리거는 label이고, 목록 행은 children 그대로다", async () => {
+    const user = userEvent.setup();
+    render(<People />);
+    await user.click(trigger());
+    expect(screen.getByRole("option", { name: "이수민 개발팀" })).toBeTruthy();
+    await user.click(screen.getByRole("option", { name: "이수민 개발팀" }));
+    expect(trigger().textContent).toBe("이수민");
+  });
+
+  it("typeahead는 textValue로 맞춘다", async () => {
+    const user = userEvent.setup();
+    const onValueChange = vi.fn();
+    render(<People onValueChange={onValueChange} />);
+    trigger().focus();
+    await user.keyboard("s");
+    expect(onValueChange).toHaveBeenCalledWith("lee");
+  });
+});

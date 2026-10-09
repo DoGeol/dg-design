@@ -1,15 +1,19 @@
 /**
  * roving tabindex 이동. 항목 순서의 단일 소스는 DOM이라 등록 배열을 두지 않고
  * 매번 컨테이너를 조회한다 — 조건부 렌더로 항목이 바뀌어도 따로 맞출 것이 없다.
- * DropdownMenu(`menuitem`)와 Select(`option`)가 role만 바꿔 함께 쓴다.
+ * DropdownMenu(`menuitem`·`menuitemcheckbox`·`menuitemradio`)와 Select(`option`)가 role만 바꿔 함께 쓴다.
  */
 
+type Roles = string | readonly string[];
+
 /** disabled·hidden 항목은 애초에 목록에서 빠지므로 이동이 자연스럽게 건너뛴다. */
-function itemSelector(role: string): string {
-  return `[role="${role}"]:not([hidden]):not([disabled]):not([data-disabled])`;
+function itemSelector(role: Roles): string {
+  return (typeof role === "string" ? [role] : role)
+    .map((r) => `[role="${r}"]:not([hidden]):not([disabled]):not([data-disabled])`)
+    .join(", ");
 }
 
-export function getItems(content: HTMLElement | null | undefined, role: string): HTMLElement[] {
+export function getItems(content: HTMLElement | null | undefined, role: Roles): HTMLElement[] {
   if (!content) return [];
   return Array.from(content.querySelectorAll<HTMLElement>(itemSelector(role)));
 }
@@ -27,7 +31,7 @@ export function focusItem(items: HTMLElement[], index: number): void {
 /** 화살표·Home·End를 처리하고, 소비한 키였으면 true. */
 export function moveFocus(
   content: HTMLElement | null | undefined,
-  role: string,
+  role: Roles,
   key: string,
 ): boolean {
   const items = getItems(content, role);
