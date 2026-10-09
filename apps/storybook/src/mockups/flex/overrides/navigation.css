@@ -1,0 +1,77 @@
+/* flex A·B 외관 — navigation 묶음. :root[data-flex="a"|"b"] 아래에서만 걸린다. 값은 profiles.ts가 꽂는 --fx-* 변수를 쓴다. */
+
+/* Tabs — 높이·좌우 여백·패널 간격만 역할 변수로. B는 세 값 모두 현재와 같다(D). */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-tabs__trigger {
+  min-height: var(--fx-tab-height);
+  padding-inline: var(--fx-tab-inset);
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-tabs__content { padding-top: var(--fx-tab-panel-gap); }
+/* A만 — 활성 탭은 진한 글자 + 브랜드 밑줄(DS004·007의 진한 활성 라벨). B는 현재 brand 글자 유지. */
+:root:is([data-flex="a"], [data-flex="final"]) .dds-tabs__trigger[data-state="active"]:not(:is(:disabled, [disabled], [data-disabled])) { color: var(--dds-color-fg-neutral); }
+.fx-tab-count { color: var(--dds-color-fg-neutral-weak); font-weight: var(--dds-font-weight-regular); }
+/* 모바일 넘침 — 래퍼가 가로 스크롤을 맡고 목록은 내용 폭만큼 늘어 경계선이 끝까지 이어진다. 끝은 흐려 더 있음을 알린다. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-tabs-scroll { scrollbar-width: none; mask-image: linear-gradient(to right, black calc(100% - var(--dds-dimension-x8)), transparent); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-tabs-scroll > .dds-tabs__list { width: max-content; min-width: 100%; }
+
+/* 메뉴 — DropdownMenu·ContextMenu가 같은 클래스를 쓴다. 구분선은 패널 끝까지 닿도록 안쪽 여백만큼 당긴다. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-dropdown-menu__content {
+  padding: var(--fx-menu-inset);
+  border-radius: var(--fx-menu-radius);
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-dropdown-menu__item {
+  min-height: var(--fx-menu-item-height);
+  border-radius: var(--fx-menu-item-radius);
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-dropdown-menu__separator { margin-inline: calc(-1 * var(--fx-menu-inset)); }
+/* 터치에는 단축키가 없다 — 모바일에서 단축키 열을 숨긴다. */
+:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-dropdown-menu__shortcut { display: none; }
+/* 열 고정 — leading(아이콘·체크) 16, 명령문, trailing(단축키·chevron·토글). */
+.fx-menu-lead { display: inline-flex; width: var(--dds-dimension-x4); flex-shrink: 0; }
+.fx-menu-trail { display: inline-flex; margin-inline-start: auto; padding-inline-start: var(--dds-dimension-x4); color: var(--dds-color-fg-neutral-weak); }
+/* B 머리·발 — 비대화형 정보 영역. 항목과 같은 안쪽 여백을 쓴다. */
+.fx-menu-header, .fx-menu-footer { display: flex; flex-direction: column; gap: var(--dds-dimension-x0_5); padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2); }
+.fx-menu-header strong { font-size: var(--dds-font-size-t4); line-height: var(--dds-line-height-t4); }
+.fx-menu-header span, .fx-menu-footer { color: var(--dds-color-fg-neutral-weak); font-size: var(--dds-font-size-t2); line-height: var(--dds-line-height-t2); }
+/* 토글 표시 — 항목 자체가 토글이라 안에 조작 요소를 넣지 않고 장식 트랙만 그린다. 크기는 Switch medium(32×20, thumb 16)과 같다. */
+.fx-menu-toggle { position: relative; width: var(--dds-dimension-x8); height: var(--dds-dimension-x5); flex-shrink: 0; border-radius: var(--dds-radius-r-full); background: var(--dds-color-bg-neutral-weak-pressed); }
+.fx-menu-toggle::after { content: ""; position: absolute; top: var(--dds-dimension-x0_5); left: var(--dds-dimension-x0_5); width: var(--dds-dimension-x4); height: var(--dds-dimension-x4); border-radius: var(--dds-radius-r-full); background: var(--dds-color-fg-brand-contrast); }
+.fx-menu-toggle[data-on] { background: var(--dds-color-bg-brand-solid); }
+.fx-menu-toggle[data-on]::after { left: auto; right: var(--dds-dimension-x0_5); }
+/* 포털이 아닌 정적 패널(상태 칸·하위 메뉴 표현). .dds-dropdown-menu__content는 position:fixed라 쓰지 않는다. */
+.fx-menu-panel {
+  box-sizing: border-box; display: flex; flex-direction: column; min-width: 0;
+  padding: var(--fx-menu-inset, var(--dds-dimension-x1));
+  border: 1px solid var(--dds-color-stroke-neutral-weak);
+  border-radius: var(--fx-menu-radius, var(--dds-radius-r3));
+  background: var(--dds-color-bg-layer-default); box-shadow: var(--dds-shadow-overlay);
+  color: var(--dds-color-fg-neutral); word-break: keep-all;
+}
+.fx-menu-panel .dds-dropdown-menu__separator { margin-inline: calc(-1 * var(--fx-menu-inset, var(--dds-dimension-x1))); }
+.fx-submenu { display: flex; align-items: flex-start; }
+.fx-submenu > .fx-menu-panel { width: 50%; }
+.fx-submenu > .fx-menu-panel + .fx-menu-panel { margin-top: var(--dds-dimension-x8); margin-inline-start: calc(-1 * var(--dds-dimension-x1)); }
+
+/* Pagination — A만: 현재 페이지를 중성 표면 + 진한 숫자로. 흰 배경 위 약한 표면은 대비가 낮아 1px 중성 경계를 함께 둔다. */
+:root:is([data-flex="a"], [data-flex="final"]) .dds-pagination__link[aria-current="page"] {
+  background-color: var(--dds-color-bg-neutral-weak);
+  color: var(--dds-color-fg-neutral);
+  box-shadow: inset 0 0 0 1px var(--dds-color-stroke-neutral);
+  font-weight: var(--dds-font-weight-bold);
+}
+:root:is([data-flex="a"], [data-flex="final"]) .dds-pagination__link[aria-current="page"]:hover { background-color: var(--dds-color-bg-neutral-weak-hover); }
+:root:is([data-flex="a"], [data-flex="final"]) .dds-pagination__link[aria-current="page"]:active { background-color: var(--dds-color-bg-neutral-weak-pressed); }
+/* A 모바일 — 조작 영역 44 후보. */
+:root:is([data-flex="a"], [data-flex="final"])[data-flex-density="mobile"] .dds-pagination__link.dds-button {
+  min-width: calc(var(--dds-dimension-x10) + var(--dds-dimension-x1));
+  height: calc(var(--dds-dimension-x10) + var(--dds-dimension-x1));
+}
+.fx-page-count { min-width: var(--dds-dimension-x16); text-align: center; font-variant-numeric: tabular-nums; }
+
+/* Collapsible — 본문 위 여백(소비자 래퍼). 현재·B 8, A는 후보 8~12 중 12. */
+.fx-collapsible-body { padding-top: var(--dds-dimension-x2); }
+:root:is([data-flex="a"], [data-flex="final"]) .fx-collapsible-body { padding-top: var(--dds-dimension-x3); }
+/* 모바일 A·B — 작은 문구 트리거의 터치 조작 영역 44. */
+:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-collapsible__trigger:not(.dds-accordion__trigger) {
+  min-height: calc(var(--dds-dimension-x10) + var(--dds-dimension-x1));
+}
+

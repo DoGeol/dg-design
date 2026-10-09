@@ -1,0 +1,290 @@
+[
+  {
+    "board": 11,
+    "file": "11-new-kinds.png",
+    "selected": false,
+    "mode": "built-in image_gen",
+    "prompt": "Use case: ui-mockup. Produce one crisp high-fidelity raster design review board, landscape 4:3, target 2000×1500. This is a flat exported interface specimen, not a photo. All specification measurements describe px-equivalent proportions; no numerical dimension annotations should appear in the board.\n\n## 고정 조건\n\n- **치수**: [profiles.ts](../../../apps/storybook/src/mockups/flex/profiles.ts)가 정본이다. 아래 표는 그 파일에서 생성했다. 이미지에 숫자 주석은 넣지 않는다.\n- **브랜드**: 기존 B 보드와 같은 dg-studio 블루 #155EEF로 고정한다. 비교 조건을 맞추기 위한 고정이며 브랜드 결정이 아니다. 브랜드 비교는 Storybook Brand 툴바에서 한다.\n- **중성색·의미색**: DDS 0.8.0 기본 semantic 값(아래 표). 근사 hex를 쓰지 않는다.\n- **타이포**: 시스템 산세리프(한글 양호), regular 400 / bold 700 두 굵기만. 본문 14px, 보조 13px, 캡션 12px, 제목 20~24px 상당. 모바일 본문 16px 상당.\n- **포커스**: 입력류는 테두리 1px + 안쪽 1px(바깥 링 없음). 비입력 컨트롤은 2px 링 + 2px 간격.\n- **부유 패널**: 흰 표면 + 1px stroke-neutral-weak 경계 + overlay 그림자. 다크에서도 경계가 보여야 한다. 기본 목록·카드에는 그림자를 쓰지 않는다.\n- **아이콘**: 단일 stroke SVG 스타일. 문자 기호·이모지를 조작 아이콘으로 쓰지 않는다. 도메인 표식(코드 배지·아바타)은 B 보드에서만 값 이해용 슬롯으로 허용한다.\n- **문구**: 주어진 한국어 그대로, 짧은 합쇼체. 가상 데이터.\n- **금지**: 초록 주 행동, 그라데이션, 유리·3D·원근, 기기 목업 프레임(모바일은 390px 폭 화면 영역만), 장식 차트, 거대한 아이콘, 모든 구역을 카드로 감싸기.\n- **캔버스**: 가로 4:3(목표 2000×1500). 좌상단 작은 \"dg-design / flex study\", 큰 보드 제목, 부제 \"A · 앞선 적용안\" 또는 \"B · 원문 우선 재검토\". 하단 작은 \"Design proposal · 2026\".\n\n### DDS semantic 색 (studio 블루 브랜드)\n\n| 역할 | 라이트 | 다크 |\n| --- | --- | --- |\n| bg-layer-default (표면) | #FFFFFF | #0F1212 |\n| bg-neutral-weak (약한 표면·hover) | #F1F6F6 | #242727 |\n| bg-neutral-weak-hover | #E4E9E8 | #3A3E3E |\n| fg-neutral (본문) | #242727 | #F1F6F6 |\n| fg-neutral-weak (보조) | #6B706F | #AEB2B2 |\n| stroke-neutral (입력 테두리) | #6B706F | #898D8D |\n| stroke-neutral-weak (구분선·패널 경계) | #E4E9E8 | #3A3E3E |\n| bg-disabled / fg-disabled | #E4E9E8 / #898D8D | #3A3E3E / #6B706F |\n| bg-brand-solid / hover | #155EEF / #175CD3 | #5298FF / #70A6FF |\n| bg-brand-weak | #EFF4FF | #0B254A |\n| fg-brand | #0D4AC4 | #84B9FF |\n| fg-brand-contrast | #FFFFFF | #0F1212 |\n| stroke-focus-ring | #2B7FFF | #5298FF |\n| critical fg / solid / stroke / weak | #731115 / #9B1C22 / #C7272D / #FCF3F2 | #F0C9C5 / #EF958E / #F04646 / #4B090B |\n| positive fg / weak | #0F4A17 / #E7FCE7 | #83F289 / #06300B |\n| overlay 딤 | rgb(15 18 18 / 0.5) | 같음 |\n| overlay 그림자 | 0 12px 32px rgba(15,15,15,.18), 0 4px 8px rgba(15,15,15,.08) | 같음 |\n\n\nVARIANT A ONLY — translate these into visual px-equivalent proportions at a consistent screenshot scale. Never print measurements or design-token names on the artwork. Each pair below means desktop, then mobile. Use the appropriate member for the UI specimen.\nPage horizontal insets about 32px on desktop and 20px on mobile.\nGaps between related fields about 12px and 14px. Gaps between groups about 24px and 28px.\nWork-panel inner padding about 40px and 20px.\nField and select trigger heights about 40px and 56px; corners gently rounded about 6px and 16px; inner horizontal padding about 12px and 16px; value text about 14px and 16px.\nMedium button corners about 8px and 12px. Main CTA heights about 48px and 52px.\nSelect popup corners about 14px in both contexts; popup padding about 8px in both; options at least 36px high on desktop and 48px on mobile with about 6px corners. Multiple-selection square marks about 16px.\nMenu popup corners about 12px and padding about 6px in both contexts; menu items at least 36px on desktop and 48px on mobile, with about 6px corners.\nSheet inward-facing corners about 16px on desktop and distinctly rounded 24px on mobile; padding about 24px and 20px.\nTwo-line list rows about 64px high in both contexts; one-line list rows about 56px high in both; horizontal row padding about 16px; leading-to-main gap about 12px.\nChip heights about 28px on desktop and 32px on mobile; corners about 8px in both.\nNo extra setting-row height or radius is prescribed for variant A.\nTabs at least about 40px high, horizontal padding about 12px, tab-to-panel gap about 24px in both contexts.\nTable rows about 44px high in both contexts.\nBody typography about 14px with 19px line height on desktop; about 16px with 24px line height on mobile.\nShared component proportions: ordinary buttons about 36px, 40px, or 52px high. Checkboxes either about 16px square with 4px corners, or 20px square with 6px corners. Switches about 32×20px or 40×24px. Floating panels have a visible 1px boundary. Confirmation Dialog has about 16px corners and 24px padding.\n\nVARIANT CHARACTER\nA · 앞선 적용안: 현재 DDS에서 출발해 역할 토큰을 연결한다. 외부 라벨 outline 입력이 기본, 반경을 조금 둥글게 올린 세트(6/8/12/14/16px 상당). Select는 field 트리거가 기본이고 버튼·칩 트리거는 후속 확장. Radio는 브랜드 원형 유지. List·Chip·PropertyField는 검토 후보. 모바일 Sheet 모서리는 24px 상당.\nRender only variant A, with exact subtitle \"A · 앞선 적용안\". No variant B content. All control icons are thin consistent stroke outlines; no emoji, no letter or initial avatars, no code emblems. Match actual DDS controls: restrained thin outline fields, round-corner weak fill chips, thin neutral popup boundaries, clear separate active/focus/error states. Use system sans-serif Hangul, regular 400 and bold 700 only, not the fallback serif font seen in raw test captures. Do not print specification paragraphs, hex codes, pixel values, component token names, or explanations about this prompt. Exact Korean strings below must be rendered cleanly. Do not add unrelated filler. Board has a small top-left \"dg-design / flex study\", a clear large title, the exact variant subtitle, and small bottom-left \"Design proposal · 2026\".\n\nBOARD 11 — 신규 구성요소\nTitle: \"신규 구성요소\". Light-theme white artboard. Spacious, strongly aligned design-system composition: upper left is List, upper right is Chip, lower left is desktop PropertyField, lower right is a narrow mobile PropertyField sample. Use headings and whitespace with hairline separators, not a grid of cards. These three components are review candidates, shown with a small plain caption \"검토 후보\" once under the board subtitle.\n\nUPPER LEFT: heading \"List\" and a real SectionHeader row reading \"발행 목록\" with count \"3\" and a small text action \"전체 보기\". Show three full-width rows. First is a one-line row about 56px tall: a small stroke document icon as leading, \"10월 업데이트\" as main text, a trailing weak badge \"초안\", a separate thin chevron row-opening affordance and a distinct three-dot menu button at the far end. Second is a two-line row about 64px tall: a stroke document icon; primary line \"디자인 시스템 안내\", secondary line \"김민지 · 10월 12일\"; trailing weak badge \"발행됨\", separate row-open chevron and end menu. Third is another two-line row: document icon; \"프로젝트 회고\", secondary \"이도윤 · 10월 14일\"; trailing \"검토 중\", separate chevron and end menu. Neutral hover surface on the second row. A small label below the list reading \"행 열기와 더보기\" makes the two distinct actions clear. No avatars or initial badges. Natural trailing layout, crisp separators, no shadows on the list.\n\nUPPER RIGHT: heading \"Chip\". Three vertically stacked unboxed specimen groups with labels \"제거형\", \"필터 토글형\", \"필터 툴박스\".\nUnder \"제거형\": two compact rounded neutral chips \"디자인\" and \"개발\", each with its own small stroke close icon; height about 28px with 8px corners.\nUnder \"필터 토글형\": chips \"전체\" selected blue weak fill with small stroke check, \"초안\" and \"발행됨\" unselected neutral.\nUnder \"필터 툴박스\": a compact toolbar with active chips \"디자인\" and \"이번 달\", each removable; visible result label \"결과 12개\" at left and \"초기화\" reset action at right. All controls distinct and readable.\n\nLOWER LEFT: heading \"PropertyField · 데스크톱\". Three clean inline horizontal property rows using an aligned label column and inline values, not boxed form fields: \"상태\" → weak text badge \"초안\"; \"담당자\" → \"김민지\" with a small stroke chevron; \"발행일\" → \"2026. 10. 12.\" with a small stroke calendar. Each has label and value on the same baseline, restrained separators and 56px-equivalent row spacing. Desktop text about 14px. No domain avatars.\n\nLOWER RIGHT: heading \"PropertyField · 모바일\". A plain rectangular screen-region crop at 390px-equivalent width, no device frame. Show mobile property rows about 56px tall, 20px page inset, label left and value plus chevron right: \"상태\" / \"초안\", \"담당자\" / \"김민지\", \"발행일\" / \"10월 12일\". Body about 16px. This is a row-format non-keyboard value selection sample. Keep no decorative illustration. Balance all four sections so every row, remove action, filter toggle, result count, reset, and mobile-versus-desktop property field is visible.\n",
+    "width": 1448,
+    "height": 1086,
+    "sha256": "9758421fd3cb93a5973b6a13ccf0c10f66429c74c1ea41599cae233d541f089b",
+    "generatorArtifact": "/Users/pdg/Library/Application Support/orca/codex-accounts/149b44a7-2848-48d9-833a-af0ecffea173/home/generated_images/01a11f28-355f-7122-8c9d-d83e7806e851/exec-cb2438a4-d5f7-457e-87e7-08b001776f77.png",
+    "checklist": [
+      {
+        "item": "List one-line rows",
+        "present": true
+      },
+      {
+        "item": "List two-line rows",
+        "present": true
+      },
+      {
+        "item": "List leading/main/trailing",
+        "present": true
+      },
+      {
+        "item": "Separate row-open and end-menu actions",
+        "present": true
+      },
+      {
+        "item": "SectionHeader",
+        "present": true
+      },
+      {
+        "item": "Removable Chip",
+        "present": true
+      },
+      {
+        "item": "Filter toggle Chip",
+        "present": true
+      },
+      {
+        "item": "Filter toolbox result count",
+        "present": true
+      },
+      {
+        "item": "Filter toolbox reset",
+        "present": true
+      },
+      {
+        "item": "Desktop inline PropertyField",
+        "present": true
+      },
+      {
+        "item": "Mobile PropertyField",
+        "present": true
+      },
+      {
+        "item": "Legible Korean",
+        "present": true
+      }
+    ],
+    "notes": [
+      "Earlier worker original, superseded by v2. All required content present; chips and badges were pill-like, and original status badges used unsupported yellow and green.",
+      "Exact original prompt reconstructed from earlier session tool-call strings and matched to image generation revisedPrompt; artifact SHA matches both session result bytes and savedPath."
+    ],
+    "profilesSha256": "fb560e3e228066e2b9019dba2dba36f8fd09bb3075e022d481f50379ba4739c8",
+    "briefSha256": "bb94e641631335541011487dfd6ad7e9644b3e011b082cc915d12a1cd3017e1e"
+  },
+  {
+    "board": 11,
+    "file": "11-new-kinds-v2.png",
+    "selected": true,
+    "mode": "built-in image_gen",
+    "prompt": "Use case: ui-mockup. Produce one crisp high-fidelity raster design review board, landscape 4:3, target 2000×1500. This is a flat exported interface specimen, not a photo. All specification measurements describe px-equivalent proportions; no numerical dimension annotations should appear in the board.\n\n## 고정 조건\n\n- **치수**: [profiles.ts](../../../apps/storybook/src/mockups/flex/profiles.ts)가 정본이다. 아래 표는 그 파일에서 생성했다. 이미지에 숫자 주석은 넣지 않는다.\n- **브랜드**: 기존 B 보드와 같은 dg-studio 블루 #155EEF로 고정한다. 비교 조건을 맞추기 위한 고정이며 브랜드 결정이 아니다. 브랜드 비교는 Storybook Brand 툴바에서 한다.\n- **중성색·의미색**: DDS 0.8.0 기본 semantic 값(아래 표). 근사 hex를 쓰지 않는다.\n- **타이포**: 시스템 산세리프(한글 양호), regular 400 / bold 700 두 굵기만. 본문 14px, 보조 13px, 캡션 12px, 제목 20~24px 상당. 모바일 본문 16px 상당.\n- **포커스**: 입력류는 테두리 1px + 안쪽 1px(바깥 링 없음). 비입력 컨트롤은 2px 링 + 2px 간격.\n- **부유 패널**: 흰 표면 + 1px stroke-neutral-weak 경계 + overlay 그림자. 다크에서도 경계가 보여야 한다. 기본 목록·카드에는 그림자를 쓰지 않는다.\n- **아이콘**: 단일 stroke SVG 스타일. 문자 기호·이모지를 조작 아이콘으로 쓰지 않는다. 도메인 표식(코드 배지·아바타)은 B 보드에서만 값 이해용 슬롯으로 허용한다.\n- **문구**: 주어진 한국어 그대로, 짧은 합쇼체. 가상 데이터.\n- **금지**: 초록 주 행동, 그라데이션, 유리·3D·원근, 기기 목업 프레임(모바일은 390px 폭 화면 영역만), 장식 차트, 거대한 아이콘, 모든 구역을 카드로 감싸기.\n- **캔버스**: 가로 4:3(목표 2000×1500). 좌상단 작은 \"dg-design / flex study\", 큰 보드 제목, 부제 \"A · 앞선 적용안\" 또는 \"B · 원문 우선 재검토\". 하단 작은 \"Design proposal · 2026\".\n\n### DDS semantic 색 (studio 블루 브랜드)\n\n| 역할 | 라이트 | 다크 |\n| --- | --- | --- |\n| bg-layer-default (표면) | #FFFFFF | #0F1212 |\n| bg-neutral-weak (약한 표면·hover) | #F1F6F6 | #242727 |\n| bg-neutral-weak-hover | #E4E9E8 | #3A3E3E |\n| fg-neutral (본문) | #242727 | #F1F6F6 |\n| fg-neutral-weak (보조) | #6B706F | #AEB2B2 |\n| stroke-neutral (입력 테두리) | #6B706F | #898D8D |\n| stroke-neutral-weak (구분선·패널 경계) | #E4E9E8 | #3A3E3E |\n| bg-disabled / fg-disabled | #E4E9E8 / #898D8D | #3A3E3E / #6B706F |\n| bg-brand-solid / hover | #155EEF / #175CD3 | #5298FF / #70A6FF |\n| bg-brand-weak | #EFF4FF | #0B254A |\n| fg-brand | #0D4AC4 | #84B9FF |\n| fg-brand-contrast | #FFFFFF | #0F1212 |\n| stroke-focus-ring | #2B7FFF | #5298FF |\n| critical fg / solid / stroke / weak | #731115 / #9B1C22 / #C7272D / #FCF3F2 | #F0C9C5 / #EF958E / #F04646 / #4B090B |\n| positive fg / weak | #0F4A17 / #E7FCE7 | #83F289 / #06300B |\n| overlay 딤 | rgb(15 18 18 / 0.5) | 같음 |\n| overlay 그림자 | 0 12px 32px rgba(15,15,15,.18), 0 4px 8px rgba(15,15,15,.08) | 같음 |\n\n\nVARIANT A ONLY — translate these into visual px-equivalent proportions at a consistent screenshot scale. Never print measurements or design-token names on the artwork. Each pair below means desktop, then mobile. Use the appropriate member for the UI specimen.\nPage horizontal insets about 32px on desktop and 20px on mobile.\nGaps between related fields about 12px and 14px. Gaps between groups about 24px and 28px.\nWork-panel inner padding about 40px and 20px.\nField and select trigger heights about 40px and 56px; corners gently rounded about 6px and 16px; inner horizontal padding about 12px and 16px; value text about 14px and 16px.\nMedium button corners about 8px and 12px. Main CTA heights about 48px and 52px.\nSelect popup corners about 14px in both contexts; popup padding about 8px in both; options at least 36px high on desktop and 48px on mobile with about 6px corners. Multiple-selection square marks about 16px.\nMenu popup corners about 12px and padding about 6px in both contexts; menu items at least 36px on desktop and 48px on mobile, with about 6px corners.\nSheet inward-facing corners about 16px on desktop and distinctly rounded 24px on mobile; padding about 24px and 20px.\nTwo-line list rows about 64px high in both contexts; one-line list rows about 56px high in both; horizontal row padding about 16px; leading-to-main gap about 12px.\nChip heights about 28px on desktop and 32px on mobile; corners about 8px in both.\nNo extra setting-row height or radius is prescribed for variant A.\nTabs at least about 40px high, horizontal padding about 12px, tab-to-panel gap about 24px in both contexts.\nTable rows about 44px high in both contexts.\nBody typography about 14px with 19px line height on desktop; about 16px with 24px line height on mobile.\nShared component proportions: ordinary buttons about 36px, 40px, or 52px high. Checkboxes either about 16px square with 4px corners, or 20px square with 6px corners. Switches about 32×20px or 40×24px. Floating panels have a visible 1px boundary. Confirmation Dialog has about 16px corners and 24px padding.\n\nVARIANT CHARACTER\nA · 앞선 적용안: 현재 DDS에서 출발해 역할 토큰을 연결한다. 외부 라벨 outline 입력이 기본, 반경을 조금 둥글게 올린 세트(6/8/12/14/16px 상당). Select는 field 트리거가 기본이고 버튼·칩 트리거는 후속 확장. Radio는 브랜드 원형 유지. List·Chip·PropertyField는 검토 후보. 모바일 Sheet 모서리는 24px 상당.\nRender only variant A, with exact subtitle \"A · 앞선 적용안\". No variant B content. All control icons are thin consistent stroke outlines; no emoji, no letter or initial avatars, no code emblems. Match actual DDS controls: restrained thin outline fields, round-corner weak fill chips, thin neutral popup boundaries, clear separate active/focus/error states. Use system sans-serif Hangul, regular 400 and bold 700 only, not the fallback serif font seen in raw test captures. Do not print specification paragraphs, hex codes, pixel values, component token names, or explanations about this prompt. Exact Korean strings below must be rendered cleanly. Do not add unrelated filler. Board has a small top-left \"dg-design / flex study\", a clear large title, the exact variant subtitle, and small bottom-left \"Design proposal · 2026\".\n\nBOARD 11 — 신규 구성요소\nTitle: \"신규 구성요소\". Light-theme white artboard. Spacious, strongly aligned design-system composition: upper left is List, upper right is Chip, lower left is desktop PropertyField, lower right is a narrow mobile PropertyField sample. Use headings and whitespace with hairline separators, not a grid of cards. These three components are review candidates, shown with a small plain caption \"검토 후보\" once under the board subtitle.\n\nUPPER LEFT: heading \"List\" and a real SectionHeader row reading \"발행 목록\" with count \"3\" and a small text action \"전체 보기\". Show three full-width rows. First is a one-line row about 56px tall: a small stroke document icon as leading, \"10월 업데이트\" as main text, a trailing weak badge \"초안\", a separate thin chevron row-opening affordance and a distinct three-dot menu button at the far end. Second is a two-line row about 64px tall: a stroke document icon; primary line \"디자인 시스템 안내\", secondary line \"김민지 · 10월 12일\"; trailing weak badge \"발행됨\", separate row-open chevron and end menu. Third is another two-line row: document icon; \"프로젝트 회고\", secondary \"이도윤 · 10월 14일\"; trailing \"검토 중\", separate chevron and end menu. Neutral hover surface on the second row. A small label below the list reading \"행 열기와 더보기\" makes the two distinct actions clear. No avatars or initial badges. Natural trailing layout, crisp separators, no shadows on the list.\n\nUPPER RIGHT: heading \"Chip\". Three vertically stacked unboxed specimen groups with labels \"제거형\", \"필터 토글형\", \"필터 툴박스\".\nUnder \"제거형\": two compact rounded neutral chips \"디자인\" and \"개발\", each with its own small stroke close icon; height about 28px with 8px corners.\nUnder \"필터 토글형\": chips \"전체\" selected blue weak fill with small stroke check, \"초안\" and \"발행됨\" unselected neutral.\nUnder \"필터 툴박스\": a compact toolbar with active chips \"디자인\" and \"이번 달\", each removable; visible result label \"결과 12개\" at left and \"초기화\" reset action at right. All controls distinct and readable.\n\nLOWER LEFT: heading \"PropertyField · 데스크톱\". Three clean inline horizontal property rows using an aligned label column and inline values, not boxed form fields: \"상태\" → weak text badge \"초안\"; \"담당자\" → \"김민지\" with a small stroke chevron; \"발행일\" → \"2026. 10. 12.\" with a small stroke calendar. Each has label and value on the same baseline, restrained separators and 56px-equivalent row spacing. Desktop text about 14px. No domain avatars.\n\nLOWER RIGHT: heading \"PropertyField · 모바일\". A plain rectangular screen-region crop at 390px-equivalent width, no device frame. Show mobile property rows about 56px tall, 20px page inset, label left and value plus chevron right: \"상태\" / \"초안\", \"담당자\" / \"김민지\", \"발행일\" / \"10월 12일\". Body about 16px. This is a row-format non-keyboard value selection sample. Keep no decorative illustration. Balance all four sections so every row, remove action, filter toggle, result count, reset, and mobile-versus-desktop property field is visible.\n\n\nREVISION: Preserve the same four-section layout and all exact text and all contents. Correct the shape proportions and the unsupported status colors: every Chip and status badge must be a compact rounded rectangle with about 8px corners, never a pill or capsule. Use #F1F6F6 with #242727 for ALL three list status badges \"초안\", \"발행됨\", \"검토 중\". Remove yellow and saturated green completely. Use blue-weak only on selected filter chips. The remove-chip shape must have a straight top and bottom for most of its width. All other Korean text is already correct and must be preserved. Keep readable desktop/mobile row size differences. No avatars, no frame, no new content. Use the full A proportions above.",
+    "width": 1448,
+    "height": 1086,
+    "sha256": "2367be4695551a9a832ee01fe85c3374ce539f61cf939d2dccd4e43abe8234a8",
+    "generatorArtifact": "/Users/pdg/Library/Application Support/orca/codex-accounts/149b44a7-2848-48d9-833a-af0ecffea173/home/generated_images/01a11f28-355f-7122-8c9d-d83e7806e851/exec-05a61a76-4bf5-4235-8022-1ab95c215a51.png",
+    "checklist": [
+      {
+        "item": "List one-line rows",
+        "present": true
+      },
+      {
+        "item": "List two-line rows",
+        "present": true
+      },
+      {
+        "item": "List leading/main/trailing",
+        "present": true
+      },
+      {
+        "item": "Separate row-open and end-menu actions",
+        "present": true
+      },
+      {
+        "item": "SectionHeader",
+        "present": true
+      },
+      {
+        "item": "Removable Chip",
+        "present": true
+      },
+      {
+        "item": "Filter toggle Chip",
+        "present": true
+      },
+      {
+        "item": "Filter toolbox result count",
+        "present": true
+      },
+      {
+        "item": "Filter toolbox reset",
+        "present": true
+      },
+      {
+        "item": "Desktop inline PropertyField",
+        "present": true
+      },
+      {
+        "item": "Mobile PropertyField",
+        "present": true
+      },
+      {
+        "item": "Legible Korean",
+        "present": true
+      }
+    ],
+    "notes": [
+      "Earlier worker revision selected. All required content and Korean readable; status badge and Chip shapes corrected. Some state badge rounding remains illustrative.",
+      "Exact original prompt reconstructed from earlier session tool-call strings and matched to image generation revisedPrompt; artifact SHA matches both session result bytes and savedPath."
+    ],
+    "profilesSha256": "fb560e3e228066e2b9019dba2dba36f8fd09bb3075e022d481f50379ba4739c8",
+    "briefSha256": "bb94e641631335541011487dfd6ad7e9644b3e011b082cc915d12a1cd3017e1e"
+  },
+  {
+    "board": 12,
+    "file": "12-mobile-form.png",
+    "selected": true,
+    "mode": "built-in image_gen",
+    "prompt": "Use case: ui-mockup. Produce one crisp high-fidelity raster design review board, landscape 4:3, target 2000×1500. This is a flat exported interface specimen, not a photo. All specification measurements describe px-equivalent proportions; no numerical dimension annotations should appear in the board.\n\n## 고정 조건\n\n- **치수**: [profiles.ts](../../../apps/storybook/src/mockups/flex/profiles.ts)가 정본이다. 아래 표는 그 파일에서 생성했다. 이미지에 숫자 주석은 넣지 않는다.\n- **브랜드**: 기존 B 보드와 같은 dg-studio 블루 #155EEF로 고정한다. 비교 조건을 맞추기 위한 고정이며 브랜드 결정이 아니다. 브랜드 비교는 Storybook Brand 툴바에서 한다.\n- **중성색·의미색**: DDS 0.8.0 기본 semantic 값(아래 표). 근사 hex를 쓰지 않는다.\n- **타이포**: 시스템 산세리프(한글 양호), regular 400 / bold 700 두 굵기만. 본문 14px, 보조 13px, 캡션 12px, 제목 20~24px 상당. 모바일 본문 16px 상당.\n- **포커스**: 입력류는 테두리 1px + 안쪽 1px(바깥 링 없음). 비입력 컨트롤은 2px 링 + 2px 간격.\n- **부유 패널**: 흰 표면 + 1px stroke-neutral-weak 경계 + overlay 그림자. 다크에서도 경계가 보여야 한다. 기본 목록·카드에는 그림자를 쓰지 않는다.\n- **아이콘**: 단일 stroke SVG 스타일. 문자 기호·이모지를 조작 아이콘으로 쓰지 않는다. 도메인 표식(코드 배지·아바타)은 B 보드에서만 값 이해용 슬롯으로 허용한다.\n- **문구**: 주어진 한국어 그대로, 짧은 합쇼체. 가상 데이터.\n- **금지**: 초록 주 행동, 그라데이션, 유리·3D·원근, 기기 목업 프레임(모바일은 390px 폭 화면 영역만), 장식 차트, 거대한 아이콘, 모든 구역을 카드로 감싸기.\n- **캔버스**: 가로 4:3(목표 2000×1500). 좌상단 작은 \"dg-design / flex study\", 큰 보드 제목, 부제 \"A · 앞선 적용안\" 또는 \"B · 원문 우선 재검토\". 하단 작은 \"Design proposal · 2026\".\n\n### DDS semantic 색 (studio 블루 브랜드)\n\n| 역할 | 라이트 | 다크 |\n| --- | --- | --- |\n| bg-layer-default (표면) | #FFFFFF | #0F1212 |\n| bg-neutral-weak (약한 표면·hover) | #F1F6F6 | #242727 |\n| bg-neutral-weak-hover | #E4E9E8 | #3A3E3E |\n| fg-neutral (본문) | #242727 | #F1F6F6 |\n| fg-neutral-weak (보조) | #6B706F | #AEB2B2 |\n| stroke-neutral (입력 테두리) | #6B706F | #898D8D |\n| stroke-neutral-weak (구분선·패널 경계) | #E4E9E8 | #3A3E3E |\n| bg-disabled / fg-disabled | #E4E9E8 / #898D8D | #3A3E3E / #6B706F |\n| bg-brand-solid / hover | #155EEF / #175CD3 | #5298FF / #70A6FF |\n| bg-brand-weak | #EFF4FF | #0B254A |\n| fg-brand | #0D4AC4 | #84B9FF |\n| fg-brand-contrast | #FFFFFF | #0F1212 |\n| stroke-focus-ring | #2B7FFF | #5298FF |\n| critical fg / solid / stroke / weak | #731115 / #9B1C22 / #C7272D / #FCF3F2 | #F0C9C5 / #EF958E / #F04646 / #4B090B |\n| positive fg / weak | #0F4A17 / #E7FCE7 | #83F289 / #06300B |\n| overlay 딤 | rgb(15 18 18 / 0.5) | 같음 |\n| overlay 그림자 | 0 12px 32px rgba(15,15,15,.18), 0 4px 8px rgba(15,15,15,.08) | 같음 |\n\n\nVARIANT A ONLY — translate these into visual px-equivalent proportions at a consistent screenshot scale. Never print measurements or design-token names on the artwork. Each pair below means desktop, then mobile. Use the appropriate member for the UI specimen.\nPage horizontal insets about 32px on desktop and 20px on mobile.\nGaps between related fields about 12px and 14px. Gaps between groups about 24px and 28px.\nWork-panel inner padding about 40px and 20px.\nField and select trigger heights about 40px and 56px; corners gently rounded about 6px and 16px; inner horizontal padding about 12px and 16px; value text about 14px and 16px.\nMedium button corners about 8px and 12px. Main CTA heights about 48px and 52px.\nSelect popup corners about 14px in both contexts; popup padding about 8px in both; options at least 36px high on desktop and 48px on mobile with about 6px corners. Multiple-selection square marks about 16px.\nMenu popup corners about 12px and padding about 6px in both contexts; menu items at least 36px on desktop and 48px on mobile, with about 6px corners.\nSheet inward-facing corners about 16px on desktop and distinctly rounded 24px on mobile; padding about 24px and 20px.\nTwo-line list rows about 64px high in both contexts; one-line list rows about 56px high in both; horizontal row padding about 16px; leading-to-main gap about 12px.\nChip heights about 28px on desktop and 32px on mobile; corners about 8px in both.\nNo extra setting-row height or radius is prescribed for variant A.\nTabs at least about 40px high, horizontal padding about 12px, tab-to-panel gap about 24px in both contexts.\nTable rows about 44px high in both contexts.\nBody typography about 14px with 19px line height on desktop; about 16px with 24px line height on mobile.\nShared component proportions: ordinary buttons about 36px, 40px, or 52px high. Checkboxes either about 16px square with 4px corners, or 20px square with 6px corners. Switches about 32×20px or 40×24px. Floating panels have a visible 1px boundary. Confirmation Dialog has about 16px corners and 24px padding.\n\nVARIANT CHARACTER\nA · 앞선 적용안: 현재 DDS에서 출발해 역할 토큰을 연결한다. 외부 라벨 outline 입력이 기본, 반경을 조금 둥글게 올린 세트(6/8/12/14/16px 상당). Select는 field 트리거가 기본이고 버튼·칩 트리거는 후속 확장. Radio는 브랜드 원형 유지. List·Chip·PropertyField는 검토 후보. 모바일 Sheet 모서리는 24px 상당.\nRender only variant A, with exact subtitle \"A · 앞선 적용안\". No variant B content. All control icons are thin consistent stroke outlines; no emoji, no letter or initial avatars, no code emblems. Match actual DDS controls: restrained thin outline fields, round-corner weak fill chips, thin neutral popup boundaries, clear separate active/focus/error states. Use system sans-serif Hangul, regular 400 and bold 700 only, not the fallback serif font seen in raw test captures. Do not print specification paragraphs, hex codes, pixel values, component token names, or explanations about this prompt. Exact Korean strings below must be rendered cleanly. Do not add unrelated filler. Board has a small top-left \"dg-design / flex study\", a clear large title, the exact variant subtitle, and small bottom-left \"Design proposal · 2026\".\n\nBOARD 12 — 모바일 발행 폼\nTitle: \"모바일 발행 폼\". Use the light DDS color column. Two and ONLY two plain mobile screen regions, each exactly the same 390px-equivalent content width and about 720px-equivalent height. Magnify the two equally to fill the board while retaining the specified mobile proportions. Center the pair horizontally below the board header, with a generous white gap. No device casing, bezel, notch, home indicator drawing, tilt, shadows around screens, or phone hardware. Thin outer neutral screen boundary is allowed. Caption above the left screen: \"발행 정보\". Caption above the right screen: \"담당자 선택\". Keep real touch target sizes, 16px-equivalent body text and 20px horizontal screen inset. All form field labels are external ABOVE the outlined input. No internal-label box style. A input height is 56px and corners are 16px, regular outlined controls with 16px inner horizontal padding. Only strong action buttons are brand blue.\n\nLEFT screen: top app bar with a thin stroke back chevron, title \"발행 정보\" and right ghost action \"닫기\". Below, heading \"콘텐츠를 준비합니다\" with short supporting text \"발행에 필요한 정보를 입력합니다.\" Then the form:\nExternal label \"제목\"; outlined input containing \"10월 업데이트\".\nExternal label \"담당자\"; outlined field trigger with \"김민지\" and stroke down-chevron.\nExternal label \"발행일\"; outlined field trigger with \"2026. 10. 12.\" and a stroke calendar icon.\nExternal label \"메모\"; an outlined multiline text area with the exact value \"변경 사항을 안내합니다.\".\nRelated field gap about 14px, group gap about 28px. Enough whitespace below form.\nPinned footer above blank safe-area padding: one full-width solid brand blue primary CTA, about 52px high and corners about 12px, with white bold text \"발행하기\". Below the CTA leave safe-area breathing space. Everything must fit and remain readable.\n\nRIGHT screen: show the SAME underlying \"발행 정보\" form, subtly dimmed with the specified overlay; a bottom sheet is open over it. The white sheet is about the lower two-thirds of the viewport, flush to viewport bottom, with distinctly generous top corners about 24px (variant A), 20px inside padding, thin boundary along inward-facing edge, restrained overlay shadow. Small neutral drag handle at top center. Sheet heading \"담당자 선택\", a small stroke close icon on the right. External small label \"담당자 검색\" above a 56px-tall outlined search field with a thin stroke search icon and exact placeholder \"이름을 검색합니다\". Then three people rows at least 48px tall, preferably two-line rows 64px high:\n\"김민지\" with secondary \"디자인팀\" is selected and uses a thin stroke blue check at right.\n\"이도윤\" with secondary \"개발팀\" is unselected.\n\"박서연\" with secondary \"운영팀\" is unselected.\nUse plain names and team text only — no photos, initial avatars, letter badges, or decorative domain marks. The selected row may use #EFF4FF weak blue fill and approximately 6px row corners.\nAt the bottom of the sheet a 52px-tall full-width blue button \"선택 완료\" with 12px corners, then a generous empty safe-area inset.\nAll exact Korean labels and values must be legible; the only screen regions are this form and its assignee sheet. No third preview, no explanatory measurement labels.\n",
+    "width": 1448,
+    "height": 1086,
+    "sha256": "10449ff9f620bedb945160444eafac6298d6f2f3232ceff5e86bddac3e7c64c5",
+    "generatorArtifact": "/Users/pdg/Library/Application Support/orca/codex-accounts/149b44a7-2848-48d9-833a-af0ecffea173/home/generated_images/01a11f28-355f-7122-8c9d-d83e7806e851/exec-f88e427b-a41c-4e5a-b046-eed87c3251d7.png",
+    "checklist": [
+      {
+        "item": "Two mobile screen regions",
+        "present": true
+      },
+      {
+        "item": "Publish form",
+        "present": true
+      },
+      {
+        "item": "External labels and outlined inputs",
+        "present": true
+      },
+      {
+        "item": "Bottom CTA",
+        "present": true
+      },
+      {
+        "item": "Assignee bottom Sheet",
+        "present": true
+      },
+      {
+        "item": "People rows",
+        "present": true
+      },
+      {
+        "item": "Legible Korean",
+        "present": true
+      }
+    ],
+    "notes": [
+      "Earlier worker output, reviewed in this run. Required content present, external labels and larger Sheet top corners visible. Exact px proportions are not pixel-certified.",
+      "Exact original prompt reconstructed from earlier session tool-call strings and matched to image generation revisedPrompt; artifact SHA matches both session result bytes and savedPath."
+    ],
+    "profilesSha256": "fb560e3e228066e2b9019dba2dba36f8fd09bb3075e022d481f50379ba4739c8",
+    "briefSha256": "bb94e641631335541011487dfd6ad7e9644b3e011b082cc915d12a1cd3017e1e"
+  },
+  {
+    "board": 13,
+    "file": "13-mobile-flow.png",
+    "selected": true,
+    "mode": "built-in image_gen",
+    "prompt": "Use case: ui-mockup. Produce one crisp high-fidelity raster design review board, landscape 4:3, target 2000×1500. This is a flat exported interface specimen, not a photo. All specification measurements describe px-equivalent proportions; no numerical dimension annotations should appear in the board.\n\n## 고정 조건\n\n- **치수**: [profiles.ts](../../../apps/storybook/src/mockups/flex/profiles.ts)가 정본이다. 아래 표는 그 파일에서 생성했다. 이미지에 숫자 주석은 넣지 않는다.\n- **브랜드**: 기존 B 보드와 같은 dg-studio 블루 #155EEF로 고정한다. 비교 조건을 맞추기 위한 고정이며 브랜드 결정이 아니다. 브랜드 비교는 Storybook Brand 툴바에서 한다.\n- **중성색·의미색**: DDS 0.8.0 기본 semantic 값(아래 표). 근사 hex를 쓰지 않는다.\n- **타이포**: 시스템 산세리프(한글 양호), regular 400 / bold 700 두 굵기만. 본문 14px, 보조 13px, 캡션 12px, 제목 20~24px 상당. 모바일 본문 16px 상당.\n- **포커스**: 입력류는 테두리 1px + 안쪽 1px(바깥 링 없음). 비입력 컨트롤은 2px 링 + 2px 간격.\n- **부유 패널**: 흰 표면 + 1px stroke-neutral-weak 경계 + overlay 그림자. 다크에서도 경계가 보여야 한다. 기본 목록·카드에는 그림자를 쓰지 않는다.\n- **아이콘**: 단일 stroke SVG 스타일. 문자 기호·이모지를 조작 아이콘으로 쓰지 않는다. 도메인 표식(코드 배지·아바타)은 B 보드에서만 값 이해용 슬롯으로 허용한다.\n- **문구**: 주어진 한국어 그대로, 짧은 합쇼체. 가상 데이터.\n- **금지**: 초록 주 행동, 그라데이션, 유리·3D·원근, 기기 목업 프레임(모바일은 390px 폭 화면 영역만), 장식 차트, 거대한 아이콘, 모든 구역을 카드로 감싸기.\n- **캔버스**: 가로 4:3(목표 2000×1500). 좌상단 작은 \"dg-design / flex study\", 큰 보드 제목, 부제 \"A · 앞선 적용안\" 또는 \"B · 원문 우선 재검토\". 하단 작은 \"Design proposal · 2026\".\n\n### DDS semantic 색 (studio 블루 브랜드)\n\n| 역할 | 라이트 | 다크 |\n| --- | --- | --- |\n| bg-layer-default (표면) | #FFFFFF | #0F1212 |\n| bg-neutral-weak (약한 표면·hover) | #F1F6F6 | #242727 |\n| bg-neutral-weak-hover | #E4E9E8 | #3A3E3E |\n| fg-neutral (본문) | #242727 | #F1F6F6 |\n| fg-neutral-weak (보조) | #6B706F | #AEB2B2 |\n| stroke-neutral (입력 테두리) | #6B706F | #898D8D |\n| stroke-neutral-weak (구분선·패널 경계) | #E4E9E8 | #3A3E3E |\n| bg-disabled / fg-disabled | #E4E9E8 / #898D8D | #3A3E3E / #6B706F |\n| bg-brand-solid / hover | #155EEF / #175CD3 | #5298FF / #70A6FF |\n| bg-brand-weak | #EFF4FF | #0B254A |\n| fg-brand | #0D4AC4 | #84B9FF |\n| fg-brand-contrast | #FFFFFF | #0F1212 |\n| stroke-focus-ring | #2B7FFF | #5298FF |\n| critical fg / solid / stroke / weak | #731115 / #9B1C22 / #C7272D / #FCF3F2 | #F0C9C5 / #EF958E / #F04646 / #4B090B |\n| positive fg / weak | #0F4A17 / #E7FCE7 | #83F289 / #06300B |\n| overlay 딤 | rgb(15 18 18 / 0.5) | 같음 |\n| overlay 그림자 | 0 12px 32px rgba(15,15,15,.18), 0 4px 8px rgba(15,15,15,.08) | 같음 |\n\n\nVARIANT A ONLY — translate these into visual px-equivalent proportions at a consistent screenshot scale. Never print measurements or design-token names on the artwork. Each pair below means desktop, then mobile. Use the appropriate member for the UI specimen.\nPage horizontal insets about 32px on desktop and 20px on mobile.\nGaps between related fields about 12px and 14px. Gaps between groups about 24px and 28px.\nWork-panel inner padding about 40px and 20px.\nField and select trigger heights about 40px and 56px; corners gently rounded about 6px and 16px; inner horizontal padding about 12px and 16px; value text about 14px and 16px.\nMedium button corners about 8px and 12px. Main CTA heights about 48px and 52px.\nSelect popup corners about 14px in both contexts; popup padding about 8px in both; options at least 36px high on desktop and 48px on mobile with about 6px corners. Multiple-selection square marks about 16px.\nMenu popup corners about 12px and padding about 6px in both contexts; menu items at least 36px on desktop and 48px on mobile, with about 6px corners.\nSheet inward-facing corners about 16px on desktop and distinctly rounded 24px on mobile; padding about 24px and 20px.\nTwo-line list rows about 64px high in both contexts; one-line list rows about 56px high in both; horizontal row padding about 16px; leading-to-main gap about 12px.\nChip heights about 28px on desktop and 32px on mobile; corners about 8px in both.\nNo extra setting-row height or radius is prescribed for variant A.\nTabs at least about 40px high, horizontal padding about 12px, tab-to-panel gap about 24px in both contexts.\nTable rows about 44px high in both contexts.\nBody typography about 14px with 19px line height on desktop; about 16px with 24px line height on mobile.\nShared component proportions: ordinary buttons about 36px, 40px, or 52px high. Checkboxes either about 16px square with 4px corners, or 20px square with 6px corners. Switches about 32×20px or 40×24px. Floating panels have a visible 1px boundary. Confirmation Dialog has about 16px corners and 24px padding.\n\nVARIANT CHARACTER\nA · 앞선 적용안: 현재 DDS에서 출발해 역할 토큰을 연결한다. 외부 라벨 outline 입력이 기본, 반경을 조금 둥글게 올린 세트(6/8/12/14/16px 상당). Select는 field 트리거가 기본이고 버튼·칩 트리거는 후속 확장. Radio는 브랜드 원형 유지. List·Chip·PropertyField는 검토 후보. 모바일 Sheet 모서리는 24px 상당.\nRender only variant A, with exact subtitle \"A · 앞선 적용안\". No variant B content. All control icons are thin consistent stroke outlines; no emoji, no letter or initial avatars, no code emblems. Match actual DDS controls: restrained thin outline fields, round-corner weak fill chips, thin neutral popup boundaries, clear separate active/focus/error states. Use system sans-serif Hangul, regular 400 and bold 700 only, not the fallback serif font seen in raw test captures. Do not print specification paragraphs, hex codes, pixel values, component token names, or explanations about this prompt. Exact Korean strings below must be rendered cleanly. Do not add unrelated filler. Board has a small top-left \"dg-design / flex study\", a clear large title, the exact variant subtitle, and small bottom-left \"Design proposal · 2026\".\n\nBOARD 13 — 모바일 작업 흐름\nTitle: \"모바일 작업 흐름\". Light theme. Exactly THREE plain 390px-equivalent-wide mobile screen regions in one row, all at the same scale and all with identical viewport height about 760px-equivalent. Board header above, footnote below. No phone frames, bezels, notches, physical devices, decorative illustrations, or dimension labels. Each viewport is simply a flat rectangular UI region with a subtle thin boundary. Captions just above the three viewports, respectively: \"간단\", \"상세\", \"전체 보기\". This is the SAME task Sheet expanded through three states, not unrelated tasks. Use the exact same typed reason value \"연장 근무 2시간\" visibly and correctly in ALL THREE screens. Do not hide it behind the DatePicker. Mobile body about 16px, 24px line height. External labels above 56px-tall outline inputs, corners about 16px. Bottom Sheet top corners about 24px in variant A. Main CTA about 52px tall with about 12px corners. Two regular font weights only.\n\nSCREEN 1 — simple, bottom 45% Sheet:\nUnderlying dimmed app screen has header \"근무\" and a quiet list item \"이번 주 근무\". Over it, a white bottom Sheet with distinctly rounded 24px top corners and small drag handle. Sheet title \"근무 신청\", stroke close icon. External label \"사유\" above the outline input containing EXACTLY \"연장 근무 2시간\". Below, compact right-aligned text button \"상세 보기\" with a tiny stroke expansion icon. Bottom footer has blue full-width button \"다음\", then safe-area blank padding. Retain enough space for all contents. Thin inward-facing boundary and overlay shadow.\n\nSCREEN 2 — detailed, bottom 75% Sheet:\nSame underlying dimmed \"근무\" page and same Sheet title \"근무 신청\", now taller. Drag handle, stroke close icon and stroke expand icon. External label \"사유\" and the same outline input \"연장 근무 2시간\". Under it, external label \"날짜\" and field trigger \"2026. 10. 12.\" with small stroke calendar icon. Then external label \"시간\" and outlined value \"18:00–20:00\". Plain text action \"전체 보기\" near the bottom, plus pinned blue full-width footer button \"다음\" and safe-area padding. The reason is unchanged, visibly identical to screen 1.\n\nSCREEN 3 — full-height same task, with DatePicker Sheet:\nExpanded full-height \"근무 신청\" editor. Top app bar has back stroke chevron and right close stroke icon. In the upper portion, keep external label \"사유\" and the outline input \"연장 근무 2시간\" clearly readable ABOVE the date picker. Keep external \"날짜\" label visible below it as context. The lower approximately two-thirds contains an open white DatePicker bottom sheet with about 24px top corners and a small handle. Heading \"날짜 선택\"; navigation row has left/right stroke chevrons around \"2026년 10월\". A tidy SEVEN-COLUMN calendar with weekday headers exactly \"일 월 화 수 목 금 토\". Correct October 2026 layout: Sunday, Monday, Tuesday, Wednesday are four blank cells, then Thursday 1, Friday 2, Saturday 3. Subsequent weeks are \"4 5 6 7 8 9 10\", \"11 12 13 14 15 16 17\", \"18 19 20 21 22 23 24\", \"25 26 27 28 29 30 31\". Each date appears once. Highlight 12 with solid studio blue selection and white text; all other dates neutral. Calendar dates are evenly spaced and readable, no arbitrary filler numbers. Under the calendar, fixed footer with two distinct side-by-side controls: neutral button \"취소\" and blue primary button \"적용\", both touch-friendly about 52px high with 12px corners. Leave a clearly visible generous blank safe-area inset below these buttons, inside the viewport. Do not crop the buttons, dates, or bottom padding. Full-height editor reason remains visible in the top portion so the unchanged value can be verified across all three states.\n\nNo fourth phone or extra viewport. The DatePicker is part of the third viewport. Preserve plenty of whitespace between the screens and sharply readable Hangul. Use only DDS neutral and blue colors here. All three reason values must be exact, with the same spacing: \"연장 근무 2시간\".\n",
+    "width": 1448,
+    "height": 1086,
+    "sha256": "e72c43823d8fff98b6cb4bee29cafc6b54179a324023667536620dd3e12c0ebf",
+    "generatorArtifact": "/Users/pdg/Library/Application Support/orca/codex-accounts/149b44a7-2848-48d9-833a-af0ecffea173/home/generated_images/01a11f28-355f-7122-8c9d-d83e7806e851/exec-99ed392b-7550-47f7-89d3-7e23dd753010.png",
+    "checklist": [
+      {
+        "item": "Three mobile screens: simple, detail, full",
+        "present": true
+      },
+      {
+        "item": "Same Sheet progressively expanded",
+        "present": true
+      },
+      {
+        "item": "Retained entered value in all three screens",
+        "present": true
+      },
+      {
+        "item": "DatePicker bottom Sheet",
+        "present": true
+      },
+      {
+        "item": "Calendar",
+        "present": true
+      },
+      {
+        "item": "Bottom apply and cancel",
+        "present": true
+      },
+      {
+        "item": "Safe area spacing",
+        "present": true
+      },
+      {
+        "item": "Legible Korean",
+        "present": true
+      }
+    ],
+    "notes": [
+      "Earlier worker final generation copied to repository by supervisor, reviewed in this run. All three reason values and calendar Sheet present; expansion icon shape is approximate.",
+      "Exact original prompt reconstructed from earlier session tool-call strings and matched to image generation revisedPrompt; artifact SHA matches both session result bytes and savedPath."
+    ],
+    "profilesSha256": "fb560e3e228066e2b9019dba2dba36f8fd09bb3075e022d481f50379ba4739c8",
+    "briefSha256": "bb94e641631335541011487dfd6ad7e9644b3e011b082cc915d12a1cd3017e1e"
+  },
+  {
+    "board": 14,
+    "file": "14-dark.png",
+    "selected": true,
+    "mode": "built-in image_gen",
+    "prompt": "Use case: ui-mockup. Create exactly one exceptionally crisp, flat, production-quality Korean design-system study board as a raster image, landscape 4:3, target 2000 by 1500. All measurements below are px-equivalent visual proportions, not printed measurement annotations.\n\nFIXED CONDITIONS from the authoritative brief:\nUse the prescribed A dimensions below. Do not print dimensions, numeric annotations, token names, grids or design-tool handles. Fixed studio-blue brand is #155EEF in light theme, the DDS dark-theme brand values below in dark theme. This is a comparison condition, not a brand exploration. Use exact DDS semantic colours below, never approximated substitute hex values. Korean-capable system sans serif only, regular 400 and bold 700 only: desktop body about 14px, supporting text about 13px, captions about 12px, titles about 20–24px; mobile body about 16px. Scale all these proportions consistently when presenting the examples on the board. Inputs focus with a 1px border plus 1px inner stroke, no outer focus halo. Non-input controls focus with a 2px ring and 2px offset. Floating panels have white surfaces in light theme or the exact dark surface in dark theme, a visible 1px subtle neutral border and overlay shadow. Basic lists and cards have no shadow. Icons are restrained single-stroke SVG-style line icons, never character symbols or emoji standing in for action icons. No decorative domain code badges or avatars in this A board. Preserve the supplied Korean exactly with complete legible syllables, short formal copy, fictional data. No green primary actions, gradients, glass, 3D, perspective, device mockup frames, decorative charts, giant icons or card around every section. Mobile examples are unframed 390px-wide screen areas. At upper left place the small text \"dg-design / flex study\", then the board title and the exact subtitle \"A · 앞선 적용안\". Footer, small: \"Design proposal · 2026\".\n\nEXACT DDS COLOUR TABLE, light / dark:\nDefault surface: #FFFFFF / #0F1212.\nWeak neutral surface and hover: #F1F6F6 / #242727.\nStronger neutral hover: #E4E9E8 / #3A3E3E.\nMain text: #242727 / #F1F6F6.\nSupporting text: #6B706F / #AEB2B2.\nInput border: #6B706F / #898D8D.\nSubtle divider and floating-panel border: #E4E9E8 / #3A3E3E.\nDisabled background and text: #E4E9E8 with #898D8D / #3A3E3E with #6B706F.\nSolid brand and its hover: #155EEF and #175CD3 / #5298FF and #70A6FF.\nWeak brand surface: #EFF4FF / #0B254A.\nBrand text: #0D4AC4 / #84B9FF.\nText on solid brand: #FFFFFF / #0F1212.\nFocus ring: #2B7FFF / #5298FF.\nCritical text, solid fill, stroke, weak surface: #731115, #9B1C22, #C7272D, #FCF3F2 / #F0C9C5, #EF958E, #F04646, #4B090B.\nPositive text and weak surface: #0F4A17 and #E7FCE7 / #83F289 and #06300B.\nOverlay dim both themes: rgb(15 18 18 / 0.5).\nOverlay shadow both themes: soft shadow equivalent to 0 12px 32px rgba(15,15,15,.18), with a closer 0 4px 8px rgba(15,15,15,.08) shadow.\n\nVARIANT A DIMENSION PROPORTIONS ONLY — desktop / mobile:\nPage horizontal inset about 32px / 20px. Same-group field gaps 12px / 14px, between-group gaps 24px / 28px. Work-panel body inset 40px / 20px.\nInput and select trigger height 40px / 56px, input corners 6px / 16px, inner padding 12px / 16px, value text 14px / 16px.\nMedium button corners 8px / 12px. Main CTA height 48px / 52px. Selection-panel corners 14px in both, inset 8px in both. Option-row minimum height 36px / 48px, row corners 6px in both. Multiple-selection square mark 16px in both.\nMenu panel corners 12px and inset 6px in both, menu-item minimum height 36px / 48px, row corners 6px in both.\nSheet inside corners 16px / 24px, inset 24px / 20px. Two-line list rows 64px in both; one-line rows 56px in both. List horizontal inset 16px in both, leading-to-text gap 12px in both. Chip height 28px / 32px, Chip corners 8px in both.\nTabs minimum height 40px, horizontal inset 12px, panel gap 24px in both. Single-line table row 44px in both. Mobile minimum touch target 44px. Body type 14px with 19px leading / 16px with 24px leading.\nCommon sizes: button heights 36px, 40px, 52px; checkbox 16px with 4px corners or 20px with 6px corners; Switch 32 by 20px or 40 by 24px; floating panel 1px boundary; confirmation Dialog 16px corners with 24px padding.\nA CHARACTER: \"A · 앞선 적용안\" starts from the current DDS, connects role proportions, uses external-label outlined inputs by default, somewhat rounder corners 6/8/12/14/16. Select defaults to field triggers; button and chip triggers are later expansions. Radio stays brand-coloured circular. List, Chip, PropertyField remain review candidates. Mobile Sheet corners 24px.\nREFERENCE STYLE: match inspected DDS Storybook restrained outlined shapes, neutral hover, check selection, separators and bordered overlay panels; use Korean-capable system sans serif, not fallback serif from raw captures.\nBOARD 14: title exactly \"다크 테마\", prescribed variant subtitle. Whole landscape board uses flat #0F1212 dark background with #F1F6F6 main text and #AEB2B2 supporting text. Clear generous gutters; no decorative section cards. Identical A/B composition: THREE columns and TWO rows. Top row left Select OPEN, center DropdownMenu OPEN, right Popover OPEN. Bottom row left inputs with focus and error, center button hierarchy, right visible part of a work Dialog. All floating panels use #0F1212 surface with visibly continuous one-px-equivalent #3A3E3E border and soft overlay shadow; MUST remain legible against dark board. No white input interiors.\n\nTOP LEFT section \"Select\": field trigger showing \"김민지\" and up chevron, label \"담당자\". Open bordered selection panel below: small heading \"담당자\"; three name rows \"김민지\", \"이도윤\", \"박서연\", first selected with small line check and neutral weak #242727 highlight. Use variant-specific panel inset, row height and corners. TOP MIDDLE section \"DropdownMenu\": small neutral button trigger \"더보기\"; open bordered menu with small group title \"콘텐츠\", rows \"새 문서\" with shortcut \"⌘N\", \"복제\" with shortcut \"⌘D\", \"이동\" with right chevron, thin separator, destructive row \"삭제\" in #F0C9C5. One neutral hover row. TOP RIGHT section \"Popover\": neutral trigger \"발행 정보\" with info line icon; open information panel below, small arrow, bold \"발행 안내\", helper copy \"예약한 시간에 콘텐츠를 발행합니다.\", property text \"발행일\" and \"2026. 10. 12.\", bottom text action \"확인\". This is an information popover, not a form.\n\nBOTTOM LEFT section \"입력\": two stacked desktop input examples, label \"제목\" with value \"10월 업데이트\" in focus state: blue #5298FF one-px border plus one-px INNER stroke, NO external glow or halo; second label \"이메일\", value \"hello@\", red #F04646 one-px error border, helper \"이메일 주소를 확인합니다.\" in #F0C9C5. Inputs about forty-pixel-equivalent high, use variant-specific input morphology and corner proportion. A uses external labels and outlined presentation with six-pixel-equivalent corners.\nBOTTOM MIDDLE section \"버튼\": four clearly different hierarchy examples with equal compact widths: solid brand #5298FF button \"저장\" with #0F1212 text; weak brand #0B254A button \"미리보기\" with #84B9FF text; neutral weak #242727 button \"취소\" with #F1F6F6 text; ghost unfilled button \"더보기\" with #84B9FF text. A small disabled neutral button \"사용 불가\" with #3A3E3E fill and #6B706F text. Arrange vertically with clear spacing so hierarchy is unambiguous.\nBOTTOM RIGHT section \"작업 Dialog\": a compact but clearly visible work dialog excerpt, bordered panel with sixteen-pixel-equivalent corners. Header \"콘텐츠 편집\" with close line icon and subtle divider. Small toolbar with document and preview line icons; body heading \"10월 업데이트\" and short \"변경 사항을 안내합니다.\". Narrow right aside shows \"상태\" and \"초안\". Footer UNDER BODY inside panel with neutral \"취소\" and brand solid \"저장\", thin top divider. Keep all parts readable, no screen frame. No focus outline on dialog panel itself. Maintain the top-left small \"dg-design / flex study\" and bottom-left \"Design proposal · 2026\". No measurement labels, token labels or gradients. Korean copy exact and readable.\nUse the same visible layout and content as the just-created B dark board: top Select / DropdownMenu / Popover, bottom inputs / buttons / work Dialog. Keep same relative panel widths and title placement; change only A dimensions, external labels and A subtitle. All backgrounds flat and no gradient. In A, labels sit plainly ABOVE each input, with no extra enclosing group box. Ghost button has no outline.",
+    "generatorArtifact": "/Users/pdg/.codex/generated_images/01a11f43-e061-7eb0-b3a9-fd5a27cdbee2/exec-469bf498-1120-400e-ad5f-ac9452099bf5.png",
+    "checklist": [
+      {
+        "item": "Open Select",
+        "present": true
+      },
+      {
+        "item": "Open DropdownMenu",
+        "present": true
+      },
+      {
+        "item": "Open Popover",
+        "present": true
+      },
+      {
+        "item": "Work Dialog excerpt",
+        "present": true
+      },
+      {
+        "item": "Focus input",
+        "present": true
+      },
+      {
+        "item": "Error input",
+        "present": true
+      },
+      {
+        "item": "Button hierarchy",
+        "present": true
+      },
+      {
+        "item": "Visible floating-panel boundaries",
+        "present": true
+      },
+      {
+        "item": "Legible Korean",
+        "present": true
+      }
+    ],
+    "notes": [
+      "All required components and floating-panel boundaries visible; Korean readable.",
+      "Compared to B, selected check moved to the right and menu hover moved to the first row. Focus input has a faint outer blue edge; exact inner-only focus treatment is not assured.",
+      "Requested DDS exact hex values and px proportions are not pixel-certified. No required content absent, so no regeneration."
+    ],
+    "width": 1448,
+    "height": 1086,
+    "sha256": "5856f194bb679a3c47090f12c56000ad7916cab3f533b9fd42bfeea399fa2c92",
+    "profilesSha256": "fb560e3e228066e2b9019dba2dba36f8fd09bb3075e022d481f50379ba4739c8",
+    "briefSha256": "bb94e641631335541011487dfd6ad7e9644b3e011b082cc915d12a1cd3017e1e"
+  }
+]

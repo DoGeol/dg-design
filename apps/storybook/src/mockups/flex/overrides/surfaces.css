@@ -1,0 +1,152 @@
+/* flex A·B 외관 — surfaces 묶음. :root[data-flex="a"|"b"] 아래에서만 걸린다. 값은 profiles.ts가 꽂는 --fx-* 변수를 쓴다. */
+
+/* ───── 작업형 Dialog 레이아웃 프로토타입(proto/DialogLayout.tsx) ─────
+   .fx-dialog-*는 시안 마크업에만 있어 범위 지정 없이 둔다. 값은 var(--fx-…, 현재 DDS 값)이라 current 열에서는 오늘 숫자가 나온다. */
+.fx-dialog-frame {
+  --fx-dialog-inset: var(--fx-panel-inset, 24px);
+  container: fx-dialog / inline-size;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--dds-color-stroke-neutral-weak);
+  border-radius: var(--dds-radius-r4);
+  background-color: var(--dds-color-bg-layer-default);
+  box-shadow: var(--dds-shadow-overlay);
+  color: var(--dds-color-fg-neutral);
+  font-size: var(--fx-body-size, var(--dds-font-size-t4));
+  line-height: var(--fx-body-line, var(--dds-line-height-t4));
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.fx-dialog-frame[data-kind="sheet"] { --fx-dialog-inset: var(--fx-sheet-inset, 24px); }
+.fx-dialog-frame:not([data-today]) { padding: 0; gap: 0; }
+/* 오늘 DDS 모양 — dialog.css·sheet.css 선언값 그대로(p24·gap12·내용 전체 스크롤). */
+.fx-dialog-frame[data-today] { padding: var(--dds-dimension-x6); gap: var(--dds-dimension-x3); overflow-y: auto; }
+.fx-dialog-today-actions { display: flex; justify-content: flex-end; gap: var(--dds-dimension-x2); margin-top: var(--dds-dimension-x3); }
+
+/* 보기별 모양. center 폭 48rem = 오늘 Dialog 본문 32rem + Aside 16rem, side는 Sheet 좌우 폭 24rem을 다시 쓴다. */
+.fx-dialog-frame[data-view="center"] { width: min(48rem, 100%); max-height: 100%; }
+.fx-dialog-frame[data-view="center"][data-today] { width: min(32rem, 100%); }
+.fx-dialog-frame[data-view="side"] { width: min(24rem, calc(100% - var(--dds-dimension-x8))); height: 100%; border-width: 0 0 0 1px; border-radius: var(--dds-radius-r4) 0 0 var(--dds-radius-r4); }
+.fx-dialog-frame:is([data-view="full"], [data-view="sheet-full"]) { width: 100%; height: 100%; border-width: 0; border-radius: 0; box-shadow: none; }
+.fx-dialog-frame[data-kind="sheet"][data-view="side"] { border-radius: var(--fx-sheet-radius, 16px) 0 0 var(--fx-sheet-radius, 16px); }
+.fx-dialog-frame[data-view="sheet"] { width: 100%; max-height: 100%; border-width: 1px 0 0; border-radius: var(--fx-sheet-radius, 16px) var(--fx-sheet-radius, 16px) 0 0; }
+
+.fx-dialog-toolbar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: var(--dds-dimension-x2);
+  padding: var(--dds-dimension-x2) var(--dds-dimension-x3) var(--dds-dimension-x2) var(--fx-dialog-inset);
+  border-bottom: 1px solid var(--dds-color-stroke-neutral-weak);
+}
+.fx-dialog-context { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: var(--dds-font-size-t3); line-height: var(--dds-line-height-t3); color: var(--dds-color-fg-neutral-weak); }
+.fx-dialog-spacer { flex: 1; }
+.fx-dialog-split { flex: 1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) 16rem; }
+.fx-dialog-main { min-width: 0; min-height: 0; display: flex; flex-direction: column; }
+.fx-dialog-body { flex: 1; min-height: 0; overflow-y: auto; padding: var(--fx-dialog-inset); display: flex; flex-direction: column; gap: var(--dds-dimension-x6); }
+.fx-dialog-footer {
+  flex: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--dds-dimension-x2);
+  padding: var(--dds-dimension-x4) var(--fx-dialog-inset);
+  border-top: 1px solid var(--dds-color-stroke-neutral-weak);
+  background-color: var(--dds-color-bg-layer-default);
+}
+.fx-dialog-frame[data-kind="sheet"] .fx-dialog-footer { padding-bottom: max(var(--dds-dimension-x4), env(safe-area-inset-bottom)); }
+.fx-dialog-aside { min-height: 0; overflow-y: auto; padding: var(--dds-dimension-x5); border-left: 1px solid var(--dds-color-stroke-neutral-weak); }
+
+.fx-dialog-head { display: flex; flex-direction: column; gap: var(--dds-dimension-x1); }
+.fx-dialog-fields { display: flex; flex-direction: column; gap: var(--fx-field-gap, 16px); }
+.fx-dialog-fields .dds-field { width: 100%; }
+.fx-dialog-aside-title { margin: 0 0 var(--dds-dimension-x3); font-size: var(--dds-font-size-t3); line-height: var(--dds-line-height-t3); font-weight: var(--dds-font-weight-bold); }
+.fx-dialog-activity ol { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--dds-dimension-x3); font-size: var(--dds-font-size-t3); line-height: var(--dds-line-height-t3); }
+.fx-dialog-activity li span { display: block; color: var(--dds-color-fg-neutral-weak); font-size: var(--dds-font-size-t2); }
+
+/* 좁은 패널(측면 보기·모바일) — Aside는 본문 뒤 보조 구역, 스크롤은 본문+Aside 한 영역, Footer는 아래에 고정. */
+@container fx-dialog (width < 560px) {
+  .fx-dialog-split { display: flex; flex-direction: column; overflow-y: auto; }
+  .fx-dialog-main { display: contents; }
+  .fx-dialog-body { flex: none; overflow: visible; }
+  .fx-dialog-aside { order: 1; overflow: visible; border-left: 0; border-top: 1px solid var(--dds-color-stroke-neutral-weak); padding: var(--dds-dimension-x5) var(--fx-dialog-inset); }
+  .fx-dialog-footer { order: 2; position: sticky; bottom: 0; margin-top: auto; }
+  :root[data-flex-density="mobile"] .fx-dialog-frame[data-kind="sheet"] .fx-dialog-footer > .dds-button { flex: 1; }
+}
+
+/* 정적 프레임 뒤의 가상 화면. 딤(bg-overlay) 위에 보기별 위치로 프레임을 둔다 — 다크에서도 경계는 프레임 테두리가 맡는다.
+   점선은 화면 가장자리 표시일 뿐 컴포넌트 외관이 아니다(전체 보기는 테두리가 없어 이것만 보인다). */
+.fx-dialog-screen { box-sizing: border-box; display: flex; align-items: center; justify-content: center; width: 100%; padding: var(--dds-dimension-x4); overflow: hidden; border-radius: 0; background-color: var(--dds-color-bg-overlay); outline: 1px dashed var(--dds-color-stroke-neutral-weak); outline-offset: -1px; }
+.fx-dialog-screen:not([data-view="center"]) { padding: 0; }
+.fx-dialog-screen[data-view="side"] { justify-content: flex-end; }
+.fx-dialog-screen[data-view="sheet"] { align-items: flex-end; }
+:root:not([data-flex-density="mobile"]) .fx-dialog-zoom { width: 50rem; }
+@media (max-width: 899px) {
+  :root:not([data-flex-density="mobile"]) .fx-dialog-zoom { zoom: 0.5; }
+}
+
+/* 실제 Dialog·Sheet에 부품 레이아웃을 얹을 때. 시나리오는 가상 화면 높이 40rem+32px로 맞춰 세 열을 같은 조건에 둔다. */
+.dds-dialog__content.fx-scene { max-height: min(40rem, calc(100% - var(--dds-dimension-x8))); }
+.dds-dialog__content.fx-dialog-frame[data-view="center"] { width: min(48rem, calc(100% - var(--dds-dimension-x8))); height: min(40rem, calc(100% - var(--dds-dimension-x8))); }
+.dds-dialog__content.fx-dialog-frame[data-view="side"] { top: 0; right: 0; left: auto; transform: none; height: 100%; max-height: none; }
+.dds-dialog__content.fx-dialog-frame[data-view="full"] { inset: 0; transform: none; max-height: none; }
+.dds-sheet__content.fx-dialog-frame[data-view="sheet"] { height: min(90dvh, calc(100% - var(--dds-dimension-x8))); }
+.dds-sheet__content.fx-dialog-frame[data-view="sheet-full"] { height: 100%; }
+@media (max-width: 899px) {
+  :root:not([data-flex-density="mobile"]) .dds-dialog__content.fx-scene { zoom: 0.55; }
+}
+
+/* Sheet — 모바일 하단 Sheet만 안마다 다르다(A r24/i20, B r16/i20). 데스크톱은 세 안 모두 16/24. */
+:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-sheet--side_bottom:not(.fx-dialog-frame) {
+  border-radius: var(--fx-sheet-radius) var(--fx-sheet-radius) 0 0;
+  padding: var(--fx-sheet-inset);
+}
+
+/* Popover — B만 담는 기능별로 표현을 나눈다. 선택형은 선택 패널 반경·여백, 정보·설정형은 현재 p16·r12. A는 덮지 않는다. */
+:root:is([data-flex="b"], [data-flex="final"]) .dds-popover__content.fx-pop-select {
+  padding: var(--fx-select-panel-inset);
+  border-radius: var(--fx-select-panel-radius);
+}
+/* 선택 행은 시안 마크업 — dds-select__option과 같은 상태 규칙에 옵션 역할 치수를 쓴다. */
+.fx-pop-options { display: flex; flex-direction: column; }
+.fx-pop-option {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: var(--dds-dimension-x2);
+  width: 100%;
+  min-height: var(--fx-option-height, 32px);
+  padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2);
+  border: 0;
+  border-radius: var(--fx-option-radius, 6px);
+  background-color: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.fx-pop-option:is(:hover, [data-hover]) { background-color: var(--dds-color-bg-transparent-hover); }
+.fx-pop-option:focus-visible { outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring); outline-offset: calc(-1 * var(--dds-dimension-x0_5)); }
+.fx-pop-option > svg { margin-inline-start: auto; color: var(--dds-color-fg-brand); }
+.fx-pop-option:not([aria-pressed="true"]) > svg { visibility: hidden; }
+/* B 설정형 — DS026 설정 행(약한 중성 표면, 높이 48·반경 14). 바깥 컨테이너는 현재 p16·r12 그대로. */
+:root:is([data-flex="b"], [data-flex="final"]) .dds-radio.fx-pop-setting {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: var(--fx-setting-row-height);
+  padding-inline: var(--dds-dimension-x3);
+  border-radius: var(--fx-setting-row-radius);
+  background-color: var(--dds-color-bg-neutral-weak);
+}
+
+/* Card — A 후보만: 복잡한 큰 카드 r16·p24. 기본 카드와 B는 현재 그대로. */
+:root:is([data-flex="a"], [data-flex="final"]) .dds-card.fx-card-large {
+  padding: var(--dds-dimension-x6);
+  border-radius: var(--dds-radius-r4);
+}
+
+/* 결정안 Sheet(drawer) — 배경 모서리 없음(2026-10-09 사용자 결정). 네 방향 모두 --fx-sheet-radius(0)를 따른다. */
+:root[data-flex="final"] :is(.dds-sheet--side_left, .dds-sheet--side_right, .dds-sheet--side_top, .dds-sheet--side_bottom),
+:root[data-flex="final"] .fx-dialog-frame[data-kind="sheet"] { border-radius: var(--fx-sheet-radius, 0); }

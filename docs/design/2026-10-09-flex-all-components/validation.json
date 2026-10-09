@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-09",
+  "component_coverage": 38,
+  "selected_boards": 10,
+  "generated_pngs": 13,
+  "selected_dimensions": [
+    1448,
+    1086
+  ],
+  "hashes_verified": 13,
+  "gallery_javascript_syntax": "passed",
+  "gallery_browser_checks": [
+    "10 boards / 38 components visible",
+    "Select query: 1 board / 2 matching components",
+    "unknown query: empty state / zero matches",
+    "reset restores all boards"
+  ],
+  "preview_file": "preview/gallery.png",
+  "runtime_component_changes": false,
+  "limits": "Static image review and gallery checks, not DDS runtime, accessibility, precise token, dark-mode or motion validation."
+}

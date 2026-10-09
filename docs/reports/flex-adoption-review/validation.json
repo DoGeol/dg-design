@@ -1,0 +1,42 @@
+{
+  "checked_on": "2026-10-08",
+  "baseline_commit": "3789b49404ea146b6499066f0a642d8e87893469",
+  "scope": "Report integrity, 38-component inventory/application/comparison coverage, source hashes and HTML syntax; preview interaction checks are separate from DDS runtime QA.",
+  "markdown_files": {
+    "README.md": 5955,
+    "components.md": 7596,
+    "composition.md": 8184,
+    "design-application/README.md": 6341,
+    "design-application/data-feedback.md": 7973,
+    "design-application/forms.md": 8388,
+    "design-application/navigation.md": 5429,
+    "design-application/surfaces.md": 5314,
+    "plan.md": 6841,
+    "skill-free-comparison/README.md": 8804,
+    "skill-free-comparison/components.md": 9264,
+    "tokens.md": 8552
+  },
+  "local_links_checked": 109,
+  "external_links_not_refetched": 7,
+  "component_matrix_rows": 38,
+  "component_design_applications": 38,
+  "skill_free_component_comparisons": 38,
+  "entry_source_hashes_verified": 38,
+  "css_source_hashes_verified": 39,
+  "reviewed_packages_unchanged_from_baseline": true,
+  "comparison_html_syntax": "passed",
+  "comparison_browser_checks": [
+    "four topic views rendered",
+    "narrow specimen width selected",
+    "search no-results and hidden rows",
+    "side/full specimen mode retains typed memo",
+    "no captured console errors"
+  ],
+  "comparison_limits": [
+    "mockup, not live DDS",
+    "no focus-trap/accessibility certification",
+    "no device or dark-mode QA",
+    "no causal skill-effect measurement"
+  ],
+  "errors": []
+}

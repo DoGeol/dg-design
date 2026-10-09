@@ -1,0 +1,236 @@
+/* 새 종류 후보(List·Chip·PropertyField 등)와 조합 부품의 Storybook 전용 프로토타입. packages/react에 없다. */
+
+/* ── new-kinds: List · SectionHeader · Chip · FilterToolbox · PropertyField ──
+   치수는 --fx-* 역할(값 없을 때 fallback), 역할 없는 값은 DDS 토큰. 현재 열은 이 부품을 쓰지 않는다. */
+
+/* List — 평평한 행. 구분선은 본문 시작선에서, 깊이(그림자)는 쓰지 않는다. */
+.fx-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.fx-list[hidden] { display: none; }
+.fx-list__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--fx-list-leading-gap, 12px);
+  box-sizing: border-box;
+  min-height: var(--fx-list-row-1, 56px);
+  padding-block: var(--dds-dimension-x2);
+  padding-inline: var(--fx-list-inset, 16px);
+  border-radius: var(--dds-radius-r2);
+}
+.fx-list__item[data-lines="2"] { min-height: var(--fx-list-row-2, 64px); }
+.fx-list__item + .fx-list__item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  inset-inline: var(--fx-list-inset, 16px);
+  border-top: 1px solid var(--dds-color-stroke-neutral-weak);
+}
+/* 행 hover·pressed는 기본 행동(링크)에만 — trailing 버튼 위에서는 행이 반응하지 않는다. */
+.fx-list__item:has(.fx-list__action:hover) { background: var(--dds-color-bg-transparent-hover); }
+.fx-list__item:has(.fx-list__action:active) { background: var(--dds-color-bg-transparent-pressed); }
+.fx-list__item:has(.fx-list__action:focus-visible) { outline: 2px solid var(--dds-color-stroke-focus-ring); outline-offset: -2px; }
+.fx-list__leading { flex: none; display: inline-flex; align-items: center; justify-content: center; color: var(--dds-color-fg-neutral-weak); }
+.fx-list__main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--dds-dimension-x0_5); }
+.fx-list__title { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--dds-color-fg-neutral); text-decoration: none; }
+.fx-list__item[data-lines="2"] .fx-list__title { font-weight: var(--dds-font-weight-bold); }
+.fx-list__action { outline: none; }
+.fx-list__action::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.fx-list__meta { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; color: var(--dds-color-fg-neutral-weak); font-size: var(--dds-font-size-t3); line-height: var(--dds-line-height-t3); }
+.fx-list__trailing { position: relative; z-index: 1; flex: none; display: inline-flex; align-items: center; gap: var(--dds-dimension-x2); }
+:root[data-flex-density="mobile"] .fx-list__meta { font-size: var(--dds-font-size-t4); line-height: var(--dds-line-height-t4); }
+
+/* SectionHeader — 목록 묶음 제목. 접기는 제목 버튼(aria-expanded), 추가는 오른쪽 형제 버튼. */
+.fx-section-header { display: flex; align-items: center; gap: var(--dds-dimension-x2); min-height: var(--dds-dimension-x10); padding-inline: var(--fx-list-inset, 16px); }
+.fx-section-header__text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: var(--dds-dimension-x0_5); }
+.fx-section-header__heading { margin: 0; display: flex; align-items: center; font-size: var(--dds-font-size-t3); line-height: var(--dds-line-height-t3); font-weight: var(--dds-font-weight-bold); color: var(--dds-color-fg-neutral-weak); }
+.fx-section-header__count { margin-inline-start: var(--dds-dimension-x1_5); font-weight: var(--dds-font-weight-regular); }
+.fx-section-header__toggle { display: inline-flex; align-items: center; gap: var(--dds-dimension-x1); margin: 0; padding: 0; border: 0; border-radius: var(--dds-radius-r1); background: none; color: inherit; font: inherit; cursor: pointer; }
+.fx-section-header__toggle:hover { color: var(--dds-color-fg-neutral); }
+.fx-section-header__toggle:focus-visible { outline: 2px solid var(--dds-color-stroke-focus-ring); outline-offset: 2px; }
+.fx-section-header__toggle[aria-expanded="false"] .fx-section-header__chevron { transform: rotate(-90deg); }
+.fx-section-header__description { margin: 0; font-size: var(--dds-font-size-t2); line-height: var(--dds-line-height-t2); color: var(--dds-color-fg-neutral-weak); }
+.fx-section-header__action { flex: none; display: inline-flex; gap: var(--dds-dimension-x1); }
+
+/* Chip — 고른 값. 테두리 없이 약한 중성 표면이라 제거 버튼이 칩 높이 전체를 조작 영역으로 쓴다. */
+.fx-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--dds-dimension-x1);
+  box-sizing: border-box;
+  max-width: 100%;
+  height: var(--fx-chip-height, 28px);
+  padding-inline: var(--dds-dimension-x2);
+  border: 0;
+  border-radius: var(--fx-chip-radius, 8px);
+  background: var(--dds-color-bg-neutral-weak);
+  color: var(--dds-color-fg-neutral);
+  font-family: inherit;
+  font-size: var(--dds-font-size-t2);
+  line-height: var(--dds-line-height-t2);
+  white-space: nowrap;
+}
+:root[data-flex-density="mobile"] .fx-chip { padding-inline: var(--dds-dimension-x3); font-size: var(--dds-font-size-t3); line-height: var(--dds-line-height-t3); }
+.fx-chip:has(.fx-chip__remove) { padding-inline-end: 0; }
+.fx-chip:has(.fx-chip__leading) { padding-inline-start: var(--dds-dimension-x0_5); }
+.fx-chip__label { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.fx-chip__leading { flex: none; display: inline-flex; }
+.fx-chip__leading .dds-avatar { width: calc(var(--fx-chip-height, 28px) - var(--dds-dimension-x1)); height: calc(var(--fx-chip-height, 28px) - var(--dds-dimension-x1)); }
+.fx-chip__leading .dds-avatar__fallback { font-size: var(--dds-font-size-t1); }
+.fx-chip__remove {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--fx-chip-height, 28px);
+  block-size: var(--fx-chip-height, 28px);
+  padding: 0;
+  border: 0;
+  border-radius: var(--fx-chip-radius, 8px);
+  background: transparent;
+  color: var(--dds-color-fg-neutral-weak);
+  cursor: pointer;
+}
+.fx-chip__remove:hover { color: var(--dds-color-fg-neutral); background: var(--dds-color-bg-transparent-hover); }
+.fx-chip__remove:active { background: var(--dds-color-bg-transparent-pressed); }
+/* 안쪽 링 — 바로 옆 칩과 겹치지 않는다 */
+.fx-chip__remove:focus-visible { outline: 2px solid var(--dds-color-stroke-focus-ring); outline-offset: -2px; }
+.fx-chip[data-disabled] { background: var(--dds-color-bg-disabled); color: var(--dds-color-fg-disabled); }
+.fx-chip__remove:disabled { cursor: not-allowed; color: var(--dds-color-fg-disabled); background: transparent; }
+
+/* 필터 칩 — 켜고 끄는 button[aria-pressed]. 꺼짐은 얇은 경계, 켜짐은 브랜드 약한 표면(DS029 옅은 파랑). */
+.fx-chip--filter { cursor: pointer; background: var(--dds-color-bg-layer-default); box-shadow: inset 0 0 0 1px var(--dds-color-stroke-neutral-weak); }
+.fx-chip--filter:hover { background: var(--dds-color-bg-neutral-weak-hover); }
+.fx-chip--filter:active { background: var(--dds-color-bg-neutral-weak-pressed); }
+.fx-chip--filter:focus-visible { outline: 2px solid var(--dds-color-stroke-focus-ring); outline-offset: 2px; }
+.fx-chip--filter[aria-pressed="true"] { background: var(--dds-color-bg-brand-weak); color: var(--dds-color-fg-brand); box-shadow: none; }
+.fx-chip--filter[aria-pressed="true"]:hover { background: var(--dds-color-bg-brand-weak-hover); }
+.fx-chip--filter:disabled { cursor: not-allowed; background: var(--dds-color-bg-disabled); color: var(--dds-color-fg-disabled); box-shadow: none; }
+
+/* 칩 모양의 값 선택 트리거 — DDS Select.Trigger에 클래스만 얹는다. 비입력 계약이라 focus는 2px 링. */
+:root .fx-chip.fx-chip--trigger.dds-select__trigger {
+  width: auto;
+  height: var(--fx-chip-height, 28px);
+  gap: var(--dds-dimension-x1);
+  padding-inline: var(--dds-dimension-x2) var(--dds-dimension-x1_5);
+  border: 0;
+  border-radius: var(--fx-chip-radius, 8px);
+  background: var(--dds-color-bg-layer-default);
+  box-shadow: inset 0 0 0 1px var(--dds-color-stroke-neutral-weak);
+  font-size: var(--dds-font-size-t2);
+  line-height: var(--dds-line-height-t2);
+}
+:root[data-flex-density="mobile"] .fx-chip.fx-chip--trigger.dds-select__trigger { padding-inline: var(--dds-dimension-x3) var(--dds-dimension-x2); font-size: var(--dds-font-size-t3); line-height: var(--dds-line-height-t3); }
+:root .fx-chip.fx-chip--trigger.dds-select__trigger:hover { background: var(--dds-color-bg-neutral-weak-hover); }
+:root .fx-chip.fx-chip--trigger.dds-select__trigger[data-applied] { background: var(--dds-color-bg-brand-weak); color: var(--dds-color-fg-brand); box-shadow: none; }
+:root .fx-chip.fx-chip--trigger.dds-select__trigger:focus-visible { box-shadow: none; outline: 2px solid var(--dds-color-stroke-focus-ring); outline-offset: 2px; }
+.fx-chip--trigger .dds-select__caret { width: var(--dds-dimension-x3_5); height: var(--dds-dimension-x3_5); }
+
+/* FilterToolbox — 적용 조건(칩) 왼쪽, 결과 수·초기화 오른쪽. 좁으면 줄바꿈한다. */
+.fx-filter { display: flex; flex-wrap: wrap; align-items: center; gap: var(--dds-dimension-x2) var(--dds-dimension-x3); }
+.fx-filter__chips { flex: 1 1 auto; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: var(--dds-dimension-x1_5); }
+.fx-filter__tail { margin-inline-start: auto; display: flex; align-items: center; gap: var(--dds-dimension-x1); }
+.fx-filter__count { white-space: nowrap; font-size: var(--dds-font-size-t3); line-height: var(--dds-line-height-t3); color: var(--dds-color-fg-neutral-weak); }
+
+/* PropertyField — 라벨은 버튼 밖, 트리거의 ::after가 상자 전체를 덮는다. 선택 로직은 DDS Select·Popover. */
+.fx-prop { width: 100%; }
+.fx-prop__box {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: var(--dds-dimension-x3);
+  box-sizing: border-box;
+  min-height: var(--fx-field-height, 40px);
+  padding-inline: var(--fx-field-inset, 12px);
+  border-radius: var(--fx-field-radius, 8px);
+}
+.fx-prop .fx-prop__label.fx-prop__label { margin: 0; white-space: nowrap; color: var(--dds-color-fg-neutral-weak); font-size: var(--fx-field-font, var(--dds-font-size-t4)); line-height: var(--fx-body-line, var(--dds-line-height-t4)); font-weight: var(--dds-font-weight-regular); }
+:root .fx-prop .fx-prop__trigger.fx-prop__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--dds-dimension-x2);
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  outline: none;
+  color: var(--dds-color-fg-neutral);
+  font: inherit;
+  font-size: var(--fx-field-font, var(--dds-font-size-t4));
+  line-height: var(--fx-body-line, var(--dds-line-height-t4));
+  text-align: start;
+  cursor: pointer;
+}
+.fx-prop__trigger::after { content: ""; position: absolute; inset: 0; }
+.fx-prop__trigger :is(.dds-select__value, .fx-prop__value) { min-width: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.fx-prop__value[data-placeholder] { color: var(--dds-color-fg-neutral-weak); }
+.fx-prop__trigger :is(.dds-select__caret, .fx-prop__caret) { flex: none; color: var(--dds-color-fg-neutral-weak); }
+:root .fx-prop .fx-prop__trigger.fx-prop__trigger:disabled { cursor: not-allowed; color: var(--dds-color-fg-disabled); }
+.fx-prop__box:has(.fx-prop__trigger:disabled) { background: var(--dds-color-bg-disabled); }
+
+/* box(A) — 필드 상자 하나에 라벨·값·caret. 입력류 focus 계약(테두리 1px + 안쪽 1px). */
+.fx-prop[data-layout="box"] .fx-prop__box { border: 1px solid var(--dds-color-stroke-neutral); background: var(--dds-color-bg-layer-default); }
+.fx-prop[data-layout="box"] .fx-prop__box:hover { border-color: var(--dds-color-fg-neutral); }
+.fx-prop[data-layout="box"] .fx-prop__box:has(.fx-prop__trigger:focus-visible) { border-color: var(--dds-color-stroke-focus-ring); box-shadow: inset 0 0 0 1px var(--dds-color-stroke-focus-ring); }
+.fx-prop[data-layout="box"] .fx-prop__box:has([aria-invalid="true"]) { border-color: var(--dds-color-stroke-critical); }
+.fx-prop[data-layout="box"] .fx-prop__box:has(.fx-prop__trigger:disabled) { border-color: var(--dds-color-stroke-neutral-weak); }
+/* A 모바일 — 내부 라벨 후보: 작은 라벨 위, 값 아래 */
+:root[data-flex-density="mobile"] .fx-prop[data-layout="box"] .fx-prop__box { grid-template-columns: minmax(0, 1fr); align-content: center; row-gap: var(--dds-dimension-x0_5); padding-block: var(--dds-dimension-x2); }
+:root[data-flex-density="mobile"] .fx-prop[data-layout="box"] .fx-prop__label.fx-prop__label { font-size: var(--dds-font-size-t2); line-height: var(--dds-line-height-t2); }
+
+/* row(B) — 라벨 열 + 값. 테두리 없는 행이라 focus는 안쪽 2px 링. */
+.fx-prop[data-layout="row"] .fx-prop__box { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+.fx-prop[data-layout="row"] .fx-prop__box:hover { background: var(--dds-color-bg-transparent-hover); }
+.fx-prop[data-layout="row"] .fx-prop__box:has(.fx-prop__trigger:focus-visible) { box-shadow: inset 0 0 0 2px var(--dds-color-stroke-focus-ring); }
+.fx-prop[data-layout="row"] .fx-prop__box:has([aria-invalid="true"]) { box-shadow: inset 0 0 0 1px var(--dds-color-stroke-critical); }
+.fx-prop[data-layout="row"] .fx-prop__box:has([aria-invalid="true"]):has(.fx-prop__trigger:focus-visible) { box-shadow: inset 0 0 0 2px var(--dds-color-stroke-critical); }
+/* B 모바일 — M026 속성 행: 라벨 왼쪽(본문색), 값 오른쪽(약한 글자), caret */
+:root[data-flex-density="mobile"] .fx-prop[data-layout="row"] .fx-prop__box { min-height: var(--fx-setting-row-height, var(--fx-field-height, 56px)); grid-template-columns: auto minmax(0, 1fr); padding-inline: var(--fx-field-inset, 16px); }
+:root[data-flex-density="mobile"] .fx-prop[data-layout="row"] .fx-prop__label.fx-prop__label { color: var(--dds-color-fg-neutral); }
+:root[data-flex-density="mobile"] .fx-prop[data-layout="row"] .fx-prop__trigger.fx-prop__trigger { justify-content: flex-end; color: var(--dds-color-fg-neutral-weak); }
+
+/* PropertyGroup — 행 사이 구분선은 안쪽 여백에서 시작. 모바일만 약한 중성 표면 + 묶음 반경. */
+.fx-prop-group { display: flex; flex-direction: column; }
+.fx-prop-group > .fx-prop + .fx-prop .fx-prop__box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  inset-inline: var(--fx-field-inset, 12px);
+  border-top: 1px solid var(--dds-color-stroke-neutral-weak);
+}
+:root[data-flex-density="mobile"] .fx-prop-group { overflow: hidden; border-radius: var(--fx-setting-row-radius, 14px); background: var(--dds-color-bg-neutral-weak); }
+:root[data-flex-density="mobile"] .fx-prop-group .fx-prop__box { border-radius: 0; }
+/* List 부속 — 문서 표식(Avatar medium과 같은 36), 현재 열린 객체, 선택 모드 막대 */
+.fx-list__doc { display: inline-flex; align-items: center; justify-content: center; width: var(--dds-dimension-x9); height: var(--dds-dimension-x9); border-radius: var(--dds-radius-r2); background: var(--dds-color-bg-neutral-weak); color: var(--dds-color-fg-neutral-weak); }
+.fx-list__item[aria-current="true"] { background: var(--dds-color-bg-neutral-weak); }
+.fx-list-selectbar { display: flex; align-items: center; justify-content: space-between; gap: var(--dds-dimension-x2); min-height: var(--dds-dimension-x10); padding-inline: var(--fx-list-inset, 16px); border-radius: var(--dds-radius-r2); background: var(--dds-color-bg-neutral-weak); font-size: var(--dds-font-size-t3); font-weight: var(--dds-font-weight-bold); }
+/* 묶음 안의 설명·오류는 행 안쪽 여백에 맞춘다. 칩 안 아바타는 칩 표면과 구분되게 기본 표면. */
+.fx-prop-group :is(.dds-field__description, .dds-field__error-message) { margin: 0; padding-inline: var(--fx-field-inset, 12px); padding-block-end: var(--dds-dimension-x2); }
+.fx-chip__leading .dds-avatar__fallback { background: var(--dds-color-bg-layer-default); }
+.fx-list-toolbar { display: flex; align-items: center; justify-content: space-between; gap: var(--dds-dimension-x2); min-height: var(--dds-dimension-x10); margin-block-end: var(--dds-dimension-x2); padding-inline: var(--fx-list-inset, 16px); }
+.fx-list-toolbar + .fx-filter { margin-block-end: var(--dds-dimension-x2); padding-inline: var(--fx-list-inset, 16px); }
+/* 사람 선택 — 옵션 행(아바타·이름·팀), 고른 사람 칩 줄, 빈 결과 문구(CSS 재구성: DDS에 Empty 슬롯이 없다) */
+.fx-chip-person { display: inline-flex; align-items: center; gap: var(--fx-list-leading-gap, 8px); min-width: 0; }
+.fx-chip-person__team { color: var(--dds-color-fg-neutral-weak); font-size: var(--dds-font-size-t3); }
+.fx-chip-row { display: flex; flex-wrap: wrap; gap: var(--dds-dimension-x1_5); margin-block-start: var(--dds-dimension-x2); }
+.fx-chip-picker:not(:has([role="option"]:not([hidden])))::after { content: attr(data-empty); display: block; padding: var(--dds-dimension-x2); color: var(--dds-color-fg-neutral-weak); font-size: var(--dds-font-size-t3); line-height: var(--dds-line-height-t3); }
+
+/* 모바일 최소 조작 영역 — 보이는 크기는 두고 보이지 않는 영역만 touch-target(44)까지 넓힌다.
+   목록 끝 메뉴(36)·Chip 제거(32)·뒤로가기(36)가 44 아래였다. Gemini 1라운드 #5 수용.
+   ponytail: 가로로 붙은 Chip은 넓힌 영역끼리 겹칠 수 있다 — 구현 때 간격 8 이상과 함께 WCAG 2.5.8 간격 예외로 검증. */
+:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) :is(.fx-page .dds-button--icon-only, .fx-chip__remove) { position: relative; }
+:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) :is(.fx-page .dds-button--icon-only, .fx-chip__remove)::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  inline-size: max(100%, var(--fx-touch-target, 44px));
+  block-size: max(100%, var(--fx-touch-target, 44px));
+  transform: translate(-50%, -50%);
+}

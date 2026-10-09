@@ -23,6 +23,10 @@
 | TextArea `showCount` 폼 reset | uncontrolled 카운트가 form reset을 따라가지 않음(onChange만 들음) | 리셋 사용처가 생기면 |
 | ContextMenuItem `tabIndex` | DropdownMenuItem과 달리 `tabIndex={-1}` 없음 | 다음 메뉴 손볼 때 |
 
+### flex 비교 화면에서 드러난 문제 (2026-10-09)
+
+DataTable 선택+hover 색 갈림, 숫자 열 머리글 정렬 불가, Toast 옵션 action 없음, Collapsible·Accordion 높이가 넓어져도 안 줄어듦 등 13건. 목록과 재현 위치는 [A·B 공통 관점 보완 §13](reports/flex-adoption-review/gaps.md#13-비교-화면을-만들며-드러난-현재-dds-문제). 착수 조건: flex 적용 스펙 승인 시 함께, 또는 해당 컴포넌트를 손볼 때.
+
 ## 알아두면 첫 시도에서 안 틀리는 것
 
 실측으로 확인된 것들 — 재현 경로와 근거는 `docs/decisions/`에 있다.

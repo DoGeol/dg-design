@@ -1,0 +1,3401 @@
+{
+  "baseline_commit": "3789b49404ea146b6499066f0a642d8e87893469",
+  "scope": "CSS declaration excerpts, not computed styles. Includes size variants, state rules and visually hidden elements; read source selectors before interpreting. Token values are in token-comparison.json.",
+  "components": [
+    {
+      "component": "accordion",
+      "files": [
+        "packages/react/src/accordion/accordion.css"
+      ]
+    },
+    {
+      "component": "alert",
+      "files": [
+        "packages/react/src/alert/alert.css"
+      ]
+    },
+    {
+      "component": "avatar",
+      "files": [
+        "packages/react/src/avatar/avatar.css"
+      ]
+    },
+    {
+      "component": "badge",
+      "files": [
+        "packages/react/src/badge/badge.css"
+      ]
+    },
+    {
+      "component": "breadcrumb",
+      "files": [
+        "packages/react/src/breadcrumb/breadcrumb.css"
+      ]
+    },
+    {
+      "component": "button",
+      "files": [
+        "packages/react/src/button/button.css"
+      ]
+    },
+    {
+      "component": "card",
+      "files": [
+        "packages/react/src/card/card.css"
+      ]
+    },
+    {
+      "component": "checkbox",
+      "files": [
+        "packages/react/src/checkbox/checkbox.css"
+      ]
+    },
+    {
+      "component": "collapsible",
+      "files": [
+        "packages/react/src/collapsible/collapsible.css"
+      ]
+    },
+    {
+      "component": "context-menu",
+      "files": [
+        "packages/react/src/dropdown-menu/dropdown-menu.css"
+      ]
+    },
+    {
+      "component": "data-table",
+      "files": [
+        "packages/react/src/data-table/view/data-table.css",
+        "packages/react/src/table/table.css"
+      ]
+    },
+    {
+      "component": "date-picker",
+      "files": [
+        "packages/react/src/date-picker/calendar/calendar.css",
+        "packages/react/src/date-picker/field/field.css",
+        "packages/react/src/date-picker/picker/date-picker.css"
+      ]
+    },
+    {
+      "component": "dialog",
+      "files": [
+        "packages/react/src/dialog/dialog.css"
+      ]
+    },
+    {
+      "component": "dropdown-menu",
+      "files": [
+        "packages/react/src/dropdown-menu/dropdown-menu.css"
+      ]
+    },
+    {
+      "component": "file-input",
+      "files": [
+        "packages/react/src/file-input/file-input.css"
+      ]
+    },
+    {
+      "component": "field",
+      "files": [
+        "packages/react/src/field/field.css"
+      ]
+    },
+    {
+      "component": "hover-card",
+      "files": [
+        "packages/react/src/hover-card/hover-card.css"
+      ]
+    },
+    {
+      "component": "multi-select",
+      "files": [
+        "packages/react/src/multi-select/multi-select.css",
+        "packages/react/src/select/select.css"
+      ]
+    },
+    {
+      "component": "notification-badge",
+      "files": [
+        "packages/react/src/notification-badge/notification-badge.css"
+      ]
+    },
+    {
+      "component": "pagination",
+      "files": [
+        "packages/react/src/pagination/pagination.css"
+      ]
+    },
+    {
+      "component": "popover",
+      "files": [
+        "packages/react/src/popover/popover.css"
+      ]
+    },
+    {
+      "component": "progress",
+      "files": [
+        "packages/react/src/progress/progress.css"
+      ]
+    },
+    {
+      "component": "radio-group",
+      "files": [
+        "packages/react/src/radio-group/radio-group.css"
+      ]
+    },
+    {
+      "component": "save-status",
+      "files": [
+        "packages/react/src/save-status/save-status.css"
+      ]
+    },
+    {
+      "component": "select",
+      "files": [
+        "packages/react/src/select/select.css"
+      ]
+    },
+    {
+      "component": "separator",
+      "files": [
+        "packages/react/src/separator/separator.css"
+      ]
+    },
+    {
+      "component": "sheet",
+      "files": [
+        "packages/react/src/sheet/sheet.css"
+      ]
+    },
+    {
+      "component": "skeleton",
+      "files": [
+        "packages/react/src/skeleton/skeleton.css"
+      ]
+    },
+    {
+      "component": "slider",
+      "files": [
+        "packages/react/src/slider/slider.css"
+      ]
+    },
+    {
+      "component": "spinner",
+      "files": [
+        "packages/react/src/spinner/spinner.css"
+      ]
+    },
+    {
+      "component": "state-panel",
+      "files": [
+        "packages/react/src/state-panel/state-panel.css"
+      ]
+    },
+    {
+      "component": "switch",
+      "files": [
+        "packages/react/src/switch/switch.css"
+      ]
+    },
+    {
+      "component": "table",
+      "files": [
+        "packages/react/src/table/table.css"
+      ]
+    },
+    {
+      "component": "tabs",
+      "files": [
+        "packages/react/src/tabs/tabs.css"
+      ]
+    },
+    {
+      "component": "text-area",
+      "files": [
+        "packages/react/src/text-area/text-area.css"
+      ]
+    },
+    {
+      "component": "text-field",
+      "files": [
+        "packages/react/src/text-field/text-field.css"
+      ]
+    },
+    {
+      "component": "toast",
+      "files": [
+        "packages/react/src/toast/toast.css"
+      ]
+    },
+    {
+      "component": "tooltip",
+      "files": [
+        "packages/react/src/tooltip/tooltip.css"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "file": "packages/react/src/accordion/accordion.css",
+      "source_sha256": "93a7c1f32eb1b3ad4e835050812837ee26bbb017b9b60619d3cf7e6e23b427db",
+      "geometry_declarations": [
+        {
+          "line": 5,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 10,
+          "declarations": [
+            "gap: var(--dds-dimension-x3)"
+          ]
+        },
+        {
+          "line": 14,
+          "declarations": [
+            "gap: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 20,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 32,
+          "declarations": [
+            "height: 1px"
+          ]
+        },
+        {
+          "line": 40,
+          "declarations": [
+            "border-radius: var(--dds-radius-r2)"
+          ]
+        },
+        {
+          "line": 45,
+          "declarations": [
+            "padding: 0"
+          ]
+        },
+        {
+          "line": 54,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 55,
+          "declarations": [
+            "min-width: 0"
+          ]
+        },
+        {
+          "line": 57,
+          "declarations": [
+            "padding: var(--dds-accordion-trigger-padding-block) var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 105,
+          "declarations": [
+            "min-width: var(--dds-accordion-prefix-size)"
+          ]
+        },
+        {
+          "line": 114,
+          "declarations": [
+            "min-width: 0"
+          ]
+        },
+        {
+          "line": 115,
+          "declarations": [
+            "gap: var(--dds-dimension-x0_5)"
+          ]
+        },
+        {
+          "line": 128,
+          "declarations": [
+            "font-size: var(--dds-font-size-t5)"
+          ]
+        },
+        {
+          "line": 129,
+          "declarations": [
+            "line-height: var(--dds-line-height-t5)"
+          ]
+        },
+        {
+          "line": 133,
+          "declarations": [
+            "font-size: var(--dds-font-size-t3)"
+          ]
+        },
+        {
+          "line": 134,
+          "declarations": [
+            "line-height: var(--dds-line-height-t3)"
+          ]
+        },
+        {
+          "line": 138,
+          "declarations": [
+            "font-size: var(--dds-font-size-t7)"
+          ]
+        },
+        {
+          "line": 139,
+          "declarations": [
+            "line-height: var(--dds-line-height-t7)"
+          ]
+        },
+        {
+          "line": 143,
+          "declarations": [
+            "font-size: var(--dds-font-size-t5)"
+          ]
+        },
+        {
+          "line": 144,
+          "declarations": [
+            "line-height: var(--dds-line-height-t5)"
+          ]
+        },
+        {
+          "line": 162,
+          "declarations": [
+            "padding: 0 var(--dds-dimension-x4) var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 166,
+          "declarations": [
+            "padding-left: calc(var(--dds-dimension-x4) + var(--dds-accordion-prefix-size) + var(--dds-dimension-x3))"
+          ]
+        },
+        {
+          "line": 170,
+          "declarations": [
+            "padding-bottom: var(--dds-dimension-x5)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/alert/alert.css",
+      "source_sha256": "9eb864019af2d8e4e0ed637bdf95ed3ee7fb4f9cb960093a2697d3bdd4a5e90d",
+      "geometry_declarations": [
+        {
+          "line": 5,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 7,
+          "declarations": [
+            "padding: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 8,
+          "declarations": [
+            "border-radius: var(--dds-radius-r2)"
+          ]
+        },
+        {
+          "line": 22,
+          "declarations": [
+            "gap: var(--dds-dimension-x1)"
+          ]
+        },
+        {
+          "line": 23,
+          "declarations": [
+            "min-width: 0"
+          ]
+        },
+        {
+          "line": 29,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 30,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        },
+        {
+          "line": 36,
+          "declarations": [
+            "font-size: var(--dds-font-size-t3)"
+          ]
+        },
+        {
+          "line": 37,
+          "declarations": [
+            "line-height: var(--dds-line-height-t3)"
+          ]
+        },
+        {
+          "line": 44,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 54,
+          "declarations": [
+            "width: var(--dds-dimension-x6)"
+          ]
+        },
+        {
+          "line": 55,
+          "declarations": [
+            "height: var(--dds-dimension-x6)"
+          ]
+        },
+        {
+          "line": 56,
+          "declarations": [
+            "padding: 0"
+          ]
+        },
+        {
+          "line": 58,
+          "declarations": [
+            "border-radius: var(--dds-radius-r1)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/avatar/avatar.css",
+      "source_sha256": "a711fa1f19c517f70ccbde9d205f9215df1559e6f5111296b2eedb1be56653fe",
+      "geometry_declarations": [
+        {
+          "line": 11,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 14,
+          "declarations": [
+            "width: var(--dds-dimension-x6)",
+            "height: var(--dds-dimension-x6)"
+          ]
+        },
+        {
+          "line": 15,
+          "declarations": [
+            "width: var(--dds-dimension-x9)",
+            "height: var(--dds-dimension-x9)"
+          ]
+        },
+        {
+          "line": 16,
+          "declarations": [
+            "width: var(--dds-dimension-x12)",
+            "height: var(--dds-dimension-x12)"
+          ]
+        },
+        {
+          "line": 17,
+          "declarations": [
+            "width: var(--dds-dimension-x16)",
+            "height: var(--dds-dimension-x16)"
+          ]
+        },
+        {
+          "line": 26,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 27,
+          "declarations": [
+            "height: 100%"
+          ]
+        },
+        {
+          "line": 28,
+          "declarations": [
+            "border-radius: inherit"
+          ]
+        },
+        {
+          "line": 61,
+          "declarations": [
+            "line-height: 1"
+          ]
+        },
+        {
+          "line": 65,
+          "declarations": [
+            "font-size: var(--dds-font-size-t1)"
+          ]
+        },
+        {
+          "line": 66,
+          "declarations": [
+            "font-size: var(--dds-font-size-t3)"
+          ]
+        },
+        {
+          "line": 67,
+          "declarations": [
+            "font-size: var(--dds-font-size-t5)"
+          ]
+        },
+        {
+          "line": 68,
+          "declarations": [
+            "font-size: var(--dds-font-size-t7)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/badge/badge.css",
+      "source_sha256": "2c301bb8f85e3b224aeea9e1319de72ee0be1e973480e9a977af6c4d64e25f0b",
+      "geometry_declarations": [
+        {
+          "line": 81,
+          "declarations": [
+            "height: var(--dds-dimension-x5)"
+          ]
+        },
+        {
+          "line": 82,
+          "declarations": [
+            "border-radius: var(--dds-radius-r1)"
+          ]
+        },
+        {
+          "line": 83,
+          "declarations": [
+            "font-size: var(--dds-font-size-t1)"
+          ]
+        },
+        {
+          "line": 84,
+          "declarations": [
+            "line-height: var(--dds-line-height-t1)"
+          ]
+        },
+        {
+          "line": 85,
+          "declarations": [
+            "padding-inline: var(--dds-dimension-x1_5)"
+          ]
+        },
+        {
+          "line": 88,
+          "declarations": [
+            "height: var(--dds-dimension-x6)"
+          ]
+        },
+        {
+          "line": 89,
+          "declarations": [
+            "border-radius: var(--dds-radius-r1_5)"
+          ]
+        },
+        {
+          "line": 90,
+          "declarations": [
+            "font-size: var(--dds-font-size-t2)"
+          ]
+        },
+        {
+          "line": 91,
+          "declarations": [
+            "line-height: var(--dds-line-height-t2)"
+          ]
+        },
+        {
+          "line": 92,
+          "declarations": [
+            "padding-inline: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 99,
+          "declarations": [
+            "max-width: 100%"
+          ]
+        },
+        {
+          "line": 104,
+          "declarations": [
+            "line-height: var(--dds-dimension-x5)"
+          ]
+        },
+        {
+          "line": 107,
+          "declarations": [
+            "line-height: var(--dds-dimension-x6)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/breadcrumb/breadcrumb.css",
+      "source_sha256": "86b9d456c90ec9d9929854960d6535ae28ebb99a603e09028a41ad3ead736179",
+      "geometry_declarations": [
+        {
+          "line": 6,
+          "declarations": [
+            "gap: var(--dds-dimension-x1_5)"
+          ]
+        },
+        {
+          "line": 9,
+          "declarations": [
+            "padding: 0"
+          ]
+        },
+        {
+          "line": 10,
+          "declarations": [
+            "font-size: var(--dds-font-size-t3)"
+          ]
+        },
+        {
+          "line": 11,
+          "declarations": [
+            "line-height: var(--dds-line-height-t3)"
+          ]
+        },
+        {
+          "line": 17,
+          "declarations": [
+            "gap: var(--dds-dimension-x1)"
+          ]
+        },
+        {
+          "line": 23,
+          "declarations": [
+            "border-radius: var(--dds-radius-r1)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/button/button.css",
+      "source_sha256": "333231be83a4d895bca06c6319d687c61d551facb787653759aec2caddd3e683",
+      "geometry_declarations": [
+        {
+          "line": 6,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 25,
+          "declarations": [
+            "gap: inherit"
+          ]
+        },
+        {
+          "line": 162,
+          "declarations": [
+            "height: var(--dds-dimension-x9)"
+          ]
+        },
+        {
+          "line": 163,
+          "declarations": [
+            "border-radius: var(--dds-radius-r2)"
+          ]
+        },
+        {
+          "line": 164,
+          "declarations": [
+            "font-size: var(--dds-font-size-t3)"
+          ]
+        },
+        {
+          "line": 165,
+          "declarations": [
+            "line-height: var(--dds-line-height-t3)"
+          ]
+        },
+        {
+          "line": 166,
+          "declarations": [
+            "padding-inline: var(--dds-dimension-x3)"
+          ]
+        },
+        {
+          "line": 169,
+          "declarations": [
+            "height: var(--dds-dimension-x10)"
+          ]
+        },
+        {
+          "line": 170,
+          "declarations": [
+            "border-radius: var(--dds-radius-r2)"
+          ]
+        },
+        {
+          "line": 171,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 172,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        },
+        {
+          "line": 173,
+          "declarations": [
+            "padding-inline: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 176,
+          "declarations": [
+            "height: var(--dds-dimension-x13)"
+          ]
+        },
+        {
+          "line": 177,
+          "declarations": [
+            "border-radius: var(--dds-radius-r3)"
+          ]
+        },
+        {
+          "line": 178,
+          "declarations": [
+            "font-size: var(--dds-font-size-t6)"
+          ]
+        },
+        {
+          "line": 179,
+          "declarations": [
+            "line-height: var(--dds-line-height-t6)"
+          ]
+        },
+        {
+          "line": 180,
+          "declarations": [
+            "padding-inline: var(--dds-dimension-x5)"
+          ]
+        },
+        {
+          "line": 185,
+          "declarations": [
+            "padding-inline: 0"
+          ]
+        },
+        {
+          "line": 188,
+          "declarations": [
+            "width: var(--dds-dimension-x9)"
+          ]
+        },
+        {
+          "line": 191,
+          "declarations": [
+            "width: var(--dds-dimension-x10)"
+          ]
+        },
+        {
+          "line": 194,
+          "declarations": [
+            "width: var(--dds-dimension-x13)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/card/card.css",
+      "source_sha256": "3ae5435029fb506ef1457c676592ea87a921bd9a70a75d3e81d0dcd8ccce217d",
+      "geometry_declarations": [
+        {
+          "line": 5,
+          "declarations": [
+            "padding: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 7,
+          "declarations": [
+            "border-radius: var(--dds-radius-r3)"
+          ]
+        },
+        {
+          "line": 25,
+          "declarations": [
+            "width: 100%"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/checkbox/checkbox.css",
+      "source_sha256": "0bacfb89334102e7be9527a02a04f2404f0c0903a8dbe80ed77d83d76ee400bc",
+      "geometry_declarations": [
+        {
+          "line": 5,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 19,
+          "declarations": [
+            "width: 1px"
+          ]
+        },
+        {
+          "line": 20,
+          "declarations": [
+            "height: 1px"
+          ]
+        },
+        {
+          "line": 21,
+          "declarations": [
+            "padding: 0"
+          ]
+        },
+        {
+          "line": 51,
+          "declarations": [
+            "width: 70%"
+          ]
+        },
+        {
+          "line": 52,
+          "declarations": [
+            "height: 70%"
+          ]
+        },
+        {
+          "line": 143,
+          "declarations": [
+            "width: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 144,
+          "declarations": [
+            "height: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 145,
+          "declarations": [
+            "border-radius: var(--dds-radius-r1)"
+          ]
+        },
+        {
+          "line": 148,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 149,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        },
+        {
+          "line": 153,
+          "declarations": [
+            "width: var(--dds-dimension-x5)"
+          ]
+        },
+        {
+          "line": 154,
+          "declarations": [
+            "height: var(--dds-dimension-x5)"
+          ]
+        },
+        {
+          "line": 155,
+          "declarations": [
+            "border-radius: var(--dds-radius-r1_5)"
+          ]
+        },
+        {
+          "line": 158,
+          "declarations": [
+            "font-size: var(--dds-font-size-t6)"
+          ]
+        },
+        {
+          "line": 159,
+          "declarations": [
+            "line-height: var(--dds-line-height-t6)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/collapsible/collapsible.css",
+      "source_sha256": "d76e355326d9e1958bdeae0a33900d793ede5ddde7d6bae53da1ba7f26587b0d",
+      "geometry_declarations": [
+        {
+          "line": 16,
+          "declarations": [
+            "gap: var(--dds-dimension-x1)"
+          ]
+        },
+        {
+          "line": 17,
+          "declarations": [
+            "border-radius: var(--dds-radius-r1)"
+          ]
+        },
+        {
+          "line": 18,
+          "declarations": [
+            "padding: var(--dds-dimension-x1) var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 40,
+          "declarations": [
+            "height: 0"
+          ]
+        },
+        {
+          "line": 49,
+          "declarations": [
+            "height: var(--dds-collapsible-content-height, auto)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/data-table/view/data-table.css",
+      "source_sha256": "63c36084ff519afe44590ac9961a893e227c0d60d6ac36fd6fac17e89addee21",
+      "geometry_declarations": [
+        {
+          "line": 10,
+          "declarations": [
+            "min-width: 100%"
+          ]
+        },
+        {
+          "line": 11,
+          "declarations": [
+            "width: max-content"
+          ]
+        },
+        {
+          "line": 46,
+          "declarations": [
+            "height: var(--dds-data-row-height)"
+          ]
+        },
+        {
+          "line": 47,
+          "declarations": [
+            "padding-block: 0"
+          ]
+        },
+        {
+          "line": 57,
+          "declarations": [
+            "gap: var(--dds-dimension-x1)"
+          ]
+        },
+        {
+          "line": 59,
+          "declarations": [
+            "padding: 0"
+          ]
+        },
+        {
+          "line": 90,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 91,
+          "declarations": [
+            "height: var(--dds-dimension-x8)"
+          ]
+        },
+        {
+          "line": 93,
+          "declarations": [
+            "padding: 0 var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 95,
+          "declarations": [
+            "border-radius: var(--dds-radius-r2)"
+          ]
+        },
+        {
+          "line": 99,
+          "declarations": [
+            "font-size: var(--dds-font-size-t3)"
+          ]
+        },
+        {
+          "line": 120,
+          "declarations": [
+            "width: 44px"
+          ]
+        },
+        {
+          "line": 121,
+          "declarations": [
+            "min-width: 44px"
+          ]
+        },
+        {
+          "line": 122,
+          "declarations": [
+            "padding-inline: 0"
+          ]
+        },
+        {
+          "line": 139,
+          "declarations": [
+            "padding: 0"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/date-picker/calendar/calendar.css",
+      "source_sha256": "c10c6ba67eb472b3f3402354981ca92d5a560392c20af61da0cb8760b673837a",
+      "geometry_declarations": [
+        {
+          "line": 3,
+          "declarations": [
+            "gap: var(--dds-dimension-x1)"
+          ]
+        },
+        {
+          "line": 4,
+          "declarations": [
+            "min-width: 44px",
+            "min-height: 44px",
+            "border-radius: var(--dds-radius-r2)"
+          ]
+        },
+        {
+          "line": 8,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 9,
+          "declarations": [
+            "gap: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 10,
+          "declarations": [
+            "min-width: 0"
+          ]
+        },
+        {
+          "line": 11,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 12,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 13,
+          "declarations": [
+            "height: 32px",
+            "font-size: var(--dds-font-size-t3)"
+          ]
+        },
+        {
+          "line": 14,
+          "declarations": [
+            "padding: 0"
+          ]
+        },
+        {
+          "line": 15,
+          "declarations": [
+            "width: 100%",
+            "min-width: 44px",
+            "min-height: 44px",
+            "border-radius: var(--dds-radius-r2)"
+          ]
+        },
+        {
+          "line": 18,
+          "declarations": [
+            "border-radius: 0"
+          ]
+        },
+        {
+          "line": 19,
+          "declarations": [
+            "border-radius: var(--dds-radius-r2) 0 0 var(--dds-radius-r2)"
+          ]
+        },
+        {
+          "line": 20,
+          "declarations": [
+            "border-radius: 0 var(--dds-radius-r2) var(--dds-radius-r2) 0"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/date-picker/field/field.css",
+      "source_sha256": "0e7926b749eeefc5e06071aa7804380f877ef52a25b9dcb2c8701f07c8419c94",
+      "geometry_declarations": [
+        {
+          "line": 5,
+          "declarations": [
+            "gap: var(--dds-dimension-x1_5)"
+          ]
+        },
+        {
+          "line": 6,
+          "declarations": [
+            "min-width: 0"
+          ]
+        },
+        {
+          "line": 8,
+          "declarations": [
+            "gap: var(--dds-dimension-x3)"
+          ]
+        },
+        {
+          "line": 12,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 14,
+          "declarations": [
+            "padding: 0"
+          ]
+        },
+        {
+          "line": 16,
+          "declarations": [
+            "min-width: 0"
+          ]
+        },
+        {
+          "line": 21,
+          "declarations": [
+            "gap: var(--dds-dimension-x1_5)"
+          ]
+        },
+        {
+          "line": 22,
+          "declarations": [
+            "min-height: 44px"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/date-picker/picker/date-picker.css",
+      "source_sha256": "03330a532bdc8299d2ad8d8a447a96c816acbd39d3c5b7e6a1859b333786d9c8",
+      "geometry_declarations": [
+        {
+          "line": 2,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)",
+            "min-width: 0"
+          ]
+        },
+        {
+          "line": 3,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 5,
+          "declarations": [
+            "width: min(24rem, calc(100vw - 2rem))",
+            "max-width: min(24rem, calc(100vw - 2rem))",
+            "max-height: min(90vh, 48rem)",
+            "padding: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 6,
+          "declarations": [
+            "width: min(43rem, calc(100vw - 2rem))",
+            "max-width: min(43rem, calc(100vw - 2rem))"
+          ]
+        },
+        {
+          "line": 7,
+          "declarations": [
+            "height: min(90dvh, calc(100% - 1rem))",
+            "padding-bottom: max(var(--dds-dimension-x6), env(safe-area-inset-bottom))"
+          ]
+        },
+        {
+          "line": 8,
+          "declarations": [
+            "gap: var(--dds-dimension-x4)",
+            "min-height: 0"
+          ]
+        },
+        {
+          "line": 10,
+          "declarations": [
+            "gap: var(--dds-dimension-x3)"
+          ]
+        },
+        {
+          "line": 11,
+          "declarations": [
+            "min-width: 0"
+          ]
+        },
+        {
+          "line": 12,
+          "declarations": [
+            "min-height: 0"
+          ]
+        },
+        {
+          "line": 13,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 16,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 17,
+          "declarations": [
+            "min-height: 44px"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/dialog/dialog.css",
+      "source_sha256": "96a4732bc33d749cfb50b1abdb6d71d1cba05dc408d6f2ba515bf27eba562111",
+      "geometry_declarations": [
+        {
+          "line": 18,
+          "declarations": [
+            "gap: var(--dds-dimension-x3)"
+          ]
+        },
+        {
+          "line": 19,
+          "declarations": [
+            "width: min(32rem, calc(100% - var(--dds-dimension-x8)))"
+          ]
+        },
+        {
+          "line": 20,
+          "declarations": [
+            "max-height: calc(100% - var(--dds-dimension-x8))"
+          ]
+        },
+        {
+          "line": 22,
+          "declarations": [
+            "padding: var(--dds-dimension-x6)"
+          ]
+        },
+        {
+          "line": 25,
+          "declarations": [
+            "border-radius: var(--dds-radius-r4)"
+          ]
+        },
+        {
+          "line": 56,
+          "declarations": [
+            "font-size: var(--dds-font-size-t7)"
+          ]
+        },
+        {
+          "line": 57,
+          "declarations": [
+            "line-height: var(--dds-line-height-t7)"
+          ]
+        },
+        {
+          "line": 63,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 64,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/dropdown-menu/dropdown-menu.css",
+      "source_sha256": "e444d2b9eb9a69b44f5ce82906f5b9af5146cc06a756cb8d6afa209b9e8a7dc7",
+      "geometry_declarations": [
+        {
+          "line": 11,
+          "declarations": [
+            "min-width: 12rem"
+          ]
+        },
+        {
+          "line": 12,
+          "declarations": [
+            "max-height: calc(100vh - var(--dds-dimension-x4))"
+          ]
+        },
+        {
+          "line": 14,
+          "declarations": [
+            "padding: var(--dds-dimension-x1)"
+          ]
+        },
+        {
+          "line": 17,
+          "declarations": [
+            "border-radius: var(--dds-radius-r3)"
+          ]
+        },
+        {
+          "line": 37,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 38,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 39,
+          "declarations": [
+            "min-height: var(--dds-dimension-x8)"
+          ]
+        },
+        {
+          "line": 40,
+          "declarations": [
+            "padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 42,
+          "declarations": [
+            "border-radius: var(--dds-radius-r1_5)"
+          ]
+        },
+        {
+          "line": 46,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 47,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        },
+        {
+          "line": 88,
+          "declarations": [
+            "padding-inline-start: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 90,
+          "declarations": [
+            "font-size: var(--dds-font-size-t2)"
+          ]
+        },
+        {
+          "line": 91,
+          "declarations": [
+            "line-height: var(--dds-line-height-t2)"
+          ]
+        },
+        {
+          "line": 100,
+          "declarations": [
+            "height: 1px"
+          ]
+        },
+        {
+          "line": 106,
+          "declarations": [
+            "padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 108,
+          "declarations": [
+            "font-size: var(--dds-font-size-t2)"
+          ]
+        },
+        {
+          "line": 109,
+          "declarations": [
+            "line-height: var(--dds-line-height-t2)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/field/field.css",
+      "source_sha256": "267a5555e0c1aae1f24ed8027456144ced2fec5726397221a81e04eaa0a40d91",
+      "geometry_declarations": [
+        {
+          "line": 5,
+          "declarations": [
+            "gap: var(--dds-dimension-x1_5)"
+          ]
+        },
+        {
+          "line": 11,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 12,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        },
+        {
+          "line": 20,
+          "declarations": [
+            "font-size: var(--dds-font-size-t3)"
+          ]
+        },
+        {
+          "line": 21,
+          "declarations": [
+            "line-height: var(--dds-line-height-t3)"
+          ]
+        },
+        {
+          "line": 27,
+          "declarations": [
+            "font-size: var(--dds-font-size-t3)"
+          ]
+        },
+        {
+          "line": 28,
+          "declarations": [
+            "line-height: var(--dds-line-height-t3)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/file-input/file-input.css",
+      "source_sha256": "5586629d686a7333e5bd5c43c8cf05ae6e5cd25cb62b6792e0b5f8d6c2c36529",
+      "geometry_declarations": [
+        {
+          "line": 8,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 9,
+          "declarations": [
+            "padding: var(--dds-dimension-x6) var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 11,
+          "declarations": [
+            "border-radius: var(--dds-radius-r3)"
+          ]
+        },
+        {
+          "line": 53,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 56,
+          "declarations": [
+            "border-radius: var(--dds-radius-r2)"
+          ]
+        },
+        {
+          "line": 57,
+          "declarations": [
+            "padding: var(--dds-dimension-x2) var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 90,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 96,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/hover-card/hover-card.css",
+      "source_sha256": "5cd34d38e4036a919f904cac84fe6e7a4802806ddb0f97fdb966ff1487695000",
+      "geometry_declarations": [
+        {
+          "line": 10,
+          "declarations": [
+            "max-width: min(24rem, calc(100vw - var(--dds-dimension-x4)))"
+          ]
+        },
+        {
+          "line": 11,
+          "declarations": [
+            "padding: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 13,
+          "declarations": [
+            "border-radius: var(--dds-radius-r3)"
+          ]
+        },
+        {
+          "line": 38,
+          "declarations": [
+            "width: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 39,
+          "declarations": [
+            "height: var(--dds-dimension-x2)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/multi-select/multi-select.css",
+      "source_sha256": "ff81eea5c67c5f06aead8173039b2d3a1c2eec66c54e68df600515a1e339ea16",
+      "geometry_declarations": [
+        {
+          "line": 5,
+          "declarations": [
+            "height: auto"
+          ]
+        },
+        {
+          "line": 6,
+          "declarations": [
+            "min-height: var(--dds-dimension-x10)"
+          ]
+        },
+        {
+          "line": 9,
+          "declarations": [
+            "gap: var(--dds-dimension-x1_5)"
+          ]
+        },
+        {
+          "line": 10,
+          "declarations": [
+            "padding-block: var(--dds-dimension-x1_5)"
+          ]
+        },
+        {
+          "line": 33,
+          "declarations": [
+            "min-width: 0"
+          ]
+        },
+        {
+          "line": 35,
+          "declarations": [
+            "padding: 0"
+          ]
+        },
+        {
+          "line": 39,
+          "declarations": [
+            "font-size: inherit"
+          ]
+        },
+        {
+          "line": 40,
+          "declarations": [
+            "line-height: inherit"
+          ]
+        },
+        {
+          "line": 57,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 58,
+          "declarations": [
+            "min-height: var(--dds-dimension-x8)"
+          ]
+        },
+        {
+          "line": 59,
+          "declarations": [
+            "padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 62,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 63,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        },
+        {
+          "line": 75,
+          "declarations": [
+            "gap: var(--dds-dimension-x1)"
+          ]
+        },
+        {
+          "line": 76,
+          "declarations": [
+            "max-width: 100%"
+          ]
+        },
+        {
+          "line": 77,
+          "declarations": [
+            "padding-inline: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 78,
+          "declarations": [
+            "padding-block: var(--dds-dimension-x0_5)"
+          ]
+        },
+        {
+          "line": 79,
+          "declarations": [
+            "border-radius: var(--dds-radius-r1_5)"
+          ]
+        },
+        {
+          "line": 82,
+          "declarations": [
+            "font-size: var(--dds-font-size-t2)"
+          ]
+        },
+        {
+          "line": 83,
+          "declarations": [
+            "line-height: var(--dds-line-height-t2)"
+          ]
+        },
+        {
+          "line": 97,
+          "declarations": [
+            "padding: 0"
+          ]
+        },
+        {
+          "line": 99,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 128,
+          "declarations": [
+            "padding-inline-start: calc(var(--dds-dimension-x2) * 2 + var(--dds-dimension-x4))"
+          ]
+        },
+        {
+          "line": 137,
+          "declarations": [
+            "padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 139,
+          "declarations": [
+            "font-size: var(--dds-font-size-t2)"
+          ]
+        },
+        {
+          "line": 140,
+          "declarations": [
+            "line-height: var(--dds-line-height-t2)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/notification-badge/notification-badge.css",
+      "source_sha256": "86a07ac4f9c24dcc441b600209511bbfea5b1754367ab96b25f01dc8121e99e0",
+      "geometry_declarations": [
+        {
+          "line": 25,
+          "declarations": [
+            "width: var(--dds-dimension-x1_5)"
+          ]
+        },
+        {
+          "line": 26,
+          "declarations": [
+            "height: var(--dds-dimension-x1_5)"
+          ]
+        },
+        {
+          "line": 27,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 34,
+          "declarations": [
+            "min-width: var(--dds-dimension-x4_5)"
+          ]
+        },
+        {
+          "line": 35,
+          "declarations": [
+            "height: var(--dds-dimension-x4_5)"
+          ]
+        },
+        {
+          "line": 37,
+          "declarations": [
+            "padding-block-start: var(--dds-dimension-x0_5)"
+          ]
+        },
+        {
+          "line": 38,
+          "declarations": [
+            "padding-inline: var(--dds-dimension-x1)"
+          ]
+        },
+        {
+          "line": 39,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 40,
+          "declarations": [
+            "font-size: var(--dds-font-size-t1)"
+          ]
+        },
+        {
+          "line": 41,
+          "declarations": [
+            "line-height: var(--dds-line-height-t1)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/pagination/pagination.css",
+      "source_sha256": "0038427df8c65bca65efd1105551593a0164a6c4a186b60375f4c95322015061",
+      "geometry_declarations": [
+        {
+          "line": 5,
+          "declarations": [
+            "gap: var(--dds-dimension-x1)"
+          ]
+        },
+        {
+          "line": 8,
+          "declarations": [
+            "padding: 0"
+          ]
+        },
+        {
+          "line": 19,
+          "declarations": [
+            "min-width: var(--dds-dimension-x10)"
+          ]
+        },
+        {
+          "line": 20,
+          "declarations": [
+            "padding-inline: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 27,
+          "declarations": [
+            "min-width: var(--dds-dimension-x10)"
+          ]
+        },
+        {
+          "line": 28,
+          "declarations": [
+            "height: var(--dds-dimension-x10)"
+          ]
+        },
+        {
+          "line": 40,
+          "declarations": [
+            "width: 1px"
+          ]
+        },
+        {
+          "line": 41,
+          "declarations": [
+            "height: 1px"
+          ]
+        },
+        {
+          "line": 42,
+          "declarations": [
+            "padding: 0"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/popover/popover.css",
+      "source_sha256": "423d3e739c4542da7e5115c15b6f8893e8ac0398cca61563c90f41ace16445a6",
+      "geometry_declarations": [
+        {
+          "line": 9,
+          "declarations": [
+            "max-width: min(24rem, calc(100vw - var(--dds-dimension-x4)))"
+          ]
+        },
+        {
+          "line": 10,
+          "declarations": [
+            "padding: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 14,
+          "declarations": [
+            "border-radius: var(--dds-radius-r3)"
+          ]
+        },
+        {
+          "line": 44,
+          "declarations": [
+            "width: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 45,
+          "declarations": [
+            "height: var(--dds-dimension-x2)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/progress/progress.css",
+      "source_sha256": "ab160c89e5e0fdf0b95759d5d67ebfca53e92a339cbb9038621d9a98b44f53dd",
+      "geometry_declarations": [
+        {
+          "line": 7,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 8,
+          "declarations": [
+            "height: var(--dds-dimension-x1_5)"
+          ]
+        },
+        {
+          "line": 9,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 14,
+          "declarations": [
+            "height: 100%"
+          ]
+        },
+        {
+          "line": 15,
+          "declarations": [
+            "border-radius: inherit"
+          ]
+        },
+        {
+          "line": 23,
+          "declarations": [
+            "width: 40%"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/radio-group/radio-group.css",
+      "source_sha256": "58ae37add6996a36fc886fb89c72f7442e0c19fd4abf7450acf1854b3c419c8f",
+      "geometry_declarations": [
+        {
+          "line": 9,
+          "declarations": [
+            "gap: var(--dds-dimension-x3)"
+          ]
+        },
+        {
+          "line": 14,
+          "declarations": [
+            "gap: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 20,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 34,
+          "declarations": [
+            "width: 1px"
+          ]
+        },
+        {
+          "line": 35,
+          "declarations": [
+            "height: 1px"
+          ]
+        },
+        {
+          "line": 36,
+          "declarations": [
+            "padding: 0"
+          ]
+        },
+        {
+          "line": 52,
+          "declarations": [
+            "width: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 53,
+          "declarations": [
+            "height: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 54,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 65,
+          "declarations": [
+            "width: 45%"
+          ]
+        },
+        {
+          "line": 66,
+          "declarations": [
+            "height: 45%"
+          ]
+        },
+        {
+          "line": 67,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 126,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 127,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        },
+        {
+          "line": 142,
+          "declarations": [
+            "padding: var(--dds-dimension-x0_5)"
+          ]
+        },
+        {
+          "line": 144,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 145,
+          "declarations": [
+            "gap: var(--dds-dimension-x0_5)"
+          ]
+        },
+        {
+          "line": 151,
+          "declarations": [
+            "height: 28px"
+          ]
+        },
+        {
+          "line": 155,
+          "declarations": [
+            "height: 36px"
+          ]
+        },
+        {
+          "line": 159,
+          "declarations": [
+            "height: 44px"
+          ]
+        },
+        {
+          "line": 169,
+          "declarations": [
+            "width: 0"
+          ]
+        },
+        {
+          "line": 170,
+          "declarations": [
+            "height: 0"
+          ]
+        },
+        {
+          "line": 172,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 184,
+          "declarations": [
+            "height: 100%"
+          ]
+        },
+        {
+          "line": 191,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 195,
+          "declarations": [
+            "gap: 0"
+          ]
+        },
+        {
+          "line": 200,
+          "declarations": [
+            "padding: 0 var(--dds-dimension-x2_5)"
+          ]
+        },
+        {
+          "line": 201,
+          "declarations": [
+            "font-size: var(--dds-font-size-t2)"
+          ]
+        },
+        {
+          "line": 202,
+          "declarations": [
+            "line-height: var(--dds-line-height-t2)"
+          ]
+        },
+        {
+          "line": 206,
+          "declarations": [
+            "padding: 0 var(--dds-dimension-x3)"
+          ]
+        },
+        {
+          "line": 207,
+          "declarations": [
+            "font-size: var(--dds-font-size-t3)"
+          ]
+        },
+        {
+          "line": 208,
+          "declarations": [
+            "line-height: var(--dds-line-height-t3)"
+          ]
+        },
+        {
+          "line": 212,
+          "declarations": [
+            "padding: 0 var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 213,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 214,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/save-status/save-status.css",
+      "source_sha256": "9dc1f95aeccfa584fd90cfa7133741dfd4d3cbca0d128a8901970a3663810efc",
+      "geometry_declarations": [
+        {
+          "line": 5,
+          "declarations": [
+            "gap: var(--dds-dimension-x1)"
+          ]
+        },
+        {
+          "line": 7,
+          "declarations": [
+            "font-size: var(--dds-font-size-t2)"
+          ]
+        },
+        {
+          "line": 8,
+          "declarations": [
+            "line-height: var(--dds-line-height-t2)"
+          ]
+        },
+        {
+          "line": 25,
+          "declarations": [
+            "width: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 26,
+          "declarations": [
+            "height: var(--dds-dimension-x4)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/select/select.css",
+      "source_sha256": "5bb30c1df65acb511f714b375c2928cd2e677e6c60ce91c1ab694ec2822614ed",
+      "geometry_declarations": [
+        {
+          "line": 8,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 9,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 49,
+          "declarations": [
+            "height: var(--dds-dimension-x10)"
+          ]
+        },
+        {
+          "line": 50,
+          "declarations": [
+            "padding-inline: var(--dds-dimension-x3)"
+          ]
+        },
+        {
+          "line": 51,
+          "declarations": [
+            "border-radius: var(--dds-radius-r2)"
+          ]
+        },
+        {
+          "line": 52,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 53,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        },
+        {
+          "line": 56,
+          "declarations": [
+            "height: var(--dds-dimension-x13)"
+          ]
+        },
+        {
+          "line": 57,
+          "declarations": [
+            "padding-inline: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 58,
+          "declarations": [
+            "border-radius: var(--dds-radius-r3)"
+          ]
+        },
+        {
+          "line": 59,
+          "declarations": [
+            "font-size: var(--dds-font-size-t6)"
+          ]
+        },
+        {
+          "line": 60,
+          "declarations": [
+            "line-height: var(--dds-line-height-t6)"
+          ]
+        },
+        {
+          "line": 96,
+          "declarations": [
+            "min-width: 12rem"
+          ]
+        },
+        {
+          "line": 97,
+          "declarations": [
+            "max-height: calc(100vh - var(--dds-dimension-x4))"
+          ]
+        },
+        {
+          "line": 99,
+          "declarations": [
+            "padding: var(--dds-dimension-x1)"
+          ]
+        },
+        {
+          "line": 102,
+          "declarations": [
+            "border-radius: var(--dds-radius-r3)"
+          ]
+        },
+        {
+          "line": 125,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 126,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 127,
+          "declarations": [
+            "min-height: var(--dds-dimension-x8)"
+          ]
+        },
+        {
+          "line": 128,
+          "declarations": [
+            "padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 130,
+          "declarations": [
+            "border-radius: var(--dds-radius-r1_5)"
+          ]
+        },
+        {
+          "line": 134,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 135,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        },
+        {
+          "line": 176,
+          "declarations": [
+            "padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 178,
+          "declarations": [
+            "font-size: var(--dds-font-size-t2)"
+          ]
+        },
+        {
+          "line": 179,
+          "declarations": [
+            "line-height: var(--dds-line-height-t2)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/separator/separator.css",
+      "source_sha256": "1478fe42400a1388d0d79544565755e83b2d326483f1e4af0d2deea8227d555b",
+      "geometry_declarations": [
+        {
+          "line": 9,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 10,
+          "declarations": [
+            "height: 1px"
+          ]
+        },
+        {
+          "line": 14,
+          "declarations": [
+            "width: 1px"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/sheet/sheet.css",
+      "source_sha256": "fe1f17d1010a46b082a89f0b99d47cdd259d4f5fee41e3bbd0b2a52a81edb1b5",
+      "geometry_declarations": [
+        {
+          "line": 16,
+          "declarations": [
+            "gap: var(--dds-dimension-x3)"
+          ]
+        },
+        {
+          "line": 17,
+          "declarations": [
+            "padding: var(--dds-dimension-x6)"
+          ]
+        },
+        {
+          "line": 40,
+          "declarations": [
+            "height: 100%"
+          ]
+        },
+        {
+          "line": 41,
+          "declarations": [
+            "width: min(24rem, calc(100% - var(--dds-dimension-x8)))"
+          ]
+        },
+        {
+          "line": 48,
+          "declarations": [
+            "border-radius: 0 var(--dds-radius-r4) var(--dds-radius-r4) 0"
+          ]
+        },
+        {
+          "line": 54,
+          "declarations": [
+            "border-radius: var(--dds-radius-r4) 0 0 var(--dds-radius-r4)"
+          ]
+        },
+        {
+          "line": 61,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 62,
+          "declarations": [
+            "height: min(20rem, calc(100% - var(--dds-dimension-x8)))"
+          ]
+        },
+        {
+          "line": 67,
+          "declarations": [
+            "border-radius: 0 0 var(--dds-radius-r4) var(--dds-radius-r4)"
+          ]
+        },
+        {
+          "line": 73,
+          "declarations": [
+            "border-radius: var(--dds-radius-r4) var(--dds-radius-r4) 0 0"
+          ]
+        },
+        {
+          "line": 102,
+          "declarations": [
+            "font-size: var(--dds-font-size-t7)"
+          ]
+        },
+        {
+          "line": 103,
+          "declarations": [
+            "line-height: var(--dds-line-height-t7)"
+          ]
+        },
+        {
+          "line": 109,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 110,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/skeleton/skeleton.css",
+      "source_sha256": "1a0c44162d7b9474b9e20fa7f2582a8b9e0a642d7e10edb702bd09326dd4c9f8",
+      "geometry_declarations": [
+        {
+          "line": 11,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 12,
+          "declarations": [
+            "height: 100%"
+          ]
+        },
+        {
+          "line": 24,
+          "declarations": [
+            "border-radius: 0"
+          ]
+        },
+        {
+          "line": 28,
+          "declarations": [
+            "border-radius: var(--dds-radius-r2)"
+          ]
+        },
+        {
+          "line": 33,
+          "declarations": [
+            "border-radius: var(--dds-radius-r3)"
+          ]
+        },
+        {
+          "line": 37,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/slider/slider.css",
+      "source_sha256": "646a0807ecbbdbec42d7a1aca11ad23d0543aa6ebfc2f60f530e25da99a86b25",
+      "geometry_declarations": [
+        {
+          "line": 6,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 10,
+          "declarations": [
+            "padding: 0"
+          ]
+        },
+        {
+          "line": 20,
+          "declarations": [
+            "height: var(--dds-dimension-x6)"
+          ]
+        },
+        {
+          "line": 26,
+          "declarations": [
+            "height: var(--dds-dimension-x6)"
+          ]
+        },
+        {
+          "line": 31,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 32,
+          "declarations": [
+            "height: var(--dds-slider-track-height)"
+          ]
+        },
+        {
+          "line": 33,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 46,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 47,
+          "declarations": [
+            "height: var(--dds-slider-track-height)"
+          ]
+        },
+        {
+          "line": 48,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 64,
+          "declarations": [
+            "width: var(--dds-slider-thumb-size)"
+          ]
+        },
+        {
+          "line": 65,
+          "declarations": [
+            "height: var(--dds-slider-thumb-size)"
+          ]
+        },
+        {
+          "line": 66,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 81,
+          "declarations": [
+            "width: var(--dds-slider-thumb-size)"
+          ]
+        },
+        {
+          "line": 82,
+          "declarations": [
+            "height: var(--dds-slider-thumb-size)"
+          ]
+        },
+        {
+          "line": 83,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/spinner/spinner.css",
+      "source_sha256": "91c96776d7c33032cae52d26511beaf024ae1e27c41aa6c3d36beb1a1cc632a4",
+      "geometry_declarations": [
+        {
+          "line": 8,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 18,
+          "declarations": [
+            "width: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 19,
+          "declarations": [
+            "height: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 24,
+          "declarations": [
+            "width: var(--dds-dimension-x5)"
+          ]
+        },
+        {
+          "line": 25,
+          "declarations": [
+            "height: var(--dds-dimension-x5)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/state-panel/state-panel.css",
+      "source_sha256": "db705eb35a6179f9280741879df8670fccf451db997fd309d1835c6a4753d35d",
+      "geometry_declarations": [
+        {
+          "line": 9,
+          "declarations": [
+            "min-height: 16rem"
+          ]
+        },
+        {
+          "line": 10,
+          "declarations": [
+            "padding: var(--dds-dimension-x6) var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 11,
+          "declarations": [
+            "border-radius: var(--dds-radius-r3)"
+          ]
+        },
+        {
+          "line": 27,
+          "declarations": [
+            "font-size: var(--dds-font-size-t5)"
+          ]
+        },
+        {
+          "line": 28,
+          "declarations": [
+            "line-height: var(--dds-line-height-t5)"
+          ]
+        },
+        {
+          "line": 36,
+          "declarations": [
+            "font-size: var(--dds-font-size-t3)"
+          ]
+        },
+        {
+          "line": 37,
+          "declarations": [
+            "line-height: var(--dds-line-height-t3)"
+          ]
+        },
+        {
+          "line": 39,
+          "declarations": [
+            "max-width: 32rem"
+          ]
+        },
+        {
+          "line": 46,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 53,
+          "declarations": [
+            "font-size: var(--dds-font-size-t2)"
+          ]
+        },
+        {
+          "line": 54,
+          "declarations": [
+            "line-height: var(--dds-line-height-t2)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/switch/switch.css",
+      "source_sha256": "aedf62e043b6be8b26ddea68d06bf32d4fa819ace0f5586acddf3c1c05af9736",
+      "geometry_declarations": [
+        {
+          "line": 5,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 24,
+          "declarations": [
+            "width: 1px"
+          ]
+        },
+        {
+          "line": 25,
+          "declarations": [
+            "height: 1px"
+          ]
+        },
+        {
+          "line": 26,
+          "declarations": [
+            "padding: 0"
+          ]
+        },
+        {
+          "line": 42,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 50,
+          "declarations": [
+            "border-radius: var(--dds-radius-r-full)"
+          ]
+        },
+        {
+          "line": 99,
+          "declarations": [
+            "width: var(--dds-dimension-x8)"
+          ]
+        },
+        {
+          "line": 100,
+          "declarations": [
+            "height: var(--dds-dimension-x5)"
+          ]
+        },
+        {
+          "line": 103,
+          "declarations": [
+            "width: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 104,
+          "declarations": [
+            "height: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 109,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 110,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        },
+        {
+          "line": 114,
+          "declarations": [
+            "width: var(--dds-dimension-x10)"
+          ]
+        },
+        {
+          "line": 115,
+          "declarations": [
+            "height: var(--dds-dimension-x6)"
+          ]
+        },
+        {
+          "line": 118,
+          "declarations": [
+            "width: var(--dds-dimension-x5)"
+          ]
+        },
+        {
+          "line": 119,
+          "declarations": [
+            "height: var(--dds-dimension-x5)"
+          ]
+        },
+        {
+          "line": 124,
+          "declarations": [
+            "font-size: var(--dds-font-size-t6)"
+          ]
+        },
+        {
+          "line": 125,
+          "declarations": [
+            "line-height: var(--dds-line-height-t6)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/table/table.css",
+      "source_sha256": "ea058297761ff77018abdeceafeb22b51d3ea98908d2982ef402b4e163bbe32b",
+      "geometry_declarations": [
+        {
+          "line": 3,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 13,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 33,
+          "declarations": [
+            "padding: var(--dds-dimension-x3) var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 39,
+          "declarations": [
+            "font-size: var(--dds-font-size-t3)"
+          ]
+        },
+        {
+          "line": 40,
+          "declarations": [
+            "line-height: var(--dds-line-height-t3)"
+          ]
+        },
+        {
+          "line": 45,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 46,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        },
+        {
+          "line": 50,
+          "declarations": [
+            "padding-block: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 52,
+          "declarations": [
+            "font-size: var(--dds-font-size-t3)"
+          ]
+        },
+        {
+          "line": 53,
+          "declarations": [
+            "line-height: var(--dds-line-height-t3)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/tabs/tabs.css",
+      "source_sha256": "e9d6ca263f70ac2ba6176970aadd39b9684b213723c1050385576d853a715d67",
+      "geometry_declarations": [
+        {
+          "line": 10,
+          "declarations": [
+            "gap: var(--dds-dimension-x1)"
+          ]
+        },
+        {
+          "line": 23,
+          "declarations": [
+            "width: 0"
+          ]
+        },
+        {
+          "line": 24,
+          "declarations": [
+            "height: 0"
+          ]
+        },
+        {
+          "line": 36,
+          "declarations": [
+            "gap: var(--dds-dimension-x1)"
+          ]
+        },
+        {
+          "line": 37,
+          "declarations": [
+            "min-height: var(--dds-dimension-x9)"
+          ]
+        },
+        {
+          "line": 38,
+          "declarations": [
+            "padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 44,
+          "declarations": [
+            "border-radius: var(--dds-radius-r1) var(--dds-radius-r1) 0 0"
+          ]
+        },
+        {
+          "line": 48,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 49,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        },
+        {
+          "line": 88,
+          "declarations": [
+            "padding-top: var(--dds-dimension-x3)"
+          ]
+        },
+        {
+          "line": 90,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 91,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        },
+        {
+          "line": 97,
+          "declarations": [
+            "border-radius: var(--dds-radius-r1)"
+          ]
+        },
+        {
+          "line": 105,
+          "declarations": [
+            "gap: var(--dds-dimension-x4)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/text-area/text-area.css",
+      "source_sha256": "a0063331c5b9c165e8ee7c20e5f09d09b46f5199c16c42b1fa5510b9ae2099d2",
+      "geometry_declarations": [
+        {
+          "line": 4,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 79,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 85,
+          "declarations": [
+            "font-size: var(--dds-font-size-t2)"
+          ]
+        },
+        {
+          "line": 86,
+          "declarations": [
+            "line-height: var(--dds-line-height-t2)"
+          ]
+        },
+        {
+          "line": 92,
+          "declarations": [
+            "padding-block: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 93,
+          "declarations": [
+            "padding-inline: var(--dds-dimension-x3)"
+          ]
+        },
+        {
+          "line": 94,
+          "declarations": [
+            "border-radius: var(--dds-radius-r2)"
+          ]
+        },
+        {
+          "line": 95,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 96,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        },
+        {
+          "line": 99,
+          "declarations": [
+            "padding-block: var(--dds-dimension-x3)"
+          ]
+        },
+        {
+          "line": 100,
+          "declarations": [
+            "padding-inline: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 101,
+          "declarations": [
+            "border-radius: var(--dds-radius-r3)"
+          ]
+        },
+        {
+          "line": 102,
+          "declarations": [
+            "font-size: var(--dds-font-size-t6)"
+          ]
+        },
+        {
+          "line": 103,
+          "declarations": [
+            "line-height: var(--dds-line-height-t6)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/text-field/text-field.css",
+      "source_sha256": "39f22ced73be05176ee2203e1cb5105da9e184d6f2e6a10e3cf649d9ff25b460",
+      "geometry_declarations": [
+        {
+          "line": 5,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 71,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 72,
+          "declarations": [
+            "width: 100%"
+          ]
+        },
+        {
+          "line": 88,
+          "declarations": [
+            "min-width: 0"
+          ]
+        },
+        {
+          "line": 89,
+          "declarations": [
+            "height: 100%"
+          ]
+        },
+        {
+          "line": 90,
+          "declarations": [
+            "padding: 0"
+          ]
+        },
+        {
+          "line": 105,
+          "declarations": [
+            "width: 16px"
+          ]
+        },
+        {
+          "line": 106,
+          "declarations": [
+            "height: 16px"
+          ]
+        },
+        {
+          "line": 150,
+          "declarations": [
+            "height: var(--dds-dimension-x10)"
+          ]
+        },
+        {
+          "line": 151,
+          "declarations": [
+            "padding-inline: var(--dds-dimension-x3)"
+          ]
+        },
+        {
+          "line": 152,
+          "declarations": [
+            "border-radius: var(--dds-radius-r2)"
+          ]
+        },
+        {
+          "line": 153,
+          "declarations": [
+            "font-size: var(--dds-font-size-t4)"
+          ]
+        },
+        {
+          "line": 154,
+          "declarations": [
+            "line-height: var(--dds-line-height-t4)"
+          ]
+        },
+        {
+          "line": 157,
+          "declarations": [
+            "height: var(--dds-dimension-x13)"
+          ]
+        },
+        {
+          "line": 158,
+          "declarations": [
+            "padding-inline: var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 159,
+          "declarations": [
+            "border-radius: var(--dds-radius-r3)"
+          ]
+        },
+        {
+          "line": 160,
+          "declarations": [
+            "font-size: var(--dds-font-size-t6)"
+          ]
+        },
+        {
+          "line": 161,
+          "declarations": [
+            "line-height: var(--dds-line-height-t6)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/toast/toast.css",
+      "source_sha256": "a88003a96cb8e53b8fcbfde020fe9110c281dac08be6eb85539d3e4f4500d94a",
+      "geometry_declarations": [
+        {
+          "line": 11,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 13,
+          "declarations": [
+            "width: min(24rem, calc(100vw - var(--dds-dimension-x8)))"
+          ]
+        },
+        {
+          "line": 22,
+          "declarations": [
+            "gap: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 23,
+          "declarations": [
+            "padding: var(--dds-dimension-x3) var(--dds-dimension-x4)"
+          ]
+        },
+        {
+          "line": 24,
+          "declarations": [
+            "border-radius: var(--dds-radius-r3)"
+          ]
+        },
+        {
+          "line": 64,
+          "declarations": [
+            "gap: var(--dds-dimension-x1)"
+          ]
+        },
+        {
+          "line": 66,
+          "declarations": [
+            "min-width: 0"
+          ]
+        },
+        {
+          "line": 71,
+          "declarations": [
+            "font-size: var(--dds-font-size-t3)"
+          ]
+        },
+        {
+          "line": 72,
+          "declarations": [
+            "line-height: var(--dds-line-height-t3)"
+          ]
+        },
+        {
+          "line": 78,
+          "declarations": [
+            "font-size: var(--dds-font-size-t2)"
+          ]
+        },
+        {
+          "line": 79,
+          "declarations": [
+            "line-height: var(--dds-line-height-t2)"
+          ]
+        },
+        {
+          "line": 84,
+          "declarations": [
+            "font-size: var(--dds-font-size-t2)"
+          ]
+        },
+        {
+          "line": 85,
+          "declarations": [
+            "line-height: var(--dds-line-height-t2)"
+          ]
+        },
+        {
+          "line": 94,
+          "declarations": [
+            "width: var(--dds-dimension-x5)"
+          ]
+        },
+        {
+          "line": 95,
+          "declarations": [
+            "height: var(--dds-dimension-x5)"
+          ]
+        },
+        {
+          "line": 96,
+          "declarations": [
+            "padding: 0"
+          ]
+        },
+        {
+          "line": 98,
+          "declarations": [
+            "border-radius: var(--dds-radius-r1)"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "packages/react/src/tooltip/tooltip.css",
+      "source_sha256": "b764e020e187be836c1210dad87628c4c5559ddc89550a2a94d8560a1082e578",
+      "geometry_declarations": [
+        {
+          "line": 9,
+          "declarations": [
+            "max-width: 16rem"
+          ]
+        },
+        {
+          "line": 10,
+          "declarations": [
+            "padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 11,
+          "declarations": [
+            "border-radius: var(--dds-radius-r2)"
+          ]
+        },
+        {
+          "line": 19,
+          "declarations": [
+            "font-size: var(--dds-font-size-t2)"
+          ]
+        },
+        {
+          "line": 20,
+          "declarations": [
+            "line-height: var(--dds-line-height-t2)"
+          ]
+        },
+        {
+          "line": 33,
+          "declarations": [
+            "width: var(--dds-dimension-x2)"
+          ]
+        },
+        {
+          "line": 34,
+          "declarations": [
+            "height: var(--dds-dimension-x2)"
+          ]
+        }
+      ]
+    }
+  ]
+}

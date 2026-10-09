@@ -1,0 +1,121 @@
+[
+  {
+    "id": "01-controls",
+    "file": "01-controls-v2.png",
+    "mode": "built-in image_gen",
+    "status": "selected; reviewed for presence and major state consistency, not implementation QA",
+    "originalFile": "01-controls.png",
+    "correction": "Selected after visual recheck",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 1429841,
+    "sha256": "b40b343fc311c212dcfbaf12e3d0aa50b870110cee1624e3f026484050aac956",
+    "generatorArtifact": "exec-76c62027-b887-4b8b-9758-20ae3f5c5d5b.png",
+    "originalGeneratorArtifact": "exec-765fbb4c-ae43-48fd-b68f-6b29f7b19533.png"
+  },
+  {
+    "id": "02-fields",
+    "file": "02-fields.png",
+    "mode": "built-in image_gen",
+    "status": "selected; reviewed for presence and major state consistency, not implementation QA",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 1194642,
+    "sha256": "92057df1169887876f5026b2b7b79980f62414c977e2a809fc663cd49bd0dd15",
+    "generatorArtifact": "exec-7e16bb8d-be3d-44bf-bc56-f21c8e275211.png"
+  },
+  {
+    "id": "03-selection",
+    "file": "03-selection.png",
+    "mode": "built-in image_gen",
+    "status": "selected; reviewed for presence and major state consistency, not implementation QA",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 1243959,
+    "sha256": "a69f0b81873c4fbd53d8f29de8ddbaa150ae229e6916d2e8f998154695852d52",
+    "generatorArtifact": "exec-ffb6f6f7-d97d-4b81-8575-d102ea4d9a44.png"
+  },
+  {
+    "id": "04-navigation",
+    "file": "04-navigation.png",
+    "mode": "built-in image_gen",
+    "status": "selected; reviewed for presence and major state consistency, not implementation QA",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 1180119,
+    "sha256": "7a9ef42ab1e8e2bd8cb57ca331749c8302c9418f78e08649d961541a8db2c545",
+    "generatorArtifact": "exec-95d160a4-fbd4-43b0-ba57-1f0c1cb35055.png"
+  },
+  {
+    "id": "05-structure",
+    "file": "05-structure.png",
+    "mode": "built-in image_gen",
+    "status": "selected; reviewed for presence and major state consistency, not implementation QA",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 1215701,
+    "sha256": "76bef49dfa5beb52dc0472b367ce38bfbaa7c302744642c309776c87912d6305",
+    "generatorArtifact": "exec-20fe6919-4ba6-4fb8-bffc-6e6ff1182a93.png"
+  },
+  {
+    "id": "06-modal",
+    "file": "06-modal.png",
+    "mode": "built-in image_gen",
+    "status": "selected; reviewed for presence and major state consistency, not implementation QA",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 1328587,
+    "sha256": "9d5c6b97e28b04c2223f48c1e5b7d0be007ad1a01c3a1efeaf23d378c5a9720f",
+    "generatorArtifact": "exec-91679c32-cf94-48fe-842e-ff17a155f229.png"
+  },
+  {
+    "id": "07-floating",
+    "file": "07-floating.png",
+    "mode": "built-in image_gen",
+    "status": "selected; reviewed for presence and major state consistency, not implementation QA",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 1293370,
+    "sha256": "7209c15426ab7d65afd4e7f7ece818899f0b9befa9a2e032e6880412252b334d",
+    "generatorArtifact": "exec-af2e61f0-f6a3-43e5-b53f-9e9bf6138a96.png"
+  },
+  {
+    "id": "08-data",
+    "file": "08-data-v2.png",
+    "mode": "built-in image_gen",
+    "status": "selected; reviewed for presence and major state consistency, not implementation QA",
+    "originalFile": "08-data.png",
+    "correction": "Selected after visual recheck",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 1529064,
+    "sha256": "3c70022073703de725108be1161416fdc3b3a81dba0645852eec851c9180ed16",
+    "generatorArtifact": "exec-fa56e861-444b-4d9e-b2cd-cd9cb9f22474.png",
+    "originalGeneratorArtifact": "exec-993707d5-bbb1-4cc2-ab10-0da9115b3265.png"
+  },
+  {
+    "id": "09-feedback",
+    "file": "09-feedback.png",
+    "mode": "built-in image_gen",
+    "status": "selected; reviewed for presence and major state consistency, not implementation QA",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 1304997,
+    "sha256": "1b401396cf5861b2af1e67d4554da5193ed8c157221691b1e119f2fbddd5ddb1",
+    "generatorArtifact": "exec-91a8d78b-7a9f-426c-b39f-99d8a4533ca3.png"
+  },
+  {
+    "id": "10-loading",
+    "file": "10-loading-v2.png",
+    "mode": "built-in image_gen",
+    "status": "selected; reviewed for presence and major state consistency, not implementation QA",
+    "originalFile": "10-loading.png",
+    "correction": "Selected after visual recheck",
+    "width": 1448,
+    "height": 1086,
+    "bytes": 1449232,
+    "sha256": "b68a31f8e6aaa90f9fd4aee592954d05228e9c4f6b07de24a0a4e8740375da93",
+    "generatorArtifact": "exec-78566fbe-dd4d-4393-9602-6d8a7ea2ff2c.png",
+    "originalGeneratorArtifact": "exec-18ad21f1-2f03-4664-8328-2992e5643fa8.png"
+  }
+]

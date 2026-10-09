@@ -1,0 +1,292 @@
+/* flex A·B 외관 — forms 묶음. :root[data-flex="a"|"b"] 아래에서만 걸린다. 값은 profiles.ts가 꽂는 --fx-* 변수를 쓴다. */
+
+/* Button — 기본 세 크기는 유지하고 small·medium 반경만 역할 변수로. 주요 CTA는 .fx-cta로 따로 표시한다. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) :is(.dds-button--size_small, .dds-button--size_medium) {
+  border-radius: var(--fx-button-radius);
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-button.fx-cta {
+  height: var(--fx-cta-height);
+  border-radius: var(--fx-button-radius);
+  font-size: var(--fx-body-size);
+}
+:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-button.fx-cta { width: 100%; }
+
+/* TextField·입력류 공통 — 높이·반경·안쪽 여백·글자. affix가 있으면 wrapper가 외관을 가진다. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) :is(.dds-text-field--size_medium, .dds-text-field__wrapper.dds-text-field--size_medium) {
+  height: var(--fx-field-height);
+  border-radius: var(--fx-field-radius);
+  padding-inline: var(--fx-field-inset);
+  font-size: var(--fx-field-font);
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-field { gap: 6px; }
+
+/* box형 — 낮은 중성 표면. 테두리는 투명으로 두고 focus·error 때만 색을 얹어 크기가 변하지 않게 한다. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-box:is(.dds-text-field, .dds-text-field__wrapper) {
+  background-color: var(--dds-color-bg-neutral-weak);
+  border-color: transparent;
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-box.dds-text-field:not([aria-invalid="true"]):hover { border-color: var(--dds-color-stroke-neutral-weak); }
+
+/* line형 — 아래 경계만. 반경과 좌우 여백을 없애 본문 시작선에 맞춘다. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-line:is(.dds-text-field, .dds-text-field__wrapper) {
+  border-width: 0 0 1px;
+  border-radius: 0;
+  padding-inline: 0;
+  background-color: transparent;
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-line.dds-text-field:focus-visible { box-shadow: inset 0 -1px 0 0 var(--dds-color-stroke-focus-ring); }
+
+/* B 모바일 내부 라벨 box — 작은 라벨 위, 값 아래. Field 연결은 그대로 쓰고 배치만 바꾼다. */
+.fx-inbox { display: flex; flex-direction: column; gap: 2px; box-sizing: border-box; min-height: var(--fx-field-height, 56px); padding: 8px var(--fx-field-inset, 16px); border-radius: var(--fx-field-radius, 14px); background: var(--dds-color-bg-neutral-weak); border: 1px solid transparent; }
+.fx-inbox:focus-within { border-color: var(--dds-color-stroke-focus-ring); box-shadow: inset 0 0 0 1px var(--dds-color-stroke-focus-ring); }
+.fx-inbox .dds-field__label { font-size: var(--dds-font-size-t2); line-height: var(--dds-line-height-t2); font-weight: var(--dds-font-weight-regular); color: var(--dds-color-fg-neutral-weak); }
+:root .fx-inbox .dds-text-field.dds-text-field { height: auto; min-height: 0; padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; font-size: var(--fx-field-font, 16px); }
+:root .fx-inbox .dds-text-field.dds-text-field:focus-visible { box-shadow: none; }
+
+/* ── 시안 내용 틀(모든 열 공통 — 컴포넌트 외관이 아니다) ── */
+.fx-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.fx-person { display: flex; align-items: center; gap: var(--fx-list-leading-gap, 8px); min-width: 0; }
+.fx-person-name { white-space: nowrap; }
+.fx-person-meta { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--dds-color-fg-neutral-weak); font-size: var(--dds-font-size-t3); }
+
+/* ── box 확장: TextArea·Select 트리거도 같은 낮은 표면. 위 box 규칙의 투명 테두리가 layer 안 focus·error 색을 덮어서
+   hover → focus → error 순서로 다시 건다(error+focus는 critical 유지). ── */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-box:is(.dds-text-area, .dds-select__trigger):not(:disabled) {
+  background-color: var(--dds-color-bg-neutral-weak);
+  border-color: transparent;
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-box:is(.dds-text-area, .dds-select__trigger):not(:disabled):hover { border-color: var(--dds-color-stroke-neutral-weak); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-box.fx-box:is(.dds-text-field, .dds-text-area, .dds-select__trigger):focus-visible { border-color: var(--dds-color-stroke-focus-ring); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-box.fx-box:is(.dds-text-field, .dds-text-area, .dds-select__trigger)[aria-invalid="true"] { border-color: var(--dds-color-stroke-critical); }
+
+/* ── Select ── field 트리거는 입력과 같은 높이·반경·여백·글자. 패널·옵션은 역할 변수(모바일 옵션 48은 변수가 바꾼다). */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-select__trigger--size_medium {
+  height: var(--fx-field-height);
+  border-radius: var(--fx-field-radius);
+  padding-inline: var(--fx-field-inset);
+  font-size: var(--fx-field-font);
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-select__content {
+  padding: var(--fx-select-panel-inset);
+  border-radius: var(--fx-select-panel-radius);
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-select__option {
+  min-height: var(--fx-option-height);
+  border-radius: var(--fx-option-radius);
+}
+/* A — 사람 행은 leading 아바타, trailing 선택 표식 */
+:root:is([data-flex="a"], [data-flex="final"]) .fx-rich:not([aria-multiselectable]) .dds-select__check { order: 1; margin-inline-start: auto; }
+/* B — 선택 표식은 브랜드, hover는 중성 표면(DS017·018). 단일 선택에만 — 복수 선택은 아래 사각 mark */
+:root[data-flex="b"] .dds-select__content:not([aria-multiselectable]) .dds-select__option[aria-selected="true"] .dds-select__check { color: var(--dds-color-fg-brand); }
+
+/* B 버튼 트리거 — Button small·neutral weak 외형. 비입력 컨트롤이라 focus는 2px 링 */
+:root:is([data-flex="b"], [data-flex="final"]) .dds-select__trigger.fx-trigger-button {
+  width: auto;
+  height: var(--dds-dimension-x9);
+  padding-inline: var(--dds-dimension-x3);
+  gap: var(--dds-dimension-x1);
+  border-color: transparent;
+  border-radius: var(--fx-button-radius);
+  background-color: var(--dds-color-bg-neutral-weak);
+  font-size: var(--dds-font-size-t3);
+  font-weight: var(--dds-font-weight-bold);
+}
+:root:is([data-flex="b"], [data-flex="final"]) .dds-select__trigger.fx-trigger-button:hover { border-color: transparent; background-color: var(--dds-color-bg-neutral-weak-hover); }
+/* B chip 트리거 — 값이 보이는 필터 chip */
+:root:is([data-flex="b"], [data-flex="final"]) .dds-select__trigger.fx-trigger-chip {
+  width: auto;
+  height: var(--fx-chip-height);
+  padding-inline: var(--dds-dimension-x2) var(--dds-dimension-x1_5);
+  gap: var(--dds-dimension-x1);
+  border-color: transparent;
+  border-radius: var(--fx-chip-radius);
+  background-color: var(--dds-color-bg-neutral-weak);
+  font-size: var(--dds-font-size-t2);
+}
+:root:is([data-flex="b"], [data-flex="final"]) .dds-select__trigger.fx-trigger-chip .dds-select__caret { width: 12px; height: 12px; }
+:root:is([data-flex="b"], [data-flex="final"]) .dds-select__trigger.fx-trigger-chip:hover { border-color: transparent; background-color: var(--dds-color-bg-neutral-weak-hover); }
+:root:is([data-flex="b"], [data-flex="final"]) .dds-select__trigger:is(.fx-trigger-button, .fx-trigger-chip):focus-visible {
+  box-shadow: none;
+  outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+  outline-offset: var(--dds-dimension-x0_5);
+}
+
+/* ── Field ── B 내부 라벨 box의 focus·error. 위 :focus-within은 정적 시안(mk-focus)에 안 걸려 :has로도 건다. */
+.fx-inbox:has(:focus-visible) { border-color: var(--dds-color-stroke-focus-ring); box-shadow: inset 0 0 0 1px var(--dds-color-stroke-focus-ring); }
+.fx-inbox:has([aria-invalid="true"]) { border-color: var(--dds-color-stroke-critical); }
+.fx-inbox:has([aria-invalid="true"]:focus-visible) { box-shadow: inset 0 0 0 1px var(--dds-color-stroke-critical); }
+
+/* ── TextArea ── TextField와 같은 반경·좌우 여백·글자. 모바일 위아래는 (56 − 24) ÷ 2. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-text-area--size_medium {
+  border-radius: var(--fx-field-radius);
+  padding-inline: var(--fx-field-inset);
+  font-size: var(--fx-field-font);
+  line-height: var(--fx-body-line);
+}
+:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-text-area--size_medium { padding-block: var(--dds-dimension-x4); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-line.dds-text-area { border-width: 0 0 1px; border-radius: 0; padding-inline: 0; background-color: transparent; resize: none; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-line.dds-text-area:focus-visible { box-shadow: inset 0 -1px 0 0 var(--dds-color-stroke-focus-ring); }
+/* 오류 왼쪽 · 글자 수 오른쪽 한 줄 — wrapper를 풀어 Field 그리드에 올린다. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-meta-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--dds-dimension-x3); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-meta-row > .dds-field__label,
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-meta-row .dds-text-area { grid-column: 1 / -1; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-meta-row .dds-text-area__wrapper { display: contents; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-meta-row .dds-text-area__count { grid-column: 2; grid-row: 3; margin-top: 0; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-meta-row .dds-field__error-message { grid-column: 1; grid-row: 3; }
+/* B 모바일 여러 줄 내부 라벨 box(M020 173×0.75) */
+.fx-inbox-multi { min-height: 128px; }
+:root .fx-inbox .dds-text-area.dds-text-area { padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; resize: none; font-size: var(--fx-field-font, 16px); line-height: var(--fx-body-line, 24px); }
+:root .fx-inbox .dds-text-area.dds-text-area:focus-visible { box-shadow: none; }
+
+/* ── Checkbox ── 긴 설명은 첫 줄 옆에 박스. 모바일 행은 44 이상. */
+.fx-check-text { display: grid; gap: 2px; }
+.fx-check-text > span { color: var(--dds-color-fg-neutral-weak); font-size: var(--dds-font-size-t3); line-height: var(--dds-line-height-t3); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-check-top.dds-checkbox { align-items: flex-start; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-check-top .dds-checkbox__box { margin-block-start: calc((var(--dds-line-height-t4) - var(--dds-dimension-x4)) / 2); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-check-top.dds-checkbox--size_large .dds-checkbox__box { margin-block-start: calc((var(--dds-line-height-t6) - var(--dds-dimension-x5)) / 2); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-check-top .dds-checkbox__label { transform: none; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-touch-list .dds-checkbox { min-height: 44px; padding-block: var(--dds-dimension-x2_5); box-sizing: border-box; width: 100%; }
+
+/* ── RadioGroup ── A segmented 외형 옵션: 바깥 r12, 안쪽 r10(inset 2). */
+:root:is([data-flex="a"], [data-flex="final"]) .fx-seg-square.dds-radio-group--variant_segmented { border-radius: var(--dds-radius-r3); }
+:root:is([data-flex="a"], [data-flex="final"]) .fx-seg-square :is(.dds-radio-group__indicator, .dds-radio) { border-radius: var(--dds-radius-r2_5); }
+.fx-row-text { display: grid; gap: 2px; }
+.fx-row-text > span { color: var(--dds-color-fg-neutral-weak); font-size: var(--dds-font-size-t3); line-height: var(--dds-line-height-t3); }
+/* B 설정 행(DS026) — 약한 중성 행, 중성 선택점. 행 전체가 label이라 행 어디를 눌러도 고른다. */
+:root:is([data-flex="b"], [data-flex="final"]) .fx-setting-rows.dds-radio-group { gap: var(--fx-field-gap); }
+:root:is([data-flex="b"], [data-flex="final"]) :is(.fx-setting-rows .dds-radio, .fx-setting-row) {
+  box-sizing: border-box;
+  min-height: var(--fx-setting-row-height);
+  padding: var(--dds-dimension-x2) var(--fx-list-inset);
+  border-radius: var(--fx-setting-row-radius);
+  background-color: var(--dds-color-bg-neutral-weak);
+}
+:root:is([data-flex="b"], [data-flex="final"]) .fx-setting-rows .dds-radio { display: flex; gap: var(--dds-dimension-x3); }
+:root:is([data-flex="b"], [data-flex="final"]) .fx-setting-rows .dds-radio:not(:has(:disabled)):hover { background-color: var(--dds-color-bg-neutral-weak-hover); }
+:root:is([data-flex="b"], [data-flex="final"]) .fx-setting-rows .dds-radio__label { transform: none; }
+:root:is([data-flex="b"], [data-flex="final"]) .fx-setting-rows .dds-radio__input:checked ~ .dds-radio__box,
+:root:is([data-flex="b"], [data-flex="final"]) .fx-setting-rows .dds-radio__input:checked:not(:disabled):hover ~ .dds-radio__box { background-color: var(--dds-color-bg-neutral-solid); }
+:root:is([data-flex="b"], [data-flex="final"]) .fx-setting-rows .dds-radio__input:checked:not(:disabled):active ~ .dds-radio__box { background-color: var(--dds-color-bg-neutral-solid-pressed); }
+:root:is([data-flex="b"], [data-flex="final"]) .fx-setting-rows .dds-radio__dot { background-color: var(--dds-color-fg-neutral-contrast); }
+:root:is([data-flex="b"], [data-flex="final"]) .fx-setting-rows .dds-radio:has(.dds-radio__input:focus-visible) { outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring); outline-offset: var(--dds-dimension-x0_5); }
+:root:is([data-flex="b"], [data-flex="final"]) .fx-setting-rows .dds-radio__input:focus-visible ~ .dds-radio__box { outline: none; }
+
+/* ── Switch ── 설정 행: 라벨·설명 왼쪽, 스위치 오른쪽. B는 위 설정 행 표면을 함께 쓴다. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-switch-row.dds-field {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--dds-dimension-x4);
+  row-gap: 2px;
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-switch-row > :not(.dds-switch) { grid-column: 1; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-switch-row > .dds-switch { grid-column: 2; grid-row: 1 / span 2; }
+:root:is([data-flex="a"], [data-flex="final"]) .fx-switch-row { padding-block: var(--dds-dimension-x3); }
+.fx-preview { display: flex; gap: 4px; padding: 12px; border: 1px solid var(--dds-color-stroke-neutral-weak); border-radius: var(--dds-radius-r3); background: var(--dds-color-bg-neutral-weak); margin: 0; }
+.fx-preview-day { flex: 1; display: grid; gap: 2px; justify-items: center; padding: 8px 0; border-radius: var(--dds-radius-r1_5); background: var(--dds-color-bg-layer-default); font-size: var(--dds-font-size-t2); color: var(--dds-color-fg-neutral-weak); }
+.fx-preview-day b { color: var(--dds-color-fg-neutral); font-size: var(--dds-font-size-t3); }
+.fx-preview-text { display: block; margin-top: 12px; color: var(--dds-color-fg-neutral); }
+.fx-save-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+/* ── Slider ── 값은 라벨 오른쪽. 모바일은 drag 영역만 44. */
+.fx-slider-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.fx-slider-value { font-weight: var(--dds-font-weight-bold); font-variant-numeric: tabular-nums; }
+:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-slider { height: 44px; }
+
+/* ── MultiSelect ── 검색 트리거는 높이 대신 최소 높이. 사각 mark·패널 검색 box·chip은 역할 변수. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-select__trigger--size_medium.dds-multi-select__trigger--search {
+  height: auto;
+  min-height: var(--fx-field-height);
+  padding-block: var(--dds-dimension-x1_5);
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-box.dds-multi-select__trigger--search:not([data-disabled]) { background-color: var(--dds-color-bg-neutral-weak); border-color: transparent; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-box.dds-multi-select__trigger--search:has(.dds-multi-select__search:focus-visible) { border-color: var(--dds-color-stroke-focus-ring); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-multi-select__chip {
+  box-sizing: border-box;
+  min-height: var(--fx-chip-height);
+  border-radius: var(--fx-chip-radius);
+}
+:root:is([data-flex="b"], [data-flex="final"]) .fx-box .dds-multi-select__chip { background-color: var(--dds-color-bg-layer-default); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-select__content[aria-multiselectable="true"] .dds-select__check {
+  box-sizing: border-box;
+  width: var(--fx-mark-size);
+  height: var(--fx-mark-size);
+  padding: 2px;
+  border: 1px solid var(--dds-color-stroke-neutral);
+  border-radius: var(--dds-radius-r1);
+  opacity: 1;
+  color: transparent;
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-select__content[aria-multiselectable="true"] [aria-selected="true"] .dds-select__check {
+  border-color: transparent;
+  background-color: var(--dds-color-bg-brand-solid);
+  color: var(--dds-color-fg-brand-contrast);
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-multi-select__search--content {
+  border: 1px solid transparent;
+  border-radius: var(--dds-radius-r1_5);
+  background-color: var(--dds-color-bg-neutral-weak);
+  margin-block-end: var(--fx-select-panel-inset);
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-multi-select__search--content:focus-visible { border-color: var(--dds-color-stroke-focus-ring); box-shadow: inset 0 0 0 1px var(--dds-color-stroke-focus-ring); }
+.fx-ms-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 4px 8px 6px; color: var(--dds-color-fg-neutral-weak); font-size: var(--dds-font-size-t3); line-height: var(--dds-line-height-t3); }
+.fx-ms-clear { border: 0; padding: 2px 4px; border-radius: var(--dds-radius-r1); background: transparent; color: var(--dds-color-fg-brand); font: inherit; font-weight: var(--dds-font-weight-bold); cursor: pointer; }
+.fx-ms-clear:disabled { color: var(--dds-color-fg-disabled); cursor: not-allowed; }
+.fx-ms-clear:focus-visible { outline: 2px solid var(--dds-color-stroke-focus-ring); outline-offset: 2px; }
+.fx-ms-help { margin: 6px 0 0; padding: 8px 8px 2px; border-top: 1px solid var(--dds-color-stroke-neutral-weak); color: var(--dds-color-fg-neutral-weak); font-size: var(--dds-font-size-t2); line-height: var(--dds-line-height-t2); }
+
+/* ── DatePicker ── A·B 트리거는 Field 계열: 입력 높이·반경·여백, 값 왼쪽. B는 property 값이라 box. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-date { display: flex; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-date > .dds-button {
+  justify-content: flex-start;
+  width: 100%;
+  height: var(--fx-field-height);
+  padding-inline: var(--fx-field-inset);
+  border: 1px solid var(--dds-color-stroke-neutral);
+  border-radius: var(--fx-field-radius);
+  background-color: var(--dds-color-bg-layer-default);
+  font-size: var(--fx-field-font);
+  font-weight: var(--dds-font-weight-regular);
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-date > .dds-button:not(:disabled):hover { border-color: var(--dds-color-fg-neutral); background-color: var(--dds-color-bg-layer-default); }
+:root:is([data-flex="b"], [data-flex="final"]) .fx-date-box > .dds-button:not(:disabled) { border-color: transparent; background-color: var(--dds-color-bg-neutral-weak); }
+:root:is([data-flex="b"], [data-flex="final"]) .fx-date-box > .dds-button:not(:disabled):hover { border-color: var(--dds-color-stroke-neutral-weak); background-color: var(--dds-color-bg-neutral-weak); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-date > .dds-button:disabled { border-color: var(--dds-color-stroke-neutral-weak); background-color: var(--dds-color-bg-disabled); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-date > .dds-button > [data-layer="content"] { justify-content: flex-start; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-date-picker__sheet.dds-sheet--side_bottom {
+  padding: var(--fx-sheet-inset) var(--fx-sheet-inset) max(var(--dds-dimension-x6), env(safe-area-inset-bottom));
+  border-radius: var(--fx-sheet-radius) var(--fx-sheet-radius) 0 0;
+}
+/* 비교 틀 — iframe 높이는 화면 높이가 아니라서 Sheet를 844px 화면의 90dvh로 고정한다(모든 열). */
+body:has(.fx-page) .dds-date-picker__sheet.dds-sheet--side_bottom { height: min(760px, calc(100% - 1rem)); }
+
+/* ── FileInput ── A·B Dropzone 바탕은 약한 중성, 경계는 그 위에서 보이게 한 단계 진하게. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-dropzone.dds-file-input__dropzone:not([data-disabled], [data-dragging]) {
+  background-color: var(--dds-color-bg-neutral-weak);
+  border-color: var(--dds-color-stroke-neutral);
+}
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-dropzone.dds-file-input__dropzone:not([data-disabled], [data-dragging]):hover { background-color: var(--dds-color-bg-neutral-weak-hover); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-dropzone.dds-file-input__dropzone[aria-invalid="true"] { border-color: var(--dds-color-stroke-critical); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-file-trigger.dds-file-input__trigger { border-radius: var(--fx-button-radius); }
+:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-file-trigger.dds-file-input__trigger { width: 100%; min-height: 44px; }
+.fx-file-hint { font-size: var(--dds-font-size-t3); line-height: var(--dds-line-height-t3); }
+.fx-file-row { display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px var(--fx-list-inset, 12px); border: 1px solid var(--dds-color-stroke-neutral-weak); border-radius: var(--dds-radius-r2); background: var(--dds-color-bg-layer-default); }
+.fx-file-icon { display: inline-flex; color: var(--dds-color-fg-neutral-weak); }
+.fx-file-main { display: grid; flex: 1; min-width: 0; }
+.fx-file-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fx-file-meta { color: var(--dds-color-fg-neutral-weak); font-size: var(--dds-font-size-t3); line-height: var(--dds-line-height-t3); }
+.fx-file-row[data-status="error"] { border-color: var(--dds-color-stroke-critical); }
+.fx-file-row[data-status="error"] .fx-file-meta { color: var(--dds-color-fg-critical); }
+
+/* 접근성(WCAG 1.4.11 비텍스트 대비 3:1): 면 차이만으로는 입력 영역이 1.09:1(다크 1.25:1)이라 보이지 않는다.
+   글자를 입력하는 box·내부 라벨 box·box 검색·날짜 box에 현재 DDS 입력 경계(stroke-neutral 1px)를 되돌린다.
+   버튼·칩 트리거는 라벨과 caret으로 식별되므로 그대로 둔다. Gemini 1라운드 #1·#13 수용. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) :is(
+  .fx-box:is(.dds-text-field, .dds-text-field__wrapper, .dds-text-area, .dds-select__trigger),
+  .fx-box.dds-multi-select__trigger--search,
+  .dds-multi-select__search--content,
+  .fx-date-box > .dds-button
+):not(:disabled):not([data-disabled]):not([aria-invalid="true"]):not(:focus-visible):not(:has(:focus-visible)) {
+  border-color: var(--dds-color-stroke-neutral);
+}
+:root .fx-inbox:not(:focus-within) { border-color: var(--dds-color-stroke-neutral); }
