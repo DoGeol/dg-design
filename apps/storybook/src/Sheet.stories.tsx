@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button, Sheet } from "@dg-design/react";
 
+import { CloseButton, StatusBadge, WorkAside, WorkBody, WorkFooter } from "./work-panel-demo";
+
 // Dialog와 같은 이유로 component를 지정하지 않는다 — barrel엔 Sheet 객체 하나뿐이라
 // 개별 compound의 컴포넌트 타입에 이름을 붙일 수 없다(TS4023). 모든 스토리가 render를 쓴다.
 const meta = {
@@ -61,6 +63,54 @@ export const FunctionalDemo: StoryObj<typeof meta> = {
               닫기
             </Button>
           </Sheet.Close>
+        </Sheet.Content>
+      </Sheet.Root>
+    </div>
+  ),
+};
+
+/** 하단 Sheet `size="fit"` 작업형 — 내용 높이(최대 90dvh), Body만 스크롤, Footer 아래 safe area. */
+export const WorkBottomStateMatrix: StoryObj<typeof meta> = {
+  name: "Work bottom state matrix",
+  render: () => (
+    <div style={{ minHeight: "100vh" }}>
+      <Sheet.Root side="bottom" open>
+        <Sheet.Overlay />
+        <Sheet.Content size="fit">
+          <Sheet.Toolbar>
+            <Sheet.Title>상태 바꾸기</Sheet.Title>
+            <CloseButton kind="sheet" />
+          </Sheet.Toolbar>
+          <Sheet.Body>
+            <WorkBody />
+          </Sheet.Body>
+          <WorkFooter Footer={Sheet.Footer} />
+        </Sheet.Content>
+      </Sheet.Root>
+    </div>
+  ),
+};
+
+/** 오른쪽 Sheet 작업형 — 좁아서 한 열로 쌓이고 Aside가 Body 뒤로 온다. Toolbar·Footer는 sticky. */
+export const WorkSideStateMatrix: StoryObj<typeof meta> = {
+  name: "Work side state matrix",
+  render: () => (
+    <div style={{ minHeight: "100vh" }}>
+      <Sheet.Root side="right" open>
+        <Sheet.Overlay />
+        <Sheet.Content>
+          <Sheet.Toolbar>
+            <Sheet.Title>공개 범위 바꾸기</Sheet.Title>
+            <StatusBadge />
+            <CloseButton kind="sheet" />
+          </Sheet.Toolbar>
+          <Sheet.Body>
+            <WorkBody />
+          </Sheet.Body>
+          <Sheet.Aside aria-label="활동">
+            <WorkAside />
+          </Sheet.Aside>
+          <WorkFooter Footer={Sheet.Footer} />
         </Sheet.Content>
       </Sheet.Root>
     </div>

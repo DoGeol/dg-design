@@ -146,3 +146,18 @@ export const ChipStateMatrix: StoryObj<typeof meta> = {
     </div>
   ),
 };
+
+/** presentation="sheet" — 목록이 하단 Sheet(모달)로 열린다. 모바일 밀도 앱은 presentation="auto"로 같은 모양을 얻는다. */
+export const SheetStateMatrix: StoryObj<typeof meta> = {
+  name: "Sheet state matrix",
+  render: () => (
+    <div style={{ minHeight: "100vh", padding: 24, boxSizing: "border-box", maxWidth: 320 }}>
+      <Select.Root open defaultValue="cherry" presentation="sheet">
+        <Select.Trigger placeholder="과일을 고르세요" aria-label="과일" />
+        <Select.Content title="과일 고르기">
+          <DemoOptions />
+        </Select.Content>
+      </Select.Root>
+    </div>
+  ),
+};

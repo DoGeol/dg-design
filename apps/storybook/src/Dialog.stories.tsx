@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button, Dialog, Field, TextField } from "@dg-design/react";
 import * as React from "react";
 
+import { CloseButton, StatusBadge, WorkAside, WorkBody, WorkFooter } from "./work-panel-demo";
+
 // component를 지정하지 않는다 — Dialog.Root의 컴포넌트 타입은 barrel에 노출돼 있지 않아
 // (barrel엔 Dialog 객체 하나만) 선언 파일에서 이름을 붙일 수 없다. 모든 스토리가 render를 쓴다.
 const meta = {
@@ -158,6 +160,35 @@ export const StateMatrixStory: StoryObj<typeof meta> = {
             </Button>
             <Button>해지하기</Button>
           </div>
+        </Dialog.Content>
+      </Dialog.Root>
+    </div>
+  ),
+};
+
+/**
+ * 작업형(size="large") — Toolbar·Body·Aside·Footer. Body만 스크롤되고 Toolbar·Footer가 고정되는지,
+ * Footer가 Aside 밑으로 이어지지 않는지 VR이 본다.
+ */
+export const WorkStateMatrix: StoryObj<typeof meta> = {
+  name: "Work state matrix",
+  render: () => (
+    <div style={{ minHeight: "100vh" }}>
+      <Dialog.Root open>
+        <Dialog.Overlay />
+        <Dialog.Content size="large" style={{ height: 560 }}>
+          <Dialog.Toolbar>
+            <Dialog.Title>공개 범위 바꾸기</Dialog.Title>
+            <StatusBadge />
+            <CloseButton kind="dialog" />
+          </Dialog.Toolbar>
+          <Dialog.Body>
+            <WorkBody />
+          </Dialog.Body>
+          <Dialog.Aside aria-label="활동">
+            <WorkAside />
+          </Dialog.Aside>
+          <WorkFooter Footer={Dialog.Footer} />
         </Dialog.Content>
       </Dialog.Root>
     </div>
