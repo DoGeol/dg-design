@@ -147,12 +147,16 @@
     user-select: none;
   }
 
+  .dds-radio-group--variant_segmented.dds-radio-group--size_xsmall {
+    height: var(--dds-dimension-x6);
+  }
+
   .dds-radio-group--variant_segmented.dds-radio-group--size_small {
-    height: 28px;
+    height: var(--dds-dimension-x7);
   }
 
   .dds-radio-group--variant_segmented.dds-radio-group--size_medium {
-    height: 36px;
+    height: var(--dds-dimension-x9);
   }
 
   .dds-radio-group--variant_segmented.dds-radio-group--size_large {
@@ -194,6 +198,12 @@
     cursor: pointer;
     gap: 0;
     transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .dds-radio-group--variant_segmented.dds-radio-group--size_xsmall .dds-radio {
+    padding: 0 var(--dds-dimension-x2);
+    font-size: var(--dds-font-size-t1);
+    line-height: var(--dds-line-height-t1);
   }
 
   .dds-radio-group--variant_segmented.dds-radio-group--size_small .dds-radio {

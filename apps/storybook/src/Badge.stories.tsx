@@ -3,7 +3,7 @@ import { Badge } from "@dg-design/react";
 
 const INTENTS = ["brand", "neutral", "critical", "positive", "warning", "informative"] as const;
 const VARIANTS = ["solid", "weak", "outline"] as const;
-const SIZES = ["medium", "large"] as const;
+const SIZES = ["small", "medium", "large"] as const;
 
 const meta = {
   title: "Badge",

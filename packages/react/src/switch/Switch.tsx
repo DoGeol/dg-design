@@ -9,6 +9,7 @@ import { FieldContext } from "../field/field-context";
 const switchRoot = cva("dds-switch", {
   variants: {
     size: {
+      small: "dds-switch--size_small",
       medium: "dds-switch--size_medium",
       large: "dds-switch--size_large",
     },

@@ -156,7 +156,7 @@ function StateMatrix() {
           variant: segmented (small, medium, large, disabled)
         </h2>
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-          {(["small", "medium", "large"] as const).map((size) => (
+          {(["xsmall", "small", "medium", "large"] as const).map((size) => (
             <div key={size} style={{ display: "flex", alignItems: "center", gap: 16 }}>
               <span style={{ font: "500 12px sans-serif", width: 60 }}>{size}</span>
               <RadioGroup.Root variant="segmented" size={size} defaultValue="dark" aria-label={`테마 ${size}`}>

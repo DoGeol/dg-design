@@ -1,7 +1,7 @@
 import * as React from "react";
 
 export type AccordionVariant = "inline" | "separated";
-export type AccordionSize = "medium" | "large";
+export type AccordionSize = "small" | "medium" | "large";
 
 export interface AccordionRootContextValue {
   values: string[];

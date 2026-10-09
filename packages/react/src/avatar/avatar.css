@@ -11,6 +11,7 @@
     border-radius: var(--dds-radius-r-full);
   }
 
+  .dds-avatar--size_xsmall { width: var(--dds-dimension-x5); height: var(--dds-dimension-x5); }
   .dds-avatar--size_small { width: var(--dds-dimension-x6); height: var(--dds-dimension-x6); }
   .dds-avatar--size_medium { width: var(--dds-dimension-x9); height: var(--dds-dimension-x9); }
   .dds-avatar--size_large { width: var(--dds-dimension-x12); height: var(--dds-dimension-x12); }
@@ -62,6 +63,7 @@
   }
 
   /* 이니셜은 원 크기를 따라간다 — 상속 14px 고정이면 24px 원에서는 꽉 차고 64px 원에서는 너무 작다 */
+  .dds-avatar--size_xsmall .dds-avatar__fallback { font-size: var(--dds-font-size-t1); }
   .dds-avatar--size_small .dds-avatar__fallback { font-size: var(--dds-font-size-t1); }
   .dds-avatar--size_medium .dds-avatar__fallback { font-size: var(--dds-font-size-t3); }
   .dds-avatar--size_large .dds-avatar__fallback { font-size: var(--dds-font-size-t5); }

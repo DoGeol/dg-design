@@ -40,6 +40,7 @@ function useAvatarContext(component: string) {
 const root = cva("dds-avatar", {
   variants: {
     size: {
+      xsmall: "dds-avatar--size_xsmall",
       small: "dds-avatar--size_small",
       medium: "dds-avatar--size_medium",
       large: "dds-avatar--size_large",

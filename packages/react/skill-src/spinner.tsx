@@ -18,7 +18,7 @@
  *
  * | prop | 값 | 메모 |
  * | --- | --- | --- |
- * | `size` | `small` · `medium`(기본) | |
+ * | `size` | `xsmall`(12) · `small`(16) · `medium`(기본, 20) | Button `loading`은 크기에 맞춰 알아서 고른다 |
  * | `aria-label` / `aria-labelledby` | string | 주면 `role="status"`가 붙는 의미 있는 상태가 된다 |
  *
  * ## 접근성

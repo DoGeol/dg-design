@@ -19,7 +19,7 @@
 
 | 부품 | 주요 prop | 메모 |
 | --- | --- | --- |
-| `Accordion.Root` | `values` · `defaultValues` · `onValuesChange` · `multiple` · `disabled` · `variant`(`inline` 기본·`separated`) · `size`(`medium` 기본·`large`) | 값은 항목 `value` 배열. `multiple`이 아니면 첫 값 하나만 열린다 |
+| `Accordion.Root` | `values` · `defaultValues` · `onValuesChange` · `multiple` · `disabled` · `variant`(`inline` 기본·`separated`) · `size`(`small`·`medium` 기본·`large`) | 값은 항목 `value` 배열. `multiple`이 아니면 첫 값 하나만 열린다 |
 | `Accordion.Item` | `value`(필수, Root 안에서 유일) · `disabled` | 같은 값이 겹치면 콘솔 경고(환경 구분 없음) |
 | `Accordion.Header` | `asChild` | 제목 요소(heading) 래퍼. Trigger를 감싼다 |
 | `Accordion.Trigger` | `asChild` | 펼침 버튼 |

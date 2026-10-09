@@ -126,7 +126,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             레이어는 클래스 없이 data 속성으로 구분한다 — 색 스냅샷은 dds- 클래스만 훑는다. */}
         <span data-layer="content">{children}</span>
         <span data-layer="spinner" aria-hidden="true">
-          {spinnerMounted ? <Spinner className="dds-button__spinner" aria-hidden="true" /> : null}
+          {spinnerMounted ? <Spinner className="dds-button__spinner" size={size === "xsmall" ? "small" : undefined} aria-hidden="true" /> : null}
         </span>
       </button>
     );

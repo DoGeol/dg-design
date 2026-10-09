@@ -21,6 +21,7 @@ const badge = cva("dds-badge", {
       outline: "dds-badge--variant_outline",
     },
     size: {
+      small: "dds-badge--size_small",
       medium: "dds-badge--size_medium",
       large: "dds-badge--size_large",
     },

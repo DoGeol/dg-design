@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Checkbox } from "@dg-design/react";
 import * as React from "react";
 
-const SIZES = ["medium", "large"] as const;
+const SIZES = ["small", "medium", "large"] as const;
 
 const meta = {
   title: "Checkbox",

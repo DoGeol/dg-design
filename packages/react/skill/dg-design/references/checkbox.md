@@ -21,7 +21,7 @@
 | prop | 값 | 메모 |
 | --- | --- | --- |
 | `children` | ReactNode | 라벨. 라벨 클릭도 토글된다 |
-| `size` | `medium`(기본) · `large` | `large`는 모바일 |
+| `size` | `small` · `medium`(기본) · `large` | `small`(14)은 촘촘한 표·툴바, `large`는 모바일 |
 | `indeterminate` | boolean | 부분 선택 표시. `checked`와 별개 |
 | `motion` | `auto`(기본) · `none` | 포인터 변경에서만 아이콘 전환. 대량 목록은 `none` |
 | `checked`·`defaultChecked`·`onChange`·`name`·`value`·`disabled` | input 표준 | controlled/uncontrolled 모두 가능 |

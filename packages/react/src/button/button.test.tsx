@@ -105,6 +105,14 @@ describe("Button loading", () => {
     expect(button().querySelector(".dds-button__spinner")).not.toBeNull();
   });
 
+  it("xsmall은 small 스피너(16)를 쓴다 — 기본 20은 28 높이에 꽉 낀다", () => {
+    const { rerender } = render(<Button loading size="xsmall">저장</Button>);
+    expect(button().querySelector(".dds-spinner--size_small")).not.toBeNull();
+
+    rerender(<Button loading>저장</Button>);
+    expect(button().querySelector(".dds-spinner--size_medium")).not.toBeNull();
+  });
+
   it("loading이 아니면 aria-busy·스피너가 없다", () => {
     render(<Button>저장</Button>);
 

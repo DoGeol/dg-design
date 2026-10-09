@@ -7,6 +7,7 @@ import * as React from "react";
 const spinner = cva("dds-spinner", {
   variants: {
     size: {
+      xsmall: "dds-spinner--size_xsmall",
       small: "dds-spinner--size_small",
       medium: "dds-spinner--size_medium",
     },

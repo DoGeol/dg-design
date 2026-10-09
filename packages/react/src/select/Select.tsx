@@ -152,6 +152,7 @@ SelectRoot.displayName = "Select.Root";
 const trigger = cva("dds-select__trigger", {
   variants: {
     size: {
+      xsmall: "dds-select__trigger--size_xsmall",
       medium: "dds-select__trigger--size_medium",
       large: "dds-select__trigger--size_large",
     },

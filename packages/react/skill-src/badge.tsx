@@ -19,7 +19,7 @@
  * | --- | --- | --- |
  * | `intent` | `neutral`(기본) · `brand` · `critical` · `positive` · `warning` · `informative` | 의미 |
  * | `variant` | `weak`(기본) · `solid` · `outline` | 강조 단계 |
- * | `size` | `medium`(기본) · `large` | |
+ * | `size` | `small`(16) · `medium`(기본) · `large` | |
  * | `truncate` | boolean | 좁은 곳에서 말줄임 |
  * | `asChild` | boolean | 자식 요소에 Badge 모양을 입힌다 |
  *

@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { Caption, DensityColumns } from "./new-kinds-frame";
 
-const SIZES = ["medium", "large"] as const;
+const SIZES = ["xsmall", "medium", "large"] as const;
 
 const meta = {
   title: "TextField",

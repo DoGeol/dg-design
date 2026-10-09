@@ -10,6 +10,7 @@ import { mergeRefs } from "../internal/merge-refs";
 const checkbox = cva("dds-checkbox", {
   variants: {
     size: {
+      small: "dds-checkbox--size_small",
       medium: "dds-checkbox--size_medium",
       large: "dds-checkbox--size_large",
     },

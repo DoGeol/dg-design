@@ -139,6 +139,13 @@
 
 **닫기·제거 X hover (2026-10-10)** — Chip 제거 버튼의 hover 배경이 칩 높이 정사각 전체를 칠해 칩 위·아래·끝 변에 붙었다. 원인은 누르는 영역과 hover 표시가 같은 상자인 것. 라이브러리가 그리는 X(Chip 제거·Alert 닫기·Toast 닫기)는 hover 표시를 **원**으로 하고 누르는 영역과 분리한다. Chip은 버튼 크기를 두고 `background-clip: content-box`로 안쪽 원(데스크톱 18·모바일 20)만 칠한다. Alert는 24 원, Toast는 hover가 없던 것을 24 원으로 더하되 음수 여백으로 배치 20을 유지한다. Dialog·Sheet 닫기는 소비자가 `Button ghost iconOnly`로 조립하므로 범위 밖이다.
 
+**작은 크기 단계 (2026-10-10)** — 사용자 요청으로 소비처 없이 Button xsmall에 맞춘 작은 단계를 더했다(구성 규칙 예외, "나중에 쓸 수 있다"). 이름은 같은 높이면 Button과 같은 이름을 쓰고(xsmall 28), 28이 맞지 않는 컴포넌트는 지금 가장 작은 것보다 한 단계 아래 이름을 쓴다.
+- TextField·Select·MultiSelect 트리거 `xsmall` 28(글자 12·좌우 8·반경 4), TextArea `xsmall`(한 줄 28). **모바일 밀도에서는 medium으로 그린다** — 16px 미만 입력은 iOS가 초점 때 확대한다. MultiSelect 검색 트리거는 칩 24가 들어가게 위아래 여백을 테두리만큼만 남기고 칩이 늘면 자란다.
+- RadioGroup segmented `xsmall` 24(글자 11), small 28·medium 36은 숫자 대신 dimension 토큰으로 바꿨다.
+- Switch `small` 28×16, Checkbox `small` 14, Badge `small` 16, Avatar `xsmall` 20, Spinner `xsmall` 12, Accordion `small`(위아래 12·제목 14).
+- Button `loading`은 xsmall에서 small 스피너(16)를 쓴다 — 기본 20은 28 안에 꽉 낀다.
+- 넣지 않음: Slider(손잡이가 더 작으면 잡기 어렵다), Tabs·Pagination·Chip(크기 축이 없어 새 API가 된다).
+
 ## 다음
 
 - Storybook Brand 툴바의 auto를 createTheme 블루로 맞췄다(`apps/storybook/.storybook/preview.tsx`). 보강 이미지는 #155EEF로 그렸으므로 색은 참고하지 않는다.

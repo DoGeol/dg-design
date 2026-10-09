@@ -138,6 +138,19 @@
   }
 
   /* size: 치수는 스펙 위임 — 기존 dimension/radius 토큰에서 선택 */
+  .dds-checkbox--size_small .dds-checkbox__box {
+    width: var(--dds-dimension-x3_5);
+    height: var(--dds-dimension-x3_5);
+    border-radius: var(--dds-radius-r1);
+  }
+  .dds-checkbox--size_small .dds-checkbox__box:has(~ .dds-checkbox__label) {
+    margin-block-start: calc((var(--dds-line-height-t3) - var(--dds-dimension-x3_5)) / 2);
+  }
+  .dds-checkbox--size_small .dds-checkbox__label {
+    font-size: var(--dds-font-size-t3);
+    line-height: var(--dds-line-height-t3);
+  }
+
   .dds-checkbox--size_medium .dds-checkbox__box {
     width: var(--dds-dimension-x4);
     height: var(--dds-dimension-x4);

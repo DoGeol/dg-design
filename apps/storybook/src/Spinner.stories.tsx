@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Spinner } from "@dg-design/react";
 
-const SIZES = ["small", "medium"] as const;
+const SIZES = ["xsmall", "small", "medium"] as const;
 
 const meta = {
   title: "Spinner",

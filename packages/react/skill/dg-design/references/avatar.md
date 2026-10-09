@@ -20,7 +20,7 @@
 
 | 부품 | 주요 prop | 메모 |
 | --- | --- | --- |
-| `Avatar.Root` | `size`(`small`·`medium` 기본·`large`·`xlarge`) · `motion`(`none` 기본·`auto`) | `auto`면 새로 받은 이미지가 150ms 페이드인. 대량 목록은 기본값 유지 |
+| `Avatar.Root` | `size`(`xsmall` 20·`small`·`medium` 기본·`large`·`xlarge`) · `motion`(`none` 기본·`auto`) | `auto`면 새로 받은 이미지가 150ms 페이드인. 대량 목록은 기본값 유지 |
 | `Avatar.Image` | `src` · `alt` | `<img>` 속성. 로드되기 전과 실패 시 숨겨진다 |
 | `Avatar.Fallback` | children | 이미지가 로드되면 숨겨진다. 이니셜·아이콘 |
 | `Avatar.Badge` | children | 모서리 상태 점 |
@@ -52,7 +52,7 @@ export function WithFallback() {
 export function Sizes() {
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "var(--dds-dimension-x2)" }}>
-      {(["small", "medium", "large", "xlarge"] as const).map((size) => (
+      {(["xsmall", "small", "medium", "large", "xlarge"] as const).map((size) => (
         <Avatar.Root key={size} size={size}>
           <Avatar.Fallback>김</Avatar.Fallback>
         </Avatar.Root>
