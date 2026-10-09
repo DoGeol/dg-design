@@ -24,7 +24,8 @@ const STATIC_SIDE: Record<string, string> = { top: "bottom", right: "left", bott
  * strategy는 fixed — portal 컨테이너가 body 직속이라 문서 스크롤 오프셋을 다시 더할 필요가 없다.
  *
  * `matchTriggerWidth`는 Select용이다. 패널이 트리거보다 좁으면 선택지가 잘려 보이므로
- * min-width만 끌어올린다(고정 width가 아니라 긴 옵션은 여전히 넓어진다).
+ * min-width만 끌어올린다(고정 width가 아니라 긴 옵션은 여전히 넓어진다). 패널 CSS가
+ * `--dds-overlay-min-width`를 주면 트리거보다 좁은 쪽만 그 값까지 넓힌다(Select 칩 트리거).
  *
  * `arrowElement`가 있으면(Popover) 같은 계산 한 번으로 arrow 미들웨어까지 얹는다 — 별도
  * computePosition을 또 돌리면 리스너가 두 배가 된다.
@@ -55,7 +56,7 @@ export function useOverlayPosition(
             ? [
                 size({
                   apply({ rects, elements }) {
-                    elements.floating.style.minWidth = `${rects.reference.width}px`;
+                    elements.floating.style.minWidth = `max(${rects.reference.width}px, var(--dds-overlay-min-width, 0px))`;
                   },
                 }),
               ]

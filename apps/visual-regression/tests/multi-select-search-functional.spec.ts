@@ -62,14 +62,14 @@ test.describe('MultiSelect search="trigger" 키보드', () => {
     await input.press("Enter");
     await expect(page.getByRole("listbox")).toBeVisible();
     // 선택은 트리거 안의 칩으로 나타나고 제거 버튼이 tab 순서에 들어간다.
-    const chip = page.locator(".dds-multi-select__chip");
+    const chip = page.locator(".dds-multi-select__trigger--search .dds-chip");
     await expect(chip).toHaveCount(1);
     await expect(chip).toContainText("Banana");
 
     // 빈 입력에서 Backspace → 마지막 칩 제거.
     await input.fill("");
     await input.press("Backspace");
-    await expect(page.locator(".dds-multi-select__chip")).toHaveCount(0);
+    await expect(page.locator(".dds-multi-select__trigger--search .dds-chip")).toHaveCount(0);
   });
 
   test("↓ 이동이 활성 옵션만 바꾸고 포커스는 입력에 남는다", async ({ page }) => {
@@ -101,7 +101,7 @@ test.describe('MultiSelect search="trigger" 키보드', () => {
     await expect(create).toHaveAttribute("aria-disabled", "true");
     await expect(create.locator(".dds-spinner")).toBeVisible();
 
-    await expect(page.locator(".dds-multi-select__chip")).toContainText("kiwi");
+    await expect(page.locator(".dds-multi-select__trigger--search .dds-chip")).toContainText("kiwi");
     await expect(input).toHaveValue("");
   });
 });

@@ -31,6 +31,8 @@ Tailwind를 안 쓰면 `tokens.css`만 로드하면 된다.
 
 react 0.18.0부터 컴포넌트가 역할 토큰(tokens 0.9.0)을 읽는다. tokens 0.8.x 위에 react 0.18.0을 얹으면 입력 높이·반경, 메뉴·옵션 행, 탭, Sheet 여백 같은 치수가 정의되지 않아 브라우저 기본값으로 무너진다 — **react 0.18.0 이상은 tokens 0.9.0 이상과 함께 올린다.**
 
+react 0.20.0의 List·PropertyField는 tokens 0.10.0의 목록·설정 행 역할(`--dds-size-list-row-*`·`--dds-space-list-*`·`--dds-size-setting-row-height`·`--dds-radius-setting-row`)을 읽는다 — **react 0.20.0 이상은 tokens 0.10.0 이상과 함께 올린다.**
+
 ## 다크 모드와 중첩 스코프
 
 `<html data-dds-theme="dark">`가 문서 전체를 다크로 바꾼다. 하위 요소에 `data-dds-theme="light"` 또는 `"dark"`를 붙이면 그 서브트리만 해당 모드가 된다 — 다크 안의 라이트, 라이트 안의 다크, 여러 겹 중첩 모두 **가장 가까운 조상의 값**을 따른다(tokens 0.8.0부터).
@@ -57,15 +59,17 @@ react 0.18.0부터 컴포넌트가 역할 토큰(tokens 0.9.0)을 읽는다. tok
 | `--dds-space-page-inset` · `field-gap` · `group-gap` | 32 · 12 · 24 | 20 · 14 · 28 |
 | `--dds-space-panel-inset` · `field-inset` · `sheet-inset` | 40 · 12 · 24 | 20 · 16 · 20 |
 | `--dds-space-select-panel-inset` · `menu-inset` · `tab-inset` · `tab-panel-gap` | 8 · 6 · 12 · 24 | 같음 |
+| `--dds-space-list-inset` · `list-leading-gap` | 12 · 8 | 16 · 8 |
 | `--dds-size-field-height` · `cta-height` | 40 · 48 | 56 · 52 |
 | `--dds-size-option-height` · `menu-item-height` · `chip-height` | 36 · 36 · 24 | 48 · 48 · 32 |
+| `--dds-size-list-row-1` · `list-row-2` · `setting-row-height` | 48 · 56 · 48 | 56 · 64 · 56 |
 | `--dds-size-touch-target` | 24 | 44 |
 | `--dds-size-mark` · `tab-height` · `table-row` | 16 · 40 · 44 | 같음 |
 | `--dds-radius-field` · `button` | 4 · 6 | 14 · 12 |
-| `--dds-radius-select-panel` · `option` · `menu` · `menu-item` · `chip` · `sheet` | 12 · 4 · 12 · 6 · 6 · 0 | 같음 |
+| `--dds-radius-select-panel` · `option` · `menu` · `menu-item` · `chip` · `sheet` · `setting-row` | 12 · 4 · 12 · 6 · 6 · 0 · 14 | 같음 |
 | `--dds-font-size-field` · `body` / `--dds-line-height-body` | 14 · 14 / 19 | 16 · 16 / 24 |
 
-값은 px 환산이다(글자는 rem으로 방출). 출처는 [flex 적용 방향](decisions/2026-10-09-flex-adoption-direction.md) 치수표다. `page-inset`·`field-gap`·`group-gap`·`panel-inset`·`cta-height`·`table-row`·`--dds-font-size-body`는 앱 레이아웃용이다(react 0.18.0 기준 컴포넌트가 읽지 않는다). 나머지는 컴포넌트가 읽는다 — 밀도를 바꾸면 입력·버튼·옵션·메뉴·Sheet·조작 영역이 함께 바뀐다.
+값은 px 환산이다(글자는 rem으로 방출). 출처는 [flex 적용 방향](decisions/2026-10-09-flex-adoption-direction.md) 치수표다. `page-inset`·`field-gap`·`group-gap`·`panel-inset`·`cta-height`·`table-row`·`--dds-font-size-body`는 앱 레이아웃용이다(react 0.18.0 기준 컴포넌트가 읽지 않는다). 나머지는 컴포넌트가 읽는다 — 밀도를 바꾸면 입력·버튼·옵션·메뉴·Sheet·목록·속성 행·조작 영역이 함께 바뀐다.
 
 - **루트에만 붙인다.** 테마와 달리 하위 요소 중첩을 지원하지 않는다 — Dialog·Popover 같은 포털은 `body`에 붙어 하위 스코프를 벗어나므로, 화면 일부만 모바일로 두면 그 안에서 연 오버레이가 데스크톱 값으로 열린다.
 - 언제 모바일로 둘지(뷰포트 폭, 기기, 사용자 설정)는 소비 앱이 정한다.

@@ -60,6 +60,64 @@
     line-height: var(--dds-line-height-t6);
   }
 
+  /* 칩 모양 트리거 — 필터 도구의 고정 필터. 필터 칩(chip.css)과 같은 모양이고, 입력이 아니라 비입력 2px 링을 쓴다. */
+  .dds-select__trigger--variant_chip {
+    position: relative;
+    width: auto;
+    max-width: 100%;
+    height: var(--dds-size-chip-height);
+    gap: var(--dds-dimension-x1);
+    padding-inline: var(--dds-dimension-x2) var(--dds-dimension-x1_5);
+    border: 0;
+    border-radius: var(--dds-radius-chip);
+    box-shadow: inset 0 0 0 1px var(--dds-color-stroke-neutral-weak);
+    font-size: var(--dds-font-size-t2);
+    line-height: var(--dds-line-height-t2);
+    vertical-align: middle;
+  }
+  .dds-select__trigger--variant_chip:not(:is(:disabled, [disabled], [data-disabled])):hover {
+    background-color: var(--dds-color-bg-transparent-hover);
+  }
+  .dds-select__trigger--variant_chip[data-active] {
+    background-color: var(--dds-color-bg-brand-weak);
+    box-shadow: none;
+    color: var(--dds-color-fg-brand);
+  }
+  .dds-select__trigger--variant_chip[data-active]:not(:is(:disabled, [disabled], [data-disabled])):hover {
+    background-color: var(--dds-color-bg-brand-weak-hover);
+  }
+  .dds-select__trigger--variant_chip:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+    box-shadow: inset 0 0 0 1px var(--dds-color-stroke-neutral-weak);
+  }
+  .dds-select__trigger--variant_chip[data-active]:focus-visible {
+    box-shadow: none;
+  }
+  .dds-select__trigger--variant_chip:is(:disabled, [disabled], [data-disabled]) {
+    box-shadow: none;
+  }
+  .dds-select__trigger--variant_chip .dds-select__caret {
+    width: var(--dds-dimension-x3_5);
+    height: var(--dds-dimension-x3_5);
+  }
+  [data-dds-density="mobile"] .dds-select__trigger--variant_chip {
+    padding-inline: var(--dds-dimension-x3) var(--dds-dimension-x2);
+    font-size: var(--dds-font-size-t3);
+    line-height: var(--dds-line-height-t3);
+  }
+  /* 모바일 조작 영역 44 — 필터 칩과 같은 투명 확장 */
+  [data-dds-density="mobile"] .dds-select__trigger--variant_chip::before {
+    content: "";
+    position: absolute;
+    inset-block: calc((var(--dds-size-chip-height) - var(--dds-size-touch-target)) / 2);
+    inset-inline: 0;
+  }
+  /* 12rem은 제안값 — 상태 매트릭스에서 가장 긴 옵션이 줄바꿈 없이 들어가는지 보고 확정한다(P4 스펙). */
+  .dds-select__content--chip {
+    --dds-overlay-min-width: 12rem;
+  }
+
   .dds-select__value {
     overflow: hidden;
     white-space: nowrap;

@@ -1,0 +1,16 @@
+dds-select__trigger dds-select__trigger--variant_chip | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | rgb(58, 62, 62) 0px 0px 0px 1px inset
+dds-select__value | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-select__caret | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-select__trigger dds-select__trigger--variant_chip | rgb(131, 232, 231) | rgb(7, 45, 45) | none | rgb(131, 232, 231) | none
+dds-select__value | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
+dds-select__caret | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
+dds-select__trigger dds-select__trigger--variant_chip | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
+dds-select__value | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-select__caret | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-select__trigger dds-select__trigger--variant_chip | rgb(131, 232, 231) | rgb(7, 45, 45) | none | rgb(131, 232, 231) | none
+dds-select__trigger dds-select__trigger--variant_chip::before | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
+dds-select__value | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
+dds-select__caret | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
+dds-select__trigger dds-select__trigger--variant_chip | rgb(131, 232, 231) | rgb(7, 45, 45) | none | rgb(131, 232, 231) | none
+dds-select__value | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
+dds-select__caret | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none

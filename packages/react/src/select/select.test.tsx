@@ -457,3 +457,41 @@ describe("Select 옵션 label·textValue", () => {
     expect(onValueChange).toHaveBeenCalledWith("lee");
   });
 });
+
+describe("Select.Trigger variant=\"chip\"", () => {
+  function Status({ active }: { active?: boolean }) {
+    return (
+      <Select.Root defaultValue="all">
+        <Select.Trigger variant="chip" active={active} aria-label="상태">
+          상태: 전체
+        </Select.Trigger>
+        <Select.Content>
+          <Select.Option value="all">전체</Select.Option>
+          <Select.Option value="published">발행됨</Select.Option>
+        </Select.Content>
+      </Select.Root>
+    );
+  }
+
+  it("combobox 계약을 그대로 쓰고 active면 켜짐 표시가 붙는다", async () => {
+    const user = userEvent.setup();
+    render(<Status active />);
+    expect(trigger().className).toContain("dds-select__trigger--variant_chip");
+    expect(trigger().className).not.toContain("dds-select__trigger--size_medium");
+    expect(trigger().hasAttribute("data-active")).toBe(true);
+    await user.click(trigger());
+    expect(screen.getByRole("listbox").className).toContain("dds-select__content--chip");
+    await user.click(screen.getByRole("option", { name: "발행됨" }));
+    expect(screen.queryByRole("listbox")).toBeNull();
+  });
+
+  it("active가 없으면 켜짐 표시가 없고, 기본 variant 패널은 chip 클래스가 없다", async () => {
+    const user = userEvent.setup();
+    const { unmount } = render(<Status />);
+    expect(trigger().hasAttribute("data-active")).toBe(false);
+    unmount();
+    render(<Basic />);
+    await user.click(trigger());
+    expect(screen.getByRole("listbox").className).not.toContain("dds-select__content--chip");
+  });
+});

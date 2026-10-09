@@ -96,3 +96,53 @@ export const StateMatrixStory: StoryObj<typeof meta> = {
     </div>
   ),
 };
+
+/**
+ * 칩 모양 트리거(필터 도구의 고정 필터). 꺼짐·켜짐·비활성·모바일 밀도, 그리고 열린 패널 —
+ * 패널이 칩 폭(약 90px)이 아니라 최소 12rem으로 열리는지 본다.
+ */
+export const ChipStateMatrix: StoryObj<typeof meta> = {
+  name: "Chip trigger state matrix",
+  render: () => (
+    <div style={{ minHeight: "100vh", padding: 24, boxSizing: "border-box", display: "flex", flexDirection: "column", gap: 16 }}>
+      <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+        <Select.Root defaultValue="all">
+          <Select.Trigger variant="chip" aria-label="상태">상태: 전체</Select.Trigger>
+          <Select.Content>
+            <Select.Option value="all">전체</Select.Option>
+          </Select.Content>
+        </Select.Root>
+        <Select.Root defaultValue="published">
+          <Select.Trigger variant="chip" active aria-label="상태">상태: 발행됨</Select.Trigger>
+          <Select.Content>
+            <Select.Option value="published">발행됨</Select.Option>
+          </Select.Content>
+        </Select.Root>
+        <Select.Root defaultValue="all">
+          <Select.Trigger variant="chip" disabled aria-label="상태">상태: 전체</Select.Trigger>
+          <Select.Content>
+            <Select.Option value="all">전체</Select.Option>
+          </Select.Content>
+        </Select.Root>
+      </div>
+      <div data-dds-density="mobile" style={{ display: "flex", gap: 6, alignItems: "center" }}>
+        <Select.Root defaultValue="published">
+          <Select.Trigger variant="chip" active aria-label="상태">상태: 발행됨</Select.Trigger>
+          <Select.Content>
+            <Select.Option value="published">발행됨</Select.Option>
+          </Select.Content>
+        </Select.Root>
+      </div>
+      <div>
+        <Select.Root open defaultValue="published">
+          <Select.Trigger variant="chip" active aria-label="상태">상태: 발행됨</Select.Trigger>
+          <Select.Content>
+            <Select.Option value="all">전체</Select.Option>
+            <Select.Option value="published">발행됨</Select.Option>
+            <Select.Option value="draft">초안·예약 포함</Select.Option>
+          </Select.Content>
+        </Select.Root>
+      </div>
+    </div>
+  ),
+};

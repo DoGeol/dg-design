@@ -57,6 +57,10 @@
       "types": "./dist/checkbox/Checkbox.d.ts",
       "default": "./dist/checkbox/Checkbox.js"
     },
+    "./chip": {
+      "types": "./dist/chip/Chip.d.ts",
+      "default": "./dist/chip/Chip.js"
+    },
     "./collapsible": {
       "types": "./dist/collapsible/Collapsible.d.ts",
       "default": "./dist/collapsible/Collapsible.js"
@@ -81,17 +85,25 @@
       "types": "./dist/dropdown-menu/DropdownMenu.d.ts",
       "default": "./dist/dropdown-menu/DropdownMenu.js"
     },
-    "./file-input": {
-      "types": "./dist/file-input/FileInput.d.ts",
-      "default": "./dist/file-input/FileInput.js"
-    },
     "./field": {
       "types": "./dist/field/Field.d.ts",
       "default": "./dist/field/Field.js"
     },
+    "./file-input": {
+      "types": "./dist/file-input/FileInput.d.ts",
+      "default": "./dist/file-input/FileInput.js"
+    },
+    "./filter-toolbox": {
+      "types": "./dist/filter-toolbox/FilterToolbox.d.ts",
+      "default": "./dist/filter-toolbox/FilterToolbox.js"
+    },
     "./hover-card": {
       "types": "./dist/hover-card/HoverCard.d.ts",
       "default": "./dist/hover-card/HoverCard.js"
+    },
+    "./list": {
+      "types": "./dist/list/List.d.ts",
+      "default": "./dist/list/List.js"
     },
     "./multi-select": {
       "types": "./dist/multi-select/MultiSelect.d.ts",
@@ -112,6 +124,10 @@
     "./progress": {
       "types": "./dist/progress/Progress.d.ts",
       "default": "./dist/progress/Progress.js"
+    },
+    "./property-field": {
+      "types": "./dist/property-field/PropertyField.d.ts",
+      "default": "./dist/property-field/PropertyField.js"
     },
     "./radio-group": {
       "types": "./dist/radio-group/RadioGroup.d.ts",

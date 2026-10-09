@@ -1,0 +1,145 @@
+@layer dds {
+  .dds-chip {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--dds-dimension-x1);
+    max-width: 100%;
+    min-height: var(--dds-size-chip-height);
+    padding-inline: var(--dds-dimension-x2);
+    border-radius: var(--dds-radius-chip);
+    background-color: var(--dds-color-bg-neutral-weak);
+    color: var(--dds-color-fg-neutral);
+    font-family: inherit;
+    font-size: var(--dds-font-size-t2);
+    line-height: var(--dds-line-height-t2);
+    vertical-align: middle;
+  }
+
+  /* 제거 버튼이 칩 높이 정사각이라 그쪽 여백은 버튼이 채운다. */
+  .dds-chip:has(> .dds-chip__remove) {
+    padding-inline-end: 0;
+  }
+
+  .dds-chip__leading {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+  }
+
+  .dds-chip__label {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .dds-chip__remove {
+    position: relative;
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: var(--dds-size-chip-height);
+    height: var(--dds-size-chip-height);
+    margin-inline-start: calc(var(--dds-dimension-x1) * -1);
+    padding: 0;
+    border: 0;
+    border-radius: var(--dds-radius-chip);
+    background: transparent;
+    color: var(--dds-color-fg-neutral-weak);
+    cursor: pointer;
+  }
+
+  .dds-chip__remove:hover:not(:is(:disabled, [disabled], [data-disabled])) {
+    background-color: var(--dds-color-bg-transparent-hover);
+    color: var(--dds-color-fg-neutral);
+  }
+
+  .dds-chip__remove:active:not(:is(:disabled, [disabled], [data-disabled])) {
+    background-color: var(--dds-color-bg-transparent-pressed);
+  }
+
+  /* 칩 안에 붙어 있어 링을 안쪽에 그린다. */
+  .dds-chip__remove:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: calc(var(--dds-dimension-x0_5) * -1);
+  }
+
+  .dds-chip:is([data-disabled]),
+  .dds-chip--filter:is(:disabled, [disabled], [data-disabled]) {
+    background-color: var(--dds-color-bg-disabled);
+    color: var(--dds-color-fg-disabled);
+  }
+
+  .dds-chip__remove:is(:disabled, [disabled], [data-disabled]) {
+    color: var(--dds-color-fg-disabled);
+    cursor: not-allowed;
+  }
+
+  /* 필터 칩 */
+  .dds-chip--filter {
+    position: relative;
+    margin: 0;
+    border: 0;
+    background-color: var(--dds-color-bg-layer-default);
+    box-shadow: inset 0 0 0 1px var(--dds-color-stroke-neutral-weak);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .dds-chip--filter:hover:not(:is(:disabled, [disabled], [data-disabled])) {
+    background-color: var(--dds-color-bg-transparent-hover);
+  }
+
+  .dds-chip--filter:active:not(:is(:disabled, [disabled], [data-disabled])) {
+    background-color: var(--dds-color-bg-transparent-pressed);
+  }
+
+  .dds-chip--filter[aria-pressed="true"] {
+    background-color: var(--dds-color-bg-brand-weak);
+    box-shadow: none;
+    color: var(--dds-color-fg-brand);
+  }
+
+  .dds-chip--filter[aria-pressed="true"]:hover:not(:is(:disabled, [disabled], [data-disabled])) {
+    background-color: var(--dds-color-bg-brand-weak-hover);
+  }
+
+  .dds-chip--filter[aria-pressed="true"]:active:not(:is(:disabled, [disabled], [data-disabled])) {
+    background-color: var(--dds-color-bg-brand-weak-pressed);
+  }
+
+  .dds-chip--filter:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-chip--filter:is(:disabled, [disabled], [data-disabled]) {
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  .dds-chip__check {
+    flex: none;
+    margin-inline-start: calc(var(--dds-dimension-x0_5) * -1);
+  }
+
+  [data-dds-density="mobile"] .dds-chip {
+    padding-inline: var(--dds-dimension-x3);
+    font-size: var(--dds-font-size-t3);
+    line-height: var(--dds-line-height-t3);
+  }
+
+  [data-dds-density="mobile"] .dds-chip:has(> .dds-chip__remove) {
+    padding-inline-end: 0;
+  }
+
+  /* 모바일 조작 영역 44 — 보이는 크기는 그대로 두고 투명 영역을 넓힌다.
+     칩 사이 가로 간격 6이 제거 버튼 확장 6과 같아 이웃 칩과 겹치지 않는다. */
+  [data-dds-density="mobile"] :is(.dds-chip__remove, .dds-chip--filter)::before {
+    content: "";
+    position: absolute;
+    inset-block: calc((var(--dds-size-chip-height) - var(--dds-size-touch-target)) / 2);
+    inset-inline: min(0px, calc((100% - var(--dds-size-touch-target)) / 2));
+  }
+}
