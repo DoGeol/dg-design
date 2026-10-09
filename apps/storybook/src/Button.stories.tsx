@@ -4,7 +4,7 @@ import * as React from "react";
 
 const INTENTS = ["brand", "neutral", "critical"] as const;
 const VARIANTS = ["solid", "weak", "ghost"] as const;
-const SIZES = ["small", "medium", "large"] as const;
+const SIZES = ["xsmall", "small", "medium", "large"] as const;
 
 const meta = {
   title: "Button",
@@ -32,7 +32,7 @@ type Story = StoryObj<typeof meta>;
 export const Playground: Story = {};
 
 /**
- * intent(3) x variant(3) 그리드. 각 셀은 size(3) 행을 담은 서브 그리드라
+ * intent(3) x variant(3) 그리드. 각 셀은 size(4) 행을 담은 서브 그리드라
  * 27조합 전체를 한 화면에서 육안 확인할 수 있다.
  */
 function CombinationGrid({ disabled = false }: { disabled?: boolean }) {
@@ -95,12 +95,12 @@ function CombinationGrid({ disabled = false }: { disabled?: boolean }) {
   );
 }
 
-/** intent(2) x variant(3) x size(3) = 18조합 전체 그리드 */
+/** intent(3) x variant(3) x size(4) = 36조합 전체 그리드 */
 export const AllCombinations: Story = {
   render: () => <CombinationGrid />,
 };
 
-/** disabled 상태 18조합 — hover해도 색이 바뀌지 않는지 육안 확인용 */
+/** disabled 상태 36조합 — hover해도 색이 바뀌지 않는지 육안 확인용 */
 export const Disabled: Story = {
   render: () => <CombinationGrid disabled />,
 };
@@ -111,7 +111,7 @@ const PlusIcon = ({ size }: { size: number }) => (
   </svg>
 );
 
-/** iconOnly: size 3종 x variant 3종 + disabled. 아이콘은 small·medium 16, large 20. */
+/** iconOnly: size 4종 x variant 3종 + disabled. 아이콘은 xsmall 14, small·medium 16, large 20. */
 export const IconOnly: Story = {
   name: "Icon only",
   render: () => (
@@ -120,11 +120,11 @@ export const IconOnly: Story = {
         <div key={size} style={{ display: "flex", gap: 12, alignItems: "center" }}>
           {VARIANTS.map((variant) => (
             <Button key={variant} iconOnly size={size} variant={variant} aria-label="추가">
-              <PlusIcon size={size === "large" ? 20 : 16} />
+              <PlusIcon size={size === "large" ? 20 : size === "xsmall" ? 14 : 16} />
             </Button>
           ))}
           <Button iconOnly size={size} disabled aria-label="추가 (비활성)">
-            <PlusIcon size={size === "large" ? 20 : 16} />
+            <PlusIcon size={size === "large" ? 20 : size === "xsmall" ? 14 : 16} />
           </Button>
         </div>
       ))}
@@ -180,4 +180,29 @@ function MotionDemoView() {
 export const MotionDemo: StoryObj<typeof meta> = {
   name: "Motion demo",
   render: () => <MotionDemoView />,
+};
+
+/**
+ * xsmall(28) — 표 행·툴바 안의 작은 행동. 모바일 밀도에서는 보이는 크기 그대로 투명 영역만 44로 넓어진다.
+ * VR 기능 테스트(`button--xsmall-touch-demo`)가 조작 영역을 잰다.
+ */
+export const XsmallTouchDemo: StoryObj<typeof meta> = {
+  name: "Xsmall touch demo",
+  render: () => (
+    <div style={{ display: "flex", gap: 48, padding: 24 }}>
+      {[undefined, "mobile"].map((density) => (
+        <section key={density ?? "desktop"} data-dds-density={density}>
+          <h2 style={{ font: "600 14px sans-serif", margin: "0 0 12px" }}>{density ?? "desktop"}</h2>
+          <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+            <Button size="xsmall" intent="neutral" variant="weak">
+              편집
+            </Button>
+            <Button size="xsmall" intent="neutral" variant="ghost" iconOnly aria-label={`추가 ${density ?? "desktop"}`}>
+              <PlusIcon size={14} />
+            </Button>
+          </div>
+        </section>
+      ))}
+    </div>
+  ),
 };

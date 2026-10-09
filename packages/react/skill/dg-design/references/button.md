@@ -22,7 +22,7 @@
 | --- | --- | --- |
 | `intent` | `brand`(기본) · `neutral` · `critical` | 의미 |
 | `variant` | `solid`(기본) · `weak` · `ghost` | 강조 단계 |
-| `size` | `small` · `medium`(기본) · `large` | `large`는 모바일 주 행동 |
+| `size` | `xsmall` · `small` · `medium`(기본) · `large` | `xsmall`(28)은 표 행·툴바·본문 안의 작은 행동, `large`는 모바일 주 행동 |
 | `iconOnly` | boolean | 정사각. `aria-label` 필수 |
 | `loading` | boolean | 스피너 + disabled + `aria-busy`. 폭은 그대로 |
 | `asChild` | boolean | 자식 요소(링크 등)에 Button 모양을 입힌다. `loading`과 함께 못 씀 |
@@ -66,6 +66,20 @@ export function IconOnly() {
         <path d="M4 4l8 8M12 4l-8 8" stroke="currentColor" strokeWidth="1.5" />
       </svg>
     </Button>
+  );
+}
+
+/** 표 행·툴바 안의 작은 행동 — xsmall. 모바일 밀도에서는 보이는 크기 그대로 조작 영역만 44 */
+export function Compact() {
+  return (
+    <div style={{ display: "flex", gap: "var(--dds-dimension-x1)" }}>
+      <Button size="xsmall" intent="neutral" variant="weak">
+        편집
+      </Button>
+      <Button size="xsmall" intent="neutral" variant="ghost">
+        복제
+      </Button>
+    </div>
   );
 }
 
