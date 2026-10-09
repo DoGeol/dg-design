@@ -10,9 +10,10 @@
     cursor: pointer;
   }
 
-  /* hover·pressed 배경과 focus 링이 글자에 붙지 않게 4×8 여백을 둔다.
+  /* hover·pressed 배경과 focus 링이 글자에 붙지 않게 4×8 여백을 둔다. 작은 문구 트리거라 모바일에서는 조작 영역(44)까지 키운다.
      Accordion 트리거도 이 클래스를 받지만 행 전체를 채우는 배경이라 여백·radius 모두 제외한다. */
   .dds-collapsible__trigger:not(.dds-accordion__trigger) {
+    min-height: var(--dds-size-touch-target);
     gap: var(--dds-dimension-x1);
     border-radius: var(--dds-radius-r1);
     padding: var(--dds-dimension-x1) var(--dds-dimension-x2);

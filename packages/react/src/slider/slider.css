@@ -11,19 +11,19 @@
     box-sizing: border-box;
   }
 
-  /* 렌더 크기(트랙·썸)는 유지하고 히트박스(height)만 WCAG 2.5.8 최소 24px로 키운다.
+  /* 렌더 크기(트랙·썸)는 유지하고 히트박스(height)만 조작 영역(데스크톱 24 = WCAG 2.5.8 최소, 모바일 44)으로 키운다.
      -webkit-slider-runnable-track는 명시 height가 입력 박스 높이보다 작으면
      세로 중앙 정렬되므로 시각 두께는 그대로다. */
   .dds-slider--size_small {
     --dds-slider-track-height: 4px;
     --dds-slider-thumb-size: 14px;
-    height: var(--dds-dimension-x6);
+    height: var(--dds-size-touch-target);
   }
 
   .dds-slider--size_medium {
     --dds-slider-track-height: 6px;
     --dds-slider-thumb-size: 18px;
-    height: var(--dds-dimension-x6);
+    height: var(--dds-size-touch-target);
   }
 
   /* WebKit Track */

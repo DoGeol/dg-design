@@ -29,13 +29,20 @@
     z-index: 3;
   }
 
-  .dds-data-table .dds-table__row:hover .dds-data-table__pinned {
+  /* 고정 열은 불투명 배경이 필요해 hover도 불투명 bg-neutral-weak다. 나머지 칸(반투명 hover)과 톤이 갈리지 않게
+     행의 모든 칸을 같은 색으로 덮는다. */
+  .dds-data-table .dds-data-table__row:hover > td {
     background-color: var(--dds-color-bg-neutral-weak);
   }
 
   .dds-data-table .dds-table__head,
   .dds-data-table .dds-table__cell {
     overflow: hidden;
+  }
+
+  /* 필터가 있는 머리글은 라벨이 위에 붙는다 — 머리글을 모두 위 정렬해 칸끼리 라벨 줄을 맞춘다. */
+  .dds-data-table thead th {
+    vertical-align: top;
   }
 
   .dds-data-table .dds-data-table__row > td {
@@ -115,12 +122,25 @@
   .dds-data-table__row:has(> .dds-data-table__select input:checked) > td {
     background-color: var(--dds-color-bg-brand-weak);
   }
+  .dds-data-table__row:has(> .dds-data-table__select input:checked):hover > td {
+    background-color: var(--dds-color-bg-brand-weak-hover);
+  }
 
   .dds-data-table__select {
     width: 44px;
     min-width: 44px;
     padding-inline: 0;
     text-align: center;
+  }
+  /* Checkbox는 inline-flex라 글자 기준선에 붙어 옆 칸 글자 중심보다 2px쯤 위에 뜬다. 블록 flex로 칸 가운데에 둔다. */
+  .dds-data-table__select > .dds-checkbox {
+    display: flex;
+    justify-content: center;
+  }
+  /* 위 정렬한 머리글에서는 라벨 한 줄 높이 안의 가운데에 둔다. */
+  .dds-data-table thead .dds-data-table__select > .dds-checkbox {
+    height: var(--dds-line-height-t3);
+    align-items: center;
   }
 
   .dds-data-table__cell-content {

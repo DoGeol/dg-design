@@ -7,9 +7,10 @@
     justify-content: center;
     gap: var(--dds-dimension-x2);
     padding: var(--dds-dimension-x6) var(--dds-dimension-x4);
-    border: 1px dashed var(--dds-color-stroke-neutral-weak);
+    /* 낮은 중성 표면 위에서도 놓을 자리가 보이게 경계는 한 단계 진한 stroke-neutral */
+    border: 1px dashed var(--dds-color-stroke-neutral);
     border-radius: var(--dds-radius-r3);
-    background-color: transparent;
+    background-color: var(--dds-color-bg-neutral-weak);
     color: var(--dds-color-fg-neutral-weak);
     text-align: center;
     cursor: pointer;
@@ -18,10 +19,10 @@
 
   /* 드래그 중 외관(brand-weak)은 hover가 덮지 않는다. */
   .dds-file-input__dropzone:not(:is([data-disabled], [data-dragging])):is(:hover, [data-hover]) {
-    background-color: var(--dds-color-bg-transparent-hover);
+    background-color: var(--dds-color-bg-neutral-weak-hover);
   }
   .dds-file-input__dropzone:not(:is([data-disabled], [data-dragging])):is(:active, [data-pressed]) {
-    background-color: var(--dds-color-bg-transparent-pressed);
+    background-color: var(--dds-color-bg-neutral-weak-pressed);
   }
 
   .dds-file-input__dropzone:focus-visible {

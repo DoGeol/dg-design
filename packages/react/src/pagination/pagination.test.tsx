@@ -6,7 +6,7 @@ import { describe, expect, it, vi } from "vitest";
 import { Pagination } from "./Pagination";
 
 describe("Pagination.Link", () => {
-  it("isActive면 aria-current=page와 활성(solid) 클래스를 갖는다", () => {
+  it("isActive면 aria-current=page와 활성(중성 weak) 클래스를 갖는다", () => {
     render(
       <Pagination.Link href="?page=2" isActive>
         2
@@ -14,7 +14,8 @@ describe("Pagination.Link", () => {
     );
     const link = screen.getByRole("link", { name: "2" });
     expect(link.getAttribute("aria-current")).toBe("page");
-    expect(link.classList.contains("dds-button--variant_solid")).toBe(true);
+    expect(link.classList.contains("dds-button--intent_neutral")).toBe(true);
+    expect(link.classList.contains("dds-button--variant_weak")).toBe(true);
     expect(link.classList.contains("dds-button--variant_ghost")).toBe(false);
   });
 

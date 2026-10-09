@@ -34,8 +34,8 @@
     display: inline-flex;
     align-items: center;
     gap: var(--dds-dimension-x1);
-    min-height: var(--dds-dimension-x9);
-    padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2);
+    min-height: var(--dds-size-tab-height);
+    padding: var(--dds-dimension-x1_5) var(--dds-space-tab-inset);
     border: 0;
     /* 활성 밑줄은 비활성일 때도 투명하게 자리를 잡아 전환 시 글자가 흔들리지 않는다.
        list의 1px 경계선 위에 겹쳐 그리려고 그만큼 아래로 당긴다. */
@@ -63,7 +63,8 @@
 
   .dds-tabs__trigger[data-state="active"] {
     border-bottom-color: var(--dds-color-fg-brand);
-    color: var(--dds-color-fg-brand);
+    /* 활성은 진한 글자 + 브랜드 밑줄. 글자까지 브랜드면 밑줄과 신호가 겹치고 본문보다 옅어진다. */
+    color: var(--dds-color-fg-neutral);
   }
 
   /* 밑줄이 실제로 자리를 잡은 뒤에만 Trigger 자신의 밑줄을 지운다 — 그전(SSR·측정 불가·wide)
@@ -85,7 +86,7 @@
   /* display를 정하지 않는다 — 정하는 순간 [hidden]의 display:none을 이겨 비활성
      패널이 그대로 보인다. */
   .dds-tabs__content {
-    padding-top: var(--dds-dimension-x3);
+    padding-top: var(--dds-space-tab-panel-gap);
     color: var(--dds-color-fg-neutral);
     font-size: var(--dds-font-size-t4);
     line-height: var(--dds-line-height-t4);

@@ -29,7 +29,7 @@ Tailwind를 안 쓰면 `tokens.css`만 로드하면 된다.
 
 실제 사례(react 0.10.0 ↔ tokens 0.6.0): `Field` 설명문·그룹 라벨이 쓰는 `--dds-color-fg-neutral-weak`, 오버레이 `z-index`용 `--dds-z-overlay`·`--dds-z-toast`가 이 릴리스에서 같이 신설됐다. tokens를 0.5.x에 고정한 채 react만 0.10.0으로 올리면 오버레이가 다시 `z-index: auto`로 돌아가 소비 앱의 sticky 헤더 밑에 깔린다 — 정확히 0.6.0이 고친 버그가 재발한다. 두 패키지는 같이 올린다.
 
-역할 토큰(tokens 0.9.0)은 아직 어떤 react 버전도 읽지 않는다. react가 역할 토큰을 읽기 시작하는 배포에서 필요한 최소 tokens 버전을 여기 적는다.
+react 0.18.0부터 컴포넌트가 역할 토큰(tokens 0.9.0)을 읽는다. tokens 0.8.x 위에 react 0.18.0을 얹으면 입력 높이·반경, 메뉴·옵션 행, 탭, Sheet 여백 같은 치수가 정의되지 않아 브라우저 기본값으로 무너진다 — **react 0.18.0 이상은 tokens 0.9.0 이상과 함께 올린다.**
 
 ## 다크 모드와 중첩 스코프
 
@@ -65,7 +65,7 @@ Tailwind를 안 쓰면 `tokens.css`만 로드하면 된다.
 | `--dds-radius-select-panel` · `option` · `menu` · `menu-item` · `chip` · `sheet` | 12 · 4 · 12 · 6 · 6 · 0 | 같음 |
 | `--dds-font-size-field` · `body` / `--dds-line-height-body` | 14 · 14 / 19 | 16 · 16 / 24 |
 
-값은 px 환산이다(글자는 rem으로 방출). 출처는 [flex 적용 방향](decisions/2026-10-09-flex-adoption-direction.md) 치수표다. `page-inset`·`field-gap`·`group-gap`은 앱 레이아웃용이라 컴포넌트가 읽지 않는다.
+값은 px 환산이다(글자는 rem으로 방출). 출처는 [flex 적용 방향](decisions/2026-10-09-flex-adoption-direction.md) 치수표다. `page-inset`·`field-gap`·`group-gap`·`panel-inset`·`cta-height`·`table-row`·`--dds-font-size-body`는 앱 레이아웃용이다(react 0.18.0 기준 컴포넌트가 읽지 않는다). 나머지는 컴포넌트가 읽는다 — 밀도를 바꾸면 입력·버튼·옵션·메뉴·Sheet·조작 영역이 함께 바뀐다.
 
 - **루트에만 붙인다.** 테마와 달리 하위 요소 중첩을 지원하지 않는다 — Dialog·Popover 같은 포털은 `body`에 붙어 하위 스코프를 벗어나므로, 화면 일부만 모바일로 두면 그 안에서 연 오버레이가 데스크톱 값으로 열린다.
 - 언제 모바일로 둘지(뷰포트 폭, 기기, 사용자 설정)는 소비 앱이 정한다.

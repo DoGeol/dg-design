@@ -46,10 +46,10 @@
 
   /* size: TextField와 같은 높이·라운드·타이포 (폼 컨트롤 축) */
   .dds-select__trigger--size_medium {
-    height: var(--dds-dimension-x10);
-    padding-inline: var(--dds-dimension-x3);
-    border-radius: var(--dds-radius-r2);
-    font-size: var(--dds-font-size-t4);
+    height: var(--dds-size-field-height);
+    padding-inline: var(--dds-space-field-inset);
+    border-radius: var(--dds-radius-field);
+    font-size: var(--dds-font-size-field);
     line-height: var(--dds-line-height-t4);
   }
   .dds-select__trigger--size_large {
@@ -96,10 +96,10 @@
     min-width: 12rem;
     max-height: calc(100vh - var(--dds-dimension-x4));
     overflow-y: auto;
-    padding: var(--dds-dimension-x1);
+    padding: var(--dds-space-select-panel-inset);
     /* popover.css와 같은 이유 — 다크에서 그림자만으로는 경계가 안 보인다 */
     border: 1px solid var(--dds-color-stroke-neutral-weak);
-    border-radius: var(--dds-radius-r3);
+    border-radius: var(--dds-radius-select-panel);
     background-color: var(--dds-color-bg-layer-default);
     box-shadow: var(--dds-shadow-overlay);
     color: var(--dds-color-fg-neutral);
@@ -124,10 +124,10 @@
     align-items: center;
     gap: var(--dds-dimension-x2);
     width: 100%;
-    min-height: var(--dds-dimension-x8);
+    min-height: var(--dds-size-option-height);
     padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2);
     border: 0;
-    border-radius: var(--dds-radius-r1_5);
+    border-radius: var(--dds-radius-option);
     background-color: transparent;
     color: inherit;
     font-family: inherit;

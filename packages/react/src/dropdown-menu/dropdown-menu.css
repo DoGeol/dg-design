@@ -11,10 +11,10 @@
     min-width: 12rem;
     max-height: calc(100vh - var(--dds-dimension-x4));
     overflow-y: auto;
-    padding: var(--dds-dimension-x1);
+    padding: var(--dds-space-menu-inset);
     /* popover.css와 같은 이유 — 다크에서 그림자만으로는 경계가 안 보인다 */
     border: 1px solid var(--dds-color-stroke-neutral-weak);
-    border-radius: var(--dds-radius-r3);
+    border-radius: var(--dds-radius-menu);
     word-break: keep-all;
     overflow-wrap: anywhere;
     background-color: var(--dds-color-bg-layer-default);
@@ -36,10 +36,10 @@
     align-items: center;
     gap: var(--dds-dimension-x2);
     width: 100%;
-    min-height: var(--dds-dimension-x8);
+    min-height: var(--dds-size-menu-item-height);
     padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2);
     border: 0;
-    border-radius: var(--dds-radius-r1_5);
+    border-radius: var(--dds-radius-menu-item);
     background-color: transparent;
     color: inherit;
     font-family: inherit;
@@ -96,9 +96,14 @@
     color: inherit;
   }
 
+  /* 터치 기기에는 단축키가 없다 — 모바일 밀도에서 단축키 열을 숨긴다. */
+  [data-dds-density="mobile"] .dds-dropdown-menu__shortcut {
+    display: none;
+  }
+
   .dds-dropdown-menu__separator {
     height: 1px;
-    margin: var(--dds-dimension-x1) calc(-1 * var(--dds-dimension-x1));
+    margin: var(--dds-dimension-x1) calc(-1 * var(--dds-space-menu-inset));
     background-color: var(--dds-color-stroke-neutral-weak);
   }
 
