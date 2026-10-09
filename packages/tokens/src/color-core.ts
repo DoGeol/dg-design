@@ -16,6 +16,8 @@ import {
   fontWeight,
   lineHeight,
   radius,
+  roles,
+  type RoleValue,
   semanticColors,
   shadow,
   zIndex,
@@ -176,6 +178,12 @@ export function checkContrast(palette: Palette): string[] {
 
 // ── 방출
 
+/** 역할 토큰을 `[group, id, 값]`으로 편다. 방출·Tailwind·타입이 같은 순서를 쓴다. */
+export const roleEntries = (): [group: string, id: string, value: RoleValue][] =>
+  Object.entries(roles).flatMap(([group, entries]) =>
+    Object.entries(entries as Record<string, RoleValue>).map(([id, value]) => [group, id, value] as [string, string, RoleValue]),
+  );
+
 const block = (selector: string, lines: string[]) =>
   `${selector} {\n${lines.map((l) => (l ? `  ${l}` : "")).join("\n")}\n}`;
 
@@ -192,6 +200,11 @@ export function tokensCss(
     );
   const scale = (prefix: string, entries: Record<string, string>) =>
     Object.entries(entries).map(([name, value]) => `--dds-${prefix}-${name}: ${value};`);
+  const roleVars = (density: "desktop" | "mobile") =>
+    roleEntries().flatMap(([group, id, value]) => {
+      const v = density === "desktop" ? value.desktop : value.mobile;
+      return v === undefined ? [] : [`--dds-${group}-${id}: ${v};`];
+    });
 
   return [
     header,
@@ -213,6 +226,9 @@ export function tokensCss(
       ...scale("shadow", shadow),
       ...scale("duration", duration),
       ...scale("easing", easing),
+      "",
+      "/* 역할 (desktop 밀도) */",
+      ...roleVars("desktop"),
     ]),
     "",
     // 중첩 스코프용. `:root`만으로는 다크 조상 아래의 라이트 영역이 다크 값을 상속한다.
@@ -220,17 +236,23 @@ export function tokensCss(
     "",
     block('[data-dds-theme="dark"]', ["/* semantic (dark) */", ...semanticVars("dark")]),
     "",
+    // 루트(<html>) 지정 전제. 포털은 body에 붙어 하위 스코프를 벗어나므로 중첩을 지원하지 않는다.
+    // 값이 desktop과 같은 역할은 넣지 않는다 — :root 값이 그대로 쓰인다.
+    block('[data-dds-density="mobile"]', ["/* 역할 (mobile 밀도) */", ...roleVars("mobile")]),
+    "",
   ].join("\n");
 }
 
 /**
  * Tailwind v4 브릿지. 값을 복제하지 않고 참조만 재바인딩한다 (tokens.css 선로드 필수).
  *
- * duration·z-index는 여기 없다 — 실측(스모크 빌드) 결과 Tailwind v4는 `duration-*`·
- * `z-*`를 theme 네임스페이스가 아니라 고정 정수 스케일/임의값으로만 받는다(`--duration-*`·
- * `--z-*`를 `@theme`에 넣어도 어떤 유틸리티도 읽지 않아 죽은 변수가 된다). 소비자는 이미
- * tokens.css가 내는 `--dds-duration-fast`·`--dds-z-overlay`를 Tailwind의 괄호 임의값
- * 문법으로 직접 쓸 수 있다: `duration-(--dds-duration-fast)`, `z-(--dds-z-overlay)`.
+ * duration·z-index의 네임스페이스는 `--transition-duration-*`·`--z-index-*`다(`duration-fast`,
+ * `z-overlay`). 예전에 `--duration-*`·`--z-*`로 시험해 "Tailwind가 읽지 않는다"고 결론 내고
+ * 뺐었는데, 이름이 틀렸던 것이다.
+ *
+ * 역할 토큰은 space·size를 `--spacing-*`(`gap-field-gap`, `h-field-height`), radius를
+ * `--radius-*`(`rounded-field`), 글자를 `--text-*`(`text-body`)로 잇는다. line-height 역할은
+ * 같은 id의 `--text-*--line-height`로 붙는다.
  *
  * radius의 `r-full`도 뺐다 — `rounded-r-full`은 Tailwind 자체 문법에서 "우측만
  * full"(방향 접두 `r-` + 크기 `full`)로 먼저 해석돼 우리 키와 클래스명이 충돌한다
@@ -261,6 +283,18 @@ export const tailwindCss = () =>
       ]),
       "",
       ...Object.keys(easing).map((name) => `--ease-${name}: var(--dds-easing-${name});`),
+      "",
+      // spin은 전이가 아니라 회전 주기라 `duration-*`로 내보내지 않는다.
+      ...Object.keys(duration)
+        .filter((name) => name !== "spin")
+        .map((name) => `--transition-duration-${name}: var(--dds-duration-${name});`),
+      ...Object.keys(zIndex).map((name) => `--z-index-${name}: var(--dds-z-${name});`),
+      "",
+      ...roleEntries().map(([group, id]) => {
+        const ns = { space: "spacing", size: "spacing", radius: "radius", "font-size": "text" }[group];
+        const target = ns ? `--${ns}-${id}` : `--text-${id}--line-height`;
+        return `${target}: var(--dds-${group}-${id});`;
+      }),
     ]),
     "",
   ].join("\n");

@@ -29,6 +29,8 @@ Tailwind를 안 쓰면 `tokens.css`만 로드하면 된다.
 
 실제 사례(react 0.10.0 ↔ tokens 0.6.0): `Field` 설명문·그룹 라벨이 쓰는 `--dds-color-fg-neutral-weak`, 오버레이 `z-index`용 `--dds-z-overlay`·`--dds-z-toast`가 이 릴리스에서 같이 신설됐다. tokens를 0.5.x에 고정한 채 react만 0.10.0으로 올리면 오버레이가 다시 `z-index: auto`로 돌아가 소비 앱의 sticky 헤더 밑에 깔린다 — 정확히 0.6.0이 고친 버그가 재발한다. 두 패키지는 같이 올린다.
 
+역할 토큰(tokens 0.9.0)은 아직 어떤 react 버전도 읽지 않는다. react가 역할 토큰을 읽기 시작하는 배포에서 필요한 최소 tokens 버전을 여기 적는다.
+
 ## 다크 모드와 중첩 스코프
 
 `<html data-dds-theme="dark">`가 문서 전체를 다크로 바꾼다. 하위 요소에 `data-dds-theme="light"` 또는 `"dark"`를 붙이면 그 서브트리만 해당 모드가 된다 — 다크 안의 라이트, 라이트 안의 다크, 여러 겹 중첩 모두 **가장 가까운 조상의 값**을 따른다(tokens 0.8.0부터).
@@ -46,11 +48,36 @@ Tailwind를 안 쓰면 `tokens.css`만 로드하면 된다.
 - **값은 `--dds-color-*`로 직접 참조한다.** 앱 CSS에서 `:root`에 별칭(`--my-bg: var(--dds-color-bg-layer-default)`)을 정의하면 그 별칭은 루트에서 한 번 해석돼 하위 스코프를 따라가지 않는다. Tailwind 브릿지는 이 문제 때문에 `@theme inline`으로 방출한다 — 유틸 클래스가 `var(--dds-color-*)`를 직접 쓴다. 같은 이유로 Tailwind의 `--color-*` 변수를 `var()`로 직접 쓰면 루트 모드 값에 고정된다.
 - **토큰을 손으로 오버라이드하면 스코프 셀렉터도 같이 적는다** — 아래 예시 ① 참고.
 
+## 밀도
+
+`<html data-dds-density="mobile">`이면 역할 토큰이 모바일 값으로 바뀐다(tokens 0.9.0부터). 속성이 없으면 데스크톱 값이다. 색·스케일은 밀도와 무관하다.
+
+| 역할 토큰 | 데스크톱 | 모바일 |
+|---|---|---|
+| `--dds-space-page-inset` · `field-gap` · `group-gap` | 32 · 12 · 24 | 20 · 14 · 28 |
+| `--dds-space-panel-inset` · `field-inset` · `sheet-inset` | 40 · 12 · 24 | 20 · 16 · 20 |
+| `--dds-space-select-panel-inset` · `menu-inset` · `tab-inset` · `tab-panel-gap` | 8 · 6 · 12 · 24 | 같음 |
+| `--dds-size-field-height` · `cta-height` | 40 · 48 | 56 · 52 |
+| `--dds-size-option-height` · `menu-item-height` · `chip-height` | 36 · 36 · 24 | 48 · 48 · 32 |
+| `--dds-size-touch-target` | 24 | 44 |
+| `--dds-size-mark` · `tab-height` · `table-row` | 16 · 40 · 44 | 같음 |
+| `--dds-radius-field` · `button` | 4 · 6 | 14 · 12 |
+| `--dds-radius-select-panel` · `option` · `menu` · `menu-item` · `chip` · `sheet` | 12 · 4 · 12 · 6 · 6 · 0 | 같음 |
+| `--dds-font-size-field` · `body` / `--dds-line-height-body` | 14 · 14 / 19 | 16 · 16 / 24 |
+
+값은 px 환산이다(글자는 rem으로 방출). 출처는 [flex 적용 방향](decisions/2026-10-09-flex-adoption-direction.md) 치수표다. `page-inset`·`field-gap`·`group-gap`은 앱 레이아웃용이라 컴포넌트가 읽지 않는다.
+
+- **루트에만 붙인다.** 테마와 달리 하위 요소 중첩을 지원하지 않는다 — Dialog·Popover 같은 포털은 `body`에 붙어 하위 스코프를 벗어나므로, 화면 일부만 모바일로 두면 그 안에서 연 오버레이가 데스크톱 값으로 열린다.
+- 언제 모바일로 둘지(뷰포트 폭, 기기, 사용자 설정)는 소비 앱이 정한다.
+- 역할 토큰을 `:root`에서 오버라이드하면 그 값이 밀도와 상관없이 쓰인다(tokens.css보다 나중에 로드되면 같은 명시도의 밀도 블록을 이긴다). 밀도마다 다르게 두려면 `:root:not([data-dds-density="mobile"])`과 `[data-dds-density="mobile"]`에 나눠 적는다.
+
 ## 공개 표면
 
 | 표면 | 무엇을 보장하나 |
 |---|---|
 | semantic 색 토큰 (`--dds-color-*`) | 이름이 안정적이다. `tokens.css` 로드 뒤 재정의하면 반영된다 |
+| 역할 토큰 (`--dds-space-*`·`--dds-size-*`·위 "밀도" 표의 radius·글자) | 이름이 안정적이다. 값은 밀도별로 바뀌고, 디자인 결정에 따라 minor에서 바뀔 수 있다 |
+| `data-dds-theme` · `data-dds-density` | 속성 이름과 값(`light`·`dark`, `mobile`) |
 | `className` | 각 컴포넌트가 `clsx`로 자기 클래스 뒤에 이어붙인다(대체가 아니라 추가) |
 | `@layer dds` | 레이어 밖(어떤 `@layer`에도 안 든) 소비자 CSS는 항상 이긴다 — 아래 참고 |
 | 서브패스 import (`@dg-design/react/<kebab-case>`) | 배럴(`@dg-design/react`)과 별개로 안정 — 트리셰이킹용 |
@@ -81,7 +108,7 @@ Tailwind를 안 쓰면 `tokens.css`만 로드하면 된다.
 ```ts
 import { createTheme } from "@dg-design/tokens";
 
-const css: string = createTheme({ brand: "#6D28D9" });
+const { css, brandHue } = createTheme({ brand: "#6D28D9" }); // css: tokens.css 교체본, brandHue: 추출한 hue
 ```
 
 hex에서 OKLCH hue만 뽑아 쓴다 — lightness·chroma는 스텝마다 DDS 규칙(gamut 상한 × 스텝별 채도 비율)으로 다시 계산되므로 **입력한 색이 그대로 램프에 박히지 않는다.** 그 대신 어떤 hue를 넣어도 기본 팔레트와 같은 대비·gamut 보증을 받는다. 검사를 통과하지 못하면 파일을 쓰지 않고 실패한 쌍·실측 대비·조정 방향을 담아 에러를 던진다(자동 보정 없음 — "통과했다면 정말 통과한 것"이 이 함수의 보증이다).
@@ -163,7 +190,7 @@ import { Button } from "@dg-design/react/button";
 import { writeFileSync } from "node:fs";
 import { createTheme } from "@dg-design/tokens";
 
-writeFileSync("src/styles/dds-tokens.css", createTheme({ brand: "#6D28D9" }));
+writeFileSync("src/styles/dds-tokens.css", createTheme({ brand: "#6D28D9" }).css);
 ```
 
 ```diff
@@ -173,4 +200,4 @@ writeFileSync("src/styles/dds-tokens.css", createTheme({ brand: "#6D28D9" }));
   import "@dg-design/tokens/tailwind.css"; // 그대로 — 브릿지는 var() 참조뿐이라 브랜드 무관
 ```
 
-생성 CSS는 기존 `tokens.css`와 같은 `:root` + `[data-dds-theme="light"]` + `[data-dds-theme="dark"]` 구조(중첩 스코프 포함)라 드롭인 교체다 — 둘 중 하나만 로드한다.
+생성 CSS는 기존 `tokens.css`와 같은 `:root` + `[data-dds-theme="light"]` + `[data-dds-theme="dark"]` + `[data-dds-density="mobile"]` 구조(중첩 스코프·밀도 포함)라 드롭인 교체다 — 둘 중 하나만 로드한다.

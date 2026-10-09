@@ -4,7 +4,7 @@
  */
 import { strict as assert } from "node:assert";
 
-import { tokensCss } from "./color-core.ts";
+import { roleEntries, tokensCss } from "./color-core.ts";
 import { createTheme } from "./create-theme.ts";
 import { palette, semanticColors } from "./tokens.ts";
 
@@ -97,6 +97,29 @@ assertLightScope(tokensCss(palette), "tokens.css");
       ? "  createTheme: 360개 hue 전부 검사 통과"
       : `  createTheme: 실패 hue ${failedHues.length}개 (${failedHues.slice(0, 8).join(", ")}…) — 진단 형식 검증됨`,
   );
+}
+
+// ── 4. 밀도 블록: mobile 값이 있는 역할만 빠짐없이 재정의하고, :root에 없는 변수를 만들지 않는다.
+//      createTheme 출력도 같은 블록을 가져야 tokens.css의 드롭인 교체가 된다.
+{
+  const vars = (css: string, selector: string) => {
+    const start = css.indexOf(`${selector} {`);
+    assert.ok(start >= 0, `${selector} 블록 없음`);
+    const body = css.slice(start, css.indexOf("\n}", start));
+    return [...body.matchAll(/(--dds-[\w-]+):/g)].map((m) => m[1]!);
+  };
+  const expected = roleEntries()
+    .filter(([, , value]) => value.mobile !== undefined)
+    .map(([group, id]) => `--dds-${group}-${id}`);
+  for (const [label, css] of [
+    ["tokens.css", tokensCss(palette)],
+    ["createTheme", createTheme({ brand: "#6A4FBB" }).css],
+  ] as const) {
+    const root = new Set(vars(css, ":root"));
+    const mobile = vars(css, '[data-dds-density="mobile"]');
+    assert.deepEqual(mobile, expected, `${label}: mobile 밀도 블록이 역할 표와 다름`);
+    for (const name of mobile) assert.ok(root.has(name), `${label}: ${name}이 :root에 없음`);
+  }
 }
 
 console.log("createTheme 셀프체크 통과");
