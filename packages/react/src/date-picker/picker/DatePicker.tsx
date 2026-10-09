@@ -151,7 +151,7 @@ function Picker({ props, range }: { props: PickerProps; range: boolean }) {
     </div>
   );
   const trigger = <Button ref={triggerRef} type="button" id={triggerId} variant="weak" intent="neutral"
-    disabled={props.disabled} aria-labelledby={`${labelId} ${triggerId}`}>
+    className="dds-date-picker__trigger" disabled={props.disabled} aria-labelledby={`${labelId} ${triggerId}`}>
     {summary}
   </Button>;
   return (

@@ -188,6 +188,7 @@
     "build": "vite build",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
+    "check:subpaths": "node scripts/check-subpaths.js",
     "lint:publish": "publint"
   },
   "peerDependencies": {

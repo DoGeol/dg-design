@@ -1,7 +1,8 @@
 @layer dds {
+  /* 라벨이 여러 줄이어도 박스는 첫 줄 옆에 둔다 — 아래 size 규칙이 첫 줄 높이 안의 가운데로 내린다. */
   .dds-checkbox {
     display: inline-flex;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--dds-dimension-x2);
     box-sizing: border-box;
     font-family: inherit;
@@ -131,8 +132,6 @@
 
   .dds-checkbox__label {
     color: var(--dds-color-fg-neutral);
-    /* 폰트의 ascender 비율 때문에 기하학적 중앙보다 위로 보여 1px 광학 보정한다. */
-    transform: translateY(1px);
   }
   .dds-checkbox__input:is(:disabled, [disabled], [data-disabled]) ~ .dds-checkbox__label {
     color: var(--dds-color-fg-disabled);
@@ -144,6 +143,10 @@
     height: var(--dds-dimension-x4);
     border-radius: var(--dds-radius-r1);
   }
+  /* 첫 줄 가운데: (줄 높이 − 박스) ÷ 2. 라벨 없는 박스(표 선택 칸 등)는 내리지 않는다. */
+  .dds-checkbox--size_medium .dds-checkbox__box:has(~ .dds-checkbox__label) {
+    margin-block-start: calc((var(--dds-line-height-t4) - var(--dds-dimension-x4)) / 2);
+  }
   .dds-checkbox--size_medium .dds-checkbox__label {
     font-size: var(--dds-font-size-t4);
     line-height: var(--dds-line-height-t4);
@@ -153,6 +156,9 @@
     width: var(--dds-dimension-x5);
     height: var(--dds-dimension-x5);
     border-radius: var(--dds-radius-r1_5);
+  }
+  .dds-checkbox--size_large .dds-checkbox__box:has(~ .dds-checkbox__label) {
+    margin-block-start: calc((var(--dds-line-height-t6) - var(--dds-dimension-x5)) / 2);
   }
   .dds-checkbox--size_large .dds-checkbox__label {
     font-size: var(--dds-font-size-t6);

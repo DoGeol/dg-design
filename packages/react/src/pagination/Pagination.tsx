@@ -7,14 +7,14 @@ import { Slot } from "@radix-ui/react-slot";
 import clsx from "clsx";
 import * as React from "react";
 
-/** Link·Previous·Next가 공유하는 외관 클래스 계산. 활성만 solid(흰 배경 위 weak는 대비가 1.07:1), 나머지는 ghost. */
+/** Link·Previous·Next가 공유하는 외관 클래스 계산. 활성은 중성 weak + 경계(pagination.css), 나머지는 ghost. */
 function paginationLinkClass(isActive: boolean | undefined, className: string | undefined) {
   return clsx(
     "dds-pagination__link",
     "dds-button",
     "dds-button--size_medium",
     isActive
-      ? "dds-button--intent_brand dds-button--variant_solid"
+      ? "dds-button--intent_neutral dds-button--variant_weak"
       : "dds-button--intent_neutral dds-button--variant_ghost",
     className,
   );

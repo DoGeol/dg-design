@@ -340,3 +340,64 @@ export const easing = {
   out: "cubic-bezier(0, 0, 0.2, 1)",
   linear: "linear",
 } as const;
+
+// ── 역할 (밀도 분기 있음)
+
+/** desktop은 `:root`, mobile은 `[data-dds-density="mobile"]` 블록에 들어간다. mobile이 없으면 두 밀도가 같다. */
+export type RoleValue = { desktop: string; mobile?: string };
+
+/**
+ * 역할 토큰. 컴포넌트·앱이 스케일 스텝 대신 "무엇에 쓰는 값인지"로 고른다.
+ * `--dds-{group}-{id}`로 방출한다. 값은 flex 적용 결정(docs/decisions/2026-10-09-flex-adoption-direction.md)
+ * 치수표 그대로이고, 아직 만들지 않은 컴포넌트(목록·설정 행)의 역할은 그 컴포넌트와 함께 넣는다.
+ *
+ * 스케일 스텝을 참조해 값의 출처를 하나로 둔다. 스케일에 없는 값만 리터럴이다.
+ */
+export const roles = {
+  space: {
+    // page-inset·field-gap·group-gap은 앱 레이아웃용 — 컴포넌트는 읽지 않는다.
+    "page-inset": { desktop: dimension.x8, mobile: dimension.x5 },
+    "field-gap": { desktop: dimension.x3, mobile: dimension.x3_5 },
+    "group-gap": { desktop: dimension.x6, mobile: dimension.x7 },
+    "panel-inset": { desktop: dimension.x10, mobile: dimension.x5 },
+    "field-inset": { desktop: dimension.x3, mobile: dimension.x4 },
+    "select-panel-inset": { desktop: dimension.x2 },
+    "menu-inset": { desktop: dimension.x1_5 },
+    "sheet-inset": { desktop: dimension.x6, mobile: dimension.x5 },
+    "tab-inset": { desktop: dimension.x3 },
+    "tab-panel-gap": { desktop: dimension.x6 },
+  },
+  size: {
+    "field-height": { desktop: dimension.x10, mobile: dimension.x14 },
+    "cta-height": { desktop: dimension.x12, mobile: dimension.x13 },
+    "option-height": { desktop: dimension.x9, mobile: dimension.x12 },
+    "menu-item-height": { desktop: dimension.x9, mobile: dimension.x12 },
+    "chip-height": { desktop: dimension.x6, mobile: dimension.x8 },
+    mark: { desktop: dimension.x4 },
+    "tab-height": { desktop: dimension.x10 },
+    // 44는 4px 스케일에 없다 — 표 행과 모바일 조작 영역에만 쓰여 스텝을 늘리지 않는다.
+    "table-row": { desktop: "44px" },
+    // 데스크톱 24는 WCAG 2.5.8 최소, 모바일 44는 터치 행 최소.
+    "touch-target": { desktop: dimension.x6, mobile: "44px" },
+  },
+  radius: {
+    field: { desktop: radius.r1, mobile: radius.r3_5 },
+    button: { desktop: radius.r1_5, mobile: radius.r3 },
+    // 패널 안 행은 패널 반경 − 패널 여백으로 동심을 맞춘다(12 − 8 = 4, 12 − 6 = 6).
+    "select-panel": { desktop: radius.r3 },
+    option: { desktop: radius.r1 },
+    menu: { desktop: radius.r3 },
+    "menu-item": { desktop: radius.r1_5 },
+    chip: { desktop: radius.r1_5 },
+    // Sheet는 화면 가장자리에 붙는 면이라 모서리가 없다(2026-10-09 사용자 결정).
+    sheet: { desktop: "0" },
+  },
+  "font-size": {
+    field: { desktop: fontSize.t4, mobile: fontSize.t5 },
+    body: { desktop: fontSize.t4, mobile: fontSize.t5 },
+  },
+  "line-height": {
+    // 모바일 16/24는 t 인덱스 짝(t5 = 16/22)을 벗어난다 — 역할이 짝을 정한다.
+    body: { desktop: lineHeight.t4, mobile: lineHeight.t6 },
+  },
+} as const satisfies Record<string, Record<string, RoleValue>>;

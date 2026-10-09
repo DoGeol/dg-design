@@ -1,10 +1,17 @@
 @layer dds {
-  .dds-date-picker { display: inline-flex; flex-direction: column; gap: var(--dds-dimension-x2); min-width: 0; font-family: inherit; color: var(--dds-color-fg-neutral); }
+  .dds-date-picker { display: flex; flex-direction: column; gap: var(--dds-dimension-x2); min-width: 0; font-family: inherit; color: var(--dds-color-fg-neutral); }
+  /* 트리거는 값을 보여 주는 입력류라 TextField·Select 트리거와 같은 필드 외관이다(Button은 동작·로딩 배선만 빌린다).
+     button.css의 variant 규칙보다 앞서도록 두 클래스로 잡는다. */
+  .dds-date-picker__trigger.dds-button { justify-content: flex-start; width: 100%; height: var(--dds-size-field-height); padding-inline: var(--dds-space-field-inset); border: 1px solid var(--dds-color-stroke-neutral); border-radius: var(--dds-radius-field); background-color: var(--dds-color-bg-layer-default); color: var(--dds-color-fg-neutral); font-size: var(--dds-font-size-field); font-weight: var(--dds-font-weight-regular); }
+  .dds-date-picker__trigger.dds-button > [data-layer="content"] { justify-content: flex-start; }
+  .dds-date-picker__trigger.dds-button:not(:is(:disabled, [disabled], [data-disabled])):is(:hover, [data-hover], :active, [data-pressed]) { border-color: var(--dds-color-fg-neutral); background-color: var(--dds-color-bg-layer-default); }
+  .dds-date-picker__trigger.dds-button:focus-visible { outline: none; border-color: var(--dds-color-stroke-focus-ring); box-shadow: inset 0 0 0 1px var(--dds-color-stroke-focus-ring); }
+  .dds-date-picker__trigger.dds-button:is(:disabled, [disabled], [data-disabled]) { border-color: var(--dds-color-stroke-neutral-weak); background-color: var(--dds-color-bg-disabled); color: var(--dds-color-fg-disabled); }
   .dds-date-picker__label { font-size: var(--dds-font-size-t4); font-weight: var(--dds-font-weight-bold); }
   .dds-date-picker__description { margin: 0; color: var(--dds-color-fg-neutral-weak); }
   .dds-popover__content.dds-date-picker__popover { width: min(24rem, calc(100vw - 2rem)); max-width: min(24rem, calc(100vw - 2rem)); max-height: min(90vh, 48rem); padding: var(--dds-dimension-x4); overflow-y: auto; box-sizing: border-box; }
   .dds-popover__content.dds-date-picker__popover--range { width: min(43rem, calc(100vw - 2rem)); max-width: min(43rem, calc(100vw - 2rem)); }
-  .dds-date-picker__sheet.dds-sheet--side_bottom { height: min(90dvh, calc(100% - 1rem)); overflow: hidden; padding-bottom: max(var(--dds-dimension-x6), env(safe-area-inset-bottom)); }
+  .dds-date-picker__sheet.dds-sheet--side_bottom { height: min(90dvh, calc(100% - 1rem)); overflow: hidden; padding-bottom: max(var(--dds-space-sheet-inset), env(safe-area-inset-bottom)); }
   .dds-date-picker__body { display: flex; flex-direction: column; gap: var(--dds-dimension-x4); min-height: 0; }
   .dds-date-picker__sheet .dds-date-picker__body { flex: 1; }
   .dds-date-picker__fields { display: flex; flex-wrap: wrap; gap: var(--dds-dimension-x3); }

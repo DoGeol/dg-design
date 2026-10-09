@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--dds-dimension-x3);
-    padding: var(--dds-dimension-x6);
+    padding: var(--dds-space-sheet-inset);
     overflow-y: auto;
     background-color: var(--dds-color-bg-layer-default);
     box-shadow: var(--dds-shadow-overlay);
@@ -40,18 +40,18 @@
     height: 100%;
     width: min(24rem, calc(100% - var(--dds-dimension-x8)));
   }
-  /* 화면 안쪽 모서리만 Dialog와 같은 16으로 굴린다. 테두리도 Dialog와 같은 이유로 긋되
-     화면 가장자리에 붙는 변에는 선이 남지 않게 안쪽 변에만 둔다 */
+  /* 화면 안쪽 모서리만 역할 반경(기본 0 — 화면 가장자리에 붙는 면이라 모서리가 없다)으로 굴린다.
+     테두리는 Dialog와 같은 이유로 긋되 화면 가장자리에 붙는 변에는 선이 남지 않게 안쪽 변에만 둔다 */
   .dds-sheet--side_left {
     left: 0;
     border-right: 1px solid var(--dds-color-stroke-neutral-weak);
-    border-radius: 0 var(--dds-radius-r4) var(--dds-radius-r4) 0;
+    border-radius: 0 var(--dds-radius-sheet) var(--dds-radius-sheet) 0;
     animation-name: dds-sheet-content-in-left;
   }
   .dds-sheet--side_right {
     right: 0;
     border-left: 1px solid var(--dds-color-stroke-neutral-weak);
-    border-radius: var(--dds-radius-r4) 0 0 var(--dds-radius-r4);
+    border-radius: var(--dds-radius-sheet) 0 0 var(--dds-radius-sheet);
     animation-name: dds-sheet-content-in-right;
   }
 
@@ -64,13 +64,13 @@
   .dds-sheet--side_top {
     top: 0;
     border-bottom: 1px solid var(--dds-color-stroke-neutral-weak);
-    border-radius: 0 0 var(--dds-radius-r4) var(--dds-radius-r4);
+    border-radius: 0 0 var(--dds-radius-sheet) var(--dds-radius-sheet);
     animation-name: dds-sheet-content-in-top;
   }
   .dds-sheet--side_bottom {
     bottom: 0;
     border-top: 1px solid var(--dds-color-stroke-neutral-weak);
-    border-radius: var(--dds-radius-r4) var(--dds-radius-r4) 0 0;
+    border-radius: var(--dds-radius-sheet) var(--dds-radius-sheet) 0 0;
     animation-name: dds-sheet-content-in-bottom;
   }
 

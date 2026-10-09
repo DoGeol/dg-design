@@ -38,8 +38,10 @@
     font-weight: var(--dds-font-weight-regular);
   }
 
+  /* 좁은 폭에서 행동 두 개가 닫기 버튼 쪽으로 밀려나지 않게 줄바꿈한다. */
   .dds-alert__actions {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: var(--dds-dimension-x2);
     margin-top: var(--dds-dimension-x2);

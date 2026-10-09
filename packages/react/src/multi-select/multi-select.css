@@ -3,7 +3,7 @@
      min-height로 기본 모드와 같은 줄 높이를 지키되 칩이 늘면 아래로 자란다. */
   .dds-multi-select__trigger--search {
     height: auto;
-    min-height: var(--dds-dimension-x10);
+    min-height: var(--dds-size-field-height);
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: var(--dds-dimension-x1_5);
@@ -50,33 +50,38 @@
     color: var(--dds-color-fg-disabled);
   }
 
-  /* search="content": 패널 첫 자식. 옵션과 같은 좌우 여백에 아래로 구분선. */
+  /* search="content": 패널 첫 자식. 낮은 중성 표면의 입력 상자 — 경계 1px은 입력 영역 표시라 지우지 않는다(WCAG 1.4.11). */
   .dds-multi-select__search--content {
     box-sizing: border-box;
     flex: none;
     width: 100%;
     min-height: var(--dds-dimension-x8);
     padding: var(--dds-dimension-x1_5) var(--dds-dimension-x2);
-    margin-block-end: var(--dds-dimension-x1);
-    border-block-end: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-neutral);
+    margin-block-end: var(--dds-space-select-panel-inset);
+    border: 1px solid var(--dds-color-stroke-neutral);
+    border-radius: var(--dds-radius-r1_5);
+    background-color: var(--dds-color-bg-neutral-weak);
     font-size: var(--dds-font-size-t4);
     line-height: var(--dds-line-height-t4);
   }
 
-  /* 입력류 focus 관습: 링 대신 아래 구분선을 브랜드 색으로 */
+  /* 입력류 focus 관습: 링 없이 테두리 1px + 안쪽 그림자 1px */
   .dds-multi-select__search--content:focus-visible {
     outline: none;
-    border-block-end-color: var(--dds-color-stroke-focus-ring);
+    border-color: var(--dds-color-stroke-focus-ring);
+    box-shadow: inset 0 0 0 1px var(--dds-color-stroke-focus-ring);
   }
 
   .dds-multi-select__chip {
+    box-sizing: border-box;
     display: inline-flex;
     align-items: center;
+    min-height: var(--dds-size-chip-height);
     gap: var(--dds-dimension-x1);
     max-width: 100%;
     padding-inline: var(--dds-dimension-x2);
     padding-block: var(--dds-dimension-x0_5);
-    border-radius: var(--dds-radius-r1_5);
+    border-radius: var(--dds-radius-chip);
     background-color: var(--dds-color-bg-neutral-weak);
     color: var(--dds-color-fg-neutral);
     font-size: var(--dds-font-size-t2);
@@ -118,6 +123,31 @@
 
   /* 활성 항목이 aria-activedescendant로만 표시되는 trigger 모드의 하이라이트 —
      DOM 포커스가 입력에 남아 :focus-visible이 안 걸린다. */
+  /* 복수 선택 패널의 선택 표식은 체크 아이콘 대신 사각 mark(Checkbox와 같은 모양) — 단일 선택과 구분한다. */
+  .dds-select__content[aria-multiselectable="true"] .dds-select__check {
+    box-sizing: border-box;
+    width: var(--dds-size-mark);
+    height: var(--dds-size-mark);
+    padding: var(--dds-dimension-x0_5);
+    border: 1px solid var(--dds-color-stroke-neutral);
+    border-radius: var(--dds-radius-r1);
+    opacity: 1;
+    color: transparent;
+  }
+  .dds-select__content[aria-multiselectable="true"] [aria-selected="true"] .dds-select__check {
+    border-color: transparent;
+    background-color: var(--dds-color-bg-brand-solid);
+    color: var(--dds-color-fg-brand-contrast);
+  }
+  .dds-select__content[aria-multiselectable="true"] .dds-select__option:is(:disabled, [disabled], [data-disabled]) .dds-select__check {
+    border-color: var(--dds-color-stroke-neutral-weak);
+    background-color: var(--dds-color-bg-disabled);
+  }
+  .dds-select__content[aria-multiselectable="true"] .dds-select__option:is(:disabled, [disabled], [data-disabled])[aria-selected="true"] .dds-select__check {
+    border-color: transparent;
+    color: var(--dds-color-fg-disabled);
+  }
+
   .dds-select__option[data-active] {
     background-color: var(--dds-color-bg-transparent-hover);
   }

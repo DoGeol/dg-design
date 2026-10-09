@@ -9,7 +9,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { checkContrast, tailwindCss, tokensCss } from "./color-core.ts";
+import { checkContrast, roleEntries, tailwindCss, tokensCss } from "./color-core.ts";
 import {
   dimension,
   duration,
@@ -49,6 +49,9 @@ const typesDts = () =>
     "",
     `export type DdsEasingToken =${union(Object.keys(easing))};`,
     "",
+    "/** 역할 토큰 — `--dds-` 뒤 이름. 밀도(`data-dds-density`)에 따라 값이 바뀐다. */",
+    `export type DdsRoleToken =${union(roleEntries().map(([group, id]) => `${group}-${id}`))};`,
+    "",
     '// 런타임 API — 구현은 tsc가 dist/create-theme.js로 방출한다.',
     'export { createTheme } from "./create-theme.js";',
     'export type { CreateThemeOptions, CreateThemeResult } from "./create-theme.js";',
@@ -69,5 +72,5 @@ const files = {
 for (const [name, content] of Object.entries(files)) writeFileSync(join(OUT, name), content);
 
 console.log(
-  `\n생성 완료 → dist/ (palette ${Object.keys(palette).length}, semantic ${Object.keys(semanticColors).length})`,
+  `\n생성 완료 → dist/ (palette ${Object.keys(palette).length}, semantic ${Object.keys(semanticColors).length}, 역할 ${roleEntries().length})`,
 );
