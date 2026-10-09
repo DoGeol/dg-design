@@ -22,6 +22,24 @@ export interface OptionEntry {
   disabled: boolean;
 }
 
+/** Option의 표시·검색 분리 prop. Select·MultiSelect Option이 같은 계약을 쓴다. */
+export interface OptionLabelProps {
+  /** 닫힌 트리거(MultiSelect는 칩)에 보일 표시. 없으면 children. children은 열린 목록의 행 표현이다. */
+  label?: React.ReactNode;
+  /** 검색 필터·typeahead가 맞출 평문. 없으면 label(또는 children)의 텍스트. */
+  textValue?: string;
+}
+
+/** 등록·스캔이 같은 규칙으로 표시와 평문을 뽑는다. */
+export function optionLabel({
+  label,
+  textValue,
+  children,
+}: OptionLabelProps & { children?: React.ReactNode }): Pick<OptionEntry, "label" | "text"> {
+  const shown = label ?? children;
+  return { label: shown, text: textValue ?? nodeToText(shown) };
+}
+
 export function nodeToText(node: React.ReactNode): string {
   if (node === null || node === undefined || typeof node === "boolean") return "";
   if (typeof node === "string" || typeof node === "number") return String(node);
@@ -53,18 +71,13 @@ export function collectOptions(
   const walk = (node: React.ReactNode): void => {
     React.Children.forEach(node, (child) => {
       if (!React.isValidElement(child)) return;
-      const props = child.props as {
+      const props = child.props as OptionLabelProps & {
         value?: string;
         disabled?: boolean;
         children?: React.ReactNode;
       };
       if (child.type === optionType && typeof props.value === "string") {
-        entries.push({
-          value: props.value,
-          label: props.children,
-          text: nodeToText(props.children),
-          disabled: props.disabled === true,
-        });
+        entries.push({ value: props.value, ...optionLabel(props), disabled: props.disabled === true });
         return;
       }
       walk(props.children);

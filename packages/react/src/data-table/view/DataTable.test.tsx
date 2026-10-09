@@ -138,3 +138,27 @@ describe("DataTable", () => {
     expect(within(screen.getByRole("table")).getByText("표시할 데이터가 없습니다.")).toBeTruthy();
   });
 });
+
+describe("DataTable 열 정렬", () => {
+  type Line = { id: number; item: string; amount: number };
+  const lines: Line[] = [{ id: 1, item: "연필", amount: 1200 }];
+
+  it("align이 end인 열은 머리글·본문 칸이 끝 정렬 클래스를 갖고, 기본 열은 갖지 않는다", () => {
+    render(
+      <DataTable
+        data={lines}
+        rowKey="id"
+        caption="주문"
+        columns={[
+          { field: "item", header: "품목" },
+          { field: "amount", header: "금액", align: "end", sortable: true },
+        ]}
+      />,
+    );
+    const amountHead = screen.getByRole("columnheader", { name: /금액/ });
+    expect(amountHead.classList.contains("dds-data-table--align_end")).toBe(true);
+    expect(screen.getByRole("cell", { name: "1200" }).classList.contains("dds-data-table--align_end")).toBe(true);
+    expect(screen.getByRole("columnheader", { name: "품목" }).className).not.toContain("--align_");
+    expect(screen.getByRole("cell", { name: "연필" }).className).not.toContain("--align_");
+  });
+});

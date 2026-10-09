@@ -17,6 +17,8 @@ type ColumnWidth =
 
 type ColumnBase = {
   header: string;
+  /** 머리글·본문·필터 칸의 가로 정렬. 숫자 열은 end — 머리글의 정렬 아이콘이 라벨 앞으로 와 라벨 끝이 숫자 끝선에 맞는다. */
+  align?: "start" | "center" | "end";
 } & ColumnWidth;
 
 type FieldColumn<T> = ColumnBase & {
@@ -39,6 +41,11 @@ type ComputedColumn<T> = ColumnBase & {
   );
 
 export type DataColumn<T> = FieldColumn<T> | ComputedColumn<T>;
+
+/** 기본(start)은 클래스가 없다 — 머리글·본문이 같은 규칙을 쓴다. */
+export function alignClass<T>(column: DataColumn<T>): string | undefined {
+  return column.align && column.align !== "start" ? `dds-data-table--align_${column.align}` : undefined;
+}
 
 export function columnId<T>(column: DataColumn<T>): string {
   if (column.field !== undefined) return column.field;

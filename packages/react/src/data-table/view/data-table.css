@@ -58,6 +58,16 @@
     white-space: nowrap;
   }
 
+  .dds-data-table .dds-data-table--align_center {
+    text-align: center;
+  }
+  .dds-data-table .dds-data-table--align_end {
+    text-align: end;
+  }
+  .dds-data-table--align_end .dds-data-table__filter {
+    text-align: end;
+  }
+
   .dds-data-table__sort {
     display: inline-flex;
     align-items: center;
@@ -72,6 +82,11 @@
   }
 
   /* 정렬하지 않은 열은 아이콘만 흐리게, 정렬 중인 열은 머리글 글자까지 진하게 — 어느 열로 정렬했는지 바로 보인다 */
+  /* 끝 정렬 열은 정렬 아이콘을 라벨 앞으로 — 라벨 끝이 숫자 끝선에 맞는다. */
+  .dds-data-table--align_end .dds-data-table__sort {
+    flex-direction: row-reverse;
+  }
+
   .dds-data-table__sort-icon {
     flex: none;
     color: var(--dds-color-fg-neutral-weak);

@@ -11,12 +11,18 @@ import { mergeRefs } from "../internal/merge-refs";
 import { focusItem, getItems, moveFocus } from "../internal/roving-focus";
 import { useOverlay } from "../internal/use-overlay";
 import {
+  DropdownMenuCheckboxItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  MENU_ITEM_ROLES,
+} from "./menu-choice-items";
+import {
   DropdownMenuContext,
   useDropdownMenuContext,
   type DropdownMenuContextValue,
 } from "./dropdown-menu-context";
 
-/** 항목의 role — roving 조회와 aria가 같은 값을 쓴다. */
+/** 일반 항목의 role. roving 조회는 체크·라디오 항목까지 `MENU_ITEM_ROLES`로 훑는다. */
 const ITEM_ROLE = "menuitem";
 
 export interface DropdownMenuRootProps {
@@ -47,7 +53,7 @@ export function DropdownMenuRoot({
   // 단 ArrowUp으로 열었을 때는 마지막 항목이다(같은 표준).
   const openToLastRef = React.useRef(false);
   const focusInitialItem = React.useCallback((content: HTMLElement) => {
-    const items = getItems(content, ITEM_ROLE);
+    const items = getItems(content, MENU_ITEM_ROLES);
     focusItem(items, openToLastRef.current ? items.length - 1 : 0);
     openToLastRef.current = false;
   }, []);
@@ -143,7 +149,7 @@ export const DropdownMenuContent = React.forwardRef<HTMLDivElement, DropdownMenu
         onKeyDown={(event) => {
           onKeyDown?.(event);
           if (event.defaultPrevented) return;
-          if (moveFocus(context.contentRef.current, ITEM_ROLE, event.key)) event.preventDefault();
+          if (moveFocus(context.contentRef.current, MENU_ITEM_ROLES, event.key)) event.preventDefault();
         }}
         {...props}
       />,
@@ -219,8 +225,15 @@ export const DropdownMenuShortcut = React.forwardRef<HTMLSpanElement, DropdownMe
 );
 DropdownMenuShortcut.displayName = "DropdownMenu.Shortcut";
 
+export { DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem };
+export type {
+  DropdownMenuCheckboxItemProps,
+  DropdownMenuRadioGroupProps,
+  DropdownMenuRadioItemProps,
+} from "./menu-choice-items";
+
 /**
- * compound: DropdownMenu.Root/Trigger/Content/Item/Separator/Label/Shortcut.
+ * compound: DropdownMenu.Root/Trigger/Content/Item/CheckboxItem/RadioGroup/RadioItem/Separator/Label/Shortcut.
  * 로직(상태·presence·비모달 스택·roving·floating 배치)은 Select와 공유하는
  * `internal/use-overlay`·`internal/roving-focus`에 있고 여기는 조립과 스타일만 맡는다.
  */
@@ -229,6 +242,9 @@ export const DropdownMenu = {
   Trigger: DropdownMenuTrigger,
   Content: DropdownMenuContent,
   Item: DropdownMenuItem,
+  CheckboxItem: DropdownMenuCheckboxItem,
+  RadioGroup: DropdownMenuRadioGroup,
+  RadioItem: DropdownMenuRadioItem,
   Separator: DropdownMenuSeparator,
   Label: DropdownMenuLabel,
   Shortcut: DropdownMenuShortcut,

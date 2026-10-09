@@ -28,6 +28,11 @@ export interface ToastOptions {
   intent?: ToastIntent;
   title: string;
   description?: string;
+  /**
+   * 본문 아래 글자 버튼(예: 되돌리기). 누르면 `onClick` 뒤 그 토스트를 닫는다.
+   * 토스트는 5초 뒤 사라지므로 같은 일을 하는 다른 경로가 화면에 있어야 한다(WCAG 2.2.1).
+   */
+  action?: { label: string; onClick: () => void };
 }
 
 /**
@@ -159,6 +164,20 @@ function ToastItem({ entry, closeLabel, onClose, onExited }: ToastItemProps) {
       intent={entry.intent}
       title={entry.title}
       description={entry.description}
+      action={
+        entry.action ? (
+          <button
+            type="button"
+            className="dds-toast__action-button"
+            onClick={() => {
+              entry.action?.onClick();
+              onClose(entry.id);
+            }}
+          >
+            {entry.action.label}
+          </button>
+        ) : undefined
+      }
       closeLabel={closeLabel}
       onClose={() => onClose(entry.id)}
       onMouseEnter={() => setHovered(true)}

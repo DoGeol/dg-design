@@ -13,6 +13,12 @@ import { useControllableState } from "../internal/use-controllable-state";
 import { useOverlayPosition } from "../internal/use-overlay-position";
 import { usePresence } from "../internal/use-presence";
 import {
+  DropdownMenuCheckboxItem,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  MENU_ITEM_ROLES,
+} from "../dropdown-menu/menu-choice-items";
+import {
   ContextMenuContext,
   useContextMenuContext,
   type ContextMenuContextValue,
@@ -94,7 +100,7 @@ export function ContextMenuRoot({ open, defaultOpen = false, onOpenChange, child
   // DropdownMenu의 onOpenFocus와 같은 idiom.
   React.useEffect(() => {
     if (!isOpen || !contentNode) return;
-    focusItem(getItems(contentNode, ITEM_ROLE), 0);
+    focusItem(getItems(contentNode, MENU_ITEM_ROLES), 0);
     return () => {
       if (contentNode.contains(document.activeElement)) triggerNode?.focus();
     };
@@ -217,7 +223,7 @@ export const ContextMenuContent = React.forwardRef<HTMLDivElement, ContextMenuCo
         onKeyDown={(event) => {
           onKeyDown?.(event);
           if (event.defaultPrevented) return;
-          if (moveFocus(context.contentRef.current, ITEM_ROLE, event.key)) event.preventDefault();
+          if (moveFocus(context.contentRef.current, MENU_ITEM_ROLES, event.key)) event.preventDefault();
         }}
         {...props}
       />,
@@ -293,8 +299,13 @@ export const ContextMenuShortcut = React.forwardRef<HTMLSpanElement, ContextMenu
 );
 ContextMenuShortcut.displayName = "ContextMenu.Shortcut";
 
+/** 체크·라디오 항목은 메뉴 context가 필요 없어 DropdownMenu의 것을 그대로 쓴다. */
+export const ContextMenuCheckboxItem = DropdownMenuCheckboxItem;
+export const ContextMenuRadioGroup = DropdownMenuRadioGroup;
+export const ContextMenuRadioItem = DropdownMenuRadioItem;
+
 /**
- * compound: ContextMenu.Root/Trigger(asChild)/Content/Item/Separator/Label/Shortcut — DropdownMenu 대칭.
+ * compound: ContextMenu.Root/Trigger(asChild)/Content/Item/CheckboxItem/RadioGroup/RadioItem/Separator/Label/Shortcut — DropdownMenu 대칭.
  * 여는 경로만 마우스 우클릭 전용이고, 연 뒤 키보드(roving 화살표·Enter·ESC)는 DropdownMenu와
  * 동일한 `internal/roving-focus`·`internal/dialog-stack`을 그대로 쓴다. 패널·항목 CSS도
  * dropdown-menu.css를 그대로 재사용해 신규 토큰이 없다.
@@ -304,6 +315,9 @@ export const ContextMenu = {
   Trigger: ContextMenuTrigger,
   Content: ContextMenuContent,
   Item: ContextMenuItem,
+  CheckboxItem: ContextMenuCheckboxItem,
+  RadioGroup: ContextMenuRadioGroup,
+  RadioItem: ContextMenuRadioItem,
   Separator: ContextMenuSeparator,
   Label: ContextMenuLabel,
   Shortcut: ContextMenuShortcut,

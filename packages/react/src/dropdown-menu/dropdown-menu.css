@@ -83,6 +83,15 @@
     background-color: var(--dds-color-bg-critical-weak-pressed);
   }
 
+  /* 체크·라디오 항목의 앞쪽 표식 열. 선택 안 된 항목도 자리를 차지해 글자 시작선이 같다. */
+  .dds-dropdown-menu__indicator {
+    flex: none;
+    visibility: hidden;
+  }
+  .dds-dropdown-menu__item[aria-checked="true"] > .dds-dropdown-menu__indicator {
+    visibility: visible;
+  }
+
   .dds-dropdown-menu__shortcut {
     margin-inline-start: auto;
     padding-inline-start: var(--dds-dimension-x4);
