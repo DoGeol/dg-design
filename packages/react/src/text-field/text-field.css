@@ -160,4 +160,42 @@
     font-size: var(--dds-font-size-t6);
     line-height: var(--dds-line-height-t6);
   }
+
+  /* variant: box·line은 모바일 밀도 안에서만 — 데스크톱은 outline 하나(flex 적용 방향 "폼 입력 형태").
+     상태 규칙(hover·focus·오류·비활성·읽기 전용)은 outline 것을 그대로 쓰고, 표면·경계 모양만 바꾼다. */
+
+  /* box: 낮은 표면. 면 차이만으로는 입력 영역이 1.09:1이라 stroke-neutral 경계는 그대로 둔다(WCAG 1.4.11). */
+  [data-dds-density="mobile"] .dds-text-field.dds-text-field--variant_box:not(:is(:disabled, [disabled], [data-disabled])):not(:read-only),
+  [data-dds-density="mobile"] .dds-text-field__wrapper.dds-text-field--variant_box:not(
+      :has(> .dds-text-field__input:is(:disabled, [disabled], [data-disabled], :read-only))
+    ) {
+    background-color: var(--dds-color-bg-neutral-weak);
+  }
+
+  /* line: 아래 경계만, 반경·좌우 여백 없이 본문 시작선에 맞춘다. 비활성·읽기 전용도 표면은 투명. */
+  [data-dds-density="mobile"] :is(.dds-text-field, .dds-text-field__wrapper).dds-text-field--variant_line {
+    border-width: 0 0 1px;
+    border-radius: 0;
+    padding-inline: 0;
+    background-color: transparent;
+  }
+  [data-dds-density="mobile"] .dds-text-field--variant_line:is(
+      .dds-text-field:is(:disabled, [disabled], [data-disabled], :read-only),
+      .dds-text-field__wrapper:has(> .dds-text-field__input:is(:disabled, [disabled], [data-disabled], :read-only))
+    ) {
+    background-color: transparent;
+  }
+  /* focus는 아래만 2px(경계 1px + 안쪽 아래 그림자 1px) */
+  [data-dds-density="mobile"] .dds-text-field--variant_line:is(
+      .dds-text-field:focus-visible,
+      .dds-text-field__wrapper:has(> .dds-text-field__input:focus-visible)
+    ) {
+    box-shadow: inset 0 -1px 0 0 var(--dds-color-stroke-focus-ring);
+  }
+  [data-dds-density="mobile"] .dds-text-field--variant_line:is(
+      .dds-text-field[aria-invalid="true"]:focus-visible,
+      .dds-text-field__wrapper:has(> .dds-text-field__input[aria-invalid="true"]:focus-visible)
+    ) {
+    box-shadow: inset 0 -1px 0 0 var(--dds-color-stroke-critical);
+  }
 }
