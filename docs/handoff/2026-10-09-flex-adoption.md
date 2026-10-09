@@ -4,7 +4,7 @@
 
 ## 한 줄 상태
 
-**P0~P2 배포 완료(2026-10-09, tokens 0.9.0 · react 0.18.0). P3 접근성·API 구현 완료([스펙](../specs/2026-10-09-p3-a11y-api.md)) — react minor로 배포. 다음은 P4 새 종류(deep-interview로 스펙부터).**
+**P0~P2 배포 완료(2026-10-09, tokens 0.9.0 · react 0.18.0). P3 접근성·API 배포(react 0.19.0, [스펙](../specs/2026-10-09-p3-a11y-api.md)). 다음은 P4 새 종류(deep-interview로 스펙부터).**
 
 ## 브랜치와 PR
 
@@ -30,7 +30,7 @@
 | P0 문서·가드 | `9217ef7` | README 배럴 CSS 문구를 "번들러에 따라 다르다"로 정정. `packages/react/scripts/check-subpaths.js`(하위 경로가 배럴에 닿으면 실패)를 CI build 다음 단계에 추가 |
 | P1 역할 토큰·밀도 | `020f77d` | 역할 토큰 30개, `[data-dds-density="mobile"]` 블록, Tailwind 브릿지(역할·`duration-*`·`z-*`, 4.3.3에서 컴파일 확인), `customization.md` "밀도" 절. 구현 중 결정은 [결정 기록](../decisions/2026-10-09-flex-adoption-direction.md) "구현 중 결정" |
 | P2 외관 | `4e12f65` `e423639` `cf1504d` `b384abb` | 컴포넌트 CSS가 역할 토큰을 읽고 결정안 외관이 기본값. 구현된 시안 덮어쓰기 삭제, profiles.ts 결정안은 토큰 참조. VR 기준 155개를 지우고 CI `visual-baseline`으로 재촬영(60개 바뀜, 라벨 있는 Checkbox는 VR 스토리에 없어 미검증). 구현 중 결정은 결정 기록 "P2 외관" |
-| P3 접근성·API | (P3 PR) | 메뉴 체크·라디오 항목, Select·MultiSelect `label`·`textValue`, `DataColumn.align`, `ToastOptions.action`. 결정은 결정 기록 "P3 접근성·API" |
+| P3 접근성·API | [PR #28](https://github.com/DoGeol/dg-design/pull/28) | 메뉴 체크·라디오 항목, Select·MultiSelect `label`·`textValue`, `DataColumn.align`, `ToastOptions.action`. 결정은 결정 기록 "P3 접근성·API" |
 
 ## 그다음 단계 요지
 
