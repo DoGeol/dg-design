@@ -84,7 +84,7 @@ describe("TextField prefix/suffix", () => {
     expect(document.activeElement).toBe(screen.getByRole("textbox"));
   });
 
-  it("variant 기본은 outline이고 box·line 클래스는 input 또는 affix wrapper에 붙는다", () => {
+  it("variant 기본(outline)은 클래스가 없고 box·line 클래스는 input 또는 affix wrapper에 붙는다", () => {
     render(
       <>
         <TextField aria-label="기본" />
@@ -92,7 +92,7 @@ describe("TextField prefix/suffix", () => {
         <TextField aria-label="line" variant="line" suffix="원" />
       </>,
     );
-    expect(screen.getByRole("textbox", { name: "기본" }).className).toContain("dds-text-field--variant_outline");
+    expect(screen.getByRole("textbox", { name: "기본" }).className).not.toContain("variant");
     expect(screen.getByRole("textbox", { name: "box" }).className).toContain("dds-text-field--variant_box");
     const line = screen.getByRole("textbox", { name: "line" });
     expect(line.className).not.toContain("variant");
