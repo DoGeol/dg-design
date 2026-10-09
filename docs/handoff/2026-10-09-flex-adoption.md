@@ -4,26 +4,11 @@
 
 ## 한 줄 상태
 
-**P0~P2 완료, 다음은 P3 접근성·API 선행.** P1·P2는 아직 배포하지 않았다 — tokens minor·react minor changeset이 같은 Version PR로 나가야 한다. P2 시각 회귀 기준은 CI `visual-baseline`으로 다시 찍어 커밋됐다(`b384abb`).
+**P0~P2 배포 완료(2026-10-09, tokens 0.9.0 · react 0.18.0), 다음은 P3 접근성·API 선행.** P3는 작은 스펙을 먼저 쓴다.
 
-## 브랜치와 커밋
+## 브랜치와 PR
 
-| 브랜치 | 상태 |
-| --- | --- |
-| `codex/flex-adoption-review-v0173` | 원격에 푸시됨(`8c4d3b1`). main보다 7커밋 앞섬. **PR 없음, main에 미병합** |
-| `feat/flex-adoption` | 위 브랜치에서 갈라진 구현용 브랜치. 이 인계 문서와 구현 계획을 담는다 |
-
-main 위의 7커밋(오래된 순):
-
-| 커밋 | 내용 |
-| --- | --- |
-| `19edccc` `ea9c55b` `e5d0018` | (이전 작업) flex 적용 검토, 컴포넌트 38개 적용안 A, 원문 우선 재검토 B와 B 이미지 보드 |
-| `e1a5e73` | Storybook `Mockups/Flex` A·B 비교, B 치수 명세, 관점 보완, Claude·Gemini 이중검토, 적용 방향 결정 |
-| `3085759` | A·B 보강 이미지 11–14 |
-| `ded6dc0` | 사용 가이드 스킬 결정 |
-| `8c4d3b1` | 결정안 미리보기(Decided 스토리 46개), 표 정렬·Sheet 모서리 |
-
-**정함(2026-10-09):** 검토 브랜치를 먼저 main에 병합한다 — [PR #24](https://github.com/DoGeol/dg-design/pull/24). 구현은 `feat/flex-adoption`에서 단계별 PR로 올린다. #24가 squash 병합되면 `feat/flex-adoption`을 main 위로 rebase한다.
+검토 브랜치는 [PR #24](https://github.com/DoGeol/dg-design/pull/24), P0~P2는 [PR #25](https://github.com/DoGeol/dg-design/pull/25), 배포는 Version PR [#26](https://github.com/DoGeol/dg-design/pull/26)으로 main에 병합했다(모두 merge commit). 작업 브랜치는 지웠다. P3부터는 main에서 단계별 브랜치를 새로 딴다.
 
 ## 확정된 결정
 
