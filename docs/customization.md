@@ -69,7 +69,7 @@ react 0.20.0의 List·PropertyField는 tokens 0.10.0의 목록·설정 행 역�
 | `--dds-radius-select-panel` · `option` · `menu` · `menu-item` · `chip` · `sheet` · `setting-row` | 12 · 4 · 12 · 6 · 6 · 0 · 14 | 같음 |
 | `--dds-font-size-field` · `body` / `--dds-line-height-body` | 14 · 14 / 19 | 16 · 16 / 24 |
 
-값은 px 환산이다(글자는 rem으로 방출). 출처는 [flex 적용 방향](decisions/2026-10-09-flex-adoption-direction.md) 치수표다. `page-inset`·`field-gap`·`group-gap`·`panel-inset`·`cta-height`·`table-row`·`--dds-font-size-body`는 앱 레이아웃용이다(react 0.18.0 기준 컴포넌트가 읽지 않는다). 나머지는 컴포넌트가 읽는다 — 밀도를 바꾸면 입력·버튼·옵션·메뉴·Sheet·목록·속성 행·조작 영역이 함께 바뀐다.
+값은 px 환산이다(글자는 rem으로 방출). 출처는 [flex 적용 방향](decisions/2026-10-09-flex-adoption-direction.md) 치수표다. `page-inset`·`field-gap`·`group-gap`·`cta-height`·`table-row`·`--dds-font-size-body`는 앱 레이아웃용이다(컴포넌트가 읽지 않는다). `panel-inset`은 Dialog 작업형 부품(Toolbar·Body·Footer)이 읽는다. 나머지는 컴포넌트가 읽는다 — 밀도를 바꾸면 입력·버튼·옵션·메뉴·Sheet·목록·속성 행·조작 영역이 함께 바뀐다.
 
 - **루트에만 붙인다.** 테마와 달리 하위 요소 중첩을 지원하지 않는다 — Dialog·Popover 같은 포털은 `body`에 붙어 하위 스코프를 벗어나므로, 화면 일부만 모바일로 두면 그 안에서 연 오버레이가 데스크톱 값으로 열린다.
 - 언제 모바일로 둘지(뷰포트 폭, 기기, 사용자 설정)는 소비 앱이 정한다.
