@@ -56,6 +56,12 @@ export interface UseOverlayOptions {
   closeOnEscape?: boolean;
   /** 바깥 클릭으로 닫히는지. 기본 true. */
   closeOnOutsideClick?: boolean;
+  /**
+   * 트리거 기준 floating 배치 여부. 기본 true — false면 패널이 자기 CSS 위치에 선다(Select의 Sheet 표시).
+   */
+  positioned?: boolean;
+  /** 모달로 스택에 올려 배경 inert·스크롤 잠금을 만든다. 기본 false(팝오버). */
+  modal?: boolean;
 }
 
 export interface Overlay {
@@ -90,6 +96,8 @@ export function useOverlay({
   onOpenFocus,
   closeOnEscape = true,
   closeOnOutsideClick = true,
+  positioned = true,
+  modal = false,
 }: UseOverlayOptions): Overlay {
   const [isOpen, setOpen] = useControllableState({
     value: open,
@@ -121,7 +129,7 @@ export function useOverlay({
     };
   }, [present]);
 
-  useOverlayPosition(triggerNode, contentNode, isOpen, placement, matchTriggerWidth, arrowNode);
+  useOverlayPosition(triggerNode, positioned ? contentNode : null, isOpen, placement, matchTriggerWidth, arrowNode);
 
   const closeRef = useLatestRef(() => setOpen(false));
   const close = React.useMemo(() => () => closeRef.current(), [closeRef]);
@@ -141,7 +149,7 @@ export function useOverlay({
     };
   }, [isOpen, entry]);
 
-  // 비모달로 스택에 올라 ESC 순서에만 참여한다 — 배경 inert도, 스크롤 잠금도 만들지 않는다.
+  // 기본은 비모달로 스택에 올라 ESC 순서에만 참여한다 — 배경 inert도, 스크롤 잠금도 만들지 않는다.
   // closeOnEscape가 false면 최상단 자리는 그대로 차지하되 아무 것도 하지 않는다(Dialog와 같은 관례) —
   // 그 아래 오버레이로 ESC가 흘러 내려가지는 않는다.
   React.useEffect(() => {
@@ -151,9 +159,9 @@ export function useOverlay({
       onEscape: () => {
         if (closeOnEscape) close();
       },
-      modal: false,
+      modal,
     });
-  }, [isOpen, container, close, closeOnEscape]);
+  }, [isOpen, container, close, closeOnEscape, modal]);
 
   // 바깥 클릭 닫힘. mousedown 단계에서 판정하되 트리거는 제외한다 — 트리거에서 닫으면
   // 이어지는 click이 다시 열어 토글이 먹통이 된다. 트리거 재클릭은 Trigger의 토글이 처리한다.

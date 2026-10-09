@@ -80,7 +80,7 @@
   /* 활성 항목이 aria-activedescendant로만 표시되는 trigger 모드의 하이라이트 —
      DOM 포커스가 입력에 남아 :focus-visible이 안 걸린다. */
   /* 복수 선택 패널의 선택 표식은 체크 아이콘 대신 사각 mark(Checkbox와 같은 모양) — 단일 선택과 구분한다. */
-  .dds-select__content[aria-multiselectable="true"] .dds-select__check {
+  :is(.dds-select__content, .dds-select__listbox)[aria-multiselectable="true"] .dds-select__check {
     box-sizing: border-box;
     width: var(--dds-size-mark);
     height: var(--dds-size-mark);
@@ -90,16 +90,16 @@
     opacity: 1;
     color: transparent;
   }
-  .dds-select__content[aria-multiselectable="true"] [aria-selected="true"] .dds-select__check {
+  :is(.dds-select__content, .dds-select__listbox)[aria-multiselectable="true"] [aria-selected="true"] .dds-select__check {
     border-color: transparent;
     background-color: var(--dds-color-bg-brand-solid);
     color: var(--dds-color-fg-brand-contrast);
   }
-  .dds-select__content[aria-multiselectable="true"] .dds-select__option:is(:disabled, [disabled], [data-disabled]) .dds-select__check {
+  :is(.dds-select__content, .dds-select__listbox)[aria-multiselectable="true"] .dds-select__option:is(:disabled, [disabled], [data-disabled]) .dds-select__check {
     border-color: var(--dds-color-stroke-neutral-weak);
     background-color: var(--dds-color-bg-disabled);
   }
-  .dds-select__content[aria-multiselectable="true"] .dds-select__option:is(:disabled, [disabled], [data-disabled])[aria-selected="true"] .dds-select__check {
+  :is(.dds-select__content, .dds-select__listbox)[aria-multiselectable="true"] .dds-select__option:is(:disabled, [disabled], [data-disabled])[aria-selected="true"] .dds-select__check {
     border-color: transparent;
     color: var(--dds-color-fg-disabled);
   }

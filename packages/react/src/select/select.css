@@ -165,6 +165,17 @@
     animation: dds-overlay-pop-in var(--dds-duration-fast) var(--dds-easing-out);
   }
 
+  /* Sheet 표시(presentation)의 목록 — 패널 외관은 Sheet가 맡고 여기는 세로 목록만. */
+  .dds-select__sheet {
+    gap: var(--dds-dimension-x2);
+  }
+  .dds-select__listbox {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow-y: auto;
+  }
+
   /* forwards가 없으면 animationend와 unmount 사이에 base 스타일로 스냅백해 번쩍인다. */
   .dds-select__content[data-state="closed"] {
     animation-name: dds-overlay-pop-out;

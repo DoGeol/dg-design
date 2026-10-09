@@ -1,6 +1,6 @@
 # flex 적용 방향 (2026-10-09)
 
-> 상태: 활성 · **구현 중** — P4(새 종류)까지 반영. 진행은 [구현 계획](../plans/2026-10-09-flex-adoption.md).
+> 상태: 활성 · **구현 중** — P5(표시 방식)까지 반영. 진행은 [구현 계획](../plans/2026-10-09-flex-adoption.md).
 > 근거: [A·B 이중검토 종합](../reports/flex-adoption-review/review/synthesis.md) · [B 치수 명세](../reports/flex-adoption-review/skill-free-comparison/design-application/README.md) · [A·B 공통 관점 보완](../reports/flex-adoption-review/gaps.md) · Storybook `Mockups/Flex`
 
 ## 결정
@@ -117,6 +117,14 @@
 - Select 칩 트리거의 패널 최소 폭은 `use-overlay-position`의 인라인 `min-width`를 `max(트리거, var(--dds-overlay-min-width, 0px))`로 바꿔 CSS 변수 하나로 연다. 12rem은 제안값이다.
 - PropertyField.Trigger는 Popover.Trigger `asChild`가 내려보내는 id보다 Field id를 우선한다(라벨 for 연결).
 - 시안 proto(`flex/proto/*`)와 Scenarios는 교체하지 않고 결정 당시 기록으로 둔다(계획 규칙 6의 이번 예외).
+
+**P5 표시 방식 (2026-10-09)** — [스펙](../specs/2026-10-09-p5-presentation.md)
+
+- 작업형 부품(Toolbar·Body·Aside·Footer)은 Dialog·Sheet가 같은 구현(`internal/panel-parts.tsx`)을 쓴다. 배치는 Content의 `:has()`로 바뀌어 부품 없는 확인형은 픽셀이 같다.
+- 좁은 배치는 컨테이너 쿼리 대신 좌우 Sheet와 화면 폭 35rem 미만 미디어 쿼리로 정했다. Content에 container를 걸면 내용 크기 계산이 바뀐다.
+- Select 시트 표시는 Sheet 컴포넌트를 쓰지 않고 `internal/select-sheet.tsx`가 Sheet 클래스만 빌려 그린다. 열기·닫기·포커스·dialog-stack은 기존 `useOverlay`(`positioned: false`, `modal: true`)가 그대로 맡아 listbox 계약이 바뀌지 않는다.
+- MultiSelect `search="trigger"`는 시트 표시에서 `content`처럼 동작한다(키보드가 올라와도 목록이 보이게).
+- DatePicker Sheet는 높이가 `tall`과 달라 그대로 뒀다.
 
 ## 다음
 

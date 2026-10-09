@@ -2,6 +2,7 @@ import "../internal/overlay-motion.css";
 import "./dialog.css";
 
 import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
 import clsx from "clsx";
 import * as React from "react";
 import { createPortal } from "react-dom";
@@ -9,6 +10,7 @@ import { createPortal } from "react-dom";
 import { pushDialog } from "../internal/dialog-stack";
 import { useControllableState } from "../internal/use-controllable-state";
 import { mergeRefs } from "../internal/merge-refs";
+import { createPanelParts } from "../internal/panel-parts";
 import { usePresence } from "../internal/use-presence";
 import { DialogContext, useDialogContext, type DialogContextValue } from "./dialog-context";
 
@@ -190,10 +192,25 @@ export const DialogOverlay = React.forwardRef<HTMLDivElement, DialogOverlayProps
 );
 DialogOverlay.displayName = "Dialog.Overlay";
 
-export interface DialogContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+const content = cva("dds-dialog__content", {
+  variants: {
+    size: {
+      default: "",
+      large: "dds-dialog__content--size_large",
+      full: "dds-dialog__content--size_full",
+    },
+  },
+  defaultVariants: { size: "default" },
+});
 
+export interface DialogContentProps extends React.HTMLAttributes<HTMLDivElement>, VariantProps<typeof content> {}
+
+/**
+ * `size`: default(확인형 32rem) · large(작업형 48rem, 최대 90dvh) · full(화면 전체).
+ * 크기를 바꿔도 같은 요소라 입력값·포커스가 남는다.
+ */
 export const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps>(
-  ({ className, ...props }, ref) => {
+  ({ className, size, ...props }, ref) => {
     const context = useDialogContext("Dialog.Content");
     if (!context.present || !context.container) return null;
 
@@ -206,7 +223,7 @@ export const DialogContent = React.forwardRef<HTMLDivElement, DialogContentProps
         aria-labelledby={context.labelledBy}
         aria-describedby={context.describedBy}
         data-state={context.open ? "open" : "closed"}
-        className={clsx("dds-dialog__content", className)}
+        className={clsx(content({ size }), className)}
         {...props}
       />,
       context.container,
@@ -277,8 +294,14 @@ export const DialogClose = React.forwardRef<HTMLButtonElement, DialogCloseProps>
 );
 DialogClose.displayName = "Dialog.Close";
 
+const parts = createPanelParts("Dialog");
+export const DialogToolbar = parts.Toolbar;
+export const DialogBody = parts.Body;
+export const DialogAside = parts.Aside;
+export const DialogFooter = parts.Footer;
+
 /**
- * compound: Dialog.Root/Trigger/Overlay/Content/Title/Description/Close.
+ * compound: Dialog.Root/Trigger/Overlay/Content/Title/Description/Close + 작업형 Toolbar/Body/Aside/Footer.
  * 로직(상태·presence·스택·inert)은 같은 폴더의 훅 파일에 있고 여기는 조립과 스타일만 맡는다.
  */
 export const Dialog = {
@@ -289,4 +312,8 @@ export const Dialog = {
   Title: DialogTitle,
   Description: DialogDescription,
   Close: DialogClose,
+  Toolbar: DialogToolbar,
+  Body: DialogBody,
+  Aside: DialogAside,
+  Footer: DialogFooter,
 };

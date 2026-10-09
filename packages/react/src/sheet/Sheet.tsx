@@ -2,13 +2,14 @@ import "../internal/overlay-motion.css";
 import "./sheet.css";
 
 import { Slot } from "@radix-ui/react-slot";
-import { cva } from "class-variance-authority";
+import { cva, type VariantProps } from "class-variance-authority";
 import clsx from "clsx";
 import * as React from "react";
 import { createPortal } from "react-dom";
 
 import { pushDialog } from "../internal/dialog-stack";
 import { mergeRefs } from "../internal/merge-refs";
+import { createPanelParts } from "../internal/panel-parts";
 import { useControllableState } from "../internal/use-controllable-state";
 import { usePresence } from "../internal/use-presence";
 import { SheetContext, useSheetContext, type SheetContextValue, type SheetSide } from "./sheet-context";
@@ -21,7 +22,14 @@ const content = cva("dds-sheet__content", {
       top: "dds-sheet--side_top",
       bottom: "dds-sheet--side_bottom",
     },
+    size: {
+      default: "",
+      fit: "dds-sheet--size_fit",
+      tall: "dds-sheet--size_tall",
+      full: "dds-sheet--size_full",
+    },
   },
+  defaultVariants: { size: "default" },
 });
 
 export interface SheetRootProps {
@@ -210,10 +218,15 @@ export const SheetOverlay = React.forwardRef<HTMLDivElement, SheetOverlayProps>(
 );
 SheetOverlay.displayName = "Sheet.Overlay";
 
-export interface SheetContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface SheetContentProps extends React.HTMLAttributes<HTMLDivElement>, Pick<VariantProps<typeof content>, "size"> {}
 
+/**
+ * `size`는 상하 Sheet의 높이다: default(20rem) · fit(내용 높이, 최대 90dvh) · tall(90dvh) · full(화면 전체).
+ * 간단 → 상세 → 전체 단계 전환은 소비자가 size를 바꾸는 것으로 한다 — 같은 요소라 값·포커스가 남는다.
+ * 좌우 Sheet에서는 무시한다.
+ */
 export const SheetContent = React.forwardRef<HTMLDivElement, SheetContentProps>(
-  ({ className, ...props }, ref) => {
+  ({ className, size, ...props }, ref) => {
     const context = useSheetContext("Sheet.Content");
     if (!context.present || !context.container) return null;
 
@@ -227,7 +240,7 @@ export const SheetContent = React.forwardRef<HTMLDivElement, SheetContentProps>(
         aria-describedby={context.describedBy}
         data-state={context.open ? "open" : "closed"}
         data-side={context.side}
-        className={clsx(content({ side: context.side }), className)}
+        className={clsx(content({ side: context.side, size }), className)}
         {...props}
       />,
       context.container,
@@ -298,8 +311,14 @@ export const SheetClose = React.forwardRef<HTMLButtonElement, SheetCloseProps>(
 );
 SheetClose.displayName = "Sheet.Close";
 
+const parts = createPanelParts("Sheet");
+export const SheetToolbar = parts.Toolbar;
+export const SheetBody = parts.Body;
+export const SheetAside = parts.Aside;
+export const SheetFooter = parts.Footer;
+
 /**
- * compound: Sheet.Root/Trigger/Overlay/Content/Title/Description/Close.
+ * compound: Sheet.Root/Trigger/Overlay/Content/Title/Description/Close + 작업형 Toolbar/Body/Aside/Footer.
  * Dialog와 대칭 — 차이는 `side`에 따라 슬라이드하는 방향뿐이고 모달 스택·presence·
  * 포커스 정책은 전부 동일 로직을 그대로 가져다 쓴다.
  */
@@ -311,4 +330,8 @@ export const Sheet = {
   Title: SheetTitle,
   Description: SheetDescription,
   Close: SheetClose,
+  Toolbar: SheetToolbar,
+  Body: SheetBody,
+  Aside: SheetAside,
+  Footer: SheetFooter,
 };

@@ -17,6 +17,10 @@ export interface SelectContextValue extends Overlay {
   /** Option이 마운트 시 자기 라벨을 등록한다 — 사용자 컴포넌트로 감싸 스캔에 안 잡혀도 트리거 라벨이 맞도록. */
   registerOption: (entry: OptionEntry) => () => void;
   typeahead: Typeahead;
+  /** 목록을 하단 Sheet로 띄우는지(presentation). */
+  sheet: boolean;
+  /** Field 라벨 id — Sheet dialog의 기본 이름. */
+  labelledBy: string | undefined;
 }
 
 export const SelectContext = React.createContext<SelectContextValue | undefined>(undefined);

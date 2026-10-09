@@ -229,3 +229,20 @@ export const StateMatrix: StoryObj<typeof meta> = {
   name: "State matrix",
   render: () => <StateMatrixGrid />,
 };
+
+/** presentation="sheet" + search="trigger" — 검색 입력이 Sheet 안으로 오고 트리거는 요약 버튼이 된다. */
+export const SheetStateMatrix: StoryObj<typeof meta> = {
+  name: "Sheet state matrix",
+  render: () => (
+    <div style={{ minHeight: "100vh", padding: 24, boxSizing: "border-box", maxWidth: 320 }}>
+      <MultiSelect.Root open defaultValue={["apple", "melon"]} presentation="sheet" search="trigger" searchProps={{ "aria-label": "과일 검색", placeholder: "검색" }}>
+        <MultiSelect.Trigger placeholder="과일을 고르세요" aria-label="과일" />
+        <MultiSelect.Content title="과일 고르기">
+          <MultiSelect.Option value="apple">Apple</MultiSelect.Option>
+          <MultiSelect.Option value="banana">Banana</MultiSelect.Option>
+          <MultiSelect.Option value="melon">Melon</MultiSelect.Option>
+        </MultiSelect.Content>
+      </MultiSelect.Root>
+    </div>
+  ),
+};
