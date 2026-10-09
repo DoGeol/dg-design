@@ -1,0 +1,147 @@
+@layer dds {
+  /* 작업형 배치 — 부품이 하나라도 있으면 확인형 여백·gap·전체 스크롤을 끄고 격자로 나눈다.
+     부품이 없는 Content는 이 규칙에 걸리지 않아 지금 모양 그대로다.
+     Aside 열이 auto라 Aside가 없으면 0폭으로 접힌다. */
+  :is(.dds-dialog__content, .dds-sheet__content):has(> :is(.dds-panel__toolbar, .dds-panel__body, .dds-panel__aside, .dds-panel__footer)) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-areas: "toolbar toolbar" "body aside" "footer aside";
+    gap: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .dds-dialog__content {
+    --dds-panel-inset: var(--dds-space-panel-inset);
+  }
+
+  .dds-sheet__content {
+    --dds-panel-inset: var(--dds-space-sheet-inset);
+  }
+
+  .dds-panel__toolbar {
+    grid-area: toolbar;
+    display: flex;
+    align-items: center;
+    gap: var(--dds-dimension-x2);
+    min-width: 0;
+    padding-block: var(--dds-dimension-x2);
+    padding-inline: var(--dds-panel-inset) var(--dds-dimension-x3);
+    border-block-end: 1px solid var(--dds-color-stroke-neutral-weak);
+    background-color: var(--dds-color-bg-layer-default);
+  }
+
+  /* 제목 다음 행동(닫기 등)은 끝으로 민다. */
+  .dds-panel__toolbar > :is(.dds-dialog__title, .dds-sheet__title) {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .dds-panel__body {
+    grid-area: body;
+    display: flex;
+    flex-direction: column;
+    gap: var(--dds-dimension-x6);
+    min-height: 0;
+    overflow-y: auto;
+    padding: var(--dds-panel-inset);
+  }
+
+  .dds-panel__aside {
+    grid-area: aside;
+    box-sizing: border-box;
+    width: 16rem;
+    min-height: 0;
+    overflow-y: auto;
+    padding: var(--dds-dimension-x5);
+    border-inline-start: 1px solid var(--dds-color-stroke-neutral-weak);
+  }
+
+  .dds-panel__footer {
+    grid-area: footer;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--dds-dimension-x2);
+    padding: var(--dds-dimension-x4) var(--dds-panel-inset);
+    border-block-start: 1px solid var(--dds-color-stroke-neutral-weak);
+    background-color: var(--dds-color-bg-layer-default);
+  }
+
+  .dds-sheet--side_bottom > .dds-panel__footer {
+    padding-block-end: max(var(--dds-dimension-x4), env(safe-area-inset-bottom));
+  }
+
+  [data-dds-density="mobile"] .dds-panel__footer > * {
+    flex: 1;
+  }
+
+  /* 좁은 패널(좌우 Sheet, 좁은 화면): 한 열로 쌓고 Content 전체가 스크롤한다.
+     Toolbar·Footer는 sticky로 고정, Aside는 Body 뒤로 와서 함께 스크롤된다.
+     빈 세 번째 줄(1fr)이 남는 높이를 받아 Footer를 아래에 붙인다. */
+  :is(.dds-sheet--side_left, .dds-sheet--side_right):has(> :is(.dds-panel__toolbar, .dds-panel__body, .dds-panel__aside, .dds-panel__footer)) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas: "toolbar" "body" "aside" "footer";
+    overflow-y: auto;
+  }
+
+  :is(.dds-sheet--side_left, .dds-sheet--side_right) > :is(.dds-panel__body, .dds-panel__aside) {
+    overflow: visible;
+  }
+
+  :is(.dds-sheet--side_left, .dds-sheet--side_right) > .dds-panel__aside {
+    align-self: start;
+    width: auto;
+    padding-inline: var(--dds-panel-inset);
+    border-inline-start: 0;
+    border-block-start: 1px solid var(--dds-color-stroke-neutral-weak);
+  }
+
+  :is(.dds-sheet--side_left, .dds-sheet--side_right) > .dds-panel__toolbar {
+    position: sticky;
+    z-index: 1;
+    inset-block-start: 0;
+  }
+
+  :is(.dds-sheet--side_left, .dds-sheet--side_right) > .dds-panel__footer {
+    position: sticky;
+    z-index: 1;
+    inset-block-end: 0;
+  }
+
+  @media (max-width: 35rem) {
+    :is(.dds-dialog__content, .dds-sheet__content):has(> :is(.dds-panel__toolbar, .dds-panel__body, .dds-panel__aside, .dds-panel__footer)) {
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: auto auto 1fr auto;
+      grid-template-areas: "toolbar" "body" "aside" "footer";
+      overflow-y: auto;
+    }
+
+    :is(.dds-dialog__content, .dds-sheet__content) > :is(.dds-panel__body, .dds-panel__aside) {
+      overflow: visible;
+    }
+
+    :is(.dds-dialog__content, .dds-sheet__content) > .dds-panel__aside {
+      align-self: start;
+      width: auto;
+      padding-inline: var(--dds-panel-inset);
+      border-inline-start: 0;
+      border-block-start: 1px solid var(--dds-color-stroke-neutral-weak);
+    }
+
+    :is(.dds-dialog__content, .dds-sheet__content) > .dds-panel__toolbar {
+      position: sticky;
+      z-index: 1;
+      inset-block-start: 0;
+    }
+
+    :is(.dds-dialog__content, .dds-sheet__content) > .dds-panel__footer {
+      position: sticky;
+      z-index: 1;
+      inset-block-end: 0;
+    }
+  }
+}

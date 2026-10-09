@@ -84,6 +84,11 @@ export {
   DialogTitle,
   DialogDescription,
   DialogClose,
+  DialogToolbar,
+  DialogBody,
+  DialogAside,
+  DialogFooter,
+  type DialogContentProps,
 } from "./dialog/Dialog";
 export {
   DropdownMenu,
@@ -213,6 +218,11 @@ export {
   SheetTitle,
   SheetDescription,
   SheetClose,
+  SheetToolbar,
+  SheetBody,
+  SheetAside,
+  SheetFooter,
+  type SheetContentProps,
 } from "./sheet/Sheet";
 export { Skeleton, type SkeletonProps } from "./skeleton/Skeleton";
 export { Slider, type SliderProps } from "./slider/Slider";

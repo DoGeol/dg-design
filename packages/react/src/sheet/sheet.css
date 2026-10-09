@@ -74,6 +74,24 @@
     animation-name: dds-sheet-content-in-bottom;
   }
 
+  /* 상하 Sheet 높이 단계. 좌우 Sheet에는 걸지 않는다(size 무시). 단계를 바꾸면 높이가 전이한다 —
+     fit은 auto 높이라 전이 없이 바뀐다. */
+  :is(.dds-sheet--side_top, .dds-sheet--side_bottom) {
+    transition: height var(--dds-duration-base) var(--dds-easing-out);
+  }
+  :is(.dds-sheet--side_top, .dds-sheet--side_bottom).dds-sheet--size_fit {
+    height: auto;
+    max-height: min(90dvh, calc(100% - var(--dds-dimension-x8)));
+  }
+  :is(.dds-sheet--side_top, .dds-sheet--side_bottom).dds-sheet--size_tall {
+    height: min(90dvh, calc(100% - var(--dds-dimension-x8)));
+  }
+  :is(.dds-sheet--side_top, .dds-sheet--side_bottom).dds-sheet--size_full {
+    height: 100%;
+    border-width: 0;
+    border-radius: 0;
+  }
+
   /* forwards가 없으면 animationend와 React unmount 사이 1~2프레임 동안
      base 위치로 스냅백해 사라지기 직전에 번쩍인다(dialog.css와 같은 함정). */
   .dds-sheet__overlay[data-state="closed"] {
@@ -185,6 +203,7 @@
     .dds-sheet__overlay,
     .dds-sheet__content {
       animation: none;
+      transition: none;
     }
   }
 }

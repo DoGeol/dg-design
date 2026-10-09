@@ -23,7 +23,9 @@ import {
   type OptionEntry,
 } from "../internal/select-core";
 import { useControllableState } from "../internal/use-controllable-state";
+import { SelectSheet } from "../internal/select-sheet";
 import { useOverlay } from "../internal/use-overlay";
+import { useSheetPresentation, type Presentation } from "../internal/use-sheet-presentation";
 import {
   SelectContext,
   SelectGroupContext,
@@ -46,6 +48,11 @@ export interface SelectRootProps {
   closeOnEscape?: boolean;
   /** 바깥 클릭으로 닫히는지. */
   closeOnOutsideClick?: boolean;
+  /**
+   * 목록을 띄우는 방식. 기본 `"popover"`. `"sheet"`는 하단 Sheet(모달), `"auto"`는 루트
+   * `data-dds-density="mobile"`이면 Sheet다 — 밀도는 앱이 정하고 Select는 따른다.
+   */
+  presentation?: Presentation;
   children?: React.ReactNode;
 }
 
@@ -60,9 +67,11 @@ export function SelectRoot(props: SelectRootProps) {
     placement = "bottom-start",
     closeOnEscape = true,
     closeOnOutsideClick = true,
+    presentation = "popover",
     name,
     children,
   } = props;
+  const sheet = useSheetPresentation(presentation);
 
   // `undefined`가 "선택 없음"이라 값이 아니라 prop 존재 여부로 controlled를 가른다.
   const [selectedValue, setValue] = useControllableState<string | undefined>({
@@ -90,6 +99,8 @@ export function SelectRoot(props: SelectRootProps) {
     closeOnEscape,
     closeOnOutsideClick,
     onOpenFocus: focusSelectedOption,
+    positioned: !sheet,
+    modal: sheet,
   });
 
   const fieldCtx = React.useContext(FieldContext);
@@ -110,8 +121,12 @@ export function SelectRoot(props: SelectRootProps) {
       options,
       registerOption,
       typeahead,
+      sheet,
+      labelledBy: fieldCtx?.labelId,
     }),
     [
+      sheet,
+      fieldCtx?.labelId,
       overlay,
       triggerId,
       contentId,
@@ -236,10 +251,13 @@ export const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerPr
 );
 SelectTrigger.displayName = "Select.Trigger";
 
-export interface SelectContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface SelectContentProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
+  /** Sheet 표시일 때 위에 보일 제목. 없으면 Field 라벨이 dialog 이름이 된다. 팝오버에서는 쓰지 않는다. */
+  title?: React.ReactNode;
+}
 
 export const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps>(
-  ({ className, onKeyDown, ...props }, ref) => {
+  ({ className, onKeyDown, title, ...props }, ref) => {
     const context = useSelectContext("Select.Content");
     const setRef = React.useMemo(
       () =>
@@ -250,19 +268,30 @@ export const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps
         ),
       [ref, context.contentRef, context.setContentNode],
     );
+    // Sheet 표시에서는 패널(dialog)이 presence·포커스·바깥 클릭 기준이다.
+    const sheetRef = React.useMemo(
+      () =>
+        mergeRefs(
+          context.contentRef as React.RefObject<HTMLDivElement | null>,
+          context.setContentNode as React.Ref<HTMLDivElement>,
+        ),
+      [context.contentRef, context.setContentNode],
+    );
     if (!context.present || !context.container) return null;
 
-    return createPortal(
+    const listbox = (
       <div
-        ref={setRef}
+        ref={context.sheet ? ref : setRef}
         id={context.contentId}
         role="listbox"
         aria-labelledby={context.triggerId}
         data-state={context.open ? "open" : "closed"}
         // 칩 트리거는 좁아서 트리거 폭을 따르면 선택지가 잘린다 — 패널 최소 폭을 따로 준다.
         className={clsx(
-          "dds-select__content",
-          context.triggerNode?.classList.contains("dds-select__trigger--variant_chip") && "dds-select__content--chip",
+          context.sheet ? "dds-select__listbox" : "dds-select__content",
+          !context.sheet &&
+            context.triggerNode?.classList.contains("dds-select__trigger--variant_chip") &&
+            "dds-select__content--chip",
           className,
         )}
         onKeyDown={(event) => {
@@ -277,7 +306,22 @@ export const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps
           if (handled) event.preventDefault();
         }}
         {...props}
-      />,
+      />
+    );
+
+    return createPortal(
+      context.sheet ? (
+        <SelectSheet
+          ref={sheetRef}
+          open={context.open}
+          title={title}
+          labelledBy={context.labelledBy ?? context.triggerId}
+        >
+          {listbox}
+        </SelectSheet>
+      ) : (
+        listbox
+      ),
       context.container,
     );
   },

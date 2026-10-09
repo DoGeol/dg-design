@@ -15,21 +15,22 @@ import { focusItem, getItems } from "../internal/roving-focus";
 import {
   handleOpenKeyDown,
   isTypeaheadKey,
-  optionLabel,
-  type OptionLabelProps,
   OPTION_ROLE,
   useOptionRegistry,
   useTypeahead,
   VALUE_ATTR,
 } from "../internal/select-core";
 import { useControllableState } from "../internal/use-controllable-state";
+import { SelectSheet } from "../internal/select-sheet";
 import { useOverlay } from "../internal/use-overlay";
+import { useSheetPresentation, type Presentation } from "../internal/use-sheet-presentation";
 import { Select } from "../select/Select";
 import {
   MultiSelectContext,
   useMultiSelectContext,
   type MultiSelectContextValue,
 } from "./multi-select-context";
+import { MultiSelectOption } from "./multi-select-option";
 import {
   MultiSelectCaret,
   MultiSelectContentSearch,
@@ -77,6 +78,11 @@ export interface MultiSelectRootProps {
   createLabel?: (query: string) => React.ReactNode;
   /** 없으면 실패해도 문구를 띄우지 않고 항목만 복구한다. */
   createErrorLabel?: (error: unknown, query: string) => React.ReactNode;
+  /**
+   * 목록을 띄우는 방식(Select와 같다). Sheet 표시에서 `search="trigger"`는 검색 입력을 Sheet 안으로 옮기고
+   * 트리거는 요약 버튼이 된다 — 키보드가 올라와도 목록이 보이게.
+   */
+  presentation?: Presentation;
   children?: React.ReactNode;
 }
 
@@ -100,8 +106,11 @@ export function MultiSelectRoot({
   onCreate,
   createLabel,
   createErrorLabel,
+  presentation = "popover",
   children,
 }: MultiSelectRootProps) {
+  const sheet = useSheetPresentation(presentation);
+  const searchMode = search === undefined ? undefined : sheet ? "content" : search;
   const [selectedValues, setValue] = useControllableState<string[]>({
     value,
     defaultValue,
@@ -131,8 +140,8 @@ export function MultiSelectRoot({
   // 열릴 때는 선택된 것 중 첫 옵션으로(없으면 첫 옵션) — Select와 같은 자리.
   // 검색 모드는 DOM 포커스가 입력에 있어야 하므로 여기로 오지 않는다.
   const focusSelectedOption = (content: HTMLElement) => {
-    if (search === "trigger") return;
-    if (search === "content") {
+    if (searchMode === "trigger") return;
+    if (searchMode === "content") {
       const input = content.querySelector<HTMLElement>("[data-dds-search]");
       if (input) {
         input.focus();
@@ -156,6 +165,8 @@ export function MultiSelectRoot({
     closeOnEscape,
     closeOnOutsideClick,
     onOpenFocus: focusSelectedOption,
+    positioned: !sheet,
+    modal: sheet,
   });
 
   const fieldCtx = React.useContext(FieldContext);
@@ -166,7 +177,7 @@ export function MultiSelectRoot({
 
   // search가 없어도 훅 순서를 지키려고 항상 부르되, filter를 꺼서 아무 일도 하지 않게 둔다.
   const searchState = useMultiSelectSearch({
-    mode: search ?? "content",
+    mode: searchMode ?? "content",
     searchValue,
     defaultSearchValue,
     onSearchChange,
@@ -200,7 +211,7 @@ export function MultiSelectRoot({
   const context = React.useMemo<MultiSelectContextValue>(
     () => ({
       ...overlay,
-      search: search === undefined ? undefined : searchState,
+      search: searchMode === undefined ? undefined : searchState,
       triggerId,
       contentId,
       describedBy: fieldCtx?.describedBy,
@@ -210,10 +221,14 @@ export function MultiSelectRoot({
       options,
       registerOption,
       typeahead,
+      sheet,
+      labelledBy: fieldCtx?.labelId,
     }),
     [
+      sheet,
+      fieldCtx?.labelId,
       overlay,
-      search,
+      searchMode,
       searchState,
       triggerId,
       contentId,
@@ -350,10 +365,13 @@ export const MultiSelectTrigger = React.forwardRef<HTMLButtonElement, MultiSelec
 );
 MultiSelectTrigger.displayName = "MultiSelect.Trigger";
 
-export interface MultiSelectContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface MultiSelectContentProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
+  /** Sheet 표시일 때 위에 보일 제목. 없으면 Field 라벨이 dialog 이름이 된다. */
+  title?: React.ReactNode;
+}
 
 export const MultiSelectContent = React.forwardRef<HTMLDivElement, MultiSelectContentProps>(
-  ({ className, onKeyDown, children, ...props }, ref) => {
+  ({ className, onKeyDown, title, children, ...props }, ref) => {
     const context = useMultiSelectContext("MultiSelect.Content");
     const setRef = React.useMemo(
       () =>
@@ -364,17 +382,25 @@ export const MultiSelectContent = React.forwardRef<HTMLDivElement, MultiSelectCo
         ),
       [ref, context.contentRef, context.setContentNode],
     );
+    const sheetRef = React.useMemo(
+      () =>
+        mergeRefs(
+          context.contentRef as React.RefObject<HTMLDivElement | null>,
+          context.setContentNode as React.Ref<HTMLDivElement>,
+        ),
+      [context.contentRef, context.setContentNode],
+    );
     if (!context.present || !context.container) return null;
 
-    return createPortal(
+    const listbox = (
       <div
-        ref={setRef}
+        ref={context.sheet ? ref : setRef}
         id={context.contentId}
         role="listbox"
         aria-multiselectable="true"
         aria-labelledby={context.triggerId}
         data-state={context.open ? "open" : "closed"}
-        className={clsx("dds-select__content", className)}
+        className={clsx(context.sheet ? "dds-select__listbox" : "dds-select__content", className)}
         onKeyDown={(event) => {
           onKeyDown?.(event);
           if (event.defaultPrevented) return;
@@ -392,78 +418,23 @@ export const MultiSelectContent = React.forwardRef<HTMLDivElement, MultiSelectCo
         {context.search?.mode === "content" ? <MultiSelectContentSearch /> : null}
         {children}
         {context.search === undefined ? null : <MultiSelectCreateItem />}
-      </div>,
+      </div>
+    );
+
+    return createPortal(
+      context.sheet ? (
+        <SelectSheet ref={sheetRef} open={context.open} title={title} labelledBy={context.labelledBy ?? context.triggerId}>
+          {listbox}
+        </SelectSheet>
+      ) : (
+        listbox
+      ),
       context.container,
     );
   },
 );
 MultiSelectContent.displayName = "MultiSelect.Content";
 
-export interface MultiSelectOptionProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "value">,
-    OptionLabelProps {
-  value: string;
-}
-
-export const MultiSelectOption = React.forwardRef<HTMLButtonElement, MultiSelectOptionProps>(
-  ({ className, value, label, textValue, children, onClick, ...props }, ref) => {
-    const context = useMultiSelectContext("MultiSelect.Option");
-    const { registerOption, search } = context;
-    const disabled = (props as { disabled?: boolean }).disabled === true;
-    React.useEffect(
-      () => registerOption({ value, ...optionLabel({ label, textValue, children }), disabled }),
-      [registerOption, value, label, textValue, children, disabled],
-    );
-
-    return (
-      <button
-        ref={ref}
-        type="button"
-        role={OPTION_ROLE}
-        aria-selected={context.value.includes(value)}
-        tabIndex={-1}
-        // 필터에서 떨어져도 언마운트하지 않는다 — 등록 목록과 활성 이동 기준이 흔들린다.
-        hidden={search?.hidden.has(value) || undefined}
-        id={search?.mode === "trigger" ? search.optionId(value) : undefined}
-        data-active={
-          search?.mode === "trigger" && search.activeValue === value ? "" : undefined
-        }
-        // 활성 표시가 aria-activedescendant뿐이라 DOM 포커스는 입력에 붙들어 둔다.
-        onMouseDown={
-          search?.mode === "trigger" ? (event) => event.preventDefault() : undefined
-        }
-        {...{ [VALUE_ATTR]: value }}
-        className={clsx("dds-select__option", className)}
-        onClick={(event) => {
-          onClick?.(event);
-          if (event.defaultPrevented) return;
-          // 토글만 하고 닫지 않는다 — 연달아 여러 개를 고르는 것이 이 컴포넌트의 존재 이유다.
-          context.toggleValue(value);
-        }}
-        {...props}
-      >
-        <svg
-          className="dds-select__check"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M3.5 8.5l3 3 6-7"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-        <span className="dds-select__option-label">{children}</span>
-      </button>
-    );
-  },
-);
-MultiSelectOption.displayName = "MultiSelect.Option";
 
 /**
  * compound: MultiSelect.Root/Trigger/Content/Option/Group/Label.
@@ -481,6 +452,8 @@ export const MultiSelect = {
 
 export const MultiSelectGroup = Select.Group;
 export const MultiSelectLabel = Select.Label;
+
+export { MultiSelectOption, type MultiSelectOptionProps } from "./multi-select-option";
 
 // 검색·생성 props의 타입은 서브패스(`@dg-design/react/multi-select`)에서도 보여야 한다.
 export type {

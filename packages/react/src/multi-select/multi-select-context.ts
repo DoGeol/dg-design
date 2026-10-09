@@ -18,6 +18,10 @@ export interface MultiSelectContextValue extends Overlay {
   options: OptionEntry[];
   registerOption: (entry: OptionEntry) => () => void;
   typeahead: Typeahead;
+  /** 목록을 하단 Sheet로 띄우는지(presentation). */
+  sheet: boolean;
+  /** Field 라벨 id — Sheet dialog의 기본 이름. */
+  labelledBy: string | undefined;
   /** search prop을 준 경우에만 있다 — 없으면 검색 코드는 어디에서도 돌지 않는다. */
   search?: MultiSelectSearchState;
 }
