@@ -49,6 +49,9 @@ jobs:
       - name: Check React subpath entries
         run: pnpm --filter @dg-design/react run check:subpaths
 
+      - name: Check skill references
+        run: pnpm --filter @dg-design/react run check:skill
+
       - name: Test
         run: pnpm --filter @dg-design/react run test
 
