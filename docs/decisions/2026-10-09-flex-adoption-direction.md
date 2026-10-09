@@ -1,6 +1,6 @@
 # flex 적용 방향 (2026-10-09)
 
-> 상태: 활성 · **구현 중** — P3(접근성·API)까지 반영. 진행은 [구현 계획](../plans/2026-10-09-flex-adoption.md).
+> 상태: 활성 · **구현 중** — P4(새 종류)까지 반영. 진행은 [구현 계획](../plans/2026-10-09-flex-adoption.md).
 > 근거: [A·B 이중검토 종합](../reports/flex-adoption-review/review/synthesis.md) · [B 치수 명세](../reports/flex-adoption-review/skill-free-comparison/design-application/README.md) · [A·B 공통 관점 보완](../reports/flex-adoption-review/gaps.md) · Storybook `Mockups/Flex`
 
 ## 결정
