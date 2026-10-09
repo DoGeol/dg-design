@@ -126,6 +126,7 @@ Storybook 비교 화면은 현재 컴포넌트를 그대로 렌더한다. 그 �
 | DataTable | 선택 행에 hover하면 고정 열 셀만 회색이 되어 행이 두 색으로 갈린다. 다크에서 두드러진다 | `Mockups/Flex/DataFeedback/DataTable` 현재 열 |
 | DataTable | 일반 hover도 고정 열과 나머지 열의 hover 색이 다르다 | 같은 위치 |
 | DataTable | `DataColumn`에 정렬·className 옵션이 없어 숫자 열 머리글을 끝 정렬할 수 없다 | 같은 위치 |
+| DataTable | 선택 칸 체크박스가 `inline-flex`라 글자 기준선에 붙어 옆 칸 글자 중심보다 2–2.5px 위에 뜬다. 필터가 있는 머리글에서는 체크박스만 칸 가운데라 라벨과 18px 어긋난다 | `datatable--functional-demo`. 결정안 미리보기는 시안 CSS로 맞췄다(`overrides/data-feedback.css` 끝) |
 | DataTable | 좁은 폭에서 오른쪽 고정 열이 끝 정렬 숫자를 덮는다 | `pin: "right"` + 390px |
 | Toast | `ToastOptions`에 `action`이 없어 되돌리기 버튼은 `Toast.View`에서만 된다 | `Mockups/Flex/DataFeedback/Toast` |
 | Alert | 260px 폭에서 행동 두 개가 닫기 버튼과 겹친다 | 좁은 열 |

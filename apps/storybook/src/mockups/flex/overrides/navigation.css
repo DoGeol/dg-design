@@ -1,30 +1,30 @@
 /* flex A·B 외관 — navigation 묶음. :root[data-flex="a"|"b"] 아래에서만 걸린다. 값은 profiles.ts가 꽂는 --fx-* 변수를 쓴다. */
 
 /* Tabs — 높이·좌우 여백·패널 간격만 역할 변수로. B는 세 값 모두 현재와 같다(D). */
-:root:is([data-flex="a"], [data-flex="b"]) .dds-tabs__trigger {
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-tabs__trigger {
   min-height: var(--fx-tab-height);
   padding-inline: var(--fx-tab-inset);
 }
-:root:is([data-flex="a"], [data-flex="b"]) .dds-tabs__content { padding-top: var(--fx-tab-panel-gap); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-tabs__content { padding-top: var(--fx-tab-panel-gap); }
 /* A만 — 활성 탭은 진한 글자 + 브랜드 밑줄(DS004·007의 진한 활성 라벨). B는 현재 brand 글자 유지. */
-:root[data-flex="a"] .dds-tabs__trigger[data-state="active"]:not(:is(:disabled, [disabled], [data-disabled])) { color: var(--dds-color-fg-neutral); }
+:root:is([data-flex="a"], [data-flex="final"]) .dds-tabs__trigger[data-state="active"]:not(:is(:disabled, [disabled], [data-disabled])) { color: var(--dds-color-fg-neutral); }
 .fx-tab-count { color: var(--dds-color-fg-neutral-weak); font-weight: var(--dds-font-weight-regular); }
 /* 모바일 넘침 — 래퍼가 가로 스크롤을 맡고 목록은 내용 폭만큼 늘어 경계선이 끝까지 이어진다. 끝은 흐려 더 있음을 알린다. */
-:root:is([data-flex="a"], [data-flex="b"]) .fx-tabs-scroll { scrollbar-width: none; mask-image: linear-gradient(to right, black calc(100% - var(--dds-dimension-x8)), transparent); }
-:root:is([data-flex="a"], [data-flex="b"]) .fx-tabs-scroll > .dds-tabs__list { width: max-content; min-width: 100%; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-tabs-scroll { scrollbar-width: none; mask-image: linear-gradient(to right, black calc(100% - var(--dds-dimension-x8)), transparent); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-tabs-scroll > .dds-tabs__list { width: max-content; min-width: 100%; }
 
 /* 메뉴 — DropdownMenu·ContextMenu가 같은 클래스를 쓴다. 구분선은 패널 끝까지 닿도록 안쪽 여백만큼 당긴다. */
-:root:is([data-flex="a"], [data-flex="b"]) .dds-dropdown-menu__content {
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-dropdown-menu__content {
   padding: var(--fx-menu-inset);
   border-radius: var(--fx-menu-radius);
 }
-:root:is([data-flex="a"], [data-flex="b"]) .dds-dropdown-menu__item {
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-dropdown-menu__item {
   min-height: var(--fx-menu-item-height);
   border-radius: var(--fx-menu-item-radius);
 }
-:root:is([data-flex="a"], [data-flex="b"]) .dds-dropdown-menu__separator { margin-inline: calc(-1 * var(--fx-menu-inset)); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-dropdown-menu__separator { margin-inline: calc(-1 * var(--fx-menu-inset)); }
 /* 터치에는 단축키가 없다 — 모바일에서 단축키 열을 숨긴다. */
-:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"]) .dds-dropdown-menu__shortcut { display: none; }
+:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-dropdown-menu__shortcut { display: none; }
 /* 열 고정 — leading(아이콘·체크) 16, 명령문, trailing(단축키·chevron·토글). */
 .fx-menu-lead { display: inline-flex; width: var(--dds-dimension-x4); flex-shrink: 0; }
 .fx-menu-trail { display: inline-flex; margin-inline-start: auto; padding-inline-start: var(--dds-dimension-x4); color: var(--dds-color-fg-neutral-weak); }
@@ -52,16 +52,16 @@
 .fx-submenu > .fx-menu-panel + .fx-menu-panel { margin-top: var(--dds-dimension-x8); margin-inline-start: calc(-1 * var(--dds-dimension-x1)); }
 
 /* Pagination — A만: 현재 페이지를 중성 표면 + 진한 숫자로. 흰 배경 위 약한 표면은 대비가 낮아 1px 중성 경계를 함께 둔다. */
-:root[data-flex="a"] .dds-pagination__link[aria-current="page"] {
+:root:is([data-flex="a"], [data-flex="final"]) .dds-pagination__link[aria-current="page"] {
   background-color: var(--dds-color-bg-neutral-weak);
   color: var(--dds-color-fg-neutral);
   box-shadow: inset 0 0 0 1px var(--dds-color-stroke-neutral);
   font-weight: var(--dds-font-weight-bold);
 }
-:root[data-flex="a"] .dds-pagination__link[aria-current="page"]:hover { background-color: var(--dds-color-bg-neutral-weak-hover); }
-:root[data-flex="a"] .dds-pagination__link[aria-current="page"]:active { background-color: var(--dds-color-bg-neutral-weak-pressed); }
+:root:is([data-flex="a"], [data-flex="final"]) .dds-pagination__link[aria-current="page"]:hover { background-color: var(--dds-color-bg-neutral-weak-hover); }
+:root:is([data-flex="a"], [data-flex="final"]) .dds-pagination__link[aria-current="page"]:active { background-color: var(--dds-color-bg-neutral-weak-pressed); }
 /* A 모바일 — 조작 영역 44 후보. */
-:root[data-flex="a"][data-flex-density="mobile"] .dds-pagination__link.dds-button {
+:root:is([data-flex="a"], [data-flex="final"])[data-flex-density="mobile"] .dds-pagination__link.dds-button {
   min-width: calc(var(--dds-dimension-x10) + var(--dds-dimension-x1));
   height: calc(var(--dds-dimension-x10) + var(--dds-dimension-x1));
 }
@@ -69,9 +69,9 @@
 
 /* Collapsible — 본문 위 여백(소비자 래퍼). 현재·B 8, A는 후보 8~12 중 12. */
 .fx-collapsible-body { padding-top: var(--dds-dimension-x2); }
-:root[data-flex="a"] .fx-collapsible-body { padding-top: var(--dds-dimension-x3); }
+:root:is([data-flex="a"], [data-flex="final"]) .fx-collapsible-body { padding-top: var(--dds-dimension-x3); }
 /* 모바일 A·B — 작은 문구 트리거의 터치 조작 영역 44. */
-:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"]) .dds-collapsible__trigger:not(.dds-accordion__trigger) {
+:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-collapsible__trigger:not(.dds-accordion__trigger) {
   min-height: calc(var(--dds-dimension-x10) + var(--dds-dimension-x1));
 }
 

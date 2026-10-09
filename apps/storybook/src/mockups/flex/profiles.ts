@@ -9,7 +9,7 @@
  */
 
 export type Grade = "A" | "B" | "C" | "D";
-export type Variant = "current" | "a" | "b";
+export type Variant = "current" | "a" | "b" | "final";
 export type Density = "desktop" | "mobile";
 
 export interface Measure {
@@ -239,9 +239,46 @@ export const ROLES = {
 
 export type RoleId = keyof typeof ROLES;
 
+/**
+ * 결정안(2026-10-09 docs/decisions/2026-10-09-flex-adoption-direction.md) — A 기본 + B 사용례, 모서리는 B.
+ * 역할마다 A·B 중 어느 값을 쓰는지, 또는 결정 때문에 새로 정해진 값을 적는다. 적지 않은 역할은 A다.
+ */
+export const FINAL: Partial<Record<RoleId, "b" | Measure>> = {
+  /* 모서리 톤 B(입력 4·버튼 6, 모바일 14·12) — 패널도 같은 톤으로 맞춘다 */
+  "field-radius": "b",
+  "button-radius": "b",
+  "select-panel-radius": "b",
+  "menu-radius": "b",
+  /* Sheet(drawer)는 모서리 없음 — 2026-10-09 사용자 결정. 원래 DDS 결정(radius 0)으로 돌아간다 */
+  "sheet-radius": m(0, "C", "결정안: 사용자 결정 — drawer 배경 모서리 없음"),
+  "chip-radius": "b",
+  "setting-row-radius": "b",
+  /* 패널 안 행은 동심 — 패널 반경 − 여백 */
+  "option-radius": m(4, "C", "결정안: 패널 12 − 여백 8 = 4 (동심)"),
+  "menu-item-radius": m(6, "C", "결정안: 메뉴 12 − 여백 6 = 6 (동심)"),
+  /* B 사용례로 흡수한 새 종류·설정 행은 B 치수 */
+  "list-row-1": "b",
+  "list-row-2": "b",
+  "list-inset": "b",
+  "list-leading-gap": "b",
+  "chip-height": "b",
+  "setting-row-height": "b",
+};
+
+/** 결정안에서 이 역할이 어느 안에서 왔는지. */
+export function finalSource(id: RoleId): "a" | "b" | "결정" {
+  const pick = FINAL[id];
+  return pick === undefined ? "a" : pick === "b" ? "b" : "결정";
+}
+
 /** 해당 안·밀도의 값. A/B 모바일 값이 없으면 데스크톱 값을 쓴다. */
 export function resolve(role: Role, variant: Variant, density: Density): Measure {
   if (variant === "current") return d(role.current);
+  if (variant === "final") {
+    const pick = FINAL[role.id as RoleId];
+    if (pick !== undefined && pick !== "b") return pick;
+    return resolve(role, pick === "b" ? "b" : "a", density);
+  }
   const side = role[variant];
   return (density === "mobile" ? side.mobile : undefined) ?? side.desktop;
 }

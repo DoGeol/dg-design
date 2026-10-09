@@ -29,8 +29,61 @@
 - **모서리 A(6·8) 또는 현재 8 유지**: 결함이 아닌 취향 판단이었고, 사용자가 원본에 가까운 B를 골랐다.
 - **브랜드 dg-studio #155EEF 또는 teal 유지**: #155EEF는 수동 덮어쓰기라 생성기 대비 검사를 거치지 않고 중성색이 teal로 남는다. teal은 블루로 옮겨 온 제품 방향과 맞지 않는다.
 
+## 결정안 미리보기
+
+구현 전에 결정대로 바꾸면 어떻게 보이는지 Storybook에서 본다. `pnpm --filter @dg-design/storybook dev` 뒤 `Mockups/Flex` 아래 각 컴포넌트의 **Decided (현재 vs 결정안)** 스토리를 연다. 툴바 Flex를 "결정안"으로 바꾸면 기존 상태 매트릭스 스토리도 결정안 외관으로 볼 수 있다.
+
+- 치수: 아래 표. 모서리 계열과 B 사용례(목록·Chip·설정 행)는 B, 나머지는 A다. 패널 안 옵션·메뉴 항목 반경은 패널 반경 − 여백으로 맞췄다(동심).
+- 조합: 모바일은 B 조합(내부 라벨 box·속성 행·line·Sheet 단계). 데스크톱은 A 조합(outline 단일)이되 새 종류·Sheet·Dialog·작업 패널·사람 선택·객체 목록·RadioGroup·Switch는 B 조합이다.
+- 브랜드: createTheme #1550A9(Brand 툴바 auto).
+- **추가 결정(2026-10-09 미리보기 검토 뒤):** Sheet(drawer)는 네 방향 모두 배경 모서리 없음(radius 0). 원래 DDS의 Sheet radius 0으로 돌아간다.
+- **표 정렬:** 선택 칸 체크박스는 칸 가운데(글자 중심과 일치), 필터가 있는 머리글은 위 정렬, 숫자 열은 머리글까지 끝 정렬하고 정렬 아이콘을 라벨 앞에 둔다. 현재 DDS에서는 체크박스가 글자보다 2–2.5px 위, 필터 머리글에서 18px 어긋난다(gaps.md §13).
+- 위 섞는 방식 중 모서리 톤을 패널까지 넓힌 것, 동심 반경, 데스크톱에서 B 조합을 쓰는 화면 목록은 결정을 적용하며 정한 해석이다. 구현 스펙에서 다시 확인한다.
+
+| 역할 | id | 현재 | 결정안 데스크톱 / 모바일 | 출처 |
+| --- | --- | ---: | --- | --- |
+| 페이지 좌우 여백 | `page-inset` | — | 32 / 20 | A |
+| 같은 묶음 필드 간격 | `field-gap` | — | 12 / 14 | A |
+| 묶음 사이 간격 | `group-gap` | — | 24 / 28 | A |
+| 작업 패널 본문 여백 | `panel-inset` | 24 | 40 / 20 | A |
+| 입력·선택 트리거 높이 | `field-height` | 40 | 40 / 56 | A |
+| 입력 반경 | `field-radius` | 8 | 4 / 14 | B |
+| 입력 안쪽 여백 | `field-inset` | 12 | 12 / 16 | A |
+| 입력 값 글자 | `field-font` | 14 | 14 / 16 | A |
+| 버튼 반경 (medium) | `button-radius` | 8 | 6 / 12 | B |
+| 주요 CTA 높이 | `cta-height` | 52 | 48 / 52 | A |
+| 선택 패널 반경 | `select-panel-radius` | 12 | 12 / 12 | B |
+| 선택 패널 안쪽 여백 | `select-panel-inset` | 4 | 8 / 8 | A |
+| 옵션 행 최소 높이 | `option-height` | 32 | 36 / 48 | A |
+| 옵션 행 반경 | `option-radius` | 6 | 4 / 4 | 결정(동심) |
+| 복수 선택 사각 mark | `mark-size` | — | 16 / 16 | A |
+| 메뉴 패널 반경 | `menu-radius` | 12 | 12 / 12 | B |
+| 메뉴 안쪽 여백 | `menu-inset` | 4 | 6 / 6 | A |
+| 메뉴 항목 최소 높이 | `menu-item-height` | 32 | 36 / 48 | A |
+| 메뉴 항목 반경 | `menu-item-radius` | 6 | 6 / 6 | 결정(동심) |
+| Sheet 안쪽 모서리 | `sheet-radius` | 16 | 0 / 0 | 결정(사용자) |
+| Sheet 안쪽 여백 | `sheet-inset` | 24 | 24 / 20 | A |
+| 목록 두 줄 행 높이 | `list-row-2` | — | 56 / 64 | B |
+| 목록 한 줄 행 높이 | `list-row-1` | — | 48 / 56 | B |
+| 목록 행 좌우 여백 | `list-inset` | — | 12 / 16 | B |
+| leading과 본문 간격 | `list-leading-gap` | — | 8 / 8 | B |
+| Chip 높이 | `chip-height` | 20 | 24 / 32 | B |
+| Chip 반경 | `chip-radius` | 6 | 6 / 6 | B |
+| 설정 행 높이 | `setting-row-height` | — | 48 / 56 | B |
+| 설정 행 반경 | `setting-row-radius` | — | 14 / 14 | B |
+| 탭 최소 높이 | `tab-height` | 36 | 40 / 40 | A |
+| 탭 좌우 여백 | `tab-inset` | 8 | 12 / 12 | A |
+| 탭과 패널 간격 | `tab-panel-gap` | 12 | 24 / 24 | A |
+| 표 한 줄 행 높이 | `table-row` | 44 | 44 / 44 | A |
+| 모바일 최소 조작 영역 | `touch-target` | — | — / 44 | A |
+| 본문 글자 | `body-size` | 14 | 14 / 16 | A |
+| 본문 행간 | `body-line` | 19 | 19 / 24 | A |
+
+표는 profiles.ts의 `FINAL`에서 생성했다. 값을 바꿀 때는 profiles.ts를 고친다.
+
 ## 다음
 
 - Storybook Brand 툴바의 auto를 createTheme 블루로 맞췄다(`apps/storybook/.storybook/preview.tsx`). 보강 이미지는 #155EEF로 그렸으므로 색은 참고하지 않는다.
+- 소비자에게 규칙을 전하는 방법은 [사용 가이드 스킬](2026-10-09-usage-skill.md)로 정했다.
 - 구현 스펙 후보 순서는 [이중검토 종합](../reports/flex-adoption-review/review/synthesis.md)의 "구현 스펙 후보 순서"를 따른다. 스펙은 `docs/specs/`에 새로 쓴다.
 - profiles.ts는 A·B 비교용 정본으로 남긴다. 혼합안의 확정 치수는 구현 스펙에서 역할 토큰으로 옮길 때 정한다.

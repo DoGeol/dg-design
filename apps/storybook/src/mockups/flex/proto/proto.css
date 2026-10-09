@@ -224,8 +224,8 @@
 /* 모바일 최소 조작 영역 — 보이는 크기는 두고 보이지 않는 영역만 touch-target(44)까지 넓힌다.
    목록 끝 메뉴(36)·Chip 제거(32)·뒤로가기(36)가 44 아래였다. Gemini 1라운드 #5 수용.
    ponytail: 가로로 붙은 Chip은 넓힌 영역끼리 겹칠 수 있다 — 구현 때 간격 8 이상과 함께 WCAG 2.5.8 간격 예외로 검증. */
-:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"]) :is(.fx-page .dds-button--icon-only, .fx-chip__remove) { position: relative; }
-:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"]) :is(.fx-page .dds-button--icon-only, .fx-chip__remove)::after {
+:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) :is(.fx-page .dds-button--icon-only, .fx-chip__remove) { position: relative; }
+:root[data-flex-density="mobile"]:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) :is(.fx-page .dds-button--icon-only, .fx-chip__remove)::after {
   content: "";
   position: absolute;
   inset-block-start: 50%;

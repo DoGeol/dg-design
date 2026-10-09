@@ -9,26 +9,43 @@ import * as React from "react";
 import type { StoryContext } from "@storybook/react-vite";
 
 import { patchPseudoStates } from "../MockupKit";
-import { ROLES, resolve, type Density, type Role, type RoleId, type Variant } from "./profiles";
+import { ROLES, finalSource, resolve, type Density, type Role, type RoleId, type Variant } from "./profiles";
 
 export interface Flex {
-  variant: Variant;
+  /** 마크업 조합을 고르는 안. 결정안이면 화면마다 A 또는 B 조합을 빌린다. */
+  variant: Exclude<Variant, "final">;
   density: Density;
+  /** 결정안 화면이면 true — 치수·라벨은 결정안, 조합은 variant를 따른다. */
+  final?: boolean;
 }
 
-const VARIANTS: readonly Variant[] = ["current", "a", "b"];
+const VARIANTS: readonly Variant[] = ["current", "a", "b", "final"];
 
 export const VARIANT_LABEL: Record<Variant, string> = {
   current: "현재 DDS 0.17.3",
   a: "A · 앞선 적용안",
   b: "B · 원문 우선 재검토",
+  final: "결정안 · A 기본 + B 사용례",
 };
 
+/**
+ * 결정안의 조합 출처(docs/decisions/2026-10-09-flex-adoption-direction.md).
+ * 모바일은 B 조합(모바일 확장 허용). 데스크톱은 A 조합(outline 단일)이되 B 사용례로 흡수한 화면만 B.
+ */
+const FINAL_B_DESKTOP = /\/(NewKinds\/|Scenarios\/(PersonPicker|ObjectList|TaskPanel)$|Surfaces\/(Sheet|Dialog)$|Forms\/(RadioGroup|Switch)$)/;
+
 /** 스토리 컨텍스트의 globals에서 안과 밀도를 읽는다. */
-export function flexOf(ctx: Pick<StoryContext, "globals">): Flex {
-  const variant = VARIANTS.includes(ctx.globals.flex as Variant) ? (ctx.globals.flex as Variant) : "current";
+export function flexOf(ctx: Pick<StoryContext, "globals" | "title">): Flex {
+  const picked = VARIANTS.includes(ctx.globals.flex as Variant) ? (ctx.globals.flex as Variant) : "current";
   const density: Density = ctx.globals.density === "mobile" ? "mobile" : "desktop";
-  return { variant, density };
+  if (picked !== "final") return { variant: picked, density };
+  const variant = density === "mobile" || FINAL_B_DESKTOP.test(ctx.title) ? "b" : "a";
+  return { variant, density, final: true };
+}
+
+/** profiles.ts에 넘길 안 — 결정안 화면은 결정안 치수를 쓴다. */
+export function profileVariant(v: Flex): Variant {
+  return v.final ? "final" : v.variant;
 }
 
 /** 한 안의 시안 페이지. 상단 라벨이 어떤 안인지 밝힌다. */
@@ -46,11 +63,17 @@ export function FlexPage({ v, title, summary, children }: {
   return (
     <div className="fx-page" data-fx-variant={v.variant}>
       <header className="fx-head">
-        <p className="fx-eyebrow" data-variant={v.variant}>
-          {VARIANT_LABEL[v.variant]} · {v.density === "mobile" ? "모바일" : "데스크톱"}
+        <p className="fx-eyebrow" data-variant={v.final ? "final" : v.variant}>
+          {VARIANT_LABEL[profileVariant(v)]} · {v.density === "mobile" ? "모바일" : "데스크톱"}
+          {v.final && ` · 조합 ${v.variant.toUpperCase()}`}
         </p>
         <h1 className="fx-title">{title}</h1>
         <p className="fx-summary">{summary}</p>
+        {v.final && (
+          <p className="fx-final-note">
+            결정안: 모서리는 B(입력 4·버튼 6), 그 밖의 치수는 A, 조합은 {v.variant === "b" ? "B" : "A"}를 따릅니다. 위 설명 문장은 조합 안 기준이라 숫자가 다를 수 있고, 치수는 아래 표가 맞습니다.
+          </p>
+        )}
       </header>
       {children}
     </div>
@@ -113,8 +136,9 @@ export function FlexSpec({ v, roles, extra = [] }: {
         <tbody>
           {roles.map((id) => {
             const role = ROLES[id] as Role;
-            const value = resolve(role, v.variant, v.density);
-            const basis = v.variant === "current" ? role.currentNote ?? "DDS 선언값" : value.basis;
+            const value = resolve(role, profileVariant(v), v.density);
+            const from = v.final ? `${finalSource(id) === "결정" ? "결정" : finalSource(id).toUpperCase()} · ` : "";
+            const basis = v.variant === "current" ? role.currentNote ?? "DDS 선언값" : from + value.basis;
             return (
               <tr key={id}>
                 <th scope="row">{role.label}</th>
@@ -133,24 +157,26 @@ export function FlexSpec({ v, roles, extra = [] }: {
 }
 
 /** 같은 Specimen 스토리를 current·A·B globals로 띄운 iframe 세 개. 포털 오버레이도 각 문서 안에서 열린다. */
-export function FlexCompare({ ctx, minHeight = 480 }: {
+export function FlexCompare({ ctx, minHeight = 480, variants = ["current", "a", "b"] }: {
   ctx: Pick<StoryContext, "globals" | "id" | "title">;
   minHeight?: number;
+  /** 나란히 띄울 안. Decided 스토리는 현재·결정안 두 열이다. */
+  variants?: readonly Variant[];
 }) {
   const { density } = flexOf(ctx);
   const theme = ctx.globals.theme === "dark" ? "dark" : "light";
   const brand = typeof ctx.globals.brand === "string" ? ctx.globals.brand : "auto";
-  const target = ctx.id.replace(/--compare$/, "--specimen");
+  const target = ctx.id.replace(/--(compare|decided)$/, "--specimen");
   const mobile = density === "mobile";
   return (
     <div className="fx-compare">
       <div className="fx-compare-head">
         <strong>{ctx.title.split("/").pop()}</strong>
         <span>{mobile ? "모바일 390px" : "데스크톱"} · {theme === "dark" ? "다크" : "라이트"} · 브랜드 {brand}</span>
-        <span>툴바의 Theme·Density·Brand를 바꾸면 세 열이 함께 바뀝니다.</span>
+        <span>툴바의 Theme·Density·Brand를 바꾸면 모든 열이 함께 바뀝니다.</span>
       </div>
-      <div className="fx-compare-cols" style={{ gridTemplateColumns: mobile ? "repeat(3, 392px)" : "repeat(3, minmax(0, 1fr))" }}>
-        {VARIANTS.map((variant) => (
+      <div className="fx-compare-cols" style={{ gridTemplateColumns: mobile ? `repeat(${variants.length}, 392px)` : `repeat(${variants.length}, minmax(0, 1fr))` }}>
+        {variants.map((variant) => (
           <div className="fx-compare-col" key={variant}>
             <b>{VARIANT_LABEL[variant]}</b>
             <AutoFrame

@@ -107,4 +107,5 @@ function View({ v }: { v: Flex }) {
 }
 
 export const Compare: StoryObj = { render: (_, ctx) => <FlexCompare ctx={ctx} minHeight={1200} /> };
+export const Decided: StoryObj = { name: "Decided (현재 vs 결정안)", render: (_, ctx) => <FlexCompare ctx={ctx} variants={["current", "final"]} minHeight={1200} /> };
 export const Specimen: StoryObj = { render: (_, ctx) => <View v={flexOf(ctx)} /> };

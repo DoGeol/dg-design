@@ -3,6 +3,13 @@ import type { Decorator, Preview } from "@storybook/react-vite";
 import "@dg-design/tokens/tokens.css";
 import "../src/mockups/flex/brand-theme-blue.css";
 import "../src/mockups/flex/brand-studio-blue.css";
+// flex 시안 외관. 모두 :root[data-flex=…] 범위라 기본값(current)에서는 아무것도 바꾸지 않는다.
+// 전역으로 불러와야 툴바 Flex로 기존 컴포넌트 스토리도 A·B·결정안 외관으로 볼 수 있다.
+import "../src/mockups/flex/overrides/forms.css";
+import "../src/mockups/flex/overrides/navigation.css";
+import "../src/mockups/flex/overrides/surfaces.css";
+import "../src/mockups/flex/overrides/data-feedback.css";
+import "../src/mockups/flex/proto/proto.css";
 import { cssVariables, type Density, type Variant } from "../src/mockups/flex/profiles";
 
 const THEME_ATTR = "data-dds-theme";
@@ -27,7 +34,7 @@ let appliedFlexVars: string[] = [];
  */
 const withFlex: Decorator = (Story, context) => {
   const root = document.documentElement;
-  const variant = (["a", "b"].includes(context.globals.flex as string) ? context.globals.flex : "current") as Variant;
+  const variant = (["a", "b", "final"].includes(context.globals.flex as string) ? context.globals.flex : "current") as Variant;
   const density: Density = context.globals.density === "mobile" ? "mobile" : "desktop";
   const brandGlobal = (context.globals.brand as string | undefined) ?? "auto";
   const brand = brandGlobal === "auto" ? (context.title.startsWith("Mockups/Flex/") ? "theme-blue" : "dds") : brandGlobal;
@@ -68,7 +75,7 @@ const preview: Preview = {
     },
     flex: {
       name: "Flex",
-      description: "flex 적용안 — 현재 DDS / A 앞선 적용안 / B 원문 우선",
+      description: "flex 적용안 — 현재 DDS / A 앞선 적용안 / B 원문 우선 / 결정안",
       toolbar: {
         title: "Flex",
         icon: "component",
@@ -76,6 +83,7 @@ const preview: Preview = {
           { value: "current", title: "현재 DDS" },
           { value: "a", title: "A 앞선 적용안" },
           { value: "b", title: "B 원문 우선" },
+          { value: "final", title: "결정안 (A 기본 + B 사용례)" },
         ],
         dynamicTitle: true,
       },

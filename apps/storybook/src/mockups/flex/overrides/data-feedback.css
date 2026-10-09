@@ -1,41 +1,64 @@
 /* flex A·B 외관 — data-feedback 묶음. :root[data-flex="a"|"b"] 아래에서만 걸린다. 값은 profiles.ts가 꽂는 --fx-* 변수를 쓴다. */
 
 /* Table·DataTable — 숫자 열은 끝 정렬 + 고정폭 숫자(A·B 공통). DataTable은 셀 className이 없어 셀 안 span으로만 맞춘다. */
-:root:is([data-flex="a"], [data-flex="b"]) :is(.dds-table__head, .dds-table__cell).fx-num,
-:root:is([data-flex="a"], [data-flex="b"]) .dds-data-table .fx-num {
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) :is(.dds-table__head, .dds-table__cell).fx-num,
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table .fx-num {
   text-align: end;
   font-variant-numeric: tabular-nums;
 }
-:root:is([data-flex="a"], [data-flex="b"]) .dds-data-table .fx-num { display: block; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table .fx-num { display: block; }
 
 /* DataTable 선택 + hover — 현재는 고정 열 hover 규칙(bg-neutral-weak)이 선택 표면을 이겨 행이 두 색이 된다. 행 전체를 brand weak hover로 묶는다. */
-:root:is([data-flex="a"], [data-flex="b"]) .dds-data-table__row:has(> .dds-data-table__select input:checked):hover > td {
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table__row:has(> .dds-data-table__select input:checked):hover > td {
   background-color: var(--dds-color-bg-brand-weak-hover);
 }
 /* hover는 고정 열(불투명 bg-neutral-weak)과 나머지 셀(bg-transparent-hover)이 다른 톤이라 행 전체를 한 톤으로 맞춘다. */
-:root:is([data-flex="a"], [data-flex="b"]) .dds-data-table .dds-data-table__row:hover > td { background-color: var(--dds-color-bg-neutral-weak); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table .dds-data-table__row:hover > td { background-color: var(--dds-color-bg-neutral-weak); }
 
 /* Avatar(B) — 목록 leading 슬롯. 사람이 아닌 객체도 같은 36px 칸에 넣어 본문 시작선을 맞춘다. 새 Avatar API가 아니다. */
-:root[data-flex="b"] .fx-df-slot { display: inline-flex; flex: none; align-items: center; justify-content: center; width: var(--dds-dimension-x9); height: var(--dds-dimension-x9); }
-:root[data-flex="b"] .fx-df-thumb { border-radius: var(--dds-radius-r2); background-color: var(--dds-color-bg-neutral-weak); color: var(--dds-color-fg-neutral-weak); }
+:root:is([data-flex="b"], [data-flex="final"]) .fx-df-slot { display: inline-flex; flex: none; align-items: center; justify-content: center; width: var(--dds-dimension-x9); height: var(--dds-dimension-x9); }
+:root:is([data-flex="b"], [data-flex="final"]) .fx-df-thumb { border-radius: var(--dds-radius-r2); background-color: var(--dds-color-bg-neutral-weak); color: var(--dds-color-fg-neutral-weak); }
 
 /* Badge(B) — 코드 표식. 상태 Badge와 같은 크기를 쓰되 고정폭 글자와 약한 경계로 "값 설명"임을 드러낸다. */
-:root[data-flex="b"] .dds-badge.fx-df-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--dds-color-fg-neutral); border-color: var(--dds-color-stroke-neutral); }
+:root:is([data-flex="b"], [data-flex="final"]) .dds-badge.fx-df-code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--dds-color-fg-neutral); border-color: var(--dds-color-stroke-neutral); }
 
 /* Badge(A·B) — 선택 Chip 자리. Button small에 chip 역할 높이·반경만 얹는다. 공용 Chip 시안이 생기면 그쪽을 따른다. */
-:root:is([data-flex="a"], [data-flex="b"]) .dds-button.fx-df-chip { height: var(--fx-chip-height); border-radius: var(--fx-chip-radius); gap: var(--dds-dimension-x1); }
-:root:is([data-flex="a"], [data-flex="b"]) .dds-button.fx-df-chip[aria-pressed="true"] { background-color: var(--dds-color-bg-brand-weak); color: var(--dds-color-fg-brand); }
-:root:is([data-flex="a"], [data-flex="b"]) .dds-button.fx-df-chip[aria-pressed="true"]:hover { background-color: var(--dds-color-bg-brand-weak-hover); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-button.fx-df-chip { height: var(--fx-chip-height); border-radius: var(--fx-chip-radius); gap: var(--dds-dimension-x1); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-button.fx-df-chip[aria-pressed="true"] { background-color: var(--dds-color-bg-brand-weak); color: var(--dds-color-fg-brand); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-button.fx-df-chip[aria-pressed="true"]:hover { background-color: var(--dds-color-bg-brand-weak-hover); }
 
 /* Alert(A·B) — 좁은 폭에서 행동 두 개가 닫기 버튼 쪽으로 밀려나지 않게 줄바꿈한다. */
-:root:is([data-flex="a"], [data-flex="b"]) .dds-alert__actions { flex-wrap: wrap; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-alert__actions { flex-wrap: wrap; }
 
 /* Toast(A·B) — 되돌리기 같은 글자 행동. Toast.View의 action 슬롯 안에서 intent 글자색을 그대로 쓴다. */
-:root:is([data-flex="a"], [data-flex="b"]) .fx-df-link { padding: 0; border: 0; background: none; color: inherit; font: inherit; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
-:root:is([data-flex="a"], [data-flex="b"]) .fx-df-link:focus-visible { outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring); outline-offset: var(--dds-dimension-x0_5); border-radius: var(--dds-radius-r0_5); }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-df-link { padding: 0; border: 0; background: none; color: inherit; font: inherit; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .fx-df-link:focus-visible { outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring); outline-offset: var(--dds-dimension-x0_5); border-radius: var(--dds-radius-r0_5); }
 
 /* StatePanel(A) — 작은 패널용 compact 후보. 최소 높이를 풀고 여백·제목·간격을 한 단계씩 줄인다(미측정, C). */
-:root[data-flex="a"] .dds-state-panel.fx-df-compact { min-height: 0; padding: var(--dds-dimension-x4) var(--dds-dimension-x3); }
-:root[data-flex="a"] .fx-df-compact .dds-state-panel__icon { margin-bottom: var(--dds-dimension-x2); }
-:root[data-flex="a"] .fx-df-compact .dds-state-panel__title { font-size: var(--dds-font-size-t4); line-height: var(--dds-line-height-t4); }
-:root[data-flex="a"] .fx-df-compact .dds-state-panel__actions { margin-top: var(--dds-dimension-x3); }
+:root:is([data-flex="a"], [data-flex="final"]) .dds-state-panel.fx-df-compact { min-height: 0; padding: var(--dds-dimension-x4) var(--dds-dimension-x3); }
+:root:is([data-flex="a"], [data-flex="final"]) .fx-df-compact .dds-state-panel__icon { margin-bottom: var(--dds-dimension-x2); }
+:root:is([data-flex="a"], [data-flex="final"]) .fx-df-compact .dds-state-panel__title { font-size: var(--dds-font-size-t4); line-height: var(--dds-line-height-t4); }
+:root:is([data-flex="a"], [data-flex="final"]) .fx-df-compact .dds-state-panel__actions { margin-top: var(--dds-dimension-x3); }
+
+/* 표 정렬(2026-10-09 사용자 확인 요청). 현재 열은 고치지 않아 지금 문제를 그대로 보인다 — gaps.md §13.
+   ① 선택 칸 체크박스는 inline-flex라 글자 기준선에 붙어 옆 칸 글자 중심보다 2–2.5px 위에 뜬다. 블록 flex로 칸 가운데에 둔다. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table__select > .dds-checkbox { display: flex; justify-content: center; }
+/* ② 필터가 있는 머리글은 라벨이 위, 체크박스가 칸 가운데라 18px 어긋난다. 머리글을 위 정렬하고 체크박스를 라벨 한 줄 높이 안에서 가운데 둔다. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table thead th { vertical-align: top; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table thead .dds-data-table__select > .dds-checkbox { height: var(--dds-line-height-t3); align-items: center; }
+/* ③ 숫자 열 머리글 — DataColumn에 정렬 옵션이 없어, 본문에 .fx-num이 있는 열의 머리글을 끝 정렬한다.
+   정렬 아이콘은 라벨 앞으로 옮겨 라벨 끝이 숫자 끝선과 맞게 한다. */
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(2) .fx-num) thead th:nth-child(2),
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(3) .fx-num) thead th:nth-child(3),
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(4) .fx-num) thead th:nth-child(4),
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(5) .fx-num) thead th:nth-child(5),
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(6) .fx-num) thead th:nth-child(6),
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(7) .fx-num) thead th:nth-child(7),
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(8) .fx-num) thead th:nth-child(8) { text-align: end; }
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(2) .fx-num) thead th:nth-child(2) .dds-data-table__sort,
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(3) .fx-num) thead th:nth-child(3) .dds-data-table__sort,
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(4) .fx-num) thead th:nth-child(4) .dds-data-table__sort,
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(5) .fx-num) thead th:nth-child(5) .dds-data-table__sort,
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(6) .fx-num) thead th:nth-child(6) .dds-data-table__sort,
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(7) .fx-num) thead th:nth-child(7) .dds-data-table__sort,
+:root:is([data-flex="a"], [data-flex="b"], [data-flex="final"]) .dds-data-table:has(tbody td:nth-child(8) .fx-num) thead th:nth-child(8) .dds-data-table__sort { flex-direction: row-reverse; }

@@ -19,6 +19,8 @@ body:has(.fx-page) { margin: 0; background: var(--dds-color-bg-layer-default); f
 .fx-eyebrow { margin: 0; font-size: var(--dds-font-size-t2); font-weight: var(--dds-font-weight-bold); letter-spacing: 0.04em; color: var(--dds-color-fg-neutral-weak); }
 .fx-eyebrow[data-variant="a"] { color: var(--dds-color-fg-informative); }
 .fx-eyebrow[data-variant="b"] { color: var(--dds-color-fg-positive); }
+.fx-eyebrow[data-variant="final"] { color: var(--dds-color-fg-brand); }
+.fx-final-note { margin: 4px 0 0; padding: 8px 10px; border-radius: 8px; background: var(--dds-color-bg-brand-weak); color: var(--dds-color-fg-brand); font-size: var(--dds-font-size-t2); line-height: var(--dds-line-height-t2); }
 .fx-title { margin: 0; font-size: var(--dds-font-size-t7); line-height: var(--dds-line-height-t7); }
 .fx-summary { margin: 0; color: var(--dds-color-fg-neutral-weak); font-size: var(--dds-font-size-t3); line-height: var(--dds-line-height-t3); }
 

@@ -2,7 +2,7 @@ import * as React from "react";
 import { Button } from "@dg-design/react";
 
 import { ROLES, resolve } from "../profiles";
-import type { Flex } from "../FlexKit";
+import { profileVariant, type Flex } from "../FlexKit";
 
 export type PostStatus = "발행" | "검토" | "초안" | "보관";
 export interface Post {
@@ -32,7 +32,7 @@ export const num = (n: number) => n.toLocaleString("ko-KR");
 
 /** 표 한 줄 행 높이. CSS(--fx-table-row)와 DataTable의 JS virtual.rowHeight가 같은 정본을 읽는다. */
 export function tableRow(v: Flex): number {
-  return resolve(ROLES["table-row"], v.variant, v.density).px ?? 44;
+  return resolve(ROLES["table-row"], profileVariant(v), v.density).px ?? 44;
 }
 
 /**

@@ -113,8 +113,9 @@ node --input-type=module -e 'const { ROLES, resolve } = await import("./apps/sto
 
 - 각 컴포넌트의 **Compare**는 현재 DDS · A · B 세 열을 나란히 보여준다. 열마다 별도 iframe이라 Dialog·Select 같은 포털 오버레이도 해당 안의 외관으로 열린다.
 - **Specimen**은 한 안만 크게 본다. 툴바 Flex로 안을 고른다.
+- **Decided**는 현재 DDS와 [결정안](../../../../decisions/2026-10-09-flex-adoption-direction.md)(A 기본 + B 사용례, 모서리 B, 브랜드 createTheme)을 두 열로 보여준다. 툴바 Flex의 "결정안"도 같은 외관이다.
 - 툴바 **Density**는 데스크톱과 모바일(390px) 프로필을 바꾼다. **Theme**은 라이트·다크다. **Brand**는 DDS 기본 teal, createTheme 블루 #1550A9, dg-studio 블루 #155EEF를 바꾼다. auto는 flex 시안에만 정본 브랜드 createTheme 블루 #1550A9를 건다([flex 적용 방향 결정](../../../../decisions/2026-10-09-flex-adoption-direction.md)). 그래서 Compare의 "현재" 열도 현재 DDS 컴포넌트에 같은 블루를 씌운 모습이다. 보강 이미지는 결정 전에 dg-studio 블루 #155EEF로 그렸다. 패키지 기본 teal로 보려면 Brand를 DDS 기본으로 바꾼다.
-- Flex 툴바는 기존 컴포넌트 스토리에도 걸린다. 예를 들어 `Select > State Matrix`를 열고 Flex를 B로 바꾸면 기존 상태 매트릭스를 B 외관으로 볼 수 있다.
+- Flex 툴바는 기존 컴포넌트 스토리에도 걸린다(시안 CSS를 preview에서 전역으로 불러온다). 예를 들어 `Select > State Matrix`를 열고 Flex를 B로 바꾸면 기존 상태 매트릭스를 B 외관으로 볼 수 있다.
 - 시안 스토리는 `Mockups/` 아래라 시각 회귀 기준에서 빠진다.
 
 Storybook의 A·B 외관은 시안 전용 CSS(`apps/storybook/src/mockups/flex/overrides/`)가 현재 컴포넌트 위에 덧씌운 것이다. 패키지 코드와 공개 API는 바뀌지 않았다. List·Chip·PropertyField·Dialog 레이아웃 부품은 `flex/proto/`의 Storybook 전용 프로토타입이다.
