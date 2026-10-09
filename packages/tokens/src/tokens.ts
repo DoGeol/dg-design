@@ -349,7 +349,7 @@ export type RoleValue = { desktop: string; mobile?: string };
 /**
  * 역할 토큰. 컴포넌트·앱이 스케일 스텝 대신 "무엇에 쓰는 값인지"로 고른다.
  * `--dds-{group}-{id}`로 방출한다. 값은 flex 적용 결정(docs/decisions/2026-10-09-flex-adoption-direction.md)
- * 치수표 그대로이고, 아직 만들지 않은 컴포넌트(목록·설정 행)의 역할은 그 컴포넌트와 함께 넣는다.
+ * 치수표 그대로다. 새 역할은 그 값을 읽는 컴포넌트와 함께 넣는다.
  *
  * 스케일 스텝을 참조해 값의 출처를 하나로 둔다. 스케일에 없는 값만 리터럴이다.
  */
@@ -366,6 +366,8 @@ export const roles = {
     "sheet-inset": { desktop: dimension.x6, mobile: dimension.x5 },
     "tab-inset": { desktop: dimension.x3 },
     "tab-panel-gap": { desktop: dimension.x6 },
+    "list-inset": { desktop: dimension.x3, mobile: dimension.x4 },
+    "list-leading-gap": { desktop: dimension.x2 },
   },
   size: {
     "field-height": { desktop: dimension.x10, mobile: dimension.x14 },
@@ -375,6 +377,10 @@ export const roles = {
     "chip-height": { desktop: dimension.x6, mobile: dimension.x8 },
     mark: { desktop: dimension.x4 },
     "tab-height": { desktop: dimension.x10 },
+    "list-row-1": { desktop: dimension.x12, mobile: dimension.x14 },
+    "list-row-2": { desktop: dimension.x14, mobile: dimension.x16 },
+    // 속성 행(PropertyField)이 먼저 읽는다 — 입력(40)보다 높은 설정 행 리듬이다.
+    "setting-row-height": { desktop: dimension.x12, mobile: dimension.x14 },
     // 44는 4px 스케일에 없다 — 표 행과 모바일 조작 영역에만 쓰여 스텝을 늘리지 않는다.
     "table-row": { desktop: "44px" },
     // 데스크톱 24는 WCAG 2.5.8 최소, 모바일 44는 터치 행 최소.
@@ -391,6 +397,8 @@ export const roles = {
     chip: { desktop: radius.r1_5 },
     // Sheet는 화면 가장자리에 붙는 면이라 모서리가 없다(2026-10-09 사용자 결정).
     sheet: { desktop: "0" },
+    // 모바일 속성 묶음 표면. 모바일 입력 반경(14)과 같은 톤.
+    "setting-row": { desktop: radius.r3_5 },
   },
   "font-size": {
     field: { desktop: fontSize.t4, mobile: fontSize.t5 },
