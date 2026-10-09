@@ -1,10 +1,10 @@
 # 인계: flex 적용 (2026-10-09)
 
-다른 환경에서 이어서 진행하기 위한 인계 문서다. 이 문서만 읽고 바로 P0를 시작할 수 있게 썼다. 먼저 [AGENTS.md](../../AGENTS.md)를 읽는다.
+다른 환경에서 이어서 진행하기 위한 인계 문서다. 이 문서만 읽고 다음 단계를 시작할 수 있게 썼다. 먼저 [AGENTS.md](../../AGENTS.md)를 읽는다.
 
 ## 한 줄 상태
 
-검토·결정·계획은 끝났고 **패키지 코드는 아직 한 줄도 바뀌지 않았다.** [구현 계획](../plans/2026-10-09-flex-adoption.md)이 승인됐고 P0부터 순서대로 시작하면 된다.
+**P0·P1 완료, 다음은 P2 외관.** [구현 계획](../plans/2026-10-09-flex-adoption.md) 순서대로 진행 중이다. P1까지는 배포하지 않았다(tokens changeset만 있다). react 컴포넌트는 아직 역할 토큰을 읽지 않는다.
 
 ## 브랜치와 커밋
 
@@ -38,24 +38,18 @@ main 위의 7커밋(오래된 순):
 - 결정안의 해석 항목 4개를 **모두 P2 패키지 기본값**으로 넣는다: 모서리 톤 확장(모바일 입력 14), 패널 안 행 동심 반경(옵션 4·메뉴 항목 6), 행 높이 36, 탭 확대(40·12·24).
 - 커밋·푸시는 **단계마다 사용자에게 묻는다.** 배포(Version PR 머지)는 항상 따로 승인받는다.
 
-## 다음 할 일: P0 문서·가드
+## 끝난 단계
 
-배포 없음, 공개 API 변화 없음.
-
-1. **README 문구 정정** — `packages/react/README.md` 23행의 "배럴은 … 모든 컴포넌트의 CSS가 번들에 함께 실린다"를 "번들러에 따라 다르다"로 고친다. 근거는 아래 "번들 측정"이다. 하위 경로 import를 권장하는 결론은 그대로다.
-2. **하위 경로 가드 스크립트** — `packages/react`에 스크립트를 두고 CI의 build 다음 단계에서 돌린다(`.github/workflows/ci.yml`, 현재 순서 install → generate → build → test → typecheck → publint → vr).
-   - 최소 검사: `dist`에서 `index.js`(배럴) 말고는 어떤 모듈도 배럴을 import하지 않는다. 하위 경로 진입점이 배럴에 닿으면 컴포넌트 하나만 써도 전부 딸려온다.
-   - 확인용 출력: 하위 경로마다 닿는 컴포넌트 폴더와 CSS 파일 목록.
-   - 새 의존성은 넣지 않는다. 정적 import 그래프 탐색이면 충분하다.
-
-P0가 끝나면 변경 요약과 검증 결과를 보여 주고 커밋·푸시 승인을 받는다.
+| 단계 | 커밋 | 내용 |
+| --- | --- | --- |
+| P0 문서·가드 | `9217ef7` | README 배럴 CSS 문구를 "번들러에 따라 다르다"로 정정. `packages/react/scripts/check-subpaths.js`(하위 경로가 배럴에 닿으면 실패)를 CI build 다음 단계에 추가 |
+| P1 역할 토큰·밀도 | `020f77d` | 역할 토큰 30개, `[data-dds-density="mobile"]` 블록, Tailwind 브릿지(역할·`duration-*`·`z-*`, 4.3.3에서 컴파일 확인), `customization.md` "밀도" 절. 구현 중 결정은 [결정 기록](../decisions/2026-10-09-flex-adoption-direction.md) "구현 중 결정" |
 
 ## 그다음 단계 요지
 
 | 단계 | 시작할 때 볼 것 |
 | --- | --- |
-| P1 역할 토큰·밀도 | 역할 목록과 값은 `apps/storybook/src/mockups/flex/profiles.ts`의 `ROLES`·`FINAL`. 결정안 값은 결정 기록 치수표. 밀도는 `packages/tokens/src/color-core.ts`의 `tokensCss()`가 `[data-dds-theme]` 블록을 만드는 방식 그대로 `[data-dds-density="mobile"]` 블록을 만든다(루트 지정 전제 — 포털 상속 문제 없음). Tailwind 브릿지는 `--transition-duration-*`·`--z-index-*` 이름 정정 포함. `docs/customization.md` 공개 표면·버전 짝 갱신 |
-| P2 외관 | 미리보기 덮어쓰기 CSS(`apps/storybook/src/mockups/flex/overrides/*.css`)가 실제로 고칠 선택자 목록이다. 구현한 만큼 그 규칙을 지운다. 표 정렬 원인: DataTable 선택 칸 체크박스가 `inline-flex`라 기준선에 붙음(본문 −2~2.5px, 필터 머리글 18px). tokens·react를 같은 배포로 짝 맞춤. VR 기준은 CI `visual-baseline`으로만 갱신 |
+| P2 외관 | 미리보기 덮어쓰기 CSS(`apps/storybook/src/mockups/flex/overrides/*.css`)가 실제로 고칠 선택자 목록이다. 구현한 만큼 그 규칙을 지운다. 표 정렬 원인: DataTable 선택 칸 체크박스가 `inline-flex`라 기준선에 붙음(본문 −2~2.5px, 필터 머리글 18px). tokens·react를 같은 배포로 짝 맞춤(P1 tokens changeset과 함께 나간다), `customization.md` 버전 짝에 최소 tokens 버전 기록. 역할 토큰은 `packages/tokens/src/tokens.ts`의 `roles`. profiles.ts `FINAL`의 값 중복 정리. VR 기준은 CI `visual-baseline`으로만 갱신 |
 | P3~P7 | 각 단계 스펙을 먼저 쓴다(P4는 deep-interview). 현재 DDS 문제 목록은 [관점 보완 §13](../reports/flex-adoption-review/gaps.md) |
 
 ## 번들 측정 (2026-10-09, P0 근거)

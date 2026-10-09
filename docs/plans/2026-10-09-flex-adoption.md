@@ -1,7 +1,7 @@
 # flex 적용 구현 계획
 
 - 작성: 2026-10-09 · 기준 커밋: `8c4d3b1` (react 0.17.3 · tokens 0.8.0)
-- 상태: **승인 (2026-10-09)** — P0 시작 전. 커밋·푸시는 단계마다 사용자 확인
+- 상태: **승인 (2026-10-09)** — P0·P1 완료, P2 시작 전. 커밋·푸시는 단계마다 사용자 확인
 - 인계: [2026-10-09 인계 문서](../handoff/2026-10-09-flex-adoption.md) — 다른 환경에서 이어갈 때 먼저 읽는다
 - 근거: [flex 적용 방향 결정](../decisions/2026-10-09-flex-adoption-direction.md) · [사용 가이드 스킬 결정](../decisions/2026-10-09-usage-skill.md) · [이중검토 종합](../reports/flex-adoption-review/review/synthesis.md) · [관점 보완](../reports/flex-adoption-review/gaps.md) · Storybook `Mockups/Flex/*` Decided
 - 범위: 결정안을 실제 `packages/tokens`·`packages/react`에 반영하고 사용 가이드 스킬을 배포한다. dg-studio 전환은 이 저장소 밖이다.
@@ -14,9 +14,9 @@
 | --- | --- | --- | --- | --- |
 | **P0 문서·가드** | README의 배럴 CSS 문구를 "번들러에 따라 다르다"로 정정. 하위 경로로 컴포넌트 하나를 번들하면 그 컴포넌트 CSS만 나오는지 확인하는 검사 스크립트를 CI에 추가 | 없음 | 없음 | 불필요 |
 | **P1 역할 토큰·밀도** | `tokens.ts`에 역할 토큰(필드 높이·반경·안쪽 여백, 버튼 반경, 패널·옵션·메뉴 반경, 필드 간격·묶음 간격·페이지 여백, 조작 영역 등). 생성기에 `[data-dds-density="mobile"]` 블록(테마 블록과 같은 방식, 루트 지정). Tailwind 브릿지 연결과 이름 정정. `customization.md` 공개 표면 갱신 | 토큰 추가 | tokens minor | 불필요(이 계획이 범위) |
-| **P2 외관** | 컴포넌트 CSS가 역할 토큰을 읽게 바꾼다. 결정된 외관(입력 4·버튼 6 모서리, Sheet 0, DataTable 체크박스·머리글 정렬, 모바일 44 조작 영역)을 기본값으로. 해당하는 시안 덮어쓰기 CSS는 같은 커밋에서 지운다 | 없음(모양만) | tokens + react minor **한 번에**. 시각 회귀 기준 1회 갱신 | 불필요 |
+| **P2 외관** | 컴포넌트 CSS가 역할 토큰을 읽게 바꾼다. 결정된 외관(입력 4·버튼 6 모서리, Sheet 0, DataTable 체크박스·머리글 정렬, 모바일 44 조작 영역)을 기본값으로. 해당하는 시안 덮어쓰기 CSS는 같은 커밋에서 지운다. profiles.ts `FINAL`이 tokens.ts 역할 토큰과 값을 두 번 갖지 않게 정리 | 없음(모양만) | tokens + react minor **한 번에**. 시각 회귀 기준 1회 갱신 | 불필요 |
 | **P3 접근성·API 선행** | DropdownMenu 체크·라디오 항목, Select·MultiSelect 표시 이름·검색 텍스트 분리(래퍼 옵션 등록 한계 해결), DataTable 열 정렬 옵션, Toast 옵션 `action` | 추가만 | react minor | 필요 — 작은 스펙 1개 |
-| **P4 새 종류** | List·SectionHeader, Chip(제거·필터·툴박스), PropertyField. 구성 규칙대로 실제 소비처 두 곳을 스펙에 적는다 | 새 하위 경로 3개 | react minor | 필요 — deep-interview |
+| **P4 새 종류** | List·SectionHeader, Chip(제거·필터·툴박스), PropertyField. 구성 규칙대로 실제 소비처 두 곳을 스펙에 적는다. 목록·설정 행 역할 토큰(`list-*`·`setting-row-*`)도 여기서 추가 | 새 하위 경로 3개, 토큰 추가 | tokens + react minor | 필요 — deep-interview |
 | **P5 표시 방식** | Sheet 단계 전환(간단·상세·전체), Select·MultiSelect 모바일 Sheet 표시, Dialog `Toolbar`·`Body`·`Aside`·`Footer` | 추가만 | react minor | 필요 |
 | **P6 폼 확장** | TextField·TextArea box·line 형태를 모바일 밀도에서만. box도 입력 경계 유지 | 추가만 | react minor | P4와 함께 판단 |
 | **P7 사용 가이드 스킬** | 중립 예제(`.tsx`, 타입 검사 포함), `SKILL.md`, 컴포넌트별 참조 파일, 에이전트용 설정 가이드 md, 패키지 `files` 추가. 빈 프로젝트에서 Claude·Codex로 설정 가이드 검증 | 패키지 파일 추가 | react minor(또는 그때 배포에 포함) | 불필요(결정 기록이 범위) |
