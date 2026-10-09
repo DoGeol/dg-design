@@ -137,7 +137,7 @@ export function FlexSpec({ v, roles, extra = [] }: {
           {roles.map((id) => {
             const role = ROLES[id] as Role;
             const value = resolve(role, profileVariant(v), v.density);
-            const from = v.final ? `${finalSource(id) === "결정" ? "결정" : finalSource(id).toUpperCase()} · ` : "";
+            const from = v.final ? `${finalSource(id) === "토큰" ? "토큰" : finalSource(id).toUpperCase()} · ` : "";
             const basis = v.variant === "current" ? role.currentNote ?? "DDS 선언값" : from + value.basis;
             return (
               <tr key={id}>

@@ -47,6 +47,8 @@ const withFlex: Decorator = (Story, context) => {
   const attrs: Record<string, string | null> = {
     "data-flex": variant === "current" ? null : variant,
     "data-flex-density": density === "mobile" ? "mobile" : null,
+    // 패키지 역할 토큰의 밀도. 툴바 Density가 모든 스토리에 그대로 적용된다.
+    "data-dds-density": density === "mobile" ? "mobile" : null,
     "data-flex-brand": brand === "dds" ? null : brand,
   };
   for (const [name, value] of Object.entries(attrs)) {

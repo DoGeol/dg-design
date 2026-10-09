@@ -8,6 +8,8 @@
  * 배율 1.75는 DS024에서만 확인했다. 다른 데스크톱 이미지(DS014·017·021·026·029)에서 옮긴 값은 "교차 배율" C로 적는다(2026-10-09 Gemini 검토 수용).
  */
 
+import { roles } from "../../../../../packages/tokens/src/tokens";
+
 export type Grade = "A" | "B" | "C" | "D";
 export type Variant = "current" | "a" | "b" | "final";
 export type Density = "desktop" | "mobile";
@@ -240,54 +242,94 @@ export const ROLES = {
 export type RoleId = keyof typeof ROLES;
 
 /**
- * 결정안(2026-10-09 docs/decisions/2026-10-09-flex-adoption-direction.md) — A 기본 + B 사용례, 모서리는 B.
- * 역할마다 A·B 중 어느 값을 쓰는지, 또는 결정 때문에 새로 정해진 값을 적는다. 적지 않은 역할은 A다.
+ * 결정안 중 패키지 역할 토큰이 된 역할 — 값의 정본은 packages/tokens/src/tokens.ts의 `roles`다(P1).
+ * 결정안 열은 이 토큰을 그대로 읽는다. 역할별 출처(A·B·결정)는 결정 기록 치수표에 남아 있다.
  */
-export const FINAL: Partial<Record<RoleId, "b" | Measure>> = {
-  /* 모서리 톤 B(입력 4·버튼 6, 모바일 14·12) — 패널도 같은 톤으로 맞춘다 */
-  "field-radius": "b",
-  "button-radius": "b",
-  "select-panel-radius": "b",
-  "menu-radius": "b",
-  /* Sheet(drawer)는 모서리 없음 — 2026-10-09 사용자 결정. 원래 DDS 결정(radius 0)으로 돌아간다 */
-  "sheet-radius": m(0, "C", "결정안: 사용자 결정 — drawer 배경 모서리 없음"),
-  "chip-radius": "b",
-  "setting-row-radius": "b",
-  /* 패널 안 행은 동심 — 패널 반경 − 여백 */
-  "option-radius": m(4, "C", "결정안: 패널 12 − 여백 8 = 4 (동심)"),
-  "menu-item-radius": m(6, "C", "결정안: 메뉴 12 − 여백 6 = 6 (동심)"),
-  /* B 사용례로 흡수한 새 종류·설정 행은 B 치수 */
+const TOKEN: Partial<Record<RoleId, readonly [group: keyof typeof roles, name: string]>> = {
+  "page-inset": ["space", "page-inset"],
+  "field-gap": ["space", "field-gap"],
+  "group-gap": ["space", "group-gap"],
+  "panel-inset": ["space", "panel-inset"],
+  "field-height": ["size", "field-height"],
+  "field-radius": ["radius", "field"],
+  "field-inset": ["space", "field-inset"],
+  "field-font": ["font-size", "field"],
+  "button-radius": ["radius", "button"],
+  "cta-height": ["size", "cta-height"],
+  "select-panel-radius": ["radius", "select-panel"],
+  "select-panel-inset": ["space", "select-panel-inset"],
+  "option-height": ["size", "option-height"],
+  "option-radius": ["radius", "option"],
+  "mark-size": ["size", "mark"],
+  "menu-radius": ["radius", "menu"],
+  "menu-inset": ["space", "menu-inset"],
+  "menu-item-height": ["size", "menu-item-height"],
+  "menu-item-radius": ["radius", "menu-item"],
+  "sheet-radius": ["radius", "sheet"],
+  "sheet-inset": ["space", "sheet-inset"],
+  "chip-height": ["size", "chip-height"],
+  "chip-radius": ["radius", "chip"],
+  "tab-height": ["size", "tab-height"],
+  "tab-inset": ["space", "tab-inset"],
+  "tab-panel-gap": ["space", "tab-panel-gap"],
+  "table-row": ["size", "table-row"],
+  "touch-target": ["size", "touch-target"],
+  "body-size": ["font-size", "body"],
+  "body-line": ["line-height", "body"],
+};
+
+/** 토큰 값(px·rem·0)을 px 숫자로. 1rem = 16px. */
+const toPx = (value: string) => (value.endsWith("rem") ? parseFloat(value) * 16 : parseFloat(value));
+
+function tokenMeasure(id: RoleId, density: Density): Measure | undefined {
+  const ref = TOKEN[id];
+  if (!ref) return undefined;
+  const value = (roles[ref[0]] as Record<string, { desktop: string; mobile?: string }>)[ref[1]]!;
+  return m(toPx((density === "mobile" ? value.mobile : undefined) ?? value.desktop), "C", `역할 토큰 --dds-${ref[0]}-${ref[1]}`);
+}
+
+/**
+ * 결정안(2026-10-09 docs/decisions/2026-10-09-flex-adoption-direction.md) 중 아직 토큰이 아닌 역할.
+ * 목록·설정 행은 P4에서 그 컴포넌트와 함께 토큰이 된다. B 사용례로 흡수한 치수다.
+ */
+export const FINAL: Partial<Record<RoleId, "b">> = {
   "list-row-1": "b",
   "list-row-2": "b",
   "list-inset": "b",
   "list-leading-gap": "b",
-  "chip-height": "b",
   "setting-row-height": "b",
+  "setting-row-radius": "b",
 };
 
-/** 결정안에서 이 역할이 어느 안에서 왔는지. */
-export function finalSource(id: RoleId): "a" | "b" | "결정" {
-  const pick = FINAL[id];
-  return pick === undefined ? "a" : pick === "b" ? "b" : "결정";
+/** 결정안에서 이 역할이 어디서 왔는지. 토큰이 된 역할은 tokens.ts가 정본이다. */
+export function finalSource(id: RoleId): "a" | "b" | "토큰" {
+  if (TOKEN[id]) return "토큰";
+  return FINAL[id] === "b" ? "b" : "a";
 }
 
 /** 해당 안·밀도의 값. A/B 모바일 값이 없으면 데스크톱 값을 쓴다. */
 export function resolve(role: Role, variant: Variant, density: Density): Measure {
   if (variant === "current") return d(role.current);
   if (variant === "final") {
-    const pick = FINAL[role.id as RoleId];
-    if (pick !== undefined && pick !== "b") return pick;
-    return resolve(role, pick === "b" ? "b" : "a", density);
+    return tokenMeasure(role.id as RoleId, density) ?? resolve(role, FINAL[role.id as RoleId] ?? "a", density);
   }
   const side = role[variant];
   return (density === "mobile" ? side.mobile : undefined) ?? side.desktop;
 }
 
-/** :root에 꽂을 CSS 변수. current는 아무것도 덮지 않는다. */
+/**
+ * :root에 꽂을 CSS 변수. current는 아무것도 덮지 않는다. 결정안의 토큰 역할은 값을 복제하지 않고
+ * `var(--dds-…)`로 잇는다 — 밀도는 preview가 다는 data-dds-density가 바꾼다.
+ */
 export function cssVariables(variant: Variant, density: Density): Record<string, string> {
   if (variant === "current") return {};
   const out: Record<string, string> = {};
   for (const role of Object.values(ROLES) as Role[]) {
+    const ref = variant === "final" ? TOKEN[role.id as RoleId] : undefined;
+    if (ref) {
+      out[`--fx-${role.id}`] = `var(--dds-${ref[0]}-${ref[1]})`;
+      continue;
+    }
     const { px } = resolve(role, variant, density);
     if (px !== null) out[`--fx-${role.id}`] = `${px}px`;
   }
