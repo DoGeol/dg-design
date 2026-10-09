@@ -21,6 +21,7 @@ const button = cva("dds-button", {
       ghost: "dds-button--variant_ghost",
     },
     size: {
+      xsmall: "dds-button--size_xsmall",
       small: "dds-button--size_small",
       medium: "dds-button--size_medium",
       large: "dds-button--size_large",

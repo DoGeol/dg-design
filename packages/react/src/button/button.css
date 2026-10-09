@@ -159,6 +159,15 @@
   /* size: height, radius, typography (spec-defined) + horizontal padding (NOT in spec —
      chosen proportional to size, see build report) */
   /* small·medium은 역할 반경(데스크톱 6·모바일 12). large는 주요 CTA 크기라 스케일 그대로. */
+  /* xsmall(28)은 표 행·툴바·본문 안 작은 행동용. 반경은 밀도와 무관하게 6 — 모바일 역할 반경 12면 28 높이에서 알약이 된다. */
+  .dds-button--size_xsmall {
+    height: var(--dds-dimension-x7);
+    gap: var(--dds-dimension-x1);
+    border-radius: var(--dds-radius-r1_5);
+    font-size: var(--dds-font-size-t2);
+    line-height: var(--dds-line-height-t2);
+    padding-inline: var(--dds-dimension-x2);
+  }
   .dds-button--size_small {
     height: var(--dds-dimension-x9);
     border-radius: var(--dds-radius-button);
@@ -181,9 +190,12 @@
     padding-inline: var(--dds-dimension-x5);
   }
 
-  /* 정사각: 너비 = 해당 size 높이. 아이콘은 small·medium 16, large 20 기준. */
+  /* 정사각: 너비 = 해당 size 높이. 아이콘은 xsmall 14, small·medium 16, large 20 기준. */
   .dds-button--icon-only {
     padding-inline: 0;
+  }
+  .dds-button--icon-only.dds-button--size_xsmall {
+    width: var(--dds-dimension-x7);
   }
   .dds-button--icon-only.dds-button--size_small {
     width: var(--dds-dimension-x9);
@@ -193,5 +205,13 @@
   }
   .dds-button--icon-only.dds-button--size_large {
     width: var(--dds-dimension-x13);
+  }
+
+  /* 모바일 조작 영역 44 — xsmall은 보이는 크기를 그대로 두고 투명 영역만 넓힌다(인접 간격은 소비자 몫). */
+  [data-dds-density="mobile"] .dds-button--size_xsmall::before {
+    content: "";
+    position: absolute;
+    inset-block: min(0px, calc((100% - var(--dds-size-touch-target)) / 2));
+    inset-inline: min(0px, calc((100% - var(--dds-size-touch-target)) / 2));
   }
 }

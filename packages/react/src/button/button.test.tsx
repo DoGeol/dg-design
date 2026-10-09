@@ -35,6 +35,14 @@ describe("Button 변형", () => {
     expect(button().classList.contains("dds-button--intent_brand")).toBe(true);
     expect(button().classList.contains("dds-button--variant_weak")).toBe(true);
     expect(button().classList.contains("dds-button--size_small")).toBe(true);
+
+    rerender(
+      <Button size="xsmall" iconOnly aria-label="추가">
+        +
+      </Button>,
+    );
+    expect(button().classList.contains("dds-button--size_xsmall")).toBe(true);
+    expect(button().classList.contains("dds-button--icon-only")).toBe(true);
   });
 
   it("critical intent로 파괴적 액션을 표현한다", () => {
