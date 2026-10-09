@@ -27,6 +27,11 @@
     margin-inline-start: auto;
   }
 
+  /* 모바일 칩 제거 버튼의 44 조작 영역(위아래 6씩)이 윗줄과 겹치지 않게 줄 간격을 넓힌다. */
+  [data-dds-density="mobile"] .dds-multi-select__trigger--search {
+    row-gap: var(--dds-dimension-x3);
+  }
+
   /* 입력은 남는 자리를 먹되 칩이 줄을 채우면 다음 줄로 내려간다. */
   .dds-multi-select__search {
     flex: 1 1 var(--dds-dimension-x16);
@@ -70,55 +75,6 @@
     outline: none;
     border-color: var(--dds-color-stroke-focus-ring);
     box-shadow: inset 0 0 0 1px var(--dds-color-stroke-focus-ring);
-  }
-
-  .dds-multi-select__chip {
-    box-sizing: border-box;
-    display: inline-flex;
-    align-items: center;
-    min-height: var(--dds-size-chip-height);
-    gap: var(--dds-dimension-x1);
-    max-width: 100%;
-    padding-inline: var(--dds-dimension-x2);
-    padding-block: var(--dds-dimension-x0_5);
-    border-radius: var(--dds-radius-chip);
-    background-color: var(--dds-color-bg-neutral-weak);
-    color: var(--dds-color-fg-neutral);
-    font-size: var(--dds-font-size-t2);
-    line-height: var(--dds-line-height-t2);
-  }
-
-  .dds-multi-select__chip-label {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
-
-  .dds-multi-select__chip-remove {
-    display: inline-flex;
-    flex: none;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    border: 0;
-    border-radius: var(--dds-radius-r-full);
-    background: transparent;
-    color: var(--dds-color-fg-neutral-weak);
-    cursor: pointer;
-  }
-
-  .dds-multi-select__chip-remove:hover:not(:is(:disabled, [disabled], [data-disabled])) {
-    color: var(--dds-color-fg-neutral);
-  }
-
-  .dds-multi-select__chip-remove:focus-visible {
-    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
-    outline-offset: var(--dds-dimension-x0_5);
-  }
-
-  .dds-multi-select__chip-remove:is(:disabled, [disabled], [data-disabled]) {
-    cursor: not-allowed;
-    color: var(--dds-color-fg-disabled);
   }
 
   /* 활성 항목이 aria-activedescendant로만 표시되는 trigger 모드의 하이라이트 —

@@ -1,0 +1,229 @@
+@layer dds {
+  .dds-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .dds-list[hidden] {
+    display: none;
+  }
+
+  /* 행은 투명 표면이다(카드 아님). leading·본문·trailing 세 열, 본문은 제목과 메타 두 줄. */
+  .dds-list__item {
+    position: relative;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: "leading title trailing" "leading meta trailing";
+    grid-template-rows: auto auto;
+    align-content: center;
+    align-items: center;
+    column-gap: var(--dds-space-list-leading-gap);
+    min-height: var(--dds-size-list-row-1);
+    padding-block: var(--dds-dimension-x2);
+    padding-inline: var(--dds-space-list-inset);
+    color: var(--dds-color-fg-neutral);
+  }
+
+  .dds-list__item:has(> .dds-list__meta) {
+    min-height: var(--dds-size-list-row-2);
+  }
+
+  /* 메타가 없으면 한 줄 — 빈 메타 줄이 trailing 높이를 받아 제목이 위로 뜨지 않게 한다. */
+  .dds-list__item:not(:has(> .dds-list__meta)) {
+    grid-template-areas: "leading title trailing";
+    grid-template-rows: auto;
+  }
+
+  /* 구분선은 좌우 여백 안에서 시작한다. */
+  .dds-list__item + .dds-list__item::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: var(--dds-space-list-inset);
+    border-block-start: 1px solid var(--dds-color-stroke-neutral-weak);
+  }
+
+  .dds-list__leading {
+    grid-area: leading;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .dds-list__title {
+    grid-area: title;
+    overflow: hidden;
+    min-width: 0;
+    color: inherit;
+    font-size: var(--dds-font-size-body);
+    line-height: var(--dds-line-height-body);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .dds-list__item:has(> .dds-list__meta) .dds-list__title {
+    align-self: end;
+    font-weight: var(--dds-font-weight-bold);
+  }
+
+  .dds-list__meta {
+    grid-area: meta;
+    align-self: start;
+    overflow: hidden;
+    min-width: 0;
+    color: var(--dds-color-fg-neutral-weak);
+    font-size: var(--dds-font-size-t3);
+    line-height: var(--dds-line-height-t3);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  /* trailing은 행 Action의 ::after 위에 놓여 따로 눌린다. */
+  .dds-list__trailing {
+    position: relative;
+    z-index: 1;
+    grid-area: trailing;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--dds-dimension-x2);
+    margin-inline-start: var(--dds-dimension-x2);
+  }
+
+  .dds-list__action {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    text-align: start;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .dds-list__action::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+
+  .dds-list__action:focus-visible {
+    outline: none;
+  }
+
+  /* 행 상태는 Action에서만 건다 — trailing 버튼 위에서는 행이 반응하지 않는다. */
+  .dds-list__item:has(> .dds-list__action:hover) {
+    background-color: var(--dds-color-bg-transparent-hover);
+  }
+
+  .dds-list__item:has(> .dds-list__action:active) {
+    background-color: var(--dds-color-bg-transparent-pressed);
+  }
+
+  .dds-list__item:has(> .dds-list__action:focus-visible) {
+    box-shadow: inset 0 0 0 var(--dds-dimension-x0_5) var(--dds-color-stroke-focus-ring);
+  }
+
+  .dds-list__item[data-current] {
+    background-color: var(--dds-color-bg-neutral-weak);
+  }
+
+  [data-dds-density="mobile"] .dds-list__meta {
+    font-size: var(--dds-font-size-t4);
+    line-height: var(--dds-line-height-t4);
+  }
+
+  /* 묶음 제목 */
+  .dds-list-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--dds-dimension-x2);
+    min-height: var(--dds-dimension-x10);
+    padding-inline: var(--dds-space-list-inset);
+  }
+
+  .dds-list-section-header__text {
+    min-width: 0;
+  }
+
+  .dds-list-section-header__heading {
+    margin: 0;
+    color: var(--dds-color-fg-neutral-weak);
+    font-size: var(--dds-font-size-t3);
+    font-weight: var(--dds-font-weight-bold);
+    line-height: var(--dds-line-height-t3);
+  }
+
+  .dds-list-section-header__count {
+    font-weight: var(--dds-font-weight-regular);
+  }
+
+  .dds-list-section-header__description {
+    margin: 0;
+    color: var(--dds-color-fg-neutral-weak);
+    font-size: var(--dds-font-size-t3);
+    line-height: var(--dds-line-height-t3);
+  }
+
+  .dds-list-section-header__toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--dds-dimension-x1);
+    margin: 0;
+    margin-inline-start: calc(var(--dds-dimension-x1) * -1);
+    padding: var(--dds-dimension-x0_5) var(--dds-dimension-x1);
+    border: 0;
+    border-radius: var(--dds-radius-r1);
+    background: none;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .dds-list-section-header__toggle:hover {
+    background-color: var(--dds-color-bg-transparent-hover);
+  }
+
+  .dds-list-section-header__toggle:focus-visible {
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-list-section-header__chevron {
+    flex: none;
+    transition: transform var(--dds-duration-fast) var(--dds-easing-out);
+  }
+
+  .dds-list-section-header__toggle[aria-expanded="false"] .dds-list-section-header__chevron {
+    transform: rotate(-90deg);
+  }
+
+  .dds-list-section-header__action {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    gap: var(--dds-dimension-x1);
+  }
+
+  /* 모바일 조작 영역 44 — 보이는 크기는 그대로, 투명 영역만 넓힌다. */
+  [data-dds-density="mobile"] :is(.dds-list__trailing, .dds-list-section-header__action) :is(button, a) {
+    position: relative;
+  }
+
+  [data-dds-density="mobile"] :is(.dds-list__trailing, .dds-list-section-header__action) :is(button, a)::before,
+  [data-dds-density="mobile"] .dds-list-section-header__toggle::before {
+    content: "";
+    position: absolute;
+    inset-block: min(0px, calc((100% - var(--dds-size-touch-target)) / 2));
+    inset-inline: min(0px, calc((100% - var(--dds-size-touch-target)) / 2));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .dds-list-section-header__chevron {
+      transition: none;
+    }
+  }
+}

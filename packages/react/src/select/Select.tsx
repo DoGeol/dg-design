@@ -140,8 +140,12 @@ const trigger = cva("dds-select__trigger", {
       medium: "dds-select__trigger--size_medium",
       large: "dds-select__trigger--size_large",
     },
+    variant: {
+      field: "",
+      chip: "dds-select__trigger--variant_chip",
+    },
   },
-  defaultVariants: { size: "medium" },
+  defaultVariants: { size: "medium", variant: "field" },
 });
 
 export interface SelectTriggerProps
@@ -149,10 +153,15 @@ export interface SelectTriggerProps
     VariantProps<typeof trigger> {
   /** 값이 없을 때 보여줄 내용. 회색으로 표시된다. */
   placeholder?: React.ReactNode;
+  /**
+   * `variant="chip"`일 때 필터가 기본값이 아님을 켜짐 색으로 보인다.
+   * 칩 트리거는 보이는 글자("상태: 발행됨")와 별개로 `aria-label`에 필터 이름을 준다.
+   */
+  active?: boolean;
 }
 
 export const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerProps>(
-  ({ className, size, placeholder, children, id, onClick, onKeyDown, ...props }, ref) => {
+  ({ className, size, variant, active, placeholder, children, id, onClick, onKeyDown, ...props }, ref) => {
     const context = useSelectContext("Select.Trigger");
     const setRef = React.useMemo(
       () => mergeRefs(ref, context.setTriggerNode as React.Ref<HTMLButtonElement>),
@@ -172,7 +181,9 @@ export const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerPr
         aria-invalid={context.invalid}
         aria-describedby={context.describedBy}
         data-state={context.open ? "open" : "closed"}
-        className={clsx(trigger({ size }), className)}
+        data-active={variant === "chip" && active ? "" : undefined}
+        // 칩은 자기 높이를 가져 size 축을 쓰지 않는다.
+        className={clsx(trigger({ size: variant === "chip" ? null : size, variant }), className)}
         onClick={(event) => {
           onClick?.(event);
           if (!event.defaultPrevented) context.setOpen(!context.open);
@@ -248,7 +259,12 @@ export const SelectContent = React.forwardRef<HTMLDivElement, SelectContentProps
         role="listbox"
         aria-labelledby={context.triggerId}
         data-state={context.open ? "open" : "closed"}
-        className={clsx("dds-select__content", className)}
+        // 칩 트리거는 좁아서 트리거 폭을 따르면 선택지가 잘린다 — 패널 최소 폭을 따로 준다.
+        className={clsx(
+          "dds-select__content",
+          context.triggerNode?.classList.contains("dds-select__trigger--variant_chip") && "dds-select__content--chip",
+          className,
+        )}
         onKeyDown={(event) => {
           onKeyDown?.(event);
           if (event.defaultPrevented) return;

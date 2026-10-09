@@ -124,6 +124,17 @@ describe('MultiSelect search="trigger"', () => {
     expect(onValueChange).toHaveBeenLastCalledWith([]);
   });
 
+  it("칩을 지우면 초점이 다음 칩, 마지막 칩이면 검색 입력으로 간다", async () => {
+    const user = userEvent.setup();
+    render(<Searchable search="trigger" defaultValue={["apple", "banana"]} />);
+
+    await user.click(screen.getByRole("button", { name: "Apple" }));
+    expect(document.activeElement).toBe(screen.getByRole("button", { name: "Banana" }));
+
+    await user.click(screen.getByRole("button", { name: "Banana" }));
+    expect(document.activeElement).toBe(input());
+  });
+
   it("입력 클릭·타이핑은 닫지 않고 칩 영역 빈 곳 클릭만 토글한다", async () => {
     const user = userEvent.setup();
     const { container } = render(<Searchable search="trigger" defaultOpen />);
@@ -362,7 +373,7 @@ describe("MultiSelect 옵션 label·textValue", () => {
 
   it("칩에는 label만 보이고 제거 버튼 이름도 label에서 나온다", () => {
     render(<People defaultValue={["kim"]} />);
-    expect(screen.getByText("김도걸", { selector: ".dds-multi-select__chip-label" })).toBeTruthy();
+    expect(screen.getByText("김도걸", { selector: ".dds-chip__label" })).toBeTruthy();
     expect(screen.queryByText("디자인팀")).toBeNull();
     expect(screen.getByRole("button", { name: /김도걸/ })).toBeTruthy();
   });

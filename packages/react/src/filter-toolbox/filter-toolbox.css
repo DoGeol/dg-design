@@ -1,0 +1,40 @@
+@layer dds {
+  .dds-filter-toolbox {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--dds-dimension-x2) var(--dds-dimension-x3);
+  }
+
+  .dds-filter-toolbox__chips {
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--dds-dimension-x1_5);
+    min-width: 0;
+  }
+
+  .dds-filter-toolbox__count {
+    color: var(--dds-color-fg-neutral-weak);
+    font-size: var(--dds-font-size-t3);
+    line-height: var(--dds-line-height-t3);
+    white-space: nowrap;
+  }
+
+  .dds-filter-toolbox__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--dds-dimension-x1);
+  }
+
+  /* 모바일: 결과 수·초기화는 칩 다음 줄. 칩 줄 간격 12는 칩 조작 영역 44(위아래 6씩)가 겹치지 않는 간격이다. */
+  [data-dds-density="mobile"] .dds-filter-toolbox__chips {
+    flex-basis: 100%;
+    row-gap: var(--dds-dimension-x3);
+  }
+
+  [data-dds-density="mobile"] .dds-filter-toolbox__count {
+    margin-inline-end: auto;
+  }
+}
