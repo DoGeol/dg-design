@@ -137,6 +137,8 @@
 
 **Button xsmall (2026-10-10)** — 사용자 요청으로 small(36) 아래 `size="xsmall"`(28, 글자 t2, 좌우 8, 아이콘 14)을 더했다. dg-studio 소비처는 아직 없다(구성 규칙 예외). 반경은 밀도와 무관하게 6이다 — 모바일 역할 반경 12면 28 높이에서 알약이 된다. 모바일 밀도에서는 보이는 크기를 두고 투명 영역만 44로 넓힌다(Chip 제거 버튼과 같은 방식).
 
+**닫기·제거 X hover (2026-10-10)** — Chip 제거 버튼의 hover 배경이 칩 높이 정사각 전체를 칠해 칩 위·아래·끝 변에 붙었다. 원인은 누르는 영역과 hover 표시가 같은 상자인 것. 라이브러리가 그리는 X(Chip 제거·Alert 닫기·Toast 닫기)는 hover 표시를 **원**으로 하고 누르는 영역과 분리한다. Chip은 버튼 크기를 두고 `background-clip: content-box`로 안쪽 원(데스크톱 18·모바일 20)만 칠한다. Alert는 24 원, Toast는 hover가 없던 것을 24 원으로 더하되 음수 여백으로 배치 20을 유지한다. Dialog·Sheet 닫기는 소비자가 `Button ghost iconOnly`로 조립하므로 범위 밖이다.
+
 ## 다음
 
 - Storybook Brand 툴바의 auto를 createTheme 블루로 맞췄다(`apps/storybook/.storybook/preview.tsx`). 보강 이미지는 #155EEF로 그렸으므로 색은 참고하지 않는다.

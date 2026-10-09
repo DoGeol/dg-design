@@ -108,14 +108,24 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: var(--dds-dimension-x5);
-    height: var(--dds-dimension-x5);
+    /* hover 원 24, 음수 여백으로 배치는 20 그대로 — 토스트 높이·간격이 바뀌지 않는다. */
+    width: var(--dds-dimension-x6);
+    height: var(--dds-dimension-x6);
+    margin: calc(var(--dds-dimension-x0_5) * -1);
     padding: 0;
     border: none;
-    border-radius: var(--dds-radius-r1);
+    border-radius: 50%;
     background-color: transparent;
     color: inherit;
     cursor: pointer;
+  }
+
+  .dds-toast__close:hover {
+    background-color: var(--dds-color-bg-transparent-hover);
+  }
+
+  .dds-toast__close:active {
+    background-color: var(--dds-color-bg-transparent-pressed);
   }
 
   .dds-toast__close:focus-visible {
