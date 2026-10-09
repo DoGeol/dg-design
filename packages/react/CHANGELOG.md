@@ -1,5 +1,27 @@
 # @dg-design/react
 
+## 0.21.0
+
+### Minor Changes
+
+- 3a1967d: P5 presentation: work-panel parts and sizes for Dialog/Sheet, sheet presentation for Select/MultiSelect.
+  
+  - `Dialog.Toolbar` · `Body` · `Aside` · `Footer` (also `Sheet.*` and `DialogToolbar`-style named exports). With any part present, the Content switches to a work layout: only Body scrolls, Toolbar and Footer stay fixed, Aside sits beside Body (stacked after Body on side sheets and narrow screens). Content without parts is unchanged.
+  - `Dialog.Content size`: `"default"` | `"large"` | `"full"`.
+  - `Sheet.Content size` (top/bottom sheets): `"default"` | `"fit"` | `"tall"` | `"full"`. Changing `size` keeps the same Content, so values and focus stay.
+  - `Select.Root` / `MultiSelect.Root` `presentation`: `"popover"` (default) | `"sheet"` | `"auto"` (sheet when `<html data-dds-density="mobile">`). The sheet is a modal bottom panel; listbox, keyboard and value behavior are the same. `Content title` adds a visible heading. MultiSelect `search="trigger"` moves the search input into the sheet.
+- 93f40a7: P6 form variants: `TextField` and `TextArea` accept `variant?: "outline" | "box" | "line"` (default `"outline"`).
+  
+  - `box` and `line` change the look only inside `[data-dds-density="mobile"]`; elsewhere they render as `outline`.
+  - `box`: tinted surface (`bg-neutral-weak`) and the same `stroke-neutral` 1px border (kept for WCAG 1.4.11).
+  - `line`: bottom border only, no radius or inline padding, transparent surface. Focus shows a 2px bottom edge. A `line` TextArea has `resize: none`.
+  - The class goes on the input, the prefix/suffix wrapper, or the textarea (not the `showCount` wrapper). Field wiring, affixes, `showCount` and `autoResize` work the same.
+- a6bccc6: Ship an agent usage-guide skill inside the package.
+  
+  - `skill/dg-design/SKILL.md` plus `skill/dg-design/references/<component>.md` for all 42 components: purpose, when not to use, key API, accessibility notes, and type-checked examples.
+  - `AGENT-SETUP.md` tells a coding agent (Claude Code, Codex, others) how to link the skill (symlink by default, copy with a version file otherwise) and where to keep project-specific layout rules (`dg-design.local.md` at the project root, never inside the package skill).
+  - No runtime or API changes.
+
 ## 0.20.0
 
 ### Minor Changes
