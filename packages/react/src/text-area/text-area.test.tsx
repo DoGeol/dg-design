@@ -164,4 +164,18 @@ describe("TextArea showCount", () => {
     expect(document.getElementById(countId)?.textContent).toBe("0");
     expect(document.querySelector("[aria-live]")).toBeNull();
   });
+
+  it("variant 클래스는 showCount wrapper가 아니라 textarea에 붙고 Field 연결은 그대로다", () => {
+    render(
+      <Field.Root>
+        <Field.Label>메모</Field.Label>
+        <TextArea variant="line" showCount />
+        <Field.ErrorMessage>필수</Field.ErrorMessage>
+      </Field.Root>,
+    );
+    const textarea = screen.getByRole("textbox", { name: "메모" });
+    expect(textarea.className).toContain("dds-text-area--variant_line");
+    expect(textarea.parentElement?.className).toBe("dds-text-area__wrapper");
+    expect(textarea.getAttribute("aria-invalid")).toBe("true");
+  });
 });

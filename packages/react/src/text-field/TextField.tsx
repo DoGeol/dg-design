@@ -13,9 +13,17 @@ const textField = cva("dds-text-field", {
       medium: "dds-text-field--size_medium",
       large: "dds-text-field--size_large",
     },
+    // box·line은 모바일 밀도 안에서만 외관이 바뀐다(CSS). 그 밖에서는 outline으로 그린다.
+    variant: {
+      // 기본 outline은 클래스 없이 기본 규칙 그대로
+      outline: "",
+      box: "dds-text-field--variant_box",
+      line: "dds-text-field--variant_line",
+    },
   },
   defaultVariants: {
     size: "medium",
+    variant: "outline",
   },
 });
 
@@ -39,6 +47,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
     {
       className,
       size,
+      variant,
       prefix,
       suffix,
       type = "text",
@@ -73,7 +82,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         <input
           {...inputProps}
           ref={ref}
-          className={clsx(textField({ size }), className)}
+          className={clsx(textField({ size, variant }), className)}
           {...props}
         />
       );
@@ -95,6 +104,7 @@ export const TextField = React.forwardRef<HTMLInputElement, TextFieldProps>(
         className={clsx(
           "dds-text-field__wrapper",
           `dds-text-field--size_${size ?? "medium"}`,
+          variant && variant !== "outline" && `dds-text-field--variant_${variant}`,
           className,
         )}
         onMouseDown={focusInput}

@@ -14,9 +14,17 @@ const textArea = cva("dds-text-area", {
       medium: "dds-text-area--size_medium",
       large: "dds-text-area--size_large",
     },
+    // box·line은 모바일 밀도 안에서만 외관이 바뀐다(CSS). 그 밖에서는 outline으로 그린다.
+    variant: {
+      // 기본 outline은 클래스 없이 기본 규칙 그대로
+      outline: "",
+      box: "dds-text-area--variant_box",
+      line: "dds-text-area--variant_line",
+    },
   },
   defaultVariants: {
     size: "medium",
+    variant: "outline",
   },
 });
 
@@ -34,6 +42,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     {
       className,
       size,
+      variant,
       autoResize = false,
       showCount = false,
       rows = 3,
@@ -73,7 +82,7 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         aria-describedby={resolvedDescribedBy}
         aria-invalid={resolvedInvalid}
         className={clsx(
-          textArea({ size }),
+          textArea({ size, variant }),
           autoResize && "dds-text-area--auto-resize",
           className,
         )}

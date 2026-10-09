@@ -65,7 +65,7 @@
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
-| [2026-10-09 사용 가이드 스킬](decisions/2026-10-09-usage-skill.md) | 활성 · 구현 전 | dg-design 소유·프로젝트 독립 예제 스킬, 패키지에 스킬 + 에이전트용 설정 가이드 md, layout은 최소 권장사항 + 프로젝트 로컬 파일 |
+| [2026-10-09 사용 가이드 스킬](decisions/2026-10-09-usage-skill.md) | 활성 · 구현(P7) | dg-design 소유·프로젝트 독립 예제 스킬, 패키지에 스킬 + 에이전트용 설정 가이드 md, layout은 최소 권장사항 + 프로젝트 로컬 파일 |
 | [2026-10-09 flex 적용 방향](decisions/2026-10-09-flex-adoption-direction.md) | 활성 · 구현 전 | A 기본 + B 사용례, 모서리 입력 4·버튼 6, outline 기본 + 모바일 확장, 브랜드 createTheme #1550A9 |
 | [2026-10-06 부유 패널 테두리](decisions/2026-10-06-floating-panel-border.md) | 활성 | 패널 경계는 그림자가 아니라 테두리 1px, Sheet는 안쪽 변만, 화살표 오프셋 보정 |
 | [2026-09-27 DatePicker 구현 결정](decisions/2026-09-27-datepicker-implementation.md) | npm 0.16.1 배포 · 실기기 QA 후속 | 엄격한 날짜 입력·DST 후보, 달력 훅과 DDS 오버레이, 반응형 레이아웃·패키지 export |
@@ -99,7 +99,9 @@
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
 | [2026-10-09 P3 접근성·API 스펙](specs/2026-10-09-p3-a11y-api.md) | npm 0.19.0 배포 | 메뉴 체크·라디오 항목, 옵션 label·textValue, DataTable align, Toast action |
-| [2026-10-09 P5 표시 방식 스펙](specs/2026-10-09-p5-presentation.md) | 구현 · 배포 대기 | Dialog·Sheet 작업형 부품(Toolbar·Body·Aside·Footer), Dialog·Sheet `size`, Select·MultiSelect `presentation` |
+| [사용 가이드 스킬](decisions/2026-10-09-usage-skill.md) · [설정 가이드](../packages/react/AGENT-SETUP.md) | 구현 · 배포 대기 | P7 — 컴포넌트 42개 예제(`packages/react/skill-src`) → 패키지 스킬 `skill/dg-design` |
+| [2026-10-09 P6 폼 확장 스펙](specs/2026-10-09-p6-form-variants.md) | 구현 · 배포 대기 | TextField·TextArea `variant` box·line(모바일 밀도 전용) |
+| [2026-10-09 P5 표시 방식 스펙](specs/2026-10-09-p5-presentation.md) | main 머지 · 배포 대기(Version PR #35) | Dialog·Sheet 작업형 부품(Toolbar·Body·Aside·Footer), Dialog·Sheet `size`, Select·MultiSelect `presentation` |
 | [2026-10-09 P4 새 종류 스펙](specs/2026-10-09-p4-new-kinds.md) · [구현 계획](plans/2026-10-09-p4-new-kinds.md) | npm react 0.20.0 · tokens 0.10.0 배포 | List·SectionHeader, Chip·FilterChip, FilterToolbox, Select chip 트리거, PropertyField, 목록·설정 행 토큰 |
 | [2026-09-27 DatePicker 스펙](specs/2026-09-27-datepicker.md) | npm 0.16.1 배포 · 실기기 QA 후속 | 단일/범위 × 날짜/시간, 시간대, 모바일 시트, 프리셋, 합격 조건 |
 | [2026-09-25 Table v2 구현 스펙](specs/2026-09-25-table-v2.md) | npm 0.16.0 배포 · 스크린리더 QA 후속 | 공개 API, 구현 경계, 합격 조건 |
