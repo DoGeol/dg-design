@@ -57,7 +57,8 @@
     height: var(--dds-dimension-x6);
     padding: 0;
     border: none;
-    border-radius: var(--dds-radius-r1);
+    /* 닫기·제거 X의 hover 표시는 원 — 사각이면 아이콘에 꽉 끼어 보인다. */
+    border-radius: 50%;
     background-color: transparent;
     color: inherit;
     cursor: pointer;

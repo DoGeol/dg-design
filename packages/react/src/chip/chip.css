@@ -42,10 +42,12 @@
     width: var(--dds-size-chip-height);
     height: var(--dds-size-chip-height);
     margin-inline-start: calc(var(--dds-dimension-x1) * -1);
-    padding: 0;
+    /* 누르는 영역은 칩 높이 정사각 그대로, hover 표시는 안쪽 원 18만 칠해 칩 가장자리에 붙지 않게 한다. */
+    padding: calc((var(--dds-size-chip-height) - var(--dds-dimension-x4_5)) / 2);
     border: 0;
-    border-radius: var(--dds-radius-chip);
+    border-radius: 50%;
     background: transparent;
+    background-clip: content-box;
     color: var(--dds-color-fg-neutral-weak);
     cursor: pointer;
   }
@@ -132,6 +134,10 @@
 
   [data-dds-density="mobile"] .dds-chip:has(> .dds-chip__remove) {
     padding-inline-end: 0;
+  }
+
+  [data-dds-density="mobile"] .dds-chip__remove {
+    padding: calc((var(--dds-size-chip-height) - var(--dds-dimension-x5)) / 2);
   }
 
   /* 모바일 조작 영역 44 — 보이는 크기는 그대로 두고 투명 영역을 넓힌다.
