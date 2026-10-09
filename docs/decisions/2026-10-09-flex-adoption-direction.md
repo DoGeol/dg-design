@@ -1,6 +1,6 @@
 # flex 적용 방향 (2026-10-09)
 
-> 상태: 활성 · **구현 중** — P1(역할 토큰·밀도)까지 반영. 컴포넌트 외관은 P2에서 바뀐다. 진행은 [구현 계획](../plans/2026-10-09-flex-adoption.md).
+> 상태: 활성 · **구현 중** — P2(외관)까지 반영. 진행은 [구현 계획](../plans/2026-10-09-flex-adoption.md).
 > 근거: [A·B 이중검토 종합](../reports/flex-adoption-review/review/synthesis.md) · [B 치수 명세](../reports/flex-adoption-review/skill-free-comparison/design-application/README.md) · [A·B 공통 관점 보완](../reports/flex-adoption-review/gaps.md) · Storybook `Mockups/Flex`
 
 ## 결정
@@ -79,7 +79,7 @@
 | 본문 글자 | `body-size` | 14 | 14 / 16 | A |
 | 본문 행간 | `body-line` | 19 | 19 / 24 | A |
 
-표는 profiles.ts의 `FINAL`에서 생성했다. 값을 바꿀 때는 profiles.ts를 고친다.
+표는 profiles.ts의 `FINAL`에서 생성했다. P1부터 토큰이 된 역할의 정본은 `packages/tokens/src/tokens.ts`의 `roles`다.
 
 ## 구현 중 결정
 
@@ -91,6 +91,16 @@
 - 밀도: `[data-dds-density="mobile"]` 블록. 루트 지정 전제, 중첩 미지원(포털이 하위 스코프를 벗어난다). mobile 값이 desktop과 같은 역할은 블록에 넣지 않는다.
 - 44는 4px 스케일에 스텝이 없어 리터럴로 둔다(표 행·모바일 조작 영역만 쓴다). Sheet 반경 0도 리터럴이다.
 - profiles.ts `FINAL`과 tokens.ts의 값 중복은 P2에서 정리한다(시안 덮어쓰기 CSS를 지우는 시점과 같다).
+
+**P2 외관 (2026-10-09)**
+
+- 패키지 기본값이 된 범위: 결정안 미리보기의 덮어쓰기 규칙 중 `.dds-*` 선택자만 겨눈 것 + 결정안 열에서 모든 안에 시안 클래스로 걸던 것(Checkbox 첫 줄 정렬, FileInput 드롭존, DatePicker 필드 트리거). 시안 클래스로만 쓰는 조합(`.fx-cta`, box·line 입력, 버튼·칩 트리거, 설정 행, 큰 Card, StatePanel compact, 선택형 Popover)은 P3~P6 또는 앱 조합으로 남긴다.
+- 표 숫자 열 끝 정렬은 DataColumn 정렬 옵션이 필요해 P3로 미룬다.
+- DatePicker 트리거는 Button 배선을 그대로 쓰고 `dds-date-picker__trigger` 클래스로 필드 외관(경계 1px·입력류 focus)을 입힌다. 루트는 `inline-flex` → `flex`(블록 폭)로 바꿔 다른 필드와 폭 규칙을 맞췄다.
+- Pagination 현재 쪽은 Button 클래스를 `brand solid` → `neutral weak`로 바꾸고 중성 경계 1px를 얹는다(흰 배경 위 weak 단독 1.07:1 보완).
+- Checkbox 라벨의 1px 광학 보정(`translateY(1px)`)은 첫 줄 정렬과 함께 없앴다. 라벨 없는 박스(표 선택 칸)는 내리지 않는다.
+- 모바일 전용 규칙은 `[data-dds-density="mobile"]`(메뉴 단축키 숨김, TextArea 위아래 여백) 아니면 토큰 `max()`(Pagination 44)로 둔다.
+- Storybook 시안: 구현된 규칙은 덮어쓰기 CSS에서 지웠다. 결정안 열의 `--fx-*`는 토큰 역할이면 `var(--dds-…)`를 가리키고, profiles.ts `FINAL`에는 토큰이 아닌 목록·설정 행만 남는다. 그래서 Decided의 "현재 DDS" 열도 이제 새 기본값으로 보이고, Compare의 A·B 열은 지운 규칙만큼 결정안과 같아진다 — 비교 시안은 결정 당시 기록으로만 본다.
 
 ## 다음
 

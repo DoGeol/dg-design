@@ -4,7 +4,7 @@
 
 ## 한 줄 상태
 
-**P0·P1 완료, 다음은 P2 외관.** [구현 계획](../plans/2026-10-09-flex-adoption.md) 순서대로 진행 중이다. P1까지는 배포하지 않았다(tokens changeset만 있다). react 컴포넌트는 아직 역할 토큰을 읽지 않는다.
+**P0~P2 완료, 다음은 P3 접근성·API 선행.** P1·P2는 아직 배포하지 않았다 — tokens minor·react minor changeset이 같은 Version PR로 나가야 한다. P2 시각 회귀 기준은 CI `visual-baseline`으로 다시 찍어 커밋됐다(`b384abb`).
 
 ## 브랜치와 커밋
 
@@ -44,12 +44,12 @@ main 위의 7커밋(오래된 순):
 | --- | --- | --- |
 | P0 문서·가드 | `9217ef7` | README 배럴 CSS 문구를 "번들러에 따라 다르다"로 정정. `packages/react/scripts/check-subpaths.js`(하위 경로가 배럴에 닿으면 실패)를 CI build 다음 단계에 추가 |
 | P1 역할 토큰·밀도 | `020f77d` | 역할 토큰 30개, `[data-dds-density="mobile"]` 블록, Tailwind 브릿지(역할·`duration-*`·`z-*`, 4.3.3에서 컴파일 확인), `customization.md` "밀도" 절. 구현 중 결정은 [결정 기록](../decisions/2026-10-09-flex-adoption-direction.md) "구현 중 결정" |
+| P2 외관 | `4e12f65` `e423639` `cf1504d` `b384abb` | 컴포넌트 CSS가 역할 토큰을 읽고 결정안 외관이 기본값. 구현된 시안 덮어쓰기 삭제, profiles.ts 결정안은 토큰 참조. VR 기준 155개를 지우고 CI `visual-baseline`으로 재촬영(60개 바뀜, 라벨 있는 Checkbox는 VR 스토리에 없어 미검증). 구현 중 결정은 결정 기록 "P2 외관" |
 
 ## 그다음 단계 요지
 
 | 단계 | 시작할 때 볼 것 |
 | --- | --- |
-| P2 외관 | 미리보기 덮어쓰기 CSS(`apps/storybook/src/mockups/flex/overrides/*.css`)가 실제로 고칠 선택자 목록이다. 구현한 만큼 그 규칙을 지운다. 표 정렬 원인: DataTable 선택 칸 체크박스가 `inline-flex`라 기준선에 붙음(본문 −2~2.5px, 필터 머리글 18px). tokens·react를 같은 배포로 짝 맞춤(P1 tokens changeset과 함께 나간다), `customization.md` 버전 짝에 최소 tokens 버전 기록. 역할 토큰은 `packages/tokens/src/tokens.ts`의 `roles`. profiles.ts `FINAL`의 값 중복 정리. VR 기준은 CI `visual-baseline`으로만 갱신 |
 | P3~P7 | 각 단계 스펙을 먼저 쓴다(P4는 deep-interview). 현재 DDS 문제 목록은 [관점 보완 §13](../reports/flex-adoption-review/gaps.md) |
 
 ## 번들 측정 (2026-10-09, P0 근거)
