@@ -1,7 +1,7 @@
 # flex 적용 구현 계획
 
 - 작성: 2026-10-09 · 기준 커밋: `8c4d3b1` (react 0.17.3 · tokens 0.8.0)
-- 상태: **승인 (2026-10-09)** — P0~P2 배포(tokens 0.9.0 · react 0.18.0), P3 배포(react 0.19.0, [스펙](../specs/2026-10-09-p3-a11y-api.md)), P4 배포(react 0.20.0 · tokens 0.10.0, [스펙](../specs/2026-10-09-p4-new-kinds.md)). 커밋·푸시는 단계마다 사용자 확인
+- 상태: **승인 (2026-10-09)** — P0~P2 배포(tokens 0.9.0 · react 0.18.0), P3 배포(react 0.19.0, [스펙](../specs/2026-10-09-p3-a11y-api.md)), P4 배포(react 0.20.0 · tokens 0.10.0, [스펙](../specs/2026-10-09-p4-new-kinds.md)), P5~P7 배포(react 0.21.0, [P5](../specs/2026-10-09-p5-presentation.md) · [P6](../specs/2026-10-09-p6-form-variants.md) · [P7](../decisions/2026-10-09-usage-skill.md)) — **전 단계 완료**. 커밋·푸시는 단계마다 사용자 확인
 - 인계: [2026-10-09 인계 문서](../handoff/2026-10-09-flex-adoption.md) — 다른 환경에서 이어갈 때 먼저 읽는다
 - 근거: [flex 적용 방향 결정](../decisions/2026-10-09-flex-adoption-direction.md) · [사용 가이드 스킬 결정](../decisions/2026-10-09-usage-skill.md) · [이중검토 종합](../reports/flex-adoption-review/review/synthesis.md) · [관점 보완](../reports/flex-adoption-review/gaps.md) · Storybook `Mockups/Flex/*` Decided
 - 범위: 결정안을 실제 `packages/tokens`·`packages/react`에 반영하고 사용 가이드 스킬을 배포한다. dg-studio 전환은 이 저장소 밖이다.

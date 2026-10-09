@@ -4,7 +4,7 @@
 
 ## 한 줄 상태
 
-**P0~P2 배포 완료(2026-10-09, tokens 0.9.0 · react 0.18.0). P3 접근성·API 배포(react 0.19.0, [스펙](../specs/2026-10-09-p3-a11y-api.md)). P4 새 종류 배포(react 0.20.0 · tokens 0.10.0, [스펙](../specs/2026-10-09-p4-new-kinds.md)). P5 표시 방식([스펙](../specs/2026-10-09-p5-presentation.md))은 main 머지, P6 폼 확장([스펙](../specs/2026-10-09-p6-form-variants.md))·P7 사용 가이드 스킬([결정](../decisions/2026-10-09-usage-skill.md))은 `feat/p6-form-variants` 브랜치. 셋을 react 0.21.0 한 번으로 배포한다(Version PR #35에 changeset이 모인다).**
+**P0~P2 배포 완료(2026-10-09, tokens 0.9.0 · react 0.18.0). P3 접근성·API 배포(react 0.19.0, [스펙](../specs/2026-10-09-p3-a11y-api.md)). P4 새 종류 배포(react 0.20.0 · tokens 0.10.0, [스펙](../specs/2026-10-09-p4-new-kinds.md)). P5 표시 방식([스펙](../specs/2026-10-09-p5-presentation.md))·P6 폼 확장([스펙](../specs/2026-10-09-p6-form-variants.md))·P7 사용 가이드 스킬([결정](../decisions/2026-10-09-usage-skill.md))을 react 0.21.0으로 함께 배포(PR #34·#36·#35). 계획 전 단계 완료. 남은 일은 [후속 작업](../follow-ups.md)과 dg-studio 업그레이드(현재 0.17.3).**
 
 ## 브랜치와 PR
 
