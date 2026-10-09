@@ -64,6 +64,7 @@
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
+| [2026-10-09 사용 가이드 스킬](decisions/2026-10-09-usage-skill.md) | 활성 · 구현 전 | dg-design 소유·프로젝트 독립 예제 스킬, 패키지에 스킬 + 에이전트용 설정 가이드 md, layout은 최소 권장사항 + 프로젝트 로컬 파일 |
 | [2026-10-09 flex 적용 방향](decisions/2026-10-09-flex-adoption-direction.md) | 활성 · 구현 전 | A 기본 + B 사용례, 모서리 입력 4·버튼 6, outline 기본 + 모바일 확장, 브랜드 createTheme #1550A9 |
 | [2026-10-06 부유 패널 테두리](decisions/2026-10-06-floating-panel-border.md) | 활성 | 패널 경계는 그림자가 아니라 테두리 1px, Sheet는 안쪽 변만, 화살표 오프셋 보정 |
 | [2026-09-27 DatePicker 구현 결정](decisions/2026-09-27-datepicker-implementation.md) | npm 0.16.1 배포 · 실기기 QA 후속 | 엄격한 날짜 입력·DST 후보, 달력 훅과 DDS 오버레이, 반응형 레이아웃·패키지 export |
