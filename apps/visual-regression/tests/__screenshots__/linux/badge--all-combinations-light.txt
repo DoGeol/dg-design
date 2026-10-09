@@ -1,0 +1,36 @@
+dds-badge dds-badge--intent_brand dds-badge--variant_solid dds-badge--size_medium | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgb(255, 255, 255) | none
+dds-badge dds-badge--intent_brand dds-badge--variant_weak dds-badge--size_medium | rgb(15, 70, 70) | rgb(223, 252, 251) | none | rgb(15, 70, 70) | none
+dds-badge dds-badge--intent_brand dds-badge--variant_outline dds-badge--size_medium | rgb(15, 70, 70) | rgba(0, 0, 0, 0) | none | rgb(15, 70, 70) | none
+dds-badge dds-badge--intent_brand dds-badge--variant_solid dds-badge--size_large | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgb(255, 255, 255) | none
+dds-badge dds-badge--intent_brand dds-badge--variant_weak dds-badge--size_large | rgb(15, 70, 70) | rgb(223, 252, 251) | none | rgb(15, 70, 70) | none
+dds-badge dds-badge--intent_brand dds-badge--variant_outline dds-badge--size_large | rgb(15, 70, 70) | rgba(0, 0, 0, 0) | none | rgb(15, 70, 70) | none
+dds-badge dds-badge--intent_neutral dds-badge--variant_solid dds-badge--size_medium | rgb(255, 255, 255) | rgb(58, 62, 62) | none | rgb(255, 255, 255) | none
+dds-badge dds-badge--intent_neutral dds-badge--variant_weak dds-badge--size_medium | rgb(36, 39, 39) | rgb(241, 246, 246) | none | rgb(36, 39, 39) | none
+dds-badge dds-badge--intent_neutral dds-badge--variant_outline dds-badge--size_medium | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-badge dds-badge--intent_neutral dds-badge--variant_solid dds-badge--size_large | rgb(255, 255, 255) | rgb(58, 62, 62) | none | rgb(255, 255, 255) | none
+dds-badge dds-badge--intent_neutral dds-badge--variant_weak dds-badge--size_large | rgb(36, 39, 39) | rgb(241, 246, 246) | none | rgb(36, 39, 39) | none
+dds-badge dds-badge--intent_neutral dds-badge--variant_outline dds-badge--size_large | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-badge dds-badge--intent_critical dds-badge--variant_solid dds-badge--size_medium | rgb(255, 255, 255) | rgb(155, 28, 34) | none | rgb(255, 255, 255) | none
+dds-badge dds-badge--intent_critical dds-badge--variant_weak dds-badge--size_medium | rgb(115, 17, 21) | rgb(252, 243, 242) | none | rgb(115, 17, 21) | none
+dds-badge dds-badge--intent_critical dds-badge--variant_outline dds-badge--size_medium | rgb(115, 17, 21) | rgba(0, 0, 0, 0) | none | rgb(115, 17, 21) | none
+dds-badge dds-badge--intent_critical dds-badge--variant_solid dds-badge--size_large | rgb(255, 255, 255) | rgb(155, 28, 34) | none | rgb(255, 255, 255) | none
+dds-badge dds-badge--intent_critical dds-badge--variant_weak dds-badge--size_large | rgb(115, 17, 21) | rgb(252, 243, 242) | none | rgb(115, 17, 21) | none
+dds-badge dds-badge--intent_critical dds-badge--variant_outline dds-badge--size_large | rgb(115, 17, 21) | rgba(0, 0, 0, 0) | none | rgb(115, 17, 21) | none
+dds-badge dds-badge--intent_positive dds-badge--variant_solid dds-badge--size_medium | rgb(255, 255, 255) | rgb(25, 102, 35) | none | rgb(255, 255, 255) | none
+dds-badge dds-badge--intent_positive dds-badge--variant_weak dds-badge--size_medium | rgb(15, 74, 23) | rgb(231, 252, 231) | none | rgb(15, 74, 23) | none
+dds-badge dds-badge--intent_positive dds-badge--variant_outline dds-badge--size_medium | rgb(15, 74, 23) | rgba(0, 0, 0, 0) | none | rgb(15, 74, 23) | none
+dds-badge dds-badge--intent_positive dds-badge--variant_solid dds-badge--size_large | rgb(255, 255, 255) | rgb(25, 102, 35) | none | rgb(255, 255, 255) | none
+dds-badge dds-badge--intent_positive dds-badge--variant_weak dds-badge--size_large | rgb(15, 74, 23) | rgb(231, 252, 231) | none | rgb(15, 74, 23) | none
+dds-badge dds-badge--intent_positive dds-badge--variant_outline dds-badge--size_large | rgb(15, 74, 23) | rgba(0, 0, 0, 0) | none | rgb(15, 74, 23) | none
+dds-badge dds-badge--intent_warning dds-badge--variant_solid dds-badge--size_medium | rgb(15, 18, 18) | rgb(212, 171, 79) | none | rgb(15, 18, 18) | none
+dds-badge dds-badge--intent_warning dds-badge--variant_weak dds-badge--size_medium | rgb(77, 58, 12) | rgb(252, 244, 229) | none | rgb(77, 58, 12) | none
+dds-badge dds-badge--intent_warning dds-badge--variant_outline dds-badge--size_medium | rgb(77, 58, 12) | rgba(0, 0, 0, 0) | none | rgb(77, 58, 12) | none
+dds-badge dds-badge--intent_warning dds-badge--variant_solid dds-badge--size_large | rgb(15, 18, 18) | rgb(212, 171, 79) | none | rgb(15, 18, 18) | none
+dds-badge dds-badge--intent_warning dds-badge--variant_weak dds-badge--size_large | rgb(77, 58, 12) | rgb(252, 244, 229) | none | rgb(77, 58, 12) | none
+dds-badge dds-badge--intent_warning dds-badge--variant_outline dds-badge--size_large | rgb(77, 58, 12) | rgba(0, 0, 0, 0) | none | rgb(77, 58, 12) | none
+dds-badge dds-badge--intent_informative dds-badge--variant_solid dds-badge--size_medium | rgb(255, 255, 255) | rgb(23, 88, 145) | none | rgb(255, 255, 255) | none
+dds-badge dds-badge--intent_informative dds-badge--variant_weak dds-badge--size_medium | rgb(13, 63, 106) | rgb(240, 246, 252) | none | rgb(13, 63, 106) | none
+dds-badge dds-badge--intent_informative dds-badge--variant_outline dds-badge--size_medium | rgb(13, 63, 106) | rgba(0, 0, 0, 0) | none | rgb(13, 63, 106) | none
+dds-badge dds-badge--intent_informative dds-badge--variant_solid dds-badge--size_large | rgb(255, 255, 255) | rgb(23, 88, 145) | none | rgb(255, 255, 255) | none
+dds-badge dds-badge--intent_informative dds-badge--variant_weak dds-badge--size_large | rgb(13, 63, 106) | rgb(240, 246, 252) | none | rgb(13, 63, 106) | none
+dds-badge dds-badge--intent_informative dds-badge--variant_outline dds-badge--size_large | rgb(13, 63, 106) | rgba(0, 0, 0, 0) | none | rgb(13, 63, 106) | none

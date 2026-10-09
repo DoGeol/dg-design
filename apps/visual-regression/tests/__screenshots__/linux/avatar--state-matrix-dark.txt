@@ -1,0 +1,27 @@
+dds-avatar dds-avatar--size_small | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) | none
+dds-avatar__image | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-avatar__fallback | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-avatar__badge | rgb(0, 0, 0) | rgb(87, 197, 197) | none | rgb(0, 0, 0) | none
+dds-avatar dds-avatar--size_medium | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) | none
+dds-avatar__image | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-avatar__fallback | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-avatar__badge | rgb(0, 0, 0) | rgb(87, 197, 197) | none | rgb(0, 0, 0) | none
+dds-avatar dds-avatar--size_large | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) | none
+dds-avatar__image | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-avatar__fallback | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-avatar__badge | rgb(0, 0, 0) | rgb(87, 197, 197) | none | rgb(0, 0, 0) | none
+dds-avatar dds-avatar--size_xlarge | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) | none
+dds-avatar__image | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-avatar__fallback | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-avatar__badge | rgb(0, 0, 0) | rgb(87, 197, 197) | none | rgb(0, 0, 0) | none
+dds-avatar dds-avatar--size_large | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) | none
+dds-avatar__image | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-avatar__fallback | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-avatar__badge | rgb(0, 0, 0) | rgb(87, 197, 197) | none | rgb(0, 0, 0) | none
+dds-avatar dds-avatar--size_large | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) | none
+dds-avatar__fallback | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-avatar__badge | rgb(0, 0, 0) | rgb(87, 197, 197) | none | rgb(0, 0, 0) | none
+dds-avatar dds-avatar--size_large | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) | none
+dds-avatar__image | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-avatar__fallback | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-avatar__badge | rgb(0, 0, 0) | rgb(87, 197, 197) | none | rgb(0, 0, 0) | none

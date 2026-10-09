@@ -1,0 +1,8 @@
+dds-skeleton dds-skeleton--radius_none | rgb(0, 0, 0) | rgb(241, 246, 246) | none | rgb(0, 0, 0) | none
+dds-skeleton dds-skeleton--radius_none::after | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(228, 233, 232) 50%, rgba(0, 0, 0, 0) 100%) | rgb(0, 0, 0) | none
+dds-skeleton dds-skeleton--radius_small | rgb(0, 0, 0) | rgb(241, 246, 246) | none | rgb(0, 0, 0) | none
+dds-skeleton dds-skeleton--radius_small::after | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(228, 233, 232) 50%, rgba(0, 0, 0, 0) 100%) | rgb(0, 0, 0) | none
+dds-skeleton dds-skeleton--radius_medium | rgb(0, 0, 0) | rgb(241, 246, 246) | none | rgb(0, 0, 0) | none
+dds-skeleton dds-skeleton--radius_medium::after | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(228, 233, 232) 50%, rgba(0, 0, 0, 0) 100%) | rgb(0, 0, 0) | none
+dds-skeleton dds-skeleton--radius_full | rgb(0, 0, 0) | rgb(241, 246, 246) | none | rgb(0, 0, 0) | none
+dds-skeleton dds-skeleton--radius_full::after | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(228, 233, 232) 50%, rgba(0, 0, 0, 0) 100%) | rgb(0, 0, 0) | none

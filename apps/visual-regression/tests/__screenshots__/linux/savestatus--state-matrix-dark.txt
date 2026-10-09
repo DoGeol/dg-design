@@ -1,0 +1,13 @@
+dds-save-status dds-save-status--status_saved | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-save-status__icon | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-save-status__label | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-save-status dds-save-status--status_dirty | rgb(240, 208, 141) | rgba(0, 0, 0, 0) | none | rgb(240, 208, 141) | none
+dds-save-status__icon | rgb(240, 208, 141) | rgba(0, 0, 0, 0) | none | rgb(240, 208, 141) | none
+dds-save-status__label | rgb(240, 208, 141) | rgba(0, 0, 0, 0) | none | rgb(240, 208, 141) | none
+dds-save-status dds-save-status--status_saving | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-save-status__icon | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-spinner dds-spinner--size_small | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) rgb(174, 178, 178) rgb(174, 178, 178) | none
+dds-save-status__label | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-save-status dds-save-status--status_error | rgb(240, 201, 197) | rgba(0, 0, 0, 0) | none | rgb(240, 201, 197) | none
+dds-save-status__icon | rgb(240, 201, 197) | rgba(0, 0, 0, 0) | none | rgb(240, 201, 197) | none
+dds-save-status__label | rgb(240, 201, 197) | rgba(0, 0, 0, 0) | none | rgb(240, 201, 197) | none

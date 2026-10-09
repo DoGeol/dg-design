@@ -1,0 +1,14 @@
+dds-text-area dds-text-area--size_medium | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-text-area dds-text-area--size_medium | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(240, 70, 70) | none
+dds-text-area dds-text-area--size_medium | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
+dds-text-area dds-text-area--size_medium | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(58, 62, 62) | none
+dds-text-area dds-text-area--size_large | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-text-area dds-text-area--size_large | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(240, 70, 70) | none
+dds-text-area dds-text-area--size_large | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
+dds-text-area dds-text-area--size_large | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(58, 62, 62) | none
+dds-text-area__wrapper | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-text-area dds-text-area--size_medium | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-text-area__count | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-text-area__wrapper | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-text-area dds-text-area--size_medium | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-text-area__count | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none

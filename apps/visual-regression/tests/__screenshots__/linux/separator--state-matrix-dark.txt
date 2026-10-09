@@ -1,0 +1,4 @@
+dds-separator dds-separator--orientation_horizontal | rgb(0, 0, 0) | rgb(58, 62, 62) | none | rgb(0, 0, 0) | none
+dds-separator dds-separator--orientation_horizontal | rgb(0, 0, 0) | rgb(58, 62, 62) | none | rgb(0, 0, 0) | none
+dds-separator dds-separator--orientation_vertical | rgb(0, 0, 0) | rgb(58, 62, 62) | none | rgb(0, 0, 0) | none
+dds-separator dds-separator--orientation_vertical | rgb(0, 0, 0) | rgb(58, 62, 62) | none | rgb(0, 0, 0) | none

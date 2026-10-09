@@ -1,0 +1,2 @@
+dds-spinner dds-spinner--size_small | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) rgb(0, 0, 0) rgb(0, 0, 0) | none
+dds-spinner dds-spinner--size_medium | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) rgb(0, 0, 0) rgb(0, 0, 0) | none

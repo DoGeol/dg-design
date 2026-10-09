@@ -1,0 +1,8 @@
+dds-progress | rgb(0, 0, 0) | rgb(241, 246, 246) | none | rgb(0, 0, 0) | none
+dds-progress__indicator | rgb(0, 0, 0) | rgb(25, 97, 97) | none | rgb(0, 0, 0) | none
+dds-progress | rgb(0, 0, 0) | rgb(241, 246, 246) | none | rgb(0, 0, 0) | none
+dds-progress__indicator | rgb(0, 0, 0) | rgb(25, 97, 97) | none | rgb(0, 0, 0) | none
+dds-progress | rgb(0, 0, 0) | rgb(241, 246, 246) | none | rgb(0, 0, 0) | none
+dds-progress__indicator | rgb(0, 0, 0) | rgb(25, 97, 97) | none | rgb(0, 0, 0) | none
+dds-progress | rgb(0, 0, 0) | rgb(241, 246, 246) | none | rgb(0, 0, 0) | none
+dds-progress__indicator | rgb(0, 0, 0) | rgb(25, 97, 97) | none | rgb(0, 0, 0) | none
