@@ -1,6 +1,6 @@
 # flex 적용 방향 (2026-10-09)
 
-> 상태: 활성 · **구현 중** — P2(외관)까지 반영. 진행은 [구현 계획](../plans/2026-10-09-flex-adoption.md).
+> 상태: 활성 · **구현 중** — P3(접근성·API)까지 반영. 진행은 [구현 계획](../plans/2026-10-09-flex-adoption.md).
 > 근거: [A·B 이중검토 종합](../reports/flex-adoption-review/review/synthesis.md) · [B 치수 명세](../reports/flex-adoption-review/skill-free-comparison/design-application/README.md) · [A·B 공통 관점 보완](../reports/flex-adoption-review/gaps.md) · Storybook `Mockups/Flex`
 
 ## 결정
@@ -101,6 +101,12 @@
 - Checkbox 라벨의 1px 광학 보정(`translateY(1px)`)은 첫 줄 정렬과 함께 없앴다. 라벨 없는 박스(표 선택 칸)는 내리지 않는다.
 - 모바일 전용 규칙은 `[data-dds-density="mobile"]`(메뉴 단축키 숨김, TextArea 위아래 여백) 아니면 토큰 `max()`(Pagination 44)로 둔다.
 - Storybook 시안: 구현된 규칙은 덮어쓰기 CSS에서 지웠다. 결정안 열의 `--fx-*`는 토큰 역할이면 `var(--dds-…)`를 가리키고, profiles.ts `FINAL`에는 토큰이 아닌 목록·설정 행만 남는다. 그래서 Decided의 "현재 DDS" 열도 이제 새 기본값으로 보이고, Compare의 A·B 열은 지운 규칙만큼 결정안과 같아진다 — 비교 시안은 결정 당시 기록으로만 본다.
+
+**P3 접근성·API (2026-10-09)** — [스펙](../specs/2026-10-09-p3-a11y-api.md)
+
+- 메뉴 체크·라디오 항목은 메뉴 context가 필요 없어(닫지 않음) DropdownMenu와 ContextMenu가 같은 컴포넌트를 쓴다(`dropdown-menu/menu-choice-items.tsx`). roving은 `menuitem`·`menuitemcheckbox`·`menuitemradio`를 함께 훑는다.
+- Select·MultiSelect의 표시·검색 분리는 `internal/select-core.ts`의 `optionLabel()` 한 곳이 스캔과 등록 둘 다 처리한다.
+- DataTable 숫자 열 시안(`:has(.fx-num)` 머리글 규칙)은 `align: "end"`로 바꾸고 지웠다. 고정폭 숫자는 align과 별개로 소비자 몫이다.
 
 ## 다음
 
