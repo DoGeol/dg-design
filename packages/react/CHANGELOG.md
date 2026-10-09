@@ -1,5 +1,22 @@
 # @dg-design/react
 
+## 0.22.0
+
+### Minor Changes
+
+- 82954e1: Button `size="xsmall"`: 28px high, 12px text, 8px inline padding, 6px radius (also for `iconOnly`, 28×28; use a 14px icon). For small actions in table rows, toolbars and inline content. Inside `[data-dds-density="mobile"]` the visible size stays 28 and an invisible area widens the touch target to 44px.
+- fda49ed: Smaller size steps to sit next to Button `xsmall` (28px).
+  
+  - TextField, Select, MultiSelect triggers and TextArea add `size="xsmall"` (28px, 12px text). Inside `[data-dds-density="mobile"]` they render as `medium`, because iOS zooms into inputs with text smaller than 16px. The MultiSelect search trigger still grows when chips wrap.
+  - RadioGroup segmented adds `xsmall` (24px).
+  - Switch adds `small` (28×16). Checkbox adds `small` (14px box). Badge adds `small` (16px).
+  - Avatar adds `xsmall` (20px). Spinner adds `xsmall` (12px). Accordion adds `small`.
+  - Button `loading` with `size="xsmall"` now uses the 16px spinner instead of 20px.
+
+### Patch Changes
+
+- 4887325: Close and remove buttons now show a circular hover plate that no longer touches the edges of the parent. Chip remove keeps its chip-height hit area but paints only an inner circle (18px, 20px in mobile density). Alert close uses a 24px circle. Toast close gains hover and pressed feedback with a 24px circle; its layout footprint is unchanged.
+
 ## 0.21.0
 
 ### Minor Changes
