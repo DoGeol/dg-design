@@ -108,6 +108,16 @@
 - Select·MultiSelect의 표시·검색 분리는 `internal/select-core.ts`의 `optionLabel()` 한 곳이 스캔과 등록 둘 다 처리한다.
 - DataTable 숫자 열 시안(`:has(.fx-num)` 머리글 규칙)은 `align: "end"`로 바꾸고 지웠다. 고정폭 숫자는 align과 별개로 소비자 몫이다.
 
+**P4 새 종류 (2026-10-09)** — [스펙](../specs/2026-10-09-p4-new-kinds.md) · [구현 계획](../plans/2026-10-09-p4-new-kinds.md)
+
+- dg-studio에서 두 소비처가 확인된 것은 List뿐이었다. Chip·FilterToolbox·PropertyField는 사용자 결정으로 구성 규칙 예외로 넣고 "초기 API"로 배포한다.
+- 위 "데스크톱에서 B 조합을 쓰는 화면" 해석 중 PropertyField는 데스크톱도 테두리 없는 행으로 확정했다. 입력 경계 전제는 텍스트 입력의 계약이라 선택 트리거 행에는 적용하지 않고, 오류 행만 1px critical 경계를 되살린다.
+- 목록·설정 행 토큰 6개가 들어오며 profiles.ts의 `FINAL`(토큰이 아닌 역할)은 비었다 — 지웠다. 결정안 열은 이제 모든 역할을 토큰으로 읽는다.
+- 모바일 44는 보이는 크기를 키우지 않고 투명 의사요소로 넓혔다(P2의 `max()` 방식과 다름). 칩 줄 간격 12가 겹침을 막는다.
+- Select 칩 트리거의 패널 최소 폭은 `use-overlay-position`의 인라인 `min-width`를 `max(트리거, var(--dds-overlay-min-width, 0px))`로 바꿔 CSS 변수 하나로 연다. 12rem은 제안값이다.
+- PropertyField.Trigger는 Popover.Trigger `asChild`가 내려보내는 id보다 Field id를 우선한다(라벨 for 연결).
+- 시안 proto(`flex/proto/*`)와 Scenarios는 교체하지 않고 결정 당시 기록으로 둔다(계획 규칙 6의 이번 예외).
+
 ## 다음
 
 - Storybook Brand 툴바의 auto를 createTheme 블루로 맞췄다(`apps/storybook/.storybook/preview.tsx`). 보강 이미지는 #155EEF로 그렸으므로 색은 참고하지 않는다.

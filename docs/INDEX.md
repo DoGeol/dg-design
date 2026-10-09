@@ -99,6 +99,7 @@
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
 | [2026-10-09 P3 접근성·API 스펙](specs/2026-10-09-p3-a11y-api.md) | npm 0.19.0 배포 | 메뉴 체크·라디오 항목, 옵션 label·textValue, DataTable align, Toast action |
+| [2026-10-09 P4 새 종류 스펙](specs/2026-10-09-p4-new-kinds.md) · [구현 계획](plans/2026-10-09-p4-new-kinds.md) | 구현 완료 · 배포 대기 | List·SectionHeader, Chip·FilterChip, FilterToolbox, Select chip 트리거, PropertyField, 목록·설정 행 토큰 |
 | [2026-09-27 DatePicker 스펙](specs/2026-09-27-datepicker.md) | npm 0.16.1 배포 · 실기기 QA 후속 | 단일/범위 × 날짜/시간, 시간대, 모바일 시트, 프리셋, 합격 조건 |
 | [2026-09-25 Table v2 구현 스펙](specs/2026-09-25-table-v2.md) | npm 0.16.0 배포 · 스크린리더 QA 후속 | 공개 API, 구현 경계, 합격 조건 |
 
