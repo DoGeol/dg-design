@@ -16,6 +16,7 @@ import {
   handleOpenKeyDown,
   isTypeaheadKey,
   OPTION_ROLE,
+  selectTrigger,
   useOptionRegistry,
   useTypeahead,
   VALUE_ATTR,
@@ -36,7 +37,6 @@ import {
   MultiSelectContentSearch,
   MultiSelectCreateItem,
   MultiSelectSearchTrigger,
-  triggerCva,
   useMultiSelectSearch,
   type MultiSelectCreate,
   type MultiSelectFilter,
@@ -257,7 +257,7 @@ MultiSelectRoot.displayName = "MultiSelect.Root";
 
 export interface MultiSelectTriggerProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "value">,
-    VariantProps<typeof triggerCva> {
+    Pick<VariantProps<typeof selectTrigger>, "size"> {
   /** 선택이 없을 때 보여줄 내용. 회색으로 표시된다. */
   placeholder?: React.ReactNode;
   /** 2개 이상 선택됐을 때의 요약 문구. 앱 언어에 맞춰 바꾼다. */
@@ -333,7 +333,7 @@ export const MultiSelectTrigger = React.forwardRef<HTMLButtonElement, MultiSelec
         aria-invalid={context.invalid}
         aria-describedby={context.describedBy}
         data-state={context.open ? "open" : "closed"}
-        className={clsx(triggerCva({ size }), className)}
+        className={clsx(selectTrigger({ size }), className)}
         onClick={(event) => {
           onClick?.(event);
           if (!event.defaultPrevented) context.setOpen(!context.open);

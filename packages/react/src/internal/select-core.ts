@@ -1,3 +1,4 @@
+import { cva } from "class-variance-authority";
 import * as React from "react";
 
 import { focusItem, getItems, moveFocus } from "./roving-focus";
@@ -7,6 +8,22 @@ import { focusItem, getItems, moveFocus } from "./roving-focus";
  * 값이 하나냐 배열이냐로 갈리는 것(setValue·트리거 라벨·닫힌 상태 typeahead)은
  * 각 컴포넌트가 자기 폴더에 갖는다.
  */
+
+/** Select·MultiSelect 트리거 클래스. size 단계는 select.css 한 곳이 그린다. */
+export const selectTrigger = cva("dds-select__trigger", {
+  variants: {
+    size: {
+      xsmall: "dds-select__trigger--size_xsmall",
+      medium: "dds-select__trigger--size_medium",
+      large: "dds-select__trigger--size_large",
+    },
+    variant: {
+      field: "",
+      chip: "dds-select__trigger--variant_chip",
+    },
+  },
+  defaultVariants: { size: "medium", variant: "field" },
+});
 
 /** 옵션의 ARIA role. roving 조회 셀렉터의 기준이기도 하다. */
 export const OPTION_ROLE = "option";

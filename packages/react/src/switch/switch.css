@@ -94,6 +94,13 @@
     color: var(--dds-color-fg-disabled);
   }
 
+  /* 라벨 없는 트랙은 투명 영역만 touch-target(24·모바일 44)까지 넓힌다. 라벨이 있으면 라벨이 누르는 영역이다(checkbox.css와 같음). */
+  .dds-switch__track:not(:has(~ .dds-switch__label))::before {
+    content: "";
+    position: absolute;
+    inset: min(0px, calc((100% - var(--dds-size-touch-target)) / 2));
+  }
+
   /* size: 치수는 스펙 위임 — 기존 dimension 토큰에서 선택, thumb 이동거리는 로컬 변수로 계산해둔 값 */
   .dds-switch--size_small .dds-switch__track {
     width: var(--dds-dimension-x7);

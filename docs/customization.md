@@ -33,6 +33,8 @@ react 0.18.0부터 컴포넌트가 역할 토큰(tokens 0.9.0)을 읽는다. tok
 
 react 0.20.0의 List·PropertyField는 tokens 0.10.0의 목록·설정 행 역할(`--dds-size-list-row-*`·`--dds-space-list-*`·`--dds-size-setting-row-height`·`--dds-radius-setting-row`)을 읽는다 — **react 0.20.0 이상은 tokens 0.10.0 이상과 함께 올린다.**
 
+react 0.23.0의 xsmall 입력(TextField·TextArea·Select·MultiSelect)은 tokens 0.11.0의 `field-xsmall` 역할(`--dds-size-field-xsmall-height`·`--dds-space-field-xsmall-inset`·`--dds-radius-field-xsmall`·`--dds-font-size-field-xsmall`·`--dds-line-height-field-xsmall`)을 읽는다 — **react 0.23.0 이상은 tokens 0.11.0 이상과 함께 올린다.**
+
 ## 다크 모드와 중첩 스코프
 
 `<html data-dds-theme="dark">`가 문서 전체를 다크로 바꾼다. 하위 요소에 `data-dds-theme="light"` 또는 `"dark"`를 붙이면 그 서브트리만 해당 모드가 된다 — 다크 안의 라이트, 라이트 안의 다크, 여러 겹 중첩 모두 **가장 가까운 조상의 값**을 따른다(tokens 0.8.0부터).
@@ -58,14 +60,17 @@ react 0.20.0의 List·PropertyField는 tokens 0.10.0의 목록·설정 행 역�
 |---|---|---|
 | `--dds-space-page-inset` · `field-gap` · `group-gap` | 32 · 12 · 24 | 20 · 14 · 28 |
 | `--dds-space-panel-inset` · `field-inset` · `sheet-inset` | 40 · 12 · 24 | 20 · 16 · 20 |
+| `--dds-space-field-xsmall-inset` | 8 | 16 |
 | `--dds-space-select-panel-inset` · `menu-inset` · `tab-inset` · `tab-panel-gap` | 8 · 6 · 12 · 24 | 같음 |
 | `--dds-space-list-inset` · `list-leading-gap` | 12 · 8 | 16 · 8 |
 | `--dds-size-field-height` · `cta-height` | 40 · 48 | 56 · 52 |
+| `--dds-size-field-xsmall-height` | 28 | 56 |
 | `--dds-size-option-height` · `menu-item-height` · `chip-height` | 36 · 36 · 24 | 48 · 48 · 32 |
 | `--dds-size-list-row-1` · `list-row-2` · `setting-row-height` | 48 · 56 · 48 | 56 · 64 · 56 |
 | `--dds-size-touch-target` | 24 | 44 |
 | `--dds-size-mark` · `tab-height` · `table-row` | 16 · 40 · 44 | 같음 |
 | `--dds-radius-field` · `button` | 4 · 6 | 14 · 12 |
+| `--dds-radius-field-xsmall` / `--dds-font-size-field-xsmall` / `--dds-line-height-field-xsmall` | 4 / 12 / 16 | 14 / 16 / 24 |
 | `--dds-radius-select-panel` · `option` · `menu` · `menu-item` · `chip` · `sheet` · `setting-row` | 12 · 4 · 12 · 6 · 6 · 0 · 14 | 같음 |
 | `--dds-font-size-field` · `body` / `--dds-line-height-body` | 14 · 14 / 19 | 16 · 16 / 24 |
 

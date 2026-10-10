@@ -2,7 +2,7 @@ import "../internal/overlay-motion.css";
 import "./select.css";
 
 import type { Placement } from "@floating-ui/dom";
-import { cva, type VariantProps } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
 import clsx from "clsx";
 import * as React from "react";
 import { createPortal } from "react-dom";
@@ -17,6 +17,7 @@ import {
   optionLabel,
   type OptionLabelProps,
   OPTION_ROLE,
+  selectTrigger,
   useOptionRegistry,
   useTypeahead,
   VALUE_ATTR,
@@ -149,24 +150,9 @@ export function SelectRoot(props: SelectRootProps) {
 }
 SelectRoot.displayName = "Select.Root";
 
-const trigger = cva("dds-select__trigger", {
-  variants: {
-    size: {
-      xsmall: "dds-select__trigger--size_xsmall",
-      medium: "dds-select__trigger--size_medium",
-      large: "dds-select__trigger--size_large",
-    },
-    variant: {
-      field: "",
-      chip: "dds-select__trigger--variant_chip",
-    },
-  },
-  defaultVariants: { size: "medium", variant: "field" },
-});
-
 export interface SelectTriggerProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "value">,
-    VariantProps<typeof trigger> {
+    VariantProps<typeof selectTrigger> {
   /** 값이 없을 때 보여줄 내용. 회색으로 표시된다. */
   placeholder?: React.ReactNode;
   /**
@@ -199,7 +185,7 @@ export const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerPr
         data-state={context.open ? "open" : "closed"}
         data-active={variant === "chip" && active ? "" : undefined}
         // 칩은 자기 높이를 가져 size 축을 쓰지 않는다.
-        className={clsx(trigger({ size: variant === "chip" ? null : size, variant }), className)}
+        className={clsx(selectTrigger({ size: variant === "chip" ? null : size, variant }), className)}
         onClick={(event) => {
           onClick?.(event);
           if (!event.defaultPrevented) context.setOpen(!context.open);

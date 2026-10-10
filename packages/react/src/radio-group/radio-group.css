@@ -159,6 +159,7 @@
     height: var(--dds-dimension-x9);
   }
 
+  /* 44는 dimension 스케일에 없다(tokens.ts table-row와 같은 이유) — 리터럴로 둔다. */
   .dds-radio-group--variant_segmented.dds-radio-group--size_large {
     height: 44px;
   }
