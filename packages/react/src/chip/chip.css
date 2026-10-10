@@ -43,6 +43,7 @@
     height: var(--dds-size-chip-height);
     margin-inline-start: calc(var(--dds-dimension-x1) * -1);
     /* 누르는 영역은 칩 높이 정사각 그대로, hover 표시는 안쪽 원 18만 칠해 칩 가장자리에 붙지 않게 한다. */
+    box-sizing: border-box;
     padding: calc((var(--dds-size-chip-height) - var(--dds-dimension-x4_5)) / 2);
     border: 0;
     border-radius: 50%;

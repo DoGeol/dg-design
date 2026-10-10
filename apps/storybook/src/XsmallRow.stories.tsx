@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { Badge, Button, MultiSelect, RadioGroup, Select, Switch, TextArea, TextField } from "@dg-design/react";
+import { Badge, Button, Checkbox, MultiSelect, RadioGroup, Select, Switch, TextArea, TextField } from "@dg-design/react";
 
 import { Caption, DensityColumns } from "./new-kinds-frame";
 
@@ -52,6 +52,14 @@ function Row() {
         <Button size="xsmall" loading>
           저장
         </Button>
+      </div>
+      <Caption>라벨 없는 Checkbox·Switch small(조작 영역 24·모바일 44) · Badge outline truncate</Caption>
+      <div style={{ ...row, gap: 32 }}>
+        <Checkbox size="small" aria-label="행 선택" />
+        <Switch size="small" aria-label="알림" />
+        <Badge size="small" variant="outline" truncate style={{ maxWidth: 48 }}>
+          아주 긴 상태 이름
+        </Badge>
       </div>
       <Caption>TextArea xsmall</Caption>
       <TextArea size="xsmall" rows={1} aria-label="메모" placeholder="메모" />

@@ -33,7 +33,7 @@ export const Playground: Story = {};
 
 /**
  * intent(3) x variant(3) 그리드. 각 셀은 size(4) 행을 담은 서브 그리드라
- * 27조합 전체를 한 화면에서 육안 확인할 수 있다.
+ * 36조합 전체를 한 화면에서 육안 확인할 수 있다.
  */
 function CombinationGrid({ disabled = false }: { disabled?: boolean }) {
   return (

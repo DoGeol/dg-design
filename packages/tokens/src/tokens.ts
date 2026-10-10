@@ -361,6 +361,8 @@ export const roles = {
     "group-gap": { desktop: dimension.x6, mobile: dimension.x7 },
     "panel-inset": { desktop: dimension.x10, mobile: dimension.x5 },
     "field-inset": { desktop: dimension.x3, mobile: dimension.x4 },
+    // field-xsmall-*: 데스크톱 28 입력(Button xsmall과 같은 줄). 모바일은 medium 값 — 16px 미만 입력은 iOS가 확대한다.
+    "field-xsmall-inset": { desktop: dimension.x2, mobile: dimension.x4 },
     "select-panel-inset": { desktop: dimension.x2 },
     "menu-inset": { desktop: dimension.x1_5 },
     "sheet-inset": { desktop: dimension.x6, mobile: dimension.x5 },
@@ -371,6 +373,7 @@ export const roles = {
   },
   size: {
     "field-height": { desktop: dimension.x10, mobile: dimension.x14 },
+    "field-xsmall-height": { desktop: dimension.x7, mobile: dimension.x14 },
     "cta-height": { desktop: dimension.x12, mobile: dimension.x13 },
     "option-height": { desktop: dimension.x9, mobile: dimension.x12 },
     "menu-item-height": { desktop: dimension.x9, mobile: dimension.x12 },
@@ -388,6 +391,7 @@ export const roles = {
   },
   radius: {
     field: { desktop: radius.r1, mobile: radius.r3_5 },
+    "field-xsmall": { desktop: radius.r1, mobile: radius.r3_5 },
     button: { desktop: radius.r1_5, mobile: radius.r3 },
     // 패널 안 행은 패널 반경 − 패널 여백으로 동심을 맞춘다(12 − 8 = 4, 12 − 6 = 6).
     "select-panel": { desktop: radius.r3 },
@@ -402,10 +406,13 @@ export const roles = {
   },
   "font-size": {
     field: { desktop: fontSize.t4, mobile: fontSize.t5 },
+    "field-xsmall": { desktop: fontSize.t2, mobile: fontSize.t5 },
     body: { desktop: fontSize.t4, mobile: fontSize.t5 },
   },
   "line-height": {
     // 모바일 16/24는 t 인덱스 짝(t5 = 16/22)을 벗어난다 — 역할이 짝을 정한다.
     body: { desktop: lineHeight.t4, mobile: lineHeight.t6 },
+    // 모바일은 TextArea 본문 줄(24)에 맞춘다. 높이가 고정된 TextField·Select는 줄 높이와 상관없이 가운데다.
+    "field-xsmall": { desktop: lineHeight.t2, mobile: lineHeight.t6 },
   },
 } as const satisfies Record<string, Record<string, RoleValue>>;

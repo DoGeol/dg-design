@@ -137,6 +137,14 @@
     color: var(--dds-color-fg-disabled);
   }
 
+  /* 라벨 없는 박스(표 선택 칸 등)는 보이는 크기를 두고 투명 영역만 touch-target(24·모바일 44)까지 넓힌다.
+     라벨이 있으면 라벨이 누르는 영역이다 — 넓히면 세로 목록에서 이웃 행을 덮어 다른 항목이 눌린다. */
+  .dds-checkbox__box:not(:has(~ .dds-checkbox__label))::before {
+    content: "";
+    position: absolute;
+    inset: min(0px, calc((100% - var(--dds-size-touch-target)) / 2));
+  }
+
   /* size: 치수는 스펙 위임 — 기존 dimension/radius 토큰에서 선택 */
   .dds-checkbox--size_small .dds-checkbox__box {
     width: var(--dds-dimension-x3_5);
