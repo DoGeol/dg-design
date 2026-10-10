@@ -30,6 +30,18 @@ dds-switch__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246,
 dds-badge dds-badge--intent_neutral dds-badge--variant_weak dds-badge--size_small | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
 dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_xsmall | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(107, 112, 111) | none
 dds-spinner dds-spinner--size_small dds-button__spinner | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) rgb(107, 112, 111) rgb(107, 112, 111) | none
+dds-checkbox dds-checkbox--size_small | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__box | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox__box::before | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-checkbox__check-icon | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-checkbox__dash-icon | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-switch dds-switch--size_small | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__track | rgb(0, 0, 0) | rgb(82, 86, 86) | none | rgb(0, 0, 0) | none
+dds-switch__track::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__thumb | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(0, 0, 0) | none
+dds-badge dds-badge--intent_neutral dds-badge--variant_outline dds-badge--size_small dds-badge--truncate | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-text-area dds-text-area--size_xsmall | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
 dds-text-field dds-text-field--size_xsmall | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
 dds-select__trigger dds-select__trigger--size_xsmall | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
@@ -67,4 +79,16 @@ dds-badge dds-badge--intent_neutral dds-badge--variant_weak dds-badge--size_smal
 dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_xsmall | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(107, 112, 111) | none
 dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_xsmall::before | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
 dds-spinner dds-spinner--size_small dds-button__spinner | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) rgb(107, 112, 111) rgb(107, 112, 111) | none
+dds-checkbox dds-checkbox--size_small | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-checkbox__box | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
+dds-checkbox__box::before | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-checkbox__check-icon | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-checkbox__dash-icon | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(15, 18, 18) | none
+dds-switch dds-switch--size_small | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__track | rgb(0, 0, 0) | rgb(82, 86, 86) | none | rgb(0, 0, 0) | none
+dds-switch__track::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-switch__thumb | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(0, 0, 0) | none
+dds-badge dds-badge--intent_neutral dds-badge--variant_outline dds-badge--size_small dds-badge--truncate | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-text-area dds-text-area--size_xsmall | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
