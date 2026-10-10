@@ -5,7 +5,7 @@
 # dg-design
 
 Dogeol Design System. daangn/seed-design 참고.
-**react 0.22.0 · tokens 0.10.0 배포.** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
+**react 0.23.0 · tokens 0.11.0 배포.** npm org `dg-design`, 리모트 `github.com/DoGeol/dg-design`.
 
 ## 절대 규칙
 
