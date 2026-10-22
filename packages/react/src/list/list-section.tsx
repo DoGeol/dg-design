@@ -49,8 +49,8 @@ ListSection.displayName = "List.Section";
 
 export interface ListSectionHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   title: React.ReactNode;
-  /** 제목 옆 건수. */
-  count?: number;
+  /** 제목 옆 건수. 숫자만 주면 "초안 2"로 읽히니 단위를 붙여 준다(`"2개"`). */
+  count?: number | string;
   description?: React.ReactNode;
   /** 오른쪽 행동(추가 등). heading 밖 형제다 — 이름에 대상 종류를 넣는다("초안 추가"). */
   action?: React.ReactNode;

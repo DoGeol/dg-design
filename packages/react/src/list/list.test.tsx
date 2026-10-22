@@ -153,4 +153,14 @@ describe("List.Section", () => {
     expect(screen.getByRole("heading", { level: 2 }).textContent).toBe("전체 버전 3");
     expect(screen.getByText("공개 버전은 하나다")).toBeTruthy();
   });
+
+  it("count에 단위를 붙이면 제목과 함께 읽힌다", () => {
+    render(
+      <List.Section>
+        <List.SectionHeader title="전체 버전" count="3개" />
+        <List.Root />
+      </List.Section>,
+    );
+    expect(screen.getByRole("heading").textContent).toBe("전체 버전 3개");
+  });
 });

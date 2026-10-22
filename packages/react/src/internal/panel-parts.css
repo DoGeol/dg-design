@@ -74,6 +74,11 @@
     padding-block-end: max(var(--dds-dimension-x4), env(safe-area-inset-bottom));
   }
 
+  /* Footer가 없으면 Body가 홈 표시줄 자리를 비운다. */
+  .dds-sheet--side_bottom:not(:has(> .dds-panel__footer)) > .dds-panel__body {
+    padding-block-end: max(var(--dds-panel-inset), env(safe-area-inset-bottom));
+  }
+
   [data-dds-density="mobile"] .dds-panel__footer > * {
     flex: 1;
   }

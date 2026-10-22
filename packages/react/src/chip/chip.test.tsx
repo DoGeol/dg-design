@@ -73,6 +73,11 @@ describe("Chip", () => {
     expect(onRemove).not.toHaveBeenCalled();
   });
 
+  it("disabled면 제거 버튼이 없어도 보조기기에 비활성으로 알린다", () => {
+    render(<Chip disabled>태그</Chip>);
+    expect(screen.getByText("태그").parentElement?.getAttribute("aria-disabled")).toBe("true");
+  });
+
   it("onRemove를 주면 removeLabel이 타입에서 필수다", () => {
     // @ts-expect-error removeLabel 누락
     render(<Chip onRemove={() => {}}>태그</Chip>);
