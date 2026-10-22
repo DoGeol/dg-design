@@ -37,7 +37,7 @@ function focusSiblingRemove(button: HTMLButtonElement) {
  */
 export const Chip = React.forwardRef<HTMLSpanElement, ChipProps>(
   ({ leading, onRemove, removeLabel, disabled, size, className, children, ...props }, ref) => (
-    <span ref={ref} className={clsx("dds-chip", size === "small" && "dds-chip--size_small", className)} data-disabled={disabled ? "" : undefined} {...props}>
+    <span ref={ref} className={clsx("dds-chip", size === "small" && "dds-chip--size_small", className)} data-disabled={disabled ? "" : undefined} aria-disabled={disabled || undefined} {...props}>
       {leading && <span className="dds-chip__leading">{leading}</span>}
       <span className="dds-chip__label">{children}</span>
       {onRemove && (

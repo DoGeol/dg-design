@@ -26,7 +26,7 @@
 | `List.Title` | — | 주 행동이 없는 행의 제목 |
 | `List.Leading` · `List.Meta` · `List.Trailing` | — | 앞 아이콘/아바타 · 보조 설명 · 오른쪽 Badge/메뉴 |
 | `List.Section` | `collapsible` · `open` · `defaultOpen` · `onOpenChange` | 묶음. 접힌 목록은 `hidden` |
-| `List.SectionHeader` | `title`(필수) · `count` · `description` · `action` · `as`(`h2`·`h3`·`h4`) | `action` 이름에 대상 종류를 넣는다("초안 추가") |
+| `List.SectionHeader` | `title`(필수) · `count` · `description` · `action` · `as`(`h2`·`h3`·`h4`) | `action` 이름에 대상 종류를 넣는다("초안 추가"). `count`는 단위까지 준다("2개") — 숫자만 주면 단위 없이 읽힌다 |
 
 ## 접근성
 
@@ -116,7 +116,7 @@ export function CollapsibleSection() {
       <List.SectionHeader
         as="h2"
         title="초안"
-        count={2}
+        count="2개"
         action={
           <Button size="small" intent="neutral" variant="ghost">
             초안 추가

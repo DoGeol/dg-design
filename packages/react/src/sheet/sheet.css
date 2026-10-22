@@ -67,8 +67,10 @@
     border-radius: 0 0 var(--dds-radius-sheet) var(--dds-radius-sheet);
     animation-name: dds-sheet-content-in-top;
   }
+  /* 부품 없는 Content의 홈 표시줄 여백. 부품을 쓰면 panel-parts.css가 padding을 0으로 덮는다. */
   .dds-sheet--side_bottom {
     bottom: 0;
+    padding-block-end: max(var(--dds-space-sheet-inset), env(safe-area-inset-bottom));
     border-top: 1px solid var(--dds-color-stroke-neutral-weak);
     border-radius: var(--dds-radius-sheet) var(--dds-radius-sheet) 0 0;
     animation-name: dds-sheet-content-in-bottom;

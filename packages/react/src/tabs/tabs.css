@@ -134,4 +134,9 @@
   .dds-tabs[data-responsive][data-wide] > .dds-tabs__list {
     display: none;
   }
+
+  /* 탭 목록이 숨으면 목록과의 간격도 필요 없다. */
+  .dds-tabs[data-responsive][data-wide] > .dds-tabs__content {
+    padding-top: 0;
+  }
 }

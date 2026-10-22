@@ -100,4 +100,4 @@ test -f .agents/skills/dg-design/SKILL.md && echo ok   # Codex
 - 심링크: 따로 할 일 없다. 스킬도 새 버전이 된다.
 - 복사: 3단계 복사를 다시 하고 `VERSION`을 갱신한다.
 - 어느 쪽이든 `CHANGELOG.md`에서 바뀐 API를 보고, `dg-design.local.md`에 적은 규칙과 어긋나는 것이 있으면 사용자에게 알린다.
-- `@dg-design/tokens`도 함께 올린다(react minor가 tokens minor를 요구한다).
+- `@dg-design/tokens`도 함께 올린다. react minor가 새 tokens minor를 요구할 때가 있다(짝은 저장소 `docs/customization.md`의 "버전 짝").

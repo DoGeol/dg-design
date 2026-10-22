@@ -90,6 +90,15 @@
     margin-inline-start: var(--dds-dimension-x2);
   }
 
+  /* 행이 링크면 trailing의 배지·글자는 누름을 행에 넘기고, 조작 요소만 따로 눌린다. */
+  .dds-list__item:has(> .dds-list__action) > .dds-list__trailing {
+    pointer-events: none;
+  }
+
+  .dds-list__item:has(> .dds-list__action) > .dds-list__trailing :is(a, button, input, select, textarea, label, summary, [contenteditable], [tabindex], [role]:not([role="img"], [role="presentation"], [role="none"], [role="status"], [role="alert"])) {
+    pointer-events: auto;
+  }
+
   .dds-list__action {
     display: block;
     margin: 0;

@@ -200,7 +200,8 @@
   "files": [
     "dist",
     "skill",
-    "AGENT-SETUP.md"
+    "AGENT-SETUP.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "vite build",
