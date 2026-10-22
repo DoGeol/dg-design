@@ -1,7 +1,7 @@
 # TextArea 높이·조절, 작은 크기 확장, flex 조작 영역 정합 — 구현 계획
 
 - 작성: 2026-10-22 · 기준 커밋: `66d5bf0` (react 0.23.0 · tokens 0.11.0)
-- 상태: **승인 (2026-10-22)** — 구현 완료(브랜치 `feat/textarea-compact-sizes`). 계획과 달라진 점: 스토리는 컴포넌트별 매트릭스에 행을 넣는 대신 조합 스토리 하나(`Compact sizes`, `compact-sizes--state-matrix`)에 두 밀도로 모았다. Tabs는 Root context, Pagination은 Root context + 지역 변수, Select 칩 small 클래스는 `selectTrigger` cva 밖(Select.tsx)에서 붙인다 — cva size에 넣으면 MultiSelect 타입으로 small이 샌다. Toast 닫기 44는 Alert와 같은 CSS 규칙이라 기능 테스트는 Alert만 잰다.
+- 상태: **승인 (2026-10-22)** — 배포 완료(react 0.24.0, PR #46·#47). 계획과 달라진 점: 스토리는 컴포넌트별 매트릭스에 행을 넣는 대신 조합 스토리 하나(`Compact sizes`, `compact-sizes--state-matrix`)에 두 밀도로 모았다. Tabs는 Root context, Pagination은 Root context + 지역 변수, Select 칩 small 클래스는 `selectTrigger` cva 밖(Select.tsx)에서 붙인다 — cva size에 넣으면 MultiSelect 타입으로 small이 샌다. Toast 닫기 44는 Alert와 같은 CSS 규칙이라 기능 테스트는 Alert만 잰다.
 - 스펙: [2026-10-22 TextArea·작은 크기·flex 정합](../specs/2026-10-22-textarea-compact-sizes.md) — 이 계획은 순서와 파일만 정한다. 무엇을 만드는지는 스펙이 정본이다
 
 ## 진행 방식
