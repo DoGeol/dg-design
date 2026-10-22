@@ -133,6 +133,16 @@
     outline-offset: var(--dds-dimension-x0_5);
   }
 
+  /* 모바일 조작 영역 44 — 보이는 원 24는 두고 투명 영역만 넓힌다(Button xsmall과 같은 방식). */
+  [data-dds-density="mobile"] .dds-toast__close {
+    position: relative;
+  }
+  [data-dds-density="mobile"] .dds-toast__close::before {
+    content: "";
+    position: absolute;
+    inset: calc((100% - var(--dds-size-touch-target)) / 2);
+  }
+
   /* forwards가 없으면 animationend와 unmount 사이에 base 스타일로 스냅백해 번쩍인다. */
   .dds-toast[data-state="closed"] {
     animation-name: dds-toast-out;

@@ -24,6 +24,7 @@
 | `kind` | `date` · `local-date-time` · `zoned-date-time` (필수) | 값 타입이 정해진다. `zoned-date-time`은 `timeZone` 필수 |
 | `value`·`defaultValue`·`onValueChange` | `@internationalized/date` 객체 또는 `null` | `CalendarDate` 등. controlled/uncontrolled 중 하나만 |
 | `label`·`description`·`locale`·`name` | | `name`을 주면 폼 제출에 실린다 |
+| `size` | `xsmall` · `medium`(기본) · `large` | 트리거만. `xsmall`은 28(모바일 밀도에서는 `medium`), `large`는 TextField large와 같다 |
 | `minValue`·`maxValue`·`isDateUnavailable`·`required` | | 제약. 위반 시 열린 패널 안에 안내 문구가 표시된다 |
 | `presets` | `{ id, label, getValue }[]` | 빠른 선택 버튼 |
 | `errorMessages` | 오류 코드별 문구 | 기본 문구를 앱 말투로 바꿀 때 |

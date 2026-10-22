@@ -18,7 +18,7 @@
  *
  * | 부품 | 주요 prop | 메모 |
  * | --- | --- | --- |
- * | `Tabs.Root` | `value` · `defaultValue` · `onValueChange` · `responsive` · `motion` | `responsive`: 이 px 이상에서 List 숨김 + 모든 Content 표시. `motion="none"`이면 밑줄 이동 애니메이션 끔 |
+ * | `Tabs.Root` | `value` · `defaultValue` · `onValueChange` · `responsive` · `motion` · `size`(`small` · `medium` 기본) | `size="small"`은 데스크톱 32, 모바일 밀도에서는 `medium`. `responsive`: 이 px 이상에서 List 숨김 + 모든 Content 표시. `motion="none"`이면 밑줄 이동 애니메이션 끔 |
  * | `Tabs.List` | `aria-label` | `role="tablist"`. 이름을 준다 |
  * | `Tabs.Trigger` | `value`(필수) · `disabled` | 같은 `value`의 Content와 짝 |
  * | `Tabs.Content` | `value`(필수) | `role="tabpanel"`. 비활성은 `hidden` |

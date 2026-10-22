@@ -77,6 +77,16 @@
     outline-offset: var(--dds-dimension-x0_5);
   }
 
+  /* 모바일 조작 영역 44 — 보이는 원 24는 두고 투명 영역만 넓힌다(Button xsmall과 같은 방식). */
+  [data-dds-density="mobile"] .dds-alert__close {
+    position: relative;
+  }
+  [data-dds-density="mobile"] .dds-alert__close::before {
+    content: "";
+    position: absolute;
+    inset: calc((100% - var(--dds-size-touch-target)) / 2);
+  }
+
   /* intent: local variables only, no variant layer — Alert has a single visual
      treatment (bg-{intent}-weak + fg-{intent}), unlike Badge's solid/weak/outline.
      Badge의 2층 구조에서 variant 층이 1개로 줄어든 형태. */

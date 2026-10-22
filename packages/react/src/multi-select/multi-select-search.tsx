@@ -297,6 +297,7 @@ export const MultiSelectSearchTrigger = React.forwardRef<
       {context.value.map((value) => (
         <Chip
           key={value}
+          size={size === "xsmall" ? "small" : undefined}
           disabled={disabled}
           removeLabel={removeLabel({ value, label: labelOf(value) })}
           onRemove={() => {

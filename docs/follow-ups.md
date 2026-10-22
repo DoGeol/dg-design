@@ -20,7 +20,6 @@
 | 항목 | 상태 | 착수 조건 |
 | --- | --- | --- |
 | MultiSelect·Select 래퍼 옵션 | 옵션을 사용자 컴포넌트로 감싸면 첫 열기 전 트리거에 값 문자열(`internal/select-core.ts` 한계). StateMatrix 스토리만 직접 배치로 고침 | 래퍼 옵션 사용처가 생기면 registry 개선 |
-| TextArea `showCount` 폼 reset | uncontrolled 카운트가 form reset을 따라가지 않음(onChange만 들음) | 리셋 사용처가 생기면 |
 | ContextMenuItem `tabIndex` | DropdownMenuItem과 달리 `tabIndex={-1}` 없음 | 다음 메뉴 손볼 때 |
 
 ### flex 비교 화면에서 드러난 문제 (2026-10-09)
@@ -39,7 +38,6 @@ P7에서 42개 컴포넌트 예제와 설명을 소스와 대조하다 나온 �
 | Button·Accordion 개발 경고 | `console.warn`이 렌더마다, 운영 빌드에서도 나온다 | 경고 정책을 정할 때 |
 | DataTable 선택 칸 이름 | `"{caption} {rowKey} 선택"` — rowKey가 내부 id면 그대로 읽힌다 | 행 이름 열 지정 API가 필요해지면 |
 | DatePicker 기본 locale | `en-US` | 소비자 기본값 요구가 생기면 |
-| PaginationLink 주석 | 활성 링크를 solid라 적었지만 neutral weak로 그린다 | 다음 Pagination 작업 |
 
 ## 알아두면 첫 시도에서 안 틀리는 것
 

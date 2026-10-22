@@ -31,10 +31,12 @@ export interface TabsRootProps
   /** 기본값 "auto" — 포인터로 고른 탭에서만 활성 밑줄이 150ms 이동한다.
    * 키보드·프로그램 선택·초기 렌더·resize는 언제나 즉시. */
   motion?: "auto" | "none";
+  /** small은 데스크톱 32. 모바일 밀도에서는 medium으로 그린다. */
+  size?: "small" | "medium";
 }
 
 export const TabsRoot = React.forwardRef<HTMLDivElement, TabsRootProps>((props, ref) => {
-  const { className, value, defaultValue, onValueChange, responsive, motion = "auto", children, style, ...rest } =
+  const { className, value, defaultValue, onValueChange, responsive, motion = "auto", size, children, style, ...rest } =
     props;
 
   const handleChange = React.useCallback(
@@ -113,10 +115,11 @@ export const TabsRoot = React.forwardRef<HTMLDivElement, TabsRootProps>((props, 
       baseId,
       responsive,
       isWide,
+      size,
       pointerIntentRef,
       indicator: indicatorWiring,
     }),
-    [current, selectValue, baseId, responsive, isWide, indicatorWiring],
+    [current, selectValue, baseId, responsive, isWide, size, indicatorWiring],
   );
 
   const rootStyle: React.CSSProperties = {
@@ -233,7 +236,7 @@ export const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>
         // 활성화가 일어나 tab stop이 하나로 복구된다.
         tabIndex={selected || context.value === undefined ? 0 : -1}
         data-state={selected ? "active" : "inactive"}
-        className={clsx("dds-tabs__trigger", className)}
+        className={clsx("dds-tabs__trigger", context.size === "small" && "dds-tabs__trigger--size_small", className)}
         onFocus={(event) => {
           onFocus?.(event);
           // automatic 활성화: 포커스가 닿는 것이 곧 활성화다(화살표·Home/End·클릭 공통).

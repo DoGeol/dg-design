@@ -13,6 +13,8 @@ export type ChipProps = Omit<React.HTMLAttributes<HTMLSpanElement>, "children"> 
   ChipRemoveProps & {
     leading?: React.ReactNode;
     disabled?: boolean;
+    /** small은 데스크톱 20. 모바일 밀도에서는 medium으로 그린다. */
+    size?: "small" | "medium";
     children: React.ReactNode;
   };
 
@@ -34,8 +36,8 @@ function focusSiblingRemove(button: HTMLButtonElement) {
  * 초점이 간다 — 둘 다 없으면 소비자가 옮긴다.
  */
 export const Chip = React.forwardRef<HTMLSpanElement, ChipProps>(
-  ({ leading, onRemove, removeLabel, disabled, className, children, ...props }, ref) => (
-    <span ref={ref} className={clsx("dds-chip", className)} data-disabled={disabled ? "" : undefined} {...props}>
+  ({ leading, onRemove, removeLabel, disabled, size, className, children, ...props }, ref) => (
+    <span ref={ref} className={clsx("dds-chip", size === "small" && "dds-chip--size_small", className)} data-disabled={disabled ? "" : undefined} {...props}>
       {leading && <span className="dds-chip__leading">{leading}</span>}
       <span className="dds-chip__label">{children}</span>
       {onRemove && (
@@ -63,18 +65,20 @@ export interface FilterChipProps extends Omit<React.ButtonHTMLAttributes<HTMLBut
   pressed?: boolean;
   defaultPressed?: boolean;
   onPressedChange?: (pressed: boolean) => void;
+  /** small은 데스크톱 20. 모바일 밀도에서는 medium으로 그린다. */
+  size?: "small" | "medium";
 }
 
 /** 켜고 끄는 필터. 켜짐은 색과 체크 아이콘으로 함께 보인다. 제거 버튼을 품지 않는다(button 안 button 금지). */
 export const FilterChip = React.forwardRef<HTMLButtonElement, FilterChipProps>(
-  ({ pressed, defaultPressed = false, onPressedChange, onClick, className, children, ...props }, ref) => {
+  ({ pressed, defaultPressed = false, onPressedChange, size, onClick, className, children, ...props }, ref) => {
     const [on, setOn] = useControllableState({ value: pressed, defaultValue: defaultPressed, onChange: onPressedChange });
     return (
       <button
         ref={ref}
         type="button"
         aria-pressed={on}
-        className={clsx("dds-chip", "dds-chip--filter", className)}
+        className={clsx("dds-chip", "dds-chip--filter", size === "small" && "dds-chip--size_small", className)}
         onClick={(event) => {
           onClick?.(event);
           if (!event.defaultPrevented) setOn(!on);

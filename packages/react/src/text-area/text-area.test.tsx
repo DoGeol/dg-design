@@ -107,6 +107,34 @@ describe("TextArea", () => {
   });
 });
 
+/** 손잡이·최소·최대 높이의 실제 계산은 CSS가 한다(VR 기능 테스트가 잰다) — 여기서는 클래스와 변수 배선만 본다. */
+describe("TextArea 높이·조절", () => {
+  const box = () => screen.getByRole("textbox") as HTMLTextAreaElement;
+
+  it("기본은 손잡이 클래스가 없고 resizable이면 붙는다", () => {
+    const { rerender } = render(<TextArea aria-label="메모" />);
+    expect(box().className).not.toContain("dds-text-area--resizable");
+    rerender(<TextArea aria-label="메모" resizable />);
+    expect(box().className).toContain("dds-text-area--resizable");
+  });
+
+  it("autoResize면 rows를 최소 줄 수 변수로 넘긴다", () => {
+    const { rerender } = render(<TextArea aria-label="메모" rows={4} />);
+    expect(box().style.getPropertyValue("--dds-text-area-min-rows")).toBe("");
+    rerender(<TextArea aria-label="메모" rows={4} autoResize />);
+    expect(box().style.getPropertyValue("--dds-text-area-min-rows")).toBe("4");
+  });
+
+  it("maxRows는 클래스와 최대 줄 수 변수로 넘기고 사용자 style을 보존한다", () => {
+    const { rerender } = render(<TextArea aria-label="메모" style={{ width: 200 }} />);
+    expect(box().className).not.toContain("dds-text-area--max-rows");
+    rerender(<TextArea aria-label="메모" maxRows={6} style={{ width: 200 }} />);
+    expect(box().className).toContain("dds-text-area--max-rows");
+    expect(box().style.getPropertyValue("--dds-text-area-max-rows")).toBe("6");
+    expect(box().style.width).toBe("200px");
+  });
+});
+
 describe("TextArea showCount", () => {
   it("showCount가 없으면 wrapper·카운터가 없다", () => {
     const { container } = render(<TextArea aria-label="소개" />);
@@ -163,6 +191,23 @@ describe("TextArea showCount", () => {
     expect(first).toBe("extra");
     expect(document.getElementById(countId)?.textContent).toBe("0");
     expect(document.querySelector("[aria-live]")).toBeNull();
+  });
+
+  it("uncontrolled 카운트는 form reset 뒤 defaultValue 길이로 돌아온다", async () => {
+    const user = userEvent.setup();
+    render(
+      <form>
+        <TextArea aria-label="메모" showCount defaultValue="ab" />
+        <button type="reset">초기화</button>
+      </form>,
+    );
+    const textarea = screen.getByRole("textbox");
+    const countOf = () => document.getElementById(textarea.getAttribute("aria-describedby") ?? "")?.textContent;
+
+    await user.type(textarea, "cd");
+    expect(countOf()).toBe("4");
+    await user.click(screen.getByRole("button", { name: "초기화" }));
+    expect(countOf()).toBe("2");
   });
 
   it("variant 클래스는 showCount wrapper가 아니라 textarea에 붙고 Field 연결은 그대로다", () => {

@@ -32,8 +32,12 @@ const textArea = cva("dds-text-area", {
 export interface TextAreaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement>,
     VariantProps<typeof textArea> {
-  /** true면 입력량에 따라 높이가 늘어난다. 기본 false — 네이티브 rows + resize: vertical. */
+  /** true면 입력량에 따라 높이가 늘어난다. `rows`가 최소 줄 수다. 기본 false — rows 높이로 고정. */
   autoResize?: boolean;
+  /** true면 세로 손잡이로 높이를 조절할 수 있다. 기본 false. autoResize와 함께 주면 autoResize가 이긴다(손잡이 없음). */
+  resizable?: boolean;
+  /** 최대 줄 수. autoResize 확장과 resizable 드래그 둘 다 여기서 멈추고 넘치면 세로 스크롤된다. rows보다 작으면 rows가 이긴다. */
+  maxRows?: number;
   /** true면 textarea 아래에 글자 수를 보인다. maxLength가 있으면 "현재/최대". 켜면 wrapper div가 생긴다. */
   showCount?: boolean;
 }
@@ -45,11 +49,14 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
       size,
       variant,
       autoResize = false,
+      resizable = false,
+      maxRows,
       showCount = false,
       rows = 3,
       id,
       onInput,
       onChange,
+      style,
       "aria-describedby": ariaDescribedBy,
       "aria-invalid": ariaInvalid,
       ...props
@@ -68,6 +75,17 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     const [typedLength, setTypedLength] = React.useState(String(props.defaultValue ?? "").length);
     const count = props.value !== undefined ? String(props.value).length : typedLength;
 
+    // uncontrolled 카운트는 onChange만 들어서 form reset을 놓친다 — reset 이벤트로 defaultValue 길이에 맞춘다.
+    const uncontrolledCount = showCount && props.value === undefined;
+    const defaultLength = String(props.defaultValue ?? "").length;
+    React.useEffect(() => {
+      const form = innerRef.current?.form;
+      if (!uncontrolledCount || !form) return;
+      const reset = () => setTypedLength(defaultLength);
+      form.addEventListener("reset", reset);
+      return () => form.removeEventListener("reset", reset);
+    }, [uncontrolledCount, defaultLength]);
+
     const resolvedId = id ?? fieldCtx?.inputId ?? generatedId;
     const resolvedDescribedBy =
       [fieldCtx?.describedBy, ariaDescribedBy, showCount ? countId : undefined]
@@ -84,9 +102,16 @@ export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         aria-invalid={resolvedInvalid}
         className={clsx(
           textArea({ size, variant }),
+          resizable && "dds-text-area--resizable",
           autoResize && "dds-text-area--auto-resize",
+          maxRows !== undefined && "dds-text-area--max-rows",
           className,
         )}
+        style={{
+          ...(autoResize && { "--dds-text-area-min-rows": rows }),
+          ...(maxRows !== undefined && { "--dds-text-area-max-rows": maxRows }),
+          ...style,
+        } as React.CSSProperties}
         onInput={(event) => {
           handleInput();
           onInput?.(event);

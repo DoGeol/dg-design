@@ -146,6 +146,13 @@
 - Button `loading`은 xsmall에서 small 스피너(16)를 쓴다 — 기본 20은 28 안에 꽉 낀다.
 - 넣지 않음: Slider(손잡이가 더 작으면 잡기 어렵다), Tabs·Pagination·Chip(크기 축이 없어 새 API가 된다).
 
+**TextArea 높이·조절과 작은 크기 확장 (2026-10-22)** — [스펙](../specs/2026-10-22-textarea-compact-sizes.md)
+- TextArea는 기본에서 손잡이를 없앴다(`resizable`로 켠다). `maxRows`는 자동 확장과 손잡이 드래그의 공통 상한이고, autoResize는 `rows`를 최소 높이로 지킨다(Chromium `field-sizing`이 rows를 무시하던 문제).
+- 위 "작은 크기 단계"에서 넣지 않았던 Tabs·Pagination·Chip을 사용자 요청으로 넣었다(크기 축 없음 → 새 API를 감수). Tabs `small` 32, Pagination `xsmall`·`small`(Button 이름), Chip·FilterChip·Select 칩 트리거 `small` 20, DatePicker 트리거 `xsmall`·`large`. 작은 단계는 데스크톱 전용이고 모바일 밀도에서는 medium으로 그린다.
+- Select 트리거의 `size` 타입은 variant별 유니언이다 — 필드와 칩은 높이 축이 달라 한 이름 공간에 섞지 않는다.
+- 모바일 44는 보이는 크기를 키우지 않는다. 탭은 치수표 40을 두고 투명 영역만 넓혔고(tokens 변경 없음), Alert·Toast 닫기도 같은 방식으로 "닫기·제거 X hover" 때 남긴 공백을 메웠다. FileInput 기본 Trigger 반경은 Button 역할 반경으로 맞췄다.
+- 보류: Slider xsmall, 옵션·메뉴·목록·표 compact 밀도.
+
 ## 다음
 
 - Storybook Brand 툴바의 auto를 createTheme 블루로 맞췄다(`apps/storybook/.storybook/preview.tsx`). 보강 이미지는 #155EEF로 그렸으므로 색은 참고하지 않는다.

@@ -20,6 +20,14 @@ describe("DatePicker", () => {
     expect(document.activeElement).toBe(trigger);
   });
 
+  it("size puts a size class on the trigger only when it is not medium", () => {
+    const { rerender } = render(<DatePicker kind="date" label="Date" defaultValue={null} />);
+    const trigger = () => screen.getByRole("button", { name: /Date/ });
+    expect(trigger().className).not.toMatch(/dds-date-picker__trigger--size_/);
+    rerender(<DatePicker kind="date" label="Date" defaultValue={null} size="xsmall" />);
+    expect(trigger().className).toContain("dds-date-picker__trigger--size_xsmall");
+  });
+
   it("requires Apply for a range and Cancel preserves the committed value", async () => {
     const user = userEvent.setup();
     const onValueChange = vi.fn();
