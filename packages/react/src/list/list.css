@@ -95,7 +95,7 @@
     pointer-events: none;
   }
 
-  .dds-list__item:has(> .dds-list__action) > .dds-list__trailing :is(a, button, input, select, textarea, label, [role="button"], [tabindex]) {
+  .dds-list__item:has(> .dds-list__action) > .dds-list__trailing :is(a, button, input, select, textarea, label, summary, [contenteditable], [tabindex], [role]:not([role="img"], [role="presentation"], [role="none"], [role="status"], [role="alert"])) {
     pointer-events: auto;
   }
 

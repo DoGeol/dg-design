@@ -74,9 +74,13 @@
     padding-block-end: max(var(--dds-dimension-x4), env(safe-area-inset-bottom));
   }
 
-  /* Footer가 없으면 Body가 홈 표시줄 자리를 비운다. */
+  /* Footer가 없으면 아래에 닿는 Body·Aside가 홈 표시줄 자리를 비운다. */
   .dds-sheet--side_bottom:not(:has(> .dds-panel__footer)) > .dds-panel__body {
     padding-block-end: max(var(--dds-panel-inset), env(safe-area-inset-bottom));
+  }
+
+  .dds-sheet--side_bottom:not(:has(> .dds-panel__footer)) > .dds-panel__aside {
+    padding-block-end: max(var(--dds-dimension-x5), env(safe-area-inset-bottom));
   }
 
   [data-dds-density="mobile"] .dds-panel__footer > * {
@@ -147,6 +151,11 @@
       position: sticky;
       z-index: 1;
       inset-block-end: 0;
+    }
+
+    /* 한 열이면 Aside가 Body 아래로 오므로 홈 표시줄 여백은 Aside만 맡는다. */
+    .dds-sheet--side_bottom:has(> .dds-panel__aside):not(:has(> .dds-panel__footer)) > .dds-panel__body {
+      padding-block-end: var(--dds-panel-inset);
     }
   }
 }
