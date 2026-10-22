@@ -160,6 +160,23 @@ describe('MultiSelect search="trigger"', () => {
   });
 });
 
+describe("MultiSelect search 트리거 크기", () => {
+  it("xsmall 트리거 안 칩은 small이고 기본 트리거 칩은 medium이다", () => {
+    const Tagged = ({ size }: { size?: "xsmall" }) => (
+      <MultiSelect.Root search="trigger" defaultValue={["apple"]} searchProps={{ "aria-label": "과일 검색" }}>
+        <MultiSelect.Trigger size={size} placeholder="과일" />
+        <MultiSelect.Content>
+          <MultiSelect.Option value="apple">Apple</MultiSelect.Option>
+        </MultiSelect.Content>
+      </MultiSelect.Root>
+    );
+    const { container, rerender } = render(<Tagged size="xsmall" />);
+    expect(container.querySelector(".dds-chip")?.className).toContain("dds-chip--size_small");
+    rerender(<Tagged />);
+    expect(container.querySelector(".dds-chip")?.className).not.toContain("dds-chip--size_small");
+  });
+});
+
 describe('MultiSelect search="content"', () => {
   it("열릴 때 검색 입력에 포커스가 가고 ↓로 목록에 들어간다", async () => {
     const user = userEvent.setup();

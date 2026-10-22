@@ -4,7 +4,7 @@ dds-select__value | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) 
 dds-select__caret | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_xsmall | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgb(255, 255, 255) | none
 dds-select__trigger dds-select__trigger--size_xsmall dds-multi-select__trigger--search | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
-dds-chip | rgb(36, 39, 39) | rgb(241, 246, 246) | none | rgb(36, 39, 39) | none
+dds-chip dds-chip--size_small | rgb(36, 39, 39) | rgb(241, 246, 246) | none | rgb(36, 39, 39) | none
 dds-chip__label | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-chip__remove | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
 dds-multi-select__search | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -50,7 +50,7 @@ dds-select__caret | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) 
 dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_xsmall | rgb(255, 255, 255) | rgb(25, 97, 97) | none | rgb(255, 255, 255) | none
 dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_xsmall::before | rgb(255, 255, 255) | rgba(0, 0, 0, 0) | none | rgb(255, 255, 255) | none
 dds-select__trigger dds-select__trigger--size_xsmall dds-multi-select__trigger--search | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
-dds-chip | rgb(36, 39, 39) | rgb(241, 246, 246) | none | rgb(36, 39, 39) | none
+dds-chip dds-chip--size_small | rgb(36, 39, 39) | rgb(241, 246, 246) | none | rgb(36, 39, 39) | none
 dds-chip__label | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-chip__remove | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
 dds-chip__remove::before | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none

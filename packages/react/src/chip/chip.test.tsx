@@ -125,3 +125,20 @@ describe("FilterChip", () => {
     expect(onPressedChange).not.toHaveBeenCalled();
   });
 });
+
+describe("Chip size", () => {
+  it("기본은 size 클래스가 없고 small이면 Chip·FilterChip 모두 붙는다", () => {
+    const { rerender } = render(<Chip>디자인</Chip>);
+    expect(screen.getByText("디자인").closest(".dds-chip")?.className).not.toContain("dds-chip--size_small");
+
+    rerender(
+      <Chip size="small" onRemove={() => {}} removeLabel="디자인 제거">
+        디자인
+      </Chip>,
+    );
+    expect(screen.getByText("디자인").closest(".dds-chip")?.className).toContain("dds-chip--size_small");
+
+    rerender(<FilterChip size="small">내 글</FilterChip>);
+    expect(screen.getByRole("button", { name: "내 글" }).className).toContain("dds-chip--size_small");
+  });
+});

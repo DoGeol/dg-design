@@ -1,4 +1,15 @@
 @layer dds {
+  /* 쪽 번호 한 칸 크기. size가 바꾸고 링크·생략 표시가 함께 읽는다. */
+  .dds-pagination {
+    --dds-pagination-item: var(--dds-dimension-x10);
+  }
+  .dds-pagination--size_small {
+    --dds-pagination-item: var(--dds-dimension-x9);
+  }
+  .dds-pagination--size_xsmall {
+    --dds-pagination-item: var(--dds-dimension-x7);
+  }
+
   .dds-pagination__list {
     display: flex;
     align-items: center;
@@ -14,11 +25,11 @@
     text-decoration: none;
   }
 
-  /* 쪽 번호 자릿수마다 폭이 달라지지 않게 최소 폭 40 · 좌우 8. button.css 크기 규칙보다 앞서도록 두 클래스로 잡는다.
+  /* 쪽 번호 자릿수마다 폭이 달라지지 않게 최소 폭 = 높이(40·36·28) · 좌우 8. button.css 크기 규칙보다 앞서도록 두 클래스로 잡는다.
      모바일은 조작 영역(44)까지 키운다. */
   .dds-pagination__link.dds-button {
-    min-width: max(var(--dds-dimension-x10), var(--dds-size-touch-target));
-    height: max(var(--dds-dimension-x10), var(--dds-size-touch-target));
+    min-width: max(var(--dds-pagination-item), var(--dds-size-touch-target));
+    height: max(var(--dds-pagination-item), var(--dds-size-touch-target));
     padding-inline: var(--dds-dimension-x2);
   }
 
@@ -32,8 +43,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: max(var(--dds-dimension-x10), var(--dds-size-touch-target));
-    height: max(var(--dds-dimension-x10), var(--dds-size-touch-target));
+    min-width: max(var(--dds-pagination-item), var(--dds-size-touch-target));
+    height: max(var(--dds-pagination-item), var(--dds-size-touch-target));
     color: var(--dds-color-fg-neutral-weak);
   }
 

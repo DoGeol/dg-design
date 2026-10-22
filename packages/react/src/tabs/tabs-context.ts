@@ -8,6 +8,7 @@ export interface TabsContextValue {
   baseId: string;
   responsive?: number;
   isWide?: boolean;
+  size?: "small" | "medium";
   /**
    * 포인터로 누른 선택인지. automatic 활성화는 focus에서 일어나 click보다 이르기 때문에
    * pointerdown에서 기록하고, click·pointercancel·keydown에서 내린다.

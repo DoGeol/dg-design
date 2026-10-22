@@ -4,6 +4,9 @@
      button.css의 variant 규칙보다 앞서도록 두 클래스로 잡는다. */
   .dds-date-picker__trigger.dds-button { justify-content: flex-start; width: 100%; height: var(--dds-size-field-height); padding-inline: var(--dds-space-field-inset); border: 1px solid var(--dds-color-stroke-neutral); border-radius: var(--dds-radius-field); background-color: var(--dds-color-bg-layer-default); color: var(--dds-color-fg-neutral); font-size: var(--dds-font-size-field); font-weight: var(--dds-font-weight-regular); }
   .dds-date-picker__trigger.dds-button > [data-layer="content"] { justify-content: flex-start; }
+  /* xsmall은 field-xsmall 역할 토큰(모바일 밀도에서 medium 값), large는 TextField large와 같은 값. */
+  .dds-date-picker__trigger--size_xsmall.dds-button { height: var(--dds-size-field-xsmall-height); padding-inline: var(--dds-space-field-xsmall-inset); border-radius: var(--dds-radius-field-xsmall); font-size: var(--dds-font-size-field-xsmall); }
+  .dds-date-picker__trigger--size_large.dds-button { height: var(--dds-dimension-x13); padding-inline: var(--dds-dimension-x4); border-radius: var(--dds-radius-r3); font-size: var(--dds-font-size-t6); }
   .dds-date-picker__trigger.dds-button:not(:is(:disabled, [disabled], [data-disabled])):is(:hover, [data-hover], :active, [data-pressed]) { border-color: var(--dds-color-fg-neutral); background-color: var(--dds-color-bg-layer-default); }
   .dds-date-picker__trigger.dds-button:focus-visible { outline: none; border-color: var(--dds-color-stroke-focus-ring); box-shadow: inset 0 0 0 1px var(--dds-color-stroke-focus-ring); }
   .dds-date-picker__trigger.dds-button:is(:disabled, [disabled], [data-disabled]) { border-color: var(--dds-color-stroke-neutral-weak); background-color: var(--dds-color-bg-disabled); color: var(--dds-color-fg-disabled); }

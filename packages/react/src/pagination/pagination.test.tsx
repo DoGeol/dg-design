@@ -164,3 +164,32 @@ describe("Pagination 구조", () => {
     expect(screen.getAllByRole("listitem")).toHaveLength(1);
   });
 });
+
+describe("Pagination size", () => {
+  it("Root size가 링크·이전·다음의 Button size 클래스와 Root 클래스로 나간다", () => {
+    const List = ({ size }: { size?: "xsmall" | "small" | "medium" }) => (
+      <Pagination.Root size={size}>
+        <Pagination.List>
+          <Pagination.Item>
+            <Pagination.Previous href="?page=1" />
+          </Pagination.Item>
+          <Pagination.Item>
+            <Pagination.Link href="?page=2" isActive>
+              2
+            </Pagination.Link>
+          </Pagination.Item>
+          <Pagination.Item>
+            <Pagination.Next href="?page=3" />
+          </Pagination.Item>
+        </Pagination.List>
+      </Pagination.Root>
+    );
+    const { rerender } = render(<List />);
+    const links = () => screen.getAllByRole("link");
+    expect(links().every((link) => link.className.includes("dds-button--size_medium"))).toBe(true);
+
+    rerender(<List size="xsmall" />);
+    expect(links().every((link) => link.className.includes("dds-button--size_xsmall"))).toBe(true);
+    expect(screen.getByRole("navigation").className).toContain("dds-pagination--size_xsmall");
+  });
+});

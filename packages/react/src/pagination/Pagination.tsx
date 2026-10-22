@@ -7,12 +7,18 @@ import { Slot } from "@radix-ui/react-slot";
 import clsx from "clsx";
 import * as React from "react";
 
+type PaginationSize = "xsmall" | "small" | "medium";
+
+/** Root의 size를 Link·Previous·Next가 Button size 클래스로 읽는다. */
+const PaginationSizeContext = React.createContext<PaginationSize>("medium");
+
 /** Link·Previous·Next가 공유하는 외관 클래스 계산. 활성은 중성 weak + 경계(pagination.css), 나머지는 ghost. */
-function paginationLinkClass(isActive: boolean | undefined, className: string | undefined) {
+function usePaginationLinkClass(isActive: boolean | undefined, className: string | undefined) {
+  const size = React.useContext(PaginationSizeContext);
   return clsx(
     "dds-pagination__link",
     "dds-button",
-    "dds-button--size_medium",
+    `dds-button--size_${size}`,
     isActive
       ? "dds-button--intent_neutral dds-button--variant_weak"
       : "dds-button--intent_neutral dds-button--variant_ghost",
@@ -38,16 +44,21 @@ function anchorDisabledProps(
   };
 }
 
-export interface PaginationRootProps extends React.HTMLAttributes<HTMLElement> {}
+export interface PaginationRootProps extends React.HTMLAttributes<HTMLElement> {
+  /** 쪽 번호 크기. Button의 같은 이름 size(28·36·40)다. 모바일 밀도에서는 셋 다 44 이상이다. */
+  size?: PaginationSize;
+}
 
 export const PaginationRoot = React.forwardRef<HTMLElement, PaginationRootProps>(
-  ({ className, ...props }, ref) => (
-    <nav
-      ref={ref}
-      aria-label="페이지네이션"
-      className={clsx("dds-pagination", className)}
-      {...props}
-    />
+  ({ className, size = "medium", ...props }, ref) => (
+    <PaginationSizeContext.Provider value={size}>
+      <nav
+        ref={ref}
+        aria-label="페이지네이션"
+        className={clsx("dds-pagination", size !== "medium" && `dds-pagination--size_${size}`, className)}
+        {...props}
+      />
+    </PaginationSizeContext.Provider>
   ),
 );
 PaginationRoot.displayName = "Pagination.Root";
@@ -71,7 +82,7 @@ export const PaginationItem = React.forwardRef<HTMLLIElement, PaginationItemProp
 PaginationItem.displayName = "Pagination.Item";
 
 export interface PaginationLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  /** 현재 페이지인지. true면 aria-current="page" + 활성 외관(solid)을 함께 켠다. */
+  /** 현재 페이지인지. true면 aria-current="page" + 활성 외관(중성 weak + 경계)을 함께 켠다. */
   isActive?: boolean;
   /** 자식 엘리먼트에 링크 스타일만 입힌다 — 라우터 Link로 교체할 때. */
   asChild?: boolean;
@@ -84,7 +95,7 @@ export const PaginationLink = React.forwardRef<HTMLAnchorElement, PaginationLink
       <Comp
         ref={ref}
         aria-current={isActive ? "page" : undefined}
-        className={paginationLinkClass(isActive, className)}
+        className={usePaginationLinkClass(isActive, className)}
         {...props}
       />
     );
@@ -135,7 +146,7 @@ export const PaginationPrevious = React.forwardRef<HTMLAnchorElement, Pagination
     <a
       ref={ref}
       aria-label={label}
-      className={paginationLinkClass(false, className)}
+      className={usePaginationLinkClass(false, className)}
       {...anchorDisabledProps(disabled, props)}
     >
       {children ?? <ChevronLeftIcon />}
@@ -156,7 +167,7 @@ export const PaginationNext = React.forwardRef<HTMLAnchorElement, PaginationNext
     <a
       ref={ref}
       aria-label={label}
-      className={paginationLinkClass(false, className)}
+      className={usePaginationLinkClass(false, className)}
       {...anchorDisabledProps(disabled, props)}
     >
       {children ?? <ChevronRightIcon />}

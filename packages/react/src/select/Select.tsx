@@ -150,9 +150,7 @@ export function SelectRoot(props: SelectRootProps) {
 }
 SelectRoot.displayName = "Select.Root";
 
-export interface SelectTriggerProps
-  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "value">,
-    VariantProps<typeof selectTrigger> {
+interface SelectTriggerBaseProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "value"> {
   /** 값이 없을 때 보여줄 내용. 회색으로 표시된다. */
   placeholder?: React.ReactNode;
   /**
@@ -161,6 +159,13 @@ export interface SelectTriggerProps
    */
   active?: boolean;
 }
+
+/** size 단계는 variant마다 다르다 — 필드는 입력 높이 축, 칩은 Chip 높이 축(small은 데스크톱 20). */
+export type SelectTriggerProps = SelectTriggerBaseProps &
+  (
+    | { variant?: "field"; size?: "xsmall" | "medium" | "large" }
+    | { variant: "chip"; size?: "small" | "medium" }
+  );
 
 export const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerProps>(
   ({ className, size, variant, active, placeholder, children, id, onClick, onKeyDown, ...props }, ref) => {
@@ -184,8 +189,13 @@ export const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerPr
         aria-describedby={context.describedBy}
         data-state={context.open ? "open" : "closed"}
         data-active={variant === "chip" && active ? "" : undefined}
-        // 칩은 자기 높이를 가져 size 축을 쓰지 않는다.
-        className={clsx(selectTrigger({ size: variant === "chip" ? null : size, variant }), className)}
+        // 칩은 필드 size 축 대신 Chip 높이를 쓴다. small만 클래스로 더한다.
+        className={clsx(
+          variant === "chip"
+            ? [selectTrigger({ size: null, variant }), size === "small" && "dds-select__trigger--size_small"]
+            : selectTrigger({ size: size as VariantProps<typeof selectTrigger>["size"], variant }),
+          className,
+        )}
         onClick={(event) => {
           onClick?.(event);
           if (!event.defaultPrevented) context.setOpen(!context.open);

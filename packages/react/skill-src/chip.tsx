@@ -21,6 +21,7 @@
  * | `Chip` | `children`(필수) · `leading` · `disabled` | 칩 자체는 초점을 받지 않는다 |
  * | `Chip` | `onRemove` + `removeLabel` | 둘은 함께만 쓴다. `removeLabel`이 제거 버튼의 접근 이름("김하나 제거") |
  * | `FilterChip` | `pressed` · `defaultPressed` · `onPressedChange` | 켜짐은 색 + 체크 아이콘. 나머지는 button 속성 |
+ * | `Chip` · `FilterChip` | `size`(`small` · `medium` 기본) | `small`은 데스크톱 20, 모바일 밀도에서는 `medium`. small 칩의 제거 버튼은 누르는 영역이 20이라 칩 사이를 4 이상 띄운다 |
  *
  * ## 접근성
  *

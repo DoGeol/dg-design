@@ -19,7 +19,7 @@
 
 | 부품 | 주요 prop | 메모 |
 | --- | --- | --- |
-| `Pagination.Root` | `nav` 속성 | `aria-label="페이지네이션"` 기본 |
+| `Pagination.Root` | `nav` 속성 · `size`(`xsmall` · `small` · `medium` 기본) | `aria-label="페이지네이션"` 기본. `size`는 Button 같은 이름 크기(28·36·40), 모바일 밀도에서는 모두 44 이상 |
 | `Pagination.List` · `Pagination.Item` | `ul` · `li` | |
 | `Pagination.Link` | `isActive` · `asChild` · `href` | `isActive`면 `aria-current="page"`와 활성 외관 |
 | `Pagination.Previous` · `Pagination.Next` | `label`(기본 "이전 페이지"/"다음 페이지") · `disabled` | `disabled`면 `href`가 빠지고 `aria-disabled`가 붙는다 |

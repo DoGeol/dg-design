@@ -50,6 +50,8 @@ export type DatePickerStateProps<T> = {
 };
 export interface DatePickerCommonProps {
   id?: string;
+  /** 트리거 크기. xsmall은 데스크톱 28(모바일 밀도에서는 medium), large는 TextField large와 같다. */
+  size?: "xsmall" | "medium" | "large";
   label?: ReactNode;
   description?: ReactNode;
   locale?: string;

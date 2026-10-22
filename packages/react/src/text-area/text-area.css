@@ -7,7 +7,7 @@
     color: var(--dds-color-fg-neutral);
     background-color: var(--dds-color-bg-layer-default);
     border: 1px solid var(--dds-color-stroke-neutral);
-    resize: vertical;
+    resize: none;
     transition: border-color var(--dds-duration-fast) var(--dds-easing-out);
   }
   @media (prefers-reduced-motion: reduce) {
@@ -62,6 +62,11 @@
     border-color: var(--dds-color-stroke-neutral-weak);
   }
 
+  /* resizable: 세로만. 아래 auto-resize·비활성·읽기 전용·모바일 line 규칙이 이긴다(손잡이 없음). */
+  .dds-text-area--resizable {
+    resize: vertical;
+  }
+
   /*
    * autoResize=true: field-sizing 지원 브라우저는 이 한 줄이 자동 확장을 전부 처리한다.
    * 미지원 브라우저는 use-auto-resize.ts의 scrollHeight 폴백이 height를 직접 쓰는데,
@@ -71,6 +76,19 @@
     resize: none;
     overflow: hidden;
     field-sizing: content;
+    /* field-sizing은 rows를 무시한다(rows=3이 한 줄로 그려짐) — rows를 최소 높이로 되살린다. */
+    min-height: calc(
+      var(--dds-text-area-min-rows) * 1lh + 2 * var(--dds-text-area-padding-block) + 2px
+    );
+  }
+
+  /* maxRows: 확장·드래그 공통 상한. 넘치면 스크롤 — auto-resize의 overflow: hidden보다 뒤에 둔다.
+     테두리는 위아래 1px씩으로 셈한다(모바일 line은 1px 크게 잡히지만 잘리지 않는 쪽이다). */
+  .dds-text-area--max-rows {
+    max-height: calc(
+      var(--dds-text-area-max-rows) * 1lh + 2 * var(--dds-text-area-padding-block) + 2px
+    );
+    overflow-y: auto;
   }
 
   /* showCount일 때만 존재. 카운터는 입력 아래 오른쪽에 약하게 둔다(최대 도달해도 색은 그대로). */
@@ -90,14 +108,18 @@
   /* size: 세로 패딩은 TextField에 없는 축이라 dimension 스케일에서 새로 골랐다 (폭은 그대로 재사용) */
   /* xsmall: 한 줄 높이가 field-xsmall-height(데스크톱 28·모바일 56)다. content-box라 테두리 2px를 뺀다. */
   .dds-text-area--size_xsmall {
-    padding-block: calc((var(--dds-size-field-xsmall-height) - var(--dds-line-height-field-xsmall) - 2px) / 2);
+    --dds-text-area-padding-block: calc(
+      (var(--dds-size-field-xsmall-height) - var(--dds-line-height-field-xsmall) - 2px) / 2
+    );
+    padding-block: var(--dds-text-area-padding-block);
     padding-inline: var(--dds-space-field-xsmall-inset);
     border-radius: var(--dds-radius-field-xsmall);
     font-size: var(--dds-font-size-field-xsmall);
     line-height: var(--dds-line-height-field-xsmall);
   }
   .dds-text-area--size_medium {
-    padding-block: var(--dds-dimension-x2);
+    --dds-text-area-padding-block: var(--dds-dimension-x2);
+    padding-block: var(--dds-text-area-padding-block);
     padding-inline: var(--dds-space-field-inset);
     border-radius: var(--dds-radius-field);
     font-size: var(--dds-font-size-field);
@@ -105,10 +127,11 @@
   }
   /* 모바일 한 줄 높이를 필드 높이에 맞춘다: (56 − 24) ÷ 2. */
   [data-dds-density="mobile"] .dds-text-area--size_medium {
-    padding-block: var(--dds-dimension-x4);
+    --dds-text-area-padding-block: var(--dds-dimension-x4);
   }
   .dds-text-area--size_large {
-    padding-block: var(--dds-dimension-x3);
+    --dds-text-area-padding-block: var(--dds-dimension-x3);
+    padding-block: var(--dds-text-area-padding-block);
     padding-inline: var(--dds-dimension-x4);
     border-radius: var(--dds-radius-r3);
     font-size: var(--dds-font-size-t6);

@@ -21,7 +21,9 @@
 | --- | --- | --- |
 | `size` | `xsmall` · `medium`(기본) · `large` | `small`은 없다. `xsmall`은 한 줄 높이 28, 모바일 밀도에서는 `medium` |
 | `variant` | `outline`(기본) · `box` · `line` | `box`·`line`은 `[data-dds-density="mobile"]` 안에서만 적용된다 |
-| `autoResize` | boolean | 입력량에 따라 높이가 늘어난다. 기본은 `rows` + 세로 resize |
+| `autoResize` | boolean | 입력량에 따라 높이가 늘어난다. `rows`가 최소 줄 수. 기본은 `rows` 높이 고정 + 넘치면 스크롤 |
+| `resizable` | boolean | 세로 손잡이. 기본 꺼짐(react 0.24.0부터). autoResize와 함께 주면 autoResize가 이긴다 |
+| `maxRows` | number | 최대 줄 수. autoResize 확장·손잡이 드래그 모두 여기서 멈추고 넘치면 스크롤 |
 | `showCount` | boolean | 글자 수 표시. `maxLength`가 있으면 "현재/최대". 켜면 wrapper가 생긴다 |
 | `value`·`defaultValue`·`onChange`·`rows`·`maxLength`·`name`·`disabled`·`readOnly` | textarea 표준 | |
 
@@ -63,7 +65,7 @@ export function AutoResize() {
   return (
     <Field.Root>
       <Field.Label>댓글</Field.Label>
-      <TextArea autoResize rows={2} placeholder="댓글을 남겨 보세요" />
+      <TextArea autoResize rows={2} maxRows={6} placeholder="댓글을 남겨 보세요" />
     </Field.Root>
   );
 }

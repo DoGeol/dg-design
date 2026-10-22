@@ -485,6 +485,34 @@ describe("Select.Trigger variant=\"chip\"", () => {
     expect(screen.queryByRole("listbox")).toBeNull();
   });
 
+  it("chip은 size small을 받고, field 기본 size 클래스는 그대로다", () => {
+    const { rerender } = render(
+      <Select.Root>
+        <Select.Trigger variant="chip" size="small" aria-label="상태" />
+      </Select.Root>,
+    );
+    expect(trigger().className).toContain("dds-select__trigger--size_small");
+
+    rerender(
+      <Select.Root>
+        <Select.Trigger aria-label="상태" />
+      </Select.Root>,
+    );
+    expect(trigger().className).toContain("dds-select__trigger--size_medium");
+    expect(trigger().className).not.toContain("dds-select__trigger--size_small");
+  });
+
+  it("variant와 맞지 않는 size는 타입 에러다", () => {
+    render(
+      <Select.Root>
+        {/* @ts-expect-error field에는 small이 없다 */}
+        <Select.Trigger size="small" aria-label="a" />
+        {/* @ts-expect-error chip에는 xsmall이 없다 */}
+        <Select.Trigger variant="chip" size="xsmall" aria-label="b" />
+      </Select.Root>,
+    );
+  });
+
   it("active가 없으면 켜짐 표시가 없고, 기본 variant 패널은 chip 클래스가 없다", async () => {
     const user = userEvent.setup();
     const { unmount } = render(<Status />);

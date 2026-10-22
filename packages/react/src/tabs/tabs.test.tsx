@@ -326,3 +326,12 @@ describe("Tabs responsive", () => {
     expect(screen.getByText("첫째 패널").getAttribute("tabindex")).toBe("-1");
   });
 });
+
+describe("Tabs size", () => {
+  it("Root size가 Trigger 클래스로 내려가고 기본은 클래스가 없다", () => {
+    const { rerender } = render(<Basic />);
+    expect(tab("첫째").className).not.toContain("dds-tabs__trigger--size_small");
+    rerender(<Basic size="small" />);
+    expect(tab("첫째").className).toContain("dds-tabs__trigger--size_small");
+  });
+});
