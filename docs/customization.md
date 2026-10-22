@@ -94,11 +94,11 @@ react 0.23.0의 xsmall 입력(TextField·TextArea·Select·MultiSelect)은 token
 
 ### className
 
-컴포넌트 21종 중 20종이 `className` prop을 받아 `clsx(내부 클래스, className)`으로 병합한다(예: `packages/react/src/button/Button.tsx`). 소비자 클래스가 뒤에 오지만, 승패는 이 순서가 아니라 아래 "@layer" 규칙이 정한다. 예외는 `Toast`뿐이다 — `useToast()` 훅으로 띄우는 알림이라 소비자가 직접 렌더하는 JSX 엘리먼트가 없고, 그래서 `className`을 받을 자리 자체가 없다.
+컴포넌트는 `className` prop을 받아 `clsx(내부 클래스, className)`으로 병합한다(예: `packages/react/src/button/Button.tsx`). 소비자 클래스가 뒤에 오지만, 승패는 이 순서가 아니라 아래 "@layer" 규칙이 정한다. 예외는 `useToast()`로 띄우는 알림이다. 소비자가 렌더하는 엘리먼트가 없어 `className`을 받을 자리가 없다. 정적으로 그리는 `ToastView`는 `className`을 받는다.
 
 ### @layer dds 규칙
 
-컴포넌트 CSS는 전부 `@layer dds { ... }` 안에 있다(`packages/react/src/*/*.css`). CSS Cascade Layers 규격상 **어떤 `@layer`에도 안 든 규칙은 특정도·선언 순서와 무관하게 레이어 안 규칙을 항상 이긴다.** 그래서 소비자가 자기 CSS를 평범하게(레이어 없이) 쓰면 `.dds-*`를 특정도 계산이나 `!important` 없이 덮어쓸 수 있다 — DDS에서 가장 저평가된 커스터마이즈 표면이다.
+컴포넌트 CSS는 전부 `@layer dds { ... }` 안에 있다(`packages/react/src/*/*.css`). CSS Cascade Layers 규격상 **어떤 `@layer`에도 안 든 규칙은 특정도·선언 순서와 무관하게 레이어 안 규칙을 항상 이긴다.** 그래서 소비자가 자기 CSS를 평범하게(레이어 없이) 쓰면 `.dds-*`를 특정도 계산이나 `!important` 없이 덮어쓸 수 있다.
 
 단, **Tailwind 유틸리티는 이 "레이어 밖"에 속하지 않는다.** Tailwind v4는 `@import "tailwindcss"`가 스스로 `@layer theme, base, components, utilities;`를 선언하고 생성한 유틸리티 클래스를 `@layer utilities` 안에 채운다(`npx @tailwindcss/cli`로 직접 컴파일해 확인한 사실이고, `rounded-full` 같은 유틸리티도 예외 없이 그 안에 있다). 즉 `className="rounded-full"`은 `utilities` 레이어와 `dds` 레이어의 대결이고, 이름 있는 두 레이어 사이의 승패는 **어느 이름이 문서 전체에서 더 나중에 처음 언급되는지**로 정해진다 — 실제 규칙 내용이 어디 있는지가 아니라 이름이 처음 등장한 순서다.
 

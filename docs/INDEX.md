@@ -21,7 +21,7 @@
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
 | [2026-10-09 flex 적용 구현](plans/2026-10-09-flex-adoption.md) · [인계](handoff/2026-10-09-flex-adoption.md) | 승인 · **P0~P7 전부 배포**(react 0.21.0 · tokens 0.10.0), 후속 xsmall·작은 크기·X hover react 0.22.0, xsmall 역할 토큰·조작 영역 react 0.23.0 · tokens 0.11.0, TextArea 높이·조절·작은 크기 확장 react 0.24.0 | P0 문서·가드 → P1 역할 토큰·밀도 → P2 외관 → P3 접근성·API → P4 새 종류 → P5 표시 방식 → P6 폼 확장 → P7 사용 가이드 스킬 |
-| [2026-10-06 다크 모드 부유 패널 경계](plans/2026-10-06-dark-overlay-boundary.md) | 구현 완료 · 배포 대기 | 다크에서 패널이 페이지에 묻히는 문제의 실측·원인, 테두리 1px 변경 범위와 검증 |
+| [2026-10-06 다크 모드 부유 패널 경계](plans/2026-10-06-dark-overlay-boundary.md) | 완료 · 배포(react 0.17.3) | 다크에서 패널이 페이지에 묻히는 문제의 실측·원인, 테두리 1px 변경 범위와 검증 |
 | [2026-09-27 DatePicker 구현](plans/2026-09-27-datepicker.md) | npm 0.16.1 배포 · 실기기 QA 후속 | 값·DST 기술 게이트, 입력·달력·반응형 패널, 검증 순서와 작업 배정 |
 | [2026-09-25 Table v2 사용성·대량 데이터](plans/2026-09-25-table-v2.md) | npm 0.16.0 배포 · 스크린리더 QA 후속 | 데이터 기반 API 2종, 1만 행 가상화, 정렬·필터·선택, 고정 헤더·열의 단계별 계획 |
 | [2026-08-28 우선순위 컴포넌트](plans/2026-08-28-priority-components/) | 완료 0.12.0 | 컴포넌트별 계획 5개(accordion·avatar·collapsible·separator·skeleton), QA는 `qa/` 같은 이름 |
@@ -66,7 +66,7 @@
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
 | [2026-10-09 사용 가이드 스킬](decisions/2026-10-09-usage-skill.md) | 활성 · 구현(P7) | dg-design 소유·프로젝트 독립 예제 스킬, 패키지에 스킬 + 에이전트용 설정 가이드 md, layout은 최소 권장사항 + 프로젝트 로컬 파일 |
-| [2026-10-09 flex 적용 방향](decisions/2026-10-09-flex-adoption-direction.md) | 활성 · 구현 전 | A 기본 + B 사용례, 모서리 입력 4·버튼 6, outline 기본 + 모바일 확장, 브랜드 createTheme #1550A9 |
+| [2026-10-09 flex 적용 방향](decisions/2026-10-09-flex-adoption-direction.md) | 활성 · 구현(react 0.21.0) | A 기본 + B 사용례, 모서리 입력 4·버튼 6, outline 기본 + 모바일 확장, 브랜드 createTheme #1550A9 |
 | [2026-10-06 부유 패널 테두리](decisions/2026-10-06-floating-panel-border.md) | 활성 | 패널 경계는 그림자가 아니라 테두리 1px, Sheet는 안쪽 변만, 화살표 오프셋 보정 |
 | [2026-09-27 DatePicker 구현 결정](decisions/2026-09-27-datepicker-implementation.md) | npm 0.16.1 배포 · 실기기 QA 후속 | 엄격한 날짜 입력·DST 후보, 달력 훅과 DDS 오버레이, 반응형 레이아웃·패키지 export |
 | [2026-08-14 토큰 체계와 a11y 기준선](decisions/2026-08-14-dds-token-system.md) | 활성 | 토큰 이름 문법, hover 축 추가, 대비 검사 도입, focus/disabled 관습 |

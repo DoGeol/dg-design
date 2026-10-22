@@ -34,9 +34,10 @@ import { Button } from "@dg-design/react/button";
 <Button variant="ghost" disabled>비활성</Button>
 ```
 
-- `intent`: `"brand" | "neutral"` (기본 `"brand"`)
+- `intent`: `"brand" | "neutral" | "critical"` (기본 `"brand"`). `critical`은 삭제·탈퇴처럼 되돌릴 수 없는 실행에만 쓴다
 - `variant`: `"solid" | "weak" | "ghost"` (기본 `"solid"`)
-- `size`: `"small" | "medium" | "large"` (기본 `"medium"`)
+- `size`: `"xsmall" | "small" | "medium" | "large"` (기본 `"medium"`)
+- `iconOnly`: 아이콘만 있는 정사각 버튼. 접근 이름은 `aria-label`로 준다
 - `disabled`: native `disabled` 속성
 
 ### Dialog
@@ -74,7 +75,7 @@ import { Select } from "@dg-design/react/select";
 </Select.Root>
 ```
 
-나머지 컴포넌트(Badge, Checkbox, ContextMenu, DropdownMenu, Field, HoverCard, MultiSelect, NotificationBadge, Popover, RadioGroup, Sheet, Switch, TextArea, TextField, Tooltip)도 같은 규칙 — `@dg-design/react/<kebab-case 이름>`(예: `./context-menu`, `./text-field`)으로 가져온다. 전체 목록은 패키지 `package.json`의 `exports`를 참고.
+다른 컴포넌트도 `@dg-design/react/<kebab-case 이름>`(예: `./context-menu`, `./text-field`)으로 가져온다. 전체 목록은 패키지 `package.json`의 `exports`에 있고, 컴포넌트별 API와 예제는 `skill/dg-design/references/`에 있다.
 
 배럴에서 한 번에 가져와도 된다:
 
