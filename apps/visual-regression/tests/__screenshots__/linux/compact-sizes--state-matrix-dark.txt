@@ -1,0 +1,137 @@
+dds-text-area dds-text-area--size_medium | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-text-area dds-text-area--size_medium dds-text-area--resizable | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-text-area dds-text-area--size_medium dds-text-area--auto-resize | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-text-area dds-text-area--size_medium dds-text-area--auto-resize dds-text-area--max-rows | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-chip dds-chip--size_small | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-chip__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-chip__remove | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-chip dds-chip--filter dds-chip--size_small | rgb(131, 232, 231) | rgb(7, 45, 45) | none | rgb(131, 232, 231) | none
+dds-chip__check | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
+dds-select__trigger dds-select__trigger--variant_chip dds-select__trigger--size_small | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | rgb(58, 62, 62) 0px 0px 0px 1px inset
+dds-select__value | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-select__caret | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-select__trigger dds-select__trigger--size_xsmall dds-multi-select__trigger--search | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-chip dds-chip--size_small | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-chip__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-chip__remove | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-multi-select__search | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-select__caret | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-tabs | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-tabs__list | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) rgb(0, 0, 0) rgb(58, 62, 62) | none
+dds-tabs__indicator | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) rgb(0, 0, 0) rgb(131, 232, 231) | none
+dds-tabs__trigger dds-tabs__trigger--size_small | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgba(0, 0, 0, 0) | none
+dds-tabs__trigger dds-tabs__trigger--size_small | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgba(0, 0, 0, 0) | none
+dds-tabs | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-tabs__list | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) rgb(0, 0, 0) rgb(58, 62, 62) | none
+dds-tabs__indicator | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) rgb(0, 0, 0) rgb(131, 232, 231) | none
+dds-tabs__trigger | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgba(0, 0, 0, 0) | none
+dds-tabs__trigger | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgba(0, 0, 0, 0) | none
+dds-pagination dds-pagination--size_xsmall | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__list | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_xsmall dds-button--intent_neutral dds-button--variant_ghost | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_xsmall dds-button--intent_neutral dds-button--variant_ghost | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_xsmall dds-button--intent_neutral dds-button--variant_weak | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | rgb(137, 141, 141) 0px 0px 0px 1px inset
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_xsmall dds-button--intent_neutral dds-button--variant_ghost | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-pagination dds-pagination--size_small | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__list | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_small dds-button--intent_neutral dds-button--variant_ghost | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_small dds-button--intent_neutral dds-button--variant_ghost | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_small dds-button--intent_neutral dds-button--variant_weak | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | rgb(137, 141, 141) 0px 0px 0px 1px inset
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_small dds-button--intent_neutral dds-button--variant_ghost | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-date-picker | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-date-picker__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-button dds-button--intent_neutral dds-button--variant_weak dds-button--size_medium dds-date-picker__trigger dds-date-picker__trigger--size_xsmall | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-date-picker | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-date-picker__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-button dds-button--intent_neutral dds-button--variant_weak dds-button--size_medium dds-date-picker__trigger dds-date-picker__trigger--size_large | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-alert dds-alert--intent_neutral | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-alert__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-alert__body | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-alert__title | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-alert__close | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-file-input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-file-input__actions | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-file-input__trigger | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) | none
+dds-text-area dds-text-area--size_medium | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-text-area dds-text-area--size_medium dds-text-area--resizable | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-text-area dds-text-area--size_medium dds-text-area--auto-resize | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-text-area dds-text-area--size_medium dds-text-area--auto-resize dds-text-area--max-rows | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-chip dds-chip--size_small | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-chip__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-chip__remove | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-chip__remove::before | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-chip dds-chip--filter dds-chip--size_small | rgb(131, 232, 231) | rgb(7, 45, 45) | none | rgb(131, 232, 231) | none
+dds-chip dds-chip--filter dds-chip--size_small::before | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
+dds-chip__check | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
+dds-select__trigger dds-select__trigger--variant_chip dds-select__trigger--size_small | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | rgb(58, 62, 62) 0px 0px 0px 1px inset
+dds-select__trigger dds-select__trigger--variant_chip dds-select__trigger--size_small::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-select__value | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-select__caret | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-select__trigger dds-select__trigger--size_xsmall dds-multi-select__trigger--search | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-chip dds-chip--size_small | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-chip__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-chip__remove | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-chip__remove::before | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-multi-select__search | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-select__caret | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-tabs | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-tabs__list | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) rgb(0, 0, 0) rgb(58, 62, 62) | none
+dds-tabs__indicator | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) rgb(0, 0, 0) rgb(131, 232, 231) | none
+dds-tabs__trigger dds-tabs__trigger--size_small | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgba(0, 0, 0, 0) | none
+dds-tabs__trigger dds-tabs__trigger--size_small::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-tabs__trigger dds-tabs__trigger--size_small | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgba(0, 0, 0, 0) | none
+dds-tabs__trigger dds-tabs__trigger--size_small::before | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-tabs | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-tabs__list | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) rgb(0, 0, 0) rgb(58, 62, 62) | none
+dds-tabs__indicator | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) rgb(0, 0, 0) rgb(131, 232, 231) | none
+dds-tabs__trigger | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) rgb(241, 246, 246) rgba(0, 0, 0, 0) | none
+dds-tabs__trigger::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-tabs__trigger | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgba(0, 0, 0, 0) | none
+dds-tabs__trigger::before | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-pagination dds-pagination--size_xsmall | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__list | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_xsmall dds-button--intent_neutral dds-button--variant_ghost | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-pagination__link dds-button dds-button--size_xsmall dds-button--intent_neutral dds-button--variant_ghost::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_xsmall dds-button--intent_neutral dds-button--variant_ghost | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-pagination__link dds-button dds-button--size_xsmall dds-button--intent_neutral dds-button--variant_ghost::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_xsmall dds-button--intent_neutral dds-button--variant_weak | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | rgb(137, 141, 141) 0px 0px 0px 1px inset
+dds-pagination__link dds-button dds-button--size_xsmall dds-button--intent_neutral dds-button--variant_weak::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_xsmall dds-button--intent_neutral dds-button--variant_ghost | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-pagination__link dds-button dds-button--size_xsmall dds-button--intent_neutral dds-button--variant_ghost::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-pagination dds-pagination--size_small | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__list | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_small dds-button--intent_neutral dds-button--variant_ghost | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_small dds-button--intent_neutral dds-button--variant_ghost | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_small dds-button--intent_neutral dds-button--variant_weak | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | rgb(137, 141, 141) 0px 0px 0px 1px inset
+dds-pagination__item | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-pagination__link dds-button dds-button--size_small dds-button--intent_neutral dds-button--variant_ghost | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-date-picker | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-date-picker__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-button dds-button--intent_neutral dds-button--variant_weak dds-button--size_medium dds-date-picker__trigger dds-date-picker__trigger--size_xsmall | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-date-picker | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-date-picker__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-button dds-button--intent_neutral dds-button--variant_weak dds-button--size_medium dds-date-picker__trigger dds-date-picker__trigger--size_large | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
+dds-alert dds-alert--intent_neutral | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
+dds-alert__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-alert__body | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-alert__title | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-alert__close | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-alert__close::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-file-input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-file-input__actions | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-file-input__trigger | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) | none
