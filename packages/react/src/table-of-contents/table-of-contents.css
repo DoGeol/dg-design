@@ -97,6 +97,8 @@
   }
 
   .dds-table-of-contents__content {
+    /* Collapsible measures scrollHeight, which includes this element's padding. */
+    box-sizing: border-box;
     min-width: 0;
   }
 
