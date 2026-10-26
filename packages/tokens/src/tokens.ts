@@ -415,4 +415,7 @@ export const roles = {
     // 모바일은 TextArea 본문 줄(24)에 맞춘다. 높이가 고정된 TextField·Select는 줄 높이와 상관없이 가운데다.
     "field-xsmall": { desktop: lineHeight.t2, mobile: lineHeight.t6 },
   },
+  stroke: {
+    "icon-width": { desktop: "2" },
+  },
 } as const satisfies Record<string, Record<string, RoleValue>>;

@@ -62,6 +62,7 @@ pnpm add @dg-design/react @dg-design/tokens
 | [Card](references/card.md) | `@dg-design/react/card` | 관련 내용을 테두리 있는 면으로 묶는 단순 컨테이너. 스타일만 있고 구조는 없다. |
 | [Checkbox](references/checkbox.md) | `@dg-design/react/checkbox` | 여러 항목 중 해당하는 것을 각각 켜고 끄는 체크박스. 부분 선택(indeterminate)을 지원한다. |
 | [Chip](references/chip.md) | `@dg-design/react/chip` | 사용자가 고른 값을 보여 주는 Chip(제거 가능)과 켜고 끄는 필터 FilterChip. |
+| [CodeBlock](references/code-block.md) | `@dg-design/react/code-block` | 가로 스크롤 가능한 코드 블록 영역과 상단 파일명 표시 및 클립보드 복사 기능을 제공하는 컴포넌트. |
 | [Collapsible](references/collapsible.md) | `@dg-design/react/collapsible` | 하나의 영역을 열고 닫는 최소 disclosure. 트리거 하나 + 내용 하나. |
 | [ContextMenu](references/context-menu.md) | `@dg-design/react/context-menu` | 영역을 우클릭하면 그 지점에 뜨는 행동 메뉴 — DropdownMenu와 같은 항목 구성. |
 | [DataTable](references/data-table.md) | `@dg-design/react/data-table` | 데이터 배열과 열 정의로 그리는 표. 정렬·필터·행 선택·열 고정·가상 스크롤을 내장한다. |
@@ -72,6 +73,7 @@ pnpm add @dg-design/react @dg-design/tokens
 | [FileInput](references/file-input.md) | `@dg-design/react/file-input` | 파일 선택·드래그 앤 드롭 입력. 형식·크기·개수 검증을 하고 통과분과 거부분을 함께 알려 준다. |
 | [FilterToolbox](references/filter-toolbox.md) | `@dg-design/react/filter-toolbox` | 적용된 필터 칩·결과 수·초기화를 한 줄에 놓는 필터 묶음의 껍데기. |
 | [HoverCard](references/hover-card.md) | `@dg-design/react/hover-card` | 링크 위에 마우스를 올리면 뜨는 미리보기 카드 — 마우스 사용자를 위한 보조 정보. |
+| [Icon](references/icon.md) | `@dg-design/react/icon` | 24 grid 기반 자체 SVG 아이콘 소수 세트 (16종). |
 | [List](references/list.md) | `@dg-design/react/list` | 제목 + 메타 + 행 동작으로 이루어진 객체 목록. 행 전체가 주 행동, 보조 행동은 Trailing. |
 | [MultiSelect](references/multi-select.md) | `@dg-design/react/multi-select` | 목록에서 여러 값을 고르는 드롭다운. 검색·새 항목 만들기·모바일 Sheet 표시를 지원한다. |
 | [NotificationBadge](references/notification-badge.md) | `@dg-design/react/notification-badge` | 읽지 않은 알림 개수나 새 항목 점. 다른 요소 모서리에 겹쳐 쓴다. |
@@ -80,6 +82,7 @@ pnpm add @dg-design/react @dg-design/tokens
 | [Progress](references/progress.md) | `@dg-design/react/progress` | 작업 진행률을 막대로 보여 주는 progressbar. |
 | [PropertyField](references/property-field.md) | `@dg-design/react/property-field` | 라벨은 왼쪽, 값을 고르는 트리거는 오른쪽에 두는 설정 행. 텍스트 입력이 아니라 선택창을 연다. |
 | [RadioGroup](references/radio-group.md) | `@dg-design/react/radio-group` | 서로 배타적인 소수의 선택지 중 하나를 고른다. 기본 점 모양과 segmented(탭 모양) 두 가지. |
+| [ResizeHandle](references/resize-handle.md) | `@dg-design/react/resize-handle` | 분할 패널의 너비와 높이를 포인터 드래그와 키보드로 조절하는 조작 손잡이. |
 | [SaveStatus](references/save-status.md) | `@dg-design/react/save-status` | 자동 저장 상태(저장됨·변경됨·저장 중·오류)를 아이콘과 문구로 보여 주는 한 줄 표시. |
 | [Select](references/select.md) | `@dg-design/react/select` | 목록에서 값 하나를 고르는 드롭다운(listbox). 여러 개는 MultiSelect. |
 | [Separator](references/separator.md) | `@dg-design/react/separator` | 내용을 나누는 얇은 구분선. 가로·세로. |
@@ -89,10 +92,12 @@ pnpm add @dg-design/react @dg-design/tokens
 | [Spinner](references/spinner.md) | `@dg-design/react/spinner` | 끝나는 시점을 모르는 짧은 대기를 나타내는 회전 표시. |
 | [StatePanel](references/state-panel.md) | `@dg-design/react/state-panel` | 영역 전체가 비었거나 불러오는 중이거나 실패했을 때 그 자리에 채우는 상태 안내 패널. |
 | [Switch](references/switch.md) | `@dg-design/react/switch` | 누르는 즉시 적용되는 켜기/끄기 설정 스위치. |
+| [TableOfContents](references/table-of-contents.md) | `@dg-design/react/table-of-contents` | 문서나 블로그 본문의 앵커 목록을 보여주고 현재 읽는 위치를 안내하는 목차 컴포넌트. |
 | [Table](references/table.md) | `@dg-design/react/table` | 정렬·선택 로직 없이 스타일만 입힌 정적 표 마크업. 데이터 기능이 필요하면 DataTable. |
 | [Tabs](references/tabs.md) | `@dg-design/react/tabs` | 같은 화면 안에서 관련 패널을 전환하는 탭. 포커스가 닿으면 곧바로 활성화된다. |
 | [TextArea](references/text-area.md) | `@dg-design/react/text-area` | 여러 줄 텍스트 입력. 자동 높이 조절(autoResize)과 글자 수 표시(showCount)를 지원한다. |
 | [TextField](references/text-field.md) | `@dg-design/react/text-field` | 한 줄 텍스트 입력. 이메일·비밀번호·검색·숫자 등 type과 앞뒤 장식(prefix·suffix)을 지원한다. |
 | [Toast](references/toast.md) | `@dg-design/react/toast` | 행동 결과를 잠깐 알리는 알림 — Provider 하나와 `useToast()` 훅. |
+| [ToggleGroup](references/toggle-group.md) | `@dg-design/react/toggle-group` | 편집 화면이나 도구 모음에서 보기 옵션을 하나 또는 여러 개 고르는 토글 묶음. |
 | [Tooltip](references/tooltip.md) | `@dg-design/react/tooltip` | 아이콘 버튼 같은 요소에 붙는 짧은 라벨 — 비인터랙티브 텍스트만. |
 <!-- components:end -->

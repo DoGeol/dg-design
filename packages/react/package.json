@@ -61,6 +61,10 @@
       "types": "./dist/chip/Chip.d.ts",
       "default": "./dist/chip/Chip.js"
     },
+    "./code-block": {
+      "types": "./dist/code-block/CodeBlock.d.ts",
+      "default": "./dist/code-block/CodeBlock.js"
+    },
     "./collapsible": {
       "types": "./dist/collapsible/Collapsible.d.ts",
       "default": "./dist/collapsible/Collapsible.js"
@@ -101,6 +105,10 @@
       "types": "./dist/hover-card/HoverCard.d.ts",
       "default": "./dist/hover-card/HoverCard.js"
     },
+    "./icon": {
+      "types": "./dist/icon/Icon.d.ts",
+      "default": "./dist/icon/Icon.js"
+    },
     "./list": {
       "types": "./dist/list/List.d.ts",
       "default": "./dist/list/List.js"
@@ -132,6 +140,10 @@
     "./radio-group": {
       "types": "./dist/radio-group/RadioGroup.d.ts",
       "default": "./dist/radio-group/RadioGroup.js"
+    },
+    "./resize-handle": {
+      "types": "./dist/resize-handle/ResizeHandle.d.ts",
+      "default": "./dist/resize-handle/ResizeHandle.js"
     },
     "./save-status": {
       "types": "./dist/save-status/SaveStatus.d.ts",
@@ -173,6 +185,10 @@
       "types": "./dist/table/Table.d.ts",
       "default": "./dist/table/Table.js"
     },
+    "./table-of-contents": {
+      "types": "./dist/table-of-contents/TableOfContents.d.ts",
+      "default": "./dist/table-of-contents/TableOfContents.js"
+    },
     "./tabs": {
       "types": "./dist/tabs/Tabs.d.ts",
       "default": "./dist/tabs/Tabs.js"
@@ -188,6 +204,10 @@
     "./toast": {
       "types": "./dist/toast/Toast.d.ts",
       "default": "./dist/toast/Toast.js"
+    },
+    "./toggle-group": {
+      "types": "./dist/toggle-group/ToggleGroup.d.ts",
+      "default": "./dist/toggle-group/ToggleGroup.js"
     },
     "./tooltip": {
       "types": "./dist/tooltip/Tooltip.d.ts",

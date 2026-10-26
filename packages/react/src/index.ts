@@ -34,6 +34,13 @@ export { Card, type CardProps } from "./card/Card";
 export { Checkbox, type CheckboxProps } from "./checkbox/Checkbox";
 export { Chip, FilterChip, type ChipProps, type FilterChipProps } from "./chip/Chip";
 export {
+  CodeBlock,
+  CopyButton,
+  type CodeBlockProps,
+  type CopyButtonProps,
+  type CopyStatus,
+} from "./code-block/CodeBlock";
+export {
   Collapsible,
   CollapsibleRoot,
   CollapsibleTrigger,
@@ -140,6 +147,25 @@ export {
   HoverCardContent,
 } from "./hover-card/HoverCard";
 export {
+  CheckIcon,
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChevronUpIcon,
+  CloseIcon,
+  CopyIcon,
+  DragHandleIcon,
+  ExternalLinkIcon,
+  MenuIcon,
+  MinusIcon,
+  MoonIcon,
+  PlusIcon,
+  SearchIcon,
+  SettingsIcon,
+  SunIcon,
+  type IconProps,
+} from "./icon/Icon";
+export {
   List,
   ListRoot,
   ListSection,
@@ -198,6 +224,13 @@ export {
   type PropertyFieldTriggerProps,
 } from "./property-field/PropertyField";
 export { RadioGroup, RadioGroupRoot, RadioGroupItem } from "./radio-group/RadioGroup";
+export {
+  ResizeHandle,
+  useResizeHandle,
+  type ResizeHandleProps,
+  type UseResizeHandleOptions,
+  type UseResizeHandleReturn,
+} from "./resize-handle/ResizeHandle";
 export { SaveStatus, type SaveStatusProps, type SaveStatusValue } from "./save-status/SaveStatus";
 export {
   Select,
@@ -257,6 +290,16 @@ export {
   TableCaption,
 } from "./table/Table";
 export {
+  TableOfContents,
+  useTableOfContentsActiveId,
+  type TableOfContentsProps,
+  type TableOfContentsBaseProps,
+  type TableOfContentsInlineProps,
+  type TableOfContentsCollapsibleProps,
+  type TableOfContentsItem,
+  type UseTableOfContentsActiveIdOptions,
+} from "./table-of-contents/TableOfContents";
+export {
   Tabs,
   TabsRoot,
   TabsList,
@@ -274,6 +317,15 @@ export {
   type ToastOptions,
   type ToastViewProps,
 } from "./toast/Toast";
+export {
+  ToggleGroup,
+  ToggleGroupRoot,
+  ToggleGroupItem,
+  type ToggleGroupRootProps,
+  type ToggleGroupSingleProps,
+  type ToggleGroupMultipleProps,
+  type ToggleGroupItemProps,
+} from "./toggle-group/ToggleGroup";
 export {
   Tooltip,
   TooltipProvider,
