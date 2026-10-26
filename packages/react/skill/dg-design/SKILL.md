@@ -91,10 +91,12 @@ pnpm add @dg-design/react @dg-design/tokens
 | [Spinner](references/spinner.md) | `@dg-design/react/spinner` | 끝나는 시점을 모르는 짧은 대기를 나타내는 회전 표시. |
 | [StatePanel](references/state-panel.md) | `@dg-design/react/state-panel` | 영역 전체가 비었거나 불러오는 중이거나 실패했을 때 그 자리에 채우는 상태 안내 패널. |
 | [Switch](references/switch.md) | `@dg-design/react/switch` | 누르는 즉시 적용되는 켜기/끄기 설정 스위치. |
+| [TableOfContents](references/table-of-contents.md) | `@dg-design/react/table-of-contents` | 문서나 블로그 본문의 앵커 목록을 보여주고 현재 읽는 위치를 안내하는 목차 컴포넌트. |
 | [Table](references/table.md) | `@dg-design/react/table` | 정렬·선택 로직 없이 스타일만 입힌 정적 표 마크업. 데이터 기능이 필요하면 DataTable. |
 | [Tabs](references/tabs.md) | `@dg-design/react/tabs` | 같은 화면 안에서 관련 패널을 전환하는 탭. 포커스가 닿으면 곧바로 활성화된다. |
 | [TextArea](references/text-area.md) | `@dg-design/react/text-area` | 여러 줄 텍스트 입력. 자동 높이 조절(autoResize)과 글자 수 표시(showCount)를 지원한다. |
 | [TextField](references/text-field.md) | `@dg-design/react/text-field` | 한 줄 텍스트 입력. 이메일·비밀번호·검색·숫자 등 type과 앞뒤 장식(prefix·suffix)을 지원한다. |
 | [Toast](references/toast.md) | `@dg-design/react/toast` | 행동 결과를 잠깐 알리는 알림 — Provider 하나와 `useToast()` 훅. |
+| [ToggleGroup](references/toggle-group.md) | `@dg-design/react/toggle-group` | 편집 화면이나 도구 모음에서 보기 옵션을 하나 또는 여러 개 고르는 토글 묶음. |
 | [Tooltip](references/tooltip.md) | `@dg-design/react/tooltip` | 아이콘 버튼 같은 요소에 붙는 짧은 라벨 — 비인터랙티브 텍스트만. |
 <!-- components:end -->

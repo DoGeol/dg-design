@@ -283,6 +283,16 @@ export {
   TableCaption,
 } from "./table/Table";
 export {
+  TableOfContents,
+  useTableOfContentsActiveId,
+  type TableOfContentsProps,
+  type TableOfContentsBaseProps,
+  type TableOfContentsInlineProps,
+  type TableOfContentsCollapsibleProps,
+  type TableOfContentsItem,
+  type UseTableOfContentsActiveIdOptions,
+} from "./table-of-contents/TableOfContents";
+export {
   Tabs,
   TabsRoot,
   TabsList,
@@ -300,6 +310,15 @@ export {
   type ToastOptions,
   type ToastViewProps,
 } from "./toast/Toast";
+export {
+  ToggleGroup,
+  ToggleGroupRoot,
+  ToggleGroupItem,
+  type ToggleGroupRootProps,
+  type ToggleGroupSingleProps,
+  type ToggleGroupMultipleProps,
+  type ToggleGroupItemProps,
+} from "./toggle-group/ToggleGroup";
 export {
   Tooltip,
   TooltipProvider,
