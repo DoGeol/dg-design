@@ -1,0 +1,156 @@
+dds-code-block | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-code-block__filename | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-copy-button dds-code-block__copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header dds-code-block__header--copy-only | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-copy-button dds-code-block__copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-code-block__filename | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-code-block__filename | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-copy-button dds-code-block__copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-code-block | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-code-block__filename | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-copy-button dds-code-block__copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button dds-code-block__copy-button::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header dds-code-block__header--copy-only | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-copy-button dds-code-block__copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button dds-code-block__copy-button::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-code-block__filename | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(0, 0, 0) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-code-block__filename | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-copy-button dds-code-block__copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button dds-code-block__copy-button::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-code-block | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-code-block__filename | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-copy-button dds-code-block__copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header dds-code-block__header--copy-only | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-copy-button dds-code-block__copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-code-block__filename | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-code-block__filename | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-copy-button dds-code-block__copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-code-block__filename | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-copy-button dds-code-block__copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button dds-code-block__copy-button::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header dds-code-block__header--copy-only | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-copy-button dds-code-block__copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button dds-code-block__copy-button::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-code-block__filename | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-code-block | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-code-block__header | rgb(174, 178, 178) | rgb(36, 39, 39) | none | rgb(174, 178, 178) rgb(174, 178, 178) rgb(58, 62, 62) | none
+dds-code-block__filename | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-copy-button dds-code-block__copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button dds-code-block__copy-button::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-code-block__content | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
+dds-copy-button | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(58, 62, 62) | none
+dds-copy-button::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-copy-button__text | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-code-block__sr-only | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none

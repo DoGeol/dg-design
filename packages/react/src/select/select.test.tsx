@@ -415,6 +415,21 @@ describe("Select aria", () => {
     await user.click(trigger());
     expect(screen.getByRole("group", { name: "흔한 것" })).toBeTruthy();
   });
+
+  it("트리거 caret과 옵션 check 아이콘은 aria-hidden='true'이다", async () => {
+    const user = userEvent.setup();
+    render(<Basic defaultValue="banana" />);
+
+    const caretSvg = trigger().querySelector("svg.dds-select__caret");
+    expect(caretSvg).toBeTruthy();
+    expect(caretSvg?.getAttribute("aria-hidden")).toBe("true");
+
+    await user.click(trigger());
+    const option = screen.getByRole("option", { name: "Banana" });
+    const checkSvg = option.querySelector("svg.dds-select__check");
+    expect(checkSvg).toBeTruthy();
+    expect(checkSvg?.getAttribute("aria-hidden")).toBe("true");
+  });
 });
 
 describe("Select 옵션 label·textValue", () => {

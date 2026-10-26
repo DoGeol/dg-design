@@ -82,6 +82,18 @@ describe("Chip", () => {
     // @ts-expect-error removeLabel 누락
     render(<Chip onRemove={() => {}}>태그</Chip>);
   });
+
+  it("제거 버튼의 CloseIcon은 aria-hidden='true'이다", () => {
+    render(
+      <Chip onRemove={() => {}} removeLabel="태그 제거">
+        태그
+      </Chip>,
+    );
+    const removeBtn = screen.getByRole("button", { name: "태그 제거" });
+    const svg = removeBtn.querySelector("svg");
+    expect(svg).toBeTruthy();
+    expect(svg?.getAttribute("aria-hidden")).toBe("true");
+  });
 });
 
 describe("FilterChip", () => {
@@ -128,6 +140,14 @@ describe("FilterChip", () => {
     );
     await user.click(screen.getByRole("button", { name: "내 글" }));
     expect(onPressedChange).not.toHaveBeenCalled();
+  });
+
+  it("FilterChip 체크 아이콘은 aria-hidden='true'이다", () => {
+    render(<FilterChip defaultPressed>내 글</FilterChip>);
+    const chip = screen.getByRole("button", { name: "내 글" });
+    const checkSvg = chip.querySelector("svg.dds-chip__check");
+    expect(checkSvg).toBeTruthy();
+    expect(checkSvg?.getAttribute("aria-hidden")).toBe("true");
   });
 });
 

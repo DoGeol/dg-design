@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import * as React from "react";
 
+import { CheckIcon } from "../icon/check-icon";
 import { optionLabel, type OptionLabelProps, OPTION_ROLE, VALUE_ATTR } from "../internal/select-core";
 import { useMultiSelectContext } from "./multi-select-context";
 
@@ -47,22 +48,7 @@ export const MultiSelectOption = React.forwardRef<HTMLButtonElement, MultiSelect
         }}
         {...props}
       >
-        <svg
-          className="dds-select__check"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M3.5 8.5l3 3 6-7"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <CheckIcon size={16} className="dds-select__check" />
         <span className="dds-select__option-label">{children}</span>
       </button>
     );

@@ -77,6 +77,23 @@ describe("DropdownMenu.CheckboxItem", () => {
     await user.keyboard("{ArrowDown}{ArrowDown}");
     expect(document.activeElement).toBe(screen.getByRole("menuitem", { name: "닫기" }));
   });
+
+  it("체크와 라디오 인디케이터 아이콘은 aria-hidden='true'이다", async () => {
+    const user = userEvent.setup();
+    render(<Settings />);
+    await user.click(screen.getByRole("button", { name: "보기" }));
+
+    const checkItem = screen.getByRole("menuitemcheckbox", { name: "격자 보기" });
+    const checkSvg = checkItem.querySelector("svg.dds-dropdown-menu__indicator");
+    expect(checkSvg).toBeTruthy();
+    expect(checkSvg?.getAttribute("aria-hidden")).toBe("true");
+
+    const radioItem = screen.getByRole("menuitemradio", { name: "최근 순" });
+    const radioSvg = radioItem.querySelector("svg.dds-dropdown-menu__indicator");
+    expect(radioSvg).toBeTruthy();
+    expect(radioSvg?.getAttribute("aria-hidden")).toBe("true");
+    expect(radioSvg?.querySelector("circle")).toBeTruthy();
+  });
 });
 
 describe("DropdownMenu.RadioGroup·RadioItem", () => {

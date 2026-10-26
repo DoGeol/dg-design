@@ -8,6 +8,8 @@ import * as React from "react";
 import { createPortal } from "react-dom";
 
 import { FieldContext } from "../field/field-context";
+import { CheckIcon } from "../icon/check-icon";
+import { ChevronDownIcon } from "../icon/chevron-down-icon";
 import { mergeRefs } from "../internal/merge-refs";
 import { focusItem, getItems } from "../internal/roving-focus";
 import {
@@ -226,22 +228,7 @@ export const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerPr
         <span className="dds-select__value" data-placeholder={selected ? undefined : ""}>
           {children ?? selected?.label ?? placeholder}
         </span>
-        <svg
-          className="dds-select__caret"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M4 6l4 4 4-4"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <ChevronDownIcon size={16} className="dds-select__caret" />
       </button>
     );
   },
@@ -359,22 +346,7 @@ export const SelectOption = React.forwardRef<HTMLButtonElement, SelectOptionProp
         }}
         {...props}
       >
-        <svg
-          className="dds-select__check"
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          aria-hidden="true"
-        >
-          <path
-            d="M3.5 8.5l3 3 6-7"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <CheckIcon size={16} className="dds-select__check" />
         <span className="dds-select__option-label">{children}</span>
       </button>
     );

@@ -118,6 +118,9 @@ describe("List.Section", () => {
     const toggle = screen.getByRole("button", { name: /초안·예약/ });
     expect(screen.getByRole("heading").contains(toggle)).toBe(true);
     expect(toggle.getAttribute("aria-expanded")).toBe("true");
+    const chevronSvg = toggle.querySelector("svg.dds-list-section-header__chevron");
+    expect(chevronSvg).toBeTruthy();
+    expect(chevronSvg?.getAttribute("aria-hidden")).toBe("true");
     const list = screen.getByRole("list");
     expect(toggle.getAttribute("aria-controls")).toBe(list.id);
     await user.click(toggle);

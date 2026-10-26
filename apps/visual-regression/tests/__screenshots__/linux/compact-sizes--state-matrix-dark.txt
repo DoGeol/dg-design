@@ -5,17 +5,19 @@ dds-text-area dds-text-area--size_medium dds-text-area--auto-resize dds-text-are
 dds-chip dds-chip--size_small | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
 dds-chip__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-chip__remove | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-icon dds-icon--size_16 | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-chip dds-chip--filter dds-chip--size_small | rgb(131, 232, 231) | rgb(7, 45, 45) | none | rgb(131, 232, 231) | none
-dds-chip__check | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
+dds-icon dds-icon--size_16 dds-chip__check | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
 dds-select__trigger dds-select__trigger--variant_chip dds-select__trigger--size_small | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | rgb(58, 62, 62) 0px 0px 0px 1px inset
 dds-select__value | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-select__caret | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 dds-select__caret | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-select__trigger dds-select__trigger--size_xsmall dds-multi-select__trigger--search | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
 dds-chip dds-chip--size_small | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
 dds-chip__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-chip__remove | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-icon dds-icon--size_16 | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-multi-select__search | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-select__caret | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 dds-select__caret | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-tabs | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
 dds-tabs__list | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) rgb(0, 0, 0) rgb(58, 62, 62) | none
 dds-tabs__indicator | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) rgb(0, 0, 0) rgb(131, 232, 231) | none
@@ -68,20 +70,22 @@ dds-chip dds-chip--size_small | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rg
 dds-chip__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-chip__remove | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-chip__remove::before | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-icon dds-icon--size_16 | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-chip dds-chip--filter dds-chip--size_small | rgb(131, 232, 231) | rgb(7, 45, 45) | none | rgb(131, 232, 231) | none
 dds-chip dds-chip--filter dds-chip--size_small::before | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
-dds-chip__check | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
+dds-icon dds-icon--size_16 dds-chip__check | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
 dds-select__trigger dds-select__trigger--variant_chip dds-select__trigger--size_small | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | rgb(58, 62, 62) 0px 0px 0px 1px inset
 dds-select__trigger dds-select__trigger--variant_chip dds-select__trigger--size_small::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-select__value | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-select__caret | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 dds-select__caret | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-select__trigger dds-select__trigger--size_xsmall dds-multi-select__trigger--search | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
 dds-chip dds-chip--size_small | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
 dds-chip__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-chip__remove | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-chip__remove::before | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
+dds-icon dds-icon--size_16 | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-multi-select__search | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-select__caret | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_16 dds-select__caret | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-tabs | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
 dds-tabs__list | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) rgb(0, 0, 0) rgb(58, 62, 62) | none
 dds-tabs__indicator | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) rgb(0, 0, 0) rgb(131, 232, 231) | none

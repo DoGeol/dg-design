@@ -5,6 +5,8 @@ import clsx from "clsx";
 import * as React from "react";
 
 import { FieldContext } from "../field/field-context";
+import { CheckIcon } from "../icon/check-icon";
+import { MinusIcon } from "../icon/minus-icon";
 import { mergeRefs } from "../internal/merge-refs";
 
 const checkbox = cva("dds-checkbox", {
@@ -93,28 +95,8 @@ export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           // 전환이 끝나면 바로 해제한다 — 포인터 뒤의 프로그램 변경·키보드 조작에 모션이 남지 않는다.
           onTransitionEnd={() => setPointerMotion(false)}
         >
-          <svg
-            className="dds-checkbox__check-icon"
-            viewBox="0 0 12 12"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M2.5 6.25L4.75 8.5L9.5 3.5"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-          <svg
-            className="dds-checkbox__dash-icon"
-            viewBox="0 0 12 12"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M2.5 6H9.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
+          <CheckIcon size={16} className="dds-checkbox__check-icon" />
+          <MinusIcon size={16} className="dds-checkbox__dash-icon" />
         </span>
         {children != null ? <span className="dds-checkbox__label">{children}</span> : null}
       </label>
