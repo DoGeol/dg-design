@@ -1,6 +1,8 @@
 import clsx from "clsx";
 import * as React from "react";
 
+import { CheckIcon } from "../icon/check-icon";
+import { DotIcon } from "../icon/dot-icon";
 import { useControllableState } from "../internal/use-controllable-state";
 
 /**
@@ -11,14 +13,10 @@ import { useControllableState } from "../internal/use-controllable-state";
 export const MENU_ITEM_ROLES = ["menuitem", "menuitemcheckbox", "menuitemradio"] as const;
 
 function Indicator({ kind }: { kind: "check" | "radio" }) {
-  return (
-    <svg className="dds-dropdown-menu__indicator" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      {kind === "check" ? (
-        <path d="M3.5 8.5l3 3 6-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-      ) : (
-        <circle cx="8" cy="8" r="3" fill="currentColor" />
-      )}
-    </svg>
+  return kind === "check" ? (
+    <CheckIcon size={16} className="dds-dropdown-menu__indicator" />
+  ) : (
+    <DotIcon size={16} className="dds-dropdown-menu__indicator" />
   );
 }
 

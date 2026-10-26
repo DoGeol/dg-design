@@ -2,6 +2,8 @@ import "./chip.css";
 import clsx from "clsx";
 import * as React from "react";
 
+import { CheckIcon } from "../icon/check-icon";
+import { CloseIcon } from "../icon/close-icon";
 import { useControllableState } from "../internal/use-controllable-state";
 
 type ChipRemoveProps =
@@ -51,9 +53,7 @@ export const Chip = React.forwardRef<HTMLSpanElement, ChipProps>(
             onRemove();
           }}
         >
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-            <path d="M3 3l6 6M9 3l-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          </svg>
+          <CloseIcon size={16} />
         </button>
       )}
     </span>
@@ -85,11 +85,7 @@ export const FilterChip = React.forwardRef<HTMLButtonElement, FilterChipProps>(
         }}
         {...props}
       >
-        {on && (
-          <svg className="dds-chip__check" width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3.5 8.5l3 3 6-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        )}
+        {on && <CheckIcon size={16} className="dds-chip__check" />}
         {children}
       </button>
     );

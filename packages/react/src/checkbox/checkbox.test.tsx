@@ -46,6 +46,17 @@ describe("Checkbox", () => {
     await user.click(input);
     expect(input.checked).toBe(false);
   });
+
+  it("체크박스 내부의 체크 및 대시 아이콘은 aria-hidden='true'이다", () => {
+    render(<Checkbox aria-label="아이콘 접근성" />);
+    const checkSvg = document.querySelector("svg.dds-checkbox__check-icon");
+    const dashSvg = document.querySelector("svg.dds-checkbox__dash-icon");
+
+    expect(checkSvg).toBeTruthy();
+    expect(checkSvg?.getAttribute("aria-hidden")).toBe("true");
+    expect(dashSvg).toBeTruthy();
+    expect(dashSvg?.getAttribute("aria-hidden")).toBe("true");
+  });
 });
 
 /** 모션 허용 여부만 본다 — 실제 프레임·opacity는 jsdom이 판정할 수 없어 브라우저 기능 테스트가 맡는다. */

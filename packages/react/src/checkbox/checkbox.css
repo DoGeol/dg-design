@@ -46,8 +46,7 @@
      아이콘"에 따라 달라져 체크할 때마다 줄 전체가 1~6px 움직인다(기존 display 토글의 부작용).
      transition-property를 명시적으로 비워 둔다. 기본값 all은 duration이 0이어도 "전환 가능"이라
      모션을 끄는 순간(키보드 개입 등) 진행 중인 전환이 취소되지 않고 끝까지 달린다. */
-  .dds-checkbox__check-icon,
-  .dds-checkbox__dash-icon {
+  .dds-checkbox__box :is(.dds-checkbox__check-icon, .dds-checkbox__dash-icon) {
     position: absolute;
     width: 70%;
     height: 70%;

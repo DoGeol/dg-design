@@ -5,6 +5,7 @@ import { renderToString } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 
 import { Button } from "../button/Button";
+import { DotIcon } from "./dot-icon";
 import {
   CheckIcon,
   ChevronDownIcon,
@@ -213,6 +214,26 @@ describe("Icon", () => {
       expect(CopyIcon.displayName).toBe("CopyIcon");
       expect(SunIcon.displayName).toBe("SunIcon");
       expect(SettingsIcon.displayName).toBe("SettingsIcon");
+    });
+  });
+
+  describe("비공개 DotIcon", () => {
+    it("24x24 viewBox에 채운 원을 렌더링하고 기본 label 미지정 시 aria-hidden='true'이다", () => {
+      const ref = React.createRef<SVGSVGElement>();
+      const { container } = render(<DotIcon ref={ref} size={16} className="test-dot" />);
+      const svg = container.querySelector("svg");
+      expect(svg).toBeTruthy();
+      expect(svg?.getAttribute("viewBox")).toBe("0 0 24 24");
+      expect(svg?.getAttribute("fill")).toBe("currentColor");
+      expect(svg?.getAttribute("stroke")).toBe("none");
+      expect(svg?.getAttribute("aria-hidden")).toBe("true");
+      expect(svg?.classList.contains("test-dot")).toBe(true);
+      expect(ref.current).toBe(svg);
+      const circle = svg?.querySelector("circle");
+      expect(circle).toBeTruthy();
+      expect(circle?.getAttribute("cx")).toBe("12");
+      expect(circle?.getAttribute("cy")).toBe("12");
+      expect(circle?.getAttribute("r")).toBe("4.5");
     });
   });
 });

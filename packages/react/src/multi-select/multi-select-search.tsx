@@ -3,6 +3,7 @@ import clsx from "clsx";
 import * as React from "react";
 
 import { Chip } from "../chip/Chip";
+import { ChevronDownIcon } from "../icon/chevron-down-icon";
 import { mergeRefs } from "../internal/merge-refs";
 import { moveFocus } from "../internal/roving-focus";
 import { nodeToText, OPTION_ROLE, selectTrigger, type OptionEntry } from "../internal/select-core";
@@ -227,24 +228,7 @@ export function useMultiSelectSearch({
 }
 
 export function MultiSelectCaret() {
-  return (
-    <svg
-      className="dds-select__caret"
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M4 6l4 4 4-4"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
+  return <ChevronDownIcon size={16} className="dds-select__caret" />;
 }
 
 export interface MultiSelectSearchTriggerProps

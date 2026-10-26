@@ -1,6 +1,7 @@
 import clsx from "clsx";
 import * as React from "react";
 
+import { ChevronDownIcon } from "../icon/chevron-down-icon";
 import { useControllableState } from "../internal/use-controllable-state";
 
 interface ListSectionContextValue {
@@ -58,11 +59,7 @@ export interface ListSectionHeaderProps extends Omit<React.HTMLAttributes<HTMLDi
 }
 
 function Chevron() {
-  return (
-    <svg className="dds-list-section-header__chevron" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-      <path d="M4 6l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
+  return <ChevronDownIcon size={16} className="dds-list-section-header__chevron" />;
 }
 
 /** 목록 묶음 제목 행. Accordion과 달리 본문 disclosure가 아니라 목록 그룹 제목이다. */

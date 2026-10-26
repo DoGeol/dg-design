@@ -82,6 +82,11 @@
     cursor: not-allowed;
   }
 
+  .dds-chip__remove > .dds-icon {
+    width: var(--dds-dimension-x3);
+    height: var(--dds-dimension-x3);
+  }
+
   /* 필터 칩 */
   .dds-chip--filter {
     position: relative;
@@ -137,6 +142,10 @@
   .dds-chip__check {
     flex: none;
     margin-inline-start: calc(var(--dds-dimension-x0_5) * -1);
+  }
+  .dds-chip__check.dds-icon {
+    width: var(--dds-dimension-x3_5);
+    height: var(--dds-dimension-x3_5);
   }
 
   [data-dds-density="mobile"] .dds-chip {
