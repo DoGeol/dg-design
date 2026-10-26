@@ -1,0 +1,24 @@
+@layer dds {
+  .dds-icon {
+    display: inline-block;
+    vertical-align: middle;
+    flex-shrink: 0;
+    box-sizing: content-box;
+    color: currentColor;
+  }
+
+  .dds-icon--size_16 {
+    width: var(--dds-dimension-x4);
+    height: var(--dds-dimension-x4);
+  }
+
+  .dds-icon--size_20 {
+    width: var(--dds-dimension-x5);
+    height: var(--dds-dimension-x5);
+  }
+
+  .dds-icon--size_24 {
+    width: var(--dds-dimension-x6);
+    height: var(--dds-dimension-x6);
+  }
+}

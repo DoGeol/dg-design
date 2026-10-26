@@ -101,6 +101,10 @@
       "types": "./dist/hover-card/HoverCard.d.ts",
       "default": "./dist/hover-card/HoverCard.js"
     },
+    "./icon": {
+      "types": "./dist/icon/Icon.d.ts",
+      "default": "./dist/icon/Icon.js"
+    },
     "./list": {
       "types": "./dist/list/List.d.ts",
       "default": "./dist/list/List.js"
@@ -132,6 +136,10 @@
     "./radio-group": {
       "types": "./dist/radio-group/RadioGroup.d.ts",
       "default": "./dist/radio-group/RadioGroup.js"
+    },
+    "./resize-handle": {
+      "types": "./dist/resize-handle/ResizeHandle.d.ts",
+      "default": "./dist/resize-handle/ResizeHandle.js"
     },
     "./save-status": {
       "types": "./dist/save-status/SaveStatus.d.ts",

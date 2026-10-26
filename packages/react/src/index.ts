@@ -140,6 +140,25 @@ export {
   HoverCardContent,
 } from "./hover-card/HoverCard";
 export {
+  CheckIcon,
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  ChevronUpIcon,
+  CloseIcon,
+  CopyIcon,
+  DragHandleIcon,
+  ExternalLinkIcon,
+  MenuIcon,
+  MinusIcon,
+  MoonIcon,
+  PlusIcon,
+  SearchIcon,
+  SettingsIcon,
+  SunIcon,
+  type IconProps,
+} from "./icon/Icon";
+export {
   List,
   ListRoot,
   ListSection,
@@ -198,6 +217,13 @@ export {
   type PropertyFieldTriggerProps,
 } from "./property-field/PropertyField";
 export { RadioGroup, RadioGroupRoot, RadioGroupItem } from "./radio-group/RadioGroup";
+export {
+  ResizeHandle,
+  useResizeHandle,
+  type ResizeHandleProps,
+  type UseResizeHandleOptions,
+  type UseResizeHandleReturn,
+} from "./resize-handle/ResizeHandle";
 export { SaveStatus, type SaveStatusProps, type SaveStatusValue } from "./save-status/SaveStatus";
 export {
   Select,

@@ -1,0 +1,80 @@
+@layer dds {
+  .dds-resize-handle {
+    position: relative;
+    flex-shrink: 0;
+    touch-action: none;
+    border-radius: var(--dds-radius-r1);
+    background-color: var(--dds-color-stroke-neutral-weak);
+    outline: none;
+    transition: background-color 0.15s ease;
+  }
+
+  .dds-resize-handle[hidden] {
+    display: none;
+  }
+
+  .dds-resize-handle--orientation_vertical {
+    width: var(--dds-dimension-x1);
+    align-self: stretch;
+    cursor: col-resize;
+  }
+
+  .dds-resize-handle--orientation_horizontal {
+    height: var(--dds-dimension-x1);
+    width: 100%;
+    cursor: row-resize;
+  }
+
+  /* 히트 영역 확장: 슬림한 4px 시각선 주위로 데스크톱 12px 확보 */
+  .dds-resize-handle::before {
+    content: "";
+    position: absolute;
+    pointer-events: auto;
+    z-index: 1;
+  }
+
+  .dds-resize-handle--orientation_vertical::before {
+    inset-block: 0;
+    inset-inline: -4px;
+  }
+
+  .dds-resize-handle--orientation_horizontal::before {
+    inset-inline: 0;
+    inset-block: -4px;
+  }
+
+  /* 모바일 밀도: 조작 영역을 최소 44px로 확장 */
+  [data-dds-density="mobile"] .dds-resize-handle--orientation_vertical::before {
+    inset-inline: min(-4px, calc((100% - var(--dds-size-touch-target)) / 2));
+    inset-block: 0;
+  }
+
+  [data-dds-density="mobile"] .dds-resize-handle--orientation_horizontal::before {
+    inset-block: min(-4px, calc((100% - var(--dds-size-touch-target)) / 2));
+    inset-inline: 0;
+  }
+
+  /* 호버 및 드래깅 활성 피드백 */
+  .dds-resize-handle:not(:is(:disabled, [disabled], [data-disabled])):is(:hover, [data-hover]),
+  .dds-resize-handle:not(:is(:disabled, [disabled], [data-disabled]))[data-dragging] {
+    background-color: var(--dds-color-fg-brand);
+  }
+
+  /* 키보드 포커스 링 (비입력 2px 외곽 링) */
+  .dds-resize-handle:focus-visible {
+    background-color: var(--dds-color-fg-brand);
+    outline: var(--dds-dimension-x0_5) solid var(--dds-color-stroke-focus-ring);
+    outline-offset: var(--dds-dimension-x0_5);
+  }
+
+  .dds-resize-handle[data-dragging] {
+    user-select: none;
+  }
+
+  /* 비활성화 상태: 3중 매칭 */
+  .dds-resize-handle:is(:disabled, [disabled], [data-disabled]) {
+    cursor: not-allowed;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}

@@ -291,7 +291,13 @@ export const tailwindCss = () =>
       ...Object.keys(zIndex).map((name) => `--z-index-${name}: var(--dds-z-${name});`),
       "",
       ...roleEntries().map(([group, id]) => {
-        const ns = { space: "spacing", size: "spacing", radius: "radius", "font-size": "text" }[group];
+        const ns = {
+          space: "spacing",
+          size: "spacing",
+          radius: "radius",
+          "font-size": "text",
+          stroke: "stroke-width",
+        }[group];
         const target = ns ? `--${ns}-${id}` : `--text-${id}--line-height`;
         return `${target}: var(--dds-${group}-${id});`;
       }),

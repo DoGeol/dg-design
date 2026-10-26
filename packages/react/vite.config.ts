@@ -31,7 +31,12 @@ export default defineConfig({
     target: "esnext",
     minify: false,
     lib: {
-      entry: [path.resolve(root, "src/index.ts"), path.resolve(root, "src/button/Button.tsx")],
+      entry: [
+        path.resolve(root, "src/index.ts"),
+        path.resolve(root, "src/button/Button.tsx"),
+        // 다시 내보내기만 하는 모듈은 preserveModules에서 빠지므로 하위 경로 진입점으로 직접 넣는다.
+        path.resolve(root, "src/icon/Icon.ts"),
+      ],
       formats: ["es"],
     },
     outDir: "dist",
