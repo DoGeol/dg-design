@@ -1,5 +1,58 @@
 # @dg-design/react
 
+## 0.26.0
+
+### Minor Changes
+
+- 9e84571: Add `CodeBlock` component and `CopyButton` sub-component for scrollable code areas with accessible clipboard copy feedback.
+  
+  - Add `@dg-design/react/code-block` exporting `CodeBlock` leaf component and standalone `CopyButton`.
+  - Provide keyboard scrollable code container with W3C `role="region"`, `tabIndex={0}`, and accessible naming contract derived from `label` or `filename`.
+  - Connect asynchronous clipboard copying with polite `role="status"` screen reader announcements ("코드를 복사했습니다." on success, "복사하지 못했습니다. 코드를 선택해 직접 복사하십시오." on error) without redundant `aria-live`.
+  - Toggle between `CopyIcon` and `CheckIcon` with "코드 복사" and "복사됨" dynamic `aria-label` updates and pending action lock.
+  - Support optional `filename` header, flexible plain text children auto-extraction, and seamless integration with pre-highlighted code nodes (shiki/Prism).
+  - Expand mobile hit area of `CopyButton` to 44px under `[data-dds-density="mobile"]`.
+- 88c9493: Add initial icon set with 16 self-contained SVG icons and the `--dds-stroke-icon-width` token.
+  
+  - Add `@dg-design/react/icon` with 16 24x24 grid icons (`ChevronUpIcon`, `ChevronDownIcon`, `ChevronLeftIcon`, `ChevronRightIcon`, `CloseIcon`, `MenuIcon`, `ExternalLinkIcon`, `PlusIcon`, `MinusIcon`, `SunIcon`, `MoonIcon`, `DragHandleIcon`, `CheckIcon`, `CopyIcon`, `SearchIcon`, `SettingsIcon`).
+  - Support sizes 16, 20 (default), and 24 with proportional stroke width scaling, inheriting color via `currentColor`.
+  - Provide accessible naming contract: non-empty `label` sets `role="img"` and `aria-label`, while omitting `label` marks the icon decorative with `aria-hidden="true"` and `focusable="false"`.
+  - Add `--dds-stroke-icon-width: 2` role token in `@dg-design/tokens` and bind to Tailwind v4 bridge (`--stroke-width-icon-width`).
+- 88c9493: Add `ResizeHandle` component and `useResizeHandle` hook for resizable split screen panels.
+  
+  - Add `@dg-design/react/resize-handle` supporting horizontal and vertical orientations with pointer capture and W3C ARIA `role="separator"` contract (`aria-valuenow`, `aria-valuemin`, `aria-valuemax`, `aria-orientation`).
+  - Support keyboard step adjustments (`ArrowLeft`/`ArrowRight` or `ArrowDown`/`ArrowUp`), boundary jumps (`Home`/`End`), and reset restoration (`Enter`/`Space`).
+  - Provide double-click and keyboard reset hook via `onReset`.
+  - Expand hit target via pseudo-element to 12px on desktop and 44px under `[data-dds-density="mobile"]`.
+- 1512a0f: Add `TableOfContents` component and optional `useTableOfContentsActiveId` hook for in-page anchor navigation.
+  
+  - Add `@dg-design/react/table-of-contents` with `TableOfContents` leaf component and `useTableOfContentsActiveId` scroll observation hook.
+  - Support `variant="inline"` (default) and `variant="collapsible"` composed with `Collapsible` primitive and `ChevronDownIcon`.
+  - Normalize item depths (1–6) into standard nested `<ol>` / `<li>` structure while visually capping indentation accumulation at 3 levels.
+  - Assign `aria-current="location"` with brand indicator bar and bold styling to the single active heading without stealing focus or fragment navigation.
+  - Return trigger focus automatically when collapsible content is closed programmatically while focus is inside the content.
+  - Provide `useTableOfContentsActiveId` hook observing passive scroll with requestAnimationFrame coordinate measurement and resize cleanup, safely returning `null` during SSR.
+- 1512a0f: Add `ToggleGroup` compound component for single and multiple selection option groups.
+  
+  - Add `@dg-design/react/toggle-group` with compound (`ToggleGroup.Root`, `ToggleGroup.Item`) and named exports (`ToggleGroupRoot`, `ToggleGroupItem`).
+  - Support `type="single"` (radio semantics with `role="radiogroup"` / `role="radio"`, `aria-checked`) and `type="multiple"` (toolbar semantics with `role="toolbar"`, `aria-pressed`).
+  - Provide keyboard navigation with arrow keys for focus movement, `Space`/`Enter` for selection, and `Home`/`End` for jumping to the first/last enabled item.
+  - Support `disallowEmptySelection` (defaults to `true` for single, `false` for multiple) and guarantee DOM order without duplicates in multiple selection changes.
+  - Reserve visual check mark space (`CheckIcon`) to avoid layout shifts upon selection, and expand mobile touch targets to 44px under `[data-dds-density="mobile"]`.
+
+### Patch Changes
+
+- 73dfba3: Replace internal inline SVGs with `@dg-design/react/icon` components across Select, MultiSelect, List, DropdownMenu, Checkbox, and Chip.
+  
+  - Select: replace trigger caret with `ChevronDownIcon` and option checkmark with `CheckIcon`.
+  - MultiSelect: replace option checkmark with `CheckIcon` and search trigger caret with `ChevronDownIcon`.
+  - List: replace collapsible SectionHeader chevron with `ChevronDownIcon`.
+  - DropdownMenu: replace CheckboxItem indicator with `CheckIcon` and RadioItem indicator with private `DotIcon`.
+  - Checkbox: replace checkmark with `CheckIcon` and dash indicator with `MinusIcon`, maintaining 70% container scaling.
+  - Chip: replace remove button glyph with `CloseIcon` (12px) and FilterChip checkmark with `CheckIcon` (14px).
+  - Add private `DotIcon` on 24x24 grid with filled circle for menu radio indicator without polluting public icon exports.
+- 98d1ac7: Fix the expanded table of contents continuously growing when its content height is measured.
+
 ## 0.25.0
 
 ### Minor Changes
