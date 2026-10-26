@@ -98,6 +98,11 @@
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
+| [2026-10-27 Icon 스펙](specs/2026-10-27-icon.md) | 승인 · 구현 전 | 자체 SVG 세트 `react/icon`, B1a 새 하위 경로 · B1b 내부 SVG 교체 |
+| [2026-10-27 ToggleGroup 스펙](specs/2026-10-27-toggle-group.md) | 승인 · 구현 전 | single·multiple 토글 묶음, react-aria useToggleButtonGroup |
+| [2026-10-27 TableOfContents 스펙](specs/2026-10-27-table-of-contents.md) | 승인 · 구현 전 | inline·collapsible 목차, aria-current=location, 선택형 관찰 훅 |
+| [2026-10-27 ResizeHandle 스펙](specs/2026-10-27-resize-handle.md) | 승인 · 구현 전 | role=separator 크기 조절 손잡이 + useResizeHandle |
+| [2026-10-27 CodeBlock 스펙](specs/2026-10-27-code-block.md) | 승인 · 구현 전 | 이름 있는 스크롤 영역, filename, 복사(CopyButton) |
 | [2026-10-09 P3 접근성·API 스펙](specs/2026-10-09-p3-a11y-api.md) | npm 0.19.0 배포 | 메뉴 체크·라디오 항목, 옵션 label·textValue, DataTable align, Toast action |
 | [사용 가이드 스킬](decisions/2026-10-09-usage-skill.md) · [설정 가이드](../packages/react/AGENT-SETUP.md) | npm react 0.21.0 배포 | P7 — 컴포넌트 42개 예제(`packages/react/skill-src`) → 패키지 스킬 `skill/dg-design` |
 | [2026-10-09 P6 폼 확장 스펙](specs/2026-10-09-p6-form-variants.md) | npm react 0.21.0 배포 | TextField·TextArea `variant` box·line(모바일 밀도 전용) |
