@@ -34,6 +34,13 @@ export { Card, type CardProps } from "./card/Card";
 export { Checkbox, type CheckboxProps } from "./checkbox/Checkbox";
 export { Chip, FilterChip, type ChipProps, type FilterChipProps } from "./chip/Chip";
 export {
+  CodeBlock,
+  CopyButton,
+  type CodeBlockProps,
+  type CopyButtonProps,
+  type CopyStatus,
+} from "./code-block/CodeBlock";
+export {
   Collapsible,
   CollapsibleRoot,
   CollapsibleTrigger,

@@ -62,6 +62,7 @@ pnpm add @dg-design/react @dg-design/tokens
 | [Card](references/card.md) | `@dg-design/react/card` | 관련 내용을 테두리 있는 면으로 묶는 단순 컨테이너. 스타일만 있고 구조는 없다. |
 | [Checkbox](references/checkbox.md) | `@dg-design/react/checkbox` | 여러 항목 중 해당하는 것을 각각 켜고 끄는 체크박스. 부분 선택(indeterminate)을 지원한다. |
 | [Chip](references/chip.md) | `@dg-design/react/chip` | 사용자가 고른 값을 보여 주는 Chip(제거 가능)과 켜고 끄는 필터 FilterChip. |
+| [CodeBlock](references/code-block.md) | `@dg-design/react/code-block` | 가로 스크롤 가능한 코드 블록 영역과 상단 파일명 표시 및 클립보드 복사 기능을 제공하는 컴포넌트. |
 | [Collapsible](references/collapsible.md) | `@dg-design/react/collapsible` | 하나의 영역을 열고 닫는 최소 disclosure. 트리거 하나 + 내용 하나. |
 | [ContextMenu](references/context-menu.md) | `@dg-design/react/context-menu` | 영역을 우클릭하면 그 지점에 뜨는 행동 메뉴 — DropdownMenu와 같은 항목 구성. |
 | [DataTable](references/data-table.md) | `@dg-design/react/data-table` | 데이터 배열과 열 정의로 그리는 표. 정렬·필터·행 선택·열 고정·가상 스크롤을 내장한다. |
