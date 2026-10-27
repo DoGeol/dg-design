@@ -1,6 +1,7 @@
 import type { Decorator, Preview } from "@storybook/react-vite";
 
 import "@dg-design/tokens/tokens.css";
+import "./preview.css";
 import "../src/mockups/flex/brand-theme-blue.css";
 import "../src/mockups/flex/brand-studio-blue.css";
 // flex 시안 외관. 모두 :root[data-flex=…] 범위라 기본값(current)에서는 아무것도 바꾸지 않는다.

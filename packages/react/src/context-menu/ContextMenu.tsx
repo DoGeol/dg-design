@@ -248,7 +248,7 @@ export const ContextMenuItem = React.forwardRef<HTMLButtonElement, ContextMenuIt
         ref={ref}
         type="button"
         role={ITEM_ROLE}
-
+        tabIndex={-1}
         className={clsx(
           "dds-dropdown-menu__item",
           intent === "critical" && "dds-dropdown-menu__item--intent_critical",

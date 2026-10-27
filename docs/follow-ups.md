@@ -20,7 +20,7 @@
 | 항목 | 상태 | 착수 조건 |
 | --- | --- | --- |
 | MultiSelect·Select 래퍼 옵션 | 옵션을 사용자 컴포넌트로 감싸면 첫 열기 전 트리거에 값 문자열(`internal/select-core.ts` 한계). StateMatrix 스토리만 직접 배치로 고침 | 래퍼 옵션 사용처가 생기면 registry 개선 |
-| ContextMenuItem `tabIndex` | DropdownMenuItem과 달리 `tabIndex={-1}` 없음 | 다음 메뉴 손볼 때 |
+| ContextMenuItem `tabIndex` | 수정 중: 열린 메뉴에 동적으로 추가된 항목이 Tab 순서에 바로 들어가지 않음 | 검증·릴리스 후 닫기 |
 
 ### flex 비교 화면에서 드러난 문제 (2026-10-09)
 
@@ -32,9 +32,9 @@ P7에서 42개 컴포넌트 예제와 설명을 소스와 대조하다 나온 �
 
 | 항목 | 상태 | 착수 조건 |
 | --- | --- | --- |
-| StatePanel.Loading `aria-live` | `role="status"`에 `aria-live="polite"`를 겹쳐 붙인다(live region 관습 위반). Root는 role 기본값이 없어 소비자가 정한다 | StatePanel 손볼 때 |
-| FileInput 라벨 연결 | Dropzone·Trigger가 Field 라벨 id를 쓰지 않아 보이는 라벨이 이름이 되지 않는다(RadioGroup·MultiSelect는 씀) | 다음 FileInput 작업 |
-| Field.ErrorMessage 사용자 `id` | `id`를 직접 주면 생성 id만 보는 invalid 판정이 꺼진다 | Field 손볼 때 |
+| StatePanel.Loading `aria-live` | 수정 중: `role="status"`만 남김. 실제 스크린리더 청취는 미검증 | 검증·릴리스 후 닫기 |
+| FileInput 라벨 연결 | 수정 중: Field 라벨과 버튼 문구를 연결하며 명시적 접근 이름은 유지 | 검증·릴리스 후 닫기 |
+| Field.ErrorMessage 사용자 `id` | 수정 중: 오류 종류와 사용자 id를 함께 추적 | 검증·릴리스 후 닫기 |
 | Button·Accordion 개발 경고 | `console.warn`이 렌더마다, 운영 빌드에서도 나온다 | 경고 정책을 정할 때 |
 | DataTable 선택 칸 이름 | `"{caption} {rowKey} 선택"` — rowKey가 내부 id면 그대로 읽힌다 | 행 이름 열 지정 API가 필요해지면 |
 | DatePicker 기본 locale | `en-US` | 소비자 기본값 요구가 생기면 |

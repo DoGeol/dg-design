@@ -108,10 +108,6 @@ for (const story of targetStories()) {
         );
       }
 
-      // Storybook 기본 배경은 흰색 고정이라 다크 스냅샷이 읽히지 않는다.
-      await page.addStyleTag({
-        content: "body{background:var(--dds-color-bg-layer-default)}",
-      });
       await page.evaluate(async () => {
         await document.fonts.ready;
       });

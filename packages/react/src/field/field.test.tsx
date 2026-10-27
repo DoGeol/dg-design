@@ -96,4 +96,32 @@ describe("Field", () => {
     expect(input.getAttribute("aria-invalid")).toBe("false");
     expect(input.getAttribute("aria-describedby")).toBeFalsy();
   });
+
+  it("커스텀 오류 id 여러 개가 등록·해제되어도 설명과 invalid 상태가 유지된다", () => {
+    function Wrapper({ first, second }: { first: boolean; second: boolean }) {
+      return (
+        <React.StrictMode>
+          <Field.Root>
+            <Field.Label>이메일</Field.Label>
+            <TextField />
+            <Field.Description id="hint">설명</Field.Description>
+            {first ? <Field.ErrorMessage id="error-a">오류 A</Field.ErrorMessage> : null}
+            {second ? <Field.ErrorMessage id="error-b">오류 B</Field.ErrorMessage> : null}
+          </Field.Root>
+        </React.StrictMode>
+      );
+    }
+    const { rerender } = render(<Wrapper first second />);
+    const input = screen.getByRole("textbox");
+    expect(input.getAttribute("aria-invalid")).toBe("true");
+    expect(input.getAttribute("aria-describedby")?.split(" ")).toEqual(
+      expect.arrayContaining(["hint", "error-a", "error-b"]),
+    );
+    rerender(<Wrapper first={false} second />);
+    expect(input.getAttribute("aria-invalid")).toBe("true");
+    expect(input.getAttribute("aria-describedby")?.split(" ")).toEqual(["hint", "error-b"]);
+    rerender(<Wrapper first={false} second={false} />);
+    expect(input.getAttribute("aria-invalid")).toBe("false");
+    expect(input.getAttribute("aria-describedby")).toBe("hint");
+  });
 });

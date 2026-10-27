@@ -132,8 +132,9 @@ export const ToggleGroupRoot = React.forwardRef<HTMLDivElement, ToggleGroupRootP
       (keys: Set<React.Key>) => {
         if (type === "single") {
           const nextValue = keys.size > 0 ? String([...keys][0]) : null;
-          if (nextValue !== lastSingleValueRef.current) {
-            lastSingleValueRef.current = nextValue;
+          const previous = value !== undefined ? value : lastSingleValueRef.current;
+          if (nextValue !== previous) {
+            if (value === undefined) lastSingleValueRef.current = nextValue;
             onValueChange?.(nextValue);
           }
         } else {
@@ -149,17 +150,17 @@ export const ToggleGroupRoot = React.forwardRef<HTMLDivElement, ToggleGroupRootP
           } else {
             orderedValues = Array.from(keys).map(String);
           }
-          const prev = lastMultipleValuesRef.current ?? [];
+          const prev = value !== undefined ? value : (lastMultipleValuesRef.current ?? []);
           const changed =
             prev.length !== orderedValues.length ||
-            prev.some((v, idx) => v !== orderedValues[idx]);
+            prev.some((v) => !keys.has(v));
           if (changed) {
-            lastMultipleValuesRef.current = orderedValues;
+            if (value === undefined) lastMultipleValuesRef.current = orderedValues;
             (onValueChange as ((val: string[]) => void) | undefined)?.(orderedValues);
           }
         }
       },
-      [type, onValueChange],
+      [type, value, onValueChange],
     );
 
     const disallowEmptySelection =

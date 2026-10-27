@@ -7,6 +7,21 @@ import { describe, expect, it, vi } from "vitest";
 import { ToggleGroup, ToggleGroupItem, ToggleGroupRoot } from "./ToggleGroup";
 
 describe("ToggleGroup — Single 모드", () => {
+  it("제어형에서 부모가 변경을 거부해도 같은 선택 요청을 다시 전달한다", async () => {
+    const user = userEvent.setup();
+    const onValueChange = vi.fn();
+    render(
+      <ToggleGroup.Root type="single" value="a" onValueChange={onValueChange} aria-label="보기">
+        <ToggleGroup.Item value="a">A</ToggleGroup.Item>
+        <ToggleGroup.Item value="b">B</ToggleGroup.Item>
+      </ToggleGroup.Root>,
+    );
+    await user.click(screen.getByRole("radio", { name: "B" }));
+    await user.click(screen.getByRole("radio", { name: "B" }));
+    expect(onValueChange).toHaveBeenCalledTimes(2);
+    expect(onValueChange).toHaveBeenLastCalledWith("b");
+    expect(screen.getByRole("radio", { name: "A" }).getAttribute("aria-checked")).toBe("true");
+  });
   it("클릭으로 항목을 선택하고 재선택 시 disallowEmptySelection(기본 true)에 따라 선택을 유지한다", async () => {
     const user = userEvent.setup();
     const onValueChange = vi.fn();
@@ -126,6 +141,19 @@ describe("ToggleGroup — Single 모드", () => {
 });
 
 describe("ToggleGroup — Multiple 모드", () => {
+  it("제어형에서 보류된 추가 선택을 다시 요청할 수 있다", async () => {
+    const user = userEvent.setup();
+    const onValueChange = vi.fn();
+    render(
+      <ToggleGroup.Root type="multiple" value={[]} onValueChange={onValueChange} aria-label="표시">
+        <ToggleGroup.Item value="a">A</ToggleGroup.Item>
+      </ToggleGroup.Root>,
+    );
+    await user.click(screen.getByRole("button", { name: "A" }));
+    await user.click(screen.getByRole("button", { name: "A" }));
+    expect(onValueChange).toHaveBeenCalledTimes(2);
+    expect(onValueChange).toHaveBeenLastCalledWith(["a"]);
+  });
   it("복수 항목을 추가/제거하고 콜백은 중복 없이 DOM 순서대로 배열을 반환한다", async () => {
     const user = userEvent.setup();
     const onValueChange = vi.fn();

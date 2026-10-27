@@ -87,9 +87,10 @@ export const FileInputRoot = React.forwardRef<HTMLDivElement, FileInputRootProps
         openFilePicker,
         assignFiles,
         describedBy: fieldCtx?.describedBy,
+        labelId: fieldCtx?.labelId,
         invalid: fieldCtx?.invalid ?? false,
       }),
-      [disabled, openFilePicker, assignFiles, fieldCtx?.describedBy, fieldCtx?.invalid],
+      [disabled, openFilePicker, assignFiles, fieldCtx?.describedBy, fieldCtx?.labelId, fieldCtx?.invalid],
     );
 
     return (
@@ -123,6 +124,11 @@ export const FileInputDropzone = React.forwardRef<HTMLDivElement, FileInputDropz
     ref,
   ) => {
     const ctx = useFileInputContext("FileInput.Dropzone");
+    const generatedId = React.useId();
+    const selfId = props.id ?? generatedId;
+    const labelledBy = ctx.labelId && !props["aria-label"] && !props["aria-labelledby"]
+      ? `${ctx.labelId} ${selfId}`
+      : undefined;
     // enter/leave는 자식 요소를 넘나들 때도 각각 한 번씩 뜬다 — 카운터로 세지 않으면
     // 자식 진입 시 leave가 먼저 잡혀 data-dragging이 깜빡인다.
     const dragCounter = React.useRef(0);
@@ -180,6 +186,8 @@ export const FileInputDropzone = React.forwardRef<HTMLDivElement, FileInputDropz
       <div
         ref={ref}
         role="button"
+        id={selfId}
+        aria-labelledby={labelledBy}
         tabIndex={ctx.disabled ? -1 : 0}
         aria-disabled={ctx.disabled || undefined}
         aria-describedby={ctx.describedBy}
@@ -209,6 +217,15 @@ export const FileInputTrigger = React.forwardRef<HTMLButtonElement, FileInputTri
   ({ className, asChild, onClick, ...props }, ref) => {
     const ctx = useFileInputContext("FileInput.Trigger");
     const Comp = asChild ? Slot : "button";
+    const generatedId = React.useId();
+    const childProps = asChild && React.isValidElement<{
+      id?: string;
+      "aria-label"?: string;
+      "aria-labelledby"?: string;
+    }>(props.children) ? props.children.props : undefined;
+    const selfId = childProps?.id ?? props.id ?? generatedId;
+    const hasExplicitName = props["aria-label"] || props["aria-labelledby"] || childProps?.["aria-label"] || childProps?.["aria-labelledby"];
+    const labelledBy = ctx.labelId && !hasExplicitName ? `${ctx.labelId} ${selfId}` : undefined;
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
       onClick?.(event);
@@ -219,6 +236,8 @@ export const FileInputTrigger = React.forwardRef<HTMLButtonElement, FileInputTri
     return (
       <Comp
         ref={ref}
+        id={selfId}
+        aria-labelledby={labelledBy}
         type={asChild ? undefined : "button"}
         // asChild로 버튼 아닌 요소(a 등)를 감싸도 disabled·[disabled] CSS 매칭이 그대로
         // 걸리도록 asChild 여부와 무관하게 둘 다 넣는다(Button.tsx와 동형).

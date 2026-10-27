@@ -98,6 +98,22 @@ describe("ContextMenu 열기", () => {
 });
 
 describe("ContextMenu roving tabindex", () => {
+  it("열린 메뉴에 추가된 항목은 roving focus 전까지 Tab 순서에 들어가지 않는다", async () => {
+    function Menu({ extra }: { extra: boolean }) {
+      return (
+        <ContextMenu.Root defaultOpen>
+          <ContextMenu.Trigger>대상</ContextMenu.Trigger>
+          <ContextMenu.Content>
+            <ContextMenu.Item>첫 항목</ContextMenu.Item>
+            {extra ? <ContextMenu.Item>추가 항목</ContextMenu.Item> : null}
+          </ContextMenu.Content>
+        </ContextMenu.Root>
+      );
+    }
+    const { rerender } = render(<Menu extra={false} />);
+    rerender(<Menu extra />);
+    expect(screen.getByRole("menuitem", { name: "추가 항목" }).tabIndex).toBe(-1);
+  });
   it("열리면 첫 항목이 포커스와 tabIndex 0을 갖는다", async () => {
     const user = userEvent.setup();
     render(<Basic />);

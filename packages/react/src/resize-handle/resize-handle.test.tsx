@@ -197,6 +197,65 @@ describe("ResizeHandle 키보드 조작", () => {
 });
 
 describe("ResizeHandle 포인터 드래그 및 초기화", () => {
+  it("포인터 픽셀을 소비자 값 단위로 변환한 뒤 경계를 적용한다", async () => {
+    const user = userEvent.setup();
+    const onValueChange = vi.fn();
+    render(
+      <ResizeHandle
+        aria-label="분할 비율"
+        value={60}
+        min={30}
+        max={70}
+        fromDrag={(start, delta) => start + (delta / 1000) * 100}
+        onValueChange={onValueChange}
+      />,
+    );
+    const handle = screen.getByRole("separator");
+    await user.pointer([
+      { keys: "[MouseLeft>]", target: handle, coords: { clientX: 100 } },
+      { coords: { clientX: 110 } },
+      { keys: "[/MouseLeft]" },
+    ]);
+    expect(onValueChange).toHaveBeenLastCalledWith(61);
+  });
+
+  it("오른쪽 패널은 이동 방향을 반대로 환산하고 null은 무시한다", async () => {
+    const user = userEvent.setup();
+    const onValueChange = vi.fn();
+    render(
+      <ResizeHandle
+        aria-label="오른쪽 패널"
+        value={30}
+        min={18}
+        max={40}
+        fromDrag={(start, delta) => (delta === 16 ? start - delta / 16 : null)}
+        onValueChange={onValueChange}
+      />,
+    );
+    const handle = screen.getByRole("separator");
+    await user.pointer([
+      { keys: "[MouseLeft>]", target: handle, coords: { clientX: 0 } },
+      { coords: { clientX: 8 } },
+      { coords: { clientX: 16 } },
+      { keys: "[/MouseLeft]" },
+    ]);
+    expect(onValueChange).toHaveBeenCalledTimes(1);
+    expect(onValueChange).toHaveBeenCalledWith(29);
+  });
+
+  it("시작 위치로 다시 끌면 시작 값으로 되돌린다", async () => {
+    const user = userEvent.setup();
+    const onValueChange = vi.fn();
+    render(<ResizeHandle aria-label="분할" value={50} min={0} max={100} onValueChange={onValueChange} />);
+    const handle = screen.getByRole("separator");
+    await user.pointer([
+      { keys: "[MouseLeft>]", target: handle, coords: { clientX: 0 } },
+      { coords: { clientX: 10 } },
+      { coords: { clientX: 0 } },
+      { keys: "[/MouseLeft]" },
+    ]);
+    expect(onValueChange).toHaveBeenLastCalledWith(50);
+  });
   it("pointerdown → pointermove → pointerup 인터랙션에서 델타 이동량에 따라 값이 변경된다", async () => {
     const user = userEvent.setup();
     const onValueChange = vi.fn();

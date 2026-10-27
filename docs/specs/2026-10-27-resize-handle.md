@@ -83,6 +83,7 @@ export function CustomSeparator() {
 | `min` | `number`, 필수 하한 |
 | `max` | `number`, 필수 상한 |
 | `step` | `number`, 기본 1 (키보드 1회 이동량) |
+| `fromDrag` | `(startValue: number, deltaPixels: number) => number \| null`, 선택. 값 단위로 변환 후 min/max를 적용한다. null은 해당 이동을 무시한다. 생략하면 기존처럼 px를 더한다 |
 | `onValueChange` | `(value: number) => void`, 필수 변경 콜백 |
 | `onReset` | `() => void`, 선택; 더블클릭 또는 리셋 키 시 호출 |
 | `disabled` | `boolean`, 기본 false |
@@ -103,7 +104,7 @@ export function CustomSeparator() {
 - **클릭과 더블클릭 분리:** 드래그 델타가 0인 단순 클릭은 값을 변경하지 않는다. 이로써 `onDoubleClick` 리셋이 안정적으로 작동한다.
 - **캡처 해제:** `onPointerUp` 또는 `onPointerCancel` 시 `releasePointerCapture`를 호출하고 드래그 상태를 정리한다.
 - **취소 복구:** `onPointerCancel`이 발생하면 드래그 직전의 확정 값으로 복구한다.
-- **단위 무관성:** `value`는 px·rem·fr·% 등 특정 단위에 구애받지 않는 숫자다. 픽셀 대 비율 환산은 소비자의 콜백 또는 훅 옵션이 맡는다.
+- **단위 무관성:** `value`는 px·rem·fr·% 등 특정 단위에 구애받지 않는 숫자다. `fromDrag` 훅 옵션/prop으로 픽셀을 소비자 단위로 환산한 뒤 제한한다(2026-10-27 합동 개선).
 - **저장 분리:** localStorage 키나 직렬화 로직은 컴포넌트가 알지 못한다. 저장은 `onValueChange`나 `onReset`을 듣는 소비자가 수행한다.
 
 ## 상태 축·키보드·접근성

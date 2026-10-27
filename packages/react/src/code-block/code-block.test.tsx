@@ -151,6 +151,30 @@ describe("CodeBlock 컴포넌트", () => {
     writeTextSpy.mockRestore();
   });
 
+  it("복잡한 children에 원문이 없으면 클립보드를 건드리지 않고 실패를 알린다", async () => {
+    const user = userEvent.setup();
+    const writeText = vi.spyOn(navigator.clipboard, "writeText").mockResolvedValue(undefined);
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const onCopy = vi.fn();
+    render(<CodeBlock onCopy={onCopy}><pre><code>const a = 1;</code></pre></CodeBlock>);
+    await user.click(screen.getByRole("button", { name: "코드 복사" }));
+    expect(writeText).not.toHaveBeenCalled();
+    expect(onCopy).toHaveBeenCalledWith(false);
+    expect(screen.getByRole("status").textContent).toContain("복사하지 못했습니다");
+    warn.mockRestore();
+    writeText.mockRestore();
+  });
+
+  it("명시적으로 지정한 빈 원문은 유효한 복사 요청이다", async () => {
+    const user = userEvent.setup();
+    const writeText = vi.spyOn(navigator.clipboard, "writeText").mockResolvedValue(undefined);
+    render(<CodeBlock copyText=""><pre><code /></pre></CodeBlock>);
+    await user.click(screen.getByRole("button", { name: "코드 복사" }));
+    expect(writeText).toHaveBeenCalledWith("");
+    expect(screen.getByRole("status").textContent).toBe("코드를 복사했습니다.");
+    writeText.mockRestore();
+  });
+
   it("타이머 만료 후 성공 상태에서 idle로 자동 복귀한다", async () => {
     vi.useFakeTimers({ shouldAdvanceTime: true });
     try {

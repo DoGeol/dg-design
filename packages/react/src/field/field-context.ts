@@ -9,16 +9,19 @@ export interface FieldContextValue {
    * 이 id를 `aria-labelledby`로 참조해야 접근 이름이 생긴다.
    */
   labelId: string;
+  /** 사용자 id가 없는 Label의 안정적인 기본 id. */
+  defaultLabelId: string;
+  setCustomLabelId: React.Dispatch<React.SetStateAction<string | undefined>>;
   /** Field.Description이 자기 <p>에 붙이는 고정 id */
   descriptionId: string;
   /** Field.ErrorMessage가 자기 <p>에 붙이는 고정 id */
   errorId: string;
   /** 실제로 마운트된 Description·ErrorMessage id만 공백으로 조인한 값 */
   describedBy: string | undefined;
-  /** ErrorMessage가 마운트돼 있으면 true — 별도 상태가 아니라 registeredIds에서 파생 */
+  /** ErrorMessage가 마운트돼 있으면 true */
   invalid: boolean;
   /** id를 등록하고, 언마운트 시 호출할 해제 함수를 돌려준다 */
-  register: (id: string) => () => void;
+  register: (id: string, kind: "description" | "error") => () => void;
 }
 
 export const FieldContext = React.createContext<FieldContextValue | undefined>(undefined);

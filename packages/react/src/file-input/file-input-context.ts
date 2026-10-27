@@ -8,6 +8,8 @@ export interface FileInputContextValue {
   assignFiles: (fileList: FileList | File[]) => void;
   /** Field.Root 안이면 등록된 Description·ErrorMessage id. */
   describedBy: string | undefined;
+  /** Field.Label id. 조작 대상 자신의 이름과 함께 연결한다. */
+  labelId: string | undefined;
   /** Field.ErrorMessage가 마운트돼 있으면 true. */
   invalid: boolean;
 }

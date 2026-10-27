@@ -25,11 +25,11 @@ describe("StatePanel", () => {
     expect(screen.getByTestId("footer").classList.contains("dds-state-panel__footer")).toBe(true);
   });
 
-  it("Loading preset은 role='status'와 aria-live='polite'를 가지고 Spinner와 라벨을 렌더한다", () => {
+  it("Loading preset은 role='status'의 암묵적 polite 알림과 라벨을 제공한다", () => {
     render(<StatePanel.Loading label="데이터를 불러오는 중입니다" />);
 
     const statusPanel = screen.getByRole("status");
-    expect(statusPanel.getAttribute("aria-live")).toBe("polite");
+    expect(statusPanel.hasAttribute("aria-live")).toBe(false);
     expect(screen.getByText("데이터를 불러오는 중입니다")).not.toBeNull();
     // Spinner가 렌더되는지 확인
     const spinner = statusPanel.querySelector(".dds-spinner");

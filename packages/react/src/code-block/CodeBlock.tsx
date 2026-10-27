@@ -22,7 +22,10 @@ export interface CopyButtonProps
  * 단독 및 블록 헤더에 사용할 수 있는 접근성 준수 복사 버튼.
  * role="status" 실시간 영역과 연결되어 합쇼체 피드백을 전달합니다.
  */
-export const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
+const InternalCopyButton = React.forwardRef<
+  HTMLButtonElement,
+  Omit<CopyButtonProps, "text"> & { text: string | undefined }
+>(
   (
     {
       text,
@@ -61,6 +64,7 @@ export const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
       setStatus("pending");
 
       try {
+        if (text === undefined) throw new Error("복사할 원문이 없습니다.");
         await navigator.clipboard.writeText(text);
         setStatus("copied");
         onCopy?.(true);
@@ -123,7 +127,10 @@ export const CopyButton = React.forwardRef<HTMLButtonElement, CopyButtonProps>(
   },
 );
 
-CopyButton.displayName = "CopyButton";
+InternalCopyButton.displayName = "CopyButton";
+export const CopyButton: React.ForwardRefExoticComponent<
+  CopyButtonProps & React.RefAttributes<HTMLButtonElement>
+> = InternalCopyButton;
 
 export interface CodeBlockProps
   extends Omit<React.ComponentPropsWithoutRef<"div">, "onCopy"> {
@@ -164,7 +171,7 @@ export const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
         ? children
         : typeof children === "number"
           ? String(children)
-          : "");
+          : undefined);
 
     if (
       copyable &&
@@ -196,7 +203,7 @@ export const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
               <span className="dds-code-block__filename">{filename}</span>
             ) : null}
             {copyable ? (
-              <CopyButton
+              <InternalCopyButton
                 text={resolvedCopyText}
                 onCopy={onCopy}
                 className="dds-code-block__copy-button"

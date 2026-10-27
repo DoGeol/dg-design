@@ -11,6 +11,8 @@ export interface UseResizeHandleOptions {
   max: number;
   /** 키보드 화살표 입력 시 1회 증감량. 기본값 1 */
   step?: number;
+  /** 시작 값과 포인터 이동 px를 값 단위로 환산한다. null이면 해당 이동을 무시한다. */
+  fromDrag?: (startValue: number, deltaPixels: number) => number | null;
   /** 값이 변경되었을 때 호출되는 콜백 */
   onValueChange: (value: number) => void;
   /** 더블클릭 또는 Enter/Space 키 입력 시 기본값 복원을 위한 콜백 */
@@ -113,6 +115,7 @@ export function useResizeHandle(options: UseResizeHandleOptions): UseResizeHandl
         min: currentMin,
         max: currentMax,
         onValueChange: currentOnValueChange,
+        fromDrag,
       } = optionsRef.current;
 
       const delta =
@@ -120,11 +123,11 @@ export function useResizeHandle(options: UseResizeHandleOptions): UseResizeHandl
           ? event.clientX - state.startX
           : event.clientY - state.startY;
 
-      if (delta !== 0) {
-        state.hasMoved = true;
-      }
-
-      const nextValue = clampResizeValue(state.startValue + delta, currentMin, currentMax);
+      if (delta === 0 && !state.hasMoved) return;
+      const converted = fromDrag ? fromDrag(state.startValue, delta) : state.startValue + delta;
+      if (converted === null || !Number.isFinite(converted)) return;
+      state.hasMoved = true;
+      const nextValue = clampResizeValue(converted, currentMin, currentMax);
       // 스펙 요구사항: 드래그가 일어나는 동안 aria-valuenow를 실시간 갱신하고 onValueChange를 즉시 호출한다.
       event.currentTarget.setAttribute("aria-valuenow", String(Math.round(nextValue)));
       currentOnValueChange(nextValue);

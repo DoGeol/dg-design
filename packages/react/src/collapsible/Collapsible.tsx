@@ -24,6 +24,26 @@ function useCollapsibleContext(component: string): CollapsibleContextValue {
 
 const useIsomorphicLayoutEffect = typeof window === "undefined" ? React.useEffect : React.useLayoutEffect;
 
+function observeContentSize(element: HTMLElement, updateHeight: () => void): () => void {
+  if (typeof ResizeObserver === "undefined") return () => {};
+  const observer = new ResizeObserver(updateHeight);
+  const observeChildren = () => {
+    observer.disconnect();
+    observer.observe(element);
+    for (const child of element.children) observer.observe(child);
+  };
+  observeChildren();
+  const mutations = new MutationObserver(() => {
+    observeChildren();
+    updateHeight();
+  });
+  mutations.observe(element, { childList: true, characterData: true, subtree: true });
+  return () => {
+    observer.disconnect();
+    mutations.disconnect();
+  };
+}
+
 export interface CollapsibleRootProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, "defaultValue" | "onChange"> {
   /** controlled 열림 상태. `undefined`도 controlled 값으로 취급하려면 prop을 명시한다. */
@@ -110,15 +130,24 @@ export const CollapsibleContent = React.forwardRef<HTMLDivElement, CollapsibleCo
       const element = contentRef.current;
       if (!element) return;
 
-      const updateHeight = () => setHeight(element.scrollHeight);
+      const updateHeight = () => {
+        // 현재 고정된 열린 높이보다 내용이 작아져도 자연 높이를 잴 수 있어야 한다.
+        const previousHeight = element.style.getPropertyValue("height");
+        const priority = element.style.getPropertyPriority("height");
+        element.style.setProperty("height", "auto");
+        const computed = getComputedStyle(element);
+        const padding = (Number.parseFloat(computed.paddingTop) || 0) + (Number.parseFloat(computed.paddingBottom) || 0);
+        const border = (Number.parseFloat(computed.borderTopWidth) || 0) + (Number.parseFloat(computed.borderBottomWidth) || 0);
+        const naturalHeight = Math.max(0, element.scrollHeight + (computed.boxSizing === "border-box" ? border : -padding));
+        if (previousHeight) element.style.setProperty("height", previousHeight, priority);
+        else element.style.removeProperty("height");
+        setHeight(naturalHeight);
+      };
       updateHeight();
 
       // jsdom과 일부 non-browser renderer에는 ResizeObserver가 없다. 높이는 한 번 측정해
       // CSS 변수에 넣고, 브라우저에서만 이후 콘텐츠 변화를 관찰한다.
-      if (typeof ResizeObserver === "undefined") return;
-      const observer = new ResizeObserver(updateHeight);
-      observer.observe(element);
-      return () => observer.disconnect();
+      return observeContentSize(element, updateHeight);
     }, []);
 
     const contentStyle = {

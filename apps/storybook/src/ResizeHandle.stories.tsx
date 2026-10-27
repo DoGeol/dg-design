@@ -183,7 +183,7 @@ function HandleGrid() {
 function MatrixContent() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-      <div>
+      <div data-dds-theme="light" style={{ background: "var(--dds-color-bg-layer-default)", color: "var(--dds-color-fg-neutral)" }}>
         <Caption>라이트 테마</Caption>
         <HandleGrid />
       </div>

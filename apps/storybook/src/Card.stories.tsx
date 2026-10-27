@@ -20,7 +20,7 @@ export const StateMatrix: Story = {
     <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
       <Card style={{ width: 200 }}>기본 div 카드</Card>
       <Card asChild style={{ width: 200 }}>
-        <a href="#" style={{ display: "block" }}>
+        <a href="#">
           asChild로 렌더한 a 카드
         </a>
       </Card>
@@ -29,6 +29,11 @@ export const StateMatrix: Story = {
       </Card>
     </div>
   ),
+};
+
+export const LinkDemo: Story = {
+  name: "Link demo",
+  render: () => <div style={{ width: 320 }}><Card asChild><a href="#document">문서 열기</a></Card></div>,
 };
 
 /**

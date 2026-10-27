@@ -1,0 +1,4 @@
+body {
+  background: var(--dds-color-bg-layer-default);
+  color: var(--dds-color-fg-neutral);
+}
