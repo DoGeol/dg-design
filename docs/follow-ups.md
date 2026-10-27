@@ -26,6 +26,15 @@
 
 DataTable 선택+hover 색 갈림, 숫자 열 머리글 정렬 불가, Toast 옵션 action 없음, Collapsible·Accordion 높이가 넓어져도 안 줄어듦 등 13건. 목록과 재현 위치는 [A·B 공통 관점 보완 §13](reports/flex-adoption-review/gaps.md#13-비교-화면을-만들며-드러난-현재-dds-문제). 착수 조건: flex 적용 스펙 승인 시 함께, 또는 해당 컴포넌트를 손볼 때.
 
+### dg-studio 모션·아이콘 반영 뒤 남긴 것 (2026-10-28)
+
+근거: [조작 모션·오버레이 퇴장·아이콘 확장 결정](decisions/2026-10-28-interaction-motion-and-icons.md).
+
+| 항목 | 상태 | 착수 조건 |
+| --- | --- | --- |
+| `ContextMenu.ItemIcon` | `DropdownMenuItemIcon`을 ContextMenu.Item 안에 그대로 쓸 수 있어 대칭 부품은 미추가 | ContextMenu 쪽 요구가 생기면 |
+| Alert·Toast 닫기 X 교체 | 14px 로컬 SVG 유지(Icon 스펙 B1b 별도 목록) | 닫기 X 교체 계획 때 |
+
 ### 사용 가이드 스킬 예제를 쓰며 드러난 문제 (2026-10-09)
 
 P7에서 42개 컴포넌트 예제와 설명을 소스와 대조하다 나온 라이브러리 쪽 문제. 예제·설명은 지금 동작대로 적었다.

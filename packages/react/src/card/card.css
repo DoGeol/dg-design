@@ -13,6 +13,7 @@
     cursor: pointer;
     color: inherit;
     text-decoration: none;
+    transition: border-color var(--dds-duration-fast) var(--dds-easing-out);
   }
   .dds-card:is(a[href]) {
     display: block;

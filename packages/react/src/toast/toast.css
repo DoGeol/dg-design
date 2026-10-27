@@ -143,9 +143,11 @@
     inset: calc((100% - var(--dds-size-touch-target)) / 2);
   }
 
-  /* forwards가 없으면 animationend와 unmount 사이에 base 스타일로 스냅백해 번쩍인다. */
+  /* forwards가 없으면 animationend와 unmount 사이에 base 스타일로 스냅백해 번쩍인다.
+     퇴장은 입장(base)보다 짧은 fast. */
   .dds-toast[data-state="closed"] {
     animation-name: dds-toast-out;
+    animation-duration: var(--dds-duration-fast);
     animation-fill-mode: forwards;
   }
 
@@ -170,10 +172,15 @@
     }
   }
 
-  /* presence가 계산된 애니메이션 길이를 읽는다 — 여기서 0이 되면 즉시 언마운트된다. */
+  /* reduce는 가로 이동만 빼고 opacity 페이드를 fast로 남긴다(모션 API 결정 §6). 공용 fade keyframes는
+     overlay-motion.css(Toast.tsx가 import). presence는 이 길이를 읽어 퇴장을 기다린다. */
   @media (prefers-reduced-motion: reduce) {
     .dds-toast[data-state] {
-      animation: none;
+      animation-name: dds-overlay-fade-in;
+      animation-duration: var(--dds-duration-fast);
+    }
+    .dds-toast[data-state="closed"] {
+      animation-name: dds-overlay-fade-out;
     }
   }
 }

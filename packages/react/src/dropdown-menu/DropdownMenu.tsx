@@ -225,6 +225,21 @@ export const DropdownMenuShortcut = React.forwardRef<HTMLSpanElement, DropdownMe
 );
 DropdownMenuShortcut.displayName = "DropdownMenu.Shortcut";
 
+export interface DropdownMenuItemIconProps extends React.HTMLAttributes<HTMLSpanElement> {}
+
+/** 항목 앞 아이콘 자리. 장식이라 aria-hidden이고, 안의 아이콘 size와 무관하게 16으로 맞춘다. */
+export const DropdownMenuItemIcon = React.forwardRef<HTMLSpanElement, DropdownMenuItemIconProps>(
+  ({ className, ...props }, ref) => (
+    <span
+      ref={ref}
+      aria-hidden="true"
+      className={clsx("dds-dropdown-menu__item-icon", className)}
+      {...props}
+    />
+  ),
+);
+DropdownMenuItemIcon.displayName = "DropdownMenu.ItemIcon";
+
 export { DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem };
 export type {
   DropdownMenuCheckboxItemProps,
@@ -233,7 +248,7 @@ export type {
 } from "./menu-choice-items";
 
 /**
- * compound: DropdownMenu.Root/Trigger/Content/Item/CheckboxItem/RadioGroup/RadioItem/Separator/Label/Shortcut.
+ * compound: DropdownMenu.Root/Trigger/Content/Item/ItemIcon/CheckboxItem/RadioGroup/RadioItem/Separator/Label/Shortcut.
  * 로직(상태·presence·비모달 스택·roving·floating 배치)은 Select와 공유하는
  * `internal/use-overlay`·`internal/roving-focus`에 있고 여기는 조립과 스타일만 맡는다.
  */
@@ -242,6 +257,7 @@ export const DropdownMenu = {
   Trigger: DropdownMenuTrigger,
   Content: DropdownMenuContent,
   Item: DropdownMenuItem,
+  ItemIcon: DropdownMenuItemIcon,
   CheckboxItem: DropdownMenuCheckboxItem,
   RadioGroup: DropdownMenuRadioGroup,
   RadioItem: DropdownMenuRadioItem,

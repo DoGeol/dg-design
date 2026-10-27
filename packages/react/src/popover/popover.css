@@ -68,10 +68,13 @@
   }
 
 
-  /* presence는 계산된 애니메이션 길이를 읽는다 — 여기서 0이 되면 즉시 언마운트된다. */
+  /* reduce는 확대만 빼고 opacity 페이드(fast)를 남긴다(모션 API 결정 §6). presence는 이 길이를 읽어 퇴장을 기다린다. */
   @media (prefers-reduced-motion: reduce) {
     .dds-popover__content {
-      animation: none;
+      animation-name: dds-overlay-fade-in;
+    }
+    .dds-popover__content[data-state="closed"] {
+      animation-name: dds-overlay-fade-out;
     }
   }
 }

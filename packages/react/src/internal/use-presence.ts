@@ -19,8 +19,8 @@ function longestMs(list: string | undefined): number {
 }
 
 /**
- * 퇴장에 실제로 걸리는 시간. 0이면 애니메이션이 없다는 뜻이다 —
- * `prefers-reduced-motion: reduce`(CSS가 `animation: none`)나 dialog.css 미로드가 여기 해당한다.
+ * 퇴장에 실제로 걸리는 시간. 0이면 애니메이션이 없다는 뜻이다 — CSS 미로드가 여기 해당한다.
+ * 오버레이는 `prefers-reduced-motion: reduce`에서도 opacity 페이드가 남아 그 길이만큼 기다린다.
  */
 function exitDurationMs(node: HTMLElement): number {
   const style = getComputedStyle(node);

@@ -158,4 +158,25 @@ test.describe("Button 모션", () => {
     await expect(link).not.toHaveAttribute("data-motion", "");
     await expect(link).toHaveText("링크형 버튼");
   });
+
+  test("누르는 동안 0.98로 줄고 reduce에서는 색 전환만 남는다", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "no-preference" });
+    const button = page.getByTestId("motion-button").locator(".dds-button");
+    await expect(button).toHaveCSS("transition-duration", "0.15s");
+    await expect(button).toHaveCSS("transition-timing-function", "cubic-bezier(0, 0, 0.2, 1)");
+
+    await button.hover();
+    await page.mouse.down();
+    await expect(button).toHaveCSS("scale", "0.98");
+    await page.mouse.up();
+    await expect(button).toHaveCSS("scale", "none");
+
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.mouse.down();
+    await expect(button).toHaveCSS("scale", "none");
+    // 색 전환은 움직임이 아니라 reduce에서도 남는다.
+    await expect(button).toHaveCSS("transition-property", "background-color, border-color, color, scale");
+    await page.mouse.up();
+  });
 });
+

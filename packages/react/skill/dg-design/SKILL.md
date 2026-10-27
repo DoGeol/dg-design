@@ -68,12 +68,12 @@ pnpm add @dg-design/react @dg-design/tokens
 | [DataTable](references/data-table.md) | `@dg-design/react/data-table` | 데이터 배열과 열 정의로 그리는 표. 정렬·필터·행 선택·열 고정·가상 스크롤을 내장한다. |
 | [DatePicker](references/date-picker.md) | `@dg-design/react/date-picker` | 날짜(또는 날짜+시간) 하나를 입력·선택하는 필드. 기간은 DateRangePicker. |
 | [Dialog](references/dialog.md) | `@dg-design/react/dialog` | 화면 위에 띄우는 모달 — 짧은 확인(기본)과 편집·검토 같은 작업형 패널(Toolbar·Body·Aside·Footer). |
-| [DropdownMenu](references/dropdown-menu.md) | `@dg-design/react/dropdown-menu` | 버튼을 눌러 여는 행동(명령) 목록 — 항목, 체크, 라디오, 단축키 표시. |
+| [DropdownMenu](references/dropdown-menu.md) | `@dg-design/react/dropdown-menu` | 버튼을 눌러 여는 행동(명령) 목록 — 항목, 항목 아이콘, 체크, 라디오, 단축키 표시. |
 | [Field](references/field.md) | `@dg-design/react/field` | 입력 컨트롤에 라벨·설명·오류 메시지를 묶어 id와 aria 연결을 자동으로 해 주는 래퍼. |
 | [FileInput](references/file-input.md) | `@dg-design/react/file-input` | 파일 선택·드래그 앤 드롭 입력. 형식·크기·개수 검증을 하고 통과분과 거부분을 함께 알려 준다. |
 | [FilterToolbox](references/filter-toolbox.md) | `@dg-design/react/filter-toolbox` | 적용된 필터 칩·결과 수·초기화를 한 줄에 놓는 필터 묶음의 껍데기. |
 | [HoverCard](references/hover-card.md) | `@dg-design/react/hover-card` | 링크 위에 마우스를 올리면 뜨는 미리보기 카드 — 마우스 사용자를 위한 보조 정보. |
-| [Icon](references/icon.md) | `@dg-design/react/icon` | 24 grid 기반 자체 SVG 아이콘 소수 세트 (16종). |
+| [Icon](references/icon.md) | `@dg-design/react/icon` | 24 grid 기반 자체 SVG 아이콘 소수 세트 (32종). |
 | [List](references/list.md) | `@dg-design/react/list` | 제목 + 메타 + 행 동작으로 이루어진 객체 목록. 행 전체가 주 행동, 보조 행동은 Trailing. |
 | [MultiSelect](references/multi-select.md) | `@dg-design/react/multi-select` | 목록에서 여러 값을 고르는 드롭다운. 검색·새 항목 만들기·모바일 Sheet 표시를 지원한다. |
 | [NotificationBadge](references/notification-badge.md) | `@dg-design/react/notification-badge` | 읽지 않은 알림 개수나 새 항목 점. 다른 요소 모서리에 겹쳐 쓴다. |

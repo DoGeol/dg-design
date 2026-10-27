@@ -1,3 +1,4 @@
+import "../internal/overlay-motion.css";
 import "./toast.css";
 
 import { cva, type VariantProps } from "class-variance-authority";

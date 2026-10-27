@@ -14,15 +14,31 @@ import {
   ChevronUpIcon,
   CloseIcon,
   CopyIcon,
+  CriticalIcon,
+  DownloadIcon,
   DragHandleIcon,
   ExternalLinkIcon,
+  EyeIcon,
+  GlobeIcon,
+  InfoIcon,
+  LockIcon,
   MenuIcon,
   MinusIcon,
   MoonIcon,
+  MoreIcon,
+  PanelLeftIcon,
+  PanelRightIcon,
+  PencilIcon,
   PlusIcon,
+  PositiveIcon,
+  RedoIcon,
   SearchIcon,
   SettingsIcon,
   SunIcon,
+  TrashIcon,
+  UndoIcon,
+  UploadIcon,
+  WarningIcon,
 } from "./Icon";
 
 const ALL_ICONS = [
@@ -33,19 +49,35 @@ const ALL_ICONS = [
   { name: "ChevronUpIcon", Comp: ChevronUpIcon },
   { name: "CloseIcon", Comp: CloseIcon },
   { name: "CopyIcon", Comp: CopyIcon },
+  { name: "CriticalIcon", Comp: CriticalIcon },
+  { name: "DownloadIcon", Comp: DownloadIcon },
   { name: "DragHandleIcon", Comp: DragHandleIcon },
   { name: "ExternalLinkIcon", Comp: ExternalLinkIcon },
+  { name: "EyeIcon", Comp: EyeIcon },
+  { name: "GlobeIcon", Comp: GlobeIcon },
+  { name: "InfoIcon", Comp: InfoIcon },
+  { name: "LockIcon", Comp: LockIcon },
   { name: "MenuIcon", Comp: MenuIcon },
   { name: "MinusIcon", Comp: MinusIcon },
   { name: "MoonIcon", Comp: MoonIcon },
+  { name: "MoreIcon", Comp: MoreIcon },
+  { name: "PanelLeftIcon", Comp: PanelLeftIcon },
+  { name: "PanelRightIcon", Comp: PanelRightIcon },
+  { name: "PencilIcon", Comp: PencilIcon },
   { name: "PlusIcon", Comp: PlusIcon },
+  { name: "PositiveIcon", Comp: PositiveIcon },
+  { name: "RedoIcon", Comp: RedoIcon },
   { name: "SearchIcon", Comp: SearchIcon },
   { name: "SettingsIcon", Comp: SettingsIcon },
   { name: "SunIcon", Comp: SunIcon },
+  { name: "TrashIcon", Comp: TrashIcon },
+  { name: "UndoIcon", Comp: UndoIcon },
+  { name: "UploadIcon", Comp: UploadIcon },
+  { name: "WarningIcon", Comp: WarningIcon },
 ] as const;
 
 describe("Icon", () => {
-  it("16종 아이콘 모두 24x24 viewBox, ref, className을 올바르게 전달한다", () => {
+  it(`${ALL_ICONS.length}종 아이콘 모두 24x24 viewBox, ref, className을 올바르게 전달한다`, () => {
     for (const { Comp } of ALL_ICONS) {
       const ref = React.createRef<SVGSVGElement>();
       const { container } = render(<Comp ref={ref} className="custom-class" />);
@@ -214,6 +246,30 @@ describe("Icon", () => {
       expect(CopyIcon.displayName).toBe("CopyIcon");
       expect(SunIcon.displayName).toBe("SunIcon");
       expect(SettingsIcon.displayName).toBe("SettingsIcon");
+    });
+  });
+
+  describe("상태·조작 아이콘 확장", () => {
+    it("모든 아이콘은 label 없이 장식(aria-hidden)이고 label을 주면 그 이름의 img다", () => {
+      for (const { name, Comp } of ALL_ICONS) {
+        const { container, unmount } = render(<Comp />);
+        const svg = container.querySelector("svg");
+        expect(svg?.getAttribute("aria-hidden"), name).toBe("true");
+        expect(svg?.querySelectorAll("[id]").length, name).toBe(0);
+        expect(svg?.childElementCount, name).toBeGreaterThan(0);
+        unmount();
+
+        render(<Comp label={name} />);
+        expect(screen.getByRole("img", { name })).toBeTruthy();
+      }
+    });
+
+    it("MoreIcon은 DragHandle처럼 채운 점 3개다", () => {
+      const { container } = render(<MoreIcon />);
+      const svg = container.querySelector("svg");
+      expect(svg?.getAttribute("fill")).toBe("currentColor");
+      expect(svg?.getAttribute("stroke")).toBe("none");
+      expect(container.querySelectorAll("circle").length).toBe(3);
     });
   });
 

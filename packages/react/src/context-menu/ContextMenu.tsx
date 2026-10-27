@@ -1,3 +1,4 @@
+import "../internal/overlay-motion.css";
 import "../dropdown-menu/dropdown-menu.css";
 
 import type { VirtualElement } from "@floating-ui/dom";

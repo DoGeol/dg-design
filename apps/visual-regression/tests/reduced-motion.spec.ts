@@ -85,4 +85,67 @@ test.describe("prefers-reduced-motion", () => {
       .poll(() => content.evaluate((el) => getComputedStyle(el).transitionDuration))
       .toBe("0s");
   });
+
+  /**
+   * 오버레이는 reduce에서 바로 사라지지 않고 opacity만 fast로 페이드한다(이동·확대만 뺀다).
+   * 대조군: no-preference에서는 각자의 이동 keyframes를 쓴다.
+   */
+  const POP = "dds-overlay-pop-in 0.15s";
+  const FADES = [
+    { story: "dialog--functional-demo", cls: "dds-dialog__content", moving: "dds-dialog-content-in 0.2s" },
+    { story: "sheet--functional-demo", cls: "dds-sheet__content dds-sheet--side_right", moving: "dds-sheet-content-in-right 0.2s" },
+    { story: "toast--functional-demo", cls: "dds-toast", moving: "dds-toast-in 0.2s" },
+    { story: "popover--functional-demo", cls: "dds-popover__content", moving: POP },
+    { story: "tooltip--functional-demo", cls: "dds-tooltip__content", moving: POP },
+    { story: "hovercard--functional-demo", cls: "dds-hover-card__content", moving: POP },
+    { story: "dropdownmenu--functional-demo", cls: "dds-dropdown-menu__content", moving: POP },
+    { story: "select--functional-demo", cls: "dds-select__content", moving: POP },
+  ];
+
+  for (const { story, cls, moving } of FADES) {
+    test(`${cls.split(" ")[0]}는 reduce에서 opacity 페이드만 남는다`, async ({ page }) => {
+      test.skip(!hasStory(story), `스토리 없음: ${story}`);
+      await page.goto(`/iframe.html?id=${story}&viewMode=story`);
+      // 컴포넌트 CSS는 스토리 모듈과 함께 로드된다 — 렌더를 기다린 뒤에 규칙을 읽는다.
+      await expect(page.locator("#storybook-root > *").first()).toBeVisible();
+      const read = () =>
+        page.evaluate((className) => {
+          const pick = (state: string) => {
+            const el = document.createElement("div");
+            el.className = className;
+            el.dataset.state = state;
+            document.body.append(el);
+            const style = getComputedStyle(el);
+            const value = `${style.animationName} ${style.animationDuration}`;
+            el.remove();
+            return value;
+          };
+          return { open: pick("open"), closed: pick("closed") };
+        }, cls);
+
+      await page.emulateMedia({ reducedMotion: "no-preference" });
+      expect((await read()).open).toBe(moving);
+
+      await page.emulateMedia({ reducedMotion: "reduce" });
+      expect(await read()).toEqual({
+        open: "dds-overlay-fade-in 0.15s",
+        closed: "dds-overlay-fade-out 0.15s",
+      });
+    });
+  }
+
+  test("Dialog는 reduce에서도 닫힐 때 바로 사라지지 않고 페이드 뒤 언마운트된다", async ({ page }) => {
+    test.skip(!hasStory("dialog--functional-demo"), "스토리 없음: dialog--functional-demo");
+    await page.goto("/iframe.html?id=dialog--functional-demo&viewMode=story");
+    await page.emulateMedia({ reducedMotion: "reduce" });
+
+    await page.locator("#storybook-root").getByRole("button").first().click();
+    const dialog = page.getByRole("dialog");
+    await expect(dialog).toBeVisible();
+
+    await page.keyboard.press("Escape");
+    await expect(dialog).toHaveAttribute("data-state", "closed");
+    await expect(dialog).toBeHidden();
+  });
 });
+

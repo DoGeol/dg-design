@@ -126,3 +126,31 @@ test.describe("DropdownMenu 기능 — Dialog 안", () => {
     await expect(dialog).toBeVisible();
   });
 });
+
+test.describe("DropdownMenu.ItemIcon", () => {
+  const ITEM_ICON_DEMO = "dropdownmenu--item-icon-demo";
+
+  test("아이콘 size(기본 20)와 무관하게 16 자리에 16px로 그려지고 장식이다", async ({ page }) => {
+    test.skip(!hasStory(ITEM_ICON_DEMO), `스토리 없음: ${ITEM_ICON_DEMO}`);
+    await page.goto(`/iframe.html?id=${ITEM_ICON_DEMO}&viewMode=story`);
+    await page.locator("#storybook-root").getByRole("button", { name: "더 보기" }).click();
+    await expect(page.getByRole("menu")).toBeVisible();
+
+    // 이름은 글자만 — 아이콘은 접근 이름에 끼지 않는다.
+    await expect(page.getByRole("menuitem", { name: "삭제" })).toBeVisible();
+
+    const slots = page.locator(".dds-dropdown-menu__item-icon");
+    await expect(slots).toHaveCount(3);
+    for (const slot of await slots.all()) {
+      await expect(slot).toHaveAttribute("aria-hidden", "true");
+      // getBoundingClientRect는 열림 pop-in(scale 0.96) 중 값이 줄어든다 — 레이아웃 크기를 읽는다.
+      const sizes = await slot.evaluate((el) => {
+        const svg = getComputedStyle(el.querySelector("svg")!);
+        const box = el as HTMLElement;
+        return [box.offsetWidth, box.offsetHeight, parseFloat(svg.width), parseFloat(svg.height)];
+      });
+      expect(sizes).toEqual([16, 16, 16, 16]);
+    }
+  });
+});
+

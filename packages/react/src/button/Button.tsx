@@ -119,7 +119,8 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
         onTransitionEnd={(event) => {
           onTransitionEnd?.(event);
-          if (!isLoading) setSpinnerMounted(false);
+          // 버튼 자신의 색·누름 전환은 레이어 교차와 끝나는 시점이 달라 거른다.
+          if (!isLoading && event.target !== event.currentTarget) setSpinnerMounted(false);
         }}
       >
         {/* 래퍼가 children의 자리를 그대로 잡아 로딩 중에도 버튼 크기가 바뀌지 않는다.
