@@ -126,6 +126,39 @@ describe("Dialog 스택", () => {
     document.body.style.overflow = "";
   });
 
+  describe("스크롤 잠금 폭 보정", () => {
+    const root = document.documentElement;
+    // jsdom은 clientWidth가 항상 0이라 스크롤바 15px짜리 뷰포트를 흉내 낸다.
+    function withScrollbar(run: () => Promise<void>) {
+      Object.defineProperty(root, "clientWidth", { configurable: true, value: window.innerWidth - 15 });
+      return run().finally(() => {
+        delete (root as { clientWidth?: number }).clientWidth;
+        root.style.removeProperty("scrollbar-gutter");
+      });
+    }
+
+    it("스크롤바 폭만큼 body 오른쪽 여백을 더하고 닫히면 되돌린다", () =>
+      withScrollbar(async () => {
+        const user = userEvent.setup();
+        render(<Basic />);
+        await user.click(screen.getByRole("button", { name: "열기" }));
+        expect(document.body.style.paddingRight).toBe("15px");
+
+        await user.keyboard("{Escape}");
+        expect(document.body.style.paddingRight).toBe("");
+      }));
+
+    it("루트가 scrollbar-gutter: stable이면 자리가 남으니 보정하지 않는다", () =>
+      withScrollbar(async () => {
+        root.style.setProperty("scrollbar-gutter", "stable");
+        const user = userEvent.setup();
+        render(<Basic />);
+        await user.click(screen.getByRole("button", { name: "열기" }));
+        expect(document.body.style.overflow).toBe("hidden");
+        expect(document.body.style.paddingRight).toBe("");
+      }));
+  });
+
   it("배경 형제에 inert를 부여하고 닫히면 복원한다", async () => {
     const user = userEvent.setup();
     const { baseElement } = render(<Basic />);

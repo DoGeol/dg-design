@@ -58,8 +58,11 @@ export function pushDialog(entry: DialogStackEntry): () => void {
     restoreOverflow = document.body.style.overflow;
     restorePaddingRight = document.body.style.paddingRight;
     // 잠금으로 스크롤바가 사라지면 그 폭만큼 페이지가 좌우로 덜컹인다 — 폭을 보정한다.
+    // 루트가 scrollbar-gutter: stable이면 잠근 뒤에도 자리가 남아 보정하면 오히려 밀린다.
+    // 이 속성을 모르는 브라우저는 undefined를 돌려준다.
+    const gutterKept = getComputedStyle(document.documentElement).scrollbarGutter?.startsWith("stable");
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    if (scrollbarWidth > 0) {
+    if (scrollbarWidth > 0 && !gutterKept) {
       const current = parseFloat(getComputedStyle(document.body).paddingRight) || 0;
       document.body.style.paddingRight = `${current + scrollbarWidth}px`;
     }
