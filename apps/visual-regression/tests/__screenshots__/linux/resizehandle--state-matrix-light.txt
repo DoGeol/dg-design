@@ -1,23 +1,23 @@
-dds-resize-handle dds-resize-handle--orientation_vertical | rgb(0, 0, 0) | rgb(228, 233, 232) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(0, 0, 0) | rgb(228, 233, 232) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical | rgb(0, 0, 0) | rgb(15, 70, 70) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(0, 0, 0) | rgb(15, 70, 70) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical | rgb(0, 0, 0) | rgb(15, 70, 70) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(0, 0, 0) | rgb(15, 70, 70) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical | rgb(0, 0, 0) | rgb(15, 70, 70) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(0, 0, 0) | rgb(15, 70, 70) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical | rgb(0, 0, 0) | rgb(228, 233, 232) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(0, 0, 0) | rgb(228, 233, 232) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-resize-handle dds-resize-handle--orientation_vertical | rgb(36, 39, 39) | rgb(228, 233, 232) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(36, 39, 39) | rgb(228, 233, 232) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical | rgb(36, 39, 39) | rgb(15, 70, 70) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(36, 39, 39) | rgb(15, 70, 70) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical | rgb(36, 39, 39) | rgb(15, 70, 70) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(36, 39, 39) | rgb(15, 70, 70) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical | rgb(36, 39, 39) | rgb(15, 70, 70) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(36, 39, 39) | rgb(15, 70, 70) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical | rgb(36, 39, 39) | rgb(228, 233, 232) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(36, 39, 39) | rgb(228, 233, 232) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-resize-handle dds-resize-handle--orientation_vertical | rgb(241, 246, 246) | rgb(58, 62, 62) | none | rgb(241, 246, 246) | none
 dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(241, 246, 246) | rgb(58, 62, 62) | none | rgb(241, 246, 246) | none
@@ -38,26 +38,26 @@ dds-resize-handle dds-resize-handle--orientation_vertical | rgb(241, 246, 246) |
 dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(241, 246, 246) | rgb(58, 62, 62) | none | rgb(241, 246, 246) | none
 dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-resize-handle dds-resize-handle--orientation_vertical | rgb(0, 0, 0) | rgb(228, 233, 232) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(0, 0, 0) | rgb(228, 233, 232) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical | rgb(0, 0, 0) | rgb(15, 70, 70) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(0, 0, 0) | rgb(15, 70, 70) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical | rgb(0, 0, 0) | rgb(15, 70, 70) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(0, 0, 0) | rgb(15, 70, 70) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical | rgb(0, 0, 0) | rgb(15, 70, 70) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(0, 0, 0) | rgb(15, 70, 70) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical | rgb(0, 0, 0) | rgb(228, 233, 232) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(0, 0, 0) | rgb(228, 233, 232) | none | rgb(0, 0, 0) | none
-dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
+dds-resize-handle dds-resize-handle--orientation_vertical | rgb(36, 39, 39) | rgb(228, 233, 232) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(36, 39, 39) | rgb(228, 233, 232) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical | rgb(36, 39, 39) | rgb(15, 70, 70) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(36, 39, 39) | rgb(15, 70, 70) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical | rgb(36, 39, 39) | rgb(15, 70, 70) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(36, 39, 39) | rgb(15, 70, 70) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical | rgb(36, 39, 39) | rgb(15, 70, 70) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(36, 39, 39) | rgb(15, 70, 70) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical | rgb(36, 39, 39) | rgb(228, 233, 232) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(36, 39, 39) | rgb(228, 233, 232) | none | rgb(36, 39, 39) | none
+dds-resize-handle dds-resize-handle--orientation_horizontal::before | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-resize-handle dds-resize-handle--orientation_vertical | rgb(241, 246, 246) | rgb(58, 62, 62) | none | rgb(241, 246, 246) | none
 dds-resize-handle dds-resize-handle--orientation_vertical::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-resize-handle dds-resize-handle--orientation_horizontal | rgb(241, 246, 246) | rgb(58, 62, 62) | none | rgb(241, 246, 246) | none
