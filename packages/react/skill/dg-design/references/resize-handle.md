@@ -25,6 +25,7 @@
 | `min` | `number` | 필수 | 최소 하한값 |
 | `max` | `number` | 필수 | 최대 상한값 |
 | `step` | `number` | `1` | 키보드 1회 이동량 |
+| `fromDrag` | `(startValue: number, deltaPixels: number) => number \| null` | 픽셀 더하기 | 포인터 이동량을 값의 단위·방향으로 변환한 뒤 범위를 제한. null은 무시 |
 | `onValueChange` | `(value: number) => void` | 필수 | 조절 중 실시간 호출되는 변경 콜백 |
 | `onReset` | `() => void` | 선택 | 더블클릭 또는 Enter/Space 키 입력 시 호출되는 초기화 콜백 |
 | `disabled` | `boolean` | `false` | 조작 비활성화 여부 |
@@ -34,6 +35,7 @@
 - W3C ARIA `role="separator"` 명세를 충실히 따르며 `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, `aria-orientation`을 관리합니다.
 - 키보드 포커스 시 ArrowLeft/ArrowDown으로 -step, ArrowRight/ArrowUp으로 +step, Home/End로 하한/상한 이동을 지원합니다.
 - Enter 또는 Space 키를 눌러 기본값(`onReset`)으로 복원할 수 있습니다.
+- 비율·rem 패널에는 `fromDrag`로 포인터 px를 값 단위로 변환합니다. 변경 콜백은 이동 중 호출되므로 저장 시점은 소비자가 관리합니다.
 
 ## 예제
 

@@ -11,7 +11,7 @@
 - `StatePanel`은 `Root`, `Icon`, `Title`, `Description`, `Actions`, `Footer`의 compound 구조로 구현했다.
 - 별도의 Context를 두지 않아 서브컴포넌트를 `Root` 밖에서 독립적으로 렌더링해도 런타임 에러가 발생하지 않는다.
 - `StatePanel.Title`은 `asChild`를 지원하여 시맨틱 헤딩 레벨(h1~h6 등)을 소비자가 유연하게 지정할 수 있다.
-- `StatePanel.Loading` 프리셋은 `label: ReactNode`를 필수로 받으며, 한국어 기본 문구를 내장하지 않는 DDS 원칙을 지킨다 (`role="status"`, `aria-live="polite"`).
+- `StatePanel.Loading` 프리셋은 `label: ReactNode`를 필수로 받으며, 한국어 기본 문구를 내장하지 않는 DDS 원칙을 지킨다. 최초 구현은 `role="status"`와 `aria-live="polite"`를 함께 썼으나, 2026-10-27에는 공통 live region 관습에 맞춰 암묵적 polite를 가진 `role="status"`만 남겼다. 실제 스크린리더 청취는 별도 확인이 필요하다.
 
 ### 2. Slider leaf
 - `<input type="range">`의 래퍼 컴포넌트로 구현했으며, `size`는 `small`(트랙 4px, thumb 14px)과 `medium`(트랙 6px, thumb 18px, 기본) 둘 다 지원한다.

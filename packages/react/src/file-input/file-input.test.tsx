@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { renderToStaticMarkup } from "react-dom/server";
 import * as React from "react";
 import { describe, expect, it, vi } from "vitest";
 
@@ -247,6 +248,55 @@ describe("FileInput Trigger", () => {
 });
 
 describe("FileInput Field 연동", () => {
+  it("Field 라벨과 조작 대상의 문구를 접근 이름에 함께 포함한다", () => {
+    render(
+      <Field.Root>
+        <Field.Label>대표 이미지</Field.Label>
+        <FileInput.Root>
+          <FileInput.Dropzone>파일 놓기</FileInput.Dropzone>
+          <FileInput.Trigger asChild><button type="button">파일 선택</button></FileInput.Trigger>
+        </FileInput.Root>
+      </Field.Root>,
+    );
+    expect(screen.getByRole("button", { name: "대표 이미지 파일 놓기" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "대표 이미지 파일 선택" })).toBeTruthy();
+  });
+
+  it("소비자가 명시한 접근 이름은 Field 기본 이름보다 우선한다", () => {
+    render(
+      <Field.Root>
+        <Field.Label>대표 이미지</Field.Label>
+        <FileInput.Root>
+          <FileInput.Dropzone aria-label="업로드 영역">파일 놓기</FileInput.Dropzone>
+          <FileInput.Trigger asChild><button type="button" aria-label="사진 바꾸기">교체</button></FileInput.Trigger>
+        </FileInput.Root>
+      </Field.Root>,
+    );
+    expect(screen.getByRole("button", { name: "업로드 영역" })).toBeTruthy();
+    expect(screen.getByRole("button", { name: "사진 바꾸기" })).toBeTruthy();
+  });
+
+  it("Field.Label에 지정한 id도 조작 대상 이름에 연결한다", () => {
+    render(
+      <Field.Root>
+        <Field.Label id="custom-label">대표 이미지</Field.Label>
+        <FileInput.Root><FileInput.Trigger>파일 선택</FileInput.Trigger></FileInput.Root>
+      </Field.Root>,
+    );
+    expect(screen.getByRole("button", { name: "대표 이미지 파일 선택" })).toBeTruthy();
+  });
+
+  it("직접 배치한 사용자 라벨 id는 서버 렌더에서도 연결된다", () => {
+    const markup = renderToStaticMarkup(
+      <Field.Root>
+        <Field.Label id="custom-label">대표 이미지</Field.Label>
+        <FileInput.Root><FileInput.Trigger>파일 선택</FileInput.Trigger></FileInput.Root>
+      </Field.Root>,
+    );
+    const host = document.createElement("div");
+    host.innerHTML = markup;
+    expect(host.querySelector("button")?.getAttribute("aria-labelledby")).toContain("custom-label");
+  });
   it("Field 안이면 Dropzone에 aria-describedby·aria-invalid가 연결된다", () => {
     render(
       <Field.Root>

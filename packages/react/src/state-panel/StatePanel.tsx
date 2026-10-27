@@ -89,7 +89,7 @@ export interface StatePanelLoadingProps
 export const StatePanelLoading = React.forwardRef<HTMLDivElement, StatePanelLoadingProps>(
   ({ label, ...props }, ref) => {
     return (
-      <StatePanelRoot ref={ref} role="status" aria-live="polite" {...props}>
+      <StatePanelRoot ref={ref} role="status" {...props}>
         <StatePanelIcon>
           <Spinner size="medium" />
         </StatePanelIcon>

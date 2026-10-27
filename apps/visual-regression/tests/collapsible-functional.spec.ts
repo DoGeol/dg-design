@@ -75,4 +75,36 @@ test.describe("Collapsible 기능", () => {
     await expect(page.getByTestId("collapsible-added-content")).toBeVisible();
     await expect.poll(() => content.evaluate((element) => element.style.getPropertyValue("--dds-collapsible-content-height"))).not.toBe(initialHeight);
   });
+
+  test("콘텐츠가 커졌다 다시 작아지면 열린 영역도 줄어든다", async ({ page }) => {
+    const trigger = page.getByRole("button", { name: "동적 콘텐츠" });
+    const content = trigger.locator("xpath=following-sibling::*[contains(@class, 'dds-collapsible__content')]");
+    await trigger.click();
+    await content.locator(":scope > div").evaluate((child) => {
+      (child as HTMLElement).style.height = "240px";
+      (child as HTMLElement).style.boxSizing = "border-box";
+    });
+    await expect.poll(async () => (await content.boundingBox())?.height ?? 0).toBeGreaterThanOrEqual(230);
+    await content.locator(":scope > div").evaluate((child) => {
+      (child as HTMLElement).style.height = "80px";
+    });
+    await expect.poll(async () => (await content.boundingBox())?.height ?? 0).toBeLessThan(100);
+  });
+
+  test("콘텐츠에 padding과 border가 있어도 열린 높이를 중복 계산하지 않는다", async ({ page }) => {
+    const trigger = page.getByRole("button", { name: "동적 콘텐츠" });
+    const content = trigger.locator("xpath=following-sibling::*[contains(@class, 'dds-collapsible__content')]");
+    await content.evaluate((element) => {
+      const style = (element as HTMLElement).style;
+      style.padding = "8px";
+      style.border = "2px solid transparent";
+    });
+    await content.locator(":scope > div").evaluate((child) => {
+      (child as HTMLElement).style.height = "80px";
+      (child as HTMLElement).style.boxSizing = "border-box";
+      (child as HTMLElement).style.overflow = "hidden";
+    });
+    await trigger.click();
+    await expect.poll(async () => Math.round((await content.boundingBox())?.height ?? 0)).toBe(100);
+  });
 });

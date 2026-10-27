@@ -168,7 +168,7 @@ export function InlineInstall() {
 
 | 사용자 결정이 필요한 항목 | 기본안·영향 |
 | --- | --- |
-| copyText 생략 시 텍스트 추출 | children이 단일 문자열일 때만 자동 추출, 복잡한 VNode일 때는 빈 문자열 경고. copyText 명시 권장 |
+| copyText 생략 시 텍스트 추출 | children이 단일 문자열일 때만 자동 추출, 복잡한 VNode일 때는 경고하고 클립보드를 변경하지 않으며 복사 실패를 알린다. copyText를 명시해야 한다(2026-10-27 합동 개선에서 기존 동작 변경). |
 | filename 없이 copyable만 있을 때 | 상단 헤더 바를 얇게 띄워 우측에 복사 버튼 배치. 헤더 완전 제거 옵션은 copyable=false |
 | 단독 CopyButton 공개 여부 | `CodeBlock`과 함께 named export로 제공. 인라인 코드 및 탭 바 등 다양한 복사 인터페이스에 재사용 |
 | 코드 컨테이너 HTML 태그 | W3C 명세에 따라 `role="region"`을 가진 `div`로 렌더하고 내부에 `<pre><code>` 배치 권장 |
