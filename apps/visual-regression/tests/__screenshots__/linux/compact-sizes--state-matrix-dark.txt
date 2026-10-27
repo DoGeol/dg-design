@@ -56,6 +56,7 @@ dds-date-picker__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241,
 dds-button dds-button--intent_neutral dds-button--variant_weak dds-button--size_medium dds-date-picker__trigger dds-date-picker__trigger--size_large | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
 dds-alert dds-alert--intent_neutral | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
 dds-alert__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_20 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-alert__body | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-alert__title | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-alert__close | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
@@ -132,6 +133,7 @@ dds-date-picker__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241,
 dds-button dds-button--intent_neutral dds-button--variant_weak dds-button--size_medium dds-date-picker__trigger dds-date-picker__trigger--size_large | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(137, 141, 141) | none
 dds-alert dds-alert--intent_neutral | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
 dds-alert__icon | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
+dds-icon dds-icon--size_20 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-alert__body | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-alert__title | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-alert__close | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
