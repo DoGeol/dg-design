@@ -83,6 +83,21 @@
     background-color: var(--dds-color-bg-critical-weak-pressed);
   }
 
+  /* 항목 앞 아이콘 — 체크·라디오 표식 열과 같은 16 폭이라 섞여도 글자 시작선이 맞는다. */
+  .dds-dropdown-menu__item-icon {
+    display: inline-flex;
+    flex: none;
+    width: var(--dds-dimension-x4);
+    height: var(--dds-dimension-x4);
+  }
+  .dds-dropdown-menu__item-icon[hidden] {
+    display: none;
+  }
+  .dds-dropdown-menu__item-icon > svg {
+    width: 100%;
+    height: 100%;
+  }
+
   /* 체크·라디오 항목의 앞쪽 표식 열. 선택 안 된 항목도 자리를 차지해 글자 시작선이 같다. */
   .dds-dropdown-menu__indicator {
     flex: none;
@@ -125,10 +140,13 @@
   }
 
 
-  /* presence는 계산된 애니메이션 길이를 읽는다 — 여기서 0이 되면 즉시 언마운트된다. */
+  /* reduce는 확대만 빼고 opacity 페이드(fast)를 남긴다(모션 API 결정 §6). presence는 이 길이를 읽어 퇴장을 기다린다. */
   @media (prefers-reduced-motion: reduce) {
     .dds-dropdown-menu__content {
-      animation: none;
+      animation-name: dds-overlay-fade-in;
+    }
+    .dds-dropdown-menu__content[data-state="closed"] {
+      animation-name: dds-overlay-fade-out;
     }
   }
 }

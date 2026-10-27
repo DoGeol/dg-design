@@ -322,3 +322,40 @@ test.describe("닫히는 오버레이의 inert (B5)", () => {
     expect(outerContainerInert).toBe(false);
   });
 });
+
+/**
+ * 퇴장은 입장(base 200ms)보다 짧은 fast(150ms)다. 퇴장 구간을 프레임 타이밍으로 잡으면 흔들리므로,
+ * 닫힌 상태 클래스를 단 요소를 직접 만들어 계산된 길이를 읽는다 — CSS 규칙 자체가 대상이다.
+ */
+test.describe("퇴장 길이는 fast, 입장은 base", () => {
+  const cases = [
+    { story: DIALOG_DEMO, classes: ["dds-dialog__content", "dds-dialog__overlay"] },
+    { story: SHEET_DEMO, classes: ["dds-sheet__content dds-sheet--side_right", "dds-sheet__overlay"] },
+    { story: "toast--functional-demo", classes: ["dds-toast"] },
+  ];
+
+  for (const { story, classes } of cases) {
+    test(story, async ({ page }) => {
+      test.skip(!hasStory(story), `스토리 없음: ${story}`);
+      await page.goto(`/iframe.html?id=${story}&viewMode=story`);
+      // 컴포넌트 CSS는 스토리 모듈과 함께 로드된다 — 렌더를 기다린 뒤에 규칙을 읽는다.
+      await expect(page.locator("#storybook-root > *").first()).toBeVisible();
+      for (const className of classes) {
+        const durations = await page.evaluate((cls) => {
+          const read = (state: string) => {
+            const el = document.createElement("div");
+            el.className = cls;
+            el.dataset.state = state;
+            document.body.append(el);
+            const value = getComputedStyle(el).animationDuration;
+            el.remove();
+            return value;
+          };
+          return { open: read("open"), closed: read("closed") };
+        }, className);
+        expect(durations, className).toEqual({ open: "0.2s", closed: "0.15s" });
+      }
+    });
+  }
+});
+

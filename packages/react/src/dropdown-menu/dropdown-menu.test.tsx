@@ -4,6 +4,7 @@ import * as React from "react";
 import { describe, expect, it, vi } from "vitest";
 
 import { Dialog } from "../dialog/Dialog";
+import { TrashIcon } from "../icon/trash-icon";
 import { DropdownMenu } from "./DropdownMenu";
 
 function Basic(
@@ -282,5 +283,28 @@ describe("DropdownMenu Item intent·Shortcut", () => {
     expect(del!.hasAttribute("intent")).toBe(false);
     expect(screen.getByRole("menuitem", { name: /⌘⌫/ })).toBeTruthy();
     expect(screen.getByText("⌘⌫").className).toBe("dds-dropdown-menu__shortcut");
+  });
+
+  it("ItemIcon은 장식이라 접근 이름에 끼지 않고 아이콘 size와 무관하게 자리 클래스를 단다", async () => {
+    const user = userEvent.setup();
+    render(
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger>메뉴</DropdownMenu.Trigger>
+        <DropdownMenu.Content>
+          <DropdownMenu.Item intent="critical">
+            <DropdownMenu.ItemIcon data-testid="slot">
+              <TrashIcon size={24} label="휴지통" />
+            </DropdownMenu.ItemIcon>
+            삭제
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>,
+    );
+    await user.click(screen.getByRole("button", { name: "메뉴" }));
+
+    expect(screen.getByRole("menuitem", { name: "삭제" })).toBeTruthy();
+    const slot = screen.getByTestId("slot");
+    expect(slot.getAttribute("aria-hidden")).toBe("true");
+    expect(slot.className).toBe("dds-dropdown-menu__item-icon");
   });
 });

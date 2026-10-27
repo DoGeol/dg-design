@@ -2,7 +2,7 @@
 
 # DropdownMenu
 
-버튼을 눌러 여는 행동(명령) 목록 — 항목, 체크, 라디오, 단축키 표시.
+버튼을 눌러 여는 행동(명령) 목록 — 항목, 항목 아이콘, 체크, 라디오, 단축키 표시.
 
 ## 언제 쓰나
 
@@ -27,6 +27,7 @@
 | `DropdownMenu.Item` | `onSelect`·`intent`(`neutral`·`critical`)·`disabled` | 선택하면 `onSelect` 뒤 **메뉴가 항상 닫힌다** |
 | `DropdownMenu.CheckboxItem` | `checked`·`defaultChecked`·`onCheckedChange` | 메뉴가 닫히지 않는다 |
 | `DropdownMenu.RadioGroup` · `RadioItem` | `value`·`defaultValue`·`onValueChange` / `value` | 메뉴가 닫히지 않는다 |
+| `DropdownMenu.ItemIcon` | — | 항목 맨 앞 아이콘 자리. 장식(`aria-hidden`)이고 안의 아이콘을 16으로 맞춘다 — `Icon`에 `label`을 주지 않는다 |
 | `DropdownMenu.Separator` · `Label` · `Shortcut` | — | `Shortcut`은 표시용 글자(키 바인딩은 앱이 건다) |
 
 ## 접근성
@@ -52,29 +53,37 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@dg-design/react/dropdown-menu";
+import { CopyIcon, MoreIcon, PencilIcon, TrashIcon } from "@dg-design/react/icon";
 import * as React from "react";
 
-/** 행 끝의 더 보기 메뉴 — 일반 행동 + 위험 행동 */
+/** 행 끝의 더 보기 메뉴 — 항목 아이콘 + 일반 행동 + 위험 행동 */
 export function RowActions({ onDelete }: { onDelete?: () => void }) {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
         <Button intent="neutral" variant="ghost" size="small" iconOnly aria-label="더 보기">
-          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-            <circle cx="3" cy="8" r="1.5" fill="currentColor" />
-            <circle cx="8" cy="8" r="1.5" fill="currentColor" />
-            <circle cx="13" cy="8" r="1.5" fill="currentColor" />
-          </svg>
+          <MoreIcon size={16} />
         </Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Item onSelect={() => {}}>
+          <DropdownMenu.ItemIcon>
+            <PencilIcon />
+          </DropdownMenu.ItemIcon>
           이름 바꾸기
           <DropdownMenu.Shortcut>F2</DropdownMenu.Shortcut>
         </DropdownMenu.Item>
-        <DropdownMenu.Item>복제</DropdownMenu.Item>
+        <DropdownMenu.Item>
+          <DropdownMenu.ItemIcon>
+            <CopyIcon />
+          </DropdownMenu.ItemIcon>
+          복제
+        </DropdownMenu.Item>
         <DropdownMenu.Separator />
         <DropdownMenu.Item intent="critical" onSelect={onDelete}>
+          <DropdownMenu.ItemIcon>
+            <TrashIcon />
+          </DropdownMenu.ItemIcon>
           삭제
         </DropdownMenu.Item>
       </DropdownMenu.Content>

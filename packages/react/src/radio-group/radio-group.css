@@ -198,7 +198,9 @@
     color: var(--dds-color-fg-neutral-weak);
     cursor: pointer;
     gap: 0;
-    transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+    transition-property: background-color, color, box-shadow;
+    transition-duration: var(--dds-duration-fast);
+    transition-timing-function: var(--dds-easing-out);
   }
 
   .dds-radio-group--variant_segmented.dds-radio-group--size_xsmall .dds-radio {

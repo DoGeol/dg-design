@@ -13,6 +13,22 @@
     user-select: none;
     /* 중앙 Spinner 레이어의 기준 */
     position: relative;
+    /* 색 전환과 누름 축소. motion prop(로딩 교차 페이드 전용)과 무관하다 — asChild 경로에도 같이 걸린다.
+       누름은 개별 scale 속성이라 소비자 transform과 겹치지 않는다. */
+    transition-property: background-color, border-color, color, scale;
+    transition-duration: var(--dds-duration-fast);
+    transition-timing-function: var(--dds-easing-out);
+  }
+
+  .dds-button:not(:is(:disabled, [disabled], [data-disabled], [data-loading])):active {
+    scale: 0.98;
+  }
+
+  /* reduce는 위치·크기 변화만 뺀다 — 색 전환은 움직임이 아니라 남긴다(모션 API 결정 §6). */
+  @media (prefers-reduced-motion: reduce) {
+    .dds-button:not(:is(:disabled, [disabled], [data-disabled], [data-loading])):active {
+      scale: none;
+    }
   }
 
   /* children 래퍼. 버튼이 직접 flex 컨테이너였을 때의 간격·정렬을 그대로 재현하고(gap: inherit),

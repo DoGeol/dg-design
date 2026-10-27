@@ -14,7 +14,7 @@
 
 ## 후속 작업
 
-[follow-ups.md](follow-ups.md) — DatePicker·Table v2 실기기 QA와 "모르면 첫 시도에서 틀리는" 실측 사실 4가지.
+[follow-ups.md](follow-ups.md) — DatePicker·Table v2 실기기 QA, dg-studio 모션·아이콘 반영 뒤 남긴 것, "모르면 첫 시도에서 틀리는" 실측 사실 4가지.
 
 ## 계획
 
@@ -65,6 +65,7 @@
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
+| [2026-10-28 조작 모션·오버레이 퇴장·아이콘 확장](decisions/2026-10-28-interaction-motion-and-icons.md) | 활성 | Button 색 전환·누름 0.98(`motion` prop 밖), 오버레이 퇴장 fast, reduce는 오버레이 전부 none 대신 opacity 페이드(§6 개정), 아이콘 16종 추가·Alert 상태 아이콘 공개, `DropdownMenu.ItemIcon` |
 | [2026-10-09 사용 가이드 스킬](decisions/2026-10-09-usage-skill.md) | 활성 · 구현(P7) | dg-design 소유·프로젝트 독립 예제 스킬, 패키지에 스킬 + 에이전트용 설정 가이드 md, layout은 최소 권장사항 + 프로젝트 로컬 파일 |
 | [2026-10-09 flex 적용 방향](decisions/2026-10-09-flex-adoption-direction.md) | 활성 · 구현(react 0.21.0) | A 기본 + B 사용례, 모서리 입력 4·버튼 6, outline 기본 + 모바일 확장, 브랜드 createTheme #1550A9 |
 | [2026-10-06 부유 패널 테두리](decisions/2026-10-06-floating-panel-border.md) | 활성 | 패널 경계는 그림자가 아니라 테두리 1px, Sheet는 안쪽 변만, 화살표 오프셋 보정 |

@@ -331,7 +331,7 @@ describe("Dialog presence", () => {
     }
   });
 
-  it("애니메이션이 없으면(reduced-motion 포함) 즉시 언마운트한다", () => {
+  it("애니메이션이 없으면(CSS 미로드) 즉시 언마운트한다", () => {
     const { rerender } = render(
       <Dialog.Root open>
         <Dialog.Content />

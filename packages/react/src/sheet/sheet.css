@@ -95,7 +95,10 @@
   }
 
   /* forwards가 없으면 animationend와 React unmount 사이 1~2프레임 동안
-     base 위치로 스냅백해 사라지기 직전에 번쩍인다(dialog.css와 같은 함정). */
+     base 위치로 스냅백해 사라지기 직전에 번쩍인다(dialog.css와 같은 함정). 퇴장은 입장(base)보다 짧은 fast. */
+  :is(.dds-sheet__overlay, .dds-sheet__content)[data-state="closed"] {
+    animation-duration: var(--dds-duration-fast);
+  }
   .dds-sheet__overlay[data-state="closed"] {
     animation-name: dds-overlay-fade-out;
     animation-fill-mode: forwards;
@@ -199,13 +202,20 @@
     }
   }
 
-  /* presence는 계산된 애니메이션 길이를 읽어 대기 여부를 정한다 — 여기서 길이가 0이 되면
-     타임아웃을 기다리지 않고 즉시 언마운트된다. */
+  /* reduce는 화면 밖에서 밀려 들어오는 이동만 빼고 opacity 페이드를 fast로 남긴다(모션 API 결정 §6).
+     side별 규칙(.dds-sheet--side_*)보다 구체적이어야 해서 :is로 side 클래스를 함께 건다.
+     presence는 이 길이를 읽어 퇴장을 기다린다. 높이 단계 전이는 크기 변화라 끈다. */
   @media (prefers-reduced-motion: reduce) {
     .dds-sheet__overlay,
     .dds-sheet__content {
-      animation: none;
+      animation-duration: var(--dds-duration-fast);
       transition: none;
+    }
+    .dds-sheet__content:is(.dds-sheet--side_left, .dds-sheet--side_right, .dds-sheet--side_top, .dds-sheet--side_bottom) {
+      animation-name: dds-overlay-fade-in;
+    }
+    .dds-sheet__content[data-state="closed"]:is(.dds-sheet--side_left, .dds-sheet--side_right, .dds-sheet--side_top, .dds-sheet--side_bottom) {
+      animation-name: dds-overlay-fade-out;
     }
   }
 }

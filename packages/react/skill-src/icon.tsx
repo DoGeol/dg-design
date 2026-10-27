@@ -1,6 +1,6 @@
 /**
  * @title Icon
- * @summary 24 grid 기반 자체 SVG 아이콘 소수 세트 (16종).
+ * @summary 24 grid 기반 자체 SVG 아이콘 소수 세트 (32종).
  *
  * ## 언제 쓰나
  *
@@ -27,12 +27,17 @@
  * - **조작 영역**: 아이콘 자체는 행동을 소유하지 않는다. 최소 조작 영역(모바일 44px, 데스크톱 24px)은 부모 조작 요소(`Button` 등)가 제공한다.
  * - **접근 이름 중복 방지**: `Button iconOnly` 안에 넣을 때는 Button에 `aria-label`을 주고 내부 Icon에는 `label`을 주지 않는다(장식으로 처리하여 스크린리더 중복 낭독 방지).
  *
- * ## 첫 공개 16종 목록
+ * ## 공개 32종 목록
  *
  * - 탐색/방향: `ChevronUpIcon`, `ChevronDownIcon`, `ChevronLeftIcon`, `ChevronRightIcon`
- * - 조작/기호: `CloseIcon`, `MenuIcon`, `ExternalLinkIcon`, `PlusIcon`, `MinusIcon`
- * - 상태/선택: `CheckIcon`, `CopyIcon`, `SearchIcon`, `SettingsIcon`, `DragHandleIcon`
+ * - 조작/기호: `CloseIcon`, `MenuIcon`, `MoreIcon`(가로 점 3개), `ExternalLinkIcon`, `PlusIcon`, `MinusIcon`
+ * - 편집: `PencilIcon`, `TrashIcon`, `CopyIcon`, `UndoIcon`, `RedoIcon`, `DownloadIcon`, `UploadIcon`
+ * - 보기/상태: `CheckIcon`, `SearchIcon`, `SettingsIcon`, `DragHandleIcon`, `EyeIcon`, `LockIcon`, `GlobeIcon`
+ * - 배치: `PanelLeftIcon`, `PanelRightIcon` — 사이드 패널 열고 닫기
+ * - 알림 상태: `InfoIcon`, `PositiveIcon`, `WarningIcon`, `CriticalIcon` — `Alert`가 intent별로 그리는 것과 같은 글리프. 직접 만든 상태 표시에 intent 색(`--dds-color-fg-{intent}`)과 함께 쓴다
  * - 테마: `SunIcon`, `MoonIcon`
+ *
+ * 메뉴 항목 앞 아이콘은 `DropdownMenu.ItemIcon`으로 감싼다 — 16 자리와 장식 처리를 메뉴가 맡는다.
  */
 import { Button } from "@dg-design/react/button";
 import {
@@ -41,6 +46,7 @@ import {
   CopyIcon,
   ExternalLinkIcon,
   SunIcon,
+  WarningIcon,
 } from "@dg-design/react/icon";
 import * as React from "react";
 
@@ -87,5 +93,23 @@ export function StandaloneLabeled() {
       <ChevronDownIcon size={24} label="아래로 펼치기" />
       <ExternalLinkIcon size={20} label="새 창에서 열림" />
     </div>
+  );
+}
+
+/** 상태 아이콘 + intent 색 — Alert를 쓰지 않는 짧은 상태 줄 */
+export function StatusLine() {
+  return (
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "var(--dds-dimension-x1_5)",
+        color: "var(--dds-color-fg-warning)",
+        fontSize: 14,
+      }}
+    >
+      <WarningIcon size={16} />
+      <span>저장 공간이 거의 찼습니다</span>
+    </span>
   );
 }

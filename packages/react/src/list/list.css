@@ -122,6 +122,11 @@
   }
 
   /* 행 상태는 Action에서만 건다 — trailing 버튼 위에서는 행이 반응하지 않는다. */
+  /* 눌러지는 행만 배경 전환 — 정적 행과 data-current는 그대로 즉시. */
+  .dds-list__item:has(> .dds-list__action) {
+    transition: background-color var(--dds-duration-fast) var(--dds-easing-out);
+  }
+
   .dds-list__item:has(> .dds-list__action:hover) {
     background-color: var(--dds-color-bg-transparent-hover);
   }
@@ -190,6 +195,7 @@
     color: inherit;
     font: inherit;
     cursor: pointer;
+    transition: background-color var(--dds-duration-fast) var(--dds-easing-out);
   }
 
   .dds-list-section-header__toggle:hover {

@@ -3,7 +3,7 @@
 - 날짜: 2026-09-13
 - 계획: [컴포넌트 애니메이션 추가 계획](../../plans/README.md) 6건(001~006)
 - 근거: [토큰 체계와 a11y 기준선](./2026-08-14-dds-token-system.md), [Dialog 구현 중 결정](./2026-08-15-dialog-implementation.md)(모션 토큰 값), [알림 묶음 구현 중 결정](./2026-08-17-feedback-batch-implementation.md)(VR reducedMotion 무효 발견)
-- 상태: 활성
+- 상태: 활성 · §6의 오버레이 reduce 처리는 [2026-10-28 결정](./2026-10-28-interaction-motion-and-icons.md)이 개정(none → opacity 페이드)
 
 6종 컴포넌트(SaveStatus · Checkbox · RadioGroup · Tabs · Button · Avatar)에 모션을 넣으면서 정한 공통 규칙이다. 개별 구현 내용은 각 계획 문서의 "구현 결과" 절에 있다.
 

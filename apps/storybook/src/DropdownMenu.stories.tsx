@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button, Dialog, DropdownMenu } from "@dg-design/react";
+import { CopyIcon, MoreIcon, PencilIcon, TrashIcon } from "@dg-design/react/icon";
 
 // Dialog와 같은 이유로 component를 지정하지 않는다 — barrel엔 DropdownMenu 객체 하나뿐이라
 // 개별 compound의 컴포넌트 타입에 이름을 붙일 수 없다(TS4023). 모든 스토리가 render를 쓴다.
@@ -37,6 +38,43 @@ export const FunctionalDemo: StoryObj<typeof meta> = {
   render: () => (
     <div style={{ padding: 24 }}>
       <DemoMenu />
+    </div>
+  ),
+};
+
+/** 항목 앞 아이콘(ItemIcon). 아이콘 size와 무관하게 16 자리에 맞고, critical 색을 그대로 물려받는다. 닫힌 상태로 시작. */
+export const ItemIconDemo: StoryObj<typeof meta> = {
+  name: "Item icon demo",
+  render: () => (
+    <div style={{ padding: 24 }}>
+      <DropdownMenu.Root>
+        <DropdownMenu.Trigger asChild>
+          <Button intent="neutral" variant="ghost" iconOnly aria-label="더 보기">
+            <MoreIcon size={16} />
+          </Button>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Content>
+          <DropdownMenu.Item>
+            <DropdownMenu.ItemIcon>
+              <PencilIcon />
+            </DropdownMenu.ItemIcon>
+            이름 바꾸기
+          </DropdownMenu.Item>
+          <DropdownMenu.Item>
+            <DropdownMenu.ItemIcon>
+              <CopyIcon />
+            </DropdownMenu.ItemIcon>
+            복제
+          </DropdownMenu.Item>
+          <DropdownMenu.Separator />
+          <DropdownMenu.Item intent="critical">
+            <DropdownMenu.ItemIcon>
+              <TrashIcon />
+            </DropdownMenu.ItemIcon>
+            삭제
+          </DropdownMenu.Item>
+        </DropdownMenu.Content>
+      </DropdownMenu.Root>
     </div>
   ),
 };

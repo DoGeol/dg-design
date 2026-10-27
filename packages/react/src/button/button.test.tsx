@@ -209,6 +209,17 @@ describe("Button 로딩 전환", () => {
     expect(spinnerLayer().querySelector(".dds-button__spinner")).toBeNull();
   });
 
+  it("버튼 자신의 색 전환 종료로는 Spinner를 내리지 않는다", () => {
+    const { rerender } = render(<Button loading>저장</Button>);
+    rerender(<Button>저장</Button>);
+
+    fireEvent.transitionEnd(button());
+    expect(spinnerLayer().querySelector(".dds-button__spinner")).not.toBeNull();
+
+    fireEvent.transitionEnd(content());
+    expect(spinnerLayer().querySelector(".dds-button__spinner")).toBeNull();
+  });
+
   it("로딩 중에도 접근 이름과 아이콘+라벨 구성이 유지된다", () => {
     render(
       <Button loading>

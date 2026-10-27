@@ -30,7 +30,8 @@
     }
   }
 
-  /* 전체 화면 백드롭 공용 — dialog·sheet의 Overlay. */
+  /* 전체 화면 백드롭 공용 — dialog·sheet의 Overlay. reduced motion에서는 dialog·sheet·toast 패널도
+     이동 대신 이 fade를 쓴다. */
   @keyframes dds-overlay-fade-in {
     from {
       opacity: 0;

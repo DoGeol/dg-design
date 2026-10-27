@@ -4,6 +4,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import clsx from "clsx";
 import * as React from "react";
 
+import { CriticalIcon } from "../icon/critical-icon";
+import { IconBase } from "../icon/icon-base";
+import { InfoIcon } from "../icon/info-icon";
+import { PositiveIcon } from "../icon/positive-icon";
+import { WarningIcon } from "../icon/warning-icon";
+
 const alert = cva("dds-alert", {
   variants: {
     intent: {
@@ -33,79 +39,35 @@ const ALERT_ROLE: Record<AlertIntent, "alert" | "status"> = {
   informative: "status",
 };
 
-/** intent별 인라인 SVG 아이콘. currentColor로 alert의 fg-{intent}를 물려받는다.
- * 저장소에 아이콘 모듈이 없고 이번에도 만들지 않는다(스펙) — Alert 파일 안에 로컬로만 둔다. */
+/** intent별 아이콘. currentColor로 alert의 fg-{intent}를 물려받는다.
+ * 상태 4종은 공개 아이콘 세트(`react/icon`)를 그대로 쓰고, 상태가 아닌 brand·neutral 글리프만 여기 둔다. */
+const SparkleGlyph = () => (
+  <IconBase>
+    <path d="M12 2.4l2.04 6.36 6.36 2.04-6.36 2.04L12 19.2l-2.04-6.36L3.6 10.8l6.36-2.04Z" />
+  </IconBase>
+);
+
+const MessageGlyph = () => (
+  <IconBase>
+    <path d="M4.8 7.8a3 3 0 0 1 3-3h8.4a3 3 0 0 1 3 3v4.8a3 3 0 0 1-3 3H9.6l-3.6 3.6v-3.6H7.8a3 3 0 0 1-3-3Z" />
+  </IconBase>
+);
+
 function AlertIcon({ intent }: { intent: AlertIntent }) {
   switch (intent) {
     case "critical":
-      return (
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <circle cx="10" cy="10" r="7.5" stroke="currentColor" strokeWidth="1.5" />
-          <path
-            d="M7.5 7.5l5 5M12.5 7.5l-5 5"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-          />
-        </svg>
-      );
+      return <CriticalIcon />;
     case "warning":
-      return (
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path
-            d="M10 2.5l8.2 14.2H1.8L10 2.5z"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-          <path d="M10 8v3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          <circle cx="10" cy="14" r="0.9" fill="currentColor" />
-        </svg>
-      );
+      return <WarningIcon />;
     case "positive":
-      return (
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <circle cx="10" cy="10" r="7.5" stroke="currentColor" strokeWidth="1.5" />
-          <path
-            d="M6.5 10.2l2.3 2.3 4.7-4.7"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      );
+      return <PositiveIcon />;
     case "informative":
-      return (
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <circle cx="10" cy="10" r="7.5" stroke="currentColor" strokeWidth="1.5" />
-          <path d="M10 9v4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-          <circle cx="10" cy="6.3" r="0.9" fill="currentColor" />
-        </svg>
-      );
+      return <InfoIcon />;
     case "brand":
-      return (
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path
-            d="M10 2l1.7 5.3L17 9l-5.3 1.7L10 16l-1.7-5.3L3 9l5.3-1.7L10 2z"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-        </svg>
-      );
+      return <SparkleGlyph />;
     case "neutral":
     default:
-      return (
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path
-            d="M4 6.5A2.5 2.5 0 0 1 6.5 4h7A2.5 2.5 0 0 1 16 6.5v4A2.5 2.5 0 0 1 13.5 13H8l-3 3v-3H6.5A2.5 2.5 0 0 1 4 10.5v-4z"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinejoin="round"
-          />
-        </svg>
-      );
+      return <MessageGlyph />;
   }
 }
 

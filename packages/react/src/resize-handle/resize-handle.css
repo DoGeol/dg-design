@@ -6,7 +6,7 @@
     border-radius: var(--dds-radius-r1);
     background-color: var(--dds-color-stroke-neutral-weak);
     outline: none;
-    transition: background-color 0.15s ease;
+    transition: background-color var(--dds-duration-fast) var(--dds-easing-out);
   }
 
   .dds-resize-handle[hidden] {
