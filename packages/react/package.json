@@ -258,7 +258,7 @@
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plugin-dts": "^5.0.3",
-    "vitest": "4.1.10"
+    "vitest": "4.1.12"
   },
   "publishConfig": {
     "access": "public"
