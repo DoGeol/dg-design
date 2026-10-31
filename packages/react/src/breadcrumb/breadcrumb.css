@@ -21,6 +21,7 @@
     color: var(--dds-color-fg-neutral-weak);
     text-decoration: none;
     border-radius: var(--dds-radius-r1);
+    transition: color var(--dds-duration-fast) var(--dds-easing-out);
   }
   .dds-breadcrumb__link:hover {
     color: var(--dds-color-fg-neutral);

@@ -9,6 +9,32 @@
     font-family: inherit;
     background-color: var(--dds-alert-bg);
     color: var(--dds-alert-fg);
+    /* 읽던 화면 안에 안내가 뚝 끼어들지 않게 한 칸 아래에서 올라온다. 흐름 안 요소라
+       presence 배선 없이 @starting-style만으로 된다 — 퇴장은 소비자가 거둬 가므로 없다. */
+    transition:
+      opacity var(--dds-duration-fast) var(--dds-easing-out),
+      translate var(--dds-duration-fast) var(--dds-easing-out);
+  }
+
+  @starting-style {
+    .dds-alert {
+      opacity: 0;
+      translate: 0 calc(var(--dds-dimension-x1) * -1);
+    }
+  }
+
+  /* 이동만 뺀다 — 페이드는 남긴다(모션 API 결정 §6). */
+  @media (prefers-reduced-motion: reduce) {
+    .dds-alert {
+      transition: opacity var(--dds-duration-fast) var(--dds-easing-out);
+    }
+
+    @starting-style {
+      .dds-alert {
+        opacity: 0;
+        translate: none;
+      }
+    }
   }
 
   .dds-alert__icon {
