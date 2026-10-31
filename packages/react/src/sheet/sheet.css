@@ -120,6 +120,50 @@
     animation-fill-mode: forwards;
   }
 
+  /* 끌어서 닫는 손잡이. 장식 막대 하나지만 누르는 영역은 그보다 넓다. */
+  .dds-sheet__handle {
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--dds-dimension-x2);
+    /* 끌기는 우리가 쓴다 — 브라우저 스크롤에 넘기면 손가락을 따라가지 못한다. */
+    touch-action: none;
+    cursor: grab;
+  }
+
+  .dds-sheet__handle::before {
+    content: "";
+    width: var(--dds-dimension-x10);
+    height: var(--dds-dimension-x1);
+    border-radius: var(--dds-radius-r-full);
+    background-color: var(--dds-color-bg-neutral-weak-pressed);
+  }
+
+  .dds-sheet__handle[data-dragging] {
+    cursor: grabbing;
+  }
+
+  /* 상하 시트는 손잡이가 화면 안쪽 변에 붙는다 — 아래 시트는 위, 위 시트는 아래. */
+  .dds-sheet--side_top > .dds-sheet__handle {
+    order: 1;
+  }
+
+  /* 끌어서 닫은 시트는 멈춘 자리에서 이어 빠진다. side별 keyframes로 돌아가면 손을 떼는
+     순간 제자리로 되돌아갔다가 나가 번쩍인다. 두 끝값은 Handle이 인라인으로 적는다. */
+  .dds-sheet__content[data-drag-out] {
+    animation-name: dds-sheet-drag-out;
+  }
+
+  @keyframes dds-sheet-drag-out {
+    from {
+      transform: var(--dds-sheet-drag-from, none);
+    }
+    to {
+      transform: var(--dds-sheet-drag-to, none);
+    }
+  }
+
   .dds-sheet__title {
     margin: 0;
     font-size: var(--dds-font-size-t7);
@@ -214,7 +258,8 @@
     .dds-sheet__content:is(.dds-sheet--side_left, .dds-sheet--side_right, .dds-sheet--side_top, .dds-sheet--side_bottom) {
       animation-name: dds-overlay-fade-in;
     }
-    .dds-sheet__content[data-state="closed"]:is(.dds-sheet--side_left, .dds-sheet--side_right, .dds-sheet--side_top, .dds-sheet--side_bottom) {
+    .dds-sheet__content[data-state="closed"]:is(.dds-sheet--side_left, .dds-sheet--side_right, .dds-sheet--side_top, .dds-sheet--side_bottom),
+    .dds-sheet__content[data-state="closed"][data-drag-out] {
       animation-name: dds-overlay-fade-out;
     }
   }

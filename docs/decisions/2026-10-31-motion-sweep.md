@@ -46,7 +46,7 @@ Checkbox는 아이콘과 박스의 규칙이 다르다: 아이콘은 `motion`과
 - **`interpolate-size: allow-keywords`로 높이 전환** — Chromium 전용(2026-10 기준 Firefox·Safari 미지원).
 - **`@starting-style`로 `use-presence` 대체** — 퇴장은 여전히 JS가 필요하다. 진입만 CSS로 바꾸면 배선이 두 갈래가 된다.
 - **애니메이션 라이브러리(motion.dev 등) 도입** — 2026-09-13 §3 유지. 이번 건 전부 CSS로 끝났고, 토큰 변수를 그대로 쓰는 쪽이 중첩 테마 스코프와 reduce를 공짜로 따른다.
-- **Toast 세로 재배치(FLIP)·Sheet 드래그 해제·StatePanel 교차 페이드** — 컴포넌트 안 presence·포인터 배선을 고쳐야 한다. 이번 범위 밖으로 남긴다([후속 작업](../follow-ups.md)).
+- **Toast 세로 재배치(FLIP)·Sheet 드래그 해제·StatePanel 교차 페이드** — 컴포넌트 안 presence·포인터 배선을 고쳐야 해서 이 배치에서는 빠졌다. 앞의 둘은 [끌어서 닫기·Toast 재배치 결정](./2026-10-31-gesture-dismiss.md)에서 구현했고, StatePanel은 본문이 소비 앱 코드라 넣지 않기로 했다(같은 문서 §6).
 
 ## 4. 검증과 VR
 

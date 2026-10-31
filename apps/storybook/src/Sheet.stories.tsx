@@ -69,6 +69,34 @@ export const FunctionalDemo: StoryObj<typeof meta> = {
   ),
 };
 
+/**
+ * 손잡이를 끌어 닫는 하단 Sheet. 닫힌 채로 시작한다 — 기능 테스트가 트리거 클릭부터 검증한다.
+ * 끌기는 포인터 조작이라 VR 스크린샷이 아니라 기능 테스트가 본다.
+ */
+export const DragDemo: StoryObj<typeof meta> = {
+  name: "Drag demo",
+  render: () => (
+    <div style={{ padding: 24, minHeight: "100vh" }}>
+      <Sheet.Root side="bottom">
+        <Sheet.Trigger asChild>
+          <Button>하단 시트 열기</Button>
+        </Sheet.Trigger>
+        <Sheet.Overlay />
+        <Sheet.Content size="fit">
+          <Sheet.Handle data-testid="sheet-handle" />
+          <Sheet.Title>배송지 변경</Sheet.Title>
+          <Sheet.Description>손잡이를 아래로 끌면 닫힙니다.</Sheet.Description>
+          <Sheet.Close asChild>
+            <Button variant="weak" intent="neutral">
+              닫기
+            </Button>
+          </Sheet.Close>
+        </Sheet.Content>
+      </Sheet.Root>
+    </div>
+  ),
+};
+
 /** 하단 Sheet `size="fit"` 작업형 — 내용 높이(최대 90dvh), Body만 스크롤, Footer 아래 safe area. */
 export const WorkBottomStateMatrix: StoryObj<typeof meta> = {
   name: "Work bottom state matrix",

@@ -65,6 +65,7 @@
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
+| [2026-10-31 끌어서 닫기·Toast 재배치](decisions/2026-10-31-gesture-dismiss.md) | 활성 | 공용 `use-drag-dismiss`(50% 또는 0.11px/ms·고무줄 1/3·놓기 직전 100ms 속도), 멈춘 자리에서 이어 빠지는 퇴장, Toast FLIP 재배치, `Sheet.Handle` 추가 |
 | [2026-10-31 조작 색 전환 확대·Alert 진입](decisions/2026-10-31-motion-sweep.md) | 활성 | 47개 전수 조사 뒤 Switch 트랙·Checkbox 박스·Chip·Tabs·Breadcrumb·달력 날짜·FileInput에 색 전환(reduce에서도 유지), Alert 진입 `@starting-style`, 메뉴 항목·표 행·Slider는 일부러 제외 |
 | [2026-10-28 조작 모션·오버레이 퇴장·아이콘 확장](decisions/2026-10-28-interaction-motion-and-icons.md) | 활성 | Button 색 전환·누름 0.98(`motion` prop 밖), 오버레이 퇴장 fast, reduce는 오버레이 전부 none 대신 opacity 페이드(§6 개정), 아이콘 16종 추가·Alert 상태 아이콘 공개, `DropdownMenu.ItemIcon` |
 | [2026-10-09 사용 가이드 스킬](decisions/2026-10-09-usage-skill.md) | 활성 · 구현(P7) | dg-design 소유·프로젝트 독립 예제 스킬, 패키지에 스킬 + 에이전트용 설정 가이드 md, layout은 최소 권장사항 + 프로젝트 로컬 파일 |

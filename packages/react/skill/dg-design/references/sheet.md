@@ -25,11 +25,13 @@
 | `Sheet.Trigger` · `Sheet.Close` | `asChild` | |
 | `Sheet.Title` · `Sheet.Description` | — | aria 자동 연결 |
 | `Sheet.Overlay` | — | 뒤 배경. Content와 형제로 Root 안에 둔다 |
+| `Sheet.Handle` | — | 끌어서 닫는 손잡이. Content 맨 앞(상단 Sheet는 맨 뒤)에 둔다. 장식이라 `aria-hidden` |
 | `Sheet.Toolbar` · `Body` · `Aside` · `Footer` | — | Content 직속 |
 
 ## 접근성
 
 - Dialog와 같다 — `Sheet.Title` 필수, 모달이라 배경 inert, Esc로 닫고 포커스는 트리거로 복귀.
+- `Sheet.Handle`은 포인터 전용이다. 손잡이를 두더라도 Esc와 닫기 버튼은 그대로 있어야 한다.
 - 서버 컴포넌트 파일에서는 named export(`SheetContent`)를 쓴다.
 
 ## 예제
@@ -42,6 +44,7 @@ import {
   SheetContent,
   SheetDescription,
   SheetFooter,
+  SheetHandle,
   SheetOverlay,
   SheetRoot,
   SheetTitle,
@@ -125,6 +128,28 @@ export function NavigationPanel() {
           <a href="/projects">프로젝트</a>
           <a href="/settings">설정</a>
         </nav>
+      </SheetContent>
+    </SheetRoot>
+  );
+}
+
+/** 끌어서 닫는 하단 시트 — 손잡이를 Content 맨 앞에 둔다 */
+export function DraggableBottomSheet() {
+  return (
+    <SheetRoot side="bottom">
+      <SheetTrigger asChild>
+        <Button>상태 바꾸기</Button>
+      </SheetTrigger>
+      <SheetOverlay />
+      <SheetContent size="fit">
+        <SheetHandle />
+        <SheetTitle>상태 바꾸기</SheetTitle>
+        <SheetDescription>손잡이를 아래로 끌어 닫을 수 있습니다.</SheetDescription>
+        <SheetClose asChild>
+          <Button variant="weak" intent="neutral">
+            닫기
+          </Button>
+        </SheetClose>
       </SheetContent>
     </SheetRoot>
   );

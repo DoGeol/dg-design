@@ -20,6 +20,23 @@ function Basic(props: React.ComponentProps<typeof Sheet.Root>) {
   );
 }
 
+describe("Sheet.Handle", () => {
+  it("장식이라 접근성 트리에서 빠지고 포커스 순서에도 없다", () => {
+    render(
+      <Sheet.Root defaultOpen>
+        <Sheet.Content>
+          <Sheet.Handle data-testid="handle" />
+          <Sheet.Title>제목</Sheet.Title>
+        </Sheet.Content>
+      </Sheet.Root>,
+    );
+
+    const handle = screen.getByTestId("handle");
+    expect(handle.getAttribute("aria-hidden")).toBe("true");
+    expect(handle.hasAttribute("tabindex")).toBe(false);
+  });
+});
+
 /** 바깥 시트의 Content 안에 또 하나를 여는 중첩 구조 — Dialog와 동일한 스택 규칙을 검증한다. */
 function Nested() {
   return (
