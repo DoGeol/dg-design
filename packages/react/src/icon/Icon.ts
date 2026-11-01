@@ -1,5 +1,8 @@
 export type { IconProps } from "./icon-base";
 
+export { AlertCircleIcon } from "./alert-circle-icon";
+export { ArrowRightIcon } from "./arrow-right-icon";
+export { BellIcon } from "./bell-icon";
 export { CheckIcon } from "./check-icon";
 export { ChevronDownIcon } from "./chevron-down-icon";
 export { ChevronLeftIcon } from "./chevron-left-icon";
@@ -19,12 +22,14 @@ export { MenuIcon } from "./menu-icon";
 export { MinusIcon } from "./minus-icon";
 export { MoonIcon } from "./moon-icon";
 export { MoreIcon } from "./more-icon";
+export { MoreVerticalIcon } from "./more-vertical-icon";
 export { PanelLeftIcon } from "./panel-left-icon";
 export { PanelRightIcon } from "./panel-right-icon";
 export { PencilIcon } from "./pencil-icon";
 export { PlusIcon } from "./plus-icon";
 export { PositiveIcon } from "./positive-icon";
 export { RedoIcon } from "./redo-icon";
+export { RefreshIcon } from "./refresh-icon";
 export { SearchIcon } from "./search-icon";
 export { SettingsIcon } from "./settings-icon";
 export { SunIcon } from "./sun-icon";

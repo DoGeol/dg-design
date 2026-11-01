@@ -7,6 +7,9 @@ import { describe, expect, it, vi } from "vitest";
 import { Button } from "../button/Button";
 import { DotIcon } from "./dot-icon";
 import {
+  AlertCircleIcon,
+  ArrowRightIcon,
+  BellIcon,
   CheckIcon,
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -26,12 +29,14 @@ import {
   MinusIcon,
   MoonIcon,
   MoreIcon,
+  MoreVerticalIcon,
   PanelLeftIcon,
   PanelRightIcon,
   PencilIcon,
   PlusIcon,
   PositiveIcon,
   RedoIcon,
+  RefreshIcon,
   SearchIcon,
   SettingsIcon,
   SunIcon,
@@ -42,6 +47,9 @@ import {
 } from "./Icon";
 
 const ALL_ICONS = [
+  { name: "AlertCircleIcon", Comp: AlertCircleIcon },
+  { name: "ArrowRightIcon", Comp: ArrowRightIcon },
+  { name: "BellIcon", Comp: BellIcon },
   { name: "CheckIcon", Comp: CheckIcon },
   { name: "ChevronDownIcon", Comp: ChevronDownIcon },
   { name: "ChevronLeftIcon", Comp: ChevronLeftIcon },
@@ -61,12 +69,14 @@ const ALL_ICONS = [
   { name: "MinusIcon", Comp: MinusIcon },
   { name: "MoonIcon", Comp: MoonIcon },
   { name: "MoreIcon", Comp: MoreIcon },
+  { name: "MoreVerticalIcon", Comp: MoreVerticalIcon },
   { name: "PanelLeftIcon", Comp: PanelLeftIcon },
   { name: "PanelRightIcon", Comp: PanelRightIcon },
   { name: "PencilIcon", Comp: PencilIcon },
   { name: "PlusIcon", Comp: PlusIcon },
   { name: "PositiveIcon", Comp: PositiveIcon },
   { name: "RedoIcon", Comp: RedoIcon },
+  { name: "RefreshIcon", Comp: RefreshIcon },
   { name: "SearchIcon", Comp: SearchIcon },
   { name: "SettingsIcon", Comp: SettingsIcon },
   { name: "SunIcon", Comp: SunIcon },
