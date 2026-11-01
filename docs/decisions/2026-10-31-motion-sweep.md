@@ -52,3 +52,4 @@ Checkbox는 아이콘과 박스의 규칙이 다르다: 아이콘은 `motion`과
 
 - `apps/visual-regression/tests/color-transition-motion.spec.ts` — 전환 속성·길이를 reduce를 켠 채로 재고(색은 reduce에서도 남아야 한다), 새로 붙인 Alert가 페이드·이동하는지와 reduce에서 이동만 빠지는지를 본다. 계산된 `transition`은 jsdom이 못 보므로 유닛 테스트로는 덮을 수 없다.
 - VR 정적 기준은 바뀌지 않는다 — 최종 색이 그대로고, 스크린샷은 `animations: "disabled"`로 찍는다. 색 텍스트 스냅샷은 `opacity`를 보지 않는다.
+- 단, 색 텍스트 스냅샷은 **전환이 끝날 때까지 기다린 뒤** 읽어야 한다(`stories.spec.ts`). 상태가 두 번째 렌더에 붙는 매트릭스 셀(Checkbox checked·FileInput Field invalid)은 그냥 읽으면 전환 도중 색이 잡혀 매번 값이 달라진다. `animations: "disabled"`는 `toHaveScreenshot` 안에서만 걸리고 `getComputedStyle`에는 영향이 없다. 전환만 기다린다 — Spinner처럼 무한한 애니메이션은 끝나지 않는다.
