@@ -41,7 +41,8 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    min-height: max(var(--dds-size-tab-height), var(--dds-size-touch-target));
+    /* 접는 목차는 휴대폰용이라 밀도 없이도 44px */
+    min-height: 2.75rem;
     border: 0;
     border-radius: var(--dds-radius-option);
     background-color: transparent;

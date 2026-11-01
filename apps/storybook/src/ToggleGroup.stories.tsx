@@ -171,6 +171,18 @@ function MatrixGrid() {
           </ToggleGroup.Root>
         </div>
       </div>
+
+      {/* 6. wrap — 넘치면 다음 줄로 */}
+      <div>
+        <Caption>wrap (폭 제한 280px)</Caption>
+        <div style={{ maxWidth: 280, border: "1px dashed var(--dds-color-stroke-neutral-weak)", padding: 4 }}>
+          <ToggleGroup.Root type="single" defaultValue="long1" wrap aria-label="줄바꿈 그룹">
+            <ToggleGroup.Item value="long1">매우 긴 첫 번째 옵션 라벨</ToggleGroup.Item>
+            <ToggleGroup.Item value="long2">두 번째로 긴 설정 옵션 라벨</ToggleGroup.Item>
+            <ToggleGroup.Item value="long3">세 번째 긴 옵션</ToggleGroup.Item>
+          </ToggleGroup.Root>
+        </div>
+      </div>
     </div>
   );
 }

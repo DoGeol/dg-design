@@ -6,7 +6,7 @@ import { strict as assert } from "node:assert";
 
 import { roleEntries, tokensCss } from "./color-core.ts";
 import { createTheme } from "./create-theme.ts";
-import { palette, semanticColors } from "./tokens.ts";
+import { palette, roles, semanticColors } from "./tokens.ts";
 
 /** 블록 하나의 semantic 색 변수 → 값. palette·스케일은 뺀다. */
 function semanticBlock(css: string, selector: string): Map<string, string> {
@@ -119,6 +119,15 @@ assertLightScope(tokensCss(palette), "tokens.css");
     const mobile = vars(css, '[data-dds-density="mobile"]');
     assert.deepEqual(mobile, expected, `${label}: mobile 밀도 블록이 역할 표와 다름`);
     for (const name of mobile) assert.ok(root.has(name), `${label}: ${name}이 :root에 없음`);
+    // 터치 기기 폴백: touch-target 하나만, mobile 값으로, :root 뒤에.
+    const coarse = css.indexOf("@media (pointer: coarse) {");
+    assert.ok(coarse > css.indexOf(":root {"), `${label}: pointer: coarse 블록이 없거나 :root보다 앞`);
+    const coarseBody = css.slice(coarse, css.indexOf("\n}", coarse));
+    assert.deepEqual(
+      [...coarseBody.matchAll(/(--dds-[\w-]+): ([^;]+);/g)].map((m) => `${m[1]}: ${m[2]}`),
+      [`--dds-size-touch-target: ${roles.size["touch-target"].mobile}`],
+      `${label}: pointer: coarse 블록 내용이 다름`,
+    );
   }
 }
 

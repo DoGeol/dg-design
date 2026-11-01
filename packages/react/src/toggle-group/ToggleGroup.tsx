@@ -20,6 +20,9 @@ const toggleGroupRoot = cva("dds-toggle-group", {
       medium: "dds-toggle-group--size_medium",
       large: "dds-toggle-group--size_large",
     },
+    wrap: {
+      true: "dds-toggle-group--wrap",
+    },
   },
   defaultVariants: {
     orientation: "horizontal",
@@ -53,6 +56,8 @@ interface ToggleGroupRootCommonProps extends DivProps {
   size?: "small" | "medium" | "large";
   orientation?: "horizontal" | "vertical";
   disabled?: boolean;
+  /** horizontal에서 넘치는 항목을 가로 스크롤 대신 다음 줄로 보낸다. vertical에서는 효과 없음. */
+  wrap?: boolean;
 }
 
 export type ToggleGroupSingleProps = ToggleGroupRootCommonProps &
@@ -92,6 +97,7 @@ export const ToggleGroupRoot = React.forwardRef<HTMLDivElement, ToggleGroupRootP
       size = "medium",
       orientation = "horizontal",
       disabled = false,
+      wrap = false,
       className,
       children,
       value,
@@ -280,6 +286,7 @@ export const ToggleGroupRoot = React.forwardRef<HTMLDivElement, ToggleGroupRootP
             toggleGroupRoot({
               orientation,
               size,
+              wrap,
             }),
             className,
           )}
