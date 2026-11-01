@@ -38,7 +38,7 @@
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     font-size: var(--dds-font-size-t2);
     line-height: var(--dds-line-height-t3);
-    font-weight: var(--dds-font-weight-medium);
+    font-weight: var(--dds-font-weight-bold);
   }
 
   .dds-code-block__copy-button {
@@ -50,7 +50,7 @@
     max-width: 100%;
     min-width: 0;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-    font-size: var(--dds-font-size-t2);
+    font-size: var(--dds-font-size-t3);
     line-height: var(--dds-line-height-t3);
     color: var(--dds-color-fg-neutral);
     background: var(--dds-color-bg-layer-default);
@@ -110,7 +110,7 @@
     color: var(--dds-color-fg-neutral);
     font-size: var(--dds-font-size-t2);
     line-height: var(--dds-line-height-t2);
-    font-weight: var(--dds-font-weight-medium);
+    font-weight: var(--dds-font-weight-bold);
     font-family: inherit;
     cursor: pointer;
     user-select: none;
@@ -148,6 +148,13 @@
 
   .dds-copy-button__text {
     display: inline-block;
+  }
+
+  /* 좁은 화면은 밀도와 무관하게 휴대폰으로 보고 보이는 높이도 44px로 올린다 */
+  @media (max-width: 40rem) {
+    .dds-copy-button {
+      min-height: 2.75rem;
+    }
   }
 
   /* 모바일 밀도 조작 영역 44px: 버튼 표시는 32px를 유지하고 투명 터치 영역을 44px로 확장 */

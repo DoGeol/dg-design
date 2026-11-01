@@ -87,7 +87,7 @@
 
 - 이름: `--dds-space-*`(여백·간격), `--dds-size-*`(높이·크기), 역할 radius는 기존 `--dds-radius-*` 아래(`--dds-radius-field`), 글자는 `--dds-font-size-*`·`--dds-line-height-*` 아래. [토큰 적용 검토](../reports/flex-adoption-review/tokens.md)의 예시 이름을 따랐다.
 - 범위: P2·P3에서 컴포넌트가 읽을 역할과 레이아웃 3개(page-inset·field-gap·group-gap) — 30개. 목록·설정 행(`list-*`·`setting-row-*` 6개)은 P4에서 그 컴포넌트와 함께 넣는다. P4 스펙에서 값이 바뀔 수 있어서다. Chip(`chip-height`·`chip-radius`)과 `mark`는 넣었다 — 새 Chip 컴포넌트는 P4지만 지금 MultiSelect가 이미 칩과 선택 표식을 그려 P2 소비처가 있다.
-- `touch-target`: 데스크톱 24 · 모바일 44. 위 "두 검토자가 합의한 전제"의 데스크톱 24를 따랐다(profiles.ts는 데스크톱을 비워 뒀다). 변수가 늘 정의돼 컴포넌트 CSS에 대체값이 필요 없다.
+- `touch-target`: 데스크톱 24 · 모바일 44. 위 "두 검토자가 합의한 전제"의 데스크톱 24를 따랐다(profiles.ts는 데스크톱을 비워 뒀다). 변수가 늘 정의돼 컴포넌트 CSS에 대체값이 필요 없다. → 2026-11-01 개정: 밀도 없이도 터치 기기에서는 44([터치 기기 touch-target 폴백](./2026-11-01-touch-target-coarse.md)).
 - 밀도: `[data-dds-density="mobile"]` 블록. 루트 지정 전제, 중첩 미지원(포털이 하위 스코프를 벗어난다). mobile 값이 desktop과 같은 역할은 블록에 넣지 않는다.
 - 44는 4px 스케일에 스텝이 없어 리터럴로 둔다(표 행·모바일 조작 영역만 쓴다). Sheet 반경 0도 리터럴이다.
 - profiles.ts `FINAL`과 tokens.ts의 값 중복은 P2에서 정리한다(시안 덮어쓰기 CSS를 지우는 시점과 같다).

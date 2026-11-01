@@ -437,3 +437,29 @@ describe("ToggleGroup — 개발 경고 및 유효성", () => {
     expect(screen.getByRole("radio", { name: "B" }).getAttribute("aria-checked")).toBe("false");
   });
 });
+
+describe("ToggleGroup — wrap", () => {
+  it("wrap이면 줄바꿈 클래스를 붙이고 DOM 속성으로 새지 않으며 선택은 그대로 된다", async () => {
+    const user = userEvent.setup();
+    const { rerender } = render(
+      <ToggleGroup.Root type="single" defaultValue="a" aria-label="줄바꿈">
+        <ToggleGroup.Item value="a">A</ToggleGroup.Item>
+        <ToggleGroup.Item value="b">B</ToggleGroup.Item>
+      </ToggleGroup.Root>,
+    );
+    const group = screen.getByRole("radiogroup", { name: "줄바꿈" });
+    expect(group.classList.contains("dds-toggle-group--wrap")).toBe(false);
+
+    rerender(
+      <ToggleGroup.Root type="single" defaultValue="a" aria-label="줄바꿈" wrap>
+        <ToggleGroup.Item value="a">A</ToggleGroup.Item>
+        <ToggleGroup.Item value="b">B</ToggleGroup.Item>
+      </ToggleGroup.Root>,
+    );
+    expect(group.classList.contains("dds-toggle-group--wrap")).toBe(true);
+    expect(group.hasAttribute("wrap")).toBe(false);
+
+    await user.click(screen.getByRole("radio", { name: "B" }));
+    expect(screen.getByRole("radio", { name: "B" }).getAttribute("aria-checked")).toBe("true");
+  });
+});

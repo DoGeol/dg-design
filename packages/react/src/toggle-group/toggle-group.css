@@ -24,6 +24,11 @@
     display: none;
   }
 
+  .dds-toggle-group--orientation_horizontal.dds-toggle-group--wrap {
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+
   .dds-toggle-group--orientation_vertical {
     display: flex;
     flex-direction: column;

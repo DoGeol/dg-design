@@ -28,7 +28,7 @@ pnpm add @dg-design/react @dg-design/tokens
 ## 테마와 밀도
 
 - 다크: `<html data-dds-theme="dark">`. 하위 요소에 `data-dds-theme="light"|"dark"`를 붙이면 그 영역만 바뀐다.
-- 밀도: 모바일 화면이면 앱 루트(`<html>`)에 `data-dds-density="mobile"`. **앱이 명시적으로 고른다** — 화면 폭으로 자동 전환하지 않는다. 입력·버튼·옵션·목록·Sheet 치수와 조작 영역 44px이 함께 바뀐다.
+- 밀도: 모바일 화면이면 앱 루트(`<html>`)에 `data-dds-density="mobile"`. **앱이 명시적으로 고른다** — 화면 폭으로 자동 전환하지 않는다. 입력·버튼·옵션·목록·Sheet 치수와 조작 영역 44px이 함께 바뀐다. 밀도가 없어도 터치 기기(`pointer: coarse`)에서는 `--dds-size-touch-target`만 44px이 된다.
 - 색·간격은 px·hex 대신 토큰을 쓴다: `var(--dds-color-fg-neutral)`, `var(--dds-space-field-gap)`, `var(--dds-dimension-x4)`. palette(`--dds-color-palette-*`)는 내부 구현이라 쓰지 않는다.
 
 ## layout 최소 권장

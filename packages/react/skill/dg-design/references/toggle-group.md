@@ -56,6 +56,17 @@ export function MultipleOptionsExample() {
   );
 }
 
+/** 좁은 화면에서 넘치는 항목을 다음 줄로 (기본은 가로 스크롤, 스크롤바는 숨김) */
+export function WrapExample() {
+  return (
+    <ToggleGroup.Root type="single" defaultValue="desktop" wrap aria-label="미리보기 기기">
+      <ToggleGroup.Item value="desktop">데스크톱</ToggleGroup.Item>
+      <ToggleGroup.Item value="tablet">태블릿</ToggleGroup.Item>
+      <ToggleGroup.Item value="mobile">휴대폰</ToggleGroup.Item>
+    </ToggleGroup.Root>
+  );
+}
+
 /** 제어형 단일 선택 (controlled) */
 export function ControlledSingleExample() {
   const [value, setValue] = React.useState<string | null>("medium");

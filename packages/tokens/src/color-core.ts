@@ -231,6 +231,15 @@ export function tokensCss(
       ...roleVars("desktop"),
     ]),
     "",
+    // 밀도 없이 쓰는 터치 기기 폴백. touch-target만 올린다 — 다른 역할은 데스크톱 폼 높이를 바꾼다.
+    // :root와 특이도가 같아 이 블록이 뒤에 와야 이긴다. (docs/decisions/2026-11-01-touch-target-coarse.md)
+    `@media (pointer: coarse) {\n${block(":root", [
+      `--dds-size-touch-target: ${roles.size["touch-target"].mobile};`,
+    ])
+      .split("\n")
+      .map((l) => `  ${l}`)
+      .join("\n")}\n}`,
+    "",
     // 중첩 스코프용. `:root`만으로는 다크 조상 아래의 라이트 영역이 다크 값을 상속한다.
     block('[data-dds-theme="light"]', ["/* semantic (light) — 중첩 스코프 */", ...semanticVars("light")]),
     "",
