@@ -1,6 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Button } from "@dg-design/react/button";
 import {
+  AlertCircleIcon,
+  ArrowRightIcon,
+  BellIcon,
   CheckIcon,
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -20,12 +23,14 @@ import {
   MinusIcon,
   MoonIcon,
   MoreIcon,
+  MoreVerticalIcon,
   PanelLeftIcon,
   PanelRightIcon,
   PencilIcon,
   PlusIcon,
   PositiveIcon,
   RedoIcon,
+  RefreshIcon,
   SearchIcon,
   SettingsIcon,
   SunIcon,
@@ -77,6 +82,11 @@ const ICONS = [
   { name: "Positive", Comp: PositiveIcon },
   { name: "Warning", Comp: WarningIcon },
   { name: "Critical", Comp: CriticalIcon },
+  { name: "MoreVertical", Comp: MoreVerticalIcon },
+  { name: "Refresh", Comp: RefreshIcon },
+  { name: "ArrowRight", Comp: ArrowRightIcon },
+  { name: "Bell", Comp: BellIcon },
+  { name: "AlertCircle", Comp: AlertCircleIcon },
 ] as const;
 
 /** 조작 요소 안의 아이콘 동작 데모. 기본적으로 닫힌 상태. */
