@@ -1,5 +1,32 @@
 # @dg-design/react
 
+## 0.29.0
+
+### Minor Changes
+
+- 0e21029: 끌어서 닫기와 Toast 세로 재배치를 추가했다.
+  
+  - Toast를 가로로 끌어 닫을 수 있다. 폭의 50%를 넘기거나 놓기 직전 속도가 0.11px/ms를 넘으면 멈춘 자리에서 이어 빠지고, 못 미치면 제자리로 돌아온다. 반대 방향은 고무줄로 버틴다.
+  - 토스트가 하나 사라지면 남은 토스트가 150ms FLIP으로 따라 올라온다(reduced motion에서는 걸지 않는다).
+  - `Sheet.Handle` 추가 — Content 안에 두면 손잡이를 끌어 시트를 닫을 수 있다. 장식이라 `aria-hidden`이고, ESC와 닫기 버튼은 그대로다.
+  
+  reduced motion에서는 손가락을 따라가는 것만 남고 손을 뗀 뒤의 이동은 페이드로 바뀐다.
+  
+  근거: `docs/decisions/2026-10-31-gesture-dismiss.md`
+- 9c4638d: **Icon**: 5종을 추가했습니다 — `RefreshIcon`·`ArrowRightIcon`·`BellIcon`·`AlertCircleIcon`(원 안 느낌표)·`MoreVerticalIcon`(세로 점 3개). 기존 `MoreIcon`은 가로 점 그대로입니다. 공개 아이콘은 37종입니다.
+- b1e7998: dg-studio에서 모은 모바일·토큰 문제를 고칩니다.
+  
+  - **tokens**: 터치 기기(`@media (pointer: coarse)`)에서는 `data-dds-density="mobile"` 없이도 `--dds-size-touch-target`이 44px입니다. 다른 역할 토큰은 바뀌지 않아 데스크톱 폼 높이는 그대로입니다. 이 토큰을 직접 읽는 라벨 없는 Checkbox·Switch, Slider, Pagination, Collapsible이 터치 기기에서 44px이 되고, 밀도에 묶인 조작 영역 확장(Button xsmall·ToggleGroup·CopyButton·Chip·Tabs 등)은 계속 밀도 전용입니다. `createTheme` 출력도 같습니다.
+  - **TableOfContents**: collapsible 트리거 최소 높이가 밀도와 관계없이 44px입니다(이전 40px).
+  - **CopyButton**: 40rem 이하 화면에서 높이가 44px입니다. 데스크톱은 32px 그대로입니다.
+  - **CodeBlock**: 코드 글자를 12px(t2)에서 13px(t3)로 키웠습니다. 파일명과 CopyButton이 정의되지 않은 `--dds-font-weight-medium`을 참조해 기본 굵기로 떨어지던 것을 `--dds-font-weight-bold`로 고쳤습니다.
+  - **ToggleGroup**: `wrap` prop을 추가했습니다. horizontal에서 `wrap`이면 넘치는 항목이 가로 스크롤 대신 다음 줄로 갑니다. 기본값은 `false`(지금처럼 가로 스크롤)입니다.
+- 70b74be: 조작 색 전환을 Switch 트랙·Checkbox 박스·Chip·Tabs·Breadcrumb·달력 날짜·FileInput으로 넓히고, Alert가 `@starting-style`로 떠오르며 들어오게 했다.
+  
+  전부 기존 토큰(`--dds-duration-fast`·`--dds-easing-out`)을 쓰고 `motion` prop 밖이다 — 색은 위치·크기 변화가 아니라 reduced motion에서도 남는다. Alert 진입은 reduce에서 이동만 빠지고 페이드는 남는다. 최종 색이 그대로라 화면 결과물은 바뀌지 않는다.
+  
+  근거: `docs/decisions/2026-10-31-motion-sweep.md`
+
 ## 0.28.0
 
 ### Minor Changes
