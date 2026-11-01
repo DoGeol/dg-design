@@ -157,8 +157,8 @@ function ToastItem({ entry, closeLabel, onClose, onExited }: ToastItemProps) {
   const { present, ref } = usePresence(entry.open);
   const [hovered, setHovered] = React.useState(false);
   const [focused, setFocused] = React.useState(false);
-  /** 끌어서 해제한 거리(px). 값이 있으면 퇴장이 그 자리에서 이어진다. */
-  const [swipedOutAt, setSwipedOutAt] = React.useState<number | null>(null);
+  /** 끌어서 해제했는지. 퇴장이 끌 때 남긴 인라인 위치·투명도에서 이어진다. */
+  const [swipedOut, setSwipedOut] = React.useState(false);
 
   // 끄는 동안 위치는 React 상태가 아니라 인라인 스타일로 쓴다 — 포인터마다 다시 렌더하지 않는다.
   const paint = (offset: number) => {
@@ -174,11 +174,11 @@ function ToastItem({ entry, closeLabel, onClose, onExited }: ToastItemProps) {
     // 입장과 같은 축 — 오른쪽에서 들어와 오른쪽으로 나간다.
     towards: 1,
     onMove: paint,
-    onEnd: ({ dismissed, offset }) => {
+    onEnd: ({ dismissed }) => {
       const node = ref.current;
       if (!node) return;
       if (dismissed) {
-        setSwipedOutAt(offset);
+        setSwipedOut(true);
         onClose(entry.id);
         return;
       }
@@ -215,12 +215,7 @@ function ToastItem({ entry, closeLabel, onClose, onExited }: ToastItemProps) {
       ref={ref as React.RefObject<HTMLDivElement | null>}
       data-state={entry.open ? "open" : "closed"}
       data-dragging={dragging ? "" : undefined}
-      data-swipe-out={swipedOutAt === null ? undefined : ""}
-      style={
-        swipedOutAt === null
-          ? undefined
-          : ({ "--dds-toast-swipe-x": `${swipedOutAt}px` } as React.CSSProperties)
-      }
+      data-swipe-out={swipedOut ? "" : undefined}
       {...handlers}
       intent={entry.intent}
       title={entry.title}

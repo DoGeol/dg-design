@@ -33,6 +33,36 @@ async function dragBy(
   await page.mouse.up();
 }
 
+/**
+ * 닫힘 퇴장이 시작되는 순간을 기록한다. 시작 프레임의 계산값을 끌 때 남긴 인라인 값과 견주면
+ * "멈춘 자리에서 이어 빠지는지"(되돌아갔다 나가지 않는지)가 보인다.
+ */
+async function recordExitStart(page: Page, selector: string) {
+  await page.evaluate((sel) => {
+    const log: { name: string; opacity: number; inlineOpacity: number }[] = [];
+    (window as unknown as { __exit: typeof log }).__exit = log;
+    document.addEventListener(
+      "animationstart",
+      (event) => {
+        const el = event.target as HTMLElement;
+        if (!el.matches(sel) || el.dataset.state !== "closed") return;
+        log.push({
+          name: event.animationName,
+          opacity: Number(getComputedStyle(el).opacity),
+          inlineOpacity: Number(el.style.opacity || "1"),
+        });
+      },
+      true,
+    );
+  }, selector);
+}
+
+async function exitStarts(page: Page) {
+  return page.evaluate(
+    () => (window as unknown as { __exit: { name: string; opacity: number; inlineOpacity: number }[] }).__exit,
+  );
+}
+
 async function centerOf(page: Page, selector: string) {
   const box = await page.locator(selector).first().boundingBox();
   if (!box) throw new Error(`측정 불가: ${selector}`);
@@ -54,10 +84,56 @@ test.describe("Toast 스와이프", () => {
     const box = await centerOf(page, ".dds-toast");
     // 토스트는 오른쪽 가장자리에 붙어 있다 — 가운데서 잡으면 폭의 절반을 끌 자리가 화면에 없다.
     const grip = { x: box.x - box.width / 2 + 16, y: box.y };
+    await recordExitStart(page, ".dds-toast");
     // 천천히 끌어도 거리만으로 해제된다 — 속도 규칙에 기대지 않는 판정.
     await dragBy(page, grip, box.width * 0.6, 0, 120);
 
     await expect(toast).toHaveCount(0);
+    // 끌면서 옅어진 투명도에서 이어 사라진다 — 1로 되돌아갔다 꺼지면 번쩍인다.
+    const [start] = await exitStarts(page);
+    expect(start?.name).toBe("dds-toast-swipe-out");
+    expect(start!.inlineOpacity).toBeLessThan(1);
+    expect(start!.opacity).toBeLessThanOrEqual(start!.inlineOpacity + 0.05);
+  });
+
+  test("reduce에서도 끌어서 해제하면 옅어진 투명도에서 이어 사라진다", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.getByRole("button", { name: "brand 토스트" }).click();
+    const toast = page.locator(".dds-toast");
+    await expect(toast).toHaveCount(1);
+
+    const box = await centerOf(page, ".dds-toast");
+    const grip = { x: box.x - box.width / 2 + 16, y: box.y };
+    await recordExitStart(page, ".dds-toast");
+    await dragBy(page, grip, box.width * 0.6, 0, 120);
+
+    await expect(toast).toHaveCount(0);
+    const [start] = await exitStarts(page);
+    expect(start?.name).toBe("dds-toast-swipe-fade-out");
+    expect(start!.opacity).toBeLessThanOrEqual(start!.inlineOpacity + 0.05);
+  });
+
+  test("끌다가 토스트 밖에서 놓아도 끌기가 끝난다", async ({ page }) => {
+    await page.getByRole("button", { name: "brand 토스트" }).click();
+    const toast = page.locator(".dds-toast");
+    await expect(toast).toHaveCount(1);
+
+    const box = await centerOf(page, ".dds-toast");
+    await page.mouse.move(box.x, box.y);
+    await page.mouse.down();
+    // 문턱(4px)은 넘기되 해제 거리에는 못 미치게, 천천히.
+    for (const dx of [10, 20, 30]) {
+      await page.mouse.move(box.x + dx, box.y);
+      await page.waitForTimeout(120);
+    }
+    await expect(toast).toHaveAttribute("data-dragging", "");
+    // 세로로 토스트를 벗어나서 놓는다 — 포인터를 잡지 않았다면 pointerup이 토스트에 오지 않는다.
+    await page.mouse.move(box.x + 30, box.y + box.height * 3);
+    await page.waitForTimeout(120);
+    await page.mouse.up();
+
+    await expect(toast).not.toHaveAttribute("data-dragging", "");
+    expect(await toast.evaluate((el) => (el as HTMLElement).style.transform)).toBe("");
   });
 
   test("천천히 조금만 끌면 제자리로 돌아간다", async ({ page }) => {
@@ -117,9 +193,13 @@ test.describe("Sheet 손잡이", () => {
     const sheet = await centerOf(page, ".dds-sheet__content");
     const handle = await centerOf(page, ".dds-sheet__handle");
 
+    await recordExitStart(page, ".dds-sheet__content");
     await dragBy(page, handle, 0, sheet.height * 0.7, 120);
 
     await expect(page.locator(".dds-sheet__content")).toHaveCount(0);
+    // side별 닫힘 keyframes(translateY(0)에서 시작)가 아니라 멈춘 자리에서 이어지는 쪽이어야 한다.
+    const [start] = await exitStarts(page);
+    expect(start?.name).toBe("dds-sheet-drag-out");
   });
 
   test("절반에 못 미치면 제자리로 돌아간다", async ({ page }) => {

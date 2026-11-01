@@ -68,13 +68,18 @@ export function useDragDismiss({
 
   const point = (event: React.PointerEvent) => (axis === "x" ? event.clientX : event.clientY);
 
-  const finish = (event: React.PointerEvent) => {
+  const finish = (event: React.PointerEvent, cancelled = false) => {
     const current = state.current;
     if (!current || current.pointerId !== event.pointerId) return;
     state.current = null;
     setDragging(false);
     draggedRef.current = current.moved;
     if (!current.moved) return;
+    // 취소(스크롤 전환·시스템 제스처)는 사용자가 놓은 것이 아니다 — 언제나 제자리로.
+    if (cancelled) {
+      onEnd({ dismissed: false, offset: current.offset });
+      return;
+    }
 
     const target = sizeRef?.current ?? (event.currentTarget as HTMLElement);
     const size = axis === "x" ? target.offsetWidth : target.offsetHeight;
@@ -115,6 +120,8 @@ export function useDragDismiss({
           if (Math.abs(raw) < DRAG_THRESHOLD_PX) return;
           current.moved = true;
           // 문턱을 넘은 뒤에야 포인터를 잡는다 — 그 전에는 안쪽 버튼이 클릭을 받는다.
+          // 안 잡으면 마우스가 요소 밖에서 놓일 때 pointerup이 오지 않아 끌기 상태에 갇힌다.
+          (event.currentTarget as HTMLElement).setPointerCapture?.(event.pointerId);
           setDragging(true);
           onStart?.();
         }
@@ -125,8 +132,8 @@ export function useDragDismiss({
         }
         onMove(current.offset);
       },
-      onPointerUp: finish,
-      onPointerCancel: finish,
+      onPointerUp: (event: React.PointerEvent) => finish(event),
+      onPointerCancel: (event: React.PointerEvent) => finish(event, true),
       onClickCapture(event: React.MouseEvent) {
         // 끌고 놓은 손가락이 남기는 클릭 한 번을 삼킨다(닫기 버튼 위에서 끝났을 때).
         if (!draggedRef.current) return;

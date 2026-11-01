@@ -150,8 +150,9 @@
   }
 
   /* 끌어서 닫은 시트는 멈춘 자리에서 이어 빠진다. side별 keyframes로 돌아가면 손을 떼는
-     순간 제자리로 되돌아갔다가 나가 번쩍인다. 두 끝값은 Handle이 인라인으로 적는다. */
-  .dds-sheet__content[data-drag-out] {
+     순간 제자리로 되돌아갔다가 나가 번쩍인다. 두 끝값은 Handle이 인라인으로 적는다.
+     side별 닫힘 규칙(0,3,0)을 이겨야 해서 같은 구체성으로 그 뒤에 둔다. */
+  .dds-sheet__content[data-state="closed"][data-drag-out] {
     animation-name: dds-sheet-drag-out;
   }
 

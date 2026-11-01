@@ -35,6 +35,33 @@ describe("Sheet.Handle", () => {
     expect(handle.getAttribute("aria-hidden")).toBe("true");
     expect(handle.hasAttribute("tabindex")).toBe(false);
   });
+
+  it("controlled가 닫기를 거절하면 끌어서 닫기 표시를 뗀다 — 다음 닫기가 묵은 위치에서 시작하지 않게", async () => {
+    const user = userEvent.setup();
+    const onOpenChange = vi.fn();
+    render(
+      <Sheet.Root side="bottom" open onOpenChange={onOpenChange}>
+        <Sheet.Content data-testid="content">
+          <Sheet.Handle data-testid="handle" />
+          <Sheet.Title>제목</Sheet.Title>
+        </Sheet.Content>
+      </Sheet.Root>,
+    );
+    const handle = screen.getByTestId("handle");
+
+    // jsdom은 크기가 0이라 문턱만 넘기면 거리 판정으로 해제된다.
+    await user.pointer([
+      { keys: "[MouseLeft>]", target: handle, coords: { clientX: 0, clientY: 0 } },
+      { target: handle, coords: { clientX: 0, clientY: 40 } },
+      { keys: "[/MouseLeft]", target: handle },
+    ]);
+
+    expect(onOpenChange).toHaveBeenCalledWith(false);
+    const content = screen.getByTestId("content");
+    expect(content.getAttribute("data-state")).toBe("open");
+    expect(content.hasAttribute("data-drag-out")).toBe(false);
+    expect(content.style.getPropertyValue("--dds-sheet-drag-from")).toBe("");
+  });
 });
 
 /** 바깥 시트의 Content 안에 또 하나를 여는 중첩 구조 — Dialog와 동일한 스택 규칙을 검증한다. */

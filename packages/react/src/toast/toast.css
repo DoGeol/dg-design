@@ -180,20 +180,22 @@
     user-select: none;
   }
 
-  /* 끌어서 해제한 토스트는 멈춘 자리에서 이어 빠진다. 기본 퇴장처럼 translateX(0)에서
-     시작하면 손을 떼는 순간 끌어 둔 거리만큼 되돌아갔다가 나가 번쩍인다. */
+  /* 끌어서 해제한 토스트는 멈춘 자리에서 이어 빠진다. 기본 퇴장처럼 translateX(0)·opacity 1에서
+     시작하면 손을 떼는 순간 끌어 둔 거리·옅어진 만큼 되돌아갔다가 나가 번쩍인다.
+     from이 없어 시작값은 끌 때 남긴 인라인 transform·opacity다. */
   .dds-toast[data-state="closed"][data-swipe-out] {
     animation-name: dds-toast-swipe-out;
   }
 
   @keyframes dds-toast-swipe-out {
-    from {
-      opacity: 1;
-      transform: translateX(var(--dds-toast-swipe-x, 0px));
-    }
     to {
       opacity: 0;
       transform: translateX(110%);
+    }
+  }
+  @keyframes dds-toast-swipe-fade-out {
+    to {
+      opacity: 0;
     }
   }
 
@@ -205,9 +207,11 @@
       animation-name: dds-overlay-fade-in;
       animation-duration: var(--dds-duration-fast);
     }
-    .dds-toast[data-state="closed"],
-    .dds-toast[data-state="closed"][data-swipe-out] {
+    .dds-toast[data-state="closed"] {
       animation-name: dds-overlay-fade-out;
+    }
+    .dds-toast[data-state="closed"][data-swipe-out] {
+      animation-name: dds-toast-swipe-fade-out;
     }
   }
 }

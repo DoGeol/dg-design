@@ -379,6 +379,16 @@ export const SheetHandle = React.forwardRef<HTMLDivElement, SheetHandleProps>(
       },
     });
 
+    // controlled 쪽이 닫기를 거절하면 열린 채로 남는다 — 퇴장 표시를 떼야 다음 닫기가
+    // 묵은 끝값에서 시작하지 않는다. 손을 뗀 렌더와 setOpen은 한 번에 커밋된다.
+    React.useEffect(() => {
+      const node = context.contentRef.current;
+      if (dragging || !context.open || !node?.hasAttribute("data-drag-out")) return;
+      node.removeAttribute("data-drag-out");
+      node.style.removeProperty("--dds-sheet-drag-from");
+      node.style.removeProperty("--dds-sheet-drag-to");
+    }, [dragging, context.open, context.contentRef]);
+
     return (
       <div
         ref={ref}

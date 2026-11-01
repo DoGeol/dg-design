@@ -19,7 +19,7 @@ Toast 가로 스와이프와 Sheet 손잡이는 같은 규칙이다. 두 번 쓰
 
 손을 뗀 뒤 기본 퇴장 keyframes(`translateX(0)`에서 시작)로 넘기면 끌어 둔 거리만큼 되돌아갔다가 나가 번쩍인다. 그래서 해제 순간:
 
-- Toast는 `data-swipe-out` + `--dds-toast-swipe-x`(멈춘 거리)를, Sheet는 `data-drag-out` + `--dds-sheet-drag-from`·`-to`를 단다.
+- Toast는 `data-swipe-out`만 단다 — 퇴장 keyframes에 `from`이 없어 끌 때 남긴 인라인 `transform`·`opacity`에서 시작한다(reduce의 페이드도 같다). Sheet는 손을 떼며 인라인 위치를 지우므로 `data-drag-out` + `--dds-sheet-drag-from`·`-to`를 단다. 거절된 닫기(controlled)면 Handle이 이 표시를 다시 뗀다.
 - 퇴장은 그대로 **CSS 애니메이션**이다. `use-presence`가 계산된 길이를 읽어 언마운트를 기다리는 구조가 유지된다 — WAAPI로 바꾸면 그 배선이 둘로 갈라진다.
 - 못 미친 경우의 스냅백만 WAAPI다(현재 위치에서 제자리까지, base 200ms). 인라인 위치는 손을 떼는 즉시 지우고 되돌아가는 그림만 애니메이션이 그린다.
 
