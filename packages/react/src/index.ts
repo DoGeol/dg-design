@@ -265,6 +265,7 @@ export {
   SheetTrigger,
   SheetOverlay,
   SheetContent,
+  SheetHandle,
   SheetTitle,
   SheetDescription,
   SheetClose,

@@ -6,6 +6,15 @@ import { expect, test, type Locator } from "@playwright/test";
  */
 async function plate(target: Locator) {
   await target.hover();
+  // 원 색은 150ms 전환이라 hover 직후 첫 계산값은 아직 시작값(투명)이다 — 끝난 뒤에 잰다.
+  await target.evaluate(
+    (el) =>
+      new Promise<void>((resolve) => {
+        const done = () => resolve();
+        el.addEventListener("transitionend", done, { once: true });
+        setTimeout(done, 300);
+      }),
+  );
   return target.evaluate((el) => {
     const s = getComputedStyle(el);
     const pad = parseFloat(s.paddingTop);

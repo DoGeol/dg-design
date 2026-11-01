@@ -73,7 +73,7 @@ pnpm add @dg-design/react @dg-design/tokens
 | [FileInput](references/file-input.md) | `@dg-design/react/file-input` | 파일 선택·드래그 앤 드롭 입력. 형식·크기·개수 검증을 하고 통과분과 거부분을 함께 알려 준다. |
 | [FilterToolbox](references/filter-toolbox.md) | `@dg-design/react/filter-toolbox` | 적용된 필터 칩·결과 수·초기화를 한 줄에 놓는 필터 묶음의 껍데기. |
 | [HoverCard](references/hover-card.md) | `@dg-design/react/hover-card` | 링크 위에 마우스를 올리면 뜨는 미리보기 카드 — 마우스 사용자를 위한 보조 정보. |
-| [Icon](references/icon.md) | `@dg-design/react/icon` | 24 grid 기반 자체 SVG 아이콘 소수 세트 (32종). |
+| [Icon](references/icon.md) | `@dg-design/react/icon` | 24 grid 기반 자체 SVG 아이콘 소수 세트 (37종). |
 | [List](references/list.md) | `@dg-design/react/list` | 제목 + 메타 + 행 동작으로 이루어진 객체 목록. 행 전체가 주 행동, 보조 행동은 Trailing. |
 | [MultiSelect](references/multi-select.md) | `@dg-design/react/multi-select` | 목록에서 여러 값을 고르는 드롭다운. 검색·새 항목 만들기·모바일 Sheet 표시를 지원한다. |
 | [NotificationBadge](references/notification-badge.md) | `@dg-design/react/notification-badge` | 읽지 않은 알림 개수나 새 항목 점. 다른 요소 모서리에 겹쳐 쓴다. |

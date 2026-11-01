@@ -50,6 +50,11 @@
     font-weight: var(--dds-font-weight-bold);
     white-space: nowrap;
     cursor: pointer;
+    /* border-color는 넣지 않는다 — 활성 밑줄은 list의 이동 표시(WAAPI)가 맡고,
+       여기서 같이 흐리면 표시가 미끄러지는 동안 fallback 밑줄이 유령처럼 남는다. */
+    transition:
+      background-color var(--dds-duration-fast) var(--dds-easing-out),
+      color var(--dds-duration-fast) var(--dds-easing-out);
   }
 
   /* small: 데스크톱 32. 모바일 밀도에서는 아래 규칙이 medium으로 되돌린다. */
