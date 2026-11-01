@@ -39,6 +39,11 @@
     border: 1px solid var(--dds-color-stroke-neutral);
     background-color: transparent;
     color: var(--dds-color-fg-brand-contrast);
+    /* 아이콘은 motion prop·포인터 조작일 때만 움직이지만, 박스 색은 입력 방식과 무관하게 흐른다
+       (조작 색 전환은 prop 밖, 2026-10-28 §1). */
+    transition:
+      background-color var(--dds-duration-fast) var(--dds-easing-out),
+      border-color var(--dds-duration-fast) var(--dds-easing-out);
   }
 
   /* display 토글 대신 겹쳐 두고 opacity로 드러낸다 — 전환이 현재값에서 이어지려면 둘 다 살아 있어야 한다.

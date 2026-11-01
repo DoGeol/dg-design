@@ -110,6 +110,15 @@ for (const story of targetStories()) {
 
       await page.evaluate(async () => {
         await document.fonts.ready;
+        // 조작 색 전환은 reduce에서도 남는다(2026-10-31 결정 §1). 상태가 두 번째 렌더에 붙는
+        // 매트릭스 셀(Field invalid·checked)은 전환 도중 색을 읽히므로 끝난 값만 기준으로 삼는다.
+        // 무한 애니메이션(Spinner)은 끝나지 않아 전환만 기다린다. 취소된 전환은 reject한다.
+        await Promise.all(
+          document
+            .getAnimations()
+            .filter((animation) => animation instanceof CSSTransition)
+            .map((animation) => animation.finished.catch(() => {})),
+        );
       });
 
       // 색 텍스트 스냅샷. 기준(txt)이 아직 없으면 이 단언만 건너뛴다 — 스크린샷 검증은 계속 돈다.

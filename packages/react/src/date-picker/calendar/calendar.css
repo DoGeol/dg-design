@@ -12,7 +12,7 @@
   .dds-date-picker-calendar__grid { width: 100%; border-collapse: collapse; table-layout: fixed; }
   .dds-date-picker-calendar__grid th { height: 32px; font-size: var(--dds-font-size-t3); font-weight: var(--dds-font-weight-regular); }
   .dds-date-picker-calendar__cell { padding: 0; text-align: center; }
-  .dds-date-picker-calendar__day { display: flex; align-items: center; justify-content: center; width: 100%; min-width: 44px; min-height: 44px; border-radius: var(--dds-radius-r2); cursor: pointer; }
+  .dds-date-picker-calendar__day { display: flex; align-items: center; justify-content: center; width: 100%; min-width: 44px; min-height: 44px; border-radius: var(--dds-radius-r2); cursor: pointer; transition: background-color var(--dds-duration-fast) var(--dds-easing-out), color var(--dds-duration-fast) var(--dds-easing-out); }
   .dds-date-picker-calendar__day[data-outside] { color: var(--dds-color-fg-neutral-weak); }
   .dds-date-picker-calendar__day[data-selected] { background: var(--dds-color-bg-brand-solid); color: var(--dds-color-fg-brand-contrast); }
   .dds-date-picker-calendar[data-range] .dds-date-picker-calendar__day[data-selected]:not([data-range-start]):not([data-range-end]) { border-radius: 0; }

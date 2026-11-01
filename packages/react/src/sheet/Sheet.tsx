@@ -11,8 +11,28 @@ import { pushDialog } from "../internal/dialog-stack";
 import { mergeRefs } from "../internal/merge-refs";
 import { createPanelParts } from "../internal/panel-parts";
 import { useControllableState } from "../internal/use-controllable-state";
+import { useDragDismiss } from "../internal/use-drag-dismiss";
 import { usePresence } from "../internal/use-presence";
 import { SheetContext, useSheetContext, type SheetContextValue, type SheetSide } from "./sheet-context";
+
+/** 스냅백 길이·곡선. WAAPI는 CSS 변수를 못 읽어 토큰과 같은 값을 적는다(base / easing-out). */
+const SNAP_BACK_MS = 200;
+const EASING = "cubic-bezier(0, 0, 0.2, 1)";
+
+/** side마다 끌리는 축과 닫히는 쪽이 다르다 — 끌린 거리는 항상 닫히는 쪽이 양수다. */
+const DRAG_BY_SIDE = {
+  bottom: { axis: "y", towards: 1, at: (px: number) => `translateY(${px}px)`, out: "translateY(100%)" },
+  top: { axis: "y", towards: -1, at: (px: number) => `translateY(${-px}px)`, out: "translateY(-100%)" },
+  right: { axis: "x", towards: 1, at: (px: number) => `translateX(${px}px)`, out: "translateX(100%)" },
+  left: { axis: "x", towards: -1, at: (px: number) => `translateX(${-px}px)`, out: "translateX(-100%)" },
+} as const;
+
+function prefersReducedMotion(): boolean {
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true
+  );
+}
 
 const content = cva("dds-sheet__content", {
   variants: {
@@ -311,6 +331,78 @@ export const SheetClose = React.forwardRef<HTMLButtonElement, SheetCloseProps>(
 );
 SheetClose.displayName = "Sheet.Close";
 
+export interface SheetHandleProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+/**
+ * 끌어서 닫는 손잡이. Content 안에 둔다.
+ *
+ * 끌기를 손잡이로 한정한 이유는 Content 어디서나 끌리면 시트 안의 스크롤 영역·버튼과 싸우기
+ * 때문이다. 장식이라 `aria-hidden` 고정 — 키보드·보조기기는 ESC와 닫기 버튼으로 닫는다.
+ */
+export const SheetHandle = React.forwardRef<HTMLDivElement, SheetHandleProps>(
+  ({ className, ...props }, ref) => {
+    const context = useSheetContext("Sheet.Handle");
+    const spec = DRAG_BY_SIDE[context.side];
+
+    const { dragging, handlers } = useDragDismiss({
+      axis: spec.axis,
+      towards: spec.towards,
+      // 임계 거리는 손잡이가 아니라 시트 크기로 잰다.
+      sizeRef: context.contentRef,
+      // 손잡이는 20px 남짓이라 문턱(4px)을 넘기도 전에 포인터가 밖으로 나간다.
+      captureImmediately: true,
+      onMove: (offset) => {
+        const node = context.contentRef.current;
+        if (node) node.style.transform = spec.at(offset);
+      },
+      onEnd: ({ dismissed, offset }) => {
+        const node = context.contentRef.current;
+        if (!node) return;
+        const from = node.style.transform;
+        node.style.transform = "";
+
+        if (dismissed) {
+          // 퇴장 keyframes가 멈춘 자리에서 시작하게 두 끝값을 넘긴다.
+          node.style.setProperty("--dds-sheet-drag-from", spec.at(offset));
+          node.style.setProperty("--dds-sheet-drag-to", spec.out);
+          node.setAttribute("data-drag-out", "");
+          context.setOpen(false);
+          return;
+        }
+
+        // reduce에서는 되돌아가는 것도 이동이라 즉시 제자리다.
+        if (prefersReducedMotion() || !from) return;
+        node.animate([{ transform: from }, { transform: "none" }], {
+          duration: SNAP_BACK_MS,
+          easing: EASING,
+        });
+      },
+    });
+
+    // controlled 쪽이 닫기를 거절하면 열린 채로 남는다 — 퇴장 표시를 떼야 다음 닫기가
+    // 묵은 끝값에서 시작하지 않는다. 손을 뗀 렌더와 setOpen은 한 번에 커밋된다.
+    React.useEffect(() => {
+      const node = context.contentRef.current;
+      if (dragging || !context.open || !node?.hasAttribute("data-drag-out")) return;
+      node.removeAttribute("data-drag-out");
+      node.style.removeProperty("--dds-sheet-drag-from");
+      node.style.removeProperty("--dds-sheet-drag-to");
+    }, [dragging, context.open, context.contentRef]);
+
+    return (
+      <div
+        ref={ref}
+        aria-hidden="true"
+        data-dragging={dragging ? "" : undefined}
+        className={clsx("dds-sheet__handle", className)}
+        {...props}
+        {...handlers}
+      />
+    );
+  },
+);
+SheetHandle.displayName = "Sheet.Handle";
+
 const parts = createPanelParts("Sheet");
 export const SheetToolbar = parts.Toolbar;
 export const SheetBody = parts.Body;
@@ -327,6 +419,7 @@ export const Sheet = {
   Trigger: SheetTrigger,
   Overlay: SheetOverlay,
   Content: SheetContent,
+  Handle: SheetHandle,
   Title: SheetTitle,
   Description: SheetDescription,
   Close: SheetClose,

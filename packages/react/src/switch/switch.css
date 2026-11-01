@@ -40,6 +40,9 @@
     display: inline-block;
     background-color: var(--dds-color-bg-neutral-weak-pressed);
     border-radius: var(--dds-radius-r-full);
+    /* 노브 이동과 같은 길이 — 트랙 색만 즉시 바뀌면 한 컨트롤 안에서 두 레이어가 따로 논다.
+       색이라 reduce에서도 남긴다(노브 이동만 빠진다). */
+    transition: background-color var(--dds-duration-fast) var(--dds-easing-out);
   }
 
   .dds-switch__thumb {

@@ -7,7 +7,9 @@ import * as React from "react";
 import { createPortal } from "react-dom";
 
 import { registerNotificationLayer } from "../internal/dialog-stack";
+import { useDragDismiss } from "../internal/use-drag-dismiss";
 import { usePresence } from "../internal/use-presence";
+import { useReorderFlip } from "../internal/use-reorder-flip";
 
 const toastItem = cva("dds-toast", {
   variants: {
@@ -43,6 +45,16 @@ export interface ToastOptions {
 const DURATION_MS = 5000;
 /** `max`의 기본값. 이보다 많으면 화면 한쪽이 목록이 되고 아래쪽이 잘린다. */
 const DEFAULT_MAX = 3;
+/** 스냅백 길이·곡선. WAAPI는 CSS 변수를 못 읽어 토큰과 같은 값을 여기 적는다(base / easing-out). */
+const SNAP_BACK_MS = 200;
+const EASING = "cubic-bezier(0, 0, 0.2, 1)";
+
+function prefersReducedMotion(): boolean {
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true
+  );
+}
 
 interface ToastEntry extends ToastOptions {
   id: number;
@@ -88,6 +100,9 @@ export function ToastProvider({ closeLabel = "닫기", max = DEFAULT_MAX, childr
       setViewport(null);
     };
   }, []);
+
+  // 가운데 항목이 사라지면 나머지가 즉시 점프한다 — 옮겨진 거리만큼 되감아 제자리로 보낸다.
+  useReorderFlip(viewport, entries);
 
   const close = React.useCallback((id: number) => {
     setEntries((prev) => prev.map((e) => (e.id === id ? { ...e, open: false } : e)));
@@ -142,7 +157,44 @@ function ToastItem({ entry, closeLabel, onClose, onExited }: ToastItemProps) {
   const { present, ref } = usePresence(entry.open);
   const [hovered, setHovered] = React.useState(false);
   const [focused, setFocused] = React.useState(false);
-  const paused = hovered || focused;
+  /** 끌어서 해제했는지. 퇴장이 끌 때 남긴 인라인 위치·투명도에서 이어진다. */
+  const [swipedOut, setSwipedOut] = React.useState(false);
+
+  // 끄는 동안 위치는 React 상태가 아니라 인라인 스타일로 쓴다 — 포인터마다 다시 렌더하지 않는다.
+  const paint = (offset: number) => {
+    const node = ref.current;
+    if (!node) return;
+    node.style.transform = `translateX(${offset}px)`;
+    // 끌수록 옅어져 "놓으면 사라진다"가 보인다. 0.3 아래로는 글자를 못 읽어 더 내리지 않는다.
+    node.style.opacity = String(Math.max(0.3, 1 - Math.max(0, offset) / (node.offsetWidth || 1)));
+  };
+
+  const { dragging, handlers } = useDragDismiss({
+    axis: "x",
+    // 입장과 같은 축 — 오른쪽에서 들어와 오른쪽으로 나간다.
+    towards: 1,
+    onMove: paint,
+    onEnd: ({ dismissed }) => {
+      const node = ref.current;
+      if (!node) return;
+      if (dismissed) {
+        setSwipedOut(true);
+        onClose(entry.id);
+        return;
+      }
+      const from = { transform: node.style.transform, opacity: node.style.opacity || "1" };
+      node.style.transform = "";
+      node.style.opacity = "";
+      // reduce에서는 되돌아가는 것도 이동이라 즉시 제자리다.
+      if (prefersReducedMotion()) return;
+      node.animate([from, { transform: "none", opacity: "1" }], {
+        duration: SNAP_BACK_MS,
+        easing: EASING,
+      });
+    },
+  });
+
+  const paused = hovered || focused || dragging;
 
   React.useEffect(() => {
     if (!present) onExited(entry.id);
@@ -162,6 +214,9 @@ function ToastItem({ entry, closeLabel, onClose, onExited }: ToastItemProps) {
     <ToastView
       ref={ref as React.RefObject<HTMLDivElement | null>}
       data-state={entry.open ? "open" : "closed"}
+      data-dragging={dragging ? "" : undefined}
+      data-swipe-out={swipedOut ? "" : undefined}
+      {...handlers}
       intent={entry.intent}
       title={entry.title}
       description={entry.description}

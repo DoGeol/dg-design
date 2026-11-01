@@ -35,6 +35,15 @@ DataTable 선택+hover 색 갈림, 숫자 열 머리글 정렬 불가, Toast 옵
 | `ContextMenu.ItemIcon` | `DropdownMenuItemIcon`을 ContextMenu.Item 안에 그대로 쓸 수 있어 대칭 부품은 미추가 | ContextMenu 쪽 요구가 생기면 |
 | Alert·Toast 닫기 X 교체 | 14px 로컬 SVG 유지(Icon 스펙 B1b 별도 목록) | 닫기 X 교체 계획 때 |
 
+### 끌어서 닫기 뒤 남긴 것 (2026-10-31)
+
+근거: [끌어서 닫기·Toast 재배치 결정](decisions/2026-10-31-gesture-dismiss.md).
+
+| 항목 | 상태 | 착수 조건 |
+| --- | --- | --- |
+| 실기기 터치 QA | Playwright 마우스로만 검증. `touch-action`(Toast `pan-y`, `Sheet.Handle` `none`)은 걸었지만 실제 손가락으로 스크롤과의 다툼은 미확인 | 모바일 기기를 잡을 때. DatePicker 실기기 QA와 함께 |
+| Sheet 단계 전환 제스처 | 미구현 — `size`는 소비자가 바꾼다 | 끌어서 fit → tall → full을 넘기자는 요구가 생기면(스냅 지점 정의 필요) |
+
 ### 사용 가이드 스킬 예제를 쓰며 드러난 문제 (2026-10-09)
 
 P7에서 42개 컴포넌트 예제와 설명을 소스와 대조하다 나온 라이브러리 쪽 문제. 예제·설명은 지금 동작대로 적었다.
