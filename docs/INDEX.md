@@ -102,7 +102,7 @@
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
-| [2026-11-04 Carousel 스펙](specs/2026-11-04-carousel.md) | 제안 · 구현 전 | scroll-snap 기반 compound, 마우스 드래그·키보드·inert, 자동재생 제외, 열린 질문 10개 |
+| [2026-11-04 Carousel 스펙](specs/2026-11-04-carousel.md) | 승인 · 구현 전 | scroll-snap 기반 compound, 마우스 드래그·키보드·inert, 자동재생 제외, 질문 10개 추천대로 확정, 소비처 게이트 미확인 |
 | [2026-10-27 Icon 스펙](specs/2026-10-27-icon.md) | 승인 · 구현 전 | 자체 SVG 세트 `react/icon`, B1a 새 하위 경로 · B1b 내부 SVG 교체 |
 | [2026-10-27 ToggleGroup 스펙](specs/2026-10-27-toggle-group.md) | 승인 · 구현 전 | single·multiple 토글 묶음, react-aria useToggleButtonGroup |
 | [2026-10-27 TableOfContents 스펙](specs/2026-10-27-table-of-contents.md) | 승인 · 구현 전 | inline·collapsible 목차, aria-current=location, 선택형 관찰 훅 |
