@@ -9,8 +9,12 @@ test.describe("DatePicker 기능", () => {
     await trigger.click();
     const dialog = page.getByRole("dialog", { name: "방문 날짜" });
     await expect(dialog).toBeVisible();
+    await dialog.evaluate((element) => Promise.all(element.getAnimations().map((animation) => animation.finished)));
     const box = await dialog.boundingBox();
-    expect(box && box.width <= 400).toBeTruthy();
+    expect(box && box.width <= 300).toBeTruthy();
+    // 데스크톱(마우스) 컴팩트 달력: 날짜 칸·이동 버튼 32px
+    const dayBox = await dialog.locator('[data-date="2026-09-28"]').boundingBox();
+    expect(dayBox && dayBox.width === 32 && dayBox.height === 32).toBeTruthy();
     await dialog.locator('[data-date="2026-09-28"]').click();
     await expect(dialog).toBeHidden();
     await expect(trigger).toContainText("28");
@@ -44,8 +48,6 @@ test.describe("DatePicker 기능", () => {
     await expect(dialog).toHaveAttribute("aria-modal", "true");
     await expect(dialog.getByRole("grid")).toHaveCount(1);
     await expect(dialog.locator('[data-date="2026-09-27"]')).toBeFocused();
-    const dayBox = await dialog.locator('[data-date="2026-09-27"]').boundingBox();
-    expect(dayBox && dayBox.width >= 44 && dayBox.height >= 44).toBeTruthy();
     const apply = dialog.getByRole("button", { name: "적용" });
     await expect.poll(async () => {
       const box = await apply.boundingBox();
@@ -163,6 +165,10 @@ test.describe("DatePicker 기능", () => {
       await day.scrollIntoViewIfNeeded();
       const dayBox = await day.boundingBox();
       if (!dayBox) throw new Error("Date cell was not laid out");
+      // pointer: coarse에서는 touch-target 44px이 날짜 칸과 이동 버튼에 남는다
+      expect(dayBox.width >= 44 && dayBox.height >= 44).toBeTruthy();
+      const navBox = await dialog.locator(".dds-date-picker-calendar__nav button").first().boundingBox();
+      expect(navBox && navBox.width >= 44 && navBox.height >= 44).toBeTruthy();
       await page.touchscreen.tap(dayBox.x + dayBox.width / 2, dayBox.y + dayBox.height / 2);
       await expect(dialog).toBeHidden();
       await expect(trigger).toContainText("28");
