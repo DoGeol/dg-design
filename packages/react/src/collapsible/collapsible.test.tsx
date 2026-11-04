@@ -103,4 +103,38 @@ describe("Collapsible", () => {
 
     expect(content?.style.getPropertyValue("--dds-collapsible-content-height")).toBe("0px");
   });
+
+  it("열고 닫는 중 Content 높이만 바뀌면 다시 재지 않는다(transition 유지)", () => {
+    let notify: ResizeObserverCallback = () => {};
+    // test-setup이 writable·non-configurable로 세워 두어 stubGlobal 대신 직접 바꾼다.
+    const original = globalThis.ResizeObserver;
+    globalThis.ResizeObserver = class {
+      constructor(callback: ResizeObserverCallback) {
+        notify = callback;
+      }
+      observe() {}
+      unobserve() {}
+      disconnect() {}
+    } as unknown as typeof ResizeObserver;
+    try {
+      render(<Example defaultOpen />);
+      const content = screen.getByLabelText("이름").parentElement?.parentElement as HTMLElement;
+      const setProperty = vi.spyOn(content.style, "setProperty");
+      const resize = (target: Element, width: number) =>
+        notify([{ target, contentRect: { width } } as unknown as ResizeObserverEntry], {} as ResizeObserver);
+
+      resize(content, 100);
+      setProperty.mockClear();
+      resize(content, 100);
+      expect(setProperty).not.toHaveBeenCalledWith("height", "auto");
+
+      resize(content, 200);
+      expect(setProperty).toHaveBeenCalledWith("height", "auto");
+      setProperty.mockClear();
+      resize(content.firstElementChild as Element, 200);
+      expect(setProperty).toHaveBeenCalledWith("height", "auto");
+    } finally {
+      globalThis.ResizeObserver = original;
+    }
+  });
 });

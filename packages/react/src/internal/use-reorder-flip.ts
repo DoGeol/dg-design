@@ -46,8 +46,10 @@ export function useReorderFlip(container: HTMLElement | null, key: unknown) {
       const delta = before - top;
       if (Math.abs(delta) < EPSILON_PX) continue;
 
+      // transform이 아니라 개별 translate에 건다. 퇴장 중인 토스트의 CSS transform 애니메이션을
+      // 덮어쓰지 않고 합성되게 하려는 것이다.
       child.animate(
-        [{ transform: `translateY(${delta}px)` }, { transform: "none" }],
+        [{ translate: `0 ${delta}px` }, { translate: "0 0" }],
         { duration: DURATION_MS, easing: EASING },
       );
     }

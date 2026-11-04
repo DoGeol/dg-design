@@ -274,7 +274,6 @@
     .dds-select__content[data-state="closed"] {
       animation-name: dds-overlay-fade-out;
     }
-    .dds-select__trigger,
     .dds-select__caret {
       transition: none;
     }

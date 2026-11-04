@@ -52,8 +52,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
+    /* 높이 이동만 끄고 opacity 페이드는 남긴다(모션 결정 §6). */
     .dds-collapsible__content {
-      transition: none;
+      transition: opacity var(--dds-duration-fast) var(--dds-easing-out);
     }
   }
 }
