@@ -175,7 +175,8 @@ test.describe("Toast 스와이프", () => {
     await expect(toasts).toHaveCount(2);
 
     const flips = await page.evaluate(() => (window as unknown as { __flips: string[] }).__flips);
-    expect(flips.some((frames) => frames.includes("translateY("))).toBe(true);
+    // 퇴장 중인 토스트의 CSS transform과 합성되도록 개별 translate로 건다.
+    expect(flips.some((frames) => frames.includes('"translate":"0 '))).toBe(true);
   });
 });
 

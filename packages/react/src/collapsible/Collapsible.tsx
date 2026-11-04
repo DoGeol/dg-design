@@ -26,7 +26,18 @@ const useIsomorphicLayoutEffect = typeof window === "undefined" ? React.useEffec
 
 function observeContentSize(element: HTMLElement, updateHeight: () => void): () => void {
   if (typeof ResizeObserver === "undefined") return () => {};
-  const observer = new ResizeObserver(updateHeight);
+  let width: number | undefined;
+  const observer = new ResizeObserver((entries) => {
+    // 열고 닫는 동안 content 자신의 높이는 매 프레임 바뀐다. 그때 다시 재면 height: auto를
+    // 거치며 transition이 끊기므로, content는 폭이 바뀔 때만, 자식은 크기가 바뀔 때마다 잰다.
+    const relevant = entries.some((entry) => {
+      if (entry.target !== element) return true;
+      const changed = entry.contentRect.width !== width;
+      width = entry.contentRect.width;
+      return changed;
+    });
+    if (relevant) updateHeight();
+  });
   const observeChildren = () => {
     observer.disconnect();
     observer.observe(element);

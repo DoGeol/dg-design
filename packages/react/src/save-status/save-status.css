@@ -54,12 +54,13 @@
     transition: opacity var(--dds-duration-fast) var(--dds-easing-out);
   }
 
-  /* 사라지는 스피너는 회전을 멈춘다 — 보이지 않는 무한 애니메이션은 비용만 낸다. */
+  /* 사라지는 스피너는 회전을 멈춘다 — 보이지 않는 무한 애니메이션은 비용만 낸다.
+     animation: none은 페이드 중에 0°로 튀므로 그 자리에서 멈추기만 한다. */
   .dds-save-status:not(.dds-save-status--status_saving)
     .dds-save-status__icon
     > [data-layer="spinner"]
     .dds-spinner {
-    animation: none;
+    animation-play-state: paused;
   }
 
   .dds-save-status--status_saved {

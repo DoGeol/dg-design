@@ -10,11 +10,6 @@
     border: 1px solid var(--dds-color-stroke-neutral);
     transition: border-color var(--dds-duration-fast) var(--dds-easing-out);
   }
-  @media (prefers-reduced-motion: reduce) {
-    .dds-text-field {
-      transition: none;
-    }
-  }
 
   /* placeholder는 비활성 텍스트가 아니라 WCAG 1.4.3 대비(4.5:1) 대상이다 — fg-disabled는 3.4:1이라 못 쓴다. 비활성 필드 안에서만 disabled 색 */
   .dds-text-field::placeholder,
@@ -76,11 +71,6 @@
     background-color: var(--dds-color-bg-layer-default);
     border: 1px solid var(--dds-color-stroke-neutral);
     transition: border-color var(--dds-duration-fast) var(--dds-easing-out);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .dds-text-field__wrapper {
-      transition: none;
-    }
   }
 
   .dds-text-field__input {
