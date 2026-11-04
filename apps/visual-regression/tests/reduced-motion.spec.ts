@@ -75,15 +75,15 @@ test.describe("prefers-reduced-motion", () => {
       .toBe("none");
   });
 
-  test("Collapsible 전환이 즉시 끝난다", async ({ page }) => {
+  test("Collapsible은 높이 이동을 끄고 opacity 페이드만 남긴다", async ({ page }) => {
     test.skip(!hasStory(COLLAPSIBLE), `스토리 없음: ${COLLAPSIBLE}`);
     await page.goto(`/iframe.html?id=${COLLAPSIBLE}&viewMode=story`);
     const content = page.locator(".dds-collapsible__content").first();
 
     await page.emulateMedia({ reducedMotion: "reduce" });
     await expect
-      .poll(() => content.evaluate((el) => getComputedStyle(el).transitionDuration))
-      .toBe("0s");
+      .poll(() => content.evaluate((el) => getComputedStyle(el).transitionProperty))
+      .toBe("opacity");
   });
 
   /**
