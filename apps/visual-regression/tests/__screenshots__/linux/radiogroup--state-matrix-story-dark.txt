@@ -18,18 +18,18 @@ dds-radio-group dds-radio-group--variant_default dds-radio-group--orientation_ve
 dds-radio | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-radio__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
 dds-radio__box | rgb(241, 246, 246) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
-dds-radio__dot | rgb(241, 246, 246) | rgb(107, 112, 111) | none | rgb(241, 246, 246) | none
-dds-radio__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-radio__dot | rgb(241, 246, 246) | rgb(96, 100, 100) | none | rgb(241, 246, 246) | none
+dds-radio__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-radio | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-radio__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
 dds-radio__box | rgb(241, 246, 246) | rgb(58, 62, 62) | none | rgba(0, 0, 0, 0) | none
-dds-radio__dot | rgb(241, 246, 246) | rgb(107, 112, 111) | none | rgb(241, 246, 246) | none
-dds-radio__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-radio__dot | rgb(241, 246, 246) | rgb(96, 100, 100) | none | rgb(241, 246, 246) | none
+dds-radio__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-radio | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-radio__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
 dds-radio__box | rgb(241, 246, 246) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
-dds-radio__dot | rgb(241, 246, 246) | rgb(107, 112, 111) | none | rgb(241, 246, 246) | none
-dds-radio__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-radio__dot | rgb(241, 246, 246) | rgb(96, 100, 100) | none | rgb(241, 246, 246) | none
+dds-radio__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-radio-group dds-radio-group--variant_default dds-radio-group--orientation_horizontal | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-radio | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-radio__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
@@ -50,18 +50,18 @@ dds-radio-group dds-radio-group--variant_default dds-radio-group--orientation_ho
 dds-radio | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-radio__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
 dds-radio__box | rgb(241, 246, 246) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
-dds-radio__dot | rgb(241, 246, 246) | rgb(107, 112, 111) | none | rgb(241, 246, 246) | none
-dds-radio__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-radio__dot | rgb(241, 246, 246) | rgb(96, 100, 100) | none | rgb(241, 246, 246) | none
+dds-radio__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-radio | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-radio__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
 dds-radio__box | rgb(241, 246, 246) | rgb(58, 62, 62) | none | rgba(0, 0, 0, 0) | none
-dds-radio__dot | rgb(241, 246, 246) | rgb(107, 112, 111) | none | rgb(241, 246, 246) | none
-dds-radio__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-radio__dot | rgb(241, 246, 246) | rgb(96, 100, 100) | none | rgb(241, 246, 246) | none
+dds-radio__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-radio | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-radio__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
 dds-radio__box | rgb(241, 246, 246) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
-dds-radio__dot | rgb(241, 246, 246) | rgb(107, 112, 111) | none | rgb(241, 246, 246) | none
-dds-radio__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-radio__dot | rgb(241, 246, 246) | rgb(96, 100, 100) | none | rgb(241, 246, 246) | none
+dds-radio__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-radio-group dds-radio-group--variant_default dds-radio-group--orientation_vertical | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-radio | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-radio__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
@@ -148,18 +148,18 @@ dds-radio__dot | rgb(174, 178, 178) | rgb(15, 18, 18) | none | rgb(174, 178, 178
 dds-radio__label | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-radio-group dds-radio-group--variant_segmented dds-radio-group--orientation_horizontal dds-radio-group--size_medium | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
 dds-radio-group__indicator | rgb(241, 246, 246) | rgb(58, 62, 62) | none | rgb(241, 246, 246) | none
-dds-radio | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-radio | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-radio__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
-dds-radio__box | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
-dds-radio__dot | rgb(107, 112, 111) | rgb(107, 112, 111) | none | rgb(107, 112, 111) | none
-dds-radio__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-radio | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(107, 112, 111) | none
+dds-radio__box | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
+dds-radio__dot | rgb(96, 100, 100) | rgb(96, 100, 100) | none | rgb(96, 100, 100) | none
+dds-radio__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-radio | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(96, 100, 100) | none
 dds-radio__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
-dds-radio__box | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgba(0, 0, 0, 0) | none
-dds-radio__dot | rgb(107, 112, 111) | rgb(107, 112, 111) | none | rgb(107, 112, 111) | none
-dds-radio__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-radio | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-radio__box | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgba(0, 0, 0, 0) | none
+dds-radio__dot | rgb(96, 100, 100) | rgb(96, 100, 100) | none | rgb(96, 100, 100) | none
+dds-radio__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-radio | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-radio__input | rgb(84, 84, 84) | rgba(0, 0, 0, 0) | none | rgb(84, 84, 84) | none
-dds-radio__box | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
-dds-radio__dot | rgb(107, 112, 111) | rgb(107, 112, 111) | none | rgb(107, 112, 111) | none
-dds-radio__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-radio__box | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
+dds-radio__dot | rgb(96, 100, 100) | rgb(96, 100, 100) | none | rgb(96, 100, 100) | none
+dds-radio__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none

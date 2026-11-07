@@ -111,10 +111,10 @@ dds-toggle-group-item dds-toggle-group-item--size_small | rgb(131, 232, 231) | r
 dds-toggle-group-item__mark | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
 dds-icon dds-icon--size_16 | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
 dds-toggle-group-item__label | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
-dds-toggle-group-item dds-toggle-group-item--size_small | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__mark | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-icon dds-icon--size_16 | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-toggle-group-item dds-toggle-group-item--size_small | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__mark | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-icon dds-icon--size_16 | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-toggle-group dds-toggle-group--orientation_horizontal dds-toggle-group--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item__mark | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
@@ -124,10 +124,10 @@ dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(131, 232, 231) | 
 dds-toggle-group-item__mark | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
 dds-icon dds-icon--size_16 | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
 dds-toggle-group-item__label | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
-dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__mark | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-icon dds-icon--size_16 | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__mark | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-icon dds-icon--size_16 | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-toggle-group dds-toggle-group--orientation_horizontal dds-toggle-group--size_large | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item dds-toggle-group-item--size_large | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item__mark | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
@@ -137,10 +137,10 @@ dds-toggle-group-item dds-toggle-group-item--size_large | rgb(131, 232, 231) | r
 dds-toggle-group-item__mark | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
 dds-icon dds-icon--size_16 | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
 dds-toggle-group-item__label | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
-dds-toggle-group-item dds-toggle-group-item--size_large | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__mark | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-icon dds-icon--size_16 | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-toggle-group-item dds-toggle-group-item--size_large | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__mark | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-icon dds-icon--size_16 | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-toggle-group dds-toggle-group--orientation_horizontal dds-toggle-group--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(131, 232, 231) | rgb(7, 45, 45) | none | rgb(131, 232, 231) | none
 dds-toggle-group-item__mark | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
@@ -154,19 +154,19 @@ dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(241, 246, 246) | 
 dds-toggle-group-item__mark | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__mark | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-icon dds-icon--size_16 | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__mark | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-icon dds-icon--size_16 | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-toggle-group dds-toggle-group--orientation_horizontal dds-toggle-group--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__mark | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-icon dds-icon--size_16 | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__mark | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-icon dds-icon--size_16 | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__mark | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-icon dds-icon--size_16 | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__mark | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-icon dds-icon--size_16 | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-toggle-group dds-toggle-group--orientation_vertical dds-toggle-group--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item__mark | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
@@ -345,11 +345,11 @@ dds-toggle-group-item dds-toggle-group-item--size_small::before | rgb(131, 232, 
 dds-toggle-group-item__mark | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
 dds-icon dds-icon--size_16 | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
 dds-toggle-group-item__label | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
-dds-toggle-group-item dds-toggle-group-item--size_small | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item dds-toggle-group-item--size_small::before | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__mark | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-icon dds-icon--size_16 | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-toggle-group-item dds-toggle-group-item--size_small | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item dds-toggle-group-item--size_small::before | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__mark | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-icon dds-icon--size_16 | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-toggle-group dds-toggle-group--orientation_horizontal dds-toggle-group--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item dds-toggle-group-item--size_medium::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
@@ -361,11 +361,11 @@ dds-toggle-group-item dds-toggle-group-item--size_medium::before | rgb(131, 232,
 dds-toggle-group-item__mark | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
 dds-icon dds-icon--size_16 | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
 dds-toggle-group-item__label | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
-dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item dds-toggle-group-item--size_medium::before | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__mark | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-icon dds-icon--size_16 | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item dds-toggle-group-item--size_medium::before | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__mark | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-icon dds-icon--size_16 | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-toggle-group dds-toggle-group--orientation_horizontal dds-toggle-group--size_large | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item dds-toggle-group-item--size_large | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item dds-toggle-group-item--size_large::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
@@ -377,11 +377,11 @@ dds-toggle-group-item dds-toggle-group-item--size_large::before | rgb(131, 232, 
 dds-toggle-group-item__mark | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
 dds-icon dds-icon--size_16 | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
 dds-toggle-group-item__label | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
-dds-toggle-group-item dds-toggle-group-item--size_large | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item dds-toggle-group-item--size_large::before | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__mark | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-icon dds-icon--size_16 | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-toggle-group-item dds-toggle-group-item--size_large | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item dds-toggle-group-item--size_large::before | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__mark | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-icon dds-icon--size_16 | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-toggle-group dds-toggle-group--orientation_horizontal dds-toggle-group--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(131, 232, 231) | rgb(7, 45, 45) | none | rgb(131, 232, 231) | none
 dds-toggle-group-item dds-toggle-group-item--size_medium::before | rgb(131, 232, 231) | rgba(0, 0, 0, 0) | none | rgb(131, 232, 231) | none
@@ -398,22 +398,22 @@ dds-toggle-group-item dds-toggle-group-item--size_medium::before | rgb(241, 246,
 dds-toggle-group-item__mark | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-icon dds-icon--size_16 | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item dds-toggle-group-item--size_medium::before | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__mark | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-icon dds-icon--size_16 | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item dds-toggle-group-item--size_medium::before | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__mark | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-icon dds-icon--size_16 | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-toggle-group dds-toggle-group--orientation_horizontal dds-toggle-group--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item dds-toggle-group-item--size_medium::before | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__mark | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-icon dds-icon--size_16 | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item dds-toggle-group-item--size_medium::before | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__mark | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-icon dds-icon--size_16 | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-toggle-group-item__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item dds-toggle-group-item--size_medium::before | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__mark | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-icon dds-icon--size_16 | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item dds-toggle-group-item--size_medium::before | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__mark | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-icon dds-icon--size_16 | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-toggle-group-item__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-toggle-group dds-toggle-group--orientation_vertical dds-toggle-group--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item dds-toggle-group-item--size_medium | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-toggle-group-item dds-toggle-group-item--size_medium::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none

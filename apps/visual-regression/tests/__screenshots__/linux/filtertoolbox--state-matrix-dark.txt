@@ -20,7 +20,7 @@ dds-icon dds-icon--size_16 dds-select__caret | rgb(241, 246, 246) | rgba(0, 0, 0
 dds-chip dds-chip--filter | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | rgb(58, 62, 62) 0px 0px 0px 1px inset
 dds-filter-toolbox__count | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-filter-toolbox__actions | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-button dds-button--intent_neutral dds-button--variant_ghost dds-button--size_small | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-button dds-button--intent_neutral dds-button--variant_ghost dds-button--size_small | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-filter-toolbox | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-filter-toolbox__chips | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-select__trigger dds-select__trigger--variant_chip | rgb(131, 232, 231) | rgb(7, 45, 45) | none | rgb(131, 232, 231) | none
@@ -48,4 +48,4 @@ dds-chip dds-chip--filter | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(24
 dds-chip dds-chip--filter::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-filter-toolbox__count | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-filter-toolbox__actions | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-button dds-button--intent_neutral dds-button--variant_ghost dds-button--size_small | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-button dds-button--intent_neutral dds-button--variant_ghost dds-button--size_small | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none

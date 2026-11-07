@@ -9,4 +9,4 @@ dds-slider dds-slider--size_small | rgb(197, 197, 197) | rgba(0, 0, 0, 0) | none
 dds-field | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-field__label | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-slider dds-slider--size_medium | rgb(157, 150, 142) | rgba(0, 0, 0, 0) | none | rgb(157, 150, 142) | none
-dds-field__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-field__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none

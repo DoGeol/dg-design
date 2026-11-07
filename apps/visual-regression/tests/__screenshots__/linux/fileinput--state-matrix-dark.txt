@@ -7,7 +7,7 @@ dds-file-input__dropzone | rgb(174, 178, 178) | rgb(58, 62, 62) | none | rgb(137
 dds-file-input | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-file-input__dropzone | rgb(174, 178, 178) | rgb(82, 86, 86) | none | rgb(137, 141, 141) | none
 dds-file-input | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-file-input__dropzone | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
+dds-file-input__dropzone | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
 dds-file-input | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-file-input__trigger | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) | none
 dds-file-input | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
