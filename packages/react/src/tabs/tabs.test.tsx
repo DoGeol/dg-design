@@ -334,4 +334,46 @@ describe("Tabs size", () => {
     rerender(<Basic size="small" />);
     expect(tab("첫째").className).toContain("dds-tabs__trigger--size_small");
   });
+
+  it("value가 어느 탭과도 안 맞으면 첫 활성 탭 하나만 tab stop이다", () => {
+    render(<Basic defaultValue="typo" />);
+    expect(tab("첫째").getAttribute("tabindex")).toBe("0");
+    expect(tab("둘째").getAttribute("tabindex")).toBe("-1");
+    expect(tab("셋째").getAttribute("tabindex")).toBe("-1");
+  });
+
+  it("선택된 탭이 disabled면 첫 활성 탭으로 Tab 진입한다", async () => {
+    const user = userEvent.setup();
+    render(
+      <Tabs.Root defaultValue="one">
+        <Tabs.List>
+          <Tabs.Trigger value="one" disabled>
+            첫째
+          </Tabs.Trigger>
+          <Tabs.Trigger value="two">둘째</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="one">첫째 패널</Tabs.Content>
+        <Tabs.Content value="two">둘째 패널</Tabs.Content>
+      </Tabs.Root>,
+    );
+
+    await user.tab();
+    expect(document.activeElement).toBe(tab("둘째"));
+    expect(selected("둘째")).toBe("true");
+  });
+
+  it("공백이 든 value도 tabpanel의 aria-labelledby가 id 하나를 가리킨다", () => {
+    render(
+      <Tabs.Root defaultValue="my tab">
+        <Tabs.List>
+          <Tabs.Trigger value="my tab">내 탭</Tabs.Trigger>
+        </Tabs.List>
+        <Tabs.Content value="my tab">내 패널</Tabs.Content>
+      </Tabs.Root>,
+    );
+    const labelledBy = visiblePanel().getAttribute("aria-labelledby") ?? "";
+    expect(labelledBy).not.toMatch(/\s/);
+    expect(document.getElementById(labelledBy)).toBe(tab("내 탭"));
+    expect(tab("내 탭").getAttribute("aria-controls")).toBe(visiblePanel().id);
+  });
 });

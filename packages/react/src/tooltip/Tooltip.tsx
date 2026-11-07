@@ -117,6 +117,7 @@ export function TooltipRoot({
 
   const group = useTooltipGroup();
   const { scheduleOpen, scheduleClose, closeImmediate } = useTooltipSchedule(
+    isOpen,
     setOpen,
     openDelay,
     closeDelay,

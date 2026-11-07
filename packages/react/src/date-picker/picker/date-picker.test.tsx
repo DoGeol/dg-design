@@ -144,6 +144,34 @@ describe("DatePicker", () => {
     expect(onValueChange).toHaveBeenCalledTimes(1);
   });
 
+  it("commits null when both range endpoints are cleared, unless required", async () => {
+    const user = userEvent.setup();
+    const onValueChange = vi.fn();
+    const value = { start: new CalendarDate(2026, 9, 27), end: new CalendarDate(2026, 9, 30) };
+    const { unmount } = render(<DateRangePicker kind="date" label="Trip" defaultValue={value} onValueChange={onValueChange} />);
+    await user.click(screen.getByRole("button", { name: /Trip/ }));
+    await user.click(screen.getByRole("button", { name: "Clear" }));
+    await user.click(screen.getByRole("button", { name: "Apply" }));
+    expect(onValueChange).toHaveBeenCalledWith(null);
+    expect(screen.queryByRole("dialog")).toBeNull();
+    unmount();
+
+    render(<DateRangePicker kind="date" label="Trip" required defaultValue={value} onValueChange={onValueChange} />);
+    onValueChange.mockClear();
+    await user.click(screen.getByRole("button", { name: /Trip/ }));
+    await user.click(screen.getByRole("button", { name: "Clear" }));
+    await user.click(screen.getByRole("button", { name: "Apply" }));
+    expect(onValueChange).not.toHaveBeenCalled();
+    expect(screen.getByRole("alert").textContent).toMatch(/choose a date/i);
+  });
+
+  it("opens with an invalid time zone without crashing", async () => {
+    const user = userEvent.setup();
+    render(<DatePicker kind="zoned-date-time" timeZone="Asia/Seol" label="Zoned" defaultValue={null} />);
+    await user.click(screen.getByRole("button", { name: /Zoned/ }));
+    expect(screen.getByRole("dialog")).toBeTruthy();
+  });
+
   it("replaces an open draft when a controlled value changes externally", async () => {
     const user = userEvent.setup();
     const onValueChange = vi.fn();

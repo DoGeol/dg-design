@@ -65,9 +65,15 @@ export function rowKeyOf<T>(row: T, rowKey: RowKey<T>): React.Key {
 
 const textCollator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
 
+// NaN·Invalid Date는 뺄셈 결과를 NaN으로 만들어 비교자가 일관성을 잃고 정렬 전체가 깨진다 — 빈 값처럼 맨 뒤로 보낸다.
+function isEmpty(value: unknown): boolean {
+  return value == null || (typeof value === "number" && Number.isNaN(value)) ||
+    (value instanceof Date && Number.isNaN(value.getTime()));
+}
+
 function compareValues(a: unknown, b: unknown): number {
-  if (a == null) return b == null ? 0 : 1;
-  if (b == null) return -1;
+  if (isEmpty(a)) return isEmpty(b) ? 0 : 1;
+  if (isEmpty(b)) return -1;
   if (typeof a === "number" && typeof b === "number") return a - b;
   if (a instanceof Date && b instanceof Date) return a.getTime() - b.getTime();
   return textCollator.compare(String(a), String(b));

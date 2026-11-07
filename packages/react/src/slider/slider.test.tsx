@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as React from "react";
 import { describe, expect, it } from "vitest";
@@ -99,5 +99,25 @@ describe("Slider", () => {
 
     await user.click(label);
     expect(document.activeElement).toBe(slider);
+  });
+
+  it("form reset 후 채움이 defaultValue로 돌아간다", async () => {
+    const user = userEvent.setup();
+    render(
+      <form>
+        <Slider defaultValue={20} aria-label="볼륨" />
+        <button type="reset">초기화</button>
+      </form>,
+    );
+    const slider = screen.getByRole("slider") as HTMLInputElement;
+
+    // jsdom range는 키보드로 값이 바뀌지 않는다 — 위 onInput 테스트처럼 값 추적을 우회한다.
+    Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, "value")?.set?.call(slider, "60");
+    slider.dispatchEvent(new Event("input", { bubbles: true }));
+    expect(slider.style.getPropertyValue("--dds-slider-fill")).toBe("60%");
+
+    await user.click(screen.getByRole("button", { name: "초기화" }));
+    expect(slider.value).toBe("20");
+    await waitFor(() => expect(slider.style.getPropertyValue("--dds-slider-fill")).toBe("20%"));
   });
 });

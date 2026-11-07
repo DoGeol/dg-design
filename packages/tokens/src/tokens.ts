@@ -16,7 +16,7 @@ export const GRAY_CHROMA = 0.005;
 export const STEPS = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000] as const;
 
 /**
- * 램프 lightness (OKLCH L). 밝은 → 어두운, brand·gray 공용.
+ * 램프 lightness (OKLCH L). 밝은 → 어두운, brand·gray 공용(gray-600만 예외, palette 참조).
  *
  * 선형 분할이 아니라 어두운 쪽에 스텝을 몰아준 분포다. 이유:
  * solid(700)·weak-pressed(300)·dark weak(800~1000)가 전부 대비 검사 대상이라
@@ -75,6 +75,9 @@ export const palette: Record<string, Oklch> = {
   ...ramp("brand", BRAND_HUE, BRAND_CHROMA),
   "gray-00": { l: 1, c: 0, h: GRAY_HUE },
   ...ramp("gray", GRAY_HUE, GRAY_CHROMA),
+  // fg-neutral-weak가 bg-transparent-pressed(gray-1000/0.12) 위에서도 4.5:1을 넘기도록
+  // gray만 공용 램프(0.54)보다 어둡게 둔다. brand·intent 600은 그대로.
+  "gray-600": { l: 0.5, c: GRAY_CHROMA, h: GRAY_HUE },
   ...ramp("critical", INTENT_HUES.critical, INTENT_CHROMA.critical),
   ...ramp("positive", INTENT_HUES.positive, INTENT_CHROMA.positive),
   ...ramp("warning", INTENT_HUES.warning, INTENT_CHROMA.warning),
@@ -212,6 +215,9 @@ export const contrastChecks: ContrastCheck[] = [
   { fg: "fg-neutral-weak", bg: "bg-layer-default", min: 4.5 },
   // 보조 텍스트가 약한 배경 위에 놓이는 조합(예: StatePanel 본문) — F4
   { fg: "fg-neutral-weak", bg: "bg-neutral-weak", min: 4.5 },
+  // 메뉴 단축키·List 메타처럼 hover·pressed 행 위에 놓이는 보조 텍스트
+  { fg: "fg-neutral-weak", bg: "bg-transparent-hover", min: 4.5 },
+  { fg: "fg-neutral-weak", bg: "bg-transparent-pressed", min: 4.5 },
   // 포커스 링 (비텍스트)
   { fg: "stroke-focus-ring", bg: "bg-layer-default", min: 3.0 }, // WCAG 1.4.11
   // 인터랙티브 컨트롤 테두리 (비텍스트)

@@ -116,8 +116,8 @@ export function CustomSeparator() {
 | focus-visible | 비입력 2px stroke-focus-ring, bg-fg-brand 하이라이트 |
 | dragging | bg-fg-brand 유지, 전역 cursor 일치 및 텍스트 선택 방지(`user-select: none`) |
 | disabled | opacity 축소, pointer-events: none, tabIndex=-1, cursor not-allowed |
-| ArrowLeft / ArrowDown | orientation 축에 따라 -step 변경 (min 하한 제한) |
-| ArrowRight / ArrowUp | orientation 축에 따라 +step 변경 (max 상한 제한) |
+| ArrowLeft / ArrowRight | vertical: -step / +step (min·max 제한) |
+| ArrowUp / ArrowDown | horizontal: -step / +step — 포인터(아래로 끌면 +)와 같은 방향 (2026-11-07 수정) |
 | Home / End | min 하한 / max 상한으로 즉시 이동 |
 | Enter / Space | `onReset`이 정의되어 있으면 기본값 복원 호출 |
 | DoubleClick | `onReset`이 정의되어 있으면 기본값 복원 호출 |

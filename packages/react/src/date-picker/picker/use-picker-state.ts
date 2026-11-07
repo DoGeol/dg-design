@@ -3,7 +3,7 @@ import * as React from "react";
 
 import { useControllableState } from "../../internal/use-controllable-state";
 import {
-  getDatePickerState, resolveZonedDraft, serializeDatePickerValue, validateDatePickerPreset,
+  getDatePickerState, isValidTimeZone, resolveZonedDraft, serializeDatePickerValue, validateDatePickerPreset,
   validateDatePickerRange, validateDatePickerValue,
 } from "../model";
 import type {
@@ -85,8 +85,9 @@ export function usePickerState(props: PickerProps, range: boolean) {
     restoreDraft(committed);
     if (open) {
       const currentDate = isRange(committed) ? committed.start : committed;
-      setFocusedDate(currentDate ? toCalendarDate(currentDate)
-        : today(props.kind === "zoned-date-time" ? props.timeZone : getLocalTimeZone()));
+      // 잘못된 timeZone은 today()가 RangeError로 트리를 깨뜨린다 — 오류 보고는 검증(invalid-time-zone)에 맡긴다.
+      const zone = props.kind === "zoned-date-time" && isValidTimeZone(props.timeZone) ? props.timeZone : getLocalTimeZone();
+      setFocusedDate(currentDate ? toCalendarDate(currentDate) : today(zone));
     }
   }, [open, committed, restoreDraft, props.kind, props.timeZone]);
 
@@ -114,6 +115,8 @@ export function usePickerState(props: PickerProps, range: boolean) {
       setGeneralError(startError ?? endError ?? { code: "ambiguous-time" });
       return;
     }
+    // 양 끝을 다 비운 범위는 미완성 입력이 아니라 지우기다 — required는 commit의 검증이 막는다.
+    if (range && !start && !end) { commit(null); return; }
     if (range && (!start || !end)) {
       setGeneralError({ code: "incomplete-input", endpoint: !start ? "start" : "end" });
       return;

@@ -80,7 +80,8 @@ export function createTheme(options: CreateThemeOptions): CreateThemeResult {
     const l = LIGHTNESS[i]!;
     brandRamp[`brand-${step}`] = { l, c: maxChroma(l, hue) * CHROMA_RATIO_PROFILE[i]!, h: hue };
     // gray는 brand hue를 따라간다(차가운/따뜻한 중성 자동 연동) — 기본 팔레트와 같은 규칙.
-    grayRamp[`gray-${step}`] = { l, c: GRAY_CHROMA, h: hue };
+    // lightness는 기본 팔레트에서 읽는다 — gray 전용 보정(600)이 여기서도 유지되게.
+    grayRamp[`gray-${step}`] = { l: basePalette[`gray-${step}`]!.l, c: GRAY_CHROMA, h: hue };
   });
 
   // intent 4종은 의미색이라 브랜드와 독립 — 기본 팔레트 값을 그대로 쓴다.

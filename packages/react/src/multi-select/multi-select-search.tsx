@@ -359,7 +359,8 @@ export function MultiSelectContentSearch() {
       onChange={(event) => search.setQuery(event.target.value)}
       onKeyDown={(event) => {
         // 목록의 typeahead·roving이 입력의 타이핑을 가로채지 않게 여기서 끊는다.
-        event.stopPropagation();
+        // Escape는 document의 dialog-stack까지 가야 패널이 닫힌다.
+        if (event.key !== "Escape") event.stopPropagation();
         if (event.key !== "ArrowDown") return;
         event.preventDefault();
         moveFocus(context.contentRef.current, OPTION_ROLE, "ArrowDown");

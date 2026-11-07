@@ -1,7 +1,7 @@
 import type { Placement } from "@floating-ui/dom";
 import * as React from "react";
 
-import { pushDialog } from "./dialog-stack";
+import { getDialogStack, pushDialog } from "./dialog-stack";
 import { useControllableState } from "./use-controllable-state";
 import { useLatestRef } from "./use-latest-ref";
 import { useOverlayPosition } from "./use-overlay-position";
@@ -33,14 +33,16 @@ function closeSiblingsOf(trigger: HTMLElement | null) {
 }
 
 /**
- * 우리 위에 쌓인 항목은 전부 자손이다 — 형제는 열릴 때 우리를 닫고 들어오니 위에 남을 수 없다.
- * 자손 패널은 각자 body 직속 portal이라 DOM상 우리 content 바깥이다: 이 확인이 없으면
- * 자손 안을 클릭할 때마다 조상이 "바깥 클릭"으로 판정해 스스로 닫는다.
+ * 우리보다 나중에 다이얼로그 스택에 오른 오버레이 안인지. 자손 패널은 각자 body 직속 portal이라
+ * DOM상 우리 content 바깥이다: 이 확인이 없으면 자손 안을 클릭할 때마다 조상이 "바깥 클릭"으로
+ * 판정해 스스로 닫는다. openOverlays가 아니라 다이얼로그 스택을 보는 이유 — Dialog·Sheet·
+ * ContextMenu·HoverCard는 단일 열림에 끼지 않고 이 스택에만 오른다.
  */
-function isInsideDescendant(entry: OpenOverlay, target: Node): boolean {
-  const index = openOverlays.indexOf(entry);
+function isInsideStackedAbove(container: HTMLElement | null, target: Node): boolean {
+  const stack = getDialogStack();
+  const index = stack.findIndex((entry) => entry.container === container);
   if (index === -1) return false;
-  return openOverlays.slice(index + 1).some((above) => above.content.current?.contains(target));
+  return stack.slice(index + 1).some((above) => above.container.contains(target));
 }
 
 export interface UseOverlayOptions {
@@ -172,12 +174,12 @@ export function useOverlay({
       if (!target) return;
       if (contentRef.current?.contains(target)) return;
       if (triggerNode?.contains(target)) return;
-      if (isInsideDescendant(entry, target)) return;
+      if (isInsideStackedAbove(container, target)) return;
       close();
     };
     document.addEventListener("mousedown", onMouseDown);
     return () => document.removeEventListener("mousedown", onMouseDown);
-  }, [isOpen, closeOnOutsideClick, triggerNode, contentRef, close, entry]);
+  }, [isOpen, closeOnOutsideClick, triggerNode, contentRef, close, container]);
 
   const focusRef = useLatestRef(onOpenFocus);
 

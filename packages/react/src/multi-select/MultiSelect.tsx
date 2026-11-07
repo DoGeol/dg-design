@@ -22,6 +22,7 @@ import {
   VALUE_ATTR,
 } from "../internal/select-core";
 import { useControllableState } from "../internal/use-controllable-state";
+import { useLatestRef } from "../internal/use-latest-ref";
 import { SelectSheet } from "../internal/select-sheet";
 import { useOverlay } from "../internal/use-overlay";
 import { useSheetPresentation, type Presentation } from "../internal/use-sheet-presentation";
@@ -119,22 +120,21 @@ export function MultiSelectRoot({
 
   const { options: registered, registerOption } = useOptionRegistry(children, MultiSelectOption);
 
+  // 비동기 onCreate가 resolve될 때 그 사이 고른 값을 덮어쓰지 않게 최신 선택을 읽는다.
+  const selectedRef = useLatestRef(selectedValues);
   const toggleValue = React.useCallback(
     (next: string) => {
-      setValue(
-        selectedValues.includes(next)
-          ? selectedValues.filter((item) => item !== next)
-          : [...selectedValues, next],
-      );
+      const current = selectedRef.current;
+      setValue(current.includes(next) ? current.filter((item) => item !== next) : [...current, next]);
     },
-    [selectedValues, setValue],
+    [selectedRef, setValue],
   );
 
   const addValue = React.useCallback(
     (next: string) => {
-      if (!selectedValues.includes(next)) setValue([...selectedValues, next]);
+      if (!selectedRef.current.includes(next)) setValue([...selectedRef.current, next]);
     },
-    [selectedValues, setValue],
+    [selectedRef, setValue],
   );
 
   // 열릴 때는 선택된 것 중 첫 옵션으로(없으면 첫 옵션) — Select와 같은 자리.

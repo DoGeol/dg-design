@@ -373,4 +373,9 @@ describe("useTableOfContentsActiveId 훅", () => {
     removeEventListenerSpy.mockRestore();
     unmount();
   });
+
+  it("collapsible: 내부 tree가 nav 속성으로 새지 않는다", () => {
+    render(<TableOfContents variant="collapsible" label="목차" items={sampleItems} />);
+    expect(screen.getByRole("navigation").hasAttribute("tree")).toBe(false);
+  });
 });
