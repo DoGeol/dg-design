@@ -5,11 +5,16 @@ on:
     branches: [main]
   pull_request:
 
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
 env:
   COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
 
 jobs:
-  build:
+  # 단위 테스트·타입 검사와 시각 회귀를 나란히 돌린다 — 앞쪽 설치·빌드는 양쪽이 각자 한다
+  checks:
     runs-on: ubuntu-latest
 
     steps:
@@ -61,6 +66,43 @@ jobs:
 
       - name: Check React package quality
         run: pnpm --filter @dg-design/react exec publint
+
+  visual-regression:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable pnpm via corepack
+        run: corepack enable
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate tokens
+        run: pnpm generate
+
+      - name: Build packages
+        run: pnpm build
 
       # storybook-static은 앞선 build 단계(pnpm -r run build)의 산출물을 그대로 쓴다
       - name: Read Playwright version

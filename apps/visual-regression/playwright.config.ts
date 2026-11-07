@@ -10,6 +10,8 @@ export default defineConfig({
   // 기본값('missing')이면 기준 없는 스토리가 조용히 기록된다. 갱신은 CI 전용 경로로만.
   updateSnapshots: "none",
   fullyParallel: true,
+  // 기본값은 코어 절반(CI 4코어에서 2개) — CI는 코어를 다 쓴다
+  workers: process.env.CI ? "100%" : undefined,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI
