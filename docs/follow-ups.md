@@ -66,7 +66,7 @@ P7에서 42개 컴포넌트 예제와 설명을 소스와 대조하다 나온 �
 | Popover 접근 이름 | Content `role="group"`에 이름이 없다(`aria-labelledby` 미연결) | Popover를 손볼 때 |
 | Toast 낭독 | 미리 채워진 `role="status"`가 마운트되면 일부 스크린리더가 읽지 않는다 | 스크린리더 QA 때 |
 | 작은 동작 | Checkbox: 클릭 후 indeterminate가 복구되지 않음. Button·CodeBlock: pending 중 native disabled로 포커스를 잃음. Button: `asChild`+`iconOnly` 경고 오탐. 끌어서 닫기: 빠른 플릭 일부가 속도 0으로 계산됨. dialog-stack: IME 조합 중 Escape에도 닫힘. Slider: controlled off-step 값의 fill | 해당 컴포넌트를 손볼 때 |
-| tokens·빌드·CI | `createTheme` 무채색 판정 임계(1e-4)가 낮다. 테스트 `.d.ts`가 npm에 포함된다. `ci.yml`에 `permissions` 블록이 없다. VR 기준이 없으면 CI에서도 스킵된다 | 배포·CI를 손볼 때 |
+| tokens·빌드·CI | `createTheme` 무채색 판정 임계(1e-4)가 낮다. 테스트 `.d.ts`가 npm에 포함된다. `ci.yml`에 `permissions` 블록이 없다. VR 기준이 없으면 CI에서도 스킵된다. VR workers를 100%로 올렸다([#80](https://github.com/DoGeol/dg-design/pull/80), 실측 1회) — 모션 테스트가 흔들리면 `75%`로 낮춘다 | 배포·CI를 손볼 때 |
 
 ## 알아두면 첫 시도에서 안 틀리는 것
 
