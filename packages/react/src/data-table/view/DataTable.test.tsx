@@ -1,4 +1,4 @@
-import { render, screen, within } from "@testing-library/react";
+import { act, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as React from "react";
 import { describe, expect, it, vi } from "vitest";
@@ -129,6 +129,27 @@ describe("DataTable", () => {
     expect(cell.mock.calls.length).toBeLessThanOrEqual(30);
     expect(table.querySelector("tr[data-row-index='0']")?.getAttribute("aria-rowindex")).toBe("2");
     expect(screen.getByRole("region", { name: "대량 데이터 스크롤" }).getAttribute("tabindex")).toBe("0");
+  });
+
+  it("가상 스크롤 위치는 인라인 columns로 부모가 다시 그려도 유지된다", () => {
+    const data = Array.from({ length: 1000 }, (_, id) => ({ id, name: `row ${id}` }));
+    let bump = () => {};
+    function Parent() {
+      const [, setCount] = React.useState(0);
+      bump = () => setCount((count) => count + 1);
+      return <DataTable data={data} rowKey="id" caption="재렌더" virtual={{ height: 440, rowHeight: 44 }}
+        defaultSort={{ id: "id", direction: "asc" }}
+        columns={[{ field: "id", header: "id", sortable: true }, { field: "name", header: "이름" }]} />;
+    }
+    render(<Parent />);
+    const region = screen.getByRole("region", { name: "재렌더 스크롤" });
+    region.scrollTop = 22_000;
+    // user-event에는 스크롤 API가 없다.
+    act(() => { region.dispatchEvent(new Event("scroll")); });
+    expect(screen.getByText("row 500")).toBeTruthy();
+    act(() => bump());
+    expect(region.scrollTop).toBe(22_000);
+    expect(screen.getByText("row 500")).toBeTruthy();
   });
 
   it("필터 결과가 없으면 표 안에 안내한다", async () => {

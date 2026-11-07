@@ -46,7 +46,7 @@ jobs:
 
       # changeset이 있으면 Version Packages PR을 만들고, 그 PR이 머지된 push에서는 publish한다
       - name: Version or publish
-        uses: changesets/action@v2
+        uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2 — npm 게시 권한 job이라 움직이는 태그 대신 SHA 고정
         with:
           version-script: pnpm changeset version
           publish-script: pnpm changeset publish

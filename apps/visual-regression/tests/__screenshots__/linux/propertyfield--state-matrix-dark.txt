@@ -21,11 +21,11 @@ dds-property-field__trigger::after | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | non
 dds-property-field__value | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-property-field__caret | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-field dds-property-field | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-field__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-select__trigger dds-select__trigger--size_medium | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-select__trigger dds-select__trigger--size_medium::before | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(107, 112, 111) | none
-dds-select__trigger dds-select__trigger--size_medium::after | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-select__value | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-field__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-select__trigger dds-select__trigger--size_medium | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-select__trigger dds-select__trigger--size_medium::before | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(96, 100, 100) | none
+dds-select__trigger dds-select__trigger--size_medium::after | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-select__value | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-icon dds-icon--size_16 dds-select__caret | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-field__description | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-property-field-group | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
@@ -52,11 +52,11 @@ dds-property-field__trigger::after | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | non
 dds-property-field__value | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-property-field__caret | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-field dds-property-field | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-field__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-select__trigger dds-select__trigger--size_medium | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-select__trigger dds-select__trigger--size_medium::before | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(107, 112, 111) | none
-dds-select__trigger dds-select__trigger--size_medium::after | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-select__value | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-field__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-select__trigger dds-select__trigger--size_medium | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-select__trigger dds-select__trigger--size_medium::before | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(96, 100, 100) | none
+dds-select__trigger dds-select__trigger--size_medium::after | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-select__value | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-icon dds-icon--size_16 dds-select__caret | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-field__description | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-property-field-group | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
@@ -85,11 +85,11 @@ dds-property-field__value | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(1
 dds-property-field__caret | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-field dds-property-field | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-field dds-property-field::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) rgb(241, 246, 246) rgb(241, 246, 246) | none
-dds-field__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-select__trigger dds-select__trigger--size_medium | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-select__trigger dds-select__trigger--size_medium::before | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(107, 112, 111) | none
-dds-select__trigger dds-select__trigger--size_medium::after | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-select__value | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-field__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-select__trigger dds-select__trigger--size_medium | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-select__trigger dds-select__trigger--size_medium::before | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(96, 100, 100) | none
+dds-select__trigger dds-select__trigger--size_medium::after | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-select__value | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-icon dds-icon--size_16 dds-select__caret | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-field__description | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-property-field-group | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
@@ -119,10 +119,10 @@ dds-property-field__value | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(1
 dds-property-field__caret | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-field dds-property-field | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-field dds-property-field::before | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) rgb(241, 246, 246) rgb(241, 246, 246) | none
-dds-field__label | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-select__trigger dds-select__trigger--size_medium | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-select__trigger dds-select__trigger--size_medium::before | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(107, 112, 111) | none
-dds-select__trigger dds-select__trigger--size_medium::after | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-select__value | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-field__label | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-select__trigger dds-select__trigger--size_medium | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-select__trigger dds-select__trigger--size_medium::before | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(96, 100, 100) | none
+dds-select__trigger dds-select__trigger--size_medium::after | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-select__value | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-icon dds-icon--size_16 dds-select__caret | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none
 dds-field__description | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174, 178, 178) | none

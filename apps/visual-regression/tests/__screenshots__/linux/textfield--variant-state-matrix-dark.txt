@@ -6,7 +6,7 @@ dds-field__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 
 dds-text-field dds-text-field--size_medium dds-text-field--variant_box | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(240, 70, 70) | none
 dds-field | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-field__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-text-field dds-text-field--size_medium dds-text-field--variant_box | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
+dds-text-field dds-text-field--size_medium dds-text-field--variant_box | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
 dds-field | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-field__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-text-field dds-text-field--size_medium dds-text-field--variant_box | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(58, 62, 62) | none
@@ -20,7 +20,7 @@ dds-field__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 
 dds-text-field dds-text-field--size_medium dds-text-field--variant_line | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(240, 70, 70) | none
 dds-field | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-field__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-text-field dds-text-field--size_medium dds-text-field--variant_line | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
+dds-text-field dds-text-field--size_medium dds-text-field--variant_line | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
 dds-field | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-field__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-text-field dds-text-field--size_medium dds-text-field--variant_line | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(58, 62, 62) | none
@@ -32,7 +32,7 @@ dds-field__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 
 dds-text-field dds-text-field--size_medium dds-text-field--variant_box | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(240, 70, 70) | none
 dds-field | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-field__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-text-field dds-text-field--size_medium dds-text-field--variant_box | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
+dds-text-field dds-text-field--size_medium dds-text-field--variant_box | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(58, 62, 62) | none
 dds-field | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-field__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-text-field dds-text-field--size_medium dds-text-field--variant_box | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(58, 62, 62) | none
@@ -46,7 +46,7 @@ dds-field__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 
 dds-text-field dds-text-field--size_medium dds-text-field--variant_line | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(240, 70, 70) | none
 dds-field | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-field__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-text-field dds-text-field--size_medium dds-text-field--variant_line | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) | none
+dds-text-field dds-text-field--size_medium dds-text-field--variant_line | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) | none
 dds-field | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-field__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-text-field dds-text-field--size_medium dds-text-field--variant_line | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(58, 62, 62) | none

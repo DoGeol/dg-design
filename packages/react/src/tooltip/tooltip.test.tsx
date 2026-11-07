@@ -138,6 +138,77 @@ describe("Tooltip 지연", () => {
     expect(screen.getByText("셋 도움말")).toBeTruthy();
   });
 
+  it("열린 채 unmount돼도 그룹 스킵이 풀린다", async () => {
+    // 닫힘 알림을 타이머 경로에서만 보내면 열림 수가 남아 이후 모든 툴팁이 지연 없이 열린다.
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    function App({ showA }: { showA: boolean }) {
+      return (
+        <Tooltip.Provider skipDelayDuration={300}>
+          {showA && (
+            <Tooltip.Root openDelay={700}>
+              <Tooltip.Trigger>하나</Tooltip.Trigger>
+              <Tooltip.Content>하나 도움말</Tooltip.Content>
+            </Tooltip.Root>
+          )}
+          <Tooltip.Root openDelay={700}>
+            <Tooltip.Trigger>둘</Tooltip.Trigger>
+            <Tooltip.Content>둘 도움말</Tooltip.Content>
+          </Tooltip.Root>
+        </Tooltip.Provider>
+      );
+    }
+    const { rerender } = render(<App showA />);
+
+    await user.hover(trigger("하나"));
+    advance(700);
+    expect(screen.getByText("하나 도움말")).toBeTruthy();
+
+    rerender(<App showA={false} />);
+    advance(300);
+    await user.hover(trigger("둘"));
+    expect(screen.queryByText("둘 도움말")).toBeNull();
+  });
+
+  it("controlled 부모가 직접 닫아도 그룹 스킵이 풀린다", async () => {
+    vi.useFakeTimers({ shouldAdvanceTime: true });
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    function Controlled({ forceClose }: { forceClose: boolean }) {
+      const [open, setOpen] = React.useState(false);
+      React.useEffect(() => {
+        if (forceClose) setOpen(false);
+      }, [forceClose]);
+      return (
+        <Tooltip.Root open={open} onOpenChange={setOpen} openDelay={700} closeDelay={150}>
+          <Tooltip.Trigger>하나</Tooltip.Trigger>
+          <Tooltip.Content>하나 도움말</Tooltip.Content>
+        </Tooltip.Root>
+      );
+    }
+    function App({ forceClose }: { forceClose: boolean }) {
+      return (
+        <Tooltip.Provider skipDelayDuration={300}>
+          <Controlled forceClose={forceClose} />
+          <Tooltip.Root openDelay={700}>
+            <Tooltip.Trigger>둘</Tooltip.Trigger>
+            <Tooltip.Content>둘 도움말</Tooltip.Content>
+          </Tooltip.Root>
+        </Tooltip.Provider>
+      );
+    }
+    const { rerender } = render(<App forceClose={false} />);
+
+    await user.hover(trigger("하나"));
+    advance(700);
+    expect(screen.getByText("하나 도움말")).toBeTruthy();
+
+    // 포인터는 아직 "하나" 위 — 이탈 타이머 없이 부모가 닫는다.
+    rerender(<App forceClose />);
+    advance(300);
+    await user.hover(trigger("둘"));
+    expect(screen.queryByText("둘 도움말")).toBeNull();
+  });
+
   it("Provider 없이는 그룹 스킵이 없다 — 인접 트리거도 openDelay를 전부 기다린다", () => {
     vi.useFakeTimers();
     render(

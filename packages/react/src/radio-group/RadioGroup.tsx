@@ -131,6 +131,18 @@ export const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootPro
     [onTransitionEnd],
   );
 
+  // Item은 checked로 묶여 있어 form reset이 되돌린 체크를 다음 렌더가 덮어쓴다 — uncontrolled 값을
+  // defaultValue로 돌린다. controlled는 부모 몫이라 건드리지 않는다.
+  const rootRef = React.useRef<HTMLDivElement>(null);
+  const isControlled = "value" in props;
+  React.useEffect(() => {
+    const form = rootRef.current?.closest("form");
+    if (isControlled || !form) return;
+    const reset = () => setCurrent(defaultValue);
+    form.addEventListener("reset", reset);
+    return () => form.removeEventListener("reset", reset);
+  }, [isControlled, defaultValue, setCurrent]);
+
   const segmented = variant === "segmented";
   const indicator = useSelectionIndicator<HTMLDivElement>({
     enabled: segmented,
@@ -162,6 +174,9 @@ export const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootPro
   // id를 직접 참조해야 접근 이름이 생긴다.
   const resolvedLabelledBy = ariaLabelledBy ?? fieldCtx?.labelId;
 
+  const containerRef = segmented ? indicator.containerRef : undefined;
+  const setRootRef = React.useMemo(() => mergeRefs(ref, rootRef, containerRef), [ref, containerRef]);
+
   const registerItem = segmented ? indicator.registerItem : undefined;
   const contextValue = React.useMemo(
     () => ({
@@ -189,7 +204,7 @@ export const RadioGroupRoot = React.forwardRef<HTMLDivElement, RadioGroupRootPro
     <RadioGroupContext.Provider value={contextValue}>
       <div
         {...rest}
-        ref={segmented ? mergeRefs(ref, indicator.containerRef) : ref}
+        ref={setRootRef}
         role="radiogroup"
         id={resolvedId}
         aria-orientation={resolvedOrientation}

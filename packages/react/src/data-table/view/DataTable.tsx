@@ -95,7 +95,9 @@ export function DataTable<T>(props: DataTableProps<T>): React.ReactElement {
     [columns],
   );
   const state = useDataTableState(props, orderedColumns);
-  const viewport = useVirtualViewport(virtual, state.rows, orderedColumns);
+  const viewport = useVirtualViewport(virtual, state.rows, orderedColumns, {
+    data: props.data, sort: state.sort, filters: state.filters,
+  });
   const isVirtual = virtual !== false;
   const span = orderedColumns.length + (selectable ? 1 : 0);
   const pinStyle = React.useMemo(

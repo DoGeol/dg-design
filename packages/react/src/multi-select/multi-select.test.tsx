@@ -193,6 +193,47 @@ describe("MultiSelect 열린 상태 typeahead", () => {
     await user.keyboard("{ArrowDown}");
     expect(document.activeElement).toBe(option("Melon"));
   });
+
+  it("같은 글자를 연타하면 그 글자로 시작하는 옵션을 순환한다", async () => {
+    const user = userEvent.setup();
+    render(
+      <MultiSelect.Root defaultOpen>
+        <MultiSelect.Trigger />
+        <MultiSelect.Content>
+          <MultiSelect.Option value="apple">Apple</MultiSelect.Option>
+          <MultiSelect.Option value="avocado">Avocado</MultiSelect.Option>
+          <MultiSelect.Option value="banana">Banana</MultiSelect.Option>
+        </MultiSelect.Content>
+      </MultiSelect.Root>,
+    );
+
+    await user.keyboard("a");
+    expect(document.activeElement).toBe(option("Avocado"));
+    await user.keyboard("a");
+    expect(document.activeElement).toBe(option("Apple"));
+  });
+});
+
+describe("MultiSelect 옵션 갱신", () => {
+  it("닫힌 동안 바뀐 라벨이 등록 캐시의 옛 라벨보다 우선한다", async () => {
+    const user = userEvent.setup();
+    const view = (label: string) => (
+      <MultiSelect.Root defaultValue={["apple"]}>
+        <MultiSelect.Trigger />
+        <MultiSelect.Content>
+          <MultiSelect.Option value="apple">{label}</MultiSelect.Option>
+        </MultiSelect.Content>
+      </MultiSelect.Root>
+    );
+    const { rerender } = render(view("Apple"));
+
+    // 한 번 열어 등록 캐시에 옛 라벨을 남긴 뒤 닫는다.
+    await user.click(trigger());
+    await user.keyboard("{Escape}");
+    rerender(view("Green apple"));
+
+    expect(summary()).toBe("Green apple");
+  });
 });
 
 describe("MultiSelect 폼 제출", () => {

@@ -6,11 +6,11 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
+dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(96, 100, 100) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_inline | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_inline::after | rgb(36, 39, 39) | rgb(228, 233, 232) | none | rgb(36, 39, 39) | none
 dds-accordion__header | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -28,8 +28,8 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion dds-accordion--variant_inline dds-accordion--size_small | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -40,11 +40,11 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
+dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(96, 100, 100) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_inline | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_inline::after | rgb(36, 39, 39) | rgb(228, 233, 232) | none | rgb(36, 39, 39) | none
 dds-accordion__header | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -62,8 +62,8 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion dds-accordion--variant_inline dds-accordion--size_medium | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -74,11 +74,11 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
+dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(96, 100, 100) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_inline | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_inline::after | rgb(36, 39, 39) | rgb(228, 233, 232) | none | rgb(36, 39, 39) | none
 dds-accordion__header | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -96,8 +96,8 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion dds-accordion--variant_inline dds-accordion--size_medium | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -108,11 +108,11 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
+dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(96, 100, 100) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_inline | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_inline::after | rgb(36, 39, 39) | rgb(228, 233, 232) | none | rgb(36, 39, 39) | none
 dds-accordion__header | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -130,8 +130,8 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion dds-accordion--variant_inline dds-accordion--size_large | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -142,11 +142,11 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
+dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(96, 100, 100) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_inline | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_inline::after | rgb(36, 39, 39) | rgb(228, 233, 232) | none | rgb(36, 39, 39) | none
 dds-accordion__header | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -164,8 +164,8 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion dds-accordion--variant_inline dds-accordion--size_large | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -176,11 +176,11 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
+dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(96, 100, 100) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_inline | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_inline::after | rgb(36, 39, 39) | rgb(228, 233, 232) | none | rgb(36, 39, 39) | none
 dds-accordion__header | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -198,8 +198,8 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion dds-accordion--variant_separated dds-accordion--size_small | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -209,11 +209,11 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
+dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(96, 100, 100) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_separated | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(228, 233, 232) | none
 dds-accordion__header | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-collapsible__trigger dds-accordion__trigger | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
@@ -230,8 +230,8 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion dds-accordion--variant_separated dds-accordion--size_small | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -241,11 +241,11 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
+dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(96, 100, 100) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_separated | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(228, 233, 232) | none
 dds-accordion__header | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-collapsible__trigger dds-accordion__trigger | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
@@ -262,8 +262,8 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion dds-accordion--variant_separated dds-accordion--size_medium | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -273,11 +273,11 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
+dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(96, 100, 100) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_separated | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(228, 233, 232) | none
 dds-accordion__header | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-collapsible__trigger dds-accordion__trigger | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
@@ -294,8 +294,8 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion dds-accordion--variant_separated dds-accordion--size_medium | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -305,11 +305,11 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
+dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(96, 100, 100) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_separated | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(228, 233, 232) | none
 dds-accordion__header | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-collapsible__trigger dds-accordion__trigger | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
@@ -326,8 +326,8 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion dds-accordion--variant_separated dds-accordion--size_large | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -337,11 +337,11 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
+dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(96, 100, 100) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_separated | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(228, 233, 232) | none
 dds-accordion__header | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-collapsible__trigger dds-accordion__trigger | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
@@ -358,8 +358,8 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion dds-accordion--variant_separated dds-accordion--size_large | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -369,11 +369,11 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(107, 112, 111) | none
+dds-text-field dds-text-field--size_medium | rgb(36, 39, 39) | rgb(255, 255, 255) | none | rgb(96, 100, 100) | none
 dds-collapsible dds-accordion__item dds-accordion__item--variant_separated | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(228, 233, 232) | none
 dds-accordion__header | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-collapsible__trigger dds-accordion__trigger | rgb(137, 141, 141) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
@@ -390,8 +390,8 @@ dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0
 dds-accordion__prefix | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__description | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__description | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion dds-accordion--variant_inline dds-accordion--size_medium | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
@@ -400,6 +400,6 @@ dds-accordion__header | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 
 dds-collapsible__trigger dds-accordion__trigger | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__title | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
-dds-accordion__suffix-icon | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-accordion__suffix-icon | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-collapsible__content dds-accordion__content | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none
 dds-accordion__body | rgb(36, 39, 39) | rgba(0, 0, 0, 0) | none | rgb(36, 39, 39) | none

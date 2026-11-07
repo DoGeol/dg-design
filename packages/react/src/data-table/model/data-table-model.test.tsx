@@ -55,6 +55,17 @@ describe("DataTable model", () => {
     expect(columnId(columns[0]!)).toBe("name");
   });
 
+  it("sorts NaN and invalid dates last like empty values", () => {
+    const sortable: readonly DataColumn<{ v: unknown }>[] = [{ field: "v", header: "V", sortable: true }];
+    const sortV = (values: unknown[]) =>
+      processRows(values.map((v) => ({ v })), sortable, { id: "v", direction: "asc" }, {}).map((row) => row.v);
+
+    expect(sortV([3, NaN, 1, 2, NaN, 0])).toEqual([0, 1, 2, 3, NaN, NaN]);
+    const invalid = new Date("x");
+    const [a, b, c] = [new Date("2025-01-01"), new Date("2026-01-01"), new Date("2026-01-02")];
+    expect(sortV([c, invalid, b, a])).toEqual([a, b, c, invalid]);
+  });
+
   it("rejects invalid row identities before React keys or selection can collide", () => {
     expect(() => rowKeyOf({ id: null }, "id")).toThrow(/rowKey "id"/);
     expect(() => rowKeyOf(rows[0]!, () => Number.NaN)).toThrow(/finite number/);

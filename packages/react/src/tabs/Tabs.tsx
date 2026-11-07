@@ -9,6 +9,8 @@ import { useControllableState } from "../internal/use-controllable-state";
 import { useSelectionIndicator } from "../internal/use-selection-indicator";
 import { contentId, TabsContext, triggerId, useTabsContext } from "./tabs-context";
 
+const useIsomorphicLayoutEffect = typeof window === "undefined" ? React.useEffect : React.useLayoutEffect;
+
 /** 항목의 role — roving 조회와 aria가 같은 값을 쓴다. */
 const TAB_ROLE = "tab";
 
@@ -99,6 +101,7 @@ export const TabsRoot = React.forwardRef<HTMLDivElement, TabsRootProps>((props, 
   });
 
   const baseId = React.useId();
+  const [fallbackTabStopId, setFallbackTabStopId] = React.useState<string>();
   const indicatorWiring = React.useMemo(
     () => ({
       listRef: indicator.containerRef,
@@ -117,9 +120,11 @@ export const TabsRoot = React.forwardRef<HTMLDivElement, TabsRootProps>((props, 
       isWide,
       size,
       pointerIntentRef,
+      fallbackTabStopId,
+      setFallbackTabStopId,
       indicator: indicatorWiring,
     }),
-    [current, selectValue, baseId, responsive, isWide, size, indicatorWiring],
+    [current, selectValue, baseId, responsive, isWide, size, fallbackTabStopId, indicatorWiring],
   );
 
   const rootStyle: React.CSSProperties = {
@@ -160,6 +165,18 @@ export const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
       [ref, indicator?.listRef],
     );
     const pointerIntentRef = context?.pointerIntentRef;
+
+    // 값이 어느 Trigger와도 안 맞거나 선택된 Trigger가 disabled면 tab stop이 사라진다 —
+    // 그때는 첫 활성 Trigger가 맡는다. Trigger끼리는 서로를 모르니 렌더 뒤 DOM으로 판단한다.
+    const setFallbackTabStopId = context?.setFallbackTabStopId;
+    useIsomorphicLayoutEffect(() => {
+      if (!setFallbackTabStopId || !listRef.current) return;
+      const enabled = Array.from(
+        listRef.current.querySelectorAll<HTMLButtonElement>(`[role="${TAB_ROLE}"]`),
+      ).filter((node) => !node.disabled);
+      const hasStop = enabled.some((node) => node.getAttribute("aria-selected") === "true");
+      setFallbackTabStopId(hasStop ? undefined : enabled[0]?.id);
+    });
 
     return (
       <div
@@ -213,6 +230,7 @@ export const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>
   ({ className, value, disabled, onClick, onFocus, ...props }, ref) => {
     const context = useTabsContext("Tabs.Trigger");
     const selected = context.value === value;
+    const id = triggerId(context.baseId, value);
 
     // 밑줄이 따라갈 대상. value가 바뀌면 콜백 정체성이 바뀌어 옛 등록이 먼저 해제된다.
     const registerTrigger = context.indicator?.registerTrigger;
@@ -228,13 +246,13 @@ export const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>
         ref={setRef}
         type="button"
         role="tab"
-        id={triggerId(context.baseId, value)}
+        id={id}
         aria-selected={selected}
         aria-controls={contentId(context.baseId, value)}
         disabled={disabled}
-        // 선택이 없을 때만 전부 tabIndex 0 — 어느 탭이든 포커스되는 순간 automatic
-        // 활성화가 일어나 tab stop이 하나로 복구된다.
-        tabIndex={selected || context.value === undefined ? 0 : -1}
+        // 선택된 활성 탭이 없으면 List가 고른 첫 활성 탭이 tab stop이다 — 포커스되는 순간
+        // automatic 활성화로 선택이 생긴다.
+        tabIndex={selected || context.fallbackTabStopId === id ? 0 : -1}
         data-state={selected ? "active" : "inactive"}
         className={clsx("dds-tabs__trigger", context.size === "small" && "dds-tabs__trigger--size_small", className)}
         onFocus={(event) => {

@@ -108,8 +108,8 @@ export function collectOptions(
 /**
  * typeahead 버퍼로 다음 옵션을 고른다.
  *
- * 버퍼가 한 글자면 현재 항목 다음부터 찾아 같은 글자를 연타할 때 순환하고,
- * 이어 치는 중이면 현재 항목부터 찾아 이미 맞은 항목이 계속 유지된다(네이티브·Radix 관례).
+ * 버퍼가 한 글자(또는 같은 글자 연타 "aa")면 그 한 글자로 현재 항목 다음부터 찾아 순환하고,
+ * 이어 치는 중이면 현재 항목부터 찾아 이미 맞은 항목이 계속 유지된다(네이티브·APG 관례).
  */
 export function matchOption(
   options: OptionEntry[],
@@ -118,9 +118,11 @@ export function matchOption(
 ): OptionEntry | undefined {
   if (options.length === 0 || buffer === "") return undefined;
 
-  const query = buffer.toLowerCase();
+  const lowered = buffer.toLowerCase();
+  const repeated = [...lowered].every((char) => char === lowered[0]);
+  const query = repeated ? (lowered[0] as string) : lowered;
   const currentIndex = options.findIndex((option) => option.value === currentValue);
-  const start = buffer.length === 1 ? currentIndex + 1 : Math.max(currentIndex, 0);
+  const start = repeated ? currentIndex + 1 : Math.max(currentIndex, 0);
 
   for (let step = 0; step < options.length; step += 1) {
     const option = options[(start + step) % options.length];
@@ -186,8 +188,10 @@ export function handleOpenKeyDown(
 
   const items = getItems(content, OPTION_ROLE);
   const focused = items.find((item) => item === document.activeElement);
+  // 검색 필터로 숨은([hidden]) 옵션에 맞으면 포커스할 곳이 없다 — 보이는 항목으로 좁힌다.
+  const shown = new Set(items.map((item) => item.getAttribute(VALUE_ATTR)));
   const match = matchOption(
-    options,
+    options.filter((option) => shown.has(option.value)),
     typeahead.push(event.key),
     focused?.getAttribute(VALUE_ATTR) ?? undefined,
   );
@@ -240,7 +244,8 @@ export function useOptionRegistry(
     const everScanned = everScannedRef.current;
     for (const value of known) everScanned.add(value);
 
-    const merged = scanned.map((entry) => registered.get(entry.value) ?? entry);
+    // 스캔이 최신 props다 — 등록분은 닫힌 동안 갱신되지 않아 옛 라벨·disabled를 들고 있을 수 있다.
+    const merged = [...scanned];
     for (const entry of registered.values()) {
       if (known.has(entry.value)) continue;
       // 스캔 이력이 있는데 지금 없다 = 소비자가 뺐다. 래퍼 안 옵션은 이력이 없어 살아남는다.

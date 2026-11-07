@@ -29,8 +29,8 @@ dds-switch__track | rgb(241, 246, 246) | rgb(82, 86, 86) | none | rgb(241, 246, 
 dds-switch__thumb | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
 dds-switch__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-badge dds-badge--intent_neutral dds-badge--variant_weak dds-badge--size_small | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
-dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_xsmall | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(107, 112, 111) | none
-dds-spinner dds-spinner--size_small dds-button__spinner | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) rgb(107, 112, 111) rgb(107, 112, 111) | none
+dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_xsmall | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(96, 100, 100) | none
+dds-spinner dds-spinner--size_small dds-button__spinner | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) rgb(96, 100, 100) rgb(96, 100, 100) | none
 dds-checkbox dds-checkbox--size_small | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-checkbox__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
 dds-checkbox__box | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none
@@ -78,9 +78,9 @@ dds-switch__track | rgb(241, 246, 246) | rgb(82, 86, 86) | none | rgb(241, 246, 
 dds-switch__thumb | rgb(241, 246, 246) | rgb(15, 18, 18) | none | rgb(241, 246, 246) | none
 dds-switch__label | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-badge dds-badge--intent_neutral dds-badge--variant_weak dds-badge--size_small | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | none
-dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_xsmall | rgb(107, 112, 111) | rgb(58, 62, 62) | none | rgb(107, 112, 111) | none
-dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_xsmall::before | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
-dds-spinner dds-spinner--size_small dds-button__spinner | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) rgb(107, 112, 111) rgb(107, 112, 111) | none
+dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_xsmall | rgb(96, 100, 100) | rgb(58, 62, 62) | none | rgb(96, 100, 100) | none
+dds-button dds-button--intent_brand dds-button--variant_solid dds-button--size_xsmall::before | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
+dds-spinner dds-spinner--size_small dds-button__spinner | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgba(0, 0, 0, 0) rgb(96, 100, 100) rgb(96, 100, 100) | none
 dds-checkbox dds-checkbox--size_small | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-checkbox__input | rgb(0, 0, 0) | rgba(0, 0, 0, 0) | none | rgb(0, 0, 0) | none
 dds-checkbox__box | rgb(15, 18, 18) | rgba(0, 0, 0, 0) | none | rgb(137, 141, 141) | none

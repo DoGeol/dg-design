@@ -3,6 +3,8 @@ import userEvent from "@testing-library/user-event";
 import * as React from "react";
 import { describe, expect, it, vi } from "vitest";
 
+import { ContextMenu } from "../context-menu/ContextMenu";
+import { Dialog } from "../dialog/Dialog";
 import { DropdownMenu } from "../dropdown-menu/DropdownMenu";
 import { Select } from "../select/Select";
 import { Popover } from "./Popover";
@@ -231,6 +233,54 @@ describe("Popover 중첩", () => {
     expect(screen.getByRole("listbox")).toBeTruthy();
     expect(screen.getByRole("group", { name: "안쪽 패널" })).toBeTruthy();
     expect(screen.getByRole("group", { name: "바깥 패널" })).toBeTruthy();
+  });
+
+  it("Content 안에서 연 Dialog를 눌러도 Popover는 닫히지 않는다", async () => {
+    // Dialog는 단일 열림 목록에 끼지 않아, 다이얼로그 스택을 보지 않으면 바깥 클릭으로 판정된다.
+    const user = userEvent.setup();
+    render(
+      <Popover.Root>
+        <Popover.Trigger>열기</Popover.Trigger>
+        <Popover.Content aria-label="패널">
+          <Dialog.Root>
+            <Dialog.Trigger>대화상자</Dialog.Trigger>
+            <Dialog.Content aria-label="안쪽 대화상자">
+              <button type="button">안쪽 버튼</button>
+            </Dialog.Content>
+          </Dialog.Root>
+        </Popover.Content>
+      </Popover.Root>,
+    );
+
+    await user.click(screen.getByRole("button", { name: "열기" }));
+    await user.click(screen.getByRole("button", { name: "대화상자" }));
+    await user.click(screen.getByRole("button", { name: "안쪽 버튼" }));
+
+    expect(screen.getByRole("dialog", { name: "안쪽 대화상자" })).toBeTruthy();
+    expect(screen.getByRole("group", { name: "패널" }).getAttribute("data-state")).toBe("open");
+  });
+
+  it("Content 안에서 연 ContextMenu를 눌러도 Popover는 닫히지 않는다", async () => {
+    const user = userEvent.setup();
+    render(
+      <Popover.Root>
+        <Popover.Trigger>열기</Popover.Trigger>
+        <Popover.Content aria-label="패널">
+          <ContextMenu.Root>
+            <ContextMenu.Trigger>행</ContextMenu.Trigger>
+            <ContextMenu.Content>
+              <ContextMenu.Item>항목</ContextMenu.Item>
+            </ContextMenu.Content>
+          </ContextMenu.Root>
+        </Popover.Content>
+      </Popover.Root>,
+    );
+
+    await user.click(screen.getByRole("button", { name: "열기" }));
+    await user.pointer({ keys: "[MouseRight]", target: screen.getByText("행") });
+    await user.click(screen.getByRole("menuitem", { name: "항목" }));
+
+    expect(screen.getByRole("group", { name: "패널" }).getAttribute("data-state")).toBe("open");
   });
 
   it("Content 안에서도 형제끼리는 하나만 열린다", async () => {

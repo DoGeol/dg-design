@@ -211,6 +211,40 @@ describe('MultiSelect search="content"', () => {
 
     expect(document.activeElement).toBe(option("Banana"));
   });
+
+  it("검색 입력에서 Escape로 닫힌다", async () => {
+    const user = userEvent.setup();
+    render(<Searchable search="content" />);
+
+    await user.click(screen.getByRole("combobox"));
+    await user.keyboard("{Escape}");
+
+    expect(screen.queryByRole("listbox")).toBeNull();
+  });
+
+  it("sheet 표시의 검색 입력에서도 Escape로 닫힌다", async () => {
+    const user = userEvent.setup();
+    render(<Searchable search="trigger" presentation="sheet" />);
+
+    await user.click(screen.getByRole("combobox"));
+    expect(document.activeElement).toBe(searchbox());
+    await user.keyboard("{Escape}");
+
+    expect(screen.queryByRole("dialog")).toBeNull();
+  });
+
+  it("typeahead는 걸러져 숨은 옵션을 건너뛰고 보이는 옵션으로 간다", async () => {
+    const user = userEvent.setup();
+    render(<Searchable search="content" />);
+
+    await user.click(screen.getByRole("combobox"));
+    // "e"는 Banana만 거른다 — b로 시작하는 보이는 옵션은 Blueberry뿐이다.
+    await user.keyboard("e{ArrowDown}");
+    expect(document.activeElement).toBe(option("Apple"));
+    await user.keyboard("b");
+
+    expect(document.activeElement).toBe(option("Blueberry"));
+  });
 });
 
 describe("MultiSelect onCreate", () => {
@@ -295,6 +329,37 @@ describe("MultiSelect onCreate", () => {
 
     settle();
     await waitFor(() => expect(onCreate).toHaveBeenCalledTimes(1));
+  });
+
+  it("보류 중에 고른 값은 resolve 뒤에도 남는다", async () => {
+    const user = userEvent.setup();
+    const onValueChange = vi.fn();
+    let settle: () => void = () => {};
+    const onCreate = vi.fn(
+      () =>
+        new Promise<{ value: string; label: string }>((resolve) => {
+          settle = () => resolve({ value: "kiwi", label: "Kiwi" });
+        }),
+    );
+    render(
+      <Searchable
+        {...createProps}
+        defaultValue={["apple"]}
+        onCreate={onCreate}
+        onValueChange={onValueChange}
+      />,
+    );
+
+    await user.type(input(), "kiwi");
+    await user.click(screen.getByRole("option", { name: 'Create "kiwi"' }));
+    await user.clear(input());
+    await user.type(input(), "ban");
+    await user.click(option("Banana"));
+
+    settle();
+    await waitFor(() =>
+      expect(onValueChange).toHaveBeenLastCalledWith(["apple", "banana", "kiwi"]),
+    );
   });
 
   it("reject면 항목이 복구되고 createErrorLabel이 role=alert로 뜬다", async () => {

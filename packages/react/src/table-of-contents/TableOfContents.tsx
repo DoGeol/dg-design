@@ -210,6 +210,7 @@ const CollapsibleNav = React.forwardRef<HTMLElement, CollapsibleContentWrapperPr
       activeId,
       className,
       items: _items,
+      tree,
       open: openProp,
       defaultOpen = false,
       onOpenChange,
@@ -266,7 +267,7 @@ const CollapsibleNav = React.forwardRef<HTMLElement, CollapsibleContentWrapperPr
             ref={contentRef}
             className="dds-table-of-contents__content"
           >
-            {renderTocTree(props.tree, activeId)}
+            {renderTocTree(tree, activeId)}
           </Collapsible.Content>
         </Collapsible.Root>
       </nav>

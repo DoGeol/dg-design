@@ -14,6 +14,9 @@ export interface TabsContextValue {
    * pointerdown에서 기록하고, click·pointercancel·keydown에서 내린다.
    */
   pointerIntentRef?: React.MutableRefObject<boolean>;
+  /** 선택된 활성 탭이 없을 때 tab stop을 맡는 첫 활성 Trigger의 id — List가 DOM을 보고 정한다. */
+  fallbackTabStopId?: string;
+  setFallbackTabStopId?: (id: string | undefined) => void;
   /** 활성 밑줄 배선 — Root가 만들고 List가 붙인다. */
   indicator?: {
     listRef: React.RefObject<HTMLDivElement | null>;
@@ -32,5 +35,7 @@ export function useTabsContext(component: string): TabsContextValue {
   return context;
 }
 
-export const triggerId = (baseId: string, value: string) => `${baseId}-trigger-${value}`;
-export const contentId = (baseId: string, value: string) => `${baseId}-content-${value}`;
+// 공백이 든 value는 aria-labelledby·aria-controls에서 idref 두 개로 쪼개진다 — 인코딩해 한 토큰으로 만든다.
+const idToken = (value: string) => encodeURIComponent(value).replace(/%/g, "_");
+export const triggerId = (baseId: string, value: string) => `${baseId}-trigger-${idToken(value)}`;
+export const contentId = (baseId: string, value: string) => `${baseId}-content-${idToken(value)}`;

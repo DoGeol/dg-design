@@ -17,7 +17,7 @@ dds-pagination__link dds-button dds-button--size_medium dds-button--intent_neutr
 dds-pagination | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-pagination__list | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-pagination__item | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-pagination__link dds-button dds-button--size_medium dds-button--intent_neutral dds-button--variant_ghost | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-pagination__link dds-button dds-button--size_medium dds-button--intent_neutral dds-button--variant_ghost | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-pagination__item | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-pagination__link dds-button dds-button--size_medium dds-button--intent_neutral dds-button--variant_weak | rgb(241, 246, 246) | rgb(36, 39, 39) | none | rgb(241, 246, 246) | rgb(137, 141, 141) 0px 0px 0px 1px inset
 dds-pagination__item | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
@@ -26,7 +26,7 @@ dds-pagination__sr-only | rgb(174, 178, 178) | rgba(0, 0, 0, 0) | none | rgb(174
 dds-pagination__item | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-pagination__link dds-button dds-button--size_medium dds-button--intent_neutral dds-button--variant_ghost | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-pagination__item | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
-dds-pagination__link dds-button dds-button--size_medium dds-button--intent_neutral dds-button--variant_ghost | rgb(107, 112, 111) | rgba(0, 0, 0, 0) | none | rgb(107, 112, 111) | none
+dds-pagination__link dds-button dds-button--size_medium dds-button--intent_neutral dds-button--variant_ghost | rgb(96, 100, 100) | rgba(0, 0, 0, 0) | none | rgb(96, 100, 100) | none
 dds-pagination | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-pagination__list | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none
 dds-pagination__item | rgb(241, 246, 246) | rgba(0, 0, 0, 0) | none | rgb(241, 246, 246) | none

@@ -161,6 +161,11 @@ export const CollapsibleContent = React.forwardRef<HTMLDivElement, CollapsibleCo
       return observeContentSize(element, updateHeight);
     }, []);
 
+    // React 18은 inert를 모르는 속성으로 보고 boolean 값을 버린다 — 직접 건다.
+    useIsomorphicLayoutEffect(() => {
+      contentRef.current?.toggleAttribute("inert", !context.open);
+    }, [context.open]);
+
     const contentStyle = {
       ...style,
       "--dds-collapsible-content-height": height === undefined ? undefined : `${height}px`,
@@ -174,7 +179,6 @@ export const CollapsibleContent = React.forwardRef<HTMLDivElement, CollapsibleCo
         className={clsx("dds-collapsible__content", className)}
         style={contentStyle}
         aria-hidden={!context.open}
-        inert={!context.open || undefined}
         data-state={context.open ? "open" : "closed"}
         data-disabled={context.disabled || undefined}
       />

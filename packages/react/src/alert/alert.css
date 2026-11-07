@@ -16,6 +16,10 @@
       translate var(--dds-duration-fast) var(--dds-easing-out);
   }
 
+  .dds-alert[hidden] {
+    display: none;
+  }
+
   @starting-style {
     .dds-alert {
       opacity: 0;

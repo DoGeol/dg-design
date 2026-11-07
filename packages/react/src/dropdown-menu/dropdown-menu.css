@@ -49,6 +49,10 @@
     cursor: pointer;
   }
 
+  .dds-dropdown-menu__item[hidden] {
+    display: none;
+  }
+
   .dds-dropdown-menu__item:hover:not(:is(:disabled, [disabled], [data-disabled])) {
     background-color: var(--dds-color-bg-transparent-hover);
   }

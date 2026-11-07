@@ -31,7 +31,7 @@
  * ## 접근성
  *
  * - W3C ARIA `role="separator"` 명세를 충실히 따르며 `aria-valuenow`, `aria-valuemin`, `aria-valuemax`, `aria-orientation`을 관리합니다.
- * - 키보드 포커스 시 ArrowLeft/ArrowDown으로 -step, ArrowRight/ArrowUp으로 +step, Home/End로 하한/상한 이동을 지원합니다.
+ * - 키보드 포커스 시 포인터 방향과 같게 ArrowLeft/ArrowUp으로 -step, ArrowRight/ArrowDown으로 +step, Home/End로 하한/상한 이동을 지원합니다.
  * - Enter 또는 Space 키를 눌러 기본값(`onReset`)으로 복원할 수 있습니다.
  * - 비율·rem 패널에는 `fromDrag`로 포인터 px를 값 단위로 변환합니다. 변경 콜백은 이동 중 호출되므로 저장 시점은 소비자가 관리합니다.
  */

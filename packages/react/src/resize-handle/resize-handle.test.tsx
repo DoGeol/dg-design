@@ -119,7 +119,7 @@ describe("ResizeHandle 키보드 조작", () => {
     expect(handle.getAttribute("aria-valuenow")).toBe("40");
   });
 
-  it("horizontal: ArrowDown으로 -step, ArrowUp으로 +step 증감한다", async () => {
+  it("horizontal: 포인터처럼 ArrowUp으로 -step, ArrowDown으로 +step 증감한다", async () => {
     const user = userEvent.setup();
     render(
       <ControlledResizeHandle
@@ -134,10 +134,10 @@ describe("ResizeHandle 키보드 조작", () => {
     const handle = screen.getByTestId("handle");
     handle.focus();
 
-    await user.keyboard("{ArrowDown}");
+    await user.keyboard("{ArrowUp}");
     expect(handle.getAttribute("aria-valuenow")).toBe("40");
 
-    await user.keyboard("{ArrowUp}");
+    await user.keyboard("{ArrowDown}");
     expect(handle.getAttribute("aria-valuenow")).toBe("50");
   });
 

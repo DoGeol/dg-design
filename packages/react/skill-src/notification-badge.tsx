@@ -20,7 +20,6 @@
  * | `max` | number(기본 99) | 초과하면 `99+` 식으로 표시 |
  * | `isShowEmpty` | boolean | `count={0}`일 때도 "0"을 표시 |
  * | `intent` | `critical`(기본) · `brand` | |
- * | `asChild` | boolean | 자식 요소에 모양을 입힌다 |
  *
  * 위치 지정(모서리 겹침)은 소비자 몫이다. 부모를 `position: relative`로 두고 직접 배치한다.
  *

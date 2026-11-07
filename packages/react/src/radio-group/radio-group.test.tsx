@@ -437,4 +437,27 @@ describe("RadioGroup segmented variant", () => {
     expect(darkLabel?.getAttribute("data-state")).toBe("checked");
     expect(lightLabel?.getAttribute("data-state")).toBe("unchecked");
   });
+
+  it("form reset 후 uncontrolled 선택이 defaultValue로 돌아가고 다시 렌더해도 유지된다", async () => {
+    const user = userEvent.setup();
+    const tree = (n: number) => (
+      <form data-n={n}>
+        <Basic defaultValue="standard" />
+        <button type="reset">초기화</button>
+      </form>
+    );
+    const { rerender } = render(tree(1));
+    const standard = screen.getByRole("radio", { name: "일반배송" }) as HTMLInputElement;
+    const express = screen.getByRole("radio", { name: "빠른배송" }) as HTMLInputElement;
+
+    await user.click(express);
+    await user.click(screen.getByRole("button", { name: "초기화" }));
+    expect(standard.checked).toBe(true);
+    expect(standard.closest("label")?.getAttribute("data-state")).toBe("checked");
+    expect(express.closest("label")?.getAttribute("data-state")).toBe("unchecked");
+
+    rerender(tree(2));
+    expect(standard.checked).toBe(true);
+    expect(express.checked).toBe(false);
+  });
 });

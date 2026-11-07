@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import type { DataColumn } from "../model/data-table-model";
+import type { DataColumn, DataTableFilters, DataTableSort } from "../model/data-table-model";
 import type { DataTableVirtual } from "./DataTable";
 
 function visibleRange(count: number, scrollTop: number, height: number, rowHeight: number, overscan: number) {
@@ -37,7 +37,14 @@ function useScrollability<T>(
   return scrollable;
 }
 
-export function useVirtualViewport<T>(virtual: DataTableVirtual, rows: readonly T[], columns: readonly DataColumn<T>[]) {
+type ViewportSource<T> = { data: readonly T[]; sort: DataTableSort; filters: DataTableFilters };
+
+export function useVirtualViewport<T>(
+  virtual: DataTableVirtual,
+  rows: readonly T[],
+  columns: readonly DataColumn<T>[],
+  source: ViewportSource<T>,
+) {
   const isVirtual = virtual !== false;
   if (virtual && (
     !Number.isFinite(virtual.height) || virtual.height <= 0 ||
@@ -52,9 +59,13 @@ export function useVirtualViewport<T>(virtual: DataTableVirtual, rows: readonly 
   const viewportHeight = virtual ? virtual.height : 0;
   const rowHeight = virtual ? virtual.rowHeight : 0;
   const overscan = virtual ? virtual.overscan ?? 4 : 0;
+  // rows는 인라인 columns만 바뀌어도 새 배열이라, 그 정체성에 걸면 부모 리렌더마다 스크롤이 맨 위로 튄다.
+  // 실제 원본·정렬·필터 변경에만 건다 — controlled 인라인 리터럴도 값이 같으면 유지되도록 직렬화한다.
+  const sortKey = JSON.stringify(source.sort);
+  const filtersKey = JSON.stringify(source.filters);
   const resetKey = React.useMemo(
     () => Symbol("DataTable viewport"),
-    [rows, viewportHeight, rowHeight, overscan, isVirtual],
+    [source.data, sortKey, filtersKey, viewportHeight, rowHeight, overscan, isVirtual],
   );
   const [scrollState, setScrollState] = React.useState({ key: resetKey, top: 0 });
   // A changed row model renders its first window immediately, before the DOM scroll reset effect runs.

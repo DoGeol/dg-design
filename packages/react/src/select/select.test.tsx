@@ -239,6 +239,25 @@ describe("Select typeahead", () => {
     expect(onValueChange).toHaveBeenCalledWith("melon");
   });
 
+  it("닫힌 상태에서 같은 글자를 연타하면 그 글자로 시작하는 옵션을 순환한다", async () => {
+    const user = userEvent.setup();
+    const onValueChange = vi.fn();
+    render(
+      <Select.Root onValueChange={onValueChange}>
+        <Select.Trigger />
+        <Select.Content>
+          <Select.Option value="apple">Apple</Select.Option>
+          <Select.Option value="avocado">Avocado</Select.Option>
+        </Select.Content>
+      </Select.Root>,
+    );
+
+    trigger().focus();
+    await user.keyboard("aa");
+
+    expect(onValueChange).toHaveBeenLastCalledWith("avocado");
+  });
+
   it("닫힌 상태에서 disabled 옵션은 건너뛴다", async () => {
     const user = userEvent.setup();
     const onValueChange = vi.fn();

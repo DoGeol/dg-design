@@ -194,8 +194,9 @@ export function useResizeHandle(options: UseResizeHandleOptions): UseResizeHandl
       } = optionsRef.current;
 
       const isVertical = currentOrientation === "vertical";
-      const isDecrease = isVertical ? event.key === "ArrowLeft" : event.key === "ArrowDown";
-      const isIncrease = isVertical ? event.key === "ArrowRight" : event.key === "ArrowUp";
+      // 포인터와 같은 방향 — 오른쪽·아래로 끌면 값이 커진다.
+      const isDecrease = isVertical ? event.key === "ArrowLeft" : event.key === "ArrowUp";
+      const isIncrease = isVertical ? event.key === "ArrowRight" : event.key === "ArrowDown";
 
       if (isDecrease) {
         event.preventDefault();

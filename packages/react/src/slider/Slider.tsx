@@ -5,6 +5,7 @@ import clsx from "clsx";
 import * as React from "react";
 
 import { FieldContext } from "../field/field-context";
+import { mergeRefs } from "../internal/merge-refs";
 
 const slider = cva("dds-slider", {
   variants: {
@@ -58,6 +59,29 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>(
       return (minVal + maxVal) / 2;
     });
 
+    // 브라우저는 값을 step·범위에 맞춰 고치고(defaultValue 7·step 5 → 5) form reset으로도 되돌린다 —
+    // 채움은 prop이 아니라 input의 실제 값을 따른다.
+    const innerRef = React.useRef<HTMLInputElement>(null);
+    const setRef = React.useMemo(() => mergeRefs(ref, innerRef), [ref]);
+    React.useEffect(() => {
+      const input = innerRef.current;
+      if (isControlled || !input) return;
+      const sync = () => setUncontrolledValue(input.valueAsNumber);
+      sync();
+      const form = input.form;
+      if (!form) return;
+      // reset 이벤트는 값이 되돌려지기 전에 온다 — 한 틱 뒤에 읽는다.
+      let timer: ReturnType<typeof setTimeout> | undefined;
+      const reset = () => {
+        timer = setTimeout(sync);
+      };
+      form.addEventListener("reset", reset);
+      return () => {
+        form.removeEventListener("reset", reset);
+        clearTimeout(timer);
+      };
+    }, [isControlled]);
+
     const currentValue = isControlled ? Number(value) : uncontrolledValue;
     const fillPercent = calculateFillPercent(currentValue, minVal, maxVal);
 
@@ -92,7 +116,7 @@ export const Slider = React.forwardRef<HTMLInputElement, SliderProps>(
     return (
       <input
         type="range"
-        ref={ref}
+        ref={setRef}
         id={resolvedId}
         min={min}
         max={max}
