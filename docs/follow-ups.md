@@ -20,7 +20,6 @@
 | 항목 | 상태 | 착수 조건 |
 | --- | --- | --- |
 | MultiSelect·Select 래퍼 옵션 | 옵션을 사용자 컴포넌트로 감싸면 첫 열기 전 트리거에 값 문자열(`internal/select-core.ts` 한계). StateMatrix 스토리만 직접 배치로 고침 | 래퍼 옵션 사용처가 생기면 registry 개선 |
-| ContextMenuItem `tabIndex` | 수정 중: 열린 메뉴에 동적으로 추가된 항목이 Tab 순서에 바로 들어가지 않음 | 검증·릴리스 후 닫기 |
 
 ### flex 비교 화면에서 드러난 문제 (2026-10-09)
 
@@ -50,12 +49,24 @@ P7에서 42개 컴포넌트 예제와 설명을 소스와 대조하다 나온 �
 
 | 항목 | 상태 | 착수 조건 |
 | --- | --- | --- |
-| StatePanel.Loading `aria-live` | 수정 중: `role="status"`만 남김. 실제 스크린리더 청취는 미검증 | 검증·릴리스 후 닫기 |
-| FileInput 라벨 연결 | 수정 중: Field 라벨과 버튼 문구를 연결하며 명시적 접근 이름은 유지 | 검증·릴리스 후 닫기 |
-| Field.ErrorMessage 사용자 `id` | 수정 중: 오류 종류와 사용자 id를 함께 추적 | 검증·릴리스 후 닫기 |
 | Button·Accordion 개발 경고 | `console.warn`이 렌더마다, 운영 빌드에서도 나온다 | 경고 정책을 정할 때 |
 | DataTable 선택 칸 이름 | `"{caption} {rowKey} 선택"` — rowKey가 내부 id면 그대로 읽힌다 | 행 이름 열 지정 API가 필요해지면 |
 | DatePicker 기본 locale | `en-US` | 소비자 기본값 요구가 생기면 |
+
+### 전체 코드 점검 뒤 남긴 것 (2026-11-07)
+
+점검 20건 중 19건은 [#77](https://github.com/DoGeol/dg-design/pull/77)(react 0.30.0·tokens 0.13.1)에서 고쳤다. 아래는 뺀 것.
+
+| 항목 | 상태 | 착수 조건 |
+| --- | --- | --- |
+| Tooltip Escape | Dialog·Sheet·Popover 안 Tooltip에서 Escape를 누르면 아래 오버레이까지 닫힌다. "스택 미등록" 결정을 유지한다 | 사용처에서 문제가 보고되면 HoverCard처럼 스택에 등록 |
+| DatePicker 입력 | ko-KR에서 24시간 입력 불가(`hourCycle` 미노출). 연도 `0000`이 `0001`로 정규화된다. 단일 picker에서 오류 알림이 두 번 뜬다. en-US에서 `2026-2-3`이 파싱되지 않는다 | DatePicker를 손볼 때 |
+| Select·MultiSelect Tab | Tab으로 포커스가 나가도 목록이 열린 채 남는다(APG는 닫는다) | 오버레이 닫힘 정책을 정할 때 |
+| Accordion 중첩 방향키 | 닫힌 항목 안 중첩 Accordion의 트리거로 ArrowDown이 간다(inert라 포커스가 멈춘다) | Accordion을 손볼 때 |
+| Popover 접근 이름 | Content `role="group"`에 이름이 없다(`aria-labelledby` 미연결) | Popover를 손볼 때 |
+| Toast 낭독 | 미리 채워진 `role="status"`가 마운트되면 일부 스크린리더가 읽지 않는다 | 스크린리더 QA 때 |
+| 작은 동작 | Checkbox: 클릭 후 indeterminate가 복구되지 않음. Button·CodeBlock: pending 중 native disabled로 포커스를 잃음. Button: `asChild`+`iconOnly` 경고 오탐. 끌어서 닫기: 빠른 플릭 일부가 속도 0으로 계산됨. dialog-stack: IME 조합 중 Escape에도 닫힘. Slider: controlled off-step 값의 fill | 해당 컴포넌트를 손볼 때 |
+| tokens·빌드·CI | `createTheme` 무채색 판정 임계(1e-4)가 낮다. 테스트 `.d.ts`가 npm에 포함된다. `ci.yml`에 `permissions` 블록이 없다. VR 기준이 없으면 CI에서도 스킵된다 | 배포·CI를 손볼 때 |
 
 ## 알아두면 첫 시도에서 안 틀리는 것
 
@@ -80,4 +91,5 @@ P7에서 42개 컴포넌트 예제와 설명을 소스와 대조하다 나온 �
 - **D1·D2** — compound 서브컴포넌트 named export, `Tabs.Content` tabIndex override. 근거는 [compound named export 결정](decisions/2026-09-06-compound-named-exports.md)
 - **C3 색 회귀** — 스크린샷 테스트에 색 텍스트 스냅샷(`*.txt`) 추가. 임계 없음이라 1값 차이도 잡히고 `-u`가 항상 갱신. 근거는 [배포 자동화 결정](decisions/2026-09-06-release-automation.md)의 후속 항목
 - **릴리스 운영** — npm trusted publishing + changesets/action으로 자동화. 근거는 [배포 자동화 결정](decisions/2026-09-06-release-automation.md)
+- **스킬 예제 점검 4건** — ContextMenuItem `tabIndex`, StatePanel.Loading `aria-live`, FileInput 라벨, Field.ErrorMessage 사용자 `id`. [#58](https://github.com/DoGeol/dg-design/pull/58)(react 0.27.0). StatePanel 스크린리더 청취는 미검증
 - **A5 완료** — Tabs에 이어 Skeleton·Avatar·Separator·Collapsible·Accordion 추가. Accordion duplicate value ID P1 수정과 독립 재QA까지 완료
