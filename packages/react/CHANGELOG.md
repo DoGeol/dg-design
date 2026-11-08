@@ -1,5 +1,11 @@
 # @dg-design/react
 
+## 0.31.0
+
+### Minor Changes
+
+- 5571c64: Add 13 image-editing icons using the shared 24-grid IconBase: crop, rotation, flip, resize, mosaic, text, adjustments, filters, pan, fit-to-screen, and image selection.
+
 ## 0.30.0
 
 ### Minor Changes
