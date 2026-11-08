@@ -147,6 +147,8 @@ function IconGrid({ disabled = false }: { disabled?: boolean }) {
       style={{
         display: "grid",
         gridTemplateColumns: "100px repeat(3, 40px)",
+        // Keep screenshot geometry independent of inherited font line-box metrics.
+        gridAutoRows: 24,
         gap: 8,
         alignItems: "center",
         color: disabled ? "var(--dds-color-fg-disabled)" : "var(--dds-color-fg-neutral)",
