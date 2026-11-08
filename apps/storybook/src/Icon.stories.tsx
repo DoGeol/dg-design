@@ -38,6 +38,19 @@ import {
   UndoIcon,
   UploadIcon,
   WarningIcon,
+  CropIcon,
+  RotateLeftIcon,
+  RotateRightIcon,
+  FlipHorizontalIcon,
+  FlipVerticalIcon,
+  ResizeIcon,
+  MosaicIcon,
+  TextIcon,
+  AdjustmentsIcon,
+  FilterIcon,
+  HandIcon,
+  FitScreenIcon,
+  ImageIcon,
 } from "@dg-design/react/icon";
 import * as React from "react";
 
@@ -50,6 +63,19 @@ const meta = {
 export default meta;
 
 const ICONS = [
+  { name: "Crop", Comp: CropIcon },
+  { name: "RotateLeft", Comp: RotateLeftIcon },
+  { name: "RotateRight", Comp: RotateRightIcon },
+  { name: "FlipHorizontal", Comp: FlipHorizontalIcon },
+  { name: "FlipVertical", Comp: FlipVerticalIcon },
+  { name: "Resize", Comp: ResizeIcon },
+  { name: "Mosaic", Comp: MosaicIcon },
+  { name: "Text", Comp: TextIcon },
+  { name: "Adjustments", Comp: AdjustmentsIcon },
+  { name: "Filter", Comp: FilterIcon },
+  { name: "Hand", Comp: HandIcon },
+  { name: "FitScreen", Comp: FitScreenIcon },
+  { name: "Image", Comp: ImageIcon },
   { name: "ChevronUp", Comp: ChevronUpIcon },
   { name: "ChevronDown", Comp: ChevronDownIcon },
   { name: "ChevronLeft", Comp: ChevronLeftIcon },
@@ -121,6 +147,8 @@ function IconGrid({ disabled = false }: { disabled?: boolean }) {
       style={{
         display: "grid",
         gridTemplateColumns: "100px repeat(3, 40px)",
+        // Keep screenshot geometry independent of inherited font line-box metrics.
+        gridAutoRows: 24,
         gap: 8,
         alignItems: "center",
         color: disabled ? "var(--dds-color-fg-disabled)" : "var(--dds-color-fg-neutral)",

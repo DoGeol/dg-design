@@ -65,6 +65,7 @@
 
 | 문서 | 상태 | 다루는 것 |
 |------|------|-----------|
+| [2026-11-08 이미지 편집 아이콘](decisions/2026-11-08-image-editor-icons.md) | 구현·로컬 검증, 미배포 | 편집용 13종 추가(총 50종), 공통 IconBase 계약·changeset·소비 경계 |
 | [2026-11-04 DatePicker 컴팩트 팝오버](decisions/2026-11-04-datepicker-compact-popover.md) | 활성 | 날짜 칸·이동 버튼 `max(touch-target, 32px)`(마우스 32 · 터치 44), 팝오버 폭·월 basis를 칸에서 계산(단일 258px · 범위 498px), 패딩 유지 |
 | [2026-11-01 터치 기기 touch-target 폴백](decisions/2026-11-01-touch-target-coarse.md) | 활성 | 밀도 없이 `@media (pointer: coarse)`에서 `--dds-size-touch-target`만 44px(flex P1 개정), 밀도 `::before` 확장은 밀도 전용 유지 |
 | [2026-10-31 끌어서 닫기·Toast 재배치](decisions/2026-10-31-gesture-dismiss.md) | 활성 | 공용 `use-drag-dismiss`(50% 또는 0.11px/ms·고무줄 1/3·놓기 직전 100ms 속도), 멈춘 자리에서 이어 빠지는 퇴장, Toast FLIP 재배치, `Sheet.Handle` 추가 |

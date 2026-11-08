@@ -37,3 +37,17 @@ export { TrashIcon } from "./trash-icon";
 export { UndoIcon } from "./undo-icon";
 export { UploadIcon } from "./upload-icon";
 export { WarningIcon } from "./warning-icon";
+
+export { CropIcon } from "./crop-icon";
+export { RotateLeftIcon } from "./rotate-left-icon";
+export { RotateRightIcon } from "./rotate-right-icon";
+export { FlipHorizontalIcon } from "./flip-horizontal-icon";
+export { FlipVerticalIcon } from "./flip-vertical-icon";
+export { ResizeIcon } from "./resize-icon";
+export { MosaicIcon } from "./mosaic-icon";
+export { TextIcon } from "./text-icon";
+export { AdjustmentsIcon } from "./adjustments-icon";
+export { FilterIcon } from "./filter-icon";
+export { HandIcon } from "./hand-icon";
+export { FitScreenIcon } from "./fit-screen-icon";
+export { ImageIcon } from "./image-icon";
