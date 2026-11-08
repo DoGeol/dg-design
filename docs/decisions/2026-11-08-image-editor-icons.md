@@ -28,3 +28,9 @@ ref·label·장식 접근성 계약을 그대로 사용한다. 외부 라이브�
 minor changeset을 준비했다. 로컬 version/publish·수동 태그는 사용하지 않는다.
 사용자의 커밋·푸시 승인 후 PR·정식 release workflow 절차로 배포한다.
 소비 앱은 npm 배포판만 사용하므로 현재 미배포 소스를 link·복사하지 않는다.
+
+## CI 기준 갱신
+
+Visual Baseline run `42490735172`가 성공해 icon state matrix의 라이트·다크 PNG와
+색 텍스트 기준 4파일만 갱신했다. 기존 기준에서 발생한 아이콘 행 추가 차이를
+반영한 것으로, 다른 컴포넌트 기준은 바뀌지 않았다. 갱신한 기준 위에서 PR CI를 다시 확인한다.
